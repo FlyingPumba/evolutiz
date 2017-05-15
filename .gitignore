@@ -35,6 +35,10 @@ coverage.xml
 
 # ide
 .idea/
+.vscode/
+env/
+
+*.apk
 
 # OS generated
 .DS_Store

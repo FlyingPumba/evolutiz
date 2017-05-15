@@ -34,14 +34,14 @@ import os
 
 def install(motifcore_path, motifcore_script_path, device):
 	# obtain write permission
-	os.system("adb -s " + device + " shell mount -o rw,remount /system")
+	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell mount -o rw,remount /system")
 
 	# push
-	os.system("adb -s " + device + " push " + motifcore_path + " /system/framework")
-	os.system("adb -s " + device + " push " + motifcore_script_path + " /system/bin")
+	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " push " + motifcore_path + " /system/framework")
+	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " push " + motifcore_script_path + " /system/bin")
 
 	# recover permission
-	os.system("adb -s " + device + " shell mount -o ro,remount /system")
+	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell mount -o ro,remount /system")
 
 
 if __name__ == "__main__":

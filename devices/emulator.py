@@ -44,20 +44,22 @@ def get_devices():
 	:return: a list of avaiable devices names, e.g., emulator-5556
 	"""
 	ret = []
-	p = sub.Popen('adb devices', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+	p = sub.Popen('$ANDROID_HOME/platform-tools/adb devices', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 	output, errors = p.communicate()
-	print output
 	segs = output.split("\n")
 	for seg in segs:
 		device = seg.split("\t")[0].strip()
 		if seg.startswith("emulator-"):
-			p = sub.Popen('adb -s ' + device + ' shell getprop init.svc.bootanim', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			print "Checking if boot animation is over"
+			p = sub.Popen('$ANDROID_HOME/platform-tools/adb -s ' + device + ' shell getprop init.svc.bootanim', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 			output, errors = p.communicate()
 			if output.strip() != "stopped":
+				print "Animation is not over yet"
 				time.sleep(10)
-				print "waiting for the emulator:", device
+				print "Waiting for the emulator:", device
 				return get_devices()
 			else:
+				print "Added device"
 				ret.append(device)
 
 	assert len(ret) > 0
@@ -84,13 +86,12 @@ def boot_devices():
 	print "Waiting", settings.AVD_BOOT_DELAY, "seconds"
 	time.sleep(settings.AVD_BOOT_DELAY)
 
-
 def clean_sdcard():
 	for device in get_devices():
-		os.system("adb -s " + device + " shell mount -o rw,remount rootfs /")
-		os.system("adb -s " + device + " shell chmod 777 /mnt/sdcard")
+		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell mount -o rw,remount rootfs /")
+		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell chmod 777 /mnt/sdcard")
 
-		os.system("adb -s " + device + " shell rm -rf /mnt/sdcard/*")
+		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm -rf /mnt/sdcard/*")
 
 
 def prepare_motifcore():
@@ -105,7 +106,7 @@ def pack_and_deploy_aut():
 
 def destory_devices():
 	# for device in get_devices():
-	# 	os.system("adb -s " + device + " emu kill")
+	# 	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " emu kill")
 	# do force kill
 	os.system("kill -9  $(ps aux | grep 'emulator' | awk '{print $2}')")
 

@@ -8,7 +8,7 @@ HEADLESS = False
 # === Emulator ===
 DEVICE_NUM = 1
 AVD_BOOT_DELAY = 30
-AVD_SERIES = "api19_"
+AVD_SERIES = "Nexus_5_API_21"
 EVAL_TIMEOUT = 120
 # if run on Mac OS, use "gtimeout"
 TIMEOUT_CMD = "timeout"
@@ -16,9 +16,9 @@ TIMEOUT_CMD = "timeout"
 
 # === Env. Paths ===
 # path should end with a '/'
-ANDROID_HOME = '/'
+ANDROID_HOME = '/opt/android-sdk/'
 # the path of sapienz folder
-WORKING_DIR = '/'
+WORKING_DIR = '/home/ivan/src/sapienz/'
 
 
 # === GA parameters ===
