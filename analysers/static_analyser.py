@@ -34,7 +34,8 @@ import settings
 
 
 def decode_apk(input_apk, output_dir):
-	os.chdir(output_dir)
+	# os.chdir(output_dir)
+	# print output_dir
 	os.system("java -jar " + settings.WORKING_DIR + "lib/apktool.jar d -f " + input_apk)
 
 

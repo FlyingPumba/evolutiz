@@ -42,6 +42,8 @@ idle_devices = []
 
 
 def process_results(data):
+	if settings.DEBUG:
+		print "Got results", data
 	individual, device = data
 	results.append(individual)
 	idle_devices.append(device)
@@ -56,6 +58,8 @@ def initPop(container, func, n, apk_dir, package_name):
 	if settings.DEBUG:
 		print "### Init population in parallel"
 		print "n=", n
+		print "idle devices=", idle_devices
+
 	ret = []
 	while len(results) > 0:
 		results.pop()
@@ -64,6 +68,9 @@ def initPop(container, func, n, apk_dir, package_name):
 
 	# 1. get idle devices
 	idle_devices.extend(emulator.get_devices())
+
+	if settings.DEBUG:
+		print "idle devices after extending from emulator.get_devices()=", idle_devices
 
 	# 2. aissign tasks to devices
 	pool = mp.Pool(processes=len(idle_devices))

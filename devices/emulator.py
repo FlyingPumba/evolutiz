@@ -44,14 +44,16 @@ def get_devices():
 	:return: a list of avaiable devices names, e.g., emulator-5556
 	"""
 	ret = []
-	p = sub.Popen('$ANDROID_HOME/platform-tools/adb devices', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+	p = sub.Popen('$ANDROID_HOME/platform-tools/adb devices',
+	              stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 	output, errors = p.communicate()
 	segs = output.split("\n")
 	for seg in segs:
 		device = seg.split("\t")[0].strip()
 		if seg.startswith("emulator-"):
 			print "Checking if boot animation is over"
-			p = sub.Popen('$ANDROID_HOME/platform-tools/adb -s ' + device + ' shell getprop init.svc.bootanim', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			p = sub.Popen('$ANDROID_HOME/platform-tools/adb -s ' + device +
+			              ' shell getprop init.svc.bootanim', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 			output, errors = p.communicate()
 			if output.strip() != "stopped":
 				print "Animation is not over yet"
@@ -73,20 +75,26 @@ def boot_devices():
 	:return:
 	"""
 	for i in range(0, settings.DEVICE_NUM):
-		device_name = settings.AVD_SERIES + str(i)
+		device_name = settings.AVD_SERIES + "_" + str(i)
 		print "Booting Device:", device_name
 		time.sleep(0.3)
 		if settings.HEADLESS:
-			sub.Popen('emulator -avd ' + device_name + " -wipe-data -no-window -writable-system",
-					  stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			sub.Popen('cd "$(dirname "$(which emulator)")" && ./emulator -avd ' + device_name + " -wipe-data -no-window -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 		else:
-			sub.Popen('emulator -avd ' + device_name + " -wipe-data -writable-system",
-					  stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			sub.Popen('cd "$(dirname "$(which emulator)")" && ./emulator -avd ' + device_name + " -wipe-data -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+		print "Waiting", settings.AVD_BOOT_DELAY, "seconds"
+		time.sleep(settings.AVD_BOOT_DELAY)
 
-	print "Waiting", settings.AVD_BOOT_DELAY, "seconds"
-	time.sleep(settings.AVD_BOOT_DELAY)
+	# device_name = settings.AVD_SERIES
+	# print "Booting Device:", device_name
+	# time.sleep(0.3)
+	# if settings.HEADLESS:
+	# 	p = sub.Popen('cd "$(dirname "$(which emulator)")" && ./emulator -avd ' + device_name + " -wipe-data -no-window -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+	# else:
+	# 	p = sub.Popen('cd "$(dirname "$(which emulator)")" && ./emulator -avd ' + device_name + " -wipe-data -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 
 def clean_sdcard():
+	print "Cleaning SD card"
 	for device in get_devices():
 		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell mount -o rw,remount rootfs /")
 		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell chmod 777 /mnt/sdcard")
@@ -95,6 +103,7 @@ def clean_sdcard():
 
 
 def prepare_motifcore():
+	print "Preparing motifcore"
 	for device in get_devices():
 		motifcore_installer.install(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device)
 

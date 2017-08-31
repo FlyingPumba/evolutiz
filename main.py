@@ -58,16 +58,25 @@ class CanNotInitSeqException(Exception):
 def get_suite(device, apk_dir, package_name):
 	ret = []
 	unique_crashes = set()
+	if settings.DEBUG:
+		print " ... Generating suite of size", settings.SUITE_SIZE
 	for i in range(0, settings.SUITE_SIZE):
 		# get_sequence may return empty sequence
+		if settings.DEBUG:
+			print "Individual ", i
 		seq = []
 		repeated = 0
 		while len(seq) <= 2:
 			seq = get_sequence(device, apk_dir, package_name, i, unique_crashes)
+			# print seq
 			repeated += 1
 			if repeated > 20:
+				print "Cannot get sequence via MotifCore."
 				raise CanNotInitSeqException("Cannot get sequence via MotifCore.")
 		ret.append(seq)
+
+	if settings.DEBUG:
+		print "... Exiting get_suite method"
 
 	return ret
 
@@ -123,8 +132,9 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	script.close()
 
 	# deal with crash
-	crash_handler.handle(device, apk_dir, apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index),
-						 "init", ts, index, unique_crashes)
+	crash_handler.handle(device, apk_dir, apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index),"init", ts, index, unique_crashes)
+
+	print "... Exiting get_sequence method"
 
 	return ret
 
@@ -134,6 +144,8 @@ def gen_individual(device, apk_dir, package_name):
 	if settings.DEBUG:
 		print "Generate Individual on device, ", device
 	suite = get_suite(device, apk_dir, package_name)
+	if settings.DEBUG:
+		print "Finished generating individual"
 	return (creator.Individual(suite), device)
 
 
@@ -238,6 +250,11 @@ def get_package_name(path):
 	if path.endswith(".apk"):
 		apk_path = path
 	else:
+		# build the apk
+		# settings.PROJECT_FOLDER = path
+		# emulator.pack_and_deploy_aut()
+
+		# now find its name
 		for file_name in os.listdir(path + "/bin"):
 			if file_name == "bugroid-instrumented.apk":
 				apk_path = path + "/bin/bugroid-instrumented.apk"
@@ -247,8 +264,7 @@ def get_package_name(path):
 
 	assert apk_path is not None
 
-	get_package_cmd = "aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package= | awk 'BEGIN {FS=\"\\\"\"}{print $2}'"
-	# print get_package_cmd
+	get_package_cmd = "$ANDROID_HOME/build-tools/25.0.3/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package= | awk 'BEGIN {FS=\"\\\"\"}{print $2}'"
 	package_name = subprocess.Popen(get_package_cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
 	return package_name, apk_path
 
@@ -268,14 +284,6 @@ def main(instrumented_app_dir):
 	else:
 		print "Runnning on unknown OS"
 
-	package_name, apk_path = get_package_name(instrumented_app_dir)
-	# for css subjects
-	if instrumented_app_dir.endswith(".apk"):
-		instrumented_app_dir += "_output"
-		os.system("mkdir " + instrumented_app_dir)
-
-	print "### Working on apk:", package_name
-
 	# get emulator device
 	print "Preparing devices ..."
 	emulator.boot_devices()
@@ -284,6 +292,15 @@ def main(instrumented_app_dir):
 
 	# log the devices
 	devices = emulator.get_devices()
+
+	# get package name and prepare apk if necessary
+	package_name, apk_path = get_package_name(instrumented_app_dir)
+	# for css subjects
+	if instrumented_app_dir.endswith(".apk"):
+		instrumented_app_dir += "_output"
+		os.system("mkdir -p " + instrumented_app_dir)
+
+	print "### Working on apk:", package_name
 
 	# static analysis
 	if settings.ENABLE_STRING_SEEDING:
@@ -302,23 +319,23 @@ def main(instrumented_app_dir):
 			decoded_dir = instrumented_app_dir + "/bin/" + apk_path.split("/")[-1].split(".apk")[0]
 		static_analyser.upload_string_xml(device, decoded_dir, package_name)
 
+		print "### Installing apk:", apk_path
 		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/bugreport.crash")
 		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " uninstall " + package_name)
 		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " install " + apk_path)
 
 	# intermediate should be in app folder
 	os.system("rm -rf " + instrumented_app_dir + "/intermediate")
-	os.system("mkdir " + instrumented_app_dir + "/intermediate")
+	os.system("mkdir -p " + instrumented_app_dir + "/intermediate")
 
 	os.system("rm -rf " + instrumented_app_dir + "/crashes")
-	os.system("mkdir " + instrumented_app_dir + "/crashes")
+	os.system("mkdir -p " + instrumented_app_dir + "/crashes")
 
 	os.system("rm -rf " + instrumented_app_dir + "/coverages")
-	os.system("mkdir " + instrumented_app_dir + "/coverages")
+	os.system("mkdir -p " + instrumented_app_dir + "/coverages")
 
 	# generate initial population
 	print "### Initialising population ...."
-
 	population = toolbox.population(n=settings.POPULATION_SIZE, apk_dir=instrumented_app_dir,
 									package_name=package_name)
 

@@ -16,8 +16,10 @@ idle_devices = []
 
 def process_results(data):
 	indi_index, fitness, device = data
+	print "Finished evaluating an individual: ", indi_index, " ", fitness, " ", device
 	results.append((indi_index, fitness))
 	idle_devices.append(device)
+	print "Idle devices: ", idle_devices
 
 
 def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name, gen):
@@ -34,6 +36,15 @@ def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name
 	while len(idle_devices) > 0:
 		idle_devices.pop()
 
+	# 0. prepare wrapper for eval function
+	def eval_suite_parallel_wrapper(individual, device, apk_dir, package_name, gen, pop):
+		try:
+			return eval_suite_parallel(individual, device, apk_dir, package_name, gen, pop)
+		except Exception as e:
+			print "There was an error evaluating individual in parallel"
+			print e
+			return pop, (None, None, None), device
+
 	# 1. get idle devices
 	idle_devices.extend(emulator.get_devices())
 
@@ -41,9 +52,10 @@ def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name
 	pool = mp.Pool(processes=len(idle_devices))
 	for i in range(0, len(individuals)):
 		while len(idle_devices) == 0:
-			time.sleep(0.5)
-		pool.apply_async(eval_suite_parallel, args=(individuals[i], idle_devices.pop(0), apk_dir, package_name, gen, i),
-						 callback=process_results)
+			print "Waiting for idle_devices"
+			print idle_devices
+			time.sleep(0.5) # a veces se cuelga aca
+		pool.apply_async(eval_suite_parallel_wrapper, args=(individuals[i], idle_devices.pop(0), apk_dir, package_name, gen, i), callback=process_results)
 
 	print "### evaluate_in_parallel is wating for all processes to finish ... "
 	# should wait for all processes to finish
@@ -84,6 +96,9 @@ def evolve(population, toolbox, mu, lambda_, cxpb, mutpb, ngen, apk_dir, package
 
 	# Begin the generational process
 	for gen in range(1, ngen + 1):
+
+		print "Starting generation", gen
+
 		# Vary the population
 		offspring = varOr(population, toolbox, lambda_, cxpb, mutpb)
 
@@ -93,9 +108,9 @@ def evolve(population, toolbox, mu, lambda_, cxpb, mutpb, ngen, apk_dir, package
 		# this function will eval and match each invalid_ind to its fitness
 		evaluate_in_parallel(toolbox.evaluate, invalid_ind, apk_dir, package_name, gen)
 
-		if settings.DEBUG:
-			for indi in invalid_ind:
-				print indi.fitness.values
+		# if settings.DEBUG:
+		# 	for indi in invalid_ind:
+		# 		print indi.fitness.values
 
 		# discard invalid offspring individual
 		for i in range(len(offspring) - 1, -1, -1):

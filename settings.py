@@ -1,14 +1,15 @@
-DEBUG = False
+DEBUG = True # or False
 # if False, "0" will be used
 ENABLE_STRING_SEEDING = True
 # use headless evaluator
 HEADLESS = False
-
+EMMA_ED = "emma/" # folder for instrumented builds with emma
+ORIGINAL_PATH = "subjects/" # folder for origignal sources
 
 # === Emulator ===
-DEVICE_NUM = 1
+DEVICE_NUM = 3
 AVD_BOOT_DELAY = 30
-AVD_SERIES = "Nexus_5_API_21"
+AVD_SERIES = "Nexus_4_API_19"
 EVAL_TIMEOUT = 120
 # if run on Mac OS, use "gtimeout"
 TIMEOUT_CMD = "timeout"
@@ -25,9 +26,9 @@ WORKING_DIR = '/home/ivan/src/sapienz/'
 SEQUENCE_LENGTH_MIN = 20
 SEQUENCE_LENGTH_MAX = 500
 SUITE_SIZE = 5
-POPULATION_SIZE = 50
-OFFSPRING_SIZE = 50
-GENERATION = 100
+POPULATION_SIZE = 10 # 50
+OFFSPRING_SIZE = 10 # 50
+GENERATION = 5 # 100
 # Crossover probability
 CXPB = 0.7
 # Mutation probability
