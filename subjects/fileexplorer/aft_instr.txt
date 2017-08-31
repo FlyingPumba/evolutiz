@@ -1,0 +1,2475 @@
+public final class edu.killerud.fileexplorer.BuildConfig extends java.lang.Object
+{
+    public static final boolean DEBUG;
+    public static final acteve.symbolic.integer.Expression DEBUG$sym;
+    public static final int DEBUG$a3tid;
+
+    public void <init>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        edu.killerud.fileexplorer.BuildConfig r0;
+
+        r0 := @this: edu.killerud.fileexplorer.BuildConfig;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(0, 32419, 1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public class edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation extends android.app.Instrumentation implements edu.killerud.fileexplorer.EmmaInstrument.FinishListener
+{
+    public static java.lang.String TAG;
+    private static final java.lang.String DEFAULT_COVERAGE_FILE_PATH;
+    private final android.os.Bundle mResults;
+    private android.content.Intent mIntent;
+    private static final boolean LOGD;
+    private boolean mCoverage;
+    private java.lang.String mCoverageFilePath;
+    private static final boolean[][] $VRc;
+    public static int TAG$a3tid;
+    private static final int DEFAULT_COVERAGE_FILE_PATH$a3tid;
+    private final int mResults$a3tid;
+    private int mIntent$a3tid;
+    private static final acteve.symbolic.integer.Expression LOGD$sym;
+    private static final int LOGD$a3tid;
+    private acteve.symbolic.integer.Expression mCoverage$sym;
+    private int mCoverage$a3tid;
+    private int mCoverageFilePath$a3tid;
+    private static final int $VRc$a3tid;
+
+    public void <init>()
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_4, r2$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.os.Bundle $r3;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(0, 32420, 1);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 448);
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        _sym_tmp_4 = null;
+        if $r1 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45366, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45366, 1);
+        goto label1;
+
+     label1:
+        r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r1, 0);
+        r2 = $r1[0];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<android.app.Instrumentation: void <init>()>();
+        $r3 = new android.os.Bundle;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke $r3.<android.os.Bundle: void <init>()>();
+        _sym_tmp_2 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mResults$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_2, 449);
+        _sym_tmp_2 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mResults$a3tid> = _sym_tmp_2;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(449);
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults> = $r3;
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: acteve.symbolic.integer.Expression mCoverage$sym> = null;
+        _sym_tmp_3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverage$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_3, 450);
+        _sym_tmp_3 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverage$a3tid> = _sym_tmp_3;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(450);
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean mCoverage> = 1;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 0);
+        r2[0] = 1;
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_7, $z0$sym, r3$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_6, _sym_tmp_5, _sym_tmp_4, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.String $r4, $r9, $r10;
+        java.lang.StringBuilder $r5, $r6, $r7, $r8;
+        boolean $z0;
+        android.content.Intent $r11, $r13;
+        android.content.Context $r12;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: android.os.Bundle;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(1621, 32421, 2);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 448);
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        _sym_tmp_7 = null;
+        if $r2 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_7, 45367, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_7, 45367, 1);
+        goto label1;
+
+     label1:
+        r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r2, 1);
+        r3 = $r2[1];
+        _sym_tmp_2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int TAG$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_2, 451);
+        $r4 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r5 = new java.lang.StringBuilder;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("onCreate(");
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(147, null, null);
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(148, null);
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(624, null, null);
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, $r9);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(1621, null, null);
+        specialinvoke r0.<android.app.Instrumentation: void onCreate(android.os.Bundle)>(r1);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 0);
+        r3[0] = 1;
+        _sym_tmp_7 = null;
+        if r1 == null goto label2;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_7, 45368, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21742, null, null, null);
+        $z0 = specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean getBooleanArgument(android.os.Bundle,java.lang.String)>(r1, "coverage");
+        $z0$sym = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression retpop(int)>(21742);
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: acteve.symbolic.integer.Expression mCoverage$sym> = $z0$sym;
+        _sym_tmp_3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverage$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_3, 450);
+        _sym_tmp_3 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverage$a3tid> = _sym_tmp_3;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(450);
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean mCoverage> = $z0;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(2706, null, null);
+        $r10 = virtualinvoke r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>("coverageFile");
+        _sym_tmp_4 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverageFilePath$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_4, 452);
+        _sym_tmp_4 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverageFilePath$a3tid> = _sym_tmp_4;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(452);
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath> = $r10;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 1);
+        r3[1] = 1;
+        goto label3;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_7, 45368, 1);
+        goto label3;
+
+     label3:
+        $r11 = new android.content.Intent;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(8437, null);
+        $r12 = virtualinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.content.Context getTargetContext()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(9129, null, null, null);
+        specialinvoke $r11.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r12, class "edu/killerud/fileexplorer/EmmaInstrument/InstrumentedActivity");
+        _sym_tmp_5 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mIntent$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_5, 453);
+        _sym_tmp_5 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mIntent$a3tid> = _sym_tmp_5;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(453);
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent> = $r11;
+        _sym_tmp_6 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mIntent$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_6, 453);
+        $r13 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(1591, null, null);
+        virtualinvoke $r13.<android.content.Intent: android.content.Intent setFlags(int)>(268435456);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(535, null);
+        virtualinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void start()>();
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 2);
+        r3[2] = 1;
+        return;
+    }
+
+    public void onStart()
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_4, r2$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r3;
+        java.lang.String $r4;
+        android.content.Intent $r5;
+        android.app.Activity $r6;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(8425, 32422, 1);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 448);
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        _sym_tmp_4 = null;
+        if $r1 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45369, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45369, 1);
+        goto label1;
+
+     label1:
+        r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r1, 2);
+        r2 = $r1[2];
+        _sym_tmp_2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int TAG$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_2, 451);
+        $r4 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(624, null, null);
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, "onStart()");
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(8425, null);
+        specialinvoke r0.<android.app.Instrumentation: void onStart()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(10470);
+        staticinvoke <android.os.Looper: void prepare()>();
+        _sym_tmp_3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mIntent$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_3, 453);
+        $r5 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(8450, null, null);
+        $r6 = virtualinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.app.Activity startActivitySync(android.content.Intent)>($r5);
+        r3 = (edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity) $r6;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21743, null, null);
+        virtualinvoke r3.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: void setFinishListener(edu.killerud.fileexplorer.EmmaInstrument.FinishListener)>(r0);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 0);
+        r2[0] = 1;
+        return;
+    }
+
+    private boolean getBooleanArgument(android.os.Bundle, java.lang.String)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_2, $z1$sym, $z0$sym, r4$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        android.os.Bundle r1;
+        java.lang.String r2, r5;
+        boolean[][] $r3;
+        boolean[] r4;
+        boolean $z0, $z1;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: android.os.Bundle;
+        r2 := @parameter1: java.lang.String;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21742, 32423, 3);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 448);
+        $r3 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        _sym_tmp_2 = null;
+        if $r3 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45370, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r3 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45370, 1);
+        goto label1;
+
+     label1:
+        r4$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r3, 3);
+        r4 = $r3[3];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(2706, null, null);
+        r5 = virtualinvoke r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>(r2);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 0);
+        r4[0] = 1;
+        _sym_tmp_2 = null;
+        if r5 == null goto label2;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45371, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(20857, null);
+        $z0 = staticinvoke <java.lang.Boolean: boolean parseBoolean(java.lang.String)>(r5);
+        $z0$sym = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression retpop(int)>(20857);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 1);
+        r4[1] = 1;
+        _sym_tmp_2 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>($z0$sym, null, $z0, 0);
+        if $z0 == 0 goto label3;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45372, 0);
+        $z1$sym = null;
+        $z1 = 1;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 2);
+        r4[2] = 1;
+        goto label5;
+
+        goto label4;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45371, 1);
+        goto label4;
+
+        goto label4;
+
+     label3:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45372, 1);
+        goto label4;
+
+     label4:
+        $z1$sym = null;
+        $z1 = 0;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 3, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 3);
+        r4[3] = 1;
+
+     label5:
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 4, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 4);
+        r4[4] = 1;
+        staticinvoke <acteve.symbolic.Util: void retpush(int,acteve.symbolic.integer.Expression)>(21742, $z1$sym);
+        return $z1;
+    }
+
+    private void generateCoverageReport()
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_3, r2$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.io.File r3, $r7;
+        java.lang.Class r4, $r10, $r11, $r12;
+        java.lang.reflect.Method r5;
+        java.lang.String $r6, $r8;
+        java.lang.Class[] $r9;
+        java.lang.Object[] $r13;
+        java.lang.Boolean $r14, $r15;
+        java.lang.ClassNotFoundException $r17, r18;
+        java.lang.SecurityException $r19, r20;
+        java.lang.NoSuchMethodException $r21, r22;
+        java.lang.IllegalArgumentException $r23, r24;
+        java.lang.IllegalAccessException $r25, r26;
+        java.lang.reflect.InvocationTargetException $r27, r28;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21747, 32424, 1);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 448);
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        _sym_tmp_3 = null;
+        if $r1 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45373, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45373, 1);
+        goto label1;
+
+     label1:
+        r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r1, 4);
+        r2 = $r1[4];
+        _sym_tmp_2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int TAG$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_2, 451);
+        $r6 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(624, null, null);
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r6, "generateCoverageReport()");
+        $r7 = new java.io.File;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(21744, null);
+        $r8 = specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String getCoverageFilePath()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(1, null, null);
+        specialinvoke $r7.<java.io.File: void <init>(java.lang.String)>($r8);
+        r3 = $r7;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(2060, null);
+        r4 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("com.vladium.emma.rt.RT");
+        $r9 = newarray (java.lang.Class)[3];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(1386, null);
+        $r10 = virtualinvoke r3.<java.lang.Object: java.lang.Class getClass()>();
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r9, 0);
+        $r9[0] = $r10;
+        $r11 = <java.lang.Boolean: java.lang.Class TYPE>;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r9, 1);
+        $r9[1] = $r11;
+        $r12 = <java.lang.Boolean: java.lang.Class TYPE>;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r9, 2);
+        $r9[2] = $r12;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(2770, null, null, null);
+        r5 = virtualinvoke r4.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("dumpCoverageData", $r9);
+        $r13 = newarray (java.lang.Object)[3];
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r13, 0);
+        $r13[0] = r3;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(2654, null);
+        $r14 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r13, 1);
+        $r13[1] = $r14;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(2654, null);
+        $r15 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r13, 2);
+        $r13[2] = $r15;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(2771, null, null, null);
+        virtualinvoke r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r13);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 0);
+        r2[0] = 1;
+
+     label3:
+        goto label10;
+
+     label4:
+        $r17 := @caughtexception;
+        r18 = $r17;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21745, null, null, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>("Emma.jar not in the class path?", r18);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 1);
+        r2[1] = 1;
+        goto label10;
+
+     label5:
+        $r19 := @caughtexception;
+        r20 = $r19;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21746, null, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r20);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 2);
+        r2[2] = 1;
+        goto label10;
+
+     label6:
+        $r21 := @caughtexception;
+        r22 = $r21;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21746, null, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r22);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 3, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 3);
+        r2[3] = 1;
+        goto label10;
+
+     label7:
+        $r23 := @caughtexception;
+        r24 = $r23;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21746, null, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r24);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 4, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 4);
+        r2[4] = 1;
+        goto label10;
+
+     label8:
+        $r25 := @caughtexception;
+        r26 = $r25;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21746, null, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r26);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 5, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 5);
+        r2[5] = 1;
+        goto label10;
+
+     label9:
+        $r27 := @caughtexception;
+        r28 = $r27;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21746, null, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r28);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 6, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 6);
+        r2[6] = 1;
+
+     label10:
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 7, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 7);
+        r2[7] = 1;
+        return;
+
+        catch java.lang.ClassNotFoundException from label2 to label3 with label4;
+        catch java.lang.SecurityException from label2 to label3 with label5;
+        catch java.lang.NoSuchMethodException from label2 to label3 with label6;
+        catch java.lang.IllegalArgumentException from label2 to label3 with label7;
+        catch java.lang.IllegalAccessException from label2 to label3 with label8;
+        catch java.lang.reflect.InvocationTargetException from label2 to label3 with label9;
+    }
+
+    private java.lang.String getCoverageFilePath()
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_4, r2$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21744, 32425, 1);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 448);
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        _sym_tmp_4 = null;
+        if $r1 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45374, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45374, 1);
+        goto label1;
+
+     label1:
+        r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r1, 5);
+        r2 = $r1[5];
+        _sym_tmp_2 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverageFilePath$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_2, 452);
+        $r3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath>;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 0);
+        r2[0] = 1;
+        _sym_tmp_4 = null;
+        if $r3 != null goto label2;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45375, 0);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 1);
+        r2[1] = 1;
+        return "/mnt/sdcard/coverage.ec";
+
+        goto label3;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45375, 1);
+        goto label3;
+
+     label3:
+        _sym_tmp_3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverageFilePath$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_3, 452);
+        $r4 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath>;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 2);
+        r2[2] = 1;
+        return $r4;
+    }
+
+    private boolean setCoverageFilePath(java.lang.String)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_3, $i0$sym, r3$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_2, _sym_tmp_1, $i0;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21748, 32426, 2);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 448);
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        _sym_tmp_3 = null;
+        if $r2 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45376, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45376, 1);
+        goto label1;
+
+     label1:
+        r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r2, 6);
+        r3 = $r2[6];
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 0);
+        r3[0] = 1;
+        _sym_tmp_3 = null;
+        if r1 == null goto label2;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45377, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(152, null);
+        $i0 = virtualinvoke r1.<java.lang.String: int length()>();
+        $i0$sym = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression retpop(int)>(152);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 1);
+        r3[1] = 1;
+        _sym_tmp_3 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _le(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>($i0$sym, null, $i0, 0);
+        if $i0 <= 0 goto label3;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45378, 0);
+        _sym_tmp_2 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverageFilePath$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_2, 452);
+        _sym_tmp_2 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverageFilePath$a3tid> = _sym_tmp_2;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(452);
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath> = r1;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 2);
+        r3[2] = 1;
+        staticinvoke <acteve.symbolic.Util: void retpush(int,acteve.symbolic.integer.Expression)>(21748, null);
+        return 1;
+
+        goto label4;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45377, 1);
+        goto label4;
+
+        goto label4;
+
+     label3:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45378, 1);
+        goto label4;
+
+     label4:
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 3, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 3);
+        r3[3] = 1;
+        staticinvoke <acteve.symbolic.Util: void retpush(int,acteve.symbolic.integer.Expression)>(21748, null);
+        return 0;
+    }
+
+    private void reportEmmaError(java.lang.Exception)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_2, r3$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.Exception r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.Exception;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21746, 32427, 2);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 448);
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        _sym_tmp_2 = null;
+        if $r2 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45379, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45379, 1);
+        goto label1;
+
+     label1:
+        r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r2, 7);
+        r3 = $r2[7];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21745, null, null, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>("", r1);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 0);
+        r3[0] = 1;
+        return;
+    }
+
+    private void reportEmmaError(java.lang.String, java.lang.Exception)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_4, r4$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1, r5, $r9, $r14;
+        java.lang.Exception r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        java.lang.StringBuilder $r6, $r7, $r8, $r11, $r12, $r13;
+        android.os.Bundle $r10;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        r2 := @parameter1: java.lang.Exception;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21745, 32428, 3);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 448);
+        $r3 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        _sym_tmp_4 = null;
+        if $r3 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45380, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r3 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45380, 1);
+        goto label1;
+
+     label1:
+        r4$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r3, 8);
+        r4 = $r3[8];
+        $r6 = new java.lang.StringBuilder;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to generate emma coverage. ");
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(148, null);
+        r5 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        _sym_tmp_2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int TAG$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_2, 451);
+        $r9 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(110, null, null, null);
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>($r9, r5, r2);
+        _sym_tmp_3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mResults$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_3, 449);
+        $r10 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults>;
+        $r11 = new java.lang.StringBuilder;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\nError: ");
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r5);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(148, null);
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(7751, null, null, null);
+        virtualinvoke $r10.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("stream", $r14);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 0);
+        r4[0] = 1;
+        return;
+    }
+
+    public void onActivityFinished()
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_5, $z0$sym, r2$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_4, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String $r3;
+        boolean $z0;
+        android.os.Bundle $r4;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21749, 32429, 1);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 448);
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        _sym_tmp_5 = null;
+        if $r1 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45381, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45381, 1);
+        goto label1;
+
+     label1:
+        r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r1, 9);
+        r2 = $r1[9];
+        _sym_tmp_2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int TAG$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_2, 451);
+        $r3 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(624, null, null);
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r3, "onActivityFinished()");
+        $z0$sym = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: acteve.symbolic.integer.Expression mCoverage$sym>;
+        _sym_tmp_3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverage$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_3, 450);
+        $z0 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean mCoverage>;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 0);
+        r2[0] = 1;
+        _sym_tmp_5 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>($z0$sym, null, $z0, 0);
+        if $z0 == 0 goto label2;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45382, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(21747, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>();
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 1);
+        r2[1] = 1;
+        goto label3;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45382, 1);
+        goto label3;
+
+     label3:
+        _sym_tmp_4 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mResults$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_4, 449);
+        $r4 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(8430, null, null, null);
+        virtualinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void finish(int,android.os.Bundle)>(-1, $r4);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 2);
+        r2[2] = 1;
+        return;
+    }
+
+    public void dumpIntermediateCoverage(java.lang.String)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_5, $z1$sym, $z0$sym, r3$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_4, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1, $r4, $r8, $r9, $r14;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.StringBuilder $r5, $r6, $r7, $r10, $r11, $r12, $r13;
+        boolean $z0, $z1;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21750, 32430, 2);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 448);
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        _sym_tmp_5 = null;
+        if $r2 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45383, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45383, 1);
+        goto label1;
+
+     label1:
+        r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r2, 10);
+        r3 = $r2[10];
+        _sym_tmp_2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int TAG$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_2, 451);
+        $r4 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r5 = new java.lang.StringBuilder;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Intermidate Dump Called with file name :");
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(148, null);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(624, null, null);
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, $r8);
+        $z0$sym = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: acteve.symbolic.integer.Expression mCoverage$sym>;
+        _sym_tmp_3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int mCoverage$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_3, 450);
+        $z0 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean mCoverage>;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 0);
+        r3[0] = 1;
+        _sym_tmp_5 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>($z0$sym, null, $z0, 0);
+        if $z0 == 0 goto label4;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45384, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21748, null, null);
+        $z1 = specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>(r1);
+        $z1$sym = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression retpop(int)>(21748);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 1);
+        r3[1] = 1;
+        _sym_tmp_5 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _ne(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>($z1$sym, null, $z1, 0);
+        if $z1 != 0 goto label2;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45385, 0);
+        _sym_tmp_4 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int TAG$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_4, 451);
+        $r9 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r10 = new java.lang.StringBuilder;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to set the given file path:");
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as dump target.");
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(148, null);
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(624, null, null);
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r9, $r14);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 2);
+        r3[2] = 1;
+        goto label3;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45385, 1);
+        goto label3;
+
+     label3:
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(21747, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21748, null, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>("/mnt/sdcard/coverage.ec");
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 3, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 3);
+        r3[3] = 1;
+        goto label5;
+
+     label4:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45384, 1);
+        goto label5;
+
+     label5:
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 4, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 4);
+        r3[4] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        acteve.symbolic.integer.Expression r1$sym;
+        boolean[][] $r0;
+        boolean[] r1;
+
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(27, 32431, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r0 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        r1$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r0, 11);
+        r1 = $r0[11];
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int TAG$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_1, 451);
+        _sym_tmp_1 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int TAG$a3tid> = _sym_tmp_1;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(451);
+        <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG> = "EmmaInstrumentation:";
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r1$sym, null, null, r1, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r1, 0);
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        acteve.symbolic.integer.Expression $r12$sym, $r11$sym, $r10$sym, $r9$sym, $r8$sym, $r7$sym, $r6$sym, $r5$sym, $r4$sym, $r3$sym, $r2$sym, $r1$sym;
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21741, 32432, 0);
+        $r0 = newmultiarray (boolean)[12][];
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_1, 448);
+        _sym_tmp_1 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: int $VRc$a3tid> = _sym_tmp_1;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(448);
+        <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r1$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 0);
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 1);
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 2);
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[5];
+        $r4$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 3);
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[8];
+        $r5$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 4);
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[3];
+        $r6$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 5);
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[4];
+        $r7$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 6);
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r8$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 7);
+        $r0[7] = $r8;
+        $r9 = newarray (boolean)[1];
+        $r9$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 8);
+        $r0[8] = $r9;
+        $r10 = newarray (boolean)[3];
+        $r10$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 9);
+        $r0[9] = $r10;
+        $r11 = newarray (boolean)[5];
+        $r11$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 10);
+        $r0[10] = $r11;
+        $r12 = newarray (boolean)[1];
+        $r12$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 11);
+        $r0[11] = $r12;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21751, null, null, null);
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "edu/killerud/fileexplorer/EmmaInstrument/EmmaInstrumentation", -6390195098943533753L);
+        return $r0;
+    }
+}
+public interface  edu.killerud.fileexplorer.EmmaInstrument.FinishListener extends java.lang.Object
+{
+
+    public abstract void onActivityFinished();
+
+    public abstract void dumpIntermediateCoverage(java.lang.String);
+}
+class edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector extends android.content.BroadcastReceiver
+{
+    final edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+    final int this$0$a3tid;
+    private static final int $VRc$a3tid;
+    private static final acteve.symbolic.integer.Expression serialVersionUID$sym;
+    private static final int serialVersionUID$a3tid;
+
+    void <init>(edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_3, r3$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector r0;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector;
+        r1 := @parameter0: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21752, 32433, 2);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 454);
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc>;
+        _sym_tmp_3 = null;
+        if $r2 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45386, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45386, 1);
+        goto label1;
+
+     label1:
+        r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r2, 0);
+        r3 = $r2[0];
+        _sym_tmp_2 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: int this$0$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_2, 455);
+        _sym_tmp_2 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: int this$0$a3tid> = _sym_tmp_2;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(455);
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity this$0> = r1;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 0);
+        r3[0] = 1;
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_4, $z1$sym, $z0$sym, $r16$sym, $r15$sym, $r14$sym, $i0$sym, $r12$sym, r4$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_3, _sym_tmp_2, _sym_tmp_1, $i0;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector r0;
+        android.content.Context r1;
+        android.content.Intent r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        android.os.Bundle r5;
+        java.lang.Object[] r6, $r13;
+        android.telephony.SmsMessage r7;
+        java.lang.String r8, r9, $r17;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity $r10, $r18;
+        edu.killerud.fileexplorer.EmmaInstrument.FinishListener $r11, $r19;
+        java.lang.Object $r12, $r14;
+        byte[] $r15, $r16;
+        boolean $z0, $z1;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.content.Intent;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(728, 32434, 3);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 454);
+        $r3 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc>;
+        _sym_tmp_4 = null;
+        if $r3 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45387, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r3 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45387, 1);
+        goto label1;
+
+     label1:
+        r4$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r3, 1);
+        r4 = $r3[1];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(730, null);
+        r5 = virtualinvoke r2.<android.content.Intent: android.os.Bundle getExtras()>();
+        _sym_tmp_2 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: int this$0$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_2, 455);
+        $r10 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity this$0>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(21753, null);
+        $r11 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: edu.killerud.fileexplorer.EmmaInstrument.FinishListener access$000(edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity)>($r10);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 0);
+        r4[0] = 1;
+        _sym_tmp_4 = null;
+        if $r11 == null goto label4;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45388, 0);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 1);
+        r4[1] = 1;
+        _sym_tmp_4 = null;
+        if r5 == null goto label5;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45389, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(731, null, null);
+        $r12 = virtualinvoke r5.<android.os.Bundle: java.lang.Object get(java.lang.String)>("pdus");
+        $r12$sym = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression retpop(int)>(731);
+        $r13 = (java.lang.Object[]) $r12;
+        r6 = (java.lang.Object[]) $r13;
+        $i0$sym = null;
+        $i0 = lengthof r6;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 2);
+        r4[2] = 1;
+        _sym_tmp_4 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _le(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>($i0$sym, null, $i0, 0);
+        if $i0 <= 0 goto label6;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45390, 0);
+        $r14$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>(r6, 0);
+        $r14 = r6[0];
+        $r15$sym = $r14$sym;
+        $r15 = (byte[]) $r14;
+        $r16$sym = $r15$sym;
+        $r16 = (byte[]) $r15;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(5113, $r16$sym);
+        r7 = staticinvoke <android.telephony.SmsMessage: android.telephony.SmsMessage createFromPdu(byte[])>($r16);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(4804, null);
+        $r17 = virtualinvoke r7.<android.telephony.SmsMessage: java.lang.String getMessageBody()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(148, null);
+        r8 = virtualinvoke $r17.<java.lang.String: java.lang.String toString()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(5110, null);
+        r9 = virtualinvoke r7.<android.telephony.SmsMessage: java.lang.String getOriginatingAddress()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(4073, null, null);
+        $z0 = virtualinvoke r9.<java.lang.String: boolean contains(java.lang.CharSequence)>("6782345628");
+        $z0$sym = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression retpop(int)>(4073);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 3, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 3);
+        r4[3] = 1;
+        _sym_tmp_4 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _ne(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>($z0$sym, null, $z0, 0);
+        if $z0 != 0 goto label2;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45391, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(57, null, null);
+        $z1 = virtualinvoke r8.<java.lang.String: boolean startsWith(java.lang.String)>("/mnt/sdcard");
+        $z1$sym = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression retpop(int)>(57);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 4, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 4);
+        r4[4] = 1;
+        _sym_tmp_4 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>($z1$sym, null, $z1, 0);
+        if $z1 == 0 goto label7;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45392, 0);
+        goto label3;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45391, 1);
+        goto label3;
+
+     label3:
+        _sym_tmp_3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: int this$0$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_3, 455);
+        $r18 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity this$0>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(21753, null);
+        $r19 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: edu.killerud.fileexplorer.EmmaInstrument.FinishListener access$000(edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity)>($r18);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21750, null, null);
+        interfaceinvoke $r19.<edu.killerud.fileexplorer.EmmaInstrument.FinishListener: void dumpIntermediateCoverage(java.lang.String)>(r8);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 5, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 5);
+        r4[5] = 1;
+        goto label8;
+
+     label4:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45388, 1);
+        goto label8;
+
+        goto label8;
+
+     label5:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45389, 1);
+        goto label8;
+
+        goto label8;
+
+     label6:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45390, 1);
+        goto label8;
+
+        goto label8;
+
+     label7:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_4, 45392, 1);
+        goto label8;
+
+     label8:
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 6, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 6);
+        r4[6] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        acteve.symbolic.integer.Expression r1$sym;
+        boolean[][] $r0;
+        boolean[] r1;
+
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(27, 32435, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r0 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+        r1$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r0, 2);
+        r1 = $r0[2];
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r1$sym, null, null, r1, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r1, 0);
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        acteve.symbolic.integer.Expression $r3$sym, $r2$sym, $r1$sym;
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21741, 32436, 0);
+        $r0 = newmultiarray (boolean)[3][];
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_1, 454);
+        _sym_tmp_1 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: int $VRc$a3tid> = _sym_tmp_1;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(454);
+        <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r1$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 0);
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[7];
+        $r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 1);
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 2);
+        $r0[2] = $r3;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21751, null, null, null);
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "edu/killerud/fileexplorer/EmmaInstrument/InstrumentedActivity$CoverageCollector", -1604738725137032633L);
+        return $r0;
+    }
+}
+public class edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity extends edu.killerud.fileexplorer.ExplorerActivity
+{
+    public static java.lang.String TAG;
+    private edu.killerud.fileexplorer.EmmaInstrument.FinishListener mListener;
+    private static final boolean[][] $VRc;
+    public static int TAG$a3tid;
+    private int mListener$a3tid;
+    private static final int $VRc$a3tid;
+
+    public void <init>()
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_2, r2$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(0, 32437, 1);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 456);
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        _sym_tmp_2 = null;
+        if $r1 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45393, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45393, 1);
+        goto label1;
+
+     label1:
+        r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r1, 0);
+        r2 = $r1[0];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void <init>()>();
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 0);
+        r2[0] = 1;
+        return;
+    }
+
+    public void setFinishListener(edu.killerud.fileexplorer.EmmaInstrument.FinishListener)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_2, r3$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r0;
+        edu.killerud.fileexplorer.EmmaInstrument.FinishListener r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity;
+        r1 := @parameter0: edu.killerud.fileexplorer.EmmaInstrument.FinishListener;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21743, 32438, 2);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 456);
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        _sym_tmp_2 = null;
+        if $r2 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45394, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45394, 1);
+        goto label1;
+
+     label1:
+        r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r2, 1);
+        r3 = $r2[1];
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 0);
+        r3[0] = 1;
+        return;
+    }
+
+    public void finish()
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_5, r2$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_4, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.StringBuilder $r3, $r5, $r6;
+        java.lang.String $r4, $r7;
+        edu.killerud.fileexplorer.EmmaInstrument.FinishListener $r8, $r9;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(1658, 32439, 1);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 456);
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        _sym_tmp_5 = null;
+        if $r1 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45395, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45395, 1);
+        goto label1;
+
+     label1:
+        r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r1, 2);
+        r2 = $r1[2];
+        $r3 = new java.lang.StringBuilder;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+        _sym_tmp_2 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int TAG$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_2, 457);
+        $r4 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: java.lang.String TAG>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(146, null, null);
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".InstrumentedActivity");
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(148, null);
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(624, null, null);
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r7, "finish()");
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(1658, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void finish()>();
+        _sym_tmp_3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int mListener$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_3, 458);
+        $r8 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: edu.killerud.fileexplorer.EmmaInstrument.FinishListener mListener>;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 0);
+        r2[0] = 1;
+        _sym_tmp_5 = null;
+        if $r8 == null goto label2;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45396, 0);
+        _sym_tmp_4 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int mListener$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_4, 458);
+        $r9 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: edu.killerud.fileexplorer.EmmaInstrument.FinishListener mListener>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(21749, null);
+        interfaceinvoke $r9.<edu.killerud.fileexplorer.EmmaInstrument.FinishListener: void onActivityFinished()>();
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 1);
+        r2[1] = 1;
+        goto label3;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_5, 45396, 1);
+        goto label3;
+
+     label3:
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 2);
+        r2[2] = 1;
+        return;
+    }
+
+    static edu.killerud.fileexplorer.EmmaInstrument.FinishListener access$000(edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_3, r2$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        edu.killerud.fileexplorer.EmmaInstrument.FinishListener $r3;
+
+        r0 := @parameter0: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21753, 32440, 1);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 456);
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        _sym_tmp_3 = null;
+        if $r1 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45397, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45397, 1);
+        goto label1;
+
+     label1:
+        r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r1, 3);
+        r2 = $r1[3];
+        _sym_tmp_2 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int mListener$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_2, 458);
+        $r3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: edu.killerud.fileexplorer.EmmaInstrument.FinishListener mListener>;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 0);
+        r2[0] = 1;
+        return $r3;
+    }
+
+    static void <clinit>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        acteve.symbolic.integer.Expression r1$sym;
+        boolean[][] $r0;
+        boolean[] r1;
+
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(27, 32441, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r0 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+        r1$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r0, 4);
+        r1 = $r0[4];
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int TAG$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_1, 457);
+        _sym_tmp_1 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int TAG$a3tid> = _sym_tmp_1;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(457);
+        <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: java.lang.String TAG> = "IntrumentedPlayer";
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r1$sym, null, null, r1, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r1, 0);
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        acteve.symbolic.integer.Expression $r5$sym, $r4$sym, $r3$sym, $r2$sym, $r1$sym;
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5;
+
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21741, 32442, 0);
+        $r0 = newmultiarray (boolean)[5][];
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_1, 456);
+        _sym_tmp_1 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: int $VRc$a3tid> = _sym_tmp_1;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(456);
+        <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r1$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 0);
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 1);
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[3];
+        $r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 2);
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r4$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 3);
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r5$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 4);
+        $r0[4] = $r5;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21751, null, null, null);
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "edu/killerud/fileexplorer/EmmaInstrument/InstrumentedActivity", -3953097121653020106L);
+        return $r0;
+    }
+}
+public class edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver extends android.content.BroadcastReceiver
+{
+    public static java.lang.String TAG;
+    private static final boolean[][] $VRc;
+    public static int TAG$a3tid;
+    private static final int $VRc$a3tid;
+
+    public void <init>()
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_2, r2$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(0, 32443, 1);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 459);
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc>;
+        _sym_tmp_2 = null;
+        if $r1 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45398, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45398, 1);
+        goto label1;
+
+     label1:
+        r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r1, 0);
+        r2 = $r1[0];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 0);
+        r2[0] = 1;
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_2, r4$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver r0;
+        android.content.Context r1;
+        android.content.Intent r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r6, $r7;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.content.Intent;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(728, 32444, 3);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 459);
+        $r3 = <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc>;
+        _sym_tmp_2 = null;
+        if $r3 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45399, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r3 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45399, 1);
+        goto label1;
+
+     label1:
+        r4$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r3, 1);
+        r4 = $r3[1];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(730, null);
+        virtualinvoke r2.<android.content.Intent: android.os.Bundle getExtras()>();
+        $r7 = new edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke $r7.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void <init>()>();
+        r6 = $r7;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 0);
+        r4[0] = 1;
+        _sym_tmp_2 = null;
+        if r6 == null goto label2;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45400, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21750, null, null);
+        interfaceinvoke r6.<edu.killerud.fileexplorer.EmmaInstrument.FinishListener: void dumpIntermediateCoverage(java.lang.String)>("/mnt/sdcard/coverage.ec");
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 1);
+        r4[1] = 1;
+        goto label3;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45400, 1);
+        goto label3;
+
+     label3:
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 2);
+        r4[2] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        acteve.symbolic.integer.Expression r1$sym;
+        boolean[][] $r0;
+        boolean[] r1;
+
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(27, 32445, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r0 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+        r1$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r0, 2);
+        r1 = $r0[2];
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: int TAG$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_1, 460);
+        _sym_tmp_1 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: int TAG$a3tid> = _sym_tmp_1;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(460);
+        <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: java.lang.String TAG> = "M3SMSInstrumentedReceiver";
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r1$sym, null, null, r1, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r1, 0);
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        acteve.symbolic.integer.Expression $r3$sym, $r2$sym, $r1$sym;
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21741, 32446, 0);
+        $r0 = newmultiarray (boolean)[3][];
+        _sym_tmp_1 = <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_1, 459);
+        _sym_tmp_1 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: int $VRc$a3tid> = _sym_tmp_1;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(459);
+        <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r1$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 0);
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 1);
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 2);
+        $r0[2] = $r3;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21751, null, null, null);
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "edu/killerud/fileexplorer/EmmaInstrument/SMSInstrumentedReceiver", 8704909102833939831L);
+        return $r0;
+    }
+}
+public class edu.killerud.fileexplorer.ExplorerActivity extends android.app.ListActivity
+{
+    private java.io.File mCurrentDirectory;
+    private java.io.File[] mCurrentDirectoryList;
+    private android.widget.TextView mPathOut;
+    private static final java.lang.String PATH_TO_ROOT;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+    private int mCurrentDirectory$a3tid;
+    private int mCurrentDirectoryList$a3tid;
+    private int mPathOut$a3tid;
+    private static final int PATH_TO_ROOT$a3tid;
+    private static final int $VRc$a3tid;
+    private static final acteve.symbolic.integer.Expression serialVersionUID$sym;
+    private static final int serialVersionUID$a3tid;
+
+    public void <init>()
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_2, r2$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(0, 32447, 1);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.ExplorerActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 461);
+        $r1 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        _sym_tmp_2 = null;
+        if $r1 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45401, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r1 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45401, 1);
+        goto label1;
+
+     label1:
+        r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r1, 0);
+        r2 = $r1[0];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<android.app.ListActivity: void <init>()>();
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r2$sym, null, null, r2, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r2, 0);
+        r2[0] = 1;
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_3, r3$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.io.IOException r4, $r7;
+        android.view.View $r5;
+        android.widget.TextView $r6;
+        android.content.Context $r8;
+        android.widget.Toast $r9;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: android.os.Bundle;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(1621, 32448, 2);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.ExplorerActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 461);
+        $r2 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        _sym_tmp_3 = null;
+        if $r2 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45402, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r2 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_3, 45402, 1);
+        goto label1;
+
+     label1:
+        r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r2, 1);
+        r3 = $r2[1];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(1621, null, null);
+        specialinvoke r0.<android.app.ListActivity: void onCreate(android.os.Bundle)>(r1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(1626, null, null);
+        virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void setContentView(int)>(2130903041);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(1504, null, null);
+        $r5 = virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: android.view.View findViewById(int)>(2131034113);
+        $r6 = (android.widget.TextView) $r5;
+        _sym_tmp_2 = r0.<edu.killerud.fileexplorer.ExplorerActivity: int mPathOut$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_2, 462);
+        _sym_tmp_2 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        r0.<edu.killerud.fileexplorer.ExplorerActivity: int mPathOut$a3tid> = _sym_tmp_2;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(462);
+        r0.<edu.killerud.fileexplorer.ExplorerActivity: android.widget.TextView mPathOut> = $r6;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21754, null, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void navigateExplorer(java.lang.String)>("/");
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 0);
+        r3[0] = 1;
+
+     label3:
+        goto label5;
+
+     label4:
+        $r7 := @caughtexception;
+        r4 = $r7;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(8525, null);
+        $r8 = virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: android.content.Context getApplicationContext()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(106, null, null, null);
+        $r9 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,int,int)>($r8, 2130968578, 1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(107, null);
+        virtualinvoke $r9.<android.widget.Toast: void show()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(1658, null);
+        virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void finish()>();
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 1);
+        r3[1] = 1;
+
+     label5:
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 2);
+        r3[2] = 1;
+        return;
+
+        catch java.io.IOException from label2 to label3 with label4;
+    }
+
+    protected void onListItemClick(android.widget.ListView, android.view.View, int, long)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_2, r4$sym, l1$sym, i0$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1, i0;
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        android.widget.ListView r1;
+        android.view.View r2;
+        long l1;
+        boolean[][] $r3;
+        boolean[] r4;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: android.widget.ListView;
+        r2 := @parameter1: android.view.View;
+        i0 := @parameter2: int;
+        l1 := @parameter3: long;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(8075, 32449, 5);
+        i0$sym = a3targs$symargs[3];
+        l1$sym = a3targs$symargs[4];
+        _sym_tmp_1 = <edu.killerud.fileexplorer.ExplorerActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 461);
+        $r3 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        _sym_tmp_2 = null;
+        if $r3 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45403, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r3 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45403, 1);
+        goto label1;
+
+     label1:
+        r4$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r3, 2);
+        r4 = $r3[2];
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r4$sym, null, null, r4, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r4, 0);
+        r4[0] = 1;
+        return;
+    }
+
+    private void navigateExplorer(java.lang.String) throws java.io.IOException
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_8, r3$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_7, _sym_tmp_6, _sym_tmp_5, _sym_tmp_4, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        java.lang.String r1, $r9;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.io.File $r4, $r5, $r8;
+        java.io.File[] $r6, $r10;
+        android.widget.TextView $r7;
+        java.util.ArrayList $r11;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: java.lang.String;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21754, 32450, 2);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.ExplorerActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 461);
+        $r2 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        _sym_tmp_8 = null;
+        if $r2 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_8, 45404, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r2 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_8, 45404, 1);
+        goto label1;
+
+     label1:
+        r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r2, 3);
+        r3 = $r2[3];
+        $r4 = new java.io.File;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(1, null, null);
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>(r1);
+        _sym_tmp_2 = r0.<edu.killerud.fileexplorer.ExplorerActivity: int mCurrentDirectory$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_2, 463);
+        _sym_tmp_2 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        r0.<edu.killerud.fileexplorer.ExplorerActivity: int mCurrentDirectory$a3tid> = _sym_tmp_2;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(463);
+        r0.<edu.killerud.fileexplorer.ExplorerActivity: java.io.File mCurrentDirectory> = $r4;
+        _sym_tmp_3 = r0.<edu.killerud.fileexplorer.ExplorerActivity: int mCurrentDirectory$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_3, 463);
+        $r5 = r0.<edu.killerud.fileexplorer.ExplorerActivity: java.io.File mCurrentDirectory>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(5807, null);
+        $r6 = virtualinvoke $r5.<java.io.File: java.io.File[] listFiles()>();
+        _sym_tmp_4 = r0.<edu.killerud.fileexplorer.ExplorerActivity: int mCurrentDirectoryList$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_4, 464);
+        _sym_tmp_4 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        r0.<edu.killerud.fileexplorer.ExplorerActivity: int mCurrentDirectoryList$a3tid> = _sym_tmp_4;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(464);
+        r0.<edu.killerud.fileexplorer.ExplorerActivity: java.io.File[] mCurrentDirectoryList> = $r6;
+        _sym_tmp_5 = r0.<edu.killerud.fileexplorer.ExplorerActivity: int mPathOut$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_5, 462);
+        $r7 = r0.<edu.killerud.fileexplorer.ExplorerActivity: android.widget.TextView mPathOut>;
+        _sym_tmp_6 = r0.<edu.killerud.fileexplorer.ExplorerActivity: int mCurrentDirectory$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_6, 463);
+        $r8 = r0.<edu.killerud.fileexplorer.ExplorerActivity: java.io.File mCurrentDirectory>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(2303, null);
+        $r9 = virtualinvoke $r8.<java.io.File: java.lang.String getAbsolutePath()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(1348, null, null);
+        virtualinvoke $r7.<android.widget.TextView: void setText(java.lang.CharSequence)>($r9);
+        _sym_tmp_7 = r0.<edu.killerud.fileexplorer.ExplorerActivity: int mCurrentDirectoryList$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_7, 464);
+        $r10 = r0.<edu.killerud.fileexplorer.ExplorerActivity: java.io.File[] mCurrentDirectoryList>;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21755, null, null);
+        $r11 = specialinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: java.util.ArrayList getFileNames(java.io.File[])>($r10);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21756, null, null);
+        specialinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void listDirectoryContent(java.util.ArrayList)>($r11);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 0);
+        r3[0] = 1;
+        return;
+    }
+
+    private void listDirectoryContent(java.util.ArrayList)
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_2, r3$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        java.util.ArrayList r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.widget.ArrayAdapter r4, $r5;
+        android.content.Context $r6;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: java.util.ArrayList;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21756, 32451, 2);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.ExplorerActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 461);
+        $r2 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        _sym_tmp_2 = null;
+        if $r2 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45405, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r2 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45405, 1);
+        goto label1;
+
+     label1:
+        r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r2, 4);
+        r3 = $r2[4];
+        $r5 = new android.widget.ArrayAdapter;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(8525, null);
+        $r6 = virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: android.content.Context getApplicationContext()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(13699, null, null, null, null, null);
+        specialinvoke $r5.<android.widget.ArrayAdapter: void <init>(android.content.Context,int,int,java.util.List)>($r6, 17367043, 16908308, r1);
+        r4 = $r5;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(8073, null, null);
+        virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void setListAdapter(android.widget.ListAdapter)>(r4);
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 0);
+        r3[0] = 1;
+        return;
+    }
+
+    private java.util.ArrayList getFileNames(java.io.File[])
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_2, $i2$sym, $i1$sym, i0$sym, r3$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1, i0, $i1, $i2;
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        java.io.File[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.util.ArrayList r4, $r5;
+        java.io.File $r6;
+        java.lang.String $r7;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: java.io.File[];
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21755, 32452, 2);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.ExplorerActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 461);
+        $r2 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        _sym_tmp_2 = null;
+        if $r2 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45406, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r2 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45406, 1);
+        goto label1;
+
+     label1:
+        r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r2, 5);
+        r3 = $r2[5];
+        $r5 = new java.util.ArrayList;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+        r4 = $r5;
+        $i1$sym = null;
+        $i1 = lengthof r1;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 0);
+        r3[0] = 1;
+        _sym_tmp_2 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _ge(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>($i1$sym, null, $i1, 1);
+        if $i1 >= 1 goto label2;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45407, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(68, null, null);
+        virtualinvoke r4.<java.util.ArrayList: boolean add(java.lang.Object)>("No files in directory");
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 1);
+        r3[1] = 1;
+        return r4;
+
+        goto label3;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45407, 1);
+        goto label3;
+
+     label3:
+        i0$sym = null;
+        i0 = 0;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 2);
+        r3[2] = 1;
+
+     label4:
+        $i2$sym = null;
+        $i2 = lengthof r1;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 3, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 3);
+        r3[3] = 1;
+        _sym_tmp_2 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _ge(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>(i0$sym, $i2$sym, i0, $i2);
+        if i0 >= $i2 goto label5;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45408, 0);
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>(r1, i0);
+        $r6 = r1[i0];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(993, null);
+        $r7 = virtualinvoke $r6.<java.io.File: java.lang.String getName()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(68, null, null);
+        virtualinvoke r4.<java.util.ArrayList: boolean add(java.lang.Object)>($r7);
+        i0$sym = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>(i0$sym, null, i0, 1);
+        i0 = i0 + 1;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 4, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 4);
+        r3[4] = 1;
+        goto label4;
+
+        goto label6;
+
+     label5:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45408, 1);
+        goto label6;
+
+     label6:
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 5, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 5);
+        r3[5] = 1;
+        return r4;
+    }
+
+    private java.util.ArrayList getFilePaths(java.io.File[])
+    {
+        acteve.symbolic.integer.Expression _sym_tmp_2, $i2$sym, $i1$sym, i0$sym, r3$sym;
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1, i0, $i1, $i2;
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        java.io.File[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.util.ArrayList r4, $r5;
+        java.io.File $r6;
+        java.lang.String $r7;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: java.io.File[];
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21757, 32453, 2);
+        _sym_tmp_1 = <edu.killerud.fileexplorer.ExplorerActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void rw(int,int)>(_sym_tmp_1, 461);
+        $r2 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        _sym_tmp_2 = null;
+        if $r2 != null goto label0;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45409, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r2 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+        goto label1;
+
+     label0:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45409, 1);
+        goto label1;
+
+     label1:
+        r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r2, 6);
+        r3 = $r2[6];
+        $r5 = new java.util.ArrayList;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+        r4 = $r5;
+        $i1$sym = null;
+        $i1 = lengthof r1;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 0);
+        r3[0] = 1;
+        _sym_tmp_2 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _ge(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>($i1$sym, null, $i1, 1);
+        if $i1 >= 1 goto label2;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45410, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(68, null, null);
+        virtualinvoke r4.<java.util.ArrayList: boolean add(java.lang.Object)>("/");
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 1, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 1);
+        r3[1] = 1;
+        return r4;
+
+        goto label3;
+
+     label2:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45410, 1);
+        goto label3;
+
+     label3:
+        i0$sym = null;
+        i0 = 0;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 2, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 2);
+        r3[2] = 1;
+
+     label4:
+        $i2$sym = null;
+        $i2 = lengthof r1;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 3, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 3);
+        r3[3] = 1;
+        _sym_tmp_2 = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _ge(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>(i0$sym, $i2$sym, i0, $i2);
+        if i0 >= $i2 goto label5;
+
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45411, 0);
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>(r1, i0);
+        $r6 = r1[i0];
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(2303, null);
+        $r7 = virtualinvoke $r6.<java.io.File: java.lang.String getAbsolutePath()>();
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(68, null, null);
+        virtualinvoke r4.<java.util.ArrayList: boolean add(java.lang.Object)>($r7);
+        i0$sym = staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,int,int)>(i0$sym, null, i0, 1);
+        i0 = i0 + 1;
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 4, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 4);
+        r3[4] = 1;
+        goto label4;
+
+        goto label6;
+
+     label5:
+        staticinvoke <acteve.symbolic.Util: void assume(acteve.symbolic.integer.Expression,int,boolean)>(_sym_tmp_2, 45411, 1);
+        goto label6;
+
+     label6:
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r3$sym, null, null, r3, 5, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r3, 5);
+        r3[5] = 1;
+        return r4;
+    }
+
+    private static void <clinit>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        acteve.symbolic.integer.Expression r1$sym;
+        boolean[][] $r0;
+        boolean[] r1;
+
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(27, 32454, 0);
+        staticinvoke <acteve.symbolic.Util: void argpush(int)>(21741);
+        $r0 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+        r1$sym = null;
+        staticinvoke <acteve.symbolic.Util: void readArray(java.lang.Object,int)>($r0, 7);
+        r1 = $r0[7];
+        staticinvoke <acteve.symbolic.SymbolicOperations: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,boolean[],int,boolean)>(r1$sym, null, null, r1, 0, 1);
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>(r1, 0);
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        int _sym_tmp_1;
+        acteve.symbolic.integer.Expression $r8$sym, $r7$sym, $r6$sym, $r5$sym, $r4$sym, $r3$sym, $r2$sym, $r1$sym;
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(21741, 32455, 0);
+        $r0 = newmultiarray (boolean)[8][];
+        _sym_tmp_1 = <edu.killerud.fileexplorer.ExplorerActivity: int $VRc$a3tid>;
+        staticinvoke <acteve.symbolic.Util: void ww(int,int)>(_sym_tmp_1, 461);
+        _sym_tmp_1 = staticinvoke <acteve.symbolic.Util: int eventId()>();
+        <edu.killerud.fileexplorer.ExplorerActivity: int $VRc$a3tid> = _sym_tmp_1;
+        staticinvoke <acteve.symbolic.Util: void only_write(int)>(461);
+        <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r1$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 0);
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r2$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 1);
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r3$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 2);
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r4$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 3);
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r5$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 4);
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[6];
+        $r6$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 5);
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[6];
+        $r7$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 6);
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r8$sym = null;
+        staticinvoke <acteve.symbolic.Util: void writeArray(java.lang.Object,int)>($r0, 7);
+        $r0[7] = $r8;
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(21751, null, null, null);
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "edu/killerud/fileexplorer/ExplorerActivity", 8877490001832112283L);
+        return $r0;
+    }
+}
+public final class edu.killerud.fileexplorer.R$attr extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        edu.killerud.fileexplorer.R$attr r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R$attr;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(0, 32456, 1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class edu.killerud.fileexplorer.R$drawable extends java.lang.Object
+{
+    public static final int ic_launcher;
+    public static final acteve.symbolic.integer.Expression ic_launcher$sym;
+    public static final int ic_launcher$a3tid;
+
+    public void <init>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        edu.killerud.fileexplorer.R$drawable r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R$drawable;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(0, 32457, 1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class edu.killerud.fileexplorer.R$id extends java.lang.Object
+{
+    public static final int current_path;
+    public static final int explorer_row;
+    public static final acteve.symbolic.integer.Expression current_path$sym;
+    public static final int current_path$a3tid;
+    public static final acteve.symbolic.integer.Expression explorer_row$sym;
+    public static final int explorer_row$a3tid;
+
+    public void <init>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        edu.killerud.fileexplorer.R$id r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R$id;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(0, 32458, 1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class edu.killerud.fileexplorer.R$layout extends java.lang.Object
+{
+    public static final int explorer_row;
+    public static final int main;
+    public static final acteve.symbolic.integer.Expression explorer_row$sym;
+    public static final int explorer_row$a3tid;
+    public static final acteve.symbolic.integer.Expression main$sym;
+    public static final int main$a3tid;
+
+    public void <init>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        edu.killerud.fileexplorer.R$layout r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R$layout;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(0, 32459, 1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class edu.killerud.fileexplorer.R$string extends java.lang.Object
+{
+    public static final int app_name;
+    public static final int error;
+    public static final int hello;
+    public static final acteve.symbolic.integer.Expression app_name$sym;
+    public static final int app_name$a3tid;
+    public static final acteve.symbolic.integer.Expression error$sym;
+    public static final int error$a3tid;
+    public static final acteve.symbolic.integer.Expression hello$sym;
+    public static final int hello$a3tid;
+
+    public void <init>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        edu.killerud.fileexplorer.R$string r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R$string;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(0, 32460, 1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class edu.killerud.fileexplorer.R extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        acteve.symbolic.integer.Expression[] a3targs$symargs;
+        edu.killerud.fileexplorer.R r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R;
+        a3targs$symargs = staticinvoke <acteve.symbolic.Util: acteve.symbolic.integer.Expression[] argpop(int,int,int)>(0, 32461, 1);
+        staticinvoke <acteve.symbolic.Util: void argpush(int,acteve.symbolic.integer.Expression)>(0, null);
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

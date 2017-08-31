@@ -1,0 +1,25 @@
+/*
+@GROUP
+general
+@SYNTAX
+eps
+@DOC
+smallest number epsilon
+@EXAMPLES
+<programlisting>
+eps
+</programlisting>
+@NOTES
+.
+@SEE
+e, pi, i, j 
+*/
+
+/*
+%!@testcase
+%!  ml.executeExpression("clear('all');");
+%!  ml.executeExpression("a=eps;");
+%!  assertEquals( 0, ml.getScalarValueRe("a"), 0.0001);
+%!  assertTrue(0 == ml.getScalarValueIm("a"));
+%!
+*/

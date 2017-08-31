@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HNdroid</string>
+    <string name="hnfeed">http://news.ycombinator.com/</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_lists">Lists</string>
+    <string name="menu_comments">Comments</string>
+    <string name="menu_comment">Comment</string>
+    <string name="menu_submissions">Submissions</string>
+    <string name="menu_login">Login</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_preferences">Preferences</string>
+    <string name="context_reply">Reply</string>
+    <string name="context_upvote">Upvote</string>
+    <string name="context_google_mobile">Mobile adapted view</string>
+</resources>

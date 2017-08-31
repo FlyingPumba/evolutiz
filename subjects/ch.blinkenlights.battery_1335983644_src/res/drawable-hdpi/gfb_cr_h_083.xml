@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:drawable="@drawable/cr_h_083" />
+<item android:drawable="@drawable/cr_h_083" />
+<item android:drawable="@drawable/gfb_083" />
+<item android:drawable="@drawable/gfb_083" />
+</layer-list>

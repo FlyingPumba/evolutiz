@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wrapView"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    > 
+    <com.addi.EditTextExtend 
+        android:id="@+id/edit_command"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:textSize="16sp"
+        android:layout_weight="1"
+    />
+    <com.addi.CandidateView
+    	android:id="@+id/candidate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+    /> 
+	<com.addi.KeyboardViewExtend
+		android:id="@+id/keyboard"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:visibility="gone"
+	/>   
+</LinearLayout>

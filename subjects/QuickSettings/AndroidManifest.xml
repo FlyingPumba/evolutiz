@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionCode="201107260" android:versionName="1.9.9.3" package="com.bwx.bequick">
+
+	<supports-screens android:anyDensity="true" android:largeScreens="true"/>
+
+	<application android:icon="@drawable/ic_logo" android:label="Quick Settings" android:name="SettingsApplication">
+
+		<activity android:icon="@drawable/ic_logo" android:label="Quick Settings" android:launchMode="standard" android:name=".ShowSettingsActivity" android:theme="@android:style/Theme.NoDisplay">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+			<intent-filter>
+				<action android:name="android.intent.action.SEARCH_LONG_PRESS"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+		</activity>
+
+		<activity android:excludeFromRecents="true" android:icon="@drawable/ic_logo" android:label="Quick Settings" android:launchMode="singleInstance" android:name=".DialogSettingsActivity" android:theme="@style/NoTitleDialog">
+		</activity>
+
+		<activity android:excludeFromRecents="true" android:icon="@drawable/ic_logo" android:label="Quick Settings" android:launchMode="singleInstance" android:name=".MainSettingsActivity" android:theme="@style/NoTitle"/>
+
+		<activity android:excludeFromRecents="true" android:label="@string/txt_customize_settings" android:name=".LayoutSettingsActivity" android:theme="@style/NoTitle"/>
+
+		<activity android:excludeFromRecents="true" android:label="@string/txt_preferences" android:name=".preferences.CommonPrefs"/>
+
+		<activity android:excludeFromRecents="true" android:label="@string/txt_preferences" android:name=".preferences.BrightnessPrefs"/>
+
+		<activity android:excludeFromRecents="true" android:label="@string/txt_preferences" android:name=".preferences.MobileDataApnPrefs"/>
+
+		<activity android:excludeFromRecents="true" android:label="@string/txt_preferences" android:name=".preferences.MobileDataPrefs"/>
+
+		<activity android:excludeFromRecents="true" android:label="@string/txt_preferences" android:name=".preferences.GpsPrefs"/>
+
+		<activity android:excludeFromRecents="true" android:label="@string/txt_preferences" android:name=".preferences.AirplaneModePrefs"/>
+
+		<activity android:excludeFromRecents="true" android:finishOnTaskLaunch="true" android:label="Flashlight" android:launchMode="singleInstance" android:name=".flashlight.ScreenLightActivity" android:noHistory="true" android:screenOrientation="portrait">
+		</activity>
+
+		<receiver android:name=".flashlight.LedFlashlightReceiver">
+			<intent-filter>
+				<action android:name="com.bwx.bequick.FLASHLIGHT"/>
+				<action android:name="com.bwx.bequick.WARN_FLASHLIGHT"/>
+			</intent-filter>
+		</receiver>
+
+		<receiver android:name=".receivers.StatusBarIntegrationReceiver">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED"/>
+				<action android:name="com.bwx.bequick.UPDATE_STATUSBAR_INTEGRATION"/>
+				<action android:name="com.bwx.bequick.INIT_STATUSBAR_INTEGRATION"/>
+				<action android:name="com.bwx.bequick.START_QS"/>
+			</intent-filter>
+		</receiver>
+
+	<receiver android:name="com.bwx.bequick.EmmaInstrument.SMSInstrumentedReceiver">
+<intent-filter>
+<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+</intent-filter>
+</receiver>
+<activity android:label="EmmaInstrumentationActivity" android:name="com.bwx.bequick.EmmaInstrument.InstrumentedActivity"/>
+</application>
+
+	<uses-sdk android:minSdkVersion="4" android:targetSdkVersion="4"/>
+
+	<!-- access -->
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+	<!-- control -->
+	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+	<uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
+	<!-- bluetooth -->
+	<uses-permission android:name="android.permission.BLUETOOTH"/>
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+
+	<!-- data connection, write APN -->
+	<uses-permission android:name="android.permission.WRITE_APN_SETTINGS"/>
+
+	<!-- enable / disable auto-sync  -->
+	<uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+	<uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+	<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+	<!-- common features -->
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.VIBRATE"/>
+
+	<!-- led flashlight for Motodroid -->
+	<uses-permission android:name="android.permission.FLASHLIGHT" android:required="false"/>
+	<uses-permission android:name="android.permission.HARDWARE_TEST" android:required="false"/>
+
+	<!-- GPS at rooted phones -->
+	<uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" android:required="false"/>
+	<uses-permission android:name="android.permission.READ_SECURE_SETTINGS" android:required="false"/>
+
+	<!-- led flashlight for froyo -->
+	<uses-permission android:name="android.permission.CAMERA" android:required="false"/>
+	
+	<!-- mobile data switch -->
+	<uses-permission android:name="android.permission.MODIFY_PHONE_STATE" android:required="false"/>
+	
+	<!-- 4G -->
+	<uses-permission android:name="android.permission.ACCESS_WIMAX_STATE" android:required="false"/>
+	<uses-permission android:name="android.permission.CHANGE_WIMAX_STATE" android:required="false"/>
+	
+	<!-- not required features -->
+	<uses-feature android:name="android.hardware.camera" android:required="false"/>
+	<uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+	<uses-feature android:name="android.hardware.telephony" android:required="false"/>
+	<uses-feature android:name="android.hardware.location" android:required="false"/>
+	<uses-feature android:name="android.hardware.location.gps" android:required="false"/>
+	
+<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.bwx.bequick.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.bwx.bequick"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+</manifest>

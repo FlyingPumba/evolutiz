@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="categories">
+    <item>Schlagzeilen</item>
+    <item>Politik</item>
+    <item>Wirtschaft</item>
+    <item>Panorama</item>
+    <item>Sport</item>
+    <item>Kultur</item>
+    <item>Netzwelt</item>
+    <item>Wissenschaft</item>
+    <item>Unispiegel</item>
+    <item>Reise</item>
+    <item>Auto</item>
+    <item>Spam</item>
+    <item>International</item>
+
+  </string-array>
+  <string-array name="categories_values">
+    <item></item>
+    <item>politik</item>
+    <item>wirtschaft</item>
+    <item>panorama</item>
+    <item>sport</item>
+    <item>kultur</item>
+    <item>netzwelt</item>
+    <item>wissenschaft</item>
+    <item>unispiegel</item>
+    <item>reise</item>
+    <item>auto</item>
+    <item>spam</item>
+    <item>international</item>
+  </string-array>
+</resources>
+

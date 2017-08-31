@@ -1,0 +1,6 @@
+* Battle plan
+The problem is that we want to do all our lookups asynchronously, to lower the time for startup, but at the same time we need all phone numbers, email addresses and
+names of all contacts to be able to do contact image lookups.
+
+The plan is to first just make an asynchronous request for the call log while getting the other data in the background. When we have all the other data we will update
+the call log adapter with that information and then we might be able to get the best of both worlds.

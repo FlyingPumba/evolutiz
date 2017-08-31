@@ -1,0 +1,21 @@
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/gen/org/waxworlds/edam/importcontacts/R.java \
+ : /vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/layout/merge.xml \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/layout/fileordir.xml \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/layout/configure_vcf.xml \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/layout/intro.xml \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/layout/mergeprompt.xml \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/layout/filechooser.xml \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/layout/filechooser_row.xml \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/layout/doit.xml \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/drawable/icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/drawable/directory.png \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/drawable/browse.png \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/drawable/sdcard.png \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/drawable/alert_dialog_icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/res/values/strings.xml \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/bin/res/drawable/icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/bin/res/drawable/directory.png \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/bin/res/drawable/browse.png \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/bin/res/drawable/sdcard.png \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/bin/res/drawable/alert_dialog_icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/org.waxworlds.edam.importcontacts_2_src/bin/AndroidManifest.xml \

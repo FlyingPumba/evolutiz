@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2010 Holger Macht <holger@homac.de>
+
+ This file is released under the GPLv3.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory
+     android:title="@string/preferences_category_behaviour">
+    <ListPreference
+       android:key="PrefStartWithCategory"
+       android:title="@string/preference_start_with_category"
+       android:summary="@string/preference_start_with_category_summary"
+       android:entries="@array/categories"
+       android:entryValues="@array/categories_values"
+       android:defaultValue="Schlagzeilen"
+       android:dialogTitle="Category"
+       android:persistent="true" />
+    <CheckBoxPreference
+       android:title="@string/preference_download_all_articles"
+       android:defaultValue="false"
+       android:summary="@string/preference_download_all_articles_summary"
+       android:key="PrefDownloadAllArticles" />
+    <CheckBoxPreference
+       android:title="@string/preference_download_images"
+       android:defaultValue="true"
+       android:summary="@string/preference_download_images_summary"
+       android:key="PrefDownloadImages" />
+    <CheckBoxPreference
+       android:title="@string/preference_start_with_offline_mode"
+       android:defaultValue="false"
+       android:summary="@string/preference_start_with_offline_mode_summary"
+       android:key="PrefStartWithOfflineMode" />
+  </PreferenceCategory>
+  <PreferenceCategory
+     android:title="@string/preferences_category_misc">
+    <com.hlidskialf.android.preference.SeekBarPreference
+       android:title="@string/preference_font_size_title"
+       android:summary="@string/preference_font_size_summary"
+       android:key="PrefFontSize"
+       android:text=""
+       android:defaultValue="6"
+       android:max="10" />
+    <de.homac.Mirrored.DialogExPreference
+       android:key="PrefAboutDialog"
+       android:title="@string/preference_about_title"
+       android:dialogTitle="@string/preference_about_dialog_title"
+       android:dialogMessage="@string/preference_about_dialog_message"
+       android:negativeButtonText="@null" />
+  </PreferenceCategory>
+</PreferenceScreen>

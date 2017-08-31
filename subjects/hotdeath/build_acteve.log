@@ -1,0 +1,105 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/hotdeath/build_acteve.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: hotdeath
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for hotdeath...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/rsLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for hotdeath...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] No changes in the AndroidManifest files.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Found new input file
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] No need to generate new BuildConfig.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 1 source file to /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Using Pre-Dexed annotations-5442badee1f6d6457826eac12c92c46e.jar <- /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] Using Pre-Dexed emma_device-e790229f52a04d2b195df6976ccc31d7.jar <- /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Found modified input file
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/classes.dex...
+       [dx] Merged dex A (44 defs/169.6KiB) with dex B (2 defs/1.1KiB). Result is 46 defs/209.4KiB. Took 0.6s
+       [dx] Merged dex A (46 defs/209.4KiB) with dex B (297 defs/326.8KiB). Result is 343 defs/660.3KiB. Took 0.5s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/hotdeath/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/res
+   [crunch] Crunched 0 PNG files to update cache
+
+-package-resources:
+     [aapt] No changed resources or assets. hotdeath.ap_ remains untouched
+
+-package:
+[apkbuilder] Found modified input file
+[apkbuilder] Creating hotdeath-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/hotdeath-debug.apk
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/hotdeath/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 32 seconds

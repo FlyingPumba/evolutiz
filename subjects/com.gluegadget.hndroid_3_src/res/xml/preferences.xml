@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<ListPreference
+		android:key="PREF_DEFAULT_ACTION"
+		android:title="Default action"
+		android:summary="Default action on item click"
+		android:entries="@array/default_action_options"
+		android:entryValues="@array/default_action_values"
+		android:dialogTitle="Default action" 
+		android:defaultValue="view-comments" />
+	
+</PreferenceScreen>

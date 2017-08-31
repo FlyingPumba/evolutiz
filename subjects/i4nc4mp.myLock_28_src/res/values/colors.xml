@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="translucent_droid">#7FA4C639</color>
+<color name="droid">#FFA4C639</color>
+<color name="white">#FFFFFFFF</color>
+<color name="red">#FFE30000</color>
+<color name="black">#FF000000</color>
+<color name="translucent_white">#7FFFFFFF</color>
+<color name="transparent">#00FFFFFF</color>
+<!--  7F is hex for 127 -->
+<!-- FF is hex 255. so we are prob on a 0 to 255 scale -->
+</resources>

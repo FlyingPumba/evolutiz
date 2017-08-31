@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Who Has My Stuff?</string>
+    <string name="addButton">Verleih erfassen</string>
+    <string name="export_button">Sicherung</string>
+    <string name="import_button">Wiederherstellen</string>
+    <string name="history_button">Chronik</string>
+    <string name="date">Datum</string>
+    <string name="returnDate">Erwartetes Rückgabedatum</string>
+    <string name="description">Beschreibung</string>
+    <string name="type">Typ</string>
+    <string name="type_prompt">Bitte wählen Sie den Typ der verliehenen Sache</string>
+    <string name="history_title">Chronik: Zurückerhaltene Sachen</string>
+    <string name="add_button">Hinzufügen</string>
+    <string name="edit_button">Änderungen speichern</string>
+    <string name="delete_button">Löschen</string>
+    <string name="add_title">Verliehene Sache hinzufügen</string>
+    <string name="edit_title">Verliehene Sache bearbeiten</string>
+    <string name="add_calendar_entry">Kalendereintrag hinzufügen</string>
+    <string name="calendar">Kalender</string>
+    <string name="calendar_prompt">Bitte den Kalender auswählen</string>
+    <string name="ok_button">OK</string>
+    <string name="returned_button">Als zurückerhalten markieren</string>
+    <string name="cancel_button">Abbrechen</string>
+    <string name="submenu_edit">Bearbeiten</string>
+    <string name="submenu_mark_as_returned">Zurück erhalten</string>
+    <string name="submenu_delete">Löschen</string>
+    <string name="person">Person</string>
+    <string name="years">Jahre</string>
+    <string name="year">Jahr</string>
+    <string name="months">Monate</string>
+    <string name="month">Monat</string>
+    <string name="weeks">Wochen</string>
+    <string name="week">Woche</string>
+    <string name="days">Tage</string>
+    <string name="day">Tag</string>
+    <string name="today">Heute</string>
+    <string name="unknown">Unbekannt</string>
+    <string name="choose_person">Person wählen</string>
+    <string name="expected_return">Erwartete Rückgabe von</string>
+    <string name="no_calendar_selected_title">Kein Kalender ausgewählt</string>
+    <string name="no_calendar_selected_message">Bitte wählen Sie einen Kalender.</string>
+    <string name="sd_card_error_title">Zugriff auf Speicherkarte nicht möglich</string>
+    <string name="sd_card_error_not_readable">Speicherkarte ist nicht lesbar!</string>
+    <string name="sd_card_error_not_writeable">Speicherkarte ist nicht beschreibbar!</string>
+    <string name="database_export_title">Sicherung der Datenbank</string>
+    <string name="database_export_message">Die Sicherungsdatei existiert bereits. Überschreiben?</string>
+    <string name="database_import_title">Wiederherstellen der Datenbank</string>
+    <string name="database_export_success">Datenbank in WhoHasMyStuff.xml gesichert</string>
+    <string name="database_import_message">Das Wiederherstellen wird alle Änderungen seit der letzten Sicherung überschreiben. Sind Sie sicher?</string>
+    <string name="database_export_error">Ein Fehler ist während der Sicherung aufgetreten!</string>
+    <string name="database_import_error">Ein Fehler ist während der Wiederherstellung aufgetreten!</string>
+
+    <string-array name="type_array">
+        <item>Sonstiges</item>
+        <item>Buch</item>
+        <item>Film</item>
+        <item>CD</item>
+        <item>Geld</item>
+    </string-array>
+</resources>

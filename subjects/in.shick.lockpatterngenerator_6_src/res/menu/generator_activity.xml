@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2010-2012 Michael Shick
+
+This file is part of 'Lock Pattern Generator'.
+
+'Lock Pattern Generator' is free software: you can redistribute it and/or
+modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your option)
+any later version.
+
+'Lock Pattern Generator' is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
+
+You should have received a copy of the GNU General Public License along with
+'Lock Pattern Generator'.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_settings"
+        android:icon="@drawable/menu_settings"
+        android:title="@string/settings"/>
+    <item
+        android:id="@+id/menu_help"
+        android:icon="@drawable/menu_help"
+        android:title="@string/help"/>
+    <item
+        android:id="@+id/menu_about"
+        android:icon="@drawable/menu_about"
+        android:title="@string/about"/>
+</menu>

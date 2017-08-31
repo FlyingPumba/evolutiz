@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <string name="app_name">Countdown Alarm</string>
+   <string name="start_button_text">Start Timer</string>
+   <string name="stop_button_text">Cancel Timer</string>
+   <string name="minutes_tag">Minutes</string>
+   <string name="seconds_tag">Seconds</string>
+   <string name="hours_tag">Hours</string>
+   <string name="select_a_time">No time selected</string>
+   <string name="timer_complete">Countdown completed</string>
+   <string name="timer_cancelled">Countdown cancelled</string>
+   <string name="timer_running">Countdown in progress</string>
+   <string name="timer_resumed">Countdown resumed</string>
+   <string name="timer_paused">Countdown paused</string>
+   <string name="notification_tip_complete">Select to set a new timer</string>
+   <string name="notification_tip_running">Select to view countdown timer</string>
+   <string name="please_select_sound">Using default alarm sound, please go to preferences to select a sound</string>
+   <string name="menu_preference">Preferences</string>
+   <string name="menu_about">About</string>
+   <string name="pref_category_alarm">Alarm Preferences</string>
+   
+   <string name="pref_alarmsound_title">Timer Alarm Sound</string>
+   <string name="pref_alarmsound_summary">This sound will play when the timer reaches zero</string>
+
+   <string name="pref_vibrate_title">Vibrate on Alarm</string>
+   <string name="pref_vibrate_summaryon">Vibration is on</string>
+   <string name="pref_vibrate_summaryoff">Vibration is off</string>
+
+   <string name="pref_flashled_title">Blink LED on Alarm</string>
+   <string name="pref_flashled_summaryon">LED will blink on alarm</string>
+   <string name="pref_flashled_summaryoff">LED will not blink on alarm</string>
+
+   <string name="pref_flashled_color_title">LED Color</string>
+   <string name="pref_flashled_color_summary">The color the LED blinks if enabled</string>
+
+   <string name="pref_wakescreen_title">Wake Screen</string>
+   <string name="pref_wakescreen_summaryon">The screen will wake on alarm</string>
+   <string name="pref_wakescreen_summaryoff">The screen will not wake on alarm</string>
+
+   <string name="pref_timeout_title">Alarm Timeout</string>
+   <string name="pref_timeout_dialogtitle">Alarm Timeout (mins)</string>
+   <string name="pref_timeout_summary">The alarm will stop ringing after this time</string>
+
+   <string name="pref_category_other">Other Preferences</string>
+
+   <string name="pref_show_persistent_notification_title">Persistent Status Icon</string>
+   <string name="pref_show_persistent_notification_summaryon">Show a persistent status bar icon while timer is running</string>
+   <string name="pref_show_persistent_notification_summaryoff">Do not show a persistent status bar icon while timer is running</string>
+   <string name="timer_too_long">Timer too long, maximum is 100 hours</string>
+   <string name="pause_button_text">Pause Timer</string>
+   <string name="resume_button_text">Resume Timer</string>
+   <string name="new_dialog_button">Go to App</string>
+   
+   <string-array name="pref_led_color_values">
+     <item>Blue</item>
+     <item>Green</item>
+     <item>Red</item>
+     <item>Yellow</item>
+     <item>Magenta</item>
+   </string-array>
+   
+   <string name="pref_about_text">Created by: Adam K\nEmail: adam@everythingandroid.net\nBlog: http://www.everythingandroid.net\n\nA simple countdown timer alarm application.  Feel free to email me any comments, suggestions or bugs.\n\nCredits to Min Tran for the app icon.\n(http://min.frexy.com)</string>   
+</resources>

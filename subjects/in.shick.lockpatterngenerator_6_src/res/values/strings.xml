@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2010-2012 Michael Shick
+
+This file is part of 'Lock Pattern Generator'.
+
+'Lock Pattern Generator' is free software: you can redistribute it and/or
+modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your option)
+any later version.
+
+'Lock Pattern Generator' is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
+
+You should have received a copy of the GNU General Public License along with
+'Lock Pattern Generator'.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="program_name">Lock Pattern Generator</string>
+    <string name="settings_view_name">Settings</string>
+    <string name="generate_button_label">Generate</string>
+    <string name="settings_button_label">Android Security Settings</string>
+    <string name="settings">Settings</string>
+    <string name="practice">Practice</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="notice">Note:</string>
+    <string name="warn">Warning!</string>
+    <string name="cont">Continue</string>
+    <string name="understood">Understood</string>
+    <string name="settings_shortcut_failure">This shortcut won\'t work on your device!  Try going to your device security settings to set the pattern.</string>
+    <string name="separation_warning">You are leaving Lock Pattern Generator.\n\nLock Pattern Generator is separate from the screen lock and cannot control it.\nIf you have trouble with the screen lock, contact your manufacturer.</string>
+    <string name="separation_warning_disable">Always show this reminder</string>
+    <string name="emergency_exit">Something happened that made Lock Pattern Generator explode.\n\nYour settings have been reset to correct it.</string>
+    <string name="text_wall_failure">Failed to load text wall&lt;br/&gt;&lt;br/&gt;</string>
+
+    <!-- prefs strings -->
+    <string name="generation_pref_category">Pattern Generation</string>
+    <string name="display_pref_category">Display</string>
+    <string name="derp_pref_category">Mother Hen</string>
+    <string name="path_min_pref">Minimum length</string>
+    <string name="path_max_pref">Maximum length</string>
+    <string name="grid_length_pref">Grid size</string>
+    <string name="grid_length_pref_summary">Generate patterns for an NxN grid</string>
+    <string name="highlight_pref">Highlighting</string>
+    <string name="highlight_pref_summary">Make patterns easier to follow</string>
+    <string name="separation_reminder_pref">Separation Reminder</string>
+    <string name="separation_reminder_pref_summary">Remind users that this program is not locking their device</string>
+    <string name="tactile_feedback_pref">Tactile Feedback</string>
+    <string name="tactile_feedback_pref_summary">When practicing, vibrate on touching a node</string>
+</resources>

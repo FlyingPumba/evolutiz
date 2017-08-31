@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, YahtzeeActivity!</string>
+    <string name="app_name">Yahtzee</string>
+    <string name="Shake">Shake</string>
+    <string name="Possible">Possible: </string>
+    <string name="AdditionalPoints">Additional Points: </string>
+    <string name="SaveMove">Save Move &amp; Continue</string>
+    <string name="SelectMove">Select a Move:</string>
+    <string name="Empty"></string>
+</resources>

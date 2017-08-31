@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright 2009-2011 Brian Pellin.
+     
+ This file is part of KeePassDroid.
+
+  KeePassDroid is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  KeePassDroid is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with KeePassDroid.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="default_file_path">/keepass/keepass.kdb</string>
+    <string name="donate_url"><![CDATA[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8246230]]></string>
+    <string name="homepage">http://www.keepassdroid.com</string>
+    <string name="homepage_short">www.keepassdroid.com</string>
+    <string name="issues">bit.ly/kpd_issues</string>
+    <string name="oi_filemanager_market">market://details?id=org.openintents.filemanager</string>
+    <string name="oi_filemanager_web">http://openintents.googlecode.com/files/FileManager-1.1.6.apk</string>
+    <string name="twitter">twitter.com/KeePassDroid</string>
+    
+    <!--  Preference settings -->
+    <string name="algorithm_key">algorithm</string>
+    <string name="app_key">app</string>
+    <string name="app_timeout_key">app_timeout_key</string>
+    <string name="clipboard_timeout_key">clip_timeout_key</string>
+    <string name="db_key">db</string>
+    <string name="rounds_key">rounds</string>
+    <string name="keyfile_key">keyfile</string>
+    <string name="maskpass_key">maskpass</string>
+    <string name="omitbackup_key">omitbackup</string>    
+    <string name="list_size_key">list_size</string>
+    <string name="sort_key">sort_key</string>
+    <bool name="maskpass_default">true</bool>
+    <bool name="keyfile_default">true</bool>
+    <bool name="sort_default">true</bool>
+    <bool name="omitbackup_default">true</bool>
+    
+    <string name="clipboard_timeout_default">300000</string>
+    <string-array name="clipboard_timeout_values">
+    	<item>30000</item>
+    	<item>60000</item>
+    	<item>300000</item>
+    	<item>-1</item>
+    </string-array>
+    <string name="list_size_default">28</string>
+    <string-array name="list_size_values">
+    	<item>15</item>
+    	<item>20</item>
+    	<item>28</item>
+    </string-array>
+</resources>

@@ -1,0 +1,248 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: aCal
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for aCal...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for aCal...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] Found 7 AIDL files.
+     [aidl] Compiling 7 AIDL files.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 237 source files to /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/classes
+    [javac] Note: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/src/com/morphoss/acal/activity/ColourPickerDialog.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] Note: Some input files use unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/classes.dex...
+       [dx] Merged dex A (409 defs/972.4KiB) with dex B (2 defs/1.1KiB). Result is 411 defs/1178.7KiB. Took 1.2s
+       [dx] Merged dex A (411 defs/1178.7KiB) with dex B (297 defs/326.8KiB). Result is 708 defs/1874.2KiB. Took 0.6s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-hdpi/ic_launcher_events.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-hdpi/ic_launcher_events.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-hdpi/ic_launcher_events.png: 58% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-hdpi/ic_launcher_journals.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-hdpi/ic_launcher_journals.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-hdpi/ic_launcher_journals.png: 56% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-hdpi/ic_launcher_tasks.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-hdpi/ic_launcher_tasks.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-hdpi/ic_launcher_tasks.png: 55% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-hdpi/plus_icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-hdpi/plus_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-hdpi/plus_icon.png: 59% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-hdpi/question_icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-hdpi/question_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-hdpi/question_icon.png: 66% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-land/morphossbg.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-land/morphossbg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-land/morphossbg.png: 86% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-ldpi/ic_launcher_events.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-ldpi/ic_launcher_events.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-ldpi/ic_launcher_events.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-ldpi/ic_launcher_journals.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-ldpi/ic_launcher_journals.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-ldpi/ic_launcher_journals.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-ldpi/ic_launcher_tasks.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-ldpi/ic_launcher_tasks.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-ldpi/ic_launcher_tasks.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-ldpi/plus_icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-ldpi/plus_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-ldpi/plus_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-ldpi/question_icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-ldpi/question_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-ldpi/question_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-mdpi/ic_launcher_events.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-mdpi/ic_launcher_events.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-mdpi/ic_launcher_events.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-mdpi/ic_launcher_journals.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-mdpi/ic_launcher_journals.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-mdpi/ic_launcher_journals.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-mdpi/ic_launcher_tasks.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-mdpi/ic_launcher_tasks.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-mdpi/ic_launcher_tasks.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-mdpi/plus_icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-mdpi/plus_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-mdpi/plus_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-mdpi/question_icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-mdpi/question_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-mdpi/question_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-xhdpi/ic_launcher_events.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-xhdpi/ic_launcher_events.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-xhdpi/ic_launcher_events.png: 80% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-xhdpi/ic_launcher_journals.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-xhdpi/ic_launcher_journals.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-xhdpi/ic_launcher_journals.png: 75% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable-xhdpi/ic_launcher_tasks.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-xhdpi/ic_launcher_tasks.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable-xhdpi/ic_launcher_tasks.png: 74% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/alarm_dismiss_button.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/alarm_dismiss_button.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/alarm_dismiss_button.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/alarm_snooze_button.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/alarm_snooze_button.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/alarm_snooze_button.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/alarmbell.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/alarmbell.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/alarmbell.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/alarmbg.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/alarmbg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/alarmbg.png: 79% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/ambilwarna_menjadi.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/ambilwarna_menjadi.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/ambilwarna_menjadi.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/ambilwarna_panah.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/ambilwarna_panah.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/ambilwarna_panah.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/bottom_button_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/bottom_button_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/bottom_button_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/colourpicker_hue.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/colourpicker_hue.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/colourpicker_hue.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/colourpicker_pointer.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/colourpicker_pointer.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/colourpicker_pointer.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/completed.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/completed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/completed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/dayheadings_fg.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/dayheadings_fg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/dayheadings_fg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/expander_ic_maximized.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/expander_ic_maximized.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/expander_ic_maximized.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/expander_ic_minimized.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/expander_ic_minimized.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/expander_ic_minimized.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/footer.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/footer.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/footer.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/ic_menu_refresh.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/ic_menu_refresh.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/ic_menu_refresh.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/icon.png: 60% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/icon_notes.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/icon_notes.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/icon_notes.png: 57% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/icon_tasks.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/icon_tasks.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/icon_tasks.png: 57% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/map_icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/map_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/map_icon.png: 64% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/monthdayheadingsbg.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/monthdayheadingsbg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/monthdayheadingsbg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/morphossbg.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/morphossbg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/morphossbg.png: 81% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/no_border.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/no_border.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/no_border.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/one_border.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/one_border.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/one_border.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/red_x.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/red_x.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/red_x.png: 77% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/repeating.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/repeating.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/repeating.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/tenpc.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/tenpc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/tenpc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/themed_button_fg.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/themed_button_fg.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/themed_button_fg.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/thin_button_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/thin_button_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/thin_button_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_down_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_down_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_down_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_down_disabled_focused.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_down_disabled_focused.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_down_disabled_focused.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_down_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_down_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_down_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_down_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_down_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_down_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_down_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_down_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_down_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_input_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_input_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_input_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_input_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_input_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_input_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_input_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_input_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_input_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_input_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_input_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_input_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_up_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_up_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_up_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_up_disabled_focused.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_up_disabled_focused.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_up_disabled_focused.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_up_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_up_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_up_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_up_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_up_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_up_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/timepicker_up_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_up_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/timepicker_up_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/titlebg.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/titlebg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/titlebg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/transparent.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/transparent.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/transparent.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/drawable/twentypc.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/twentypc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/drawable/twentypc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/raw/serverimage_davical.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/raw/serverimage_davical.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/raw/serverimage_davical.png: 67% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/raw/serverimage_dotcal.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/raw/serverimage_dotcal.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/raw/serverimage_dotcal.png: 81% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/res/raw/serverimage_famjama.png => /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/raw/serverimage_famjama.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/res/raw/serverimage_famjama.png: 87% size of source)
+   [crunch] Crunched 67 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating aCal-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/aCal-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.morphoss.acal_60_src/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 1 minute 10 seconds

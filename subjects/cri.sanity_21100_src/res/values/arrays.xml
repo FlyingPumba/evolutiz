@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="bt_reverse_timeout_labels">
+		<item>5 seconds</item>
+		<item>10 seconds</item>
+		<item>20 seconds</item>
+		<item>30 seconds</item>
+		<item>1 minute</item>
+		<item>2 minutes</item>
+		<item>3 minutes</item>
+		<item>4 minutes</item>
+		<item>5 minutes</item>
+		<item>Turn off when call ends</item>
+	</string-array>
+	<string-array name="bt_reverse_timeout_values">
+		<item>5000</item>
+		<item>10000</item>
+		<item>20000</item>
+		<item>30000</item>
+		<item>60000</item>
+		<item>120000</item>
+		<item>180000</item>
+		<item>240000</item>
+		<item>300000</item>
+		<item>0</item>
+	</string-array>
+
+	<string-array name="disable_delay_labels">
+		<item>Immediate</item>
+		<item>1 second</item>
+		<item>2 seconds</item>
+		<item>3 seconds</item>
+		<item>4 seconds</item>
+		<item>5 seconds</item>
+		<item>6 seconds</item>
+		<item>7 seconds</item>
+		<item>8 seconds</item>
+		<item>9 seconds</item>
+		<item>10 seconds</item>
+		<item>15 seconds</item>
+		<item>20 seconds</item>
+		<item>25 seconds</item>
+		<item>30 seconds</item>
+	</string-array>
+	<string-array name="disable_delay_values">
+		<item>0</item>
+		<item>1000</item>
+		<item>2000</item>
+		<item>3000</item>
+		<item>4000</item>
+		<item>5000</item>
+		<item>6000</item>
+		<item>7000</item>
+		<item>8000</item>
+		<item>9000</item>
+		<item>10000</item>
+		<item>15000</item>
+		<item>20000</item>
+		<item>25000</item>
+		<item>30000</item>
+	</string-array>
+
+	<string-array name="enable_delay_labels">
+		<item>Same as \"Turn off delay\"</item>
+		<item>Immediate</item>
+		<item>1 second</item>
+		<item>2 seconds</item>
+		<item>3 seconds</item>
+		<item>4 seconds</item>
+		<item>5 seconds</item>
+		<item>6 seconds</item>
+		<item>7 seconds</item>
+		<item>8 seconds</item>
+		<item>9 seconds</item>
+		<item>10 seconds</item>
+		<item>15 seconds</item>
+		<item>20 seconds</item>
+		<item>25 seconds</item>
+		<item>30 seconds</item>
+	</string-array>
+	<string-array name="enable_delay_values">
+		<item>-1</item>
+		<item>0</item>
+		<item>1000</item>
+		<item>2000</item>
+		<item>3000</item>
+		<item>4000</item>
+		<item>5000</item>
+		<item>6000</item>
+		<item>7000</item>
+		<item>8000</item>
+		<item>9000</item>
+		<item>10000</item>
+		<item>15000</item>
+		<item>20000</item>
+		<item>25000</item>
+		<item>30000</item>
+	</string-array>
+
+	<string-array name="speaker_call_labels">
+		<item>Never</item>
+		<item>Incoming calls only</item>
+		<item>Outgoing calls only</item>
+		<item>Always</item>
+	</string-array>
+	<string-array name="speaker_call_values">
+		<item>0</item>
+		<item>1</item>
+		<item>2</item>
+		<item>3</item>
+	</string-array>
+
+	<string-array name="speaker_count_labels">
+		<item>Never</item>
+		<item>1 time</item>
+		<item>2 times</item>
+		<item>3 times</item>
+		<item>4 times</item>
+		<item>5 times</item>
+		<item>6 times</item>
+		<item>7 times</item>
+		<item>8 times</item>
+		<item>9 times</item>
+		<item>10 times</item>
+		<item>15 times</item>
+		<item>20 times</item>
+		<item>Unlimited</item>
+	</string-array>
+	<string-array name="speaker_count_values">
+		<item>-1</item>
+		<item>1</item>
+		<item>2</item>
+		<item>3</item>
+		<item>4</item>
+		<item>5</item>
+		<item>6</item>
+		<item>7</item>
+		<item>8</item>
+		<item>9</item>
+		<item>10</item>
+		<item>15</item>
+		<item>20</item>
+		<item>0</item>
+	</string-array>
+
+	<string-array name="rec_src_labels">
+		<item>Microphone</item>
+		<item>Phone call</item>
+		<item>Voice recognition</item>
+		<item>Camcorder audio</item>
+	</string-array>
+	<string-array name="rec_src_values">
+		<item>1</item>
+		<item>4</item>
+		<item>6</item>
+		<item>5</item>
+	</string-array>
+
+	<string-array name="rec_fmt_labels">
+		<item>MPEG4</item>
+		<item>3GPP</item>
+		<item>AMR</item>
+	</string-array>
+	<string-array name="rec_fmt_values">
+		<item>2</item>
+		<item>1</item>
+		<item>3</item>
+	</string-array>
+
+	<string-array name="rec_stop_limit_labels">
+		<item>1 minute</item>
+		<item>2 minutes</item>
+		<item>3 minutes</item>
+		<item>5 minutes</item>
+		<item>10 minutes</item>
+		<item>15 minutes</item>
+		<item>20 minutes</item>
+		<item>30 minutes</item>
+		<item>45 minutes</item>
+		<item>1 hour</item>
+		<item>1 hour and half</item>
+		<item>2 hours</item>
+		<item>Unlimited</item>
+	</string-array>
+	<string-array name="rec_stop_limit_values">
+		<item>1</item>
+		<item>2</item>
+		<item>3</item>
+		<item>5</item>
+		<item>10</item>
+		<item>15</item>
+		<item>20</item>
+		<item>30</item>
+		<item>45</item>
+		<item>60</item>
+		<item>90</item>
+		<item>120</item>
+		<item>0</item>
+	</string-array>
+
+	<string-array name="rec_start_dir_labels">
+		<item>All</item>
+		<item>Incoming calls only</item>
+		<item>Outgoing calls only</item>
+	</string-array>
+	<string-array name="rec_start_dir_values">
+		<item>0</item>
+		<item>1</item>
+		<item>2</item>
+	</string-array>
+
+	<string-array name="rec_start_times_labels">
+		<item>1 time</item>
+		<item>2 times</item>
+		<item>3 times</item>
+		<item>4 times</item>
+		<item>5 times</item>
+		<item>6 times</item>
+		<item>7 times</item>
+		<item>8 times</item>
+		<item>Unlimited</item>
+	</string-array>
+	<string-array name="rec_start_times_values">
+		<item>1</item>
+		<item>2</item>
+		<item>3</item>
+		<item>4</item>
+		<item>5</item>
+		<item>6</item>
+		<item>7</item>
+		<item>8</item>
+		<item>0</item>
+	</string-array>
+
+	<string-array name="rec_start_headset_labels">
+		<item>Never mind</item>
+		<item>Start if headsets are plugged</item>
+		<item>Start if headsets are NOT plugged</item>
+	</string-array>
+	<string-array name="rec_stop_headset_labels">
+		<item>Never mind</item>
+		<item>Stop if headsets are plugged</item>
+		<item>Stop if headsets are NOT plugged</item>
+	</string-array>
+	<string-array name="rec_headset_values">
+		<item>0</item>
+		<item>1</item>
+		<item>2</item>
+	</string-array>
+	
+	<string-array name="rec_autoremove_labels">
+		<item>Don\'t remove</item>
+		<item>1 day</item>
+		<item>2 days</item>
+		<item>3 days</item>
+		<item>7 days</item>
+		<item>14 days</item>
+		<item>30 days</item>
+		<item>60 days</item>
+		<item>90 days</item>
+	</string-array>
+	<string-array name="rec_autoremove_values">
+		<item>0</item>
+		<item>1</item>
+		<item>2</item>
+		<item>3</item>
+		<item>7</item>
+		<item>14</item>
+		<item>30</item>
+		<item>60</item>
+		<item>90</item>
+	</string-array>
+
+	<string-array name="filter_mode_labels">
+		<item>Include the list, exclude all other numbers</item>
+		<item>Exclude the list, include all other numbers</item>
+	</string-array>
+	<string-array name="filter_mode_values">
+		<item>0</item>
+		<item>1</item>
+	</string-array>
+
+	<string-array name="tts_tone_labels">
+		<item>Never mind</item>
+		<item>Higher</item>
+		<item>High</item>
+		<item>Medium</item>
+		<item>Low</item>
+		<item>Lower</item>
+	</string-array>
+	<string-array name="tts_tone_values">
+		<item>0</item>
+		<item>200</item>
+		<item>150</item>
+		<item>100</item>
+		<item>75</item>
+		<item>50</item>
+	</string-array>
+
+	<string-array name="tts_repeat_labels">
+		<item>1 time</item>
+		<item>2 times</item>
+		<item>3 times</item>
+		<item>4 times</item>
+		<item>5 times</item>
+		<item>6 times</item>
+		<item>7 times</item>
+		<item>8 times</item>
+		<item>9 times</item>
+		<item>10 times</item>
+		<item>Always</item>
+	</string-array>
+	<string-array name="tts_repeat_values">
+		<item>1</item>
+		<item>2</item>
+		<item>3</item>
+		<item>4</item>
+		<item>5</item>
+		<item>6</item>
+		<item>7</item>
+		<item>8</item>
+		<item>9</item>
+		<item>10</item>
+		<item>1000</item>
+	</string-array>
+
+	<string-array name="tts_pause_labels">
+		<item>Shorter</item>
+		<item>Short</item>
+		<item>Medium</item>
+		<item>Long</item>
+		<item>Longer</item>
+	</string-array>
+	<string-array name="tts_pause_values">
+		<item>200</item>
+		<item>500</item>
+		<item>1000</item>
+		<item>1500</item>
+		<item>2000</item>
+	</string-array>
+
+	<string-array name="block_mode_labels">
+		<item>Hang up</item>
+		<item>Interrupt the signal</item>
+		<item>Silent answer</item>
+		<item>Silent ringtone</item>
+	</string-array>
+	<string-array name="block_mode_values">
+		<item>0</item>
+		<item>1</item>
+		<item>3</item>
+		<item>2</item>
+	</string-array>
+
+	<string-array name="block_resume_labels">
+		<item>Immediate</item>
+		<item>30 seconds</item>
+		<item>1 minute</item>
+		<item>2 minutes</item>
+		<item>3 minutes</item>
+		<item>4 minutes</item>
+		<item>5 minutes</item>
+		<item>10 minutes</item>
+		<item>15 minutes</item>
+		<item>20 minutes</item>
+		<item>30 minutes</item>
+		<item>60 minutes</item>
+	</string-array>
+	<string-array name="block_resume_values">
+		<item>0</item>
+		<item>30000</item>
+		<item>60000</item>
+		<item>120000</item>
+		<item>180000</item>
+		<item>240000</item>
+		<item>300000</item>
+		<item>600000</item>
+		<item>900000</item>
+		<item>1200000</item>
+		<item>1800000</item>
+		<item>3600000</item>
+	</string-array>
+
+	<string-array name="blocksms_max_labels">
+		<item>None</item>
+		<item>10</item>
+		<item>50</item>
+		<item>100</item>
+		<item>200</item>
+		<item>300</item>
+		<item>400</item>
+		<item>500</item>
+		<item>1000</item>
+		<item>Unlimited</item>
+	</string-array>
+	<string-array name="blocksms_max_values">
+		<item>0</item>
+		<item>10</item>
+		<item>50</item>
+		<item>100</item>
+		<item>200</item>
+		<item>300</item>
+		<item>400</item>
+		<item>500</item>
+		<item>1000</item>
+		<item>-1</item>
+	</string-array>
+
+	<string-array name="urgent_mode_labels">
+		<item>Ringtone only</item>
+		<item>Vibrate only</item>
+		<item>Ringtone and vibrate</item>
+	</string-array>
+	<string-array name="urgent_mode_values">
+		<item>1</item>
+		<item>2</item>
+		<item>3</item>
+	</string-array>
+	
+	<string-array name="anonym_country_labels">
+		<item>USA, Canada (*67)</item>
+		<item>European countries (#31#)</item>
+		<item>United Kingdom, Ireland (141)</item>
+		<item>Germany (*31#)</item>
+		<item>Denmark, Switzerland, Argentina (*31*)</item>
+		<item>Israel (*43)</item>
+		<item>Hong Kong (133)</item>
+		<item>Australia (1831)</item>
+		<item>New Zealand (0197)</item>
+		<item>Custom prefix</item>
+	</string-array>
+	<string-array name="anonym_country_values">
+		<item>*67</item>
+		<item>#31#</item>
+		<item>141</item>
+		<item>*31#</item>
+		<item>*31*</item>
+		<item>*43</item>
+		<item>133</item>
+		<item>1831</item>
+		<item>0197</item>
+		<item></item>
+	</string-array>
+
+	<string-array name="vibrate_mode_labels">
+		<item>Single short</item>
+		<item>Single mid</item>
+		<item>Single long</item>
+		<item>Double short</item>
+		<item>Double mid</item>
+		<item>Double long</item>
+		<item>Triple short</item>
+		<item>Triple mid</item>
+		<item>Triple long</item>
+	</string-array>
+	<string-array name="vibrate_mode_values">
+		<item>11</item>
+		<item>12</item>
+		<item>13</item>
+		<item>21</item>
+		<item>22</item>
+		<item>23</item>
+		<item>31</item>
+		<item>32</item>
+		<item>33</item>
+	</string-array>
+
+</resources>

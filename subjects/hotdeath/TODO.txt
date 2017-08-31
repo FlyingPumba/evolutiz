@@ -1,0 +1,56 @@
+FEATURES
+
+- artwork:
+
+  - scan additional card backgrounds for more realism
+  
+- game play loop
+      
+   - messages to clarify penalties like "South draws, takes penalty"
+
+ Would be nice:
+ 
+  - pause mechanism for novice players?  tap to advance after each card played...
+
+  - if a matching card is played, you get a toast saying "North threw another green 5"; otherwise, it's a bit hard to see what happened
+ 
+  - continue improving AI for computer players
+
+Possible rules issues:
+  - Quitter/Retaliation for 1000 points, or Quitter/Retaliation/Big Brother?  The former seems to be more commonly quoted
+  - stacking Draw-2?
+  - using Retaliation against Draw 2s?
+  - dealer eating penalties on first face-up card
+   
+----------------------------------------------------------------------
+Done:
+
+- PNG drawable and APK filesize; I have 5 sets of cards embedded in the app; I had to use
+  pngquant 128 on all the PNGs to optimize their filesize.  This cut the app from 13MB to
+  6MB.  I tried going to 64 colors, but the results didn't look very good.
+
+- timing problems with Toasts - reuse one Toast object so that when you show it, it immediately
+  clears the last message instead of queueing up a list of toasts!
+
+- don't allow cancelling of dialog prompts (setCancelable(false))
+
+- ignore the screen orientation (via changes made to manifest)
+
+- pause/unpause game thread -- use a boolean in the game class; synchronize
+  all access to it
+  
+- state saving: Implement toJSON() methods in all game state objects; create JSONObject of game and its children; store string in Preferences;
+  implement an alternate constructor for each game state object that takes a JSONObject as a parameter;
+  when continuing, load the JSONObject from preferences; instantiate all objects using the information in this object.
+  
+- resolution independence:
+
+   drawable-mdpi/card_*.png (cards are 80px tall)
+   drawable-hdpi/card_*.png (cards are 120px tall)
+   drawable-xhdpi/card_*.png (cards are 160px tall)
+   drawable-xlarge-mdpi/card_*.png (cards are 120px tall)
+   drawable-xlarge-hdpi/card_*.png (cards are 160px tall)
+       
+   (these follow the 3:4:6:8 scaling ratio for ldpi:mdpi:hdpi:xhdpi, and then
+   I use larger images for the xlarge displays like tablets)
+  

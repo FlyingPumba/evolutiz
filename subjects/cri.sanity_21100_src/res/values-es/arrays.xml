@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="bt_reverse_timeout_labels">
+		<item>5 segundos</item>
+		<item>10 segundos</item>
+		<item>20 segundos</item>
+		<item>30 segundos</item>
+		<item>1 minuto</item>
+		<item>2 minutos</item>
+		<item>3 minutos</item>
+		<item>4 minutos</item>
+		<item>5 minutos</item>
+		<item>Apague cuando la llamada termina</item>
+	</string-array>
+
+	<string-array name="disable_delay_labels">
+		<item>Inmediatamente</item>
+		<item>1 segundo</item>
+		<item>2 segundos</item>
+		<item>3 segundos</item>
+		<item>4 segundos</item>
+		<item>5 segundos</item>
+		<item>6 segundos</item>
+		<item>7 segundos</item>
+		<item>8 segundos</item>
+		<item>9 segundos</item>
+		<item>10 segundos</item>
+		<item>15 segundos</item>
+		<item>20 segundos</item>
+		<item>25 segundos</item>
+		<item>30 segundos</item>
+	</string-array>
+
+	<string-array name="enable_delay_labels">
+		<item>Como \"Apagar en\"</item>
+		<item>Inmediatamente</item>
+		<item>1 segundo</item>
+		<item>2 segundos</item>
+		<item>3 segundos</item>
+		<item>4 segundos</item>
+		<item>5 segundos</item>
+		<item>6 segundos</item>
+		<item>7 segundos</item>
+		<item>8 segundos</item>
+		<item>9 segundos</item>
+		<item>10 segundos</item>
+		<item>15 segundos</item>
+		<item>20 segundos</item>
+		<item>25 segundos</item>
+		<item>30 segundos</item>
+	</string-array>
+
+	<string-array name="speaker_call_labels">
+		<item>Nunca</item>
+		<item>Sólo las llamadas entrantes</item>
+		<item>Sólo las llamadas salientes</item>
+		<item>Siempre</item>
+	</string-array>
+
+	<string-array name="speaker_count_labels">
+		<item>Nunca</item>
+		<item>1 tiempo</item>
+		<item>2 tiempos</item>
+		<item>3 tiempos</item>
+		<item>4 tiempos</item>
+		<item>5 tiempos</item>
+		<item>6 tiempos</item>
+		<item>7 tiempos</item>
+		<item>8 tiempos</item>
+		<item>9 tiempos</item>
+		<item>10 tiempos</item>
+		<item>15 tiempos</item>
+		<item>20 tiempos</item>
+		<item>Ilimitado</item>
+	</string-array>
+
+	<string-array name="rec_src_labels">
+		<item>Micrófono</item>
+		<item>Audio de la llamada</item>
+		<item>Reconocimiento de Voz</item>
+		<item>Audio y cámara</item>
+	</string-array>
+
+	<string-array name="rec_stop_limit_labels">
+		<item>1 minuto</item>
+		<item>2 minutos</item>
+		<item>3 minutos</item>
+		<item>5 minutos</item>
+		<item>10 minutos</item>
+		<item>15 minutos</item>
+		<item>20 minutos</item>
+		<item>30 minutos</item>
+		<item>45 minutos</item>
+		<item>1 hora</item>
+		<item>1 hora y media</item>
+		<item>2 horas</item>
+		<item>Ilimitado</item>
+	</string-array>
+
+	<string-array name="rec_start_dir_labels">
+		<item>Todos</item>
+		<item>Sólo las llamadas entrantes</item>
+		<item>Sólo las llamadas salientes</item>
+	</string-array>
+
+	<string-array name="rec_start_times_labels">
+		<item>1 tiempo</item>
+		<item>2 tiempos</item>
+		<item>3 tiempos</item>
+		<item>4 tiempos</item>
+		<item>5 tiempos</item>
+		<item>6 tiempos</item>
+		<item>7 tiempos</item>
+		<item>8 tiempos</item>
+		<item>Ilimitado</item>
+	</string-array>
+
+	<string-array name="rec_start_headset_labels">
+		<item>No importa</item>
+		<item>Iniciar si auriculares están conectados</item>
+		<item>Iniciar si auriculares NO están conectados</item>
+	</string-array>
+	<string-array name="rec_stop_headset_labels">
+		<item>No importa</item>
+		<item>Detener si auriculares están conectados</item>
+		<item>Detener si auriculares NO están conectados</item>
+	</string-array>
+
+	<string-array name="rec_autoremove_labels">
+		<item>No elimine</item>
+		<item>1 día</item>
+		<item>2 días</item>
+		<item>3 días</item>
+		<item>7 días</item>
+		<item>14 días</item>
+		<item>30 días</item>
+		<item>60 días</item>
+		<item>90 días</item>
+	</string-array>
+
+	<string-array name="filter_mode_labels">
+		<item>Incluir la lista, excluir otros números</item>
+		<item>Excluir la lista, incluir otros números</item>
+	</string-array>
+
+	<string-array name="tts_tone_labels">
+		<item>No importa</item>
+		<item>Más alto</item>
+		<item>Alto</item>
+		<item>Medio</item>
+		<item>Bajo</item>
+		<item>Más bajo</item>
+	</string-array>
+
+	<string-array name="tts_repeat_labels">
+		<item>1 tiempo</item>
+		<item>2 tiempos</item>
+		<item>3 tiempos</item>
+		<item>4 tiempos</item>
+		<item>5 tiempos</item>
+		<item>6 tiempos</item>
+		<item>7 tiempos</item>
+		<item>8 tiempos</item>
+		<item>9 tiempos</item>
+		<item>10 tiempos</item>
+		<item>Siempre</item>
+	</string-array>
+
+	<string-array name="tts_pause_labels">
+		<item>Más corto</item>
+		<item>Corto</item>
+		<item>Medio</item>
+		<item>Largo</item>
+		<item>Más largo</item>
+	</string-array>
+
+	<string-array name="block_mode_labels">
+		<item>Colgar</item>
+		<item>Detener la señal</item>
+		<item>Respuesta silenciosa</item>
+		<item>Tono silencioso</item>
+	</string-array>
+
+	<string-array name="block_resume_labels">
+		<item>Inmediatamente</item>
+		<item>30 segundos</item>
+		<item>1 minuto</item>
+		<item>2 minutos</item>
+		<item>3 minutos</item>
+		<item>4 minutos</item>
+		<item>5 minutos</item>
+		<item>10 minutos</item>
+		<item>15 minutos</item>
+		<item>20 minutos</item>
+		<item>30 minutos</item>
+		<item>60 minutos</item>
+	</string-array>
+
+	<string-array name="blocksms_max_labels">
+		<item>Nunca</item>
+		<item>10</item>
+		<item>50</item>
+		<item>100</item>
+		<item>200</item>
+		<item>300</item>
+		<item>400</item>
+		<item>500</item>
+		<item>1000</item>
+		<item>Ilimitados</item>
+	</string-array>
+
+	<string-array name="urgent_mode_labels">
+		<item>Sólo tono</item>
+		<item>Sólo vibración</item>
+		<item>Tono y vibración</item>
+	</string-array>
+
+	<string-array name="anonym_country_labels">
+		<item>EE UU, Canadá (*67)</item>
+		<item>Países europeos (#31#)</item>
+		<item>Reino Unido, Irlanda (141)</item>
+		<item>Alemania (*31#)</item>
+		<item>Dinamarca, Suiza, Argentina (*31*)</item>
+		<item>Israel (*43)</item>
+		<item>Hong Kong (133)</item>
+		<item>Australia (1831)</item>
+		<item>Nueva Zelanda (0197)</item>
+		<item>Prefijo personalizado</item>
+	</string-array>
+
+	<string-array name="vibrate_mode_labels">
+		<item>Sola breve</item>
+		<item>Sola media</item>
+		<item>Sola prolongada</item>
+		<item>Doble breve</item>
+		<item>Doble media</item>
+		<item>Doble prolongada</item>
+		<item>Triple breve</item>
+		<item>Triple media</item>
+		<item>Triple prolongada</item>
+	</string-array>
+
+</resources>

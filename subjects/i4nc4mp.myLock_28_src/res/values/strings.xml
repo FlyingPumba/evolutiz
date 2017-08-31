@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">myLock utilities</string>
+
+<string name="enabled">Quick unlock is enabled</string>
+<string name="disabled">Quick unlock is disabled</string>
+
+<string name="guard_on">Lockscreen required on slider wake</string>
+<string name="guard_off">Quick unlock on slider wake</string>
+
+<string name="auto_on">Always quick unlock</string>
+<string name="auto_off">Quick unlock ONLY on slider wake</string>
+
+<string name="fg_on">Status notification runs, protecting quick unlock from shutdown if system memory gets low</string>
+<string name="fg_off">Status notification is disabled.</string>
+
+<string name="howto_title">About quick unlock</string>
+<string name="HowToFull">The lockscreen still exists but it will be automatically quick unlocked. This allows the side buttons to remain protected against pocket dialing and removes the redundant slide to unlock step. The optional status icon prevents the utility from being shut down in low memory situations.</string>
+
+<string name="ts_title">Problem Help</string>
+<string name="Troubleshooting">Faq and troubleshooting pages available on the myLock blog - http://mylockandroid.blogspot.com -- I am not responsible for issues that occur because of task killer apps. These are not recommended for android 2.0 and newer because android now has automatic task management.</string>
+
+</resources>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.nloko.android.syncmypix"
+      android:versionCode="55"
+      android:versionName="0.15"
+      android:installLocation="auto" >
+    <application 
+    	android:theme="@android:style/Theme.Light"
+    	android:icon="@drawable/icon" 
+    	android:label="@string/app_name"
+    	android:debuggable="false">
+    	
+    	<receiver android:name=".SyncMyPixBroadcastReceiver">
+    		<intent-filter>
+            	<action android:name="com.nloko.android.syncmypix.SYNC" />
+            </intent-filter>
+            <intent-filter>
+            	<action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+            	<action android:name="android.intent.action.PACKAGE_REPLACED" />
+            	<data android:scheme="package" android:path="com.nloko.android.syncmypix" />
+            </intent-filter><!--
+            <intent-filter>
+            	<action android:name="android.intent.action.SYNC_STATE_CHANGED" />
+            </intent-filter>
+            
+        --></receiver>
+        
+        <activity android:name=".MainActivity"
+        		  android:theme="@android:style/Theme.Light.NoTitleBar"
+                  android:launchMode="singleTask" 
+                  android:screenOrientation="portrait">
+                  
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SettingsActivity"
+                  android:label="@string/main.settingsButton"
+                  android:configChanges="keyboardHidden|orientation">
+        </activity>
+         <activity android:name=".SyncProgressActivity"
+         		   android:theme="@android:style/Theme.Light.NoTitleBar"
+                   android:label="@string/syncprogress">
+        </activity>
+        <activity-alias android:enabled="true"
+                android:exported="true"
+                android:label="@string/app_name"
+                android:name="com.nloko.android.syncmypix.GlobalConfig"
+                android:targetActivity=".MainActivity" >
+                
+		</activity-alias>
+        <activity android:name="com.nloko.android.syncmypix.facebook.FacebookLoginWebView"
+                  android:label="@string/facebooklogin">
+        </activity>
+        <activity android:name="com.nloko.android.syncmypix.graphics.CropImage"
+                  android:label="Crop Picture">
+        </activity>
+        <activity android:name=".SyncResultsActivity"
+        		  android:theme="@android:style/Theme.Light.NoTitleBar"
+                  android:label="@string/syncresults" 
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".DonateActivity"
+        		  android:theme="@android:style/Theme.Light.NoTitleBar"
+                  >
+        </activity>
+        <service android:name="com.nloko.android.syncmypix.facebook.FacebookSyncService"></service>
+        <provider android:name="com.nloko.android.syncmypix.SyncMyPixProvider"
+          android:authorities="com.nloko.provider.SyncMyPix">
+		</provider>
+        
+    </application>
+    <uses-sdk 
+    	android:minSdkVersion="8" 
+    	 />
+    	 
+    <supports-screens>
+    	android:smallScreens="true"
+    	android:resizable="true"
+    </supports-screens>
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	<uses-permission android:name="android.permission.WRITE_CONTACTS" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.READ_LOGS" />
+</manifest> 

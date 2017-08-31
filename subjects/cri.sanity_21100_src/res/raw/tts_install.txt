@@ -1,0 +1,5 @@
+No TTS engine has been selected or installed on your system.
+
+Sanity requires it for announcing the caller.
+
+Would you install the TTS engine now?

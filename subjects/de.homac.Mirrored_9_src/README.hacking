@@ -1,0 +1,10 @@
+
+Source:
+
+- Project hosted at http://gitorious.org/mirrored
+- git clone git@gitorious.org:mirrored/mirrored.git
+
+Build instructions:
+
+- ant debug
+- adb install -r ./bin/Mirrored-debug.apk

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="72dp"
+	android:layout_height="72dp"
+	android:gravity="center_vertical"
+	android:padding="10sp"
+	android:clickable="true" 
+	style="@style/WidgetBackground">
+			
+	<TextView
+		android:id="@+id/username"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="username"
+		android:layout_alignParentRight="true"
+		android:textSize="9dip"
+		android:layout_centerHorizontal="true"
+	/>
+
+	<TextView
+		android:id="@+id/karma"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="0"
+		android:layout_below="@+id/username"
+		android:textSize="18dip"
+		android:textStyle="bold"
+		android:layout_centerHorizontal="true"
+	/>
+	
+</RelativeLayout>

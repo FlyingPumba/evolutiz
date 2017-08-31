@@ -1,0 +1,14 @@
+android.permission.VIBRATE:
+	This permission gets trigerred when the ball hits one of the line drawn by the user.
+	This could be trigerred in 2 ways:
+          1) draw any line and wait till the ball hits the line.
+	  2) Randomly try to draw lines untill the ball hits one of the lines drawn
+
+	Path:
+		Start->*click 'New Game'->[Try to draw line on the screen] or [follow one of the steps listed above]
+
+	A3T:
+		A3T will not be able to expose the use of permissions as the application spawned new windows.
+		and drawing line requires gestures which is not supported by the A3T now.
+	 
+

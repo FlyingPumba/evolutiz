@@ -1,0 +1,1277 @@
+public final class edu.killerud.fileexplorer.BuildConfig extends java.lang.Object
+{
+    public static final boolean DEBUG;
+
+    public void <init>()
+    {
+        edu.killerud.fileexplorer.BuildConfig r0;
+
+        r0 := @this: edu.killerud.fileexplorer.BuildConfig;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public class edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation extends android.app.Instrumentation implements edu.killerud.fileexplorer.EmmaInstrument.FinishListener
+{
+    public static java.lang.String TAG;
+    private static final java.lang.String DEFAULT_COVERAGE_FILE_PATH;
+    private final android.os.Bundle mResults;
+    private android.content.Intent mIntent;
+    private static final boolean LOGD;
+    private boolean mCoverage;
+    private java.lang.String mCoverageFilePath;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.os.Bundle $r3;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.Instrumentation: void <init>()>();
+        $r3 = new android.os.Bundle;
+        specialinvoke $r3.<android.os.Bundle: void <init>()>();
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults> = $r3;
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean mCoverage> = 1;
+        r2[0] = 1;
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.String $r4, $r9, $r10;
+        java.lang.StringBuilder $r5, $r6, $r7, $r8;
+        boolean $z0;
+        android.content.Intent $r11, $r13;
+        android.content.Context $r12;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        $r4 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r5 = new java.lang.StringBuilder;
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("onCreate(");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, $r9);
+        specialinvoke r0.<android.app.Instrumentation: void onCreate(android.os.Bundle)>(r1);
+        r3[0] = 1;
+        if r1 == null goto label1;
+
+        $z0 = specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean getBooleanArgument(android.os.Bundle,java.lang.String)>(r1, "coverage");
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean mCoverage> = $z0;
+        $r10 = virtualinvoke r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>("coverageFile");
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath> = $r10;
+        r3[1] = 1;
+
+     label1:
+        $r11 = new android.content.Intent;
+        $r12 = virtualinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.content.Context getTargetContext()>();
+        specialinvoke $r11.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r12, class "edu/killerud/fileexplorer/EmmaInstrument/InstrumentedActivity");
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent> = $r11;
+        $r13 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent>;
+        virtualinvoke $r13.<android.content.Intent: android.content.Intent setFlags(int)>(268435456);
+        virtualinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void start()>();
+        r3[2] = 1;
+        return;
+    }
+
+    public void onStart()
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r3;
+        java.lang.String $r4;
+        android.content.Intent $r5;
+        android.app.Activity $r6;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        $r4 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, "onStart()");
+        specialinvoke r0.<android.app.Instrumentation: void onStart()>();
+        staticinvoke <android.os.Looper: void prepare()>();
+        $r5 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent>;
+        $r6 = virtualinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.app.Activity startActivitySync(android.content.Intent)>($r5);
+        r3 = (edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity) $r6;
+        virtualinvoke r3.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: void setFinishListener(edu.killerud.fileexplorer.EmmaInstrument.FinishListener)>(r0);
+        r2[0] = 1;
+        return;
+    }
+
+    private boolean getBooleanArgument(android.os.Bundle, java.lang.String)
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        android.os.Bundle r1;
+        java.lang.String r2, r5;
+        boolean[][] $r3;
+        boolean[] r4;
+        boolean $z0, $z1;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: android.os.Bundle;
+        r2 := @parameter1: java.lang.String;
+        $r3 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[3];
+        r5 = virtualinvoke r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>(r2);
+        r4[0] = 1;
+        if r5 == null goto label1;
+
+        $z0 = staticinvoke <java.lang.Boolean: boolean parseBoolean(java.lang.String)>(r5);
+        r4[1] = 1;
+        if $z0 == 0 goto label1;
+
+        $z1 = 1;
+        r4[2] = 1;
+        goto label2;
+
+     label1:
+        $z1 = 0;
+        r4[3] = 1;
+
+     label2:
+        r4[4] = 1;
+        return $z1;
+    }
+
+    private void generateCoverageReport()
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.io.File r3, $r7;
+        java.lang.Class r4, $r10, $r11, $r12;
+        java.lang.reflect.Method r5;
+        java.lang.String $r6, $r8;
+        java.lang.Class[] $r9;
+        java.lang.Object[] $r13;
+        java.lang.Boolean $r14, $r15;
+        java.lang.ClassNotFoundException $r17, r18;
+        java.lang.SecurityException $r19, r20;
+        java.lang.NoSuchMethodException $r21, r22;
+        java.lang.IllegalArgumentException $r23, r24;
+        java.lang.IllegalAccessException $r25, r26;
+        java.lang.reflect.InvocationTargetException $r27, r28;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[4];
+        $r6 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r6, "generateCoverageReport()");
+        $r7 = new java.io.File;
+        $r8 = specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String getCoverageFilePath()>();
+        specialinvoke $r7.<java.io.File: void <init>(java.lang.String)>($r8);
+        r3 = $r7;
+
+     label1:
+        r4 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("com.vladium.emma.rt.RT");
+        $r9 = newarray (java.lang.Class)[3];
+        $r10 = virtualinvoke r3.<java.lang.Object: java.lang.Class getClass()>();
+        $r9[0] = $r10;
+        $r11 = <java.lang.Boolean: java.lang.Class TYPE>;
+        $r9[1] = $r11;
+        $r12 = <java.lang.Boolean: java.lang.Class TYPE>;
+        $r9[2] = $r12;
+        r5 = virtualinvoke r4.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("dumpCoverageData", $r9);
+        $r13 = newarray (java.lang.Object)[3];
+        $r13[0] = r3;
+        $r14 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+        $r13[1] = $r14;
+        $r15 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+        $r13[2] = $r15;
+        virtualinvoke r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r13);
+        r2[0] = 1;
+
+     label2:
+        goto label9;
+
+     label3:
+        $r17 := @caughtexception;
+        r18 = $r17;
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>("Emma.jar not in the class path?", r18);
+        r2[1] = 1;
+        goto label9;
+
+     label4:
+        $r19 := @caughtexception;
+        r20 = $r19;
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r20);
+        r2[2] = 1;
+        goto label9;
+
+     label5:
+        $r21 := @caughtexception;
+        r22 = $r21;
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r22);
+        r2[3] = 1;
+        goto label9;
+
+     label6:
+        $r23 := @caughtexception;
+        r24 = $r23;
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r24);
+        r2[4] = 1;
+        goto label9;
+
+     label7:
+        $r25 := @caughtexception;
+        r26 = $r25;
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r26);
+        r2[5] = 1;
+        goto label9;
+
+     label8:
+        $r27 := @caughtexception;
+        r28 = $r27;
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r28);
+        r2[6] = 1;
+
+     label9:
+        r2[7] = 1;
+        return;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label3;
+        catch java.lang.SecurityException from label1 to label2 with label4;
+        catch java.lang.NoSuchMethodException from label1 to label2 with label5;
+        catch java.lang.IllegalArgumentException from label1 to label2 with label6;
+        catch java.lang.IllegalAccessException from label1 to label2 with label7;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label8;
+    }
+
+    private java.lang.String getCoverageFilePath()
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[5];
+        $r3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath>;
+        r2[0] = 1;
+        if $r3 != null goto label1;
+
+        r2[1] = 1;
+        return "/mnt/sdcard/coverage.ec";
+
+     label1:
+        $r4 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath>;
+        r2[2] = 1;
+        return $r4;
+    }
+
+    private boolean setCoverageFilePath(java.lang.String)
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        int $i0;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[6];
+        r3[0] = 1;
+        if r1 == null goto label1;
+
+        $i0 = virtualinvoke r1.<java.lang.String: int length()>();
+        r3[1] = 1;
+        if $i0 <= 0 goto label1;
+
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath> = r1;
+        r3[2] = 1;
+        return 1;
+
+     label1:
+        r3[3] = 1;
+        return 0;
+    }
+
+    private void reportEmmaError(java.lang.Exception)
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.Exception r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.Exception;
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[7];
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>("", r1);
+        r3[0] = 1;
+        return;
+    }
+
+    private void reportEmmaError(java.lang.String, java.lang.Exception)
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1, r5, $r9, $r14;
+        java.lang.Exception r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        java.lang.StringBuilder $r6, $r7, $r8, $r11, $r12, $r13;
+        android.os.Bundle $r10;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        r2 := @parameter1: java.lang.Exception;
+        $r3 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[8];
+        $r6 = new java.lang.StringBuilder;
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to generate emma coverage. ");
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        r5 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        $r9 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>($r9, r5, r2);
+        $r10 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults>;
+        $r11 = new java.lang.StringBuilder;
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\nError: ");
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r5);
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+        virtualinvoke $r10.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("stream", $r14);
+        r4[0] = 1;
+        return;
+    }
+
+    public void onActivityFinished()
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String $r3;
+        boolean $z0;
+        android.os.Bundle $r4;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[9];
+        $r3 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r3, "onActivityFinished()");
+        $z0 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean mCoverage>;
+        r2[0] = 1;
+        if $z0 == 0 goto label1;
+
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>();
+        r2[1] = 1;
+
+     label1:
+        $r4 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults>;
+        virtualinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void finish(int,android.os.Bundle)>(-1, $r4);
+        r2[2] = 1;
+        return;
+    }
+
+    public void dumpIntermediateCoverage(java.lang.String)
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1, $r4, $r8, $r9, $r14;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.StringBuilder $r5, $r6, $r7, $r10, $r11, $r12, $r13;
+        boolean $z0, $z1;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[10];
+        $r4 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r5 = new java.lang.StringBuilder;
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Intermidate Dump Called with file name :");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, $r8);
+        $z0 = r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean mCoverage>;
+        r3[0] = 1;
+        if $z0 == 0 goto label2;
+
+        $z1 = specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>(r1);
+        r3[1] = 1;
+        if $z1 != 0 goto label1;
+
+        $r9 = <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r10 = new java.lang.StringBuilder;
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to set the given file path:");
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as dump target.");
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r9, $r14);
+        r3[2] = 1;
+
+     label1:
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>();
+        specialinvoke r0.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>("/mnt/sdcard/coverage.ec");
+        r3[3] = 1;
+
+     label2:
+        r3[4] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        r1 = $r0[11];
+        <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG> = "EmmaInstrumentation:";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+
+        $r0 = newmultiarray (boolean)[12][];
+        <edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[5];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[8];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[3];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[4];
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r0[7] = $r8;
+        $r9 = newarray (boolean)[1];
+        $r0[8] = $r9;
+        $r10 = newarray (boolean)[3];
+        $r0[9] = $r10;
+        $r11 = newarray (boolean)[5];
+        $r0[10] = $r11;
+        $r12 = newarray (boolean)[1];
+        $r0[11] = $r12;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "edu/killerud/fileexplorer/EmmaInstrument/EmmaInstrumentation", -6390195098943533753L);
+        return $r0;
+    }
+}
+public interface  edu.killerud.fileexplorer.EmmaInstrument.FinishListener extends java.lang.Object
+{
+
+    public abstract void onActivityFinished();
+
+    public abstract void dumpIntermediateCoverage(java.lang.String);
+}
+class edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector extends android.content.BroadcastReceiver
+{
+    final edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>(edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity)
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector r0;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector;
+        r1 := @parameter0: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity;
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity this$0> = r1;
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+        r3[0] = 1;
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector r0;
+        android.content.Context r1;
+        android.content.Intent r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        android.os.Bundle r5;
+        java.lang.Object[] r6, $r13;
+        android.telephony.SmsMessage r7;
+        java.lang.String r8, r9, $r17;
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity $r10, $r18;
+        edu.killerud.fileexplorer.EmmaInstrument.FinishListener $r11, $r19;
+        java.lang.Object $r12, $r14;
+        int $i0;
+        byte[] $r15, $r16;
+        boolean $z0, $z1;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.content.Intent;
+        $r3 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+        r5 = virtualinvoke r2.<android.content.Intent: android.os.Bundle getExtras()>();
+        $r10 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity this$0>;
+        $r11 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: edu.killerud.fileexplorer.EmmaInstrument.FinishListener access$000(edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity)>($r10);
+        r4[0] = 1;
+        if $r11 == null goto label2;
+
+        r4[1] = 1;
+        if r5 == null goto label2;
+
+        $r12 = virtualinvoke r5.<android.os.Bundle: java.lang.Object get(java.lang.String)>("pdus");
+        $r13 = (java.lang.Object[]) $r12;
+        r6 = (java.lang.Object[]) $r13;
+        $i0 = lengthof r6;
+        r4[2] = 1;
+        if $i0 <= 0 goto label2;
+
+        $r14 = r6[0];
+        $r15 = (byte[]) $r14;
+        $r16 = (byte[]) $r15;
+        r7 = staticinvoke <android.telephony.SmsMessage: android.telephony.SmsMessage createFromPdu(byte[])>($r16);
+        $r17 = virtualinvoke r7.<android.telephony.SmsMessage: java.lang.String getMessageBody()>();
+        r8 = virtualinvoke $r17.<java.lang.String: java.lang.String toString()>();
+        r9 = virtualinvoke r7.<android.telephony.SmsMessage: java.lang.String getOriginatingAddress()>();
+        $z0 = virtualinvoke r9.<java.lang.String: boolean contains(java.lang.CharSequence)>("6782345628");
+        r4[3] = 1;
+        if $z0 != 0 goto label1;
+
+        $z1 = virtualinvoke r8.<java.lang.String: boolean startsWith(java.lang.String)>("/mnt/sdcard");
+        r4[4] = 1;
+        if $z1 == 0 goto label2;
+
+     label1:
+        $r18 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity this$0>;
+        $r19 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: edu.killerud.fileexplorer.EmmaInstrument.FinishListener access$000(edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity)>($r18);
+        interfaceinvoke $r19.<edu.killerud.fileexplorer.EmmaInstrument.FinishListener: void dumpIntermediateCoverage(java.lang.String)>(r8);
+        r4[5] = 1;
+
+     label2:
+        r4[6] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[7];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "edu/killerud/fileexplorer/EmmaInstrument/InstrumentedActivity$CoverageCollector", -1604738725137032633L);
+        return $r0;
+    }
+}
+public class edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity extends edu.killerud.fileexplorer.ExplorerActivity
+{
+    public static java.lang.String TAG;
+    private edu.killerud.fileexplorer.EmmaInstrument.FinishListener mListener;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity;
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void setFinishListener(edu.killerud.fileexplorer.EmmaInstrument.FinishListener)
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r0;
+        edu.killerud.fileexplorer.EmmaInstrument.FinishListener r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity;
+        r1 := @parameter0: edu.killerud.fileexplorer.EmmaInstrument.FinishListener;
+        $r2 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        r3[0] = 1;
+        return;
+    }
+
+    public void finish()
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.StringBuilder $r3, $r5, $r6;
+        java.lang.String $r4, $r7;
+        edu.killerud.fileexplorer.EmmaInstrument.FinishListener $r8, $r9;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity;
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        $r3 = new java.lang.StringBuilder;
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+        $r4 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: java.lang.String TAG>;
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".InstrumentedActivity");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r7, "finish()");
+        specialinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void finish()>();
+        $r8 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: edu.killerud.fileexplorer.EmmaInstrument.FinishListener mListener>;
+        r2[0] = 1;
+        if $r8 == null goto label1;
+
+        $r9 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: edu.killerud.fileexplorer.EmmaInstrument.FinishListener mListener>;
+        interfaceinvoke $r9.<edu.killerud.fileexplorer.EmmaInstrument.FinishListener: void onActivityFinished()>();
+        r2[1] = 1;
+
+     label1:
+        r2[2] = 1;
+        return;
+    }
+
+    static edu.killerud.fileexplorer.EmmaInstrument.FinishListener access$000(edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity)
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        edu.killerud.fileexplorer.EmmaInstrument.FinishListener $r3;
+
+        r0 := @parameter0: edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity;
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        $r3 = r0.<edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: edu.killerud.fileexplorer.EmmaInstrument.FinishListener mListener>;
+        r2[0] = 1;
+        return $r3;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+        r1 = $r0[4];
+        <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: java.lang.String TAG> = "IntrumentedPlayer";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5;
+
+        $r0 = newmultiarray (boolean)[5][];
+        <edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[3];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[4] = $r5;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "edu/killerud/fileexplorer/EmmaInstrument/InstrumentedActivity", -3953097121653020106L);
+        return $r0;
+    }
+}
+public class edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver extends android.content.BroadcastReceiver
+{
+    public static java.lang.String TAG;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver;
+        $r1 = <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver r0;
+        android.content.Context r1;
+        android.content.Intent r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation r6, $r7;
+
+        r0 := @this: edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.content.Intent;
+        $r3 = <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+        virtualinvoke r2.<android.content.Intent: android.os.Bundle getExtras()>();
+        $r7 = new edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation;
+        specialinvoke $r7.<edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation: void <init>()>();
+        r6 = $r7;
+        r4[0] = 1;
+        if r6 == null goto label1;
+
+        interfaceinvoke r6.<edu.killerud.fileexplorer.EmmaInstrument.FinishListener: void dumpIntermediateCoverage(java.lang.String)>("/mnt/sdcard/coverage.ec");
+        r4[1] = 1;
+
+     label1:
+        r4[2] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: java.lang.String TAG> = "M3SMSInstrumentedReceiver";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "edu/killerud/fileexplorer/EmmaInstrument/SMSInstrumentedReceiver", 8704909102833939831L);
+        return $r0;
+    }
+}
+public class edu.killerud.fileexplorer.ExplorerActivity extends android.app.ListActivity
+{
+    private java.io.File mCurrentDirectory;
+    private java.io.File[] mCurrentDirectoryList;
+    private android.widget.TextView mPathOut;
+    private static final java.lang.String PATH_TO_ROOT;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        $r1 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.ListActivity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.io.IOException r4, $r7;
+        android.view.View $r5;
+        android.widget.TextView $r6;
+        android.content.Context $r8;
+        android.widget.Toast $r9;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        specialinvoke r0.<android.app.ListActivity: void onCreate(android.os.Bundle)>(r1);
+        virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void setContentView(int)>(2130903041);
+        $r5 = virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: android.view.View findViewById(int)>(2131034113);
+        $r6 = (android.widget.TextView) $r5;
+        r0.<edu.killerud.fileexplorer.ExplorerActivity: android.widget.TextView mPathOut> = $r6;
+
+     label1:
+        specialinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void navigateExplorer(java.lang.String)>("/");
+        r3[0] = 1;
+
+     label2:
+        goto label4;
+
+     label3:
+        $r7 := @caughtexception;
+        r4 = $r7;
+        $r8 = virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: android.content.Context getApplicationContext()>();
+        $r9 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,int,int)>($r8, 2130968578, 1);
+        virtualinvoke $r9.<android.widget.Toast: void show()>();
+        virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void finish()>();
+        r3[1] = 1;
+
+     label4:
+        r3[2] = 1;
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    protected void onListItemClick(android.widget.ListView, android.view.View, int, long)
+    {
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        android.widget.ListView r1;
+        android.view.View r2;
+        int i0;
+        long l1;
+        boolean[][] $r3;
+        boolean[] r4;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: android.widget.ListView;
+        r2 := @parameter1: android.view.View;
+        i0 := @parameter2: int;
+        l1 := @parameter3: long;
+        $r3 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[2];
+        r4[0] = 1;
+        return;
+    }
+
+    private void navigateExplorer(java.lang.String) throws java.io.IOException
+    {
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        java.lang.String r1, $r9;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.io.File $r4, $r5, $r8;
+        java.io.File[] $r6, $r10;
+        android.widget.TextView $r7;
+        java.util.ArrayList $r11;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[3];
+        $r4 = new java.io.File;
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>(r1);
+        r0.<edu.killerud.fileexplorer.ExplorerActivity: java.io.File mCurrentDirectory> = $r4;
+        $r5 = r0.<edu.killerud.fileexplorer.ExplorerActivity: java.io.File mCurrentDirectory>;
+        $r6 = virtualinvoke $r5.<java.io.File: java.io.File[] listFiles()>();
+        r0.<edu.killerud.fileexplorer.ExplorerActivity: java.io.File[] mCurrentDirectoryList> = $r6;
+        $r7 = r0.<edu.killerud.fileexplorer.ExplorerActivity: android.widget.TextView mPathOut>;
+        $r8 = r0.<edu.killerud.fileexplorer.ExplorerActivity: java.io.File mCurrentDirectory>;
+        $r9 = virtualinvoke $r8.<java.io.File: java.lang.String getAbsolutePath()>();
+        virtualinvoke $r7.<android.widget.TextView: void setText(java.lang.CharSequence)>($r9);
+        $r10 = r0.<edu.killerud.fileexplorer.ExplorerActivity: java.io.File[] mCurrentDirectoryList>;
+        $r11 = specialinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: java.util.ArrayList getFileNames(java.io.File[])>($r10);
+        specialinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void listDirectoryContent(java.util.ArrayList)>($r11);
+        r3[0] = 1;
+        return;
+    }
+
+    private void listDirectoryContent(java.util.ArrayList)
+    {
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        java.util.ArrayList r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.widget.ArrayAdapter r4, $r5;
+        android.content.Context $r6;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: java.util.ArrayList;
+        $r2 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[4];
+        $r5 = new android.widget.ArrayAdapter;
+        $r6 = virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: android.content.Context getApplicationContext()>();
+        specialinvoke $r5.<android.widget.ArrayAdapter: void <init>(android.content.Context,int,int,java.util.List)>($r6, 17367043, 16908308, r1);
+        r4 = $r5;
+        virtualinvoke r0.<edu.killerud.fileexplorer.ExplorerActivity: void setListAdapter(android.widget.ListAdapter)>(r4);
+        r3[0] = 1;
+        return;
+    }
+
+    private java.util.ArrayList getFileNames(java.io.File[])
+    {
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        java.io.File[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.util.ArrayList r4, $r5;
+        int i0, $i1, $i2;
+        java.io.File $r6;
+        java.lang.String $r7;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: java.io.File[];
+        $r2 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[5];
+        $r5 = new java.util.ArrayList;
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+        r4 = $r5;
+        $i1 = lengthof r1;
+        r3[0] = 1;
+        if $i1 >= 1 goto label1;
+
+        virtualinvoke r4.<java.util.ArrayList: boolean add(java.lang.Object)>("No files in directory");
+        r3[1] = 1;
+        return r4;
+
+     label1:
+        i0 = 0;
+        r3[2] = 1;
+
+     label2:
+        $i2 = lengthof r1;
+        r3[3] = 1;
+        if i0 >= $i2 goto label3;
+
+        $r6 = r1[i0];
+        $r7 = virtualinvoke $r6.<java.io.File: java.lang.String getName()>();
+        virtualinvoke r4.<java.util.ArrayList: boolean add(java.lang.Object)>($r7);
+        i0 = i0 + 1;
+        r3[4] = 1;
+        goto label2;
+
+     label3:
+        r3[5] = 1;
+        return r4;
+    }
+
+    private java.util.ArrayList getFilePaths(java.io.File[])
+    {
+        edu.killerud.fileexplorer.ExplorerActivity r0;
+        java.io.File[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.util.ArrayList r4, $r5;
+        int i0, $i1, $i2;
+        java.io.File $r6;
+        java.lang.String $r7;
+
+        r0 := @this: edu.killerud.fileexplorer.ExplorerActivity;
+        r1 := @parameter0: java.io.File[];
+        $r2 = <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[6];
+        $r5 = new java.util.ArrayList;
+        specialinvoke $r5.<java.util.ArrayList: void <init>()>();
+        r4 = $r5;
+        $i1 = lengthof r1;
+        r3[0] = 1;
+        if $i1 >= 1 goto label1;
+
+        virtualinvoke r4.<java.util.ArrayList: boolean add(java.lang.Object)>("/");
+        r3[1] = 1;
+        return r4;
+
+     label1:
+        i0 = 0;
+        r3[2] = 1;
+
+     label2:
+        $i2 = lengthof r1;
+        r3[3] = 1;
+        if i0 >= $i2 goto label3;
+
+        $r6 = r1[i0];
+        $r7 = virtualinvoke $r6.<java.io.File: java.lang.String getAbsolutePath()>();
+        virtualinvoke r4.<java.util.ArrayList: boolean add(java.lang.Object)>($r7);
+        i0 = i0 + 1;
+        r3[4] = 1;
+        goto label2;
+
+     label3:
+        r3[5] = 1;
+        return r4;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRi()>();
+        r1 = $r0[7];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8;
+
+        $r0 = newmultiarray (boolean)[8][];
+        <edu.killerud.fileexplorer.ExplorerActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[6];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[6];
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r0[7] = $r8;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "edu/killerud/fileexplorer/ExplorerActivity", 8877490001832112283L);
+        return $r0;
+    }
+}
+public final class edu.killerud.fileexplorer.R$attr extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        edu.killerud.fileexplorer.R$attr r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R$attr;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class edu.killerud.fileexplorer.R$drawable extends java.lang.Object
+{
+    public static final int ic_launcher;
+
+    public void <init>()
+    {
+        edu.killerud.fileexplorer.R$drawable r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R$drawable;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class edu.killerud.fileexplorer.R$id extends java.lang.Object
+{
+    public static final int current_path;
+    public static final int explorer_row;
+
+    public void <init>()
+    {
+        edu.killerud.fileexplorer.R$id r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R$id;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class edu.killerud.fileexplorer.R$layout extends java.lang.Object
+{
+    public static final int explorer_row;
+    public static final int main;
+
+    public void <init>()
+    {
+        edu.killerud.fileexplorer.R$layout r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R$layout;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class edu.killerud.fileexplorer.R$string extends java.lang.Object
+{
+    public static final int app_name;
+    public static final int error;
+    public static final int hello;
+
+    public void <init>()
+    {
+        edu.killerud.fileexplorer.R$string r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R$string;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class edu.killerud.fileexplorer.R extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        edu.killerud.fileexplorer.R r0;
+
+        r0 := @this: edu.killerud.fileexplorer.R;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

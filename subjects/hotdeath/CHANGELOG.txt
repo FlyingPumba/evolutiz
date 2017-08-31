@@ -1,0 +1,95 @@
+Version 0.9                 2011-04-23
+Initial Release
+
+
+Version 0.9.1				2011-05-02
+ - redraw table after player passes (so you can see the next player "thinking")
+ - tap to dismiss card help dialog
+ - graphical game winner messages
+ - don't prompt user for victim if only one other active player
+ - small AI change for strong and expert players: hold onto wild cards until later in the game
+ 
+ Version 0.9.2              2011-05-16
+ - allow rotation of display
+ - allow for installation on SD card for Froyo and up
+ - center of the table will look a little different in smallish landscape displays
+   like a phone in landscape (put the current player/color/direction indicator to the
+   right of the discard pile instead of beneath it)
+ - removed "standard rules" to avoid copyright issues
+ - card graphics revamped to avoid copyright issues
+ - hand sorting: when in face up mode, sort all cards together (cards still are flagged
+   as face up or face down even in this mode, and the system was sorting them separately)
+ - AI improvements:
+  - added color balance awareness; the more aggressive the player, the longer
+    he is willing to try to preserve a nice even color balance in his hand
+  - smarter play of the MAD card -- don't dump it if you're holding a ton of points
+  - smarter play of the 69 card -- sometimes the 69 card keeps your score much
+    lower (if you have hundreds of other points in your hand, it's a good card
+    to keep)
+  - smarter play of the Mystery Draw -- try to throw it only on numbered cards,
+    with higher preference toward higher numbers, and special consideration of
+    the 69 card
+ - bugfix: at the end of a round, hit "Back", "Continue", "Back" -- crash
+ - bugfix: if computer player went out on a Wild card, he wouldn't pick a color,
+   and bad things would happen...
+
+ Version 0.9.3				2011-05-16
+ - bugfix: if you tap the card table immediately after starting a new game (and
+   before the cards were dealt), you could cause a crash
+   
+ Version 1.0.0				2011-05-17
+ - labeled as version 1.0.0 - released to market
+ 
+ Version 1.0.1              2011-05-25
+ 
+ - allow R Skip to be played on S and S Double; allow S and S Double to be played on R Skip
+ 
+ - improved support for various displays (mdpi like HTC legend - 320x480, xhdpi,
+   xlarge-mdpi, xlarge-hdpi)
+   
+ - bugfix: fixed java.lang.ArrayIndexOutOfBoundsException in
+   GameTable.findTouchedCard() > GameTable.findTouchedCardHand() > Hand.getCard()
+ 
+ - bugfix: game would redeal when you changed orientation right after the deal
+ 
+ - bugfix: crash when orientation changed while card info or card help dialog was showing
+ 
+ - bugfix: crash when trying to access help on green reverse skip - typo!
+ 
+ - bugfix: game could crash if it tried to grab a game state snapshot too early
+ 
+ Version 1.0.2              2011-06-23
+
+ - bugfix: if player is forced to draw more cards than are available in the draw pile
+   plus the discard pile, game would lock up
+   
+ - bugfix: upon getting all bastard cards in hand, entire game would end; should have
+   just ended the round and given 0 points to the lucky player
+   http://code.google.com/p/hotdeath/issues/detail?id=1
+   
+ - bugfix: previously, we required that you have the Quitter, Big Brother, and Retaliation
+   at the end of a hand for the 1,000 point penalty; after some extensive research online,
+   I believe that should only be the Quitter and the Retaliation
+ 
+ - improved card docs so that all bastard cards' help contains the bastard card
+   information 
+   
+Version 1.0.3                2012-01-21
+
+ - enhancement: allow user to fast forward when human player is ejected
+
+ - bugfix: issue #2 and issue #7
+   System lets you draw a card before defending against an attack card
+  
+ - bugfix: issue #4
+   no longer allow R-S to be played on S or D-S, nor S and D-S on R-S
+   
+Version 1.0.4                2012-01-24
+
+ - left debug flag in release version (d'oh)
+ 
+Version 1.0.5                2012-01-24
+
+ - fixed version string in strings.xml - could this have been a more 
+   sloppy release???
+    

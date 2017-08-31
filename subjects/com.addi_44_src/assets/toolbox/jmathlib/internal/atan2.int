@@ -1,0 +1,11 @@
+@GROUP
+trigonometric
+@SYNTAX
+answer = ATAN2(value1, value2)
+@DOC
+Returns the arc tangent of the gradient represented by the value1 / value2.
+@EXAMPLES
+ATAN(2, 1)  = 0.4636476090008061
+ATAN(-2, 1) = 2.677945044588981
+@SEE
+atan, tan

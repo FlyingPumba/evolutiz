@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- This file contains all the strings used throughout the application -->
+    <!-- The strings are used by referencing the string's name -->
+    
+    <string name="app_name">Soundboard Example</string>
+    
+    <string name="instructions_english">Press the button!</string>
+    <string name="instructions_norwegian">Trykk på knappen!</string>
+        
+    <string name="coin_english">Coin</string>
+    <string name="coin_norwegian">Mynt</string>
+    
+    <string name="tube_english">Tube</string>
+    <string name="tube_norwegian">Rør</string>
+    
+    
+</resources>

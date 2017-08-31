@@ -1,0 +1,29 @@
+/*
+@GROUP
+general
+@SYNTAX
+pi
+@DOC
+mathematical constant pi
+@EXAMPLES
+<programlisting>
+pi
+ans=3.1415926
+</programlisting>
+@NOTES
+Pi is a mathematical constant that represents the 
+ratio of any circle's circumference to its diameter in 
+Euclidean geometry, which is the same as the ratio of a 
+circle's area to the square of its radius.
+@SEE
+e, eps, i, j 
+*/
+
+/*
+%!@testcase
+%!  ml.executeExpression("clear('all');");
+%!  ml.executeExpression("a=pi;");
+%!  assertEquals( 3.1415926, ml.getScalarValueRe("a"), 0.0001);
+%!  assertTrue(0 == ml.getScalarValueIm("a"));
+%!
+*/

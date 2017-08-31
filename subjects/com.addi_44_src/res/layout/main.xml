@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wrapView"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <ListView android:id="@+id/out"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll"
+        android:layout_weight="1"
+        android:listSelector="@android:color/transparent"
+    />
+    <com.addi.CandidateView
+    	android:id="@+id/candidate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+    />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView  
+        	android:layout_width="40sp" 
+        	android:layout_height="wrap_content" 
+        	android:text=">> "
+        	android:textSize="16sp"
+        />
+        <com.addi.EditTextExtend 
+        	android:id="@+id/edit_command"
+            style="?android:attr/textViewStyle"
+            android:background="@null"
+            android:textColor="@null"        
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="bottom"
+            android:textSize="16sp"
+        />  
+    </LinearLayout>
+	<com.addi.KeyboardViewExtend
+		android:id="@+id/keyboard"
+		android:visibility="gone"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+	/>   
+</LinearLayout>

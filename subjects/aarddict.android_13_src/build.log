@@ -1,0 +1,141 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: LookupActivity
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for LookupActivity...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for LookupActivity...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [aapt] aapt: warning: string 'mnRefresh' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/res; found: ru
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 41 source files to /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/classes
+    [javac] Note: Some input files use unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/classes
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/libs/icu4j-4_4.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/libs/jackson-mapper-asl-1.5.1.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/libs/commons-compress-1.0.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/libs/jackson-core-asl-1.5.1.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/libs/icu4j-4_4.jar -> icu4j-4_4-d9102123e14609dab5157d65749f6b4b.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/libs/jackson-mapper-asl-1.5.1.jar -> jackson-mapper-asl-1.5.1-3f5e1bec07728a78dcc7fc4a67256687.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/libs/commons-compress-1.0.jar -> commons-compress-1.0-fbb2a49b1ea6b3e78978d916a3ef6eb5.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/libs/jackson-core-asl-1.5.1.jar -> jackson-core-asl-1.5.1-c32975e390c84418c0669d5a588d15bf.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/classes.dex...
+       [dx] Merged dex A (108 defs/147.8KiB) with dex B (806 defs/1442.0KiB). Result is 914 defs/1956.3KiB. Took 1.8s
+       [dx] Merged dex A (914 defs/1956.3KiB) with dex B (329 defs/340.5KiB). Result is 1243 defs/2929.9KiB. Took 1.2s
+       [dx] Result compacted from 3956.6KiB to 1915.6KiB to save 2040.9KiB
+       [dx] Merged dex A (1243 defs/2929.9KiB) with dex B (2 defs/1.1KiB). Result is 1245 defs/1915.6KiB. Took 0.7s
+       [dx] Merged dex A (1245 defs/1915.6KiB) with dex B (70 defs/123.1KiB). Result is 1315 defs/2508.9KiB. Took 0.2s
+       [dx] Result compacted from 3428.4KiB to 2171.2KiB to save 1257.2KiB
+       [dx] Merged dex A (1315 defs/2508.9KiB) with dex B (99 defs/159.6KiB). Result is 1414 defs/2171.2KiB. Took 0.3s
+       [dx] Merged dex A (1414 defs/2171.2KiB) with dex B (297 defs/326.8KiB). Result is 1711 defs/3070.0KiB. Took 0.4s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/res/drawable/aarddict.png => /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/aarddict.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/aarddict.png: 89% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/res/drawable/flattr.png => /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/flattr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/flattr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/res/drawable/ic_menu_aarddict.png => /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/ic_menu_aarddict.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/ic_menu_aarddict.png: 98% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/res/drawable/ic_menu_refresh.png => /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/ic_menu_refresh.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/ic_menu_refresh.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/res/drawable/ic_menu_zoom_in.png => /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/ic_menu_zoom_in.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/ic_menu_zoom_in.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/res/drawable/ic_menu_zoom_out.png => /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/ic_menu_zoom_out.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/ic_menu_zoom_out.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/res/drawable/ic_next.png => /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/ic_next.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/res/drawable/ic_next.png: 0% size of source)
+   [crunch] Crunched 7 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+     [aapt] aapt: warning: string 'mnRefresh' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/res; found: ru
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating LookupActivity-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/LookupActivity-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/aarddict.android_13_src/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 1 minute 29 seconds

@@ -1,0 +1,448 @@
+Buildfile: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: MainActivity
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for MainActivity...
+[gettarget] Project Target:   Android 4.1.2
+[gettarget] API level:        16
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for MainActivity...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 32 source files to /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/classes
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                 ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                  ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                   ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                      ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                        ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                          ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                           ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                            ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                             ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                              ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                               ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                                ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                                   ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                                    ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                                       ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                                        ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                                         ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                                          ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                                             ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                                              ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:31: warning: unmappable character for encoding UTF-8
+    [javac] 			mBaseDir = f.getAbsolutePath();//���̃t�@�C�������܂܂��Ԃ͌����𑱂���B
+    [javac] 			                                                               ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		        ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		          ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		            ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		              ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		               ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                   ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                     ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                      ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                         ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                           ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                             ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                              ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                               ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                 ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                     ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                       ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                        ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                         ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                           ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                             ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                              ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                               ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                                ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                                        ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                                          ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                                           ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:33: warning: unmappable character for encoding UTF-8
+    [javac] 		}else{//�t�@�C���̏ꍇ�͂��̃t�@�C�����܂ރf�B���N�g����baseDir�Ƃ���B
+    [javac] 		                                                            ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                    ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                      ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                       ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                           ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                            ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                             ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                              ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                                ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                                  ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                                    ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                                     ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                                      ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                                        ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                                          ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                                            ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                                             ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:36: warning: unmappable character for encoding UTF-8
+    [javac] 			mInitReturn = f.getAbsolutePath();//�ŏ��ɕԋp����t�@�C���p�X�͂���
+    [javac] 			                                                              ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:52: warning: unmappable character for encoding UTF-8
+    [javac]     		if(!mInitReturn.equals("")){//����
+    [javac]     		                              ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:52: warning: unmappable character for encoding UTF-8
+    [javac]     		if(!mInitReturn.equals("")){//����
+    [javac]     		                               ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:52: warning: unmappable character for encoding UTF-8
+    [javac]     		if(!mInitReturn.equals("")){//����
+    [javac]     		                                ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:52: warning: unmappable character for encoding UTF-8
+    [javac]     		if(!mInitReturn.equals("")){//����
+    [javac]     		                                 ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                          ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                            ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                 ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                  ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                    ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                     ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                      ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                       ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                        ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                         ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                           ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                             ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                              ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                               ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                                ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                                  ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                                   ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                                     ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:64: warning: unmappable character for encoding UTF-8
+    [javac]     		if(mPreviousReturn.equals(""))return "";//�O�񌩂���Ȃ������ꍇ�͂����Ƌ��Ԃ��B
+    [javac]     		                                                                      ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:151: warning: unmappable character for encoding UTF-8
+    [javac] 		//fileName�����鎞�́A�T���Ď��̃t�@�C����������
+    [javac] 		          ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:151: warning: unmappable character for encoding UTF-8
+    [javac] 		//fileName�����鎞�́A�T���Ď��̃t�@�C����������
+    [javac] 		           ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:151: warning: unmappable character for encoding UTF-8
+    [javac] 		//fileName�����鎞�́A�T���Ď��̃t�@�C����������
+    [javac] 		            ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:151: warning: unmappable character for encoding UTF-8
+    [javac] 		//fileName�����鎞�́A�T���Ď��̃t�@�C����������
+    [javac] 		             ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:151: warning: unmappable character for encoding UTF-8
+    [javac] 		//fileName�����鎞�́A�T���Ď��̃t�@�C����������
+    [javac] 		              ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:151: warning: unmappable character for encoding UTF-8
+    [javac] 		//fileName�����鎞�́A�T���Ď��̃t�@�C����������
+    [javac] 		                ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:151: warning: unmappable character for encoding UTF-8
+    [javac] 		//fileName�����鎞�́A�T���Ď��̃t�@�C����������
+    [javac] 		                   ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:151: warning: unmappable character for encoding UTF-8
+    [javac] 		//fileName�����鎞�́A�T���Ď��̃t�@�C����������
+    [javac] 		                     ^
+    [javac] /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/src/jp/gr/java_conf/hatalab/mnv/DirList.java:151: warning: unmappable character for encoding UTF-8
+    [javac] 		//fileName�����鎞�́A�T���Ď��̃t�@�C����������
+    [javac] 		                      ^
+    [javac] Note: Some input files use or override a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] 100 warnings
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/classes.dex...
+       [dx] Merged dex A (153 defs/219.0KiB) with dex B (297 defs/326.8KiB). Result is 450 defs/659.0KiB. Took 1.6s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-hdpi/folder01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/folder01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/folder01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-hdpi/icon.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-hdpi/icon_org.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/icon_org.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/icon_org.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-hdpi/otherfile02.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/otherfile02.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/otherfile02.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-hdpi/textfile01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/textfile01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/textfile01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-hdpi/tombofile01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/tombofile01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/tombofile01.png: 85% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-hdpi/updir01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/updir01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-hdpi/updir01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-ldpi/folder01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/folder01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/folder01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-ldpi/icon.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-ldpi/icon_org.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/icon_org.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/icon_org.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-ldpi/otherfile02.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/otherfile02.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/otherfile02.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-ldpi/textfile01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/textfile01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/textfile01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-ldpi/tombofile01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/tombofile01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/tombofile01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-ldpi/updir01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/updir01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-ldpi/updir01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-mdpi/folder01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/folder01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/folder01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-mdpi/icon.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-mdpi/otherfile02.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/otherfile02.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/otherfile02.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-mdpi/textfile01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/textfile01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/textfile01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-mdpi/tombofile01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/tombofile01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/tombofile01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/res/drawable-mdpi/updir01.png => /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/updir01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/res/drawable-mdpi/updir01.png: 0% size of source)
+   [crunch] Crunched 20 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating MainActivity-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/MainActivity-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/swifthand/jp.gr.java_conf.hatalab.mnv_40_src/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 56 seconds

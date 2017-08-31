@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceCategory android:title="Quick Unlock options" android:key="quickunlockoptions">
+<CheckBoxPreference
+android:key="enabled"
+android:title="Enable"
+android:summary="Skip slide to unlock. Add widget to home for quick toggle"
+android:persistent="true"
+/>
+
+<CheckBoxPreference
+android:key="oldmode"
+android:title="Try quicker mode"
+android:summary="Uses android 1.x Disable Keyguard API instead of 2.x lock dismiss window"
+android:persistent="true"
+/>
+
+<!-- category does nothing, just a cosmetic divider. 
+useful in this case since I want users to know it is the Mode and that they can change it
+but i need all the text in the pref itself to explain the mode-->
+
+<CheckBoxPreference android:key="slideGuard" android:title="Lock on slider wake"
+	android:summaryOn="@string/guard_on" android:summaryOff="@string/guard_off"
+	android:persistent="true"/>
+<CheckBoxPreference android:key="FG" android:title="Show Status Notification"
+	android:summaryOn="@string/fg_on" android:summaryOff="@string/fg_off"
+	android:persistent="true"/>
+	</PreferenceCategory>
+<PreferenceCategory android:title="In-Call Touch Lock" android:key="incallLock" android:enabled="true">
+<CheckBoxPreference android:title="Enable" android:summary="Activate touchscreen lock overlay at screen off"
+  android:key="touchLock" android:persistent="true"/>
+<CheckBoxPreference android:title="Back long-press unlock" android:summary="Allow back key long-press to clear lock overlay"
+  android:key="backUnlock" android:persistent="true"/>
+  </PreferenceCategory>
+  <PreferenceCategory android:title="Incoming call options (android 2.2 or earlier)" android:key="incomingoptions" android:enabled="true" android:shouldDisableView="true">
+<CheckBoxPreference android:title="Onscreen Accept" android:summary="Accept via touchscreen button"
+  android:key="callPrompt" android:disableDependentsState="false"
+  android:persistent="true"/>
+ <CheckBoxPreference android:title="Onscreen Reject" android:summary="Reject via touchscreen button"
+  android:key="rejectEnabled" android:dependency="callPrompt"
+  android:persistent="true" />
+  <CheckBoxPreference android:title="Hardware Accept" android:summary="Nav/trackball/cam button to answer"
+  android:key="cameraAccept" 
+  android:persistent="true"/>
+</PreferenceCategory>  	
+	
+<PreferenceCategory android:title="Info" android:key="helpinfo">
+        <i4nc4mp.myLock.MainDialogPreference
+                android:key="howto" android:title="@string/howto_title" android:src="@drawable/icon"
+                android:dialogTitle="@string/howto_title" android:dialogMessage="@string/HowToFull"
+                android:dialogIcon="@drawable/icon" android:negativeButtonText="@null"/>
+        <i4nc4mp.myLock.MainDialogPreference
+                android:key="problem" android:title="@string/ts_title" android:src="@drawable/icon"
+                android:dialogTitle="@string/ts_title" android:dialogMessage="@string/Troubleshooting"
+                android:dialogIcon="@drawable/icon" android:negativeButtonText="@null" />
+                </PreferenceCategory>
+</PreferenceScreen>

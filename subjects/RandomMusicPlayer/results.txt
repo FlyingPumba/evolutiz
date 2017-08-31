@@ -1,0 +1,8 @@
+For the record, the total number of feasible runs is 95 with both
+types of pruning.
+
+No. of feasible runs in Round 1 = 11
+Number of runs that get extended = 7
+Number of feasible runs in Round 2 = 18 (first tap is EJECT) + 6
+(first tap is not EJECT) * 11 = 84
+Total number of feasible runs = 11 + 84 = 95

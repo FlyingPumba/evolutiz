@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="appName">Aard Dictionary</string>
+    <string name="titleLookupActivity">%1$s - %2$s</string>
+    <string name="shortDictInfo">%1$s 在 %2$s, %3$s 打开</string>
+    <plurals name="dictionaries">
+        <item quantity="one">%d 个词典</item>
+        <item quantity="other">%d 个词典</item>        
+    </plurals>    
+    <plurals name="articles">
+        <item quantity="one">%d 篇文章</item>
+        <item quantity="other">%d 篇文章</item>        
+    </plurals>
+    <plurals name="volumes">
+        <item quantity="one">%d 卷</item>
+        <item quantity="other">%d 卷</item>        
+    </plurals>
+    <string name="noDictionaries">
+        
+        &lt;h1&gt;无词典&lt;/h1&gt;
+        &lt;p&gt;请从以下地址获取词典 &lt;a href="http://aarddict.org"&gt;http://aarddict.org&lt;/a&gt;&lt;/p&gt;        
+        
+    </string>    
+    <string name="nothingFound">
+        
+        &lt;h1&gt;什么都没找到&lt;/h1&gt;
+        
+    </string>
+    
+    <string name="about">    
+        
+        &lt;big&gt;%1$s %2$s&lt;/big&gt;
+        &lt;p&gt;(C) 2012 Igor Tkach&lt;/p&gt;
+        &lt;p&gt;&lt;a href=&quot;http://aarddict.org&quot;&gt;http://aarddict.org&lt;/a&gt;&lt;/p&gt;
+            
+    </string>
+    
+    <string name="titleAbout">关于</string>
+    <string name="titleError">错误</string>
+    <string name="titleVerifying">经验中</string>    
+    <string name="titleDictionariesActivity">%s - 词典</string>
+    <string name="titleDictionaryInfoActivity">词典信息</string>
+    
+    <string name="inputHint">开始输入</string>
+    
+    <string name="mnInfo">词库</string>
+    <string name="mnAbout">关于</string>
+    <string name="mnBack">返回</string>
+    <string name="mnNextArticle">下一个</string>
+    <string name="mnViewOnline">在线查看</string>
+    <string name="mnNewLookup">新的查找</string>
+    <string name="mnZoomIn">放大</string>
+    <string name="mnZoomOut">缩小</string>
+
+	<string name="mnDictDetails">信息</string>
+	<string name="mnDictVerify">校验</string>
+	<string name="mnDictRefresh">扫描SD卡</string>
+
+    <string name="titleArticleViewActivity">%1$s - %2$s</string>
+    
+    <string name="btnDismiss">忽略</string>
+    <string name="btnCancel">取消</string>
+    
+    <string name="msgArticleNotFound">文章 \"%s\" 未找到</string>
+    <string name="msgRedirectNotFound">重定向 \"%s\" 未找到</string>    
+    <string name="msgTooManyRedirects">太多的重定向到 \"%s\"</string>
+    <string name="msgErrorLoadingArticle">加载文章 \"%s\" 时出错</string>
+    
+    <string name="msgDataIntegrityVerified">%1$s\n数据完整性校验 %2$s: %3$s</string>
+    <string name="msgDataIntegrityNotVerified">%s\n未校验数据完整性</string>
+    <string name="msgErrorVerifying">校验时遇到错误 %1$s: %2$s</string>
+    <string name="msgDictCorruped">%s 已损坏</string>    
+    <string name="msgDictOk">%s 是良好的</string>
+    
+    <string name="msgLooking">正在查找词典...</string>    
+    <string name="msgLoading">正在加载词典...</string>
+    
+    <string name="verifyOk">确定</string>
+    <string name="verifyCorrupted">被损坏</string>
+    
+    <string name="tabDescription">说明</string>
+    <string name="tabCopyright">版权所有</string>
+    <string name="tabSource">源码</string>
+    <string name="tabLicense">许可协议</string>
+    
+    <string name="scanDevice">扫描SD卡</string>
+    
+    <string name="toastDictFileLoaded">已从 %s 中载入了词典</string>
+    <string name="toastDictFileFailed">从 %s 中载入词典失败</string>       
+</resources>

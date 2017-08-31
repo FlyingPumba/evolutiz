@@ -1,0 +1,492 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/k9mail/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: k9mail
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for k9mail...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/k9mail/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for k9mail...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [aapt] aapt: warning: string 'message_compose_fwd_header_fmt' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/k9mail/res; found: pt_BR
+     [aapt] aapt: warning: string 'status_polling_off' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/k9mail/res; found: gl
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 164 source files to /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/classes
+    [javac] Note: /vagrant/subjects/tool_subjects/dynodroid/k9mail/src/com/fsck/k9/helper/ContactsSdk3_4.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/classes
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/junit-4.8.2.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/commons-codec-1.3.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/jzlib-1.0.7.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/jutf7-1.0.1-SNAPSHOT.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/apache-mime4j-core-0.7-SNAPSHOT.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/apache-mime4j-dom-0.7-SNAPSHOT.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/commons-logging-1.1.1.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/commons-io-2.0.1.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/bcprov-jdk15-143.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/junit-4.8.2.jar -> junit-4.8.2-b85ff34e0ccfaedae105f57cc0e5e08e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/commons-codec-1.3.jar -> commons-codec-1.3-a9efce7af066e9cca4fb6d5c24779720.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/jzlib-1.0.7.jar -> jzlib-1.0.7-7e8ab50ade81e3b763ee127c45b50623.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/jutf7-1.0.1-SNAPSHOT.jar -> jutf7-1.0.1-SNAPSHOT-b51f022a433d0e789ed726569e363e04.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/apache-mime4j-core-0.7-SNAPSHOT.jar -> apache-mime4j-core-0.7-SNAPSHOT-611737207fdbbdc001d913fad96fdfd6.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/apache-mime4j-dom-0.7-SNAPSHOT.jar -> apache-mime4j-dom-0.7-SNAPSHOT-2dcb1f5374f7efe59eab186a4129de29.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/commons-logging-1.1.1.jar -> commons-logging-1.1.1-8aeb68decf719a77835e54eb7a39ddea.jar
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.apache.commons.logging.impl.LogFactoryImpl$1) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.apache.commons.logging.impl.LogFactoryImpl$2) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.apache.commons.logging.impl.LogFactoryImpl$3) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.apache.commons.logging.impl.SimpleLog$1) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.apache.commons.logging.impl.WeakHashtable$1) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.apache.commons.logging.LogFactory$1) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.apache.commons.logging.LogFactory$2) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.apache.commons.logging.LogFactory$3) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.apache.commons.logging.LogFactory$4) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.apache.commons.logging.LogFactory$5) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.apache.commons.logging.LogFactory$6) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/commons-io-2.0.1.jar -> commons-io-2.0.1-f58ac585602e9be0902fb4bd0ca6d067.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/k9mail/libs/bcprov-jdk15-143.jar -> bcprov-jdk15-143-3deebd1cac748532b1c97df05738504f.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/classes.dex...
+       [dx] Merged dex A (591 defs/1294.3KiB) with dex B (230 defs/160.6KiB). Result is 821 defs/1760.2KiB. Took 1.6s
+       [dx] Merged dex A (821 defs/1760.2KiB) with dex B (2 defs/1.1KiB). Result is 823 defs/2209.9KiB. Took 0.7s
+       [dx] Result compacted from 2963.6KiB to 1483.2KiB to save 1480.4KiB
+       [dx] Merged dex A (823 defs/2209.9KiB) with dex B (25 defs/38.9KiB). Result is 848 defs/1483.2KiB. Took 0.7s
+       [dx] Merged dex A (848 defs/1483.2KiB) with dex B (14 defs/51.6KiB). Result is 862 defs/1859.7KiB. Took 0.3s
+       [dx] Merged dex A (862 defs/1859.7KiB) with dex B (7 defs/10.1KiB). Result is 869 defs/2350.7KiB. Took 0.2s
+       [dx] Result compacted from 3203.6KiB to 1619.1KiB to save 1584.5KiB
+       [dx] Merged dex A (869 defs/2350.7KiB) with dex B (55 defs/87.5KiB). Result is 924 defs/1619.1KiB. Took 0.3s
+       [dx] Merged dex A (924 defs/1619.1KiB) with dex B (163 defs/241.3KiB). Result is 1087 defs/2261.4KiB. Took 0.1s
+       [dx] Merged dex A (1087 defs/2261.4KiB) with dex B (28 defs/60.8KiB). Result is 1115 defs/2924.5KiB. Took 0.1s
+       [dx] Result compacted from 4049.7KiB to 2036.1KiB to save 2013.7KiB
+       [dx] Merged dex A (1115 defs/2924.5KiB) with dex B (104 defs/144.8KiB). Result is 1219 defs/2036.1KiB. Took 0.6s
+       [dx] Merged dex A (1219 defs/2036.1KiB) with dex B (1352 defs/1360.5KiB). Result is 2571 defs/4061.9KiB. Took 0.2s
+       [dx] Result compacted from 5395.5KiB to 3704.8KiB to save 1690.8KiB
+       [dx] Merged dex A (2571 defs/4061.9KiB) with dex B (297 defs/326.8KiB). Result is 2868 defs/3704.8KiB. Took 0.3s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/attached_image_placeholder.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/attached_image_placeholder.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/attached_image_placeholder.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/btn_check_buttonless_off.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_check_buttonless_off.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_check_buttonless_off.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/btn_check_buttonless_on.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_check_buttonless_on.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_check_buttonless_on.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/btn_dialog_disable.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_dialog_disable.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_dialog_disable.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/btn_dialog_normal.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_dialog_normal.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_dialog_normal.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/btn_dialog_pressed.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_dialog_pressed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_dialog_pressed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/btn_dialog_selected.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_dialog_selected.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_dialog_selected.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/btn_star_big_buttonless_off.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_star_big_buttonless_off.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_star_big_buttonless_off.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/btn_star_big_buttonless_on.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_star_big_buttonless_on.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/btn_star_big_buttonless_on.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/button_indicator_next.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/button_indicator_next.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/button_indicator_next.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/button_indicator_prev.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/button_indicator_prev.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/button_indicator_prev.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/colorpicker_arrow.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/colorpicker_arrow.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/colorpicker_arrow.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/colorpicker_menjadi.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/colorpicker_menjadi.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/colorpicker_menjadi.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/colorpicker_spyglass.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/colorpicker_spyglass.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/colorpicker_spyglass.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/divider_horizontal_email.9.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/divider_horizontal_email.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/divider_horizontal_email.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/email_quoted_bar.9.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/email_quoted_bar.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/email_quoted_bar.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/envelope.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/envelope.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/envelope.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_button_close_clear_cancel.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_close_clear_cancel.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_close_clear_cancel.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_button_delete.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_delete.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_delete.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_button_flag.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_flag.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_flag.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_button_mark_read.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_mark_read.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_mark_read.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_button_mark_unread.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_mark_unread.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_mark_unread.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_button_move.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_move.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_move.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_button_unflag.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_unflag.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_button_unflag.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_delete.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_delete.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_delete.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_email_answered_small.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_email_answered_small.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_email_answered_small.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_email_attachment.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_email_attachment.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_email_attachment.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_email_attachment_small.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_email_attachment_small.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_email_attachment_small.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_account_list.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_account_list.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_account_list.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_add.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_add.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_add.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_attachment.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_attachment.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_attachment.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_batch.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_batch.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_batch.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_cc.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_cc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_cc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_close_clear_cancel.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_close_clear_cancel.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_close_clear_cancel.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_compose.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_compose.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_compose.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_delete.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_delete.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_delete.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_edit.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_edit.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_edit.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_forward_mail.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_forward_mail.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_forward_mail.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_identity.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_identity.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_identity.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_inbox.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_inbox.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_inbox.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_mark.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_mark.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_mark.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_move.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_move.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_move.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_navigate.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_navigate.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_navigate.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_preferences.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_preferences.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_preferences.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_refresh.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_refresh.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_refresh.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_reply.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_reply.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_reply.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_reply_all.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_reply_all.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_reply_all.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_reverse_sort.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_reverse_sort.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_reverse_sort.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_save_draft.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_save_draft.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_save_draft.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_search.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_search.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_search.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_select_all.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_select_all.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_select_all.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_send.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_send.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_send.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_menu_set_sort.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_set_sort.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_menu_set_sort.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/ic_show_folders.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_show_folders.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/ic_show_folders.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/icon.png: 54% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/overlay_error.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/overlay_error.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/overlay_error.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/overlay_ok.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/overlay_ok.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/overlay_ok.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/stat_notify_email_generic.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/stat_notify_email_generic.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/stat_notify_email_generic.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/stat_notify_email_yellow.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/stat_notify_email_yellow.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/stat_notify_email_yellow.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable-hdpi/text_box.9.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/text_box.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable-hdpi/text_box.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/attached_image_placeholder.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/attached_image_placeholder.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/attached_image_placeholder.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/btn_check_buttonless_off.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_check_buttonless_off.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_check_buttonless_off.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/btn_check_buttonless_on.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_check_buttonless_on.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_check_buttonless_on.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/btn_check_small_off.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_check_small_off.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_check_small_off.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/btn_check_small_on.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_check_small_on.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_check_small_on.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/btn_dialog_disable.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_dialog_disable.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_dialog_disable.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/btn_dialog_normal.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_dialog_normal.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_dialog_normal.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/btn_dialog_pressed.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_dialog_pressed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_dialog_pressed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/btn_dialog_selected.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_dialog_selected.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_dialog_selected.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/btn_star_big_buttonless_off.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_star_big_buttonless_off.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_star_big_buttonless_off.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/btn_star_big_buttonless_on.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_star_big_buttonless_on.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/btn_star_big_buttonless_on.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/button_indicator_next.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/button_indicator_next.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/button_indicator_next.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/button_indicator_prev.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/button_indicator_prev.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/button_indicator_prev.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/colorpicker_arrow.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/colorpicker_arrow.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/colorpicker_arrow.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/colorpicker_hue.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/colorpicker_hue.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/colorpicker_hue.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/colorpicker_menjadi.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/colorpicker_menjadi.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/colorpicker_menjadi.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/colorpicker_spyglass.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/colorpicker_spyglass.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/colorpicker_spyglass.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/divider_horizontal_email.9.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/divider_horizontal_email.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/divider_horizontal_email.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/email_quoted_bar.9.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/email_quoted_bar.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/email_quoted_bar.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/envelope.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/envelope.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/envelope.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_button_close_clear_cancel.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_close_clear_cancel.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_close_clear_cancel.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_button_delete.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_delete.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_delete.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_button_flag.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_flag.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_flag.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_button_mark_read.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_mark_read.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_mark_read.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_button_mark_unread.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_mark_unread.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_mark_unread.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_button_move.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_move.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_move.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_button_unflag.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_unflag.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_button_unflag.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_delete.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_delete.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_delete.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_email_answered_small.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_email_answered_small.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_email_answered_small.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_email_attachment.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_email_attachment.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_email_attachment.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_email_attachment_small.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_email_attachment_small.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_email_attachment_small.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_email_thread_open_bottom_default.9.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_email_thread_open_bottom_default.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_email_thread_open_bottom_default.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_account_list.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_account_list.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_account_list.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_add.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_add.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_add.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_attachment.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_attachment.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_attachment.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_batch.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_batch.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_batch.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_cc.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_cc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_cc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_clear.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_clear.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_clear.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_close_clear_cancel.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_close_clear_cancel.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_close_clear_cancel.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_compact.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_compact.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_compact.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_compose.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_compose.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_compose.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_delete.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_delete.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_delete.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_edit.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_edit.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_edit.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_forward_mail.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_forward_mail.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_forward_mail.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_identity.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_identity.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_identity.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_inbox.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_inbox.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_inbox.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_mark.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_mark.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_mark.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_move.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_move.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_move.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_navigate.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_navigate.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_navigate.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_preferences.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_preferences.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_preferences.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_refresh.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_refresh.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_refresh.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_reply.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_reply.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_reply.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_reply_all.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_reply_all.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_reply_all.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_reverse_sort.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_reverse_sort.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_reverse_sort.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_save_draft.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_save_draft.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_save_draft.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_search.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_search.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_search.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_select_all.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_select_all.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_select_all.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_send.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_send.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_send.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_menu_set_sort.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_set_sort.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_menu_set_sort.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/ic_show_folders.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_show_folders.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/ic_show_folders.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/icon.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/icon.png: 54% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/overlay_error.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/overlay_error.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/overlay_error.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/overlay_ok.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/overlay_ok.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/overlay_ok.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/panel_separator.9.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/panel_separator.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/panel_separator.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/popup_background.9.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/popup_background.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/popup_background.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/signed_large.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/signed_large.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/signed_large.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/stat_notify_email_generic.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/stat_notify_email_generic.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/stat_notify_email_generic.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/stat_notify_email_yellow.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/stat_notify_email_yellow.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/stat_notify_email_yellow.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/k9mail/res/drawable/text_box.9.png => /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/text_box.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/res/drawable/text_box.9.png: 0% size of source)
+   [crunch] Crunched 129 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+     [aapt] aapt: warning: string 'message_compose_fwd_header_fmt' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/k9mail/res; found: pt_BR
+     [aapt] aapt: warning: string 'status_polling_off' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/k9mail/res; found: gl
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating k9mail-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/k9mail-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/k9mail/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 2 minutes 42 seconds

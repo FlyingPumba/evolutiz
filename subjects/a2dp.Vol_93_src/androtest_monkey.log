@@ -1,0 +1,2314 @@
+:Monkey: seed=0 count=10000
+:AllowPackage: a2dp.Vol
+:IncludeCategory: android.intent.category.LAUNCHER
+:IncludeCategory: android.intent.category.MONKEY
+// Event percentages:
+//   0: 15.0%
+//   1: 10.0%
+//   2: 15.0%
+//   3: 25.0%
+//   4: 15.0%
+//   5: 2.0%
+//   6: 2.0%
+//   7: 1.0%
+//   8: 15.0%
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=234.0 y=197.0
+:Sending Pointer ACTION_UP x=238.0 y=190.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=56.0 y=280.0
+:Sending Pointer ACTION_UP x=69.0 y=271.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=1.0
+:Sending Pointer ACTION_DOWN x=28.0 y=490.0
+:Sending Pointer ACTION_UP x=28.0 y=490.0
+:Sending Pointer ACTION_DOWN x=403.0 y=645.0
+:Sending Pointer ACTION_UP x=397.0 y=661.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=98.0 y=752.0
+:Sending Pointer ACTION_UP x=98.0 y=752.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=264.0 y=458.0
+:Sending Pointer ACTION_UP x=264.0 y=458.0
+:Sending Pointer ACTION_DOWN x=113.0 y=170.0
+:Sending Pointer ACTION_UP x=98.0 y=156.0
+    //[calendar_time:2014-08-24 22:46:19.914  system_uptime:80231]
+    // Sending event #100
+:Sending Pointer ACTION_MOVE x=2.0 y=0.0
+:Sending Pointer ACTION_DOWN x=196.0 y=463.0
+:Sending Pointer ACTION_UP x=236.0 y=454.0
+:Sending Pointer ACTION_DOWN x=107.0 y=579.0
+:Sending Pointer ACTION_UP x=107.0 y=579.0
+:Sending Pointer ACTION_MOVE x=4.0 y=1.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=304.0 y=685.0
+:Sending Pointer ACTION_UP x=317.0 y=674.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=1.0
+:Sending Pointer ACTION_DOWN x=102.0 y=574.0
+:Sending Pointer ACTION_UP x=102.0 y=574.0
+:Sending Pointer ACTION_DOWN x=106.0 y=130.0
+    //[calendar_time:2014-08-24 22:46:23.181  system_uptime:83499]
+    // Sending event #200
+:Sending Pointer ACTION_UP x=115.0 y=120.0
+:Sending Pointer ACTION_MOVE x=2.0 y=2.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=339.0 y=689.0
+:Sending Pointer ACTION_UP x=339.0 y=689.0
+:Sending Pointer ACTION_DOWN x=311.0 y=44.0
+:Sending Pointer ACTION_UP x=311.0 y=44.0
+:Sending Pointer ACTION_DOWN x=337.0 y=221.0
+:Sending Pointer ACTION_UP x=337.0 y=221.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=4.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=437.0 y=183.0
+:Sending Pointer ACTION_UP x=450.0 y=158.0
+:Sending Pointer ACTION_DOWN x=5.0 y=58.0
+:Sending Pointer ACTION_UP x=-4.0 y=58.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-2.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=80.0 y=200.0
+:Sending Pointer ACTION_UP x=80.0 y=200.0
+    //[calendar_time:2014-08-24 22:46:25.879  system_uptime:86195]
+    // Sending event #300
+    //[calendar_time:2014-08-24 22:46:25.914  system_uptime:86233]
+    // Sending event #300
+:Sending Pointer ACTION_MOVE x=2.0 y=-4.0
+    // Allowing start of Intent { cmp=a2dp.Vol/.Preferences } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=278.0 y=104.0
+:Sending Pointer ACTION_UP x=278.0 y=104.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=4.0
+:Sending Pointer ACTION_DOWN x=380.0 y=319.0
+:Sending Pointer ACTION_UP x=380.0 y=319.0
+:Sending Pointer ACTION_MOVE x=2.0 y=4.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=318.0 y=142.0
+:Sending Pointer ACTION_UP x=318.0 y=142.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=0.0
+:Sending Pointer ACTION_DOWN x=417.0 y=796.0
+:Sending Pointer ACTION_UP x=412.0 y=-14.0
+:Sending Pointer ACTION_DOWN x=182.0 y=84.0
+:Sending Pointer ACTION_UP x=182.0 y=84.0
+:Sending Pointer ACTION_DOWN x=19.0 y=228.0
+:Sending Pointer ACTION_UP x=23.0 y=237.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=11.0 y=702.0
+    //[calendar_time:2014-08-24 22:46:33.895  system_uptime:94212]
+    // Sending event #400
+:Sending Pointer ACTION_UP x=11.0 y=702.0
+:Sending Pointer ACTION_DOWN x=424.0 y=48.0
+:Sending Pointer ACTION_UP x=415.0 y=28.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=306.0 y=601.0
+:Sending Pointer ACTION_UP x=306.0 y=601.0
+:Sending Pointer ACTION_DOWN x=116.0 y=449.0
+:Sending Pointer ACTION_UP x=126.0 y=434.0
+:Sending Pointer ACTION_DOWN x=336.0 y=525.0
+:Sending Pointer ACTION_UP x=336.0 y=525.0
+:Sending Pointer ACTION_DOWN x=27.0 y=609.0
+:Sending Pointer ACTION_UP x=27.0 y=609.0
+:Sending Pointer ACTION_DOWN x=44.0 y=89.0
+:Sending Pointer ACTION_UP x=53.0 y=99.0
+:Sending Pointer ACTION_DOWN x=126.0 y=450.0
+:Sending Pointer ACTION_UP x=126.0 y=450.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=231.0 y=14.0
+:Sending Pointer ACTION_UP x=231.0 y=14.0
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_DOWN x=278.0 y=582.0
+:Sending Pointer ACTION_UP x=278.0 y=582.0
+:Sending Pointer ACTION_DOWN x=451.0 y=437.0
+:Sending Pointer ACTION_UP x=451.0 y=437.0
+:Sending Pointer ACTION_DOWN x=98.0 y=44.0
+:Sending Pointer ACTION_UP x=98.0 y=44.0
+    //[calendar_time:2014-08-24 22:46:37.913  system_uptime:98231]
+    // Sending event #500
+    //[calendar_time:2014-08-24 22:46:37.917  system_uptime:98235]
+    // Sending event #500
+:Sending Pointer ACTION_DOWN x=472.0 y=768.0
+:Sending Pointer ACTION_UP x=472.0 y=768.0
+:Sending Pointer ACTION_DOWN x=103.0 y=92.0
+:Sending Pointer ACTION_UP x=103.0 y=92.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=216.0 y=252.0
+:Sending Pointer ACTION_UP x=216.0 y=252.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=428.0 y=212.0
+:Sending Pointer ACTION_UP x=428.0 y=212.0
+:Sending Pointer ACTION_DOWN x=164.0 y=545.0
+:Sending Pointer ACTION_UP x=176.0 y=559.0
+:Sending Pointer ACTION_DOWN x=367.0 y=799.0
+:Sending Pointer ACTION_UP x=367.0 y=799.0
+:Sending Pointer ACTION_DOWN x=57.0 y=269.0
+:Sending Pointer ACTION_UP x=57.0 y=269.0
+:Sending Pointer ACTION_DOWN x=128.0 y=32.0
+:Sending Pointer ACTION_UP x=128.0 y=32.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+    // activityResuming(a2dp.Vol)
+:Sending Pointer ACTION_MOVE x=-2.0 y=-4.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=429.0 y=152.0
+:Sending Pointer ACTION_UP x=429.0 y=152.0
+:Sending Pointer ACTION_DOWN x=326.0 y=249.0
+:Sending Pointer ACTION_UP x=326.0 y=249.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+    //[calendar_time:2014-08-24 22:46:43.663  system_uptime:103980]
+    // Sending event #600
+:Sending Pointer ACTION_DOWN x=67.0 y=402.0
+:Sending Pointer ACTION_UP x=67.0 y=402.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=0.0
+:Sending Pointer ACTION_DOWN x=356.0 y=711.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_UP x=367.0 y=717.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_DOWN x=54.0 y=198.0
+:Sending Pointer ACTION_UP x=54.0 y=198.0
+:Sending Pointer ACTION_DOWN x=208.0 y=541.0
+:Sending Pointer ACTION_UP x=208.0 y=541.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-1.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=241.0 y=520.0
+:Sending Pointer ACTION_UP x=241.0 y=520.0
+:Sending Pointer ACTION_DOWN x=430.0 y=83.0
+:Sending Pointer ACTION_UP x=447.0 y=83.0
+:Sending Pointer ACTION_DOWN x=265.0 y=613.0
+:Sending Pointer ACTION_UP x=265.0 y=613.0
+    //[calendar_time:2014-08-24 22:46:47.580  system_uptime:107898]
+    // Sending event #700
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=318.0 y=520.0
+:Sending Pointer ACTION_UP x=318.0 y=520.0
+:Sending Pointer ACTION_MOVE x=2.0 y=1.0
+:Sending Pointer ACTION_DOWN x=388.0 y=614.0
+:Sending Pointer ACTION_UP x=386.0 y=595.0
+:Sending Pointer ACTION_DOWN x=305.0 y=352.0
+:Sending Pointer ACTION_UP x=305.0 y=352.0
+:Sending Pointer ACTION_DOWN x=295.0 y=797.0
+:Sending Pointer ACTION_UP x=295.0 y=797.0
+:Sending Pointer ACTION_DOWN x=447.0 y=8.0
+:Sending Pointer ACTION_UP x=447.0 y=8.0
+:Sending Pointer ACTION_DOWN x=326.0 y=623.0
+:Sending Pointer ACTION_UP x=326.0 y=623.0
+:Sending Pointer ACTION_DOWN x=14.0 y=548.0
+:Sending Pointer ACTION_UP x=13.0 y=548.0
+:Sending Pointer ACTION_DOWN x=168.0 y=506.0
+:Sending Pointer ACTION_UP x=168.0 y=506.0
+:Sending Pointer ACTION_DOWN x=359.0 y=662.0
+:Sending Pointer ACTION_UP x=359.0 y=662.0
+:Sending Pointer ACTION_DOWN x=479.0 y=758.0
+:Sending Pointer ACTION_UP x=479.0 y=758.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=1.0
+:Sending Pointer ACTION_MOVE x=4.0 y=1.0
+    //[calendar_time:2014-08-24 22:46:53.067  system_uptime:113384]
+    // Sending event #800
+:Sending Pointer ACTION_DOWN x=18.0 y=246.0
+:Sending Pointer ACTION_UP x=18.0 y=246.0
+:Sending Pointer ACTION_DOWN x=262.0 y=708.0
+:Sending Pointer ACTION_UP x=262.0 y=708.0
+:Sending Pointer ACTION_DOWN x=459.0 y=394.0
+:Sending Pointer ACTION_UP x=459.0 y=394.0
+:Sending Pointer ACTION_MOVE x=0.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-1.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=37.0 y=393.0
+:Sending Pointer ACTION_UP x=37.0 y=393.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+    //[calendar_time:2014-08-24 22:46:58.774  system_uptime:119092]
+    // Sending event #900
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=83.0 y=482.0
+:Sending Pointer ACTION_UP x=83.0 y=482.0
+:Sending Pointer ACTION_DOWN x=429.0 y=577.0
+:Sending Pointer ACTION_UP x=429.0 y=577.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=345.0 y=399.0
+:Sending Pointer ACTION_UP x=349.0 y=400.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=4.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=198.0 y=512.0
+:Sending Pointer ACTION_UP x=181.0 y=494.0
+:Sending Pointer ACTION_DOWN x=25.0 y=239.0
+    //[calendar_time:2014-08-24 22:47:02.342  system_uptime:122659]
+    // Sending event #1000
+:Sending Pointer ACTION_UP x=5.0 y=245.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=2.0
+:Sending Pointer ACTION_DOWN x=239.0 y=152.0
+:Sending Pointer ACTION_UP x=239.0 y=152.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=187.0 y=222.0
+:Sending Pointer ACTION_UP x=187.0 y=222.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-3.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Pointer ACTION_DOWN x=134.0 y=582.0
+:Sending Pointer ACTION_UP x=134.0 y=582.0
+:Sending Pointer ACTION_MOVE x=3.0 y=2.0
+    //[calendar_time:2014-08-24 22:47:05.017  system_uptime:125334]
+    // Sending event #1100
+:Sending Pointer ACTION_DOWN x=45.0 y=556.0
+:Sending Pointer ACTION_UP x=45.0 y=556.0
+:Sending Pointer ACTION_DOWN x=156.0 y=788.0
+:Sending Pointer ACTION_UP x=156.0 y=788.0
+:Sending Pointer ACTION_DOWN x=468.0 y=4.0
+:Sending Pointer ACTION_UP x=465.0 y=7.0
+:Sending Pointer ACTION_DOWN x=310.0 y=761.0
+:Sending Pointer ACTION_UP x=310.0 y=761.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=426.0 y=203.0
+:Sending Pointer ACTION_UP x=426.0 y=203.0
+:Sending Pointer ACTION_DOWN x=264.0 y=42.0
+:Sending Pointer ACTION_UP x=264.0 y=42.0
+:Sending Pointer ACTION_DOWN x=448.0 y=691.0
+:Sending Pointer ACTION_UP x=434.0 y=688.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-4.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=0.0
+:Sending Pointer ACTION_DOWN x=255.0 y=359.0
+:Sending Pointer ACTION_UP x=255.0 y=359.0
+:Sending Pointer ACTION_DOWN x=147.0 y=149.0
+:Sending Pointer ACTION_UP x=192.0 y=158.0
+:Sending Pointer ACTION_DOWN x=257.0 y=636.0
+:Sending Pointer ACTION_UP x=257.0 y=636.0
+:Sending Pointer ACTION_DOWN x=125.0 y=106.0
+    //[calendar_time:2014-08-24 22:47:09.008  system_uptime:129325]
+    // Sending event #1200
+:Sending Pointer ACTION_UP x=125.0 y=106.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=0.0 y=4.0
+:Sending Pointer ACTION_DOWN x=371.0 y=237.0
+:Sending Pointer ACTION_UP x=371.0 y=237.0
+:Sending Pointer ACTION_DOWN x=50.0 y=10.0
+:Sending Pointer ACTION_UP x=50.0 y=10.0
+:Sending Pointer ACTION_DOWN x=344.0 y=161.0
+:Sending Pointer ACTION_UP x=344.0 y=161.0
+:Sending Pointer ACTION_DOWN x=203.0 y=119.0
+:Sending Pointer ACTION_UP x=203.0 y=119.0
+    // activityResuming(a2dp.Vol)
+:Sending Pointer ACTION_DOWN x=316.0 y=187.0
+:Sending Pointer ACTION_UP x=316.0 y=187.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=3.0
+:Sending Pointer ACTION_DOWN x=226.0 y=45.0
+:Sending Pointer ACTION_UP x=236.0 y=60.0
+:Sending Pointer ACTION_DOWN x=340.0 y=473.0
+:Sending Pointer ACTION_UP x=340.0 y=473.0
+:Sending Pointer ACTION_DOWN x=433.0 y=337.0
+:Sending Pointer ACTION_UP x=433.0 y=337.0
+:Sending Pointer ACTION_DOWN x=207.0 y=718.0
+:Sending Pointer ACTION_UP x=207.0 y=718.0
+:Sending Pointer ACTION_DOWN x=207.0 y=82.0
+    //[calendar_time:2014-08-24 22:47:15.795  system_uptime:136113]
+    // Sending event #1300
+:Sending Pointer ACTION_UP x=234.0 y=77.0
+    // activityResuming(com.android.launcher)
+    // Rejecting resume of package com.android.launcher
+:Sending Pointer ACTION_DOWN x=408.0 y=569.0
+:Sending Pointer ACTION_UP x=404.0 y=550.0
+:Sending Pointer ACTION_DOWN x=367.0 y=157.0
+:Sending Pointer ACTION_UP x=369.0 y=165.0
+:Sending Pointer ACTION_DOWN x=354.0 y=571.0
+:Sending Pointer ACTION_UP x=354.0 y=571.0
+:Sending Pointer ACTION_DOWN x=51.0 y=783.0
+:Sending Pointer ACTION_UP x=51.0 y=783.0
+:Sending Pointer ACTION_DOWN x=118.0 y=258.0
+:Sending Pointer ACTION_UP x=118.0 y=260.0
+:Sending Pointer ACTION_DOWN x=409.0 y=282.0
+:Sending Pointer ACTION_UP x=409.0 y=282.0
+:Sending Pointer ACTION_MOVE x=2.0 y=1.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=3.0
+:Sending Pointer ACTION_DOWN x=431.0 y=536.0
+:Sending Pointer ACTION_UP x=447.0 y=515.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=1.0
+    //[calendar_time:2014-08-24 22:47:20.711  system_uptime:141028]
+    // Sending event #1400
+:Sending Pointer ACTION_DOWN x=330.0 y=573.0
+:Sending Pointer ACTION_UP x=330.0 y=573.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=108.0 y=127.0
+:Sending Pointer ACTION_UP x=102.0 y=126.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=232.0 y=304.0
+:Sending Pointer ACTION_UP x=232.0 y=304.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=1.0
+:Sending Pointer ACTION_DOWN x=249.0 y=795.0
+:Sending Pointer ACTION_UP x=252.0 y=794.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=-1.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-2.0
+    //[calendar_time:2014-08-24 22:47:26.007  system_uptime:146324]
+    // Sending event #1500
+:Sending Pointer ACTION_DOWN x=293.0 y=71.0
+:Sending Pointer ACTION_UP x=293.0 y=71.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=1.0
+:Sending Pointer ACTION_DOWN x=387.0 y=436.0
+:Sending Pointer ACTION_UP x=387.0 y=436.0
+:Sending Pointer ACTION_DOWN x=126.0 y=474.0
+:Sending Pointer ACTION_UP x=126.0 y=474.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=3.0
+:Sending Pointer ACTION_DOWN x=53.0 y=455.0
+:Sending Pointer ACTION_UP x=53.0 y=455.0
+:Sending Pointer ACTION_DOWN x=241.0 y=365.0
+:Sending Pointer ACTION_UP x=241.0 y=365.0
+:Sending Pointer ACTION_DOWN x=431.0 y=417.0
+:Sending Pointer ACTION_UP x=431.0 y=417.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=172.0 y=26.0
+:Sending Pointer ACTION_UP x=174.0 y=24.0
+:Sending Pointer ACTION_DOWN x=63.0 y=298.0
+    //[calendar_time:2014-08-24 22:47:31.837  system_uptime:152155]
+    // Sending event #1600
+:Sending Pointer ACTION_UP x=63.0 y=298.0
+:Sending Pointer ACTION_DOWN x=182.0 y=144.0
+:Sending Pointer ACTION_UP x=182.0 y=144.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=2.0 y=4.0
+:Sending Pointer ACTION_DOWN x=261.0 y=640.0
+:Sending Pointer ACTION_UP x=261.0 y=640.0
+:Sending Pointer ACTION_MOVE x=3.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=178.0 y=730.0
+:Sending Pointer ACTION_UP x=179.0 y=735.0
+:Sending Pointer ACTION_MOVE x=3.0 y=0.0
+:Sending Pointer ACTION_DOWN x=187.0 y=134.0
+:Sending Pointer ACTION_UP x=180.0 y=131.0
+    //[calendar_time:2014-08-24 22:47:37.616  system_uptime:157934]
+    // Sending event #1700
+    //[calendar_time:2014-08-24 22:47:37.623  system_uptime:157942]
+    // Sending event #1700
+:Sending Pointer ACTION_DOWN x=378.0 y=152.0
+:Sending Pointer ACTION_UP x=371.0 y=157.0
+:Sending Pointer ACTION_DOWN x=165.0 y=461.0
+:Sending Pointer ACTION_UP x=165.0 y=461.0
+:Sending Pointer ACTION_DOWN x=124.0 y=32.0
+:Sending Pointer ACTION_UP x=134.0 y=26.0
+:Sending Pointer ACTION_DOWN x=156.0 y=189.0
+:Sending Pointer ACTION_UP x=156.0 y=189.0
+:Sending Pointer ACTION_DOWN x=343.0 y=559.0
+:Sending Pointer ACTION_UP x=343.0 y=559.0
+:Sending Pointer ACTION_DOWN x=264.0 y=753.0
+:Sending Pointer ACTION_UP x=255.0 y=753.0
+:Sending Pointer ACTION_DOWN x=3.0 y=234.0
+:Sending Pointer ACTION_UP x=3.0 y=234.0
+:Sending Pointer ACTION_DOWN x=437.0 y=424.0
+:Sending Pointer ACTION_UP x=437.0 y=424.0
+:Sending Pointer ACTION_DOWN x=38.0 y=374.0
+:Sending Pointer ACTION_UP x=38.0 y=374.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=235.0 y=777.0
+:Sending Pointer ACTION_UP x=235.0 y=777.0
+:Sending Pointer ACTION_MOVE x=2.0 y=2.0
+    //[calendar_time:2014-08-24 22:47:44.633  system_uptime:164951]
+    // Sending event #1800
+:Sending Pointer ACTION_DOWN x=126.0 y=438.0
+:Sending Pointer ACTION_UP x=117.0 y=446.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=0.0 y=3.0
+:Sending Pointer ACTION_DOWN x=68.0 y=262.0
+:Sending Pointer ACTION_UP x=83.0 y=254.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=349.0 y=16.0
+:Sending Pointer ACTION_UP x=349.0 y=16.0
+:Sending Pointer ACTION_DOWN x=200.0 y=785.0
+:Sending Pointer ACTION_UP x=178.0 y=780.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=0.0
+:Sending Pointer ACTION_DOWN x=361.0 y=618.0
+:Sending Pointer ACTION_UP x=361.0 y=618.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-5.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=-5.0 y=1.0
+    //[calendar_time:2014-08-24 22:47:51.663  system_uptime:171980]
+    // Sending event #1900
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=0.0 y=1.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=2.0
+:Sending Pointer ACTION_DOWN x=18.0 y=289.0
+:Sending Pointer ACTION_UP x=18.0 y=289.0
+:Sending Pointer ACTION_DOWN x=66.0 y=167.0
+:Sending Pointer ACTION_UP x=56.0 y=191.0
+:Sending Pointer ACTION_MOVE x=3.0 y=4.0
+:Sending Pointer ACTION_DOWN x=398.0 y=437.0
+:Sending Pointer ACTION_UP x=393.0 y=454.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-1.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=-1.0 y=-4.0
+    //[calendar_time:2014-08-24 22:47:53.584  system_uptime:173901]
+    // Sending event #2000
+:Sending Pointer ACTION_DOWN x=27.0 y=4.0
+:Sending Pointer ACTION_UP x=27.0 y=4.0
+:Sending Pointer ACTION_DOWN x=469.0 y=449.0
+:Sending Pointer ACTION_UP x=469.0 y=449.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_DOWN x=182.0 y=94.0
+:Sending Pointer ACTION_UP x=186.0 y=83.0
+:Sending Pointer ACTION_DOWN x=348.0 y=603.0
+:Sending Pointer ACTION_UP x=348.0 y=603.0
+:Sending Pointer ACTION_DOWN x=149.0 y=88.0
+:Sending Pointer ACTION_UP x=149.0 y=88.0
+:Sending Pointer ACTION_DOWN x=214.0 y=554.0
+:Sending Pointer ACTION_UP x=223.0 y=557.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=146.0 y=122.0
+    // Allowing start of Intent { cmp=a2dp.Vol/.EditDevice } in package a2dp.Vol
+:Sending Pointer ACTION_UP x=151.0 y=125.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=353.0 y=597.0
+:Sending Pointer ACTION_UP x=353.0 y=597.0
+:Sending Pointer ACTION_DOWN x=155.0 y=475.0
+:Sending Pointer ACTION_UP x=155.0 y=475.0
+:Sending Pointer ACTION_DOWN x=212.0 y=332.0
+:Sending Pointer ACTION_UP x=224.0 y=341.0
+:Sending Pointer ACTION_DOWN x=478.0 y=376.0
+:Sending Pointer ACTION_UP x=-1.0 y=343.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=233.0 y=417.0
+    //[calendar_time:2014-08-24 22:47:56.854  system_uptime:177171]
+    // Sending event #2100
+:Sending Pointer ACTION_UP x=233.0 y=417.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=1.0
+:Sending Pointer ACTION_DOWN x=443.0 y=105.0
+:Sending Pointer ACTION_UP x=443.0 y=105.0
+:Sending Pointer ACTION_MOVE x=1.0 y=2.0
+:Sending Pointer ACTION_DOWN x=160.0 y=409.0
+:Sending Pointer ACTION_UP x=160.0 y=409.0
+:Sending Pointer ACTION_DOWN x=67.0 y=114.0
+:Sending Pointer ACTION_UP x=67.0 y=114.0
+:Sending Pointer ACTION_DOWN x=227.0 y=409.0
+:Sending Pointer ACTION_UP x=216.0 y=400.0
+:Sending Pointer ACTION_DOWN x=168.0 y=770.0
+:Sending Pointer ACTION_UP x=168.0 y=770.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=323.0 y=712.0
+:Sending Pointer ACTION_UP x=323.0 y=712.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=3.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-3.0
+    //[calendar_time:2014-08-24 22:48:05.195  system_uptime:185512]
+    // Sending event #2200
+:Sending Pointer ACTION_DOWN x=398.0 y=692.0
+:Sending Pointer ACTION_UP x=389.0 y=682.0
+:Sending Pointer ACTION_DOWN x=28.0 y=781.0
+:Sending Pointer ACTION_UP x=26.0 y=773.0
+:Sending Pointer ACTION_MOVE x=0.0 y=4.0
+:Sending Pointer ACTION_DOWN x=338.0 y=614.0
+:Sending Pointer ACTION_UP x=343.0 y=593.0
+:Sending Pointer ACTION_DOWN x=331.0 y=521.0
+:Sending Pointer ACTION_UP x=340.0 y=527.0
+:Sending Pointer ACTION_DOWN x=191.0 y=318.0
+:Sending Pointer ACTION_UP x=191.0 y=318.0
+:Sending Pointer ACTION_DOWN x=315.0 y=292.0
+:Sending Pointer ACTION_UP x=307.0 y=280.0
+:Sending Pointer ACTION_DOWN x=161.0 y=500.0
+:Sending Pointer ACTION_UP x=160.0 y=508.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-2.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=317.0 y=412.0
+:Sending Pointer ACTION_UP x=289.0 y=439.0
+:Sending Pointer ACTION_DOWN x=73.0 y=107.0
+:Sending Pointer ACTION_UP x=73.0 y=107.0
+:Sending Pointer ACTION_DOWN x=197.0 y=373.0
+:Sending Pointer ACTION_UP x=197.0 y=373.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=3.0
+    //[calendar_time:2014-08-24 22:48:14.385  system_uptime:194701]
+    // Sending event #2300
+:Sending Pointer ACTION_DOWN x=289.0 y=401.0
+:Sending Pointer ACTION_UP x=284.0 y=405.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=269.0 y=248.0
+:Sending Pointer ACTION_UP x=269.0 y=248.0
+:Sending Pointer ACTION_DOWN x=308.0 y=128.0
+:Sending Pointer ACTION_UP x=308.0 y=128.0
+:Sending Pointer ACTION_DOWN x=333.0 y=105.0
+:Sending Pointer ACTION_UP x=330.0 y=110.0
+:Sending Pointer ACTION_DOWN x=209.0 y=777.0
+:Sending Pointer ACTION_UP x=209.0 y=778.0
+:Sending Pointer ACTION_DOWN x=328.0 y=124.0
+:Sending Pointer ACTION_UP x=328.0 y=124.0
+:Sending Pointer ACTION_DOWN x=209.0 y=778.0
+:Sending Pointer ACTION_UP x=209.0 y=778.0
+:Sending Pointer ACTION_DOWN x=381.0 y=716.0
+:Sending Pointer ACTION_UP x=375.0 y=725.0
+:Sending Pointer ACTION_DOWN x=101.0 y=526.0
+:Sending Pointer ACTION_UP x=118.0 y=533.0
+:Sending Pointer ACTION_MOVE x=4.0 y=0.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_DOWN x=138.0 y=630.0
+    //[calendar_time:2014-08-24 22:48:23.187  system_uptime:203505]
+    // Sending event #2400
+:Sending Pointer ACTION_UP x=148.0 y=659.0
+:Sending Pointer ACTION_DOWN x=476.0 y=769.0
+:Sending Pointer ACTION_UP x=476.0 y=769.0
+    // activityResuming(a2dp.Vol)
+    // Rejecting start of Intent { act=android.speech.tts.engine.CHECK_TTS_DATA cmp=com.svox.pico/.CheckVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_DOWN x=19.0 y=671.0
+:Sending Pointer ACTION_UP x=31.0 y=689.0
+:Sending Pointer ACTION_DOWN x=151.0 y=464.0
+:Sending Pointer ACTION_UP x=158.0 y=456.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=159.0 y=733.0
+:Sending Pointer ACTION_UP x=159.0 y=733.0
+:Sending Pointer ACTION_DOWN x=411.0 y=83.0
+:Sending Pointer ACTION_UP x=422.0 y=83.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=225.0 y=749.0
+:Sending Pointer ACTION_UP x=226.0 y=743.0
+:Sending Pointer ACTION_MOVE x=0.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_MOVE x=-3.0 y=0.0
+:Sending Pointer ACTION_DOWN x=114.0 y=380.0
+:Sending Pointer ACTION_UP x=114.0 y=380.0
+:Sending Pointer ACTION_DOWN x=363.0 y=59.0
+:Sending Pointer ACTION_UP x=356.0 y=81.0
+:Sending Pointer ACTION_DOWN x=343.0 y=34.0
+    //[calendar_time:2014-08-24 22:48:28.017  system_uptime:208334]
+    // Sending event #2500
+:Sending Pointer ACTION_UP x=352.0 y=26.0
+:Sending Pointer ACTION_DOWN x=246.0 y=546.0
+:Sending Pointer ACTION_UP x=246.0 y=546.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_DOWN x=365.0 y=199.0
+:Sending Pointer ACTION_UP x=365.0 y=199.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_DOWN x=143.0 y=490.0
+:Sending Pointer ACTION_UP x=143.0 y=490.0
+:Sending Pointer ACTION_DOWN x=39.0 y=413.0
+:Sending Pointer ACTION_UP x=59.0 y=420.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=250.0 y=303.0
+:Sending Pointer ACTION_UP x=250.0 y=303.0
+:Sending Pointer ACTION_DOWN x=143.0 y=484.0
+:Sending Pointer ACTION_UP x=147.0 y=493.0
+:Sending Pointer ACTION_MOVE x=1.0 y=3.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=4.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=39.0 y=678.0
+:Sending Pointer ACTION_UP x=39.0 y=678.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=1.0
+    //[calendar_time:2014-08-24 22:48:33.807  system_uptime:214124]
+    // Sending event #2600
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=415.0 y=448.0
+:Sending Pointer ACTION_UP x=415.0 y=448.0
+:Sending Pointer ACTION_DOWN x=141.0 y=234.0
+:Sending Pointer ACTION_UP x=141.0 y=234.0
+:Sending Pointer ACTION_DOWN x=11.0 y=689.0
+:Sending Pointer ACTION_UP x=11.0 y=689.0
+:Sending Pointer ACTION_DOWN x=188.0 y=77.0
+:Sending Pointer ACTION_UP x=182.0 y=90.0
+:Sending Pointer ACTION_DOWN x=357.0 y=42.0
+:Sending Pointer ACTION_UP x=351.0 y=52.0
+:Sending Pointer ACTION_MOVE x=3.0 y=0.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=327.0 y=792.0
+:Sending Pointer ACTION_UP x=327.0 y=792.0
+:Sending Pointer ACTION_DOWN x=82.0 y=306.0
+:Sending Pointer ACTION_UP x=92.0 y=301.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_DOWN x=295.0 y=112.0
+    //[calendar_time:2014-08-24 22:48:35.502  system_uptime:215820]
+    // Sending event #2700
+:Sending Pointer ACTION_UP x=266.0 y=113.0
+:Sending Pointer ACTION_DOWN x=155.0 y=493.0
+:Sending Pointer ACTION_UP x=155.0 y=493.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=1.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=189.0 y=226.0
+:Sending Pointer ACTION_UP x=189.0 y=226.0
+:Sending Pointer ACTION_DOWN x=224.0 y=277.0
+:Sending Pointer ACTION_UP x=224.0 y=277.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=166.0 y=475.0
+:Sending Pointer ACTION_UP x=166.0 y=475.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_DOWN x=53.0 y=253.0
+:Sending Pointer ACTION_UP x=53.0 y=253.0
+:Sending Pointer ACTION_DOWN x=465.0 y=530.0
+:Sending Pointer ACTION_UP x=465.0 y=530.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_MOVE x=1.0 y=-2.0
+    //[calendar_time:2014-08-24 22:48:40.173  system_uptime:220491]
+    // Sending event #2800
+:Sending Pointer ACTION_DOWN x=372.0 y=497.0
+:Sending Pointer ACTION_UP x=372.0 y=497.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=389.0 y=699.0
+:Sending Pointer ACTION_UP x=389.0 y=699.0
+:Sending Pointer ACTION_DOWN x=466.0 y=504.0
+:Sending Pointer ACTION_UP x=466.0 y=504.0
+:Sending Pointer ACTION_DOWN x=1.0 y=457.0
+:Sending Pointer ACTION_UP x=1.0 y=457.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=288.0 y=165.0
+:Sending Pointer ACTION_UP x=311.0 y=160.0
+:Sending Pointer ACTION_DOWN x=28.0 y=190.0
+:Sending Pointer ACTION_UP x=28.0 y=190.0
+:Sending Pointer ACTION_DOWN x=376.0 y=625.0
+:Sending Pointer ACTION_UP x=368.0 y=624.0
+:Sending Pointer ACTION_DOWN x=71.0 y=114.0
+:Sending Pointer ACTION_UP x=71.0 y=114.0
+:Sending Pointer ACTION_DOWN x=177.0 y=391.0
+:Sending Pointer ACTION_UP x=166.0 y=382.0
+:Sending Pointer ACTION_DOWN x=258.0 y=770.0
+:Sending Pointer ACTION_UP x=258.0 y=770.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=4.0
+:Sending Pointer ACTION_DOWN x=168.0 y=148.0
+:Sending Pointer ACTION_UP x=168.0 y=148.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-3.0
+    //[calendar_time:2014-08-24 22:48:45.050  system_uptime:225367]
+    // Sending event #2900
+:Sending Pointer ACTION_MOVE x=3.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=182.0 y=62.0
+:Sending Pointer ACTION_UP x=176.0 y=68.0
+:Sending Pointer ACTION_DOWN x=10.0 y=144.0
+:Sending Pointer ACTION_UP x=10.0 y=144.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-1.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_DOWN x=239.0 y=237.0
+:Sending Pointer ACTION_UP x=239.0 y=237.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=2.0
+:Sending Pointer ACTION_DOWN x=269.0 y=209.0
+:Sending Pointer ACTION_UP x=269.0 y=209.0
+:Sending Pointer ACTION_DOWN x=411.0 y=532.0
+:Sending Pointer ACTION_UP x=411.0 y=532.0
+:Sending Pointer ACTION_DOWN x=182.0 y=68.0
+:Sending Pointer ACTION_UP x=177.0 y=67.0
+:Sending Pointer ACTION_DOWN x=188.0 y=34.0
+:Sending Pointer ACTION_UP x=188.0 y=34.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-4.0
+    //[calendar_time:2014-08-24 22:48:48.270  system_uptime:228588]
+    // Sending event #3000
+:Sending Pointer ACTION_DOWN x=453.0 y=117.0
+:Sending Pointer ACTION_UP x=453.0 y=117.0
+:Sending Pointer ACTION_DOWN x=322.0 y=70.0
+:Sending Pointer ACTION_UP x=322.0 y=70.0
+:Sending Pointer ACTION_DOWN x=210.0 y=600.0
+:Sending Pointer ACTION_UP x=195.0 y=615.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=99.0 y=655.0
+:Sending Pointer ACTION_UP x=102.0 y=650.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=81.0 y=797.0
+:Sending Pointer ACTION_UP x=110.0 y=5.0
+:Sending Pointer ACTION_DOWN x=217.0 y=543.0
+:Sending Pointer ACTION_UP x=217.0 y=543.0
+:Sending Pointer ACTION_MOVE x=3.0 y=2.0
+    // Allowing start of Intent { cmp=a2dp.Vol/.EditDevice } in package a2dp.Vol
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=455.0 y=396.0
+:Sending Pointer ACTION_UP x=455.0 y=396.0
+    //[calendar_time:2014-08-24 22:48:52.769  system_uptime:233092]
+    // Sending event #3100
+    //[calendar_time:2014-08-24 22:48:52.823  system_uptime:233141]
+    // Sending event #3100
+:Sending Pointer ACTION_DOWN x=187.0 y=135.0
+:Sending Pointer ACTION_UP x=177.0 y=130.0
+:Sending Pointer ACTION_DOWN x=153.0 y=466.0
+:Sending Pointer ACTION_UP x=162.0 y=450.0
+:Sending Pointer ACTION_DOWN x=111.0 y=189.0
+:Sending Pointer ACTION_UP x=119.0 y=203.0
+:Sending Pointer ACTION_DOWN x=283.0 y=165.0
+:Sending Pointer ACTION_UP x=299.0 y=173.0
+:Sending Pointer ACTION_MOVE x=4.0 y=0.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=19.0 y=615.0
+:Sending Pointer ACTION_UP x=18.0 y=618.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=389.0 y=50.0
+:Sending Pointer ACTION_UP x=373.0 y=63.0
+:Sending Pointer ACTION_DOWN x=60.0 y=148.0
+:Sending Pointer ACTION_UP x=60.0 y=148.0
+:Sending Pointer ACTION_DOWN x=469.0 y=123.0
+:Sending Pointer ACTION_UP x=464.0 y=123.0
+:Sending Pointer ACTION_DOWN x=25.0 y=675.0
+:Sending Pointer ACTION_UP x=25.0 y=675.0
+:Sending Pointer ACTION_DOWN x=408.0 y=604.0
+:Sending Pointer ACTION_UP x=408.0 y=604.0
+:Sending Pointer ACTION_DOWN x=254.0 y=542.0
+:Sending Pointer ACTION_UP x=254.0 y=542.0
+:Sending Pointer ACTION_DOWN x=104.0 y=41.0
+:Sending Pointer ACTION_UP x=104.0 y=41.0
+    //[calendar_time:2014-08-24 22:48:57.730  system_uptime:238048]
+    // Sending event #3200
+    //[calendar_time:2014-08-24 22:48:57.735  system_uptime:238055]
+    // Sending event #3200
+:Sending Pointer ACTION_MOVE x=-5.0 y=1.0
+:Sending Pointer ACTION_DOWN x=398.0 y=259.0
+:Sending Pointer ACTION_UP x=417.0 y=252.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-1.0
+    // Allowing start of Intent { cmp=a2dp.Vol/.AppChooser } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=89.0 y=317.0
+:Sending Pointer ACTION_UP x=89.0 y=317.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-4.0
+    // activityResuming(a2dp.Vol)
+:Sending Pointer ACTION_DOWN x=84.0 y=685.0
+:Sending Pointer ACTION_UP x=84.0 y=685.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=254.0 y=285.0
+:Sending Pointer ACTION_UP x=254.0 y=285.0
+:Sending Pointer ACTION_DOWN x=281.0 y=403.0
+    //[calendar_time:2014-08-24 22:49:03.504  system_uptime:243822]
+    // Sending event #3300
+:Sending Pointer ACTION_UP x=281.0 y=403.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=69.0 y=60.0
+:Sending Pointer ACTION_UP x=67.0 y=75.0
+:Sending Pointer ACTION_DOWN x=252.0 y=280.0
+:Sending Pointer ACTION_UP x=252.0 y=280.0
+:Sending Pointer ACTION_DOWN x=125.0 y=355.0
+:Sending Pointer ACTION_UP x=123.0 y=368.0
+:Sending Pointer ACTION_DOWN x=456.0 y=225.0
+:Sending Pointer ACTION_UP x=456.0 y=225.0
+:Sending Pointer ACTION_DOWN x=270.0 y=455.0
+:Sending Pointer ACTION_UP x=275.0 y=455.0
+:Sending Pointer ACTION_DOWN x=330.0 y=347.0
+:Sending Pointer ACTION_UP x=330.0 y=347.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=270.0 y=215.0
+:Sending Pointer ACTION_UP x=270.0 y=215.0
+:Sending Pointer ACTION_DOWN x=238.0 y=459.0
+:Sending Pointer ACTION_UP x=238.0 y=459.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=0.0
+:Sending Pointer ACTION_DOWN x=349.0 y=447.0
+:Sending Pointer ACTION_UP x=349.0 y=447.0
+:Sending Pointer ACTION_DOWN x=368.0 y=316.0
+:Sending Pointer ACTION_UP x=368.0 y=316.0
+:Sending Pointer ACTION_DOWN x=171.0 y=758.0
+:Sending Pointer ACTION_UP x=171.0 y=758.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-2.0
+    //[calendar_time:2014-08-24 22:49:06.863  system_uptime:247181]
+    // Sending event #3400
+:Sending Pointer ACTION_DOWN x=382.0 y=128.0
+:Sending Pointer ACTION_UP x=382.0 y=128.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=0.0 y=1.0
+:Sending Pointer ACTION_DOWN x=2.0 y=89.0
+:Sending Pointer ACTION_UP x=2.0 y=89.0
+:Sending Pointer ACTION_MOVE x=2.0 y=1.0
+:Sending Pointer ACTION_DOWN x=204.0 y=676.0
+:Sending Pointer ACTION_UP x=209.0 y=670.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=298.0 y=43.0
+:Sending Pointer ACTION_UP x=298.0 y=43.0
+:Sending Pointer ACTION_DOWN x=353.0 y=252.0
+:Sending Pointer ACTION_UP x=353.0 y=252.0
+:Sending Pointer ACTION_DOWN x=66.0 y=228.0
+:Sending Pointer ACTION_UP x=66.0 y=228.0
+:Sending Pointer ACTION_DOWN x=9.0 y=487.0
+:Sending Pointer ACTION_UP x=9.0 y=487.0
+:Sending Pointer ACTION_DOWN x=235.0 y=182.0
+    //[calendar_time:2014-08-24 22:49:12.396  system_uptime:252713]
+    // Sending event #3500
+:Sending Pointer ACTION_UP x=213.0 y=164.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=1.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=236.0 y=639.0
+:Sending Pointer ACTION_UP x=225.0 y=659.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=3.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=15.0 y=738.0
+:Sending Pointer ACTION_UP x=0.0 y=725.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=3.0
+:Sending Pointer ACTION_DOWN x=479.0 y=735.0
+:Sending Pointer ACTION_UP x=479.0 y=735.0
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=68.0 y=165.0
+    //[calendar_time:2014-08-24 22:49:21.378  system_uptime:261695]
+    // Sending event #3600
+:Sending Pointer ACTION_UP x=64.0 y=160.0
+:Sending Pointer ACTION_DOWN x=33.0 y=208.0
+:Sending Pointer ACTION_UP x=5.0 y=197.0
+:Sending Pointer ACTION_DOWN x=405.0 y=719.0
+:Sending Pointer ACTION_UP x=401.0 y=713.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-1.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+    // activityResuming(a2dp.Vol)
+    // Rejecting start of Intent { act=android.speech.tts.engine.CHECK_TTS_DATA cmp=com.svox.pico/.CheckVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_MOVE x=2.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=366.0 y=226.0
+:Sending Pointer ACTION_UP x=362.0 y=219.0
+:Sending Pointer ACTION_DOWN x=75.0 y=6.0
+:Sending Pointer ACTION_UP x=82.0 y=15.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-1.0
+    //[calendar_time:2014-08-24 22:49:28.194  system_uptime:268511]
+    // Sending event #3700
+    //[calendar_time:2014-08-24 22:49:28.201  system_uptime:268520]
+    // Sending event #3700
+:Sending Pointer ACTION_DOWN x=281.0 y=166.0
+:Sending Pointer ACTION_UP x=269.0 y=172.0
+:Sending Pointer ACTION_DOWN x=167.0 y=766.0
+    // Allowing start of Intent { cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_UP x=167.0 y=766.0
+:Sending Pointer ACTION_DOWN x=420.0 y=27.0
+:Sending Pointer ACTION_UP x=420.0 y=27.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=357.0 y=729.0
+:Sending Pointer ACTION_UP x=357.0 y=729.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_DOWN x=87.0 y=357.0
+:Sending Pointer ACTION_UP x=62.0 y=339.0
+:Sending Pointer ACTION_DOWN x=427.0 y=273.0
+:Sending Pointer ACTION_UP x=428.0 y=276.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_DOWN x=97.0 y=61.0
+:Sending Pointer ACTION_UP x=97.0 y=61.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=2.0
+:Sending Pointer ACTION_DOWN x=12.0 y=483.0
+:Sending Pointer ACTION_UP x=12.0 y=483.0
+:Sending Pointer ACTION_DOWN x=349.0 y=291.0
+:Sending Pointer ACTION_UP x=349.0 y=291.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_DOWN x=161.0 y=774.0
+    //[calendar_time:2014-08-24 22:49:32.565  system_uptime:272883]
+    // Sending event #3800
+:Sending Pointer ACTION_UP x=157.0 y=766.0
+:Sending Pointer ACTION_DOWN x=375.0 y=235.0
+:Sending Pointer ACTION_UP x=370.0 y=244.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_MOVE x=0.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=30.0 y=280.0
+:Sending Pointer ACTION_UP x=15.0 y=294.0
+:Sending Pointer ACTION_DOWN x=75.0 y=279.0
+:Sending Pointer ACTION_UP x=75.0 y=279.0
+:Sending Pointer ACTION_MOVE x=0.0 y=0.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=-3.0 y=2.0
+:Sending Pointer ACTION_DOWN x=137.0 y=362.0
+:Sending Pointer ACTION_UP x=137.0 y=362.0
+:Sending Pointer ACTION_DOWN x=39.0 y=587.0
+:Sending Pointer ACTION_UP x=39.0 y=587.0
+    //[calendar_time:2014-08-24 22:49:36.769  system_uptime:277086]
+    // Sending event #3900
+    //[calendar_time:2014-08-24 22:49:36.772  system_uptime:277092]
+    // Sending event #3900
+:Sending Pointer ACTION_MOVE x=2.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=1.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_DOWN x=14.0 y=221.0
+:Sending Pointer ACTION_UP x=14.0 y=221.0
+:Sending Pointer ACTION_DOWN x=119.0 y=596.0
+:Sending Pointer ACTION_UP x=119.0 y=596.0
+:Sending Pointer ACTION_MOVE x=3.0 y=3.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_MOVE x=1.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-3.0
+    //[calendar_time:2014-08-24 22:49:41.138  system_uptime:281456]
+    // Sending event #4000
+:Sending Pointer ACTION_MOVE x=-2.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=147.0 y=766.0
+:Sending Pointer ACTION_UP x=147.0 y=766.0
+:Sending Pointer ACTION_DOWN x=101.0 y=713.0
+:Sending Pointer ACTION_UP x=101.0 y=713.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=0.0 y=3.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=1.0 y=2.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=470.0 y=745.0
+:Sending Pointer ACTION_UP x=-24.0 y=765.0
+:Sending Pointer ACTION_DOWN x=36.0 y=126.0
+:Sending Pointer ACTION_UP x=36.0 y=126.0
+:Sending Pointer ACTION_DOWN x=384.0 y=680.0
+:Sending Pointer ACTION_UP x=384.0 y=680.0
+    //[calendar_time:2014-08-24 22:49:44.585  system_uptime:284902]
+    // Sending event #4100
+    //[calendar_time:2014-08-24 22:49:44.615  system_uptime:284934]
+    // Sending event #4100
+:Sending Pointer ACTION_MOVE x=-1.0 y=4.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_DOWN x=467.0 y=282.0
+:Sending Pointer ACTION_UP x=473.0 y=288.0
+:Sending Pointer ACTION_DOWN x=342.0 y=169.0
+:Sending Pointer ACTION_UP x=342.0 y=169.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=314.0 y=39.0
+:Sending Pointer ACTION_UP x=313.0 y=10.0
+:Sending Pointer ACTION_DOWN x=347.0 y=436.0
+:Sending Pointer ACTION_UP x=347.0 y=436.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=9.0 y=77.0
+:Sending Pointer ACTION_UP x=10.0 y=80.0
+:Sending Pointer ACTION_DOWN x=151.0 y=379.0
+:Sending Pointer ACTION_UP x=151.0 y=379.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=115.0 y=677.0
+:Sending Pointer ACTION_UP x=120.0 y=680.0
+:Sending Pointer ACTION_DOWN x=36.0 y=431.0
+:Sending Pointer ACTION_UP x=36.0 y=431.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-1.0
+    //[calendar_time:2014-08-24 22:49:47.961  system_uptime:288279]
+    // Sending event #4200
+:Sending Pointer ACTION_DOWN x=471.0 y=758.0
+:Sending Pointer ACTION_UP x=471.0 y=758.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=272.0 y=658.0
+:Sending Pointer ACTION_UP x=289.0 y=651.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=1.0
+:Sending Pointer ACTION_MOVE x=4.0 y=2.0
+:Sending Pointer ACTION_DOWN x=412.0 y=223.0
+:Sending Pointer ACTION_UP x=412.0 y=223.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=238.0 y=540.0
+    // Allowing start of Intent { cmp=a2dp.Vol/.Preferences } in package a2dp.Vol
+:Sending Pointer ACTION_UP x=238.0 y=540.0
+    //[calendar_time:2014-08-24 22:49:52.634  system_uptime:292951]
+    // Sending event #4300
+    //[calendar_time:2014-08-24 22:49:52.638  system_uptime:292957]
+    // Sending event #4300
+:Sending Pointer ACTION_DOWN x=98.0 y=631.0
+:Sending Pointer ACTION_UP x=106.0 y=624.0
+:Sending Pointer ACTION_MOVE x=0.0 y=1.0
+    // activityResuming(a2dp.Vol)
+:Sending Pointer ACTION_MOVE x=0.0 y=1.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.CHECK_TTS_DATA cmp=com.svox.pico/.CheckVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+    // Rejecting start of Intent { act=android.speech.tts.engine.INSTALL_TTS_DATA cmp=com.svox.pico/.DownloadVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_DOWN x=379.0 y=558.0
+:Sending Pointer ACTION_UP x=372.0 y=544.0
+:Sending Pointer ACTION_DOWN x=327.0 y=429.0
+:Sending Pointer ACTION_UP x=327.0 y=429.0
+:Sending Pointer ACTION_DOWN x=6.0 y=83.0
+:Sending Pointer ACTION_UP x=6.0 y=83.0
+:Sending Pointer ACTION_DOWN x=455.0 y=464.0
+:Sending Pointer ACTION_UP x=455.0 y=464.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_MOVE x=0.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=268.0 y=42.0
+:Sending Pointer ACTION_UP x=258.0 y=26.0
+:Sending Pointer ACTION_DOWN x=196.0 y=69.0
+    //[calendar_time:2014-08-24 22:49:57.818  system_uptime:298135]
+    // Sending event #4400
+:Sending Pointer ACTION_UP x=191.0 y=44.0
+:Sending Pointer ACTION_DOWN x=91.0 y=648.0
+:Sending Pointer ACTION_UP x=102.0 y=658.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=479.0 y=627.0
+:Sending Pointer ACTION_UP x=479.0 y=627.0
+:Sending Pointer ACTION_DOWN x=29.0 y=40.0
+:Sending Pointer ACTION_UP x=29.0 y=40.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=17.0 y=629.0
+:Sending Pointer ACTION_UP x=17.0 y=629.0
+:Sending Pointer ACTION_DOWN x=307.0 y=366.0
+:Sending Pointer ACTION_UP x=307.0 y=366.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-1.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_DOWN x=102.0 y=529.0
+:Sending Pointer ACTION_UP x=102.0 y=529.0
+    //[calendar_time:2014-08-24 22:50:01.216  system_uptime:301535]
+    // Sending event #4500
+    //[calendar_time:2014-08-24 22:50:01.230  system_uptime:301548]
+    // Sending event #4500
+:Sending Pointer ACTION_DOWN x=416.0 y=674.0
+:Sending Pointer ACTION_UP x=416.0 y=674.0
+:Sending Pointer ACTION_DOWN x=104.0 y=562.0
+:Sending Pointer ACTION_UP x=104.0 y=562.0
+:Sending Pointer ACTION_DOWN x=54.0 y=423.0
+:Sending Pointer ACTION_UP x=55.0 y=418.0
+:Sending Pointer ACTION_MOVE x=1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=2.0 y=151.0
+:Sending Pointer ACTION_UP x=2.0 y=151.0
+:Sending Pointer ACTION_DOWN x=157.0 y=763.0
+:Sending Pointer ACTION_UP x=157.0 y=763.0
+:Sending Pointer ACTION_DOWN x=420.0 y=234.0
+:Sending Pointer ACTION_UP x=420.0 y=234.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=2.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=0.0
+    //[calendar_time:2014-08-24 22:50:04.474  system_uptime:304790]
+    // Sending event #4600
+    //[calendar_time:2014-08-24 22:50:04.477  system_uptime:304797]
+    // Sending event #4600
+:Sending Pointer ACTION_DOWN x=22.0 y=421.0
+:Sending Pointer ACTION_UP x=10.0 y=411.0
+:Sending Pointer ACTION_DOWN x=478.0 y=212.0
+:Sending Pointer ACTION_UP x=478.0 y=212.0
+:Sending Pointer ACTION_DOWN x=236.0 y=472.0
+:Sending Pointer ACTION_UP x=236.0 y=472.0
+:Sending Pointer ACTION_DOWN x=407.0 y=471.0
+:Sending Pointer ACTION_UP x=407.0 y=471.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=388.0 y=434.0
+:Sending Pointer ACTION_UP x=385.0 y=454.0
+:Sending Pointer ACTION_DOWN x=53.0 y=786.0
+:Sending Pointer ACTION_UP x=53.0 y=786.0
+:Sending Pointer ACTION_DOWN x=253.0 y=546.0
+:Sending Pointer ACTION_UP x=238.0 y=527.0
+:Sending Pointer ACTION_DOWN x=247.0 y=411.0
+:Sending Pointer ACTION_UP x=247.0 y=411.0
+:Sending Pointer ACTION_DOWN x=436.0 y=122.0
+:Sending Pointer ACTION_UP x=436.0 y=122.0
+:Sending Pointer ACTION_DOWN x=106.0 y=498.0
+:Sending Pointer ACTION_UP x=106.0 y=498.0
+:Sending Pointer ACTION_DOWN x=117.0 y=722.0
+:Sending Pointer ACTION_UP x=117.0 y=722.0
+:Sending Pointer ACTION_DOWN x=47.0 y=361.0
+:Sending Pointer ACTION_UP x=60.0 y=350.0
+:Sending Pointer ACTION_DOWN x=132.0 y=25.0
+    //[calendar_time:2014-08-24 22:50:07.629  system_uptime:307947]
+    // Sending event #4700
+:Sending Pointer ACTION_UP x=132.0 y=25.0
+:Sending Pointer ACTION_DOWN x=358.0 y=79.0
+:Sending Pointer ACTION_UP x=358.0 y=79.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=201.0 y=574.0
+:Sending Pointer ACTION_UP x=193.0 y=582.0
+:Sending Pointer ACTION_DOWN x=301.0 y=561.0
+:Sending Pointer ACTION_UP x=301.0 y=561.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=124.0 y=116.0
+:Sending Pointer ACTION_UP x=131.0 y=111.0
+:Sending Pointer ACTION_DOWN x=33.0 y=416.0
+:Sending Pointer ACTION_UP x=36.0 y=430.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=3.0
+:Sending Pointer ACTION_DOWN x=287.0 y=247.0
+:Sending Pointer ACTION_UP x=274.0 y=237.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=265.0 y=325.0
+:Sending Pointer ACTION_UP x=265.0 y=325.0
+:Sending Pointer ACTION_DOWN x=398.0 y=394.0
+:Sending Pointer ACTION_UP x=398.0 y=394.0
+    //[calendar_time:2014-08-24 22:50:10.839  system_uptime:311156]
+    // Sending event #4800
+    //[calendar_time:2014-08-24 22:50:10.842  system_uptime:311162]
+    // Sending event #4800
+:Sending Pointer ACTION_MOVE x=-2.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=106.0 y=372.0
+:Sending Pointer ACTION_UP x=106.0 y=372.0
+:Sending Pointer ACTION_DOWN x=254.0 y=488.0
+:Sending Pointer ACTION_UP x=245.0 y=489.0
+:Sending Pointer ACTION_DOWN x=194.0 y=232.0
+:Sending Pointer ACTION_UP x=194.0 y=232.0
+:Sending Pointer ACTION_MOVE x=3.0 y=2.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=393.0 y=621.0
+:Sending Pointer ACTION_UP x=393.0 y=621.0
+:Sending Pointer ACTION_DOWN x=305.0 y=456.0
+:Sending Pointer ACTION_UP x=301.0 y=463.0
+:Sending Pointer ACTION_DOWN x=349.0 y=605.0
+:Sending Pointer ACTION_UP x=334.0 y=598.0
+:Sending Pointer ACTION_DOWN x=372.0 y=355.0
+:Sending Pointer ACTION_UP x=372.0 y=355.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=3.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=2.0
+    //[calendar_time:2014-08-24 22:50:15.519  system_uptime:315837]
+    // Sending event #4900
+:Sending Pointer ACTION_MOVE x=3.0 y=-5.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=-4.0 y=1.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=82.0 y=412.0
+:Sending Pointer ACTION_UP x=82.0 y=412.0
+:Sending Pointer ACTION_DOWN x=453.0 y=290.0
+:Sending Pointer ACTION_UP x=453.0 y=290.0
+:Sending Pointer ACTION_DOWN x=403.0 y=329.0
+:Sending Pointer ACTION_UP x=404.0 y=324.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=-4.0 y=0.0
+:Sending Pointer ACTION_DOWN x=302.0 y=155.0
+:Sending Pointer ACTION_UP x=302.0 y=147.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=0.0
+:Sending Pointer ACTION_MOVE x=4.0 y=1.0
+    //[calendar_time:2014-08-24 22:50:21.021  system_uptime:321338]
+    // Sending event #5000
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=303.0 y=719.0
+:Sending Pointer ACTION_UP x=303.0 y=719.0
+:Sending Pointer ACTION_DOWN x=26.0 y=387.0
+:Sending Pointer ACTION_UP x=44.0 y=343.0
+:Sending Pointer ACTION_DOWN x=343.0 y=99.0
+:Sending Pointer ACTION_UP x=343.0 y=99.0
+:Sending Pointer ACTION_DOWN x=434.0 y=718.0
+:Sending Pointer ACTION_UP x=434.0 y=718.0
+:Sending Pointer ACTION_MOVE x=0.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=11.0 y=725.0
+:Sending Pointer ACTION_UP x=11.0 y=725.0
+:Sending Pointer ACTION_MOVE x=2.0 y=0.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-3.0
+    //[calendar_time:2014-08-24 22:50:25.495  system_uptime:325812]
+    // Sending event #5100
+    //[calendar_time:2014-08-24 22:50:25.502  system_uptime:325822]
+    // Sending event #5100
+:Sending Pointer ACTION_DOWN x=114.0 y=699.0
+:Sending Pointer ACTION_UP x=114.0 y=699.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=107.0 y=76.0
+:Sending Pointer ACTION_UP x=113.0 y=74.0
+:Sending Pointer ACTION_DOWN x=150.0 y=126.0
+:Sending Pointer ACTION_UP x=152.0 y=123.0
+:Sending Pointer ACTION_DOWN x=456.0 y=243.0
+:Sending Pointer ACTION_UP x=445.0 y=249.0
+:Sending Pointer ACTION_DOWN x=370.0 y=85.0
+:Sending Pointer ACTION_UP x=370.0 y=85.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=460.0 y=508.0
+:Sending Pointer ACTION_UP x=461.0 y=512.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=77.0 y=677.0
+    //[calendar_time:2014-08-24 22:50:30.612  system_uptime:330930]
+    // Sending event #5200
+:Sending Pointer ACTION_UP x=65.0 y=648.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=7.0 y=287.0
+:Sending Pointer ACTION_UP x=7.0 y=287.0
+:Sending Pointer ACTION_DOWN x=74.0 y=199.0
+:Sending Pointer ACTION_UP x=74.0 y=199.0
+:Sending Pointer ACTION_DOWN x=225.0 y=184.0
+:Sending Pointer ACTION_UP x=225.0 y=184.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=1.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=113.0 y=401.0
+:Sending Pointer ACTION_UP x=124.0 y=403.0
+:Sending Pointer ACTION_DOWN x=41.0 y=222.0
+:Sending Pointer ACTION_UP x=41.0 y=222.0
+:Sending Pointer ACTION_DOWN x=125.0 y=600.0
+:Sending Pointer ACTION_UP x=125.0 y=600.0
+:Sending Pointer ACTION_DOWN x=358.0 y=20.0
+:Sending Pointer ACTION_UP x=358.0 y=20.0
+:Sending Pointer ACTION_DOWN x=329.0 y=251.0
+:Sending Pointer ACTION_UP x=329.0 y=251.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-3.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=4.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+    //[calendar_time:2014-08-24 22:50:35.216  system_uptime:335534]
+    // Sending event #5300
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=181.0 y=49.0
+:Sending Pointer ACTION_UP x=181.0 y=49.0
+:Sending Pointer ACTION_DOWN x=120.0 y=734.0
+:Sending Pointer ACTION_UP x=120.0 y=734.0
+:Sending Pointer ACTION_DOWN x=12.0 y=262.0
+:Sending Pointer ACTION_UP x=12.0 y=262.0
+:Sending Pointer ACTION_DOWN x=189.0 y=166.0
+:Sending Pointer ACTION_UP x=189.0 y=166.0
+:Sending Pointer ACTION_DOWN x=431.0 y=510.0
+:Sending Pointer ACTION_UP x=431.0 y=510.0
+:Sending Pointer ACTION_DOWN x=17.0 y=703.0
+:Sending Pointer ACTION_UP x=17.0 y=703.0
+:Sending Pointer ACTION_DOWN x=75.0 y=251.0
+:Sending Pointer ACTION_UP x=75.0 y=251.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=211.0 y=623.0
+:Sending Pointer ACTION_UP x=205.0 y=632.0
+:Sending Pointer ACTION_DOWN x=440.0 y=127.0
+:Sending Pointer ACTION_UP x=440.0 y=118.0
+:Sending Pointer ACTION_DOWN x=469.0 y=163.0
+:Sending Pointer ACTION_UP x=469.0 y=163.0
+    //[calendar_time:2014-08-24 22:50:39.299  system_uptime:339618]
+    // Sending event #5400
+:Sending Pointer ACTION_DOWN x=22.0 y=499.0
+:Sending Pointer ACTION_UP x=22.0 y=499.0
+:Sending Pointer ACTION_DOWN x=399.0 y=263.0
+:Sending Pointer ACTION_UP x=399.0 y=263.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=43.0 y=777.0
+:Sending Pointer ACTION_UP x=43.0 y=777.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=331.0 y=142.0
+:Sending Pointer ACTION_UP x=331.0 y=142.0
+:Sending Pointer ACTION_MOVE x=3.0 y=4.0
+:Sending Pointer ACTION_DOWN x=143.0 y=132.0
+:Sending Pointer ACTION_UP x=143.0 y=132.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=2.0 y=3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=3.0 y=561.0
+:Sending Pointer ACTION_UP x=3.0 y=561.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=2.0
+:Sending Pointer ACTION_DOWN x=360.0 y=72.0
+    //[calendar_time:2014-08-24 22:50:43.416  system_uptime:343733]
+    // Sending event #5500
+:Sending Pointer ACTION_UP x=360.0 y=72.0
+:Sending Pointer ACTION_MOVE x=4.0 y=4.0
+:Sending Pointer ACTION_DOWN x=182.0 y=666.0
+    // Rejecting start of Intent { act=android.intent.action.VIEW dat=http://code.google.com/p/a2dpvolume/wiki/Manual cmp=com.android.browser/.BrowserActivity } in package com.android.browser
+:Sending Pointer ACTION_UP x=182.0 y=666.0
+:Sending Pointer ACTION_DOWN x=330.0 y=11.0
+:Sending Pointer ACTION_UP x=325.0 y=7.0
+:Sending Pointer ACTION_DOWN x=315.0 y=66.0
+:Sending Pointer ACTION_UP x=315.0 y=66.0
+:Sending Pointer ACTION_MOVE x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=9.0 y=686.0
+:Sending Pointer ACTION_UP x=9.0 y=686.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-2.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=2.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+    //[calendar_time:2014-08-24 22:50:48.996  system_uptime:349313]
+    // Sending event #5600
+:Sending Pointer ACTION_MOVE x=3.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_DOWN x=406.0 y=353.0
+:Sending Pointer ACTION_UP x=393.0 y=363.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=4.0 y=4.0
+:Sending Pointer ACTION_DOWN x=215.0 y=699.0
+:Sending Pointer ACTION_UP x=215.0 y=699.0
+:Sending Pointer ACTION_DOWN x=246.0 y=657.0
+:Sending Pointer ACTION_UP x=247.0 y=665.0
+    //[calendar_time:2014-08-24 22:50:53.113  system_uptime:353429]
+    // Sending event #5700
+    //[calendar_time:2014-08-24 22:50:53.120  system_uptime:353439]
+    // Sending event #5700
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=4.0 y=4.0
+:Sending Pointer ACTION_DOWN x=324.0 y=67.0
+:Sending Pointer ACTION_UP x=324.0 y=67.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=0.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=250.0 y=752.0
+:Sending Pointer ACTION_UP x=250.0 y=752.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=88.0 y=549.0
+:Sending Pointer ACTION_UP x=88.0 y=549.0
+:Sending Pointer ACTION_DOWN x=265.0 y=161.0
+:Sending Pointer ACTION_UP x=257.0 y=164.0
+:Sending Pointer ACTION_DOWN x=338.0 y=15.0
+    //[calendar_time:2014-08-24 22:50:58.130  system_uptime:358448]
+    // Sending event #5800
+:Sending Pointer ACTION_UP x=340.0 y=20.0
+:Sending Pointer ACTION_DOWN x=385.0 y=498.0
+:Sending Pointer ACTION_UP x=385.0 y=498.0
+:Sending Pointer ACTION_DOWN x=137.0 y=209.0
+:Sending Pointer ACTION_UP x=152.0 y=209.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=307.0 y=274.0
+:Sending Pointer ACTION_UP x=303.0 y=269.0
+:Sending Pointer ACTION_MOVE x=3.0 y=0.0
+:Sending Pointer ACTION_DOWN x=111.0 y=712.0
+:Sending Pointer ACTION_UP x=111.0 y=712.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=278.0 y=330.0
+:Sending Pointer ACTION_UP x=276.0 y=340.0
+:Sending Pointer ACTION_DOWN x=130.0 y=729.0
+:Sending Pointer ACTION_UP x=130.0 y=729.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=2.0
+:Sending Pointer ACTION_DOWN x=86.0 y=638.0
+:Sending Pointer ACTION_UP x=93.0 y=646.0
+    //[calendar_time:2014-08-24 22:51:03.109  system_uptime:363427]
+    // Sending event #5900
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=0.0
+:Sending Pointer ACTION_MOVE x=3.0 y=3.0
+:Sending Pointer ACTION_DOWN x=68.0 y=742.0
+:Sending Pointer ACTION_UP x=68.0 y=742.0
+:Sending Pointer ACTION_MOVE x=3.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=3.0
+:Sending Pointer ACTION_DOWN x=386.0 y=534.0
+:Sending Pointer ACTION_UP x=388.0 y=534.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=296.0 y=652.0
+:Sending Pointer ACTION_UP x=314.0 y=634.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=2.0
+    //[calendar_time:2014-08-24 22:51:06.870  system_uptime:367188]
+    // Sending event #6000
+:Sending Pointer ACTION_DOWN x=410.0 y=141.0
+:Sending Pointer ACTION_UP x=420.0 y=132.0
+:Sending Pointer ACTION_DOWN x=313.0 y=457.0
+:Sending Pointer ACTION_UP x=312.0 y=457.0
+:Sending Pointer ACTION_DOWN x=479.0 y=33.0
+:Sending Pointer ACTION_UP x=479.0 y=33.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=3.0
+    // Allowing start of Intent { cmp=a2dp.Vol/.EditDevice } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=444.0 y=150.0
+:Sending Pointer ACTION_UP x=465.0 y=161.0
+:Sending Pointer ACTION_DOWN x=5.0 y=499.0
+:Sending Pointer ACTION_UP x=21.0 y=512.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=1.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-3.0
+    //[calendar_time:2014-08-24 22:51:15.704  system_uptime:376023]
+    // Sending event #6100
+:Sending Pointer ACTION_MOVE x=-5.0 y=-2.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=431.0 y=773.0
+:Sending Pointer ACTION_UP x=422.0 y=768.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=441.0 y=242.0
+:Sending Pointer ACTION_UP x=441.0 y=242.0
+:Sending Pointer ACTION_DOWN x=288.0 y=179.0
+:Sending Pointer ACTION_UP x=303.0 y=184.0
+:Sending Pointer ACTION_DOWN x=286.0 y=275.0
+:Sending Pointer ACTION_UP x=286.0 y=275.0
+:Sending Pointer ACTION_MOVE x=4.0 y=0.0
+:Sending Pointer ACTION_DOWN x=372.0 y=556.0
+:Sending Pointer ACTION_UP x=372.0 y=556.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=0.0
+:Sending Pointer ACTION_DOWN x=350.0 y=486.0
+:Sending Pointer ACTION_UP x=354.0 y=494.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=2.0
+:Sending Pointer ACTION_DOWN x=59.0 y=670.0
+    //[calendar_time:2014-08-24 22:51:25.103  system_uptime:385422]
+    // Sending event #6200
+:Sending Pointer ACTION_UP x=46.0 y=664.0
+:Sending Pointer ACTION_DOWN x=184.0 y=581.0
+:Sending Pointer ACTION_UP x=192.0 y=587.0
+:Sending Pointer ACTION_MOVE x=3.0 y=1.0
+:Sending Pointer ACTION_DOWN x=15.0 y=16.0
+:Sending Pointer ACTION_UP x=15.0 y=16.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=4.0
+:Sending Pointer ACTION_DOWN x=316.0 y=65.0
+:Sending Pointer ACTION_UP x=316.0 y=65.0
+:Sending Pointer ACTION_DOWN x=142.0 y=386.0
+:Sending Pointer ACTION_UP x=142.0 y=386.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=460.0 y=298.0
+:Sending Pointer ACTION_UP x=460.0 y=298.0
+:Sending Pointer ACTION_MOVE x=3.0 y=2.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=6.0 y=211.0
+:Sending Pointer ACTION_UP x=6.0 y=211.0
+:Sending Pointer ACTION_DOWN x=471.0 y=383.0
+:Sending Pointer ACTION_UP x=471.0 y=383.0
+:Sending Pointer ACTION_DOWN x=372.0 y=443.0
+:Sending Pointer ACTION_UP x=372.0 y=443.0
+:Sending Pointer ACTION_DOWN x=355.0 y=717.0
+:Sending Pointer ACTION_UP x=345.0 y=730.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-4.0
+    //[calendar_time:2014-08-24 22:51:34.439  system_uptime:394757]
+    // Sending event #6300
+:Sending Pointer ACTION_DOWN x=137.0 y=160.0
+:Sending Pointer ACTION_UP x=137.0 y=160.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=2.0 y=2.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=245.0 y=460.0
+:Sending Pointer ACTION_UP x=242.0 y=446.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=135.0 y=149.0
+:Sending Pointer ACTION_UP x=143.0 y=141.0
+:Sending Pointer ACTION_DOWN x=290.0 y=159.0
+:Sending Pointer ACTION_UP x=290.0 y=159.0
+:Sending Flip keyboardOpen=false
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_MOVE x=-2.0 y=-2.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=200.0 y=377.0
+:Sending Pointer ACTION_UP x=200.0 y=377.0
+    //[calendar_time:2014-08-24 22:51:41.187  system_uptime:401504]
+    // Sending event #6400
+:Sending Pointer ACTION_MOVE x=-2.0 y=1.0
+:Sending Pointer ACTION_DOWN x=203.0 y=201.0
+:Sending Pointer ACTION_UP x=203.0 y=201.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=67.0 y=733.0
+:Sending Pointer ACTION_UP x=67.0 y=733.0
+:Sending Pointer ACTION_DOWN x=212.0 y=666.0
+:Sending Pointer ACTION_UP x=212.0 y=666.0
+:Sending Pointer ACTION_DOWN x=420.0 y=337.0
+:Sending Pointer ACTION_UP x=420.0 y=337.0
+:Sending Pointer ACTION_DOWN x=379.0 y=253.0
+:Sending Pointer ACTION_UP x=385.0 y=243.0
+:Sending Pointer ACTION_DOWN x=309.0 y=403.0
+:Sending Pointer ACTION_UP x=325.0 y=411.0
+:Sending Pointer ACTION_DOWN x=185.0 y=551.0
+:Sending Pointer ACTION_UP x=173.0 y=559.0
+:Sending Pointer ACTION_DOWN x=117.0 y=389.0
+:Sending Pointer ACTION_UP x=117.0 y=389.0
+:Sending Pointer ACTION_DOWN x=89.0 y=469.0
+:Sending Pointer ACTION_UP x=76.0 y=478.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-2.0
+    //[calendar_time:2014-08-24 22:51:48.640  system_uptime:408959]
+    // Sending event #6500
+    //[calendar_time:2014-08-24 22:51:48.645  system_uptime:408963]
+    // Sending event #6500
+:Sending Pointer ACTION_DOWN x=366.0 y=252.0
+:Sending Pointer ACTION_UP x=366.0 y=252.0
+:Sending Pointer ACTION_DOWN x=313.0 y=421.0
+:Sending Pointer ACTION_UP x=313.0 y=421.0
+:Sending Pointer ACTION_DOWN x=137.0 y=349.0
+:Sending Pointer ACTION_UP x=137.0 y=349.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=49.0 y=190.0
+:Sending Pointer ACTION_UP x=49.0 y=190.0
+:Sending Pointer ACTION_DOWN x=332.0 y=242.0
+:Sending Pointer ACTION_UP x=336.0 y=253.0
+:Sending Pointer ACTION_DOWN x=388.0 y=360.0
+:Sending Pointer ACTION_UP x=385.0 y=369.0
+:Sending Pointer ACTION_DOWN x=67.0 y=538.0
+:Sending Pointer ACTION_UP x=67.0 y=538.0
+:Sending Pointer ACTION_DOWN x=345.0 y=60.0
+:Sending Pointer ACTION_UP x=345.0 y=60.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-4.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=166.0 y=387.0
+:Sending Pointer ACTION_UP x=190.0 y=388.0
+:Sending Pointer ACTION_DOWN x=180.0 y=449.0
+:Sending Pointer ACTION_UP x=180.0 y=449.0
+:Sending Pointer ACTION_DOWN x=470.0 y=454.0
+    //[calendar_time:2014-08-24 22:51:56.319  system_uptime:416638]
+    // Sending event #6600
+:Sending Pointer ACTION_UP x=475.0 y=439.0
+:Sending Pointer ACTION_DOWN x=313.0 y=188.0
+:Sending Pointer ACTION_UP x=313.0 y=188.0
+:Sending Pointer ACTION_DOWN x=411.0 y=270.0
+:Sending Pointer ACTION_UP x=408.0 y=234.0
+:Sending Pointer ACTION_DOWN x=123.0 y=748.0
+:Sending Pointer ACTION_UP x=123.0 y=748.0
+:Sending Pointer ACTION_DOWN x=368.0 y=763.0
+:Sending Pointer ACTION_UP x=368.0 y=763.0
+:Sending Pointer ACTION_DOWN x=144.0 y=101.0
+:Sending Pointer ACTION_UP x=161.0 y=124.0
+:Sending Pointer ACTION_DOWN x=140.0 y=69.0
+:Sending Pointer ACTION_UP x=140.0 y=69.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=29.0 y=280.0
+:Sending Pointer ACTION_UP x=29.0 y=280.0
+:Sending Pointer ACTION_MOVE x=3.0 y=4.0
+:Sending Pointer ACTION_DOWN x=156.0 y=200.0
+:Sending Pointer ACTION_UP x=156.0 y=200.0
+:Sending Pointer ACTION_DOWN x=459.0 y=712.0
+:Sending Pointer ACTION_UP x=459.0 y=712.0
+:Sending Pointer ACTION_DOWN x=13.0 y=574.0
+    //[calendar_time:2014-08-24 22:52:06.103  system_uptime:426427]
+    // Sending event #6700
+:Sending Pointer ACTION_UP x=35.0 y=599.0
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_DOWN x=90.0 y=679.0
+:Sending Pointer ACTION_UP x=90.0 y=679.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=3.0
+:Sending Pointer ACTION_DOWN x=21.0 y=6.0
+:Sending Pointer ACTION_UP x=23.0 y=8.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=363.0 y=388.0
+:Sending Pointer ACTION_UP x=362.0 y=373.0
+:Sending Pointer ACTION_DOWN x=219.0 y=562.0
+:Sending Pointer ACTION_UP x=219.0 y=562.0
+:Sending Pointer ACTION_MOVE x=3.0 y=2.0
+:Sending Pointer ACTION_DOWN x=198.0 y=482.0
+:Sending Pointer ACTION_UP x=198.0 y=482.0
+:Sending Pointer ACTION_DOWN x=121.0 y=225.0
+:Sending Pointer ACTION_UP x=121.0 y=225.0
+:Sending Pointer ACTION_DOWN x=475.0 y=667.0
+:Sending Pointer ACTION_UP x=475.0 y=667.0
+    //[calendar_time:2014-08-24 22:52:13.559  system_uptime:433876]
+    // Sending event #6800
+:Sending Pointer ACTION_DOWN x=382.0 y=470.0
+:Sending Pointer ACTION_UP x=382.0 y=470.0
+:Sending Pointer ACTION_DOWN x=283.0 y=164.0
+:Sending Pointer ACTION_UP x=283.0 y=164.0
+:Sending Pointer ACTION_DOWN x=338.0 y=178.0
+:Sending Pointer ACTION_UP x=338.0 y=178.0
+:Sending Pointer ACTION_DOWN x=266.0 y=326.0
+:Sending Pointer ACTION_UP x=255.0 y=310.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-1.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-1.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=-5.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-2.0
+    //[calendar_time:2014-08-24 22:52:22.250  system_uptime:442568]
+    // Sending event #6900
+:Sending Pointer ACTION_DOWN x=242.0 y=134.0
+:Sending Pointer ACTION_UP x=242.0 y=134.0
+:Sending Pointer ACTION_DOWN x=370.0 y=519.0
+:Sending Pointer ACTION_UP x=370.0 y=519.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=378.0 y=400.0
+:Sending Pointer ACTION_UP x=378.0 y=400.0
+:Sending Pointer ACTION_DOWN x=329.0 y=151.0
+:Sending Pointer ACTION_UP x=329.0 y=151.0
+:Sending Pointer ACTION_DOWN x=178.0 y=389.0
+:Sending Pointer ACTION_UP x=178.0 y=389.0
+:Sending Pointer ACTION_DOWN x=180.0 y=647.0
+:Sending Pointer ACTION_UP x=180.0 y=647.0
+:Sending Pointer ACTION_MOVE x=4.0 y=2.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=133.0 y=436.0
+:Sending Pointer ACTION_UP x=133.0 y=436.0
+:Sending Pointer ACTION_DOWN x=198.0 y=27.0
+:Sending Pointer ACTION_UP x=198.0 y=27.0
+:Sending Pointer ACTION_DOWN x=248.0 y=215.0
+:Sending Pointer ACTION_UP x=246.0 y=213.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-2.0
+    //[calendar_time:2014-08-24 22:52:31.193  system_uptime:451510]
+    // Sending event #7000
+:Sending Pointer ACTION_MOVE x=4.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=80.0 y=313.0
+:Sending Pointer ACTION_UP x=56.0 y=317.0
+:Sending Pointer ACTION_DOWN x=451.0 y=653.0
+:Sending Pointer ACTION_UP x=448.0 y=647.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=2.0
+:Sending Pointer ACTION_DOWN x=113.0 y=15.0
+:Sending Pointer ACTION_UP x=113.0 y=15.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+    //[calendar_time:2014-08-24 22:52:41.378  system_uptime:461694]
+    // Sending event #7100
+    //[calendar_time:2014-08-24 22:52:41.381  system_uptime:461700]
+    // Sending event #7100
+:Sending Pointer ACTION_DOWN x=324.0 y=284.0
+:Sending Pointer ACTION_UP x=324.0 y=284.0
+:Sending Pointer ACTION_DOWN x=161.0 y=47.0
+:Sending Pointer ACTION_UP x=161.0 y=47.0
+:Sending Pointer ACTION_DOWN x=451.0 y=736.0
+:Sending Pointer ACTION_UP x=451.0 y=736.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=380.0 y=663.0
+:Sending Pointer ACTION_UP x=380.0 y=663.0
+:Sending Pointer ACTION_DOWN x=147.0 y=412.0
+:Sending Pointer ACTION_UP x=154.0 y=436.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=89.0 y=66.0
+:Sending Pointer ACTION_UP x=89.0 y=66.0
+:Sending Pointer ACTION_DOWN x=245.0 y=302.0
+:Sending Pointer ACTION_UP x=254.0 y=303.0
+:Sending Pointer ACTION_DOWN x=81.0 y=639.0
+:Sending Pointer ACTION_UP x=87.0 y=631.0
+    //[calendar_time:2014-08-24 22:52:49.522  system_uptime:469839]
+    // Sending event #7200
+    //[calendar_time:2014-08-24 22:52:49.531  system_uptime:469851]
+    // Sending event #7200
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=395.0 y=619.0
+:Sending Pointer ACTION_UP x=388.0 y=646.0
+:Sending Pointer ACTION_DOWN x=155.0 y=590.0
+:Sending Pointer ACTION_UP x=155.0 y=590.0
+:Sending Pointer ACTION_DOWN x=241.0 y=396.0
+:Sending Pointer ACTION_UP x=241.0 y=396.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=335.0 y=444.0
+:Sending Pointer ACTION_UP x=335.0 y=444.0
+:Sending Pointer ACTION_MOVE x=1.0 y=3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=412.0 y=394.0
+:Sending Pointer ACTION_UP x=412.0 y=394.0
+:Sending Pointer ACTION_DOWN x=279.0 y=600.0
+:Sending Pointer ACTION_UP x=279.0 y=600.0
+:Sending Pointer ACTION_MOVE x=3.0 y=1.0
+:Sending Pointer ACTION_DOWN x=457.0 y=51.0
+:Sending Pointer ACTION_UP x=457.0 y=51.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=0.0
+    //[calendar_time:2014-08-24 22:52:58.371  system_uptime:478688]
+    // Sending event #7300
+:Sending Pointer ACTION_DOWN x=202.0 y=386.0
+    // Allowing start of Intent { cmp=a2dp.Vol/.AppChooser } in package a2dp.Vol
+:Sending Pointer ACTION_UP x=172.0 y=387.0
+:Sending Pointer ACTION_DOWN x=196.0 y=439.0
+:Sending Pointer ACTION_UP x=196.0 y=439.0
+    // activityResuming(a2dp.Vol)
+:Sending Pointer ACTION_MOVE x=-4.0 y=0.0
+:Sending Pointer ACTION_DOWN x=385.0 y=785.0
+:Sending Pointer ACTION_UP x=382.0 y=789.0
+:Sending Pointer ACTION_DOWN x=290.0 y=54.0
+:Sending Pointer ACTION_UP x=290.0 y=54.0
+:Sending Pointer ACTION_MOVE x=2.0 y=2.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=421.0 y=537.0
+:Sending Pointer ACTION_UP x=421.0 y=537.0
+:Sending Pointer ACTION_DOWN x=142.0 y=799.0
+:Sending Pointer ACTION_UP x=146.0 y=2.0
+:Sending Pointer ACTION_DOWN x=130.0 y=31.0
+:Sending Pointer ACTION_UP x=130.0 y=31.0
+:Sending Pointer ACTION_DOWN x=309.0 y=285.0
+:Sending Pointer ACTION_UP x=330.0 y=287.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+    //[calendar_time:2014-08-24 22:53:06.464  system_uptime:486782]
+    // Sending event #7400
+    //[calendar_time:2014-08-24 22:53:06.469  system_uptime:486788]
+    // Sending event #7400
+:Sending Pointer ACTION_DOWN x=163.0 y=722.0
+:Sending Pointer ACTION_UP x=163.0 y=722.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=365.0 y=27.0
+:Sending Pointer ACTION_UP x=365.0 y=27.0
+:Sending Pointer ACTION_DOWN x=129.0 y=700.0
+:Sending Pointer ACTION_UP x=129.0 y=700.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=54.0 y=221.0
+:Sending Pointer ACTION_UP x=81.0 y=216.0
+:Sending Pointer ACTION_DOWN x=115.0 y=471.0
+:Sending Pointer ACTION_UP x=115.0 y=471.0
+:Sending Pointer ACTION_DOWN x=391.0 y=264.0
+:Sending Pointer ACTION_UP x=401.0 y=282.0
+:Sending Pointer ACTION_DOWN x=342.0 y=39.0
+:Sending Pointer ACTION_UP x=342.0 y=39.0
+:Sending Pointer ACTION_DOWN x=45.0 y=759.0
+:Sending Pointer ACTION_UP x=40.0 y=774.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-4.0
+    //[calendar_time:2014-08-24 22:53:15.105  system_uptime:495423]
+    // Sending event #7500
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=102.0 y=733.0
+:Sending Pointer ACTION_UP x=99.0 y=712.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=2.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_MOVE x=-4.0 y=3.0
+:Sending Pointer ACTION_DOWN x=346.0 y=220.0
+:Sending Pointer ACTION_UP x=346.0 y=220.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-2.0
+    //[calendar_time:2014-08-24 22:53:20.817  system_uptime:501135]
+    // Sending event #7600
+:Sending Pointer ACTION_MOVE x=-2.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=142.0 y=339.0
+:Sending Pointer ACTION_UP x=134.0 y=343.0
+:Sending Pointer ACTION_DOWN x=458.0 y=202.0
+:Sending Pointer ACTION_UP x=458.0 y=202.0
+:Sending Pointer ACTION_DOWN x=184.0 y=760.0
+:Sending Pointer ACTION_UP x=184.0 y=760.0
+:Sending Pointer ACTION_DOWN x=12.0 y=434.0
+:Sending Pointer ACTION_UP x=28.0 y=427.0
+:Sending Pointer ACTION_DOWN x=183.0 y=610.0
+:Sending Pointer ACTION_UP x=168.0 y=605.0
+:Sending Pointer ACTION_DOWN x=139.0 y=386.0
+:Sending Pointer ACTION_UP x=139.0 y=386.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-1.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=409.0 y=217.0
+:Sending Pointer ACTION_UP x=409.0 y=217.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=97.0 y=523.0
+:Sending Pointer ACTION_UP x=97.0 y=523.0
+    //[calendar_time:2014-08-24 22:53:27.323  system_uptime:507641]
+    // Sending event #7700
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_DOWN x=364.0 y=306.0
+:Sending Pointer ACTION_UP x=364.0 y=306.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=342.0 y=692.0
+:Sending Pointer ACTION_UP x=342.0 y=692.0
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_DOWN x=356.0 y=328.0
+:Sending Pointer ACTION_UP x=353.0 y=327.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=4.0 y=1.0
+    //[calendar_time:2014-08-24 22:53:34.709  system_uptime:515026]
+    // Sending event #7800
+:Sending Pointer ACTION_DOWN x=48.0 y=350.0
+:Sending Pointer ACTION_UP x=48.0 y=350.0
+:Sending Pointer ACTION_DOWN x=462.0 y=442.0
+:Sending Pointer ACTION_UP x=454.0 y=445.0
+:Sending Pointer ACTION_DOWN x=21.0 y=576.0
+:Sending Pointer ACTION_UP x=9.0 y=581.0
+:Sending Pointer ACTION_DOWN x=389.0 y=679.0
+:Sending Pointer ACTION_UP x=389.0 y=679.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=272.0 y=160.0
+:Sending Pointer ACTION_UP x=272.0 y=160.0
+:Sending Pointer ACTION_MOVE x=0.0 y=4.0
+:Sending Pointer ACTION_DOWN x=466.0 y=785.0
+:Sending Pointer ACTION_UP x=466.0 y=785.0
+:Sending Pointer ACTION_MOVE x=4.0 y=2.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=178.0 y=660.0
+:Sending Pointer ACTION_UP x=178.0 y=660.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=66.0 y=745.0
+:Sending Pointer ACTION_UP x=66.0 y=745.0
+    //[calendar_time:2014-08-24 22:53:42.916  system_uptime:523232]
+    // Sending event #7900
+:Sending Pointer ACTION_DOWN x=20.0 y=390.0
+:Sending Pointer ACTION_UP x=38.0 y=416.0
+:Sending Pointer ACTION_MOVE x=1.0 y=3.0
+:Sending Pointer ACTION_DOWN x=297.0 y=529.0
+:Sending Pointer ACTION_UP x=305.0 y=526.0
+:Sending Pointer ACTION_DOWN x=160.0 y=473.0
+:Sending Pointer ACTION_UP x=160.0 y=473.0
+:Sending Pointer ACTION_DOWN x=337.0 y=468.0
+:Sending Pointer ACTION_UP x=337.0 y=468.0
+:Sending Pointer ACTION_DOWN x=6.0 y=132.0
+:Sending Pointer ACTION_UP x=6.0 y=132.0
+:Sending Pointer ACTION_DOWN x=425.0 y=607.0
+:Sending Pointer ACTION_UP x=424.0 y=570.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_DOWN x=42.0 y=329.0
+:Sending Pointer ACTION_UP x=36.0 y=334.0
+:Sending Pointer ACTION_DOWN x=330.0 y=365.0
+:Sending Pointer ACTION_UP x=330.0 y=365.0
+    // activityResuming(a2dp.Vol)
+    // Rejecting start of Intent { act=android.speech.tts.engine.CHECK_TTS_DATA cmp=com.svox.pico/.CheckVoiceData } in package com.svox.pico
+:Sending Pointer ACTION_DOWN x=455.0 y=558.0
+:Sending Pointer ACTION_UP x=455.0 y=558.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=1.0
+:Sending Pointer ACTION_DOWN x=332.0 y=506.0
+    //[calendar_time:2014-08-24 22:53:51.453  system_uptime:531770]
+    // Sending event #8000
+:Sending Pointer ACTION_UP x=329.0 y=490.0
+:Sending Pointer ACTION_DOWN x=204.0 y=388.0
+:Sending Pointer ACTION_UP x=208.0 y=392.0
+:Sending Pointer ACTION_DOWN x=235.0 y=0.0
+:Sending Pointer ACTION_UP x=235.0 y=0.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-4.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+    // Rejecting start of Intent { act=android.intent.action.VIEW dat=http://code.google.com/p/a2dpvolume/wiki/Manual cmp=com.android.browser/.BrowserActivity } in package com.android.browser
+:Sending Pointer ACTION_DOWN x=268.0 y=578.0
+:Sending Pointer ACTION_UP x=256.0 y=584.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=249.0 y=647.0
+:Sending Pointer ACTION_UP x=249.0 y=647.0
+:Sending Pointer ACTION_DOWN x=48.0 y=264.0
+:Sending Pointer ACTION_UP x=48.0 y=264.0
+:Sending Pointer ACTION_DOWN x=250.0 y=540.0
+:Sending Pointer ACTION_UP x=237.0 y=555.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-3.0
+    //[calendar_time:2014-08-24 22:53:55.154  system_uptime:535472]
+    // Sending event #8100
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=157.0 y=214.0
+:Sending Pointer ACTION_UP x=157.0 y=214.0
+:Sending Pointer ACTION_MOVE x=3.0 y=0.0
+:Sending Pointer ACTION_DOWN x=15.0 y=715.0
+:Sending Pointer ACTION_UP x=15.0 y=715.0
+:Sending Pointer ACTION_DOWN x=234.0 y=297.0
+:Sending Pointer ACTION_UP x=234.0 y=297.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=120.0 y=571.0
+:Sending Pointer ACTION_UP x=120.0 y=571.0
+:Sending Pointer ACTION_DOWN x=75.0 y=123.0
+:Sending Pointer ACTION_UP x=75.0 y=123.0
+:Sending Pointer ACTION_DOWN x=59.0 y=25.0
+:Sending Pointer ACTION_UP x=59.0 y=25.0
+:Sending Pointer ACTION_DOWN x=473.0 y=331.0
+:Sending Pointer ACTION_UP x=473.0 y=331.0
+:Sending Pointer ACTION_DOWN x=184.0 y=406.0
+:Sending Pointer ACTION_UP x=184.0 y=406.0
+:Sending Pointer ACTION_DOWN x=15.0 y=260.0
+:Sending Pointer ACTION_UP x=15.0 y=265.0
+:Sending Pointer ACTION_DOWN x=274.0 y=799.0
+:Sending Pointer ACTION_UP x=274.0 y=799.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=3.0
+:Sending Pointer ACTION_DOWN x=88.0 y=552.0
+:Sending Pointer ACTION_UP x=88.0 y=552.0
+:Sending Pointer ACTION_DOWN x=413.0 y=531.0
+:Sending Pointer ACTION_UP x=413.0 y=531.0
+    //[calendar_time:2014-08-24 22:53:59.831  system_uptime:540149]
+    // Sending event #8200
+:Sending Pointer ACTION_DOWN x=209.0 y=224.0
+:Sending Pointer ACTION_UP x=209.0 y=224.0
+:Sending Pointer ACTION_DOWN x=388.0 y=621.0
+:Sending Pointer ACTION_UP x=388.0 y=621.0
+:Sending Pointer ACTION_DOWN x=431.0 y=665.0
+:Sending Pointer ACTION_UP x=431.0 y=665.0
+:Sending Pointer ACTION_DOWN x=416.0 y=318.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_UP x=416.0 y=318.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-3.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=359.0 y=203.0
+:Sending Pointer ACTION_UP x=359.0 y=203.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=2.0 y=2.0
+:Sending Pointer ACTION_DOWN x=88.0 y=272.0
+:Sending Pointer ACTION_UP x=88.0 y=272.0
+:Sending Pointer ACTION_DOWN x=291.0 y=325.0
+:Sending Pointer ACTION_UP x=291.0 y=319.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=325.0 y=260.0
+    //[calendar_time:2014-08-24 22:54:03.347  system_uptime:543665]
+    // Sending event #8300
+:Sending Pointer ACTION_UP x=321.0 y=236.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=4.0
+:Sending Pointer ACTION_DOWN x=61.0 y=617.0
+:Sending Pointer ACTION_UP x=61.0 y=617.0
+:Sending Pointer ACTION_DOWN x=131.0 y=632.0
+:Sending Pointer ACTION_UP x=131.0 y=632.0
+:Sending Pointer ACTION_DOWN x=176.0 y=135.0
+:Sending Pointer ACTION_UP x=176.0 y=135.0
+:Sending Pointer ACTION_DOWN x=326.0 y=138.0
+:Sending Pointer ACTION_UP x=326.0 y=138.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=231.0 y=601.0
+:Sending Pointer ACTION_UP x=231.0 y=601.0
+:Sending Pointer ACTION_DOWN x=272.0 y=245.0
+:Sending Pointer ACTION_UP x=264.0 y=242.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=171.0 y=491.0
+:Sending Pointer ACTION_UP x=174.0 y=492.0
+:Sending Pointer ACTION_DOWN x=460.0 y=609.0
+:Sending Pointer ACTION_UP x=0.0 y=615.0
+:Sending Pointer ACTION_DOWN x=432.0 y=39.0
+:Sending Pointer ACTION_UP x=432.0 y=39.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-2.0
+    //[calendar_time:2014-08-24 22:54:07.398  system_uptime:547716]
+    // Sending event #8400
+:Sending Pointer ACTION_DOWN x=442.0 y=529.0
+:Sending Pointer ACTION_UP x=442.0 y=529.0
+:Sending Pointer ACTION_DOWN x=398.0 y=479.0
+:Sending Pointer ACTION_UP x=392.0 y=473.0
+:Sending Pointer ACTION_DOWN x=48.0 y=90.0
+:Sending Pointer ACTION_UP x=45.0 y=80.0
+:Sending Pointer ACTION_DOWN x=366.0 y=21.0
+:Sending Pointer ACTION_UP x=359.0 y=25.0
+:Sending Pointer ACTION_DOWN x=341.0 y=700.0
+:Sending Pointer ACTION_UP x=351.0 y=687.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=273.0 y=214.0
+:Sending Pointer ACTION_UP x=273.0 y=214.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=258.0 y=297.0
+:Sending Pointer ACTION_UP x=258.0 y=297.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=133.0 y=236.0
+:Sending Pointer ACTION_UP x=149.0 y=216.0
+    //[calendar_time:2014-08-24 22:54:12.504  system_uptime:552821]
+    // Sending event #8500
+    //[calendar_time:2014-08-24 22:54:12.507  system_uptime:552826]
+    // Sending event #8500
+:Sending Pointer ACTION_DOWN x=361.0 y=98.0
+:Sending Pointer ACTION_UP x=354.0 y=106.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_DOWN x=16.0 y=285.0
+:Sending Pointer ACTION_UP x=9.0 y=277.0
+:Sending Pointer ACTION_DOWN x=24.0 y=372.0
+:Sending Pointer ACTION_UP x=24.0 y=372.0
+:Sending Pointer ACTION_DOWN x=274.0 y=41.0
+:Sending Pointer ACTION_UP x=274.0 y=41.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=240.0 y=666.0
+:Sending Pointer ACTION_UP x=231.0 y=683.0
+:Sending Pointer ACTION_DOWN x=386.0 y=31.0
+:Sending Pointer ACTION_UP x=392.0 y=34.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=1.0 y=2.0
+    //[calendar_time:2014-08-24 22:54:16.923  system_uptime:557241]
+    // Sending event #8600
+    //[calendar_time:2014-08-24 22:54:16.930  system_uptime:557248]
+    // Sending event #8600
+:Sending Pointer ACTION_DOWN x=234.0 y=510.0
+:Sending Pointer ACTION_UP x=234.0 y=510.0
+:Sending Pointer ACTION_DOWN x=269.0 y=316.0
+:Sending Pointer ACTION_UP x=254.0 y=332.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=4.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=5.0 y=317.0
+:Sending Pointer ACTION_UP x=5.0 y=317.0
+:Sending Pointer ACTION_DOWN x=275.0 y=479.0
+:Sending Pointer ACTION_UP x=275.0 y=479.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=4.0
+:Sending Pointer ACTION_DOWN x=409.0 y=637.0
+:Sending Pointer ACTION_UP x=418.0 y=644.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=0.0
+:Sending Pointer ACTION_DOWN x=437.0 y=505.0
+    //[calendar_time:2014-08-24 22:54:18.999  system_uptime:559316]
+    // Sending event #8700
+:Sending Pointer ACTION_UP x=437.0 y=505.0
+:Sending Pointer ACTION_DOWN x=62.0 y=166.0
+:Sending Pointer ACTION_UP x=62.0 y=159.0
+:Sending Pointer ACTION_DOWN x=316.0 y=110.0
+:Sending Pointer ACTION_UP x=305.0 y=127.0
+:Sending Pointer ACTION_DOWN x=76.0 y=95.0
+:Sending Pointer ACTION_UP x=76.0 y=95.0
+:Sending Pointer ACTION_DOWN x=431.0 y=239.0
+:Sending Pointer ACTION_UP x=422.0 y=241.0
+:Sending Pointer ACTION_DOWN x=477.0 y=256.0
+:Sending Pointer ACTION_UP x=477.0 y=256.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=397.0 y=305.0
+:Sending Pointer ACTION_UP x=397.0 y=305.0
+:Sending Pointer ACTION_DOWN x=273.0 y=369.0
+:Sending Pointer ACTION_UP x=273.0 y=369.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=192.0 y=676.0
+:Sending Pointer ACTION_UP x=198.0 y=678.0
+:Sending Pointer ACTION_DOWN x=469.0 y=694.0
+:Sending Pointer ACTION_UP x=469.0 y=694.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=2.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-4.0
+    //[calendar_time:2014-08-24 22:54:20.958  system_uptime:561275]
+    // Sending event #8800
+:Sending Pointer ACTION_DOWN x=120.0 y=480.0
+:Sending Pointer ACTION_UP x=120.0 y=480.0
+:Sending Pointer ACTION_DOWN x=374.0 y=72.0
+:Sending Pointer ACTION_UP x=374.0 y=72.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=118.0 y=250.0
+:Sending Pointer ACTION_UP x=118.0 y=250.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=87.0 y=457.0
+:Sending Pointer ACTION_UP x=87.0 y=466.0
+:Sending Pointer ACTION_DOWN x=330.0 y=637.0
+:Sending Pointer ACTION_UP x=330.0 y=637.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=232.0 y=780.0
+:Sending Pointer ACTION_UP x=232.0 y=780.0
+:Sending Pointer ACTION_DOWN x=26.0 y=378.0
+:Sending Pointer ACTION_UP x=26.0 y=378.0
+:Sending Pointer ACTION_DOWN x=65.0 y=398.0
+:Sending Pointer ACTION_UP x=65.0 y=398.0
+:Sending Pointer ACTION_DOWN x=172.0 y=441.0
+:Sending Pointer ACTION_UP x=172.0 y=441.0
+:Sending Pointer ACTION_DOWN x=300.0 y=48.0
+    //[calendar_time:2014-08-24 22:54:23.139  system_uptime:563456]
+    // Sending event #8900
+:Sending Pointer ACTION_UP x=308.0 y=44.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=2.0
+:Sending Pointer ACTION_DOWN x=432.0 y=763.0
+:Sending Pointer ACTION_UP x=432.0 y=763.0
+:Sending Pointer ACTION_DOWN x=339.0 y=476.0
+:Sending Pointer ACTION_UP x=344.0 y=469.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=3.0
+:Sending Pointer ACTION_DOWN x=107.0 y=25.0
+:Sending Pointer ACTION_UP x=107.0 y=25.0
+:Sending Pointer ACTION_DOWN x=50.0 y=233.0
+:Sending Pointer ACTION_UP x=50.0 y=233.0
+:Sending Pointer ACTION_DOWN x=416.0 y=627.0
+    //[calendar_time:2014-08-24 22:54:26.660  system_uptime:566988]
+    // Sending event #9000
+:Sending Pointer ACTION_UP x=393.0 y=628.0
+:Sending Pointer ACTION_DOWN x=153.0 y=450.0
+:Sending Pointer ACTION_UP x=153.0 y=450.0
+:Sending Pointer ACTION_DOWN x=356.0 y=756.0
+:Sending Pointer ACTION_UP x=360.0 y=750.0
+:Sending Pointer ACTION_DOWN x=341.0 y=456.0
+:Sending Pointer ACTION_UP x=342.0 y=467.0
+:Sending Pointer ACTION_DOWN x=173.0 y=335.0
+:Sending Pointer ACTION_UP x=180.0 y=342.0
+:Sending Pointer ACTION_DOWN x=44.0 y=314.0
+:Sending Pointer ACTION_UP x=44.0 y=314.0
+:Sending Pointer ACTION_DOWN x=319.0 y=587.0
+:Sending Pointer ACTION_UP x=319.0 y=587.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=161.0 y=671.0
+:Sending Pointer ACTION_UP x=153.0 y=648.0
+:Sending Pointer ACTION_DOWN x=54.0 y=385.0
+:Sending Pointer ACTION_UP x=53.0 y=388.0
+:Sending Pointer ACTION_DOWN x=461.0 y=479.0
+:Sending Pointer ACTION_UP x=461.0 y=479.0
+:Sending Pointer ACTION_DOWN x=273.0 y=507.0
+:Sending Pointer ACTION_UP x=273.0 y=507.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=23.0 y=168.0
+:Sending Pointer ACTION_UP x=23.0 y=168.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-2.0
+    //[calendar_time:2014-08-24 22:54:29.329  system_uptime:569645]
+    // Sending event #9100
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=364.0 y=345.0
+:Sending Pointer ACTION_UP x=383.0 y=347.0
+:Sending Pointer ACTION_DOWN x=189.0 y=667.0
+:Sending Pointer ACTION_UP x=172.0 y=657.0
+:Sending Pointer ACTION_DOWN x=393.0 y=683.0
+:Sending Pointer ACTION_UP x=400.0 y=675.0
+:Sending Pointer ACTION_DOWN x=172.0 y=120.0
+:Sending Pointer ACTION_UP x=172.0 y=120.0
+:Sending Pointer ACTION_DOWN x=19.0 y=254.0
+:Sending Pointer ACTION_UP x=20.0 y=261.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=314.0 y=629.0
+:Sending Pointer ACTION_UP x=311.0 y=623.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=86.0 y=108.0
+:Sending Pointer ACTION_UP x=86.0 y=108.0
+:Sending Pointer ACTION_DOWN x=393.0 y=205.0
+:Sending Pointer ACTION_UP x=398.0 y=218.0
+:Sending Pointer ACTION_DOWN x=50.0 y=680.0
+:Sending Pointer ACTION_UP x=50.0 y=680.0
+:Sending Pointer ACTION_DOWN x=312.0 y=194.0
+:Sending Pointer ACTION_UP x=312.0 y=194.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-3.0
+    //[calendar_time:2014-08-24 22:54:32.132  system_uptime:572450]
+    // Sending event #9200
+:Sending Pointer ACTION_DOWN x=406.0 y=766.0
+:Sending Pointer ACTION_UP x=406.0 y=766.0
+:Sending Pointer ACTION_MOVE x=3.0 y=2.0
+:Sending Pointer ACTION_DOWN x=260.0 y=510.0
+:Sending Pointer ACTION_UP x=260.0 y=510.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=1.0
+:Sending Pointer ACTION_DOWN x=317.0 y=716.0
+:Sending Pointer ACTION_UP x=317.0 y=716.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+    // activityResuming(com.android.launcher)
+    // Rejecting resume of package com.android.launcher
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Pointer ACTION_DOWN x=85.0 y=498.0
+:Sending Pointer ACTION_UP x=85.0 y=498.0
+:Sending Pointer ACTION_DOWN x=255.0 y=594.0
+:Sending Pointer ACTION_UP x=255.0 y=594.0
+:Sending Pointer ACTION_MOVE x=0.0 y=1.0
+:Sending Pointer ACTION_DOWN x=120.0 y=731.0
+:Sending Pointer ACTION_UP x=117.0 y=740.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+    //[calendar_time:2014-08-24 22:54:37.214  system_uptime:577531]
+    // Sending event #9300
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=249.0 y=627.0
+:Sending Pointer ACTION_UP x=249.0 y=627.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=1.0
+:Sending Pointer ACTION_DOWN x=103.0 y=363.0
+:Sending Pointer ACTION_UP x=103.0 y=363.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Pointer ACTION_DOWN x=440.0 y=402.0
+:Sending Pointer ACTION_UP x=440.0 y=402.0
+:Sending Pointer ACTION_DOWN x=36.0 y=457.0
+:Sending Pointer ACTION_UP x=28.0 y=463.0
+:Sending Pointer ACTION_MOVE x=0.0 y=2.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=432.0 y=239.0
+:Sending Pointer ACTION_UP x=432.0 y=239.0
+    //[calendar_time:2014-08-24 22:54:41.445  system_uptime:581767]
+    // Sending event #9400
+    //[calendar_time:2014-08-24 22:54:41.452  system_uptime:581772]
+    // Sending event #9400
+:Sending Pointer ACTION_DOWN x=355.0 y=138.0
+:Sending Pointer ACTION_UP x=355.0 y=138.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=188.0 y=532.0
+:Sending Pointer ACTION_UP x=188.0 y=532.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=457.0 y=630.0
+:Sending Pointer ACTION_UP x=457.0 y=630.0
+:Sending Pointer ACTION_DOWN x=359.0 y=500.0
+:Sending Pointer ACTION_UP x=359.0 y=500.0
+:Sending Pointer ACTION_MOVE x=0.0 y=2.0
+:Sending Pointer ACTION_MOVE x=0.0 y=3.0
+:Sending Pointer ACTION_DOWN x=275.0 y=626.0
+:Sending Pointer ACTION_UP x=281.0 y=639.0
+:Sending Pointer ACTION_DOWN x=256.0 y=676.0
+:Sending Pointer ACTION_UP x=256.0 y=676.0
+:Sending Pointer ACTION_DOWN x=334.0 y=772.0
+:Sending Pointer ACTION_UP x=334.0 y=772.0
+:Sending Pointer ACTION_MOVE x=0.0 y=3.0
+    //[calendar_time:2014-08-24 22:54:46.045  system_uptime:586362]
+    // Sending event #9500
+:Sending Pointer ACTION_DOWN x=296.0 y=768.0
+:Sending Pointer ACTION_UP x=296.0 y=768.0
+:Sending Pointer ACTION_DOWN x=220.0 y=90.0
+:Sending Pointer ACTION_UP x=216.0 y=101.0
+:Sending Pointer ACTION_DOWN x=265.0 y=669.0
+:Sending Pointer ACTION_UP x=265.0 y=669.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=340.0 y=62.0
+:Sending Pointer ACTION_UP x=347.0 y=31.0
+:Sending Pointer ACTION_DOWN x=232.0 y=500.0
+:Sending Pointer ACTION_UP x=232.0 y=500.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=69.0 y=327.0
+:Sending Pointer ACTION_UP x=61.0 y=328.0
+    // Allowing start of Intent { cmp=a2dp.Vol/.ManageData } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=453.0 y=624.0
+:Sending Pointer ACTION_UP x=444.0 y=648.0
+:Sending Pointer ACTION_DOWN x=333.0 y=181.0
+:Sending Pointer ACTION_UP x=333.0 y=181.0
+:Sending Pointer ACTION_DOWN x=134.0 y=213.0
+:Sending Pointer ACTION_UP x=134.0 y=213.0
+:Sending Pointer ACTION_DOWN x=352.0 y=290.0
+:Sending Pointer ACTION_UP x=352.0 y=290.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+    //[calendar_time:2014-08-24 22:54:51.129  system_uptime:591447]
+    // Sending event #9600
+    //[calendar_time:2014-08-24 22:54:51.132  system_uptime:591451]
+    // Sending event #9600
+:Sending Pointer ACTION_DOWN x=412.0 y=99.0
+:Sending Pointer ACTION_UP x=412.0 y=99.0
+:Sending Pointer ACTION_DOWN x=353.0 y=606.0
+:Sending Pointer ACTION_UP x=341.0 y=604.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=0.0
+:Sending Pointer ACTION_DOWN x=260.0 y=704.0
+:Sending Pointer ACTION_UP x=260.0 y=704.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_DOWN x=459.0 y=171.0
+:Sending Pointer ACTION_UP x=459.0 y=171.0
+:Sending Pointer ACTION_MOVE x=4.0 y=2.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_MOVE x=-2.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=3.0
+    //[calendar_time:2014-08-24 22:54:55.977  system_uptime:596293]
+    // Sending event #9700
+:Sending Pointer ACTION_MOVE x=3.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=323.0 y=216.0
+:Sending Pointer ACTION_UP x=323.0 y=216.0
+:Sending Pointer ACTION_DOWN x=349.0 y=2.0
+:Sending Pointer ACTION_UP x=349.0 y=2.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=3.0
+:Sending Pointer ACTION_DOWN x=103.0 y=303.0
+:Sending Pointer ACTION_UP x=103.0 y=303.0
+:Sending Pointer ACTION_DOWN x=99.0 y=250.0
+:Sending Pointer ACTION_UP x=99.0 y=250.0
+:Sending Pointer ACTION_DOWN x=434.0 y=601.0
+:Sending Pointer ACTION_UP x=434.0 y=601.0
+:Sending Pointer ACTION_DOWN x=411.0 y=289.0
+:Sending Pointer ACTION_UP x=436.0 y=302.0
+:Sending Pointer ACTION_DOWN x=27.0 y=596.0
+:Sending Pointer ACTION_UP x=29.0 y=591.0
+:Sending Pointer ACTION_DOWN x=221.0 y=443.0
+:Sending Pointer ACTION_UP x=234.0 y=442.0
+:Sending Pointer ACTION_DOWN x=182.0 y=254.0
+:Sending Pointer ACTION_UP x=182.0 y=254.0
+:Sending Pointer ACTION_DOWN x=67.0 y=436.0
+:Sending Pointer ACTION_UP x=61.0 y=447.0
+:Sending Pointer ACTION_DOWN x=63.0 y=125.0
+:Sending Pointer ACTION_UP x=57.0 y=128.0
+:Sending Pointer ACTION_DOWN x=293.0 y=153.0
+:Sending Pointer ACTION_UP x=293.0 y=153.0
+    //[calendar_time:2014-08-24 22:55:01.397  system_uptime:601715]
+    // Sending event #9800
+    //[calendar_time:2014-08-24 22:55:01.406  system_uptime:601726]
+    // Sending event #9800
+:Sending Pointer ACTION_DOWN x=29.0 y=368.0
+:Sending Pointer ACTION_UP x=29.0 y=368.0
+:Sending Pointer ACTION_DOWN x=405.0 y=414.0
+:Sending Pointer ACTION_UP x=393.0 y=417.0
+:Sending Pointer ACTION_DOWN x=307.0 y=431.0
+:Sending Pointer ACTION_UP x=307.0 y=431.0
+:Sending Pointer ACTION_DOWN x=99.0 y=122.0
+:Sending Pointer ACTION_UP x=89.0 y=87.0
+:Sending Pointer ACTION_DOWN x=146.0 y=379.0
+:Sending Pointer ACTION_UP x=175.0 y=373.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=138.0 y=256.0
+:Sending Pointer ACTION_UP x=138.0 y=256.0
+    //[calendar_time:2014-08-24 22:55:05.621  system_uptime:605937]
+    // Sending event #9900
+:Sending Pointer ACTION_MOVE x=0.0 y=1.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=188.0 y=25.0
+:Sending Pointer ACTION_UP x=188.0 y=25.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=448.0 y=361.0
+:Sending Pointer ACTION_UP x=448.0 y=361.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=48.0 y=678.0
+:Sending Pointer ACTION_UP x=48.0 y=678.0
+:Sending Pointer ACTION_DOWN x=305.0 y=462.0
+:Sending Pointer ACTION_UP x=299.0 y=463.0
+:Sending Pointer ACTION_DOWN x=31.0 y=625.0
+:Sending Pointer ACTION_UP x=31.0 y=625.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=a2dp.Vol/.main;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=a2dp.Vol/.main } in package a2dp.Vol
+:Sending Pointer ACTION_MOVE x=4.0 y=-3.0
+Events injected: 10000
+:Dropped: keys=18 pointers=167 trackballs=0 flips=0
+## Network stats: elapsed time=536014ms (536014ms mobile, 0ms wifi, 0ms not connected)
+// Monkey finished

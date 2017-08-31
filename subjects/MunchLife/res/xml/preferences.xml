@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory android:title="@string/prefTitle">
+		<CheckBoxPreference
+		 android:title="@string/sleep"
+		 android:defaultValue="true"
+		 android:summary="@string/sleepSummary"
+		 android:key="sleepPref" />
+		
+		<CheckBoxPreference
+		 android:title="@string/victory"
+		 android:defaultValue="true"
+		 android:summary="@string/victorySummary"
+		 android:key="victoryPref" />
+		 
+		<EditTextPreference
+		 android:title="@string/maxlevel"
+		 android:defaultValue="10"
+		 android:summary="@string/maxlevelSummary"
+		 android:key="maxlevelPref"
+		 android:inputType="phone" />
+	</PreferenceCategory>
+	
+</PreferenceScreen>

@@ -1,0 +1,291 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: ShowSettingsActivity
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for ShowSettingsActivity...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for ShowSettingsActivity...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [aapt] aapt: warning: string 'menu_addons' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+     [aapt] aapt: warning: string 'msg_tik_to_change_settings' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: nl
+     [aapt] aapt: warning: string 'txt_addon_quick_battery' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+     [aapt] aapt: warning: string 'txt_addon_quick_battery_descr' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+     [aapt] aapt: warning: string 'txt_addons' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+     [aapt] aapt: warning: string 'txt_install' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+     [aapt] aapt: warning: string 'txt_uninstall' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 69 source files to /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/classes.dex...
+       [dx] Merged dex A (111 defs/175.7KiB) with dex B (2 defs/1.1KiB). Result is 113 defs/209.7KiB. Took 0.6s
+       [dx] Merged dex A (113 defs/209.7KiB) with dex B (297 defs/326.8KiB). Result is 410 defs/652.8KiB. Took 0.7s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi-v9/ic_logo_black.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi-v9/ic_logo_black.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi-v9/ic_logo_black.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi-v9/ic_logo_white.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi-v9/ic_logo_white.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi-v9/ic_logo_white.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/btn_black_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/btn_black_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/btn_black_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/btn_default_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/btn_default_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/btn_default_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/btn_default_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/btn_default_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/btn_default_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_3g.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_3g.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_3g.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_4g.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_4g.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_4g.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_airplane.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_airplane.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_airplane.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_apn.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_apn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_apn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_autosync.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_autosync.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_autosync.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_battery.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_battery.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_battery.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_brightness.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_brightness.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_brightness.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_brightness_max.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_brightness_max.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_brightness_max.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_brightness_min.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_brightness_min.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_brightness_min.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_bt.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_bt.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_bt.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_dialog_menu_generic.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_dialog_menu_generic.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_dialog_menu_generic.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_flashlight.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_flashlight.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_flashlight.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_flashlight_on.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_flashlight_on.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_flashlight_on.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_gps.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_gps.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_gps.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_lock.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_lock.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_lock.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_logo.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_logo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_logo.png: 55% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_logo_black.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_logo_black.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_logo_black.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_logo_white.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_logo_white.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_logo_white.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_mp_move.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_mp_move.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_mp_move.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_placeholder.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_placeholder.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_placeholder.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_popup.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_popup.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_popup.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_quicker_ads.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_quicker_ads.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_quicker_ads.png: 85% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_rotate.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_rotate.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_rotate.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_screentimeout.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_screentimeout.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_screentimeout.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_scroll_bg.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_scroll_bg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_scroll_bg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_silent.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_silent.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_silent.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_sound.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_sound.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_sound.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_vibro.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_vibro.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_vibro.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_vibro_sound.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_vibro_sound.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_vibro_sound.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_volume.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_volume.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_volume.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_volume_control.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_volume_control.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_volume_control.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_volume_max.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_volume_max.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_volume_max.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_volume_min.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_volume_min.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_volume_min.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_wifi.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_wifi.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_wifi.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_wifi_hs.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_wifi_hs.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_wifi_hs.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/ic_wrench.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_wrench.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/ic_wrench.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-hdpi/pattern_carbon_fiber_dark.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/pattern_carbon_fiber_dark.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-hdpi/pattern_carbon_fiber_dark.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/btn_black_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/btn_black_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/btn_black_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/btn_default_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/btn_default_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/btn_default_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/btn_default_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/btn_default_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/btn_default_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_3g.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_3g.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_3g.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_4g.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_4g.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_4g.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_addon.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_addon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_addon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_airplane.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_airplane.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_airplane.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_apn.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_apn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_apn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_autosync.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_autosync.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_autosync.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_battery.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_battery.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_battery.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_brightness.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_brightness.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_brightness.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_brightness_max.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_brightness_max.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_brightness_max.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_brightness_min.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_brightness_min.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_brightness_min.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_bt.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_bt.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_bt.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_dialog_menu_generic.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_dialog_menu_generic.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_dialog_menu_generic.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_flashlight.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_flashlight.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_flashlight.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_flashlight_on.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_flashlight_on.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_flashlight_on.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_gps.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_gps.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_gps.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_lock.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_lock.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_lock.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_logo.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_logo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_logo.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_logo_black.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_logo_black.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_logo_black.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_logo_white.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_logo_white.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_logo_white.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_menu_addons.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_menu_addons.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_menu_addons.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_mp_move.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_mp_move.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_mp_move.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_placeholder.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_placeholder.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_placeholder.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_popup.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_popup.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_popup.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_rotate.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_rotate.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_rotate.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_screentimeout.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_screentimeout.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_screentimeout.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_scroll_bg.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_scroll_bg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_scroll_bg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_silent.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_silent.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_silent.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_sound.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_sound.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_sound.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_vibro.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_vibro.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_vibro.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_vibro_sound.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_vibro_sound.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_vibro_sound.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_volume.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_volume.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_volume.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_volume_control.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_volume_control.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_volume_control.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_volume_max.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_volume_max.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_volume_max.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_volume_min.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_volume_min.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_volume_min.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_wifi.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_wifi.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_wifi.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_wifi_hs.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_wifi_hs.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_wifi_hs.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/ic_wrench.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_wrench.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/ic_wrench.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable-mdpi/pattern_carbon_fiber_dark.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/pattern_carbon_fiber_dark.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable-mdpi/pattern_carbon_fiber_dark.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res/drawable/toolbar320.png => /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable/toolbar320.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/res/drawable/toolbar320.png: 0% size of source)
+   [crunch] Crunched 84 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+     [aapt] aapt: warning: string 'menu_addons' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+     [aapt] aapt: warning: string 'msg_tik_to_change_settings' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: nl
+     [aapt] aapt: warning: string 'txt_addon_quick_battery' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+     [aapt] aapt: warning: string 'txt_addon_quick_battery_descr' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+     [aapt] aapt: warning: string 'txt_addons' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+     [aapt] aapt: warning: string 'txt_install' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+     [aapt] aapt: warning: string 'txt_uninstall' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/res; found: cs_CZ fr pt_PT
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating ShowSettingsActivity-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/ShowSettingsActivity-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/QuickSettings/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 42 seconds

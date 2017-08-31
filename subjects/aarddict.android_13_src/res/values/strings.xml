@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="appName">Aard Dictionary</string>
+    <string name="titleLookupActivity">%1$s - %2$s</string>
+    <string name="shortDictInfo">%1$s in %2$s, %3$s open</string>
+    <plurals name="dictionaries">
+        <item quantity="one">%d dictionary</item>
+        <item quantity="other">%d dictionaries</item>        
+    </plurals>    
+    <plurals name="articles">
+        <item quantity="one">%d article</item>
+        <item quantity="other">%,d articles</item>        
+    </plurals>
+    <plurals name="volumes">
+        <item quantity="one">%d volume</item>
+        <item quantity="other">%d volumes</item>        
+    </plurals>
+    <string name="noDictionaries">
+        <![CDATA[
+        <h1>No dictionaries</h1>
+        <p>Get dictionaries at <a href="http://aarddict.org">http://aarddict.org</a></p>        
+        ]]>
+    </string>    
+    <string name="nothingFound">
+        <![CDATA[
+        <h1>Nothing found</h1>
+        ]]>
+    </string>
+    
+    <string name="about">    
+        <![CDATA[
+        <big>%1$s %2$s</big>
+        <p>(C) 2012 Igor Tkach and contributors</p>
+        <p><a href="http://aarddict.org">http://aarddict.org</a></p>
+        ]]>    
+    </string>
+    
+    <string name="flattrUrl">
+        <![CDATA[https://flattr.com/submit/auto?user_id=aarddict&url=http://aarddict.org]]>
+    </string>
+    
+    <string name="titleAbout">About</string>
+    <string name="titleError">Error</string>
+    <string name="titleVerifying">Verifying</string>    
+    <string name="titleDictionariesActivity">%s - Dictionaries</string>
+    <string name="titleDictionaryInfoActivity">Dictionary Info</string>
+    
+    <string name="inputHint">Start typing</string>
+    
+    <string name="mnInfo">Dictionaries</string>
+    <string name="mnAbout">About</string>
+    <string name="mnBack">Back</string>
+    <string name="mnNextArticle">Next</string>
+    <string name="mnViewOnline">View Online</string>
+    <string name="mnNewLookup">New Lookup</string>
+    <string name="mnZoomIn">Zoom In</string>
+    <string name="mnZoomOut">Zoom Out</string>
+
+	<string name="mnDictDetails">Info</string>
+	<string name="mnDictVerify">Verify</string>
+	<string name="mnDictRefresh">Scan Device</string>
+
+    <string name="titleArticleViewActivity">%1$s - %2$s</string>
+    
+    <string name="btnDismiss">Dismiss</string>
+    <string name="btnCancel">Cancel</string>
+    
+    <string name="msgArticleNotFound">Article \"%s\" not found</string>
+    <string name="msgRedirectNotFound">Redirect \"%s\" not found</string>    
+    <string name="msgTooManyRedirects">Too many redirects for \"%s\"</string>
+    <string name="msgErrorLoadingArticle">There was an error loading article \"%s\"</string>
+    
+    <string name="msgDataIntegrityVerified">%1$s\nData integrity verified %2$s: %3$s</string>
+    <string name="msgDataIntegrityNotVerified">%s\nData integrity not verified</string>
+    <string name="msgErrorVerifying">Error encountered while verifying %2$s: %2$s</string>
+    <string name="msgDictCorruped">%s is corrupted</string>    
+    <string name="msgDictOk">%s is ok</string>
+    
+    <string name="msgLooking">Looking for dictionaries...</string>    
+    <string name="msgLoading">Loading dictionaries...</string>
+    
+    <string name="verifyOk">ok</string>
+    <string name="verifyCorrupted">corrupted</string>
+    
+    <string name="tabDescription">Description</string>
+    <string name="tabCopyright">Copyright</string>
+    <string name="tabSource">Source</string>
+    <string name="tabLicense">License</string>
+    
+    <string name="scanDevice">Scan Device</string>
+    
+    <string name="toastDictFileLoaded">Loaded dictionary from %s</string>
+    <string name="toastDictFileFailed">Failed to load dictionary from %s</string>       
+</resources>

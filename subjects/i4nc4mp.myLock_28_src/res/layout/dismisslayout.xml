@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@color/droid"
+>
+  <!-- style="@android:style/Theme.Translucent" -->
+<TextView android:text="myLock" android:textColor="@color/black" android:textSize="25sp" android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"></TextView>
+<TextView android:text="waiting for last app..." android:textColor="@color/black" android:textSize="25sp" android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_centerHorizontal="true" android:layout_height="wrap_content" android:layout_below="@id/TextView01"></TextView>
+<TextView android:text="try back key if stuck here" android:textColor="@color/black" android:textSize="25sp" android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_centerHorizontal="true" android:layout_height="wrap_content" android:layout_below="@id/TextView02"></TextView>
+</RelativeLayout>

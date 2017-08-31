@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:id="@+id/TopLinearLayout"
+    android:layout_weight="2">
+    <LinearLayout
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:layout_width="fill_parent"
+      android:id="@+id/TimerLayout">
+      <TextView
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:textAppearance="@style/TimerStyle"
+        android:id="@+id/HourTextView"
+        android:layout_width="fill_parent"
+        android:gravity="right"
+        android:layout_weight="1" />
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":"
+        android:textAppearance="@style/TimerStyle"
+        android:id="@+id/SepTextView1" />
+      <TextView
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:textAppearance="@style/TimerStyle"
+        android:id="@+id/MinTextView"
+        android:gravity="center"
+        android:layout_width="wrap_content" />
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":"
+        android:textAppearance="@style/TimerStyle"
+        android:id="@+id/SepTextView2" />
+      <TextView
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:textAppearance="@style/TimerStyle"
+        android:id="@+id/SecTextView"
+        android:layout_width="fill_parent"
+        android:gravity="left"
+        android:layout_weight="1" />
+    </LinearLayout>
+  </LinearLayout>
+  <LinearLayout
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:layout_weight="1"
+    android:gravity="bottom"
+    android:id="@+id/BottomLinearLayout">
+    <LinearLayout
+      android:id="@+id/TimerSelectLayout"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_weight="1">
+      <LinearLayout
+        android:id="@+id/HourSelectLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:layout_weight="1">
+        <TextView
+          android:id="@+id/HourTextView"
+          android:layout_height="wrap_content"
+          android:layout_width="fill_parent"
+          android:text="@string/hours_tag"
+          android:textAppearance="@style/LabelStyle"
+          android:paddingLeft="3sp" />
+        <Spinner
+          android:id="@+id/HourSpinner"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:visibility="gone" />
+        <EditText
+          android:layout_height="wrap_content"
+          android:id="@+id/HourEditText"
+          android:layout_width="fill_parent"
+          android:selectAllOnFocus="true"
+          android:singleLine="true"
+          android:numeric="integer"          
+          android:text="0"
+          android:maxLength="3"
+          android:digits="0123456789"
+          android:inputType="phone" />
+      </LinearLayout>
+      <LinearLayout
+        android:id="@+id/MinuteSelectLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_gravity="bottom">
+        <TextView
+          android:id="@+id/MinuteTextView"
+          android:layout_height="wrap_content"
+          android:layout_width="fill_parent"
+          android:text="@string/minutes_tag"
+          android:textAppearance="@style/LabelStyle"
+          android:paddingLeft="3sp" />
+        <Spinner
+          android:id="@+id/MinuteSpinner"
+          android:layout_height="wrap_content"
+          android:layout_width="fill_parent"
+          android:visibility="gone" />
+        <EditText
+          android:layout_height="wrap_content"
+          android:id="@+id/MinuteEditText"
+          android:layout_width="fill_parent"
+          android:singleLine="true"
+          android:numeric="integer"
+          android:selectAllOnFocus="true"
+          android:maxLength="4"
+          android:digits="0123456789"
+          android:inputType="phone" android:text="0"/>
+      </LinearLayout>
+      <LinearLayout
+        android:id="@+id/SecondSelectLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:layout_weight="1">
+        <TextView
+          android:id="@+id/SecondTextView"
+          android:layout_height="wrap_content"
+          android:layout_width="fill_parent"
+          android:text="@string/seconds_tag"
+          android:textAppearance="@style/LabelStyle"
+          android:paddingLeft="3sp" />
+        <Spinner
+          android:layout_height="wrap_content"
+          android:id="@+id/SecondSpinner"
+          android:layout_width="fill_parent"
+          android:visibility="gone" />
+        <EditText
+          android:layout_height="wrap_content"
+          android:id="@+id/SecondEditText"
+          android:layout_width="fill_parent"
+          android:numeric="integer"
+          android:singleLine="true"
+          android:selectAllOnFocus="true"
+          android:text="0"
+          android:maxLength="6"
+          android:inputType="phone"
+          android:digits="0123456789" />
+      </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+      android:id="@+id/ButtonLayout"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_weight="1"
+      android:orientation="vertical">
+      <Button
+        android:layout_width="fill_parent"
+        android:textAppearance="@style/ButtonStyle"
+        android:id="@+id/PauseButton"
+        android:text="@string/pause_button_text"
+        android:layout_weight="1"
+        android:layout_height="fill_parent"
+        android:enabled="false"
+        android:focusable="false" />
+      <Button
+        android:text="@string/start_button_text"
+        android:layout_width="fill_parent"
+        android:id="@+id/StartStopButton"
+        android:textAppearance="@style/ButtonStyle"
+        android:layout_weight="1"
+        android:layout_height="fill_parent" />
+    </LinearLayout>
+  </LinearLayout>
+</LinearLayout>

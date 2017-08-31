@@ -1,0 +1,4 @@
+* possible bug: when displaying "aborting import" toaster, make sure the back
+	button is enabled and the abort button is hidden (as if abort were pressed)
+	since this can happen if, say, the alarm goes off.
+* in the long term, we need to save/restore state from doit/importer

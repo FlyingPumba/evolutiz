@@ -1,0 +1,12 @@
+@GROUP
+general
+@SYNTAX
+return
+@DOC
+returns from a function. 
+(Internal Note: this function is done in the function token)
+@EXAMPLES
+<programlisting>
+return
+</programlisting>
+@SEE

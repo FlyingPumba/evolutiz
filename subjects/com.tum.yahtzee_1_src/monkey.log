@@ -1,0 +1,1508 @@
+:Monkey: seed=0 count=10000
+:AllowPackage: com.tum.yahtzee
+:IncludeCategory: android.intent.category.LAUNCHER
+:IncludeCategory: android.intent.category.MONKEY
+// Event percentages:
+//   0: 15.0%
+//   1: 10.0%
+//   2: 15.0%
+//   3: 25.0%
+//   4: 15.0%
+//   5: 2.0%
+//   6: 2.0%
+//   7: 1.0%
+//   8: 15.0%
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.tum.yahtzee/.YahtzeeActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.tum.yahtzee/.YahtzeeActivity } in package com.tum.yahtzee
+:Sending Pointer ACTION_DOWN x=234.0 y=197.0
+:Sending Pointer ACTION_UP x=238.0 y=190.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=56.0 y=280.0
+:Sending Pointer ACTION_UP x=69.0 y=271.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=1.0
+:Sending Pointer ACTION_DOWN x=28.0 y=490.0
+:Sending Pointer ACTION_UP x=28.0 y=490.0
+:Sending Pointer ACTION_DOWN x=403.0 y=645.0
+:Sending Pointer ACTION_UP x=397.0 y=661.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=98.0 y=752.0
+:Sending Pointer ACTION_UP x=98.0 y=752.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=264.0 y=458.0
+:Sending Pointer ACTION_UP x=264.0 y=458.0
+:Sending Pointer ACTION_DOWN x=113.0 y=170.0
+:Sending Pointer ACTION_UP x=98.0 y=156.0
+    //[calendar_time:2014-08-25 19:51:07.047  system_uptime:80957]
+    // Sending event #100
+:Sending Pointer ACTION_MOVE x=2.0 y=0.0
+:Sending Pointer ACTION_DOWN x=196.0 y=463.0
+:Sending Pointer ACTION_UP x=236.0 y=454.0
+:Sending Pointer ACTION_DOWN x=107.0 y=579.0
+:Sending Pointer ACTION_UP x=107.0 y=579.0
+:Sending Pointer ACTION_MOVE x=4.0 y=1.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=304.0 y=685.0
+:Sending Pointer ACTION_UP x=317.0 y=674.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=1.0
+:Sending Pointer ACTION_DOWN x=102.0 y=574.0
+:Sending Pointer ACTION_UP x=102.0 y=574.0
+:Sending Pointer ACTION_DOWN x=106.0 y=130.0
+    //[calendar_time:2014-08-25 19:51:09.164  system_uptime:83075]
+    // Sending event #200
+:Sending Pointer ACTION_UP x=115.0 y=120.0
+:Sending Pointer ACTION_MOVE x=2.0 y=2.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=339.0 y=689.0
+:Sending Pointer ACTION_UP x=339.0 y=689.0
+:Sending Pointer ACTION_DOWN x=311.0 y=44.0
+:Sending Pointer ACTION_UP x=311.0 y=44.0
+:Sending Pointer ACTION_DOWN x=337.0 y=221.0
+:Sending Pointer ACTION_UP x=337.0 y=221.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=4.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=437.0 y=183.0
+:Sending Pointer ACTION_UP x=450.0 y=158.0
+:Sending Pointer ACTION_DOWN x=5.0 y=58.0
+:Sending Pointer ACTION_UP x=-4.0 y=58.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-2.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.tum.yahtzee/.YahtzeeActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.tum.yahtzee/.YahtzeeActivity } in package com.tum.yahtzee
+:Sending Pointer ACTION_DOWN x=80.0 y=200.0
+:Sending Pointer ACTION_UP x=80.0 y=200.0
+    //[calendar_time:2014-08-25 19:51:12.343  system_uptime:86253]
+    // Sending event #300
+    //[calendar_time:2014-08-25 19:51:12.351  system_uptime:86263]
+    // Sending event #300
+:Sending Pointer ACTION_MOVE x=2.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=278.0 y=104.0
+:Sending Pointer ACTION_UP x=278.0 y=104.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=4.0
+:Sending Pointer ACTION_DOWN x=380.0 y=319.0
+:Sending Pointer ACTION_UP x=380.0 y=319.0
+:Sending Pointer ACTION_MOVE x=2.0 y=4.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=318.0 y=142.0
+:Sending Pointer ACTION_UP x=318.0 y=142.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=0.0
+:Sending Pointer ACTION_DOWN x=417.0 y=796.0
+:Sending Pointer ACTION_UP x=412.0 y=-14.0
+:Sending Pointer ACTION_DOWN x=182.0 y=84.0
+:Sending Pointer ACTION_UP x=182.0 y=84.0
+:Sending Pointer ACTION_DOWN x=19.0 y=228.0
+:Sending Pointer ACTION_UP x=23.0 y=237.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=11.0 y=702.0
+    //[calendar_time:2014-08-25 19:51:15.351  system_uptime:89288]
+    // Sending event #400
+:Sending Pointer ACTION_UP x=11.0 y=702.0
+:Sending Pointer ACTION_DOWN x=424.0 y=48.0
+:Sending Pointer ACTION_UP x=415.0 y=28.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=306.0 y=601.0
+:Sending Pointer ACTION_UP x=306.0 y=601.0
+:Sending Pointer ACTION_DOWN x=116.0 y=449.0
+:Sending Pointer ACTION_UP x=126.0 y=434.0
+:Sending Pointer ACTION_DOWN x=336.0 y=525.0
+:Sending Pointer ACTION_UP x=336.0 y=525.0
+:Sending Pointer ACTION_DOWN x=27.0 y=609.0
+:Sending Pointer ACTION_UP x=27.0 y=609.0
+:Sending Pointer ACTION_DOWN x=44.0 y=89.0
+:Sending Pointer ACTION_UP x=53.0 y=99.0
+:Sending Pointer ACTION_DOWN x=126.0 y=450.0
+:Sending Pointer ACTION_UP x=126.0 y=450.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.tum.yahtzee/.YahtzeeActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.tum.yahtzee/.YahtzeeActivity } in package com.tum.yahtzee
+:Sending Pointer ACTION_DOWN x=231.0 y=14.0
+:Sending Pointer ACTION_UP x=231.0 y=14.0
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_DOWN x=278.0 y=582.0
+:Sending Pointer ACTION_UP x=278.0 y=582.0
+:Sending Pointer ACTION_DOWN x=451.0 y=437.0
+:Sending Pointer ACTION_UP x=451.0 y=437.0
+:Sending Pointer ACTION_DOWN x=98.0 y=44.0
+:Sending Pointer ACTION_UP x=98.0 y=44.0
+    //[calendar_time:2014-08-25 19:51:19.621  system_uptime:93532]
+    // Sending event #500
+    //[calendar_time:2014-08-25 19:51:19.632  system_uptime:93542]
+    // Sending event #500
+:Sending Pointer ACTION_DOWN x=472.0 y=768.0
+:Sending Pointer ACTION_UP x=472.0 y=768.0
+:Sending Pointer ACTION_DOWN x=103.0 y=92.0
+:Sending Pointer ACTION_UP x=103.0 y=92.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.tum.yahtzee/.YahtzeeActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.tum.yahtzee/.YahtzeeActivity } in package com.tum.yahtzee
+:Sending Pointer ACTION_DOWN x=216.0 y=252.0
+:Sending Pointer ACTION_UP x=216.0 y=252.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=428.0 y=212.0
+:Sending Pointer ACTION_UP x=428.0 y=212.0
+:Sending Pointer ACTION_DOWN x=164.0 y=545.0
+:Sending Pointer ACTION_UP x=176.0 y=559.0
+:Sending Pointer ACTION_DOWN x=367.0 y=799.0
+:Sending Pointer ACTION_UP x=367.0 y=799.0
+:Sending Pointer ACTION_DOWN x=57.0 y=269.0
+:Sending Pointer ACTION_UP x=57.0 y=269.0
+:Sending Pointer ACTION_DOWN x=128.0 y=32.0
+:Sending Pointer ACTION_UP x=128.0 y=32.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-4.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.tum.yahtzee/.YahtzeeActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.tum.yahtzee/.YahtzeeActivity } in package com.tum.yahtzee
+:Sending Pointer ACTION_DOWN x=429.0 y=152.0
+:Sending Pointer ACTION_UP x=429.0 y=152.0
+:Sending Pointer ACTION_DOWN x=326.0 y=249.0
+:Sending Pointer ACTION_UP x=326.0 y=249.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+    //[calendar_time:2014-08-25 19:51:26.092  system_uptime:100002]
+    // Sending event #600
+:Sending Pointer ACTION_DOWN x=67.0 y=402.0
+:Sending Pointer ACTION_UP x=67.0 y=402.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=0.0
+:Sending Pointer ACTION_DOWN x=356.0 y=711.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_UP x=367.0 y=717.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_DOWN x=54.0 y=198.0
+:Sending Pointer ACTION_UP x=54.0 y=198.0
+:Sending Pointer ACTION_DOWN x=208.0 y=541.0
+:Sending Pointer ACTION_UP x=208.0 y=541.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-1.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.tum.yahtzee/.YahtzeeActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.tum.yahtzee/.YahtzeeActivity } in package com.tum.yahtzee
+// NOT RESPONDING: com.tum.yahtzee (pid 1313)
+ANR in com.tum.yahtzee (com.tum.yahtzee/.YahtzeeActivity)
+Reason: keyDispatchingTimedOut
+Load: 1.83 / 0.68 / 0.24
+CPU usage from 11107ms to 0ms ago:
+  49% 1313/com.tum.yahtzee: 45% user + 3.9% kernel / faults: 2677 minor
+  17% 955/com.android.inputmethod.latin: 14% user + 2.2% kernel / faults: 1668 minor
+  14% 861/system_server: 13% user + 1.6% kernel / faults: 12 minor
+  11% 800/mediaserver: 8.2% user + 2.8% kernel / faults: 17 minor
+  4.3% 1305/com.android.commands.monkey: 3.4% user + 0.9% kernel / faults: 53 minor
+  0.4% 1247/com.android.music: 0.2% user + 0.1% kernel / faults: 42 minor
+  0.1% 1119/android.process.media: 0.1% user + 0% kernel / faults: 4 minor
+  0.2% 969/com.android.systemui: 0.2% user + 0% kernel / faults: 1 minor
+  0.1% 844/adbd: 0% user + 0.1% kernel
+98% TOTAL: 86% user + 11% kernel + 0.1% softirq
+CPU usage from 1279ms to 1856ms later with 99% awake:
+  67% 1313/com.tum.yahtzee: 60% user + 6.8% kernel / faults: 592 minor
+    48% 1313/com.tum.yahtzee: 43% user + 5.1% kernel
+    29% 1316/GC: 25% user + 3.4% kernel
+  21% 800/mediaserver: 12% user + 8.7% kernel
+    15% 1330/AudioTrackThrea: 8.7% user + 7% kernel
+    1.7% 855/Playback Thread: 1.7% user + 0% kernel
+  6.8% 861/system_server: 0% user + 6.8% kernel
+    3.4% 897/InputDispatcher: 0% user + 3.4% kernel
+96% TOTAL: 72% user + 24% kernel
+
+procrank:
+  PID      Vss      Rss      Pss      Uss  cmdline
+ 1313   38260K   38260K   20186K   17316K  com.tum.yahtzee
+  861   40528K   39028K   17224K   12568K  system_server
+  955   27216K   27216K    9374K    7452K  com.android.inputmethod.latin
+  969   24904K   24904K    8321K    6940K  com.android.systemui
+ 1039   25364K   25364K    8142K    6852K  com.android.launcher
+  799   28520K   28520K    7366K    4160K  zygote
+ 1305   15460K   15460K    6355K    4512K  com.android.commands.monkey
+  965   22384K   22384K    5850K    4704K  com.android.phone
+  989   21732K   21732K    5766K    4680K  android.process.acore
+ 1119   21864K   21864K    5601K    4556K  android.process.media
+ 1144   20144K   20144K    4386K    3504K  com.android.email
+ 1247   18392K   18392K    3557K    2756K  com.android.music
+ 1170   18552K   18552K    3449K    2608K  com.android.mms
+ 1257   18532K   18532K    3418K    2508K  com.cooliris.media
+ 1213   18612K   18612K    3275K    2456K  com.android.providers.calendar
+  800    6004K    6004K    3197K    2212K  /system/bin/mediaserver
+ 1099   18468K   18468K    3128K    2308K  com.android.deskclock
+ 1046   17476K   17476K    3027K    2204K  com.android.settings
+ 1230   17400K   17400K    2890K    2068K  com.android.quicksearchbox
+ 1202   18104K   18104K    2885K    2084K  com.android.bluetooth
+ 1239   16504K   16504K    2169K    1428K  com.android.protips
+ 1090   16120K   16120K    2127K    1420K  com.android.voicedialer
+ 1280   16428K   16428K    2079K    1336K  com.android.defcontainer
+ 1293   15980K   15980K    2008K    1276K  com.svox.pico
+ 1334     724K     724K     480K     472K  procrank
+  802     748K     748K     469K     436K  /system/bin/dbus-daemon
+  794     844K     844K     380K     328K  /system/bin/vold
+  798     920K     920K     346K     292K  /system/bin/rild
+  796     800K     800K     333K     280K  /system/bin/netd
+  816     624K     624K     239K     200K  /system/bin/keystore
+  844     244K     244K     225K     224K  /sbin/adbd
+  838     456K     456K     185K     176K  /system/bin/qemud
+ 1304     448K     448K     183K     136K  /system/bin/sh
+  807     468K     468K     171K     160K  /system/bin/installd
+    1     248K     248K     163K     100K  /init
+  840     416K     416K     159K     112K  /system/bin/sh
+  584     212K     212K     150K      88K  /sbin/ueventd
+  793     372K     372K     128K     120K  /system/bin/servicemanager
+  797     344K     344K     123K     116K  /system/bin/debuggerd
+// procrank status was 0
+anr traces:
+
+
+----- pid 1313 at 2014-08-25 19:51:37 -----
+Cmd line: com.tum.yahtzee
+
+DALVIK THREADS:
+(mutexes: tll=0 tsl=0 tscl=0 ghl=1 hwl=1 hwll=1)
+"main" prio=5 tid=1 VMWAIT
+  | group="main" sCount=1 dsCount=0 obj=0xb6897c38 self=0x9b5ee48
+  | sysTid=1313 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=-2145907712
+  at java.util.LinkedList.addLastImpl(LinkedList.java:~316)
+  at java.util.LinkedList.add(LinkedList.java:311)
+  at com.tum.yahtzee.units.Player.<init>(Player.java:33)
+  at com.tum.yahtzee.GameController.newGame(GameController.java:34)
+  at com.tum.yahtzee.YahtzeeActivity.play(YahtzeeActivity.java:54)
+  at com.tum.yahtzee.YahtzeeActivity$1.onClick(YahtzeeActivity.java:41)
+  at android.view.View.performClick(View.java:2485)
+  at android.view.View.onKeyUp(View.java:4257)
+  at android.widget.TextView.onKeyUp(TextView.java:4521)
+  at android.view.KeyEvent.dispatch(KeyEvent.java:1280)
+  at android.view.View.dispatchKeyEvent(View.java:3855)
+  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+  at android.widget.ScrollView.dispatchKeyEvent(ScrollView.java:328)
+  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+  at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+  at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchKeyEvent(PhoneWindow.java:1687)
+  at com.android.internal.policy.impl.PhoneWindow.superDispatchKeyEvent(PhoneWindow.java:1120)
+  at android.app.Activity.dispatchKeyEvent(Activity.java:2073)
+  at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchKeyEvent(PhoneWindow.java:1663)
+  at android.view.ViewRoot.deliverKeyEventToViewHierarchy(ViewRoot.java:2560)
+  at android.view.ViewRoot.handleFinishedEvent(ViewRoot.java:2535)
+  at android.view.ViewRoot.handleMessage(ViewRoot.java:1867)
+  at android.os.Handler.dispatchMessage(Handler.java:99)
+  at android.os.Looper.loop(Looper.java:130)
+  at android.app.ActivityThread.main(ActivityThread.java:3683)
+  at java.lang.reflect.Method.invokeNative(Native Method)
+  at java.lang.reflect.Method.invoke(Method.java:507)
+  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:839)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+  at dalvik.system.NativeStart.main(Native Method)
+
+"Binder Thread #3" prio=5 tid=8 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dcedb8 self=0x9dfcb80
+  | sysTid=1327 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165653040
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #2" prio=5 tid=7 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d8a7e8 self=0x9c71428
+  | sysTid=1320 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=163479512
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #1" prio=5 tid=6 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d8a728 self=0x9cc1f88
+  | sysTid=1319 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164369936
+  at dalvik.system.NativeStart.run(Native Method)
+
+"JDWP" daemon prio=5 tid=5 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6d86b38 self=0x9cce178
+  | sysTid=1318 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164372160
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Signal Catcher" daemon prio=5 tid=4 RUNNABLE
+  | group="system" sCount=0 dsCount=0 obj=0xb6d86a78 self=0x9be8330
+  | sysTid=1317 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164032648
+  at dalvik.system.NativeStart.run(Native Method)
+
+"GC" daemon prio=5 tid=3 SUSPENDED
+  | group="system" sCount=1 dsCount=0 obj=0xb6d869d0 self=0x9c6df18
+  | sysTid=1316 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164410808
+  at dalvik.system.NativeStart.run(Native Method)
+
+"HeapWorker" daemon prio=5 tid=2 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6d86918 self=0x9c3ebf0
+  | sysTid=1315 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164422592
+  at dalvik.system.NativeStart.run(Native Method)
+
+----- end 1313 -----
+
+
+----- pid 861 at 2014-08-25 19:51:37 -----
+Cmd line: system_server
+
+DALVIK THREADS:
+(mutexes: tll=0 tsl=0 tscl=0 ghl=0 hwl=0 hwll=0)
+"main" prio=5 tid=1 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6897c38 self=0x9b5ee48
+  | sysTid=861 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=-2145907712
+  at com.android.server.SystemServer.init1(Native Method)
+  at com.android.server.SystemServer.main(SystemServer.java:625)
+  at java.lang.reflect.Method.invokeNative(Native Method)
+  at java.lang.reflect.Method.invoke(Method.java:507)
+  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:839)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+  at dalvik.system.NativeStart.main(Native Method)
+
+"Error dump: system_app_strictmode" prio=5 tid=35 TIMED_WAIT
+  | group="main" sCount=1 dsCount=0 obj=0xb6f526f8 self=0x9e2b138
+  | sysTid=1331 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=166459784
+  at java.lang.VMThread.sleep(Native Method)
+  at java.lang.Thread.sleep(Thread.java:1213)
+  at java.lang.Thread.sleep(Thread.java:1195)
+  at com.android.server.am.ActivityManagerService$10.run(ActivityManagerService.java:6635)
+
+"gps_state_thread" prio=5 tid=39 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d9e968 self=0x9e5b580
+  | sysTid=1025 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=166071520
+  at dalvik.system.NativeStart.run(Native Method)
+
+"GpsLocationProvider" prio=5 tid=52 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb7033ad0 self=0x9e20778
+  | sysTid=1013 nice=10 sched=0/0 cgrp=[fopen-error:2] handle=165808288
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.location.GpsLocationProvider$GpsLocationProviderThread.run(GpsLocationProvider.java:1553)
+
+"Binder Thread #16" prio=5 tid=51 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6fa3660 self=0x9e7c678
+  | sysTid=1009 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165832520
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #15" prio=5 tid=50 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6fa3e08 self=0x9dd3e30
+  | sysTid=1008 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165832000
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #14" prio=5 tid=49 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6fcaca0 self=0x9e1cff0
+  | sysTid=1007 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165831536
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #13" prio=5 tid=48 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6fcc530 self=0x9e4e470
+  | sysTid=1006 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165831040
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #12" prio=5 tid=47 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6fccec8 self=0x9c29fa0
+  | sysTid=1005 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165830680
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #11" prio=5 tid=46 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6fd9ae0 self=0x9ddf848
+  | sysTid=1004 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165830296
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #10" prio=5 tid=45 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6fda428 self=0x9dd8238
+  | sysTid=1003 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165829912
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #9" prio=5 tid=44 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6fdac60 self=0x9e000e0
+  | sysTid=1002 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165500680
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #8" prio=5 tid=43 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6fdb708 self=0x9dd55e0
+  | sysTid=1001 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165829256
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #7" prio=5 tid=42 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6fe4ea8 self=0x9e1a450
+  | sysTid=1000 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165828928
+  at com.android.server.InputManager.nativeInjectInputEvent(Native Method)
+  at com.android.server.InputManager.injectInputEvent(InputManager.java:297)
+  at com.android.server.WindowManagerService.injectKeyEvent(WindowManagerService.java:5439)
+  at android.view.IWindowManager$Stub.onTransact(IWindowManager.java:110)
+  at com.android.server.WindowManagerService.onTransact(WindowManagerService.java:655)
+  at android.os.Binder.execTransact(Binder.java:320)
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #6" prio=5 tid=41 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6fee410 self=0x9e75380
+  | sysTid=999 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165828600
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #5" prio=5 tid=40 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6ff4298 self=0x9e61ea0
+  | sysTid=997 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165828256
+  at dalvik.system.NativeStart.run(Native Method)
+
+"ThrottleService" prio=5 tid=38 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6f37818 self=0x9e209a8
+  | sysTid=964 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165808848
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"LocationManagerService" prio=5 tid=37 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6eab8d8 self=0x9e1e980
+  | sysTid=961 nice=10 sched=0/0 cgrp=[fopen-error:2] handle=166059488
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.LocationManagerService.run(LocationManagerService.java:556)
+  at java.lang.Thread.run(Thread.java:1019)
+
+"watchdog" prio=5 tid=36 TIMED_WAIT
+  | group="main" sCount=1 dsCount=0 obj=0xb6d93070 self=0x9e1b550
+  | sysTid=947 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165952856
+  at java.lang.Object.wait(Native Method)
+  - waiting on <0xb6d93070> (a com.android.server.Watchdog)
+  at java.lang.Object.wait(Object.java:395)
+  at com.android.server.Watchdog.run(Watchdog.java:400)
+
+"backup" prio=5 tid=34 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb703b990 self=0x9e1c938
+  | sysTid=912 nice=10 sched=0/0 cgrp=[fopen-error:2] handle=165491968
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"SoundPoolThread" prio=5 tid=33 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6db9cf0 self=0x9c2fa80
+  | sysTid=909 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=163781400
+  at dalvik.system.NativeStart.run(Native Method)
+
+"SoundPool" prio=5 tid=32 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6db9b80 self=0x9c2f7f8
+  | sysTid=908 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=163779032
+  at dalvik.system.NativeStart.run(Native Method)
+
+"AudioService" prio=5 tid=31 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6eee778 self=0x9c2ea08
+  | sysTid=907 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=163769136
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.media.AudioService$AudioSystemThread.run(AudioService.java:1502)
+
+"VoldConnector" prio=5 tid=30 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6df6e00 self=0x9e7a810
+  | sysTid=905 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=166177080
+  at android.net.LocalSocketImpl.readba_native(Native Method)
+  at android.net.LocalSocketImpl.access$400(LocalSocketImpl.java:29)
+  at android.net.LocalSocketImpl$SocketInputStream.read(LocalSocketImpl.java:92)
+  at com.android.server.NativeDaemonConnector.listenToSocket(NativeDaemonConnector.java:110)
+  at com.android.server.NativeDaemonConnector.run(NativeDaemonConnector.java:83)
+  at java.lang.Thread.run(Thread.java:1019)
+
+"MountService" prio=5 tid=29 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6df68c0 self=0x9e79a98
+  | sysTid=904 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=166173632
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"Tethering" prio=5 tid=28 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dbbf90 self=0x9e789b8
+  | sysTid=903 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=166169312
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"WifiService" prio=5 tid=27 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6e0c808 self=0x9e77a90
+  | sysTid=902 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=166165432
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"ConnectivityThread" prio=5 tid=26 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6f93c20 self=0x9e75e10
+  | sysTid=901 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=166080856
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.ConnectivityService$ConnectivityThread.run(ConnectivityService.java:232)
+
+"NetdConnector" prio=5 tid=25 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6ebbd78 self=0x9e754e0
+  | sysTid=899 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=166081072
+  at android.net.LocalSocketImpl.readba_native(Native Method)
+  at android.net.LocalSocketImpl.access$400(LocalSocketImpl.java:29)
+  at android.net.LocalSocketImpl$SocketInputStream.read(LocalSocketImpl.java:92)
+  at com.android.server.NativeDaemonConnector.listenToSocket(NativeDaemonConnector.java:110)
+  at com.android.server.NativeDaemonConnector.run(NativeDaemonConnector.java:83)
+  at java.lang.Thread.run(Thread.java:1019)
+
+"InputReader" prio=10 tid=24 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6e36d40 self=0x9e4e948
+  | sysTid=898 nice=-8 sched=0/0 cgrp=[fopen-error:2] handle=165996808
+  at dalvik.system.NativeStart.run(Native Method)
+
+"InputDispatcher" prio=10 tid=23 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6e36bd0 self=0x9e4e740
+  | sysTid=897 nice=-8 sched=0/0 cgrp=[fopen-error:2] handle=165996288
+  at android.os.Process.sendSignal(Native Method)
+  at com.android.server.am.ActivityManagerService.dumpStackTraces(ActivityManagerService.java:2762)
+  at com.android.server.am.ActivityManagerService.appNotResponding(ActivityManagerService.java:2907)
+  at com.android.server.am.ActivityRecord.keyDispatchingTimedOut(ActivityRecord.java:546)
+  at com.android.server.WindowManagerService$InputMonitor.notifyANR(WindowManagerService.java:5127)
+  at com.android.server.InputManager$Callbacks.notifyANR(InputManager.java:378)
+  at dalvik.system.NativeStart.run(Native Method)
+
+"WindowManagerPolicy" prio=5 tid=22 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6e563b8 self=0x9e4d360
+  | sysTid=896 nice=-2 sched=0/0 cgrp=[fopen-error:2] handle=165991560
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.WindowManagerService$PolicyThread.run(WindowManagerService.java:595)
+
+"WindowManager" prio=5 tid=21 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6f6e108 self=0x9e4ab98
+  | sysTid=895 nice=-4 sched=0/0 cgrp=[fopen-error:2] handle=165981376
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.WindowManagerService$WMThread.run(WindowManagerService.java:558)
+
+"AlarmManager" prio=5 tid=20 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb7019090 self=0x9e4a760
+  | sysTid=894 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165980296
+  at com.android.server.AlarmManagerService.waitForAlarm(Native Method)
+  at com.android.server.AlarmManagerService.access$100(AlarmManagerService.java:56)
+  at com.android.server.AlarmManagerService$AlarmThread.run(AlarmManagerService.java:648)
+
+"PowerManagerService" prio=5 tid=17 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6ec6f40 self=0x9e43b80
+  | sysTid=893 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164039016
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"PowerManagerService.mScreenOffThread" prio=5 tid=19 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6ebe5f0 self=0x9e48c78
+  | sysTid=892 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165973408
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"UEventObserver" prio=5 tid=18 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6ff8860 self=0x9e438b8
+  | sysTid=891 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165951968
+  at android.os.UEventObserver.next_event(Native Method)
+  at android.os.UEventObserver.access$100(UEventObserver.java:39)
+  at android.os.UEventObserver$UEventThread.run(UEventObserver.java:102)
+
+"SyncHandlerThread" prio=5 tid=16 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6ed69b8 self=0x9dd5750
+  | sysTid=889 nice=10 sched=0/0 cgrp=[fopen-error:2] handle=165652704
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"AccountManagerService" prio=5 tid=15 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6f2f3d8 self=0x9c70ac0
+  | sysTid=887 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164035384
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"FileObserver" prio=5 tid=14 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dcc1b8 self=0x9c399e8
+  | sysTid=882 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165508760
+  at android.os.FileObserver$ObserverThread.observe(Native Method)
+  at android.os.FileObserver$ObserverThread.run(FileObserver.java:88)
+
+"PackageManager" prio=5 tid=13 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dafc30 self=0x9cc16d8
+  | sysTid=881 nice=10 sched=0/0 cgrp=[fopen-error:2] handle=163477504
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"ProcessStats" prio=5 tid=12 TIMED_WAIT
+  | group="main" sCount=1 dsCount=0 obj=0xb6daa390 self=0x9cc1a08
+  | sysTid=880 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164035944
+  at java.lang.Object.wait(Native Method)
+  - waiting on <0xb6daa390> (a com.android.server.am.ActivityManagerService$3)
+  at java.lang.Object.wait(Object.java:395)
+  at com.android.server.am.ActivityManagerService$3.run(ActivityManagerService.java:1448)
+
+"ActivityManager" prio=5 tid=11 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d94d68 self=0x9c70840
+  | sysTid=878 nice=-2 sched=0/0 cgrp=[fopen-error:2] handle=163479688
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.am.ActivityManagerService$AThread.run(ActivityManagerService.java:1336)
+
+"android.server.ServerThread" prio=5 tid=10 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d88940 self=0x9be8148
+  | sysTid=874 nice=-2 sched=0/0 cgrp=[fopen-error:2] handle=163836696
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.ServerThread.run(SystemServer.java:542)
+
+"Binder Thread #4" prio=5 tid=9 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d844a8 self=0x9cc0fe8
+  | sysTid=869 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164040496
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #3" prio=5 tid=8 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d843e8 self=0x9c70590
+  | sysTid=868 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164036272
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #2" prio=5 tid=7 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d84328 self=0x9cc1208
+  | sysTid=867 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=163479512
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #1" prio=5 tid=6 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d84268 self=0x9cc1f88
+  | sysTid=866 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164369936
+  at dalvik.system.NativeStart.run(Native Method)
+
+"JDWP" daemon prio=5 tid=5 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6d83408 self=0x9cce178
+  | sysTid=865 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164372160
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Signal Catcher" daemon prio=5 tid=4 RUNNABLE
+  | group="system" sCount=0 dsCount=0 obj=0xb6d83348 self=0x9be8330
+  | sysTid=864 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164032648
+  at dalvik.system.NativeStart.run(Native Method)
+
+"GC" daemon prio=5 tid=3 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6d832a0 self=0x9c6df18
+  | sysTid=863 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164410808
+  at dalvik.system.NativeStart.run(Native Method)
+
+"HeapWorker" daemon prio=5 tid=2 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6d831e8 self=0x9c3ebf0
+  | sysTid=862 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164422592
+  at dalvik.system.NativeStart.run(Native Method)
+
+----- end 861 -----
+
+
+----- pid 965 at 2014-08-25 19:51:37 -----
+Cmd line: com.android.phone
+
+DALVIK THREADS:
+(mutexes: tll=0 tsl=0 tscl=0 ghl=0 hwl=0 hwll=0)
+"main" prio=5 tid=1 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6897c38 self=0x9b5ee48
+  | sysTid=965 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=-2145907712
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.app.ActivityThread.main(ActivityThread.java:3683)
+  at java.lang.reflect.Method.invokeNative(Native Method)
+  at java.lang.reflect.Method.invoke(Method.java:507)
+  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:839)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+  at dalvik.system.NativeStart.main(Native Method)
+
+"Binder Thread #16" prio=5 tid=29 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d87540 self=0x9e23bb8
+  | sysTid=1198 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165821304
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #15" prio=5 tid=28 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d8ddd8 self=0x9e22e70
+  | sysTid=1197 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165817904
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #14" prio=5 tid=27 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d9e348 self=0x9e22128
+  | sysTid=1196 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165814504
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #13" prio=5 tid=26 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6daca68 self=0x9e213e0
+  | sysTid=1195 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165811104
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #12" prio=5 tid=25 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dcce98 self=0x9e20698
+  | sysTid=1194 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165807704
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #11" prio=5 tid=24 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dcd040 self=0x9e1f950
+  | sysTid=1193 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165804304
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #10" prio=5 tid=23 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dce7a0 self=0x9e1ec08
+  | sysTid=1192 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165800904
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #9" prio=5 tid=22 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dce870 self=0x9e1df10
+  | sysTid=1191 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165721152
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #8" prio=5 tid=21 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dd4b58 self=0x9e08a10
+  | sysTid=1190 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165710288
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #7" prio=5 tid=20 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dd5280 self=0x9e084d0
+  | sysTid=1189 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165708944
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #6" prio=5 tid=19 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6ddc618 self=0x9e07788
+  | sysTid=1188 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165705544
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #5" prio=5 tid=18 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6deffe8 self=0x9e06a40
+  | sysTid=1187 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165689328
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #4" prio=5 tid=17 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6df2890 self=0x9e026d0
+  | sysTid=1186 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165595168
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #3" prio=5 tid=16 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6df5030 self=0x9e0fac8
+  | sysTid=1185 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165739144
+  at dalvik.system.NativeStart.run(Native Method)
+
+"pool-1-thread-1" prio=5 tid=15 WAIT
+  | group="main" sCount=1 dsCount=0 obj=0xb6df89b0 self=0x9dea920
+  | sysTid=1064 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165587528
+  at java.lang.Object.wait(Native Method)
+  - waiting on <0xb6df8b18> (a java.lang.VMThread)
+  at java.lang.Thread.parkFor(Thread.java:1424)
+  at java.lang.LangAccessImpl.parkFor(LangAccessImpl.java:48)
+  at sun.misc.Unsafe.park(Unsafe.java:337)
+  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:157)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2016)
+  at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:411)
+  at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1021)
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1081)
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:581)
+  at java.lang.Thread.run(Thread.java:1019)
+
+"AsyncQueryWorker" prio=5 tid=14 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6ded490 self=0x9ccb2f0
+  | sysTid=1055 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164410392
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"Stk Icon Loader" prio=5 tid=13 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6de9290 self=0x9c70840
+  | sysTid=1054 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164371216
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"RilMessageDecoder" prio=5 tid=12 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6de89b0 self=0x9be7a28
+  | sysTid=1053 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164036824
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"Stk Telephony service" prio=5 tid=11 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6de86c8 self=0x9ccd7a8
+  | sysTid=1052 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164032368
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"GsmDataConnection-1" prio=5 tid=10 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dbad40 self=0x9c3e840
+  | sysTid=1049 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=163482832
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"RILReceiver" prio=5 tid=9 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6da7d60 self=0x9c6ebb8
+  | sysTid=1027 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=163385752
+  at android.net.LocalSocketImpl.readba_native(Native Method)
+  at android.net.LocalSocketImpl.access$400(LocalSocketImpl.java:29)
+  at android.net.LocalSocketImpl$SocketInputStream.read(LocalSocketImpl.java:92)
+  at com.android.internal.telephony.RIL.readRilMessage(RIL.java:461)
+  at com.android.internal.telephony.RIL.access$200(RIL.java:206)
+  at com.android.internal.telephony.RIL$RILReceiver.run(RIL.java:560)
+  at java.lang.Thread.run(Thread.java:1019)
+
+"RILSender" prio=5 tid=8 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6da5968 self=0x9bdf240
+  | sysTid=1026 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164035944
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"Binder Thread #2" prio=5 tid=7 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d87e60 self=0x9c71428
+  | sysTid=980 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=163479512
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #1" prio=5 tid=6 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d87da0 self=0x9cc1f88
+  | sysTid=979 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164369936
+  at dalvik.system.NativeStart.run(Native Method)
+
+"JDWP" daemon prio=5 tid=5 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6d86fa8 self=0x9cce178
+  | sysTid=972 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164372160
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Signal Catcher" daemon prio=5 tid=4 RUNNABLE
+  | group="system" sCount=0 dsCount=0 obj=0xb6d86ee8 self=0x9be8330
+  | sysTid=971 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164032648
+  at dalvik.system.NativeStart.run(Native Method)
+
+"GC" daemon prio=5 tid=3 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6d86e40 self=0x9c6df18
+  | sysTid=970 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164410808
+  at dalvik.system.NativeStart.run(Native Method)
+
+"HeapWorker" daemon prio=5 tid=2 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6d86d88 self=0x9c3ebf0
+  | sysTid=966 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164422592
+  at dalvik.system.NativeStart.run(Native Method)
+
+----- end 965 -----
+
+
+----- pid 969 at 2014-08-25 19:51:37 -----
+Cmd line: com.android.systemui
+
+DALVIK THREADS:
+(mutexes: tll=0 tsl=0 tscl=0 ghl=0 hwl=0 hwll=0)
+"main" prio=5 tid=1 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6897c38 self=0x9b5ee48
+  | sysTid=969 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=-2145907712
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.app.ActivityThread.main(ActivityThread.java:3683)
+  at java.lang.reflect.Method.invokeNative(Native Method)
+  at java.lang.reflect.Method.invoke(Method.java:507)
+  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:839)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+  at dalvik.system.NativeStart.main(Native Method)
+
+"SystemUI StorageNotification" prio=5 tid=8 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d91388 self=0x9c70b08
+  | sysTid=1097 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164039728
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"Binder Thread #2" prio=5 tid=7 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d8b150 self=0x9c70590
+  | sysTid=1015 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164036272
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #1" prio=5 tid=6 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d8b090 self=0x9cc1208
+  | sysTid=1014 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164369936
+  at dalvik.system.NativeStart.run(Native Method)
+
+"JDWP" daemon prio=5 tid=5 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6d87428 self=0x9cce178
+  | sysTid=1012 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164372160
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Signal Catcher" daemon prio=5 tid=4 RUNNABLE
+  | group="system" sCount=0 dsCount=0 obj=0xb6d87368 self=0x9be8330
+  | sysTid=1011 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164032648
+  at dalvik.system.NativeStart.run(Native Method)
+
+"GC" daemon prio=5 tid=3 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6d872c0 self=0x9c6df18
+  | sysTid=1010 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164410808
+  at dalvik.system.NativeStart.run(Native Method)
+
+"HeapWorker" daemon prio=5 tid=2 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6d87208 self=0x9c3ebf0
+  | sysTid=998 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164422592
+  at dalvik.system.NativeStart.run(Native Method)
+
+----- end 969 -----
+// anr traces status was 0
+meminfo:
+Applications Memory Usage (kB):
+Uptime: 119907 Realtime: 119907
+
+** MEMINFO in pid 955 [com.android.inputmethod.latin] **
+                    native   dalvik    other    total
+            size:     9044     5639      N/A    14683
+       allocated:     8223     2964      N/A    11187
+            free:      180     2675      N/A     2855
+           (Pss):     2835      228     6286     9349
+  (shared dirty):     2072     1864     6976    10912
+    (priv dirty):     2740      144     4240     7124
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:       12    Proxy Binders:       17
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      130         MEMORY_USED:      130
+ PAGECACHE_OVERFLOW:       14         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1        5             17  userbigram_dict.db
+         1        4             21  auto_dict.db
+ 
+ Asset Allocations
+    zip:/system/app/LatinIME.apk:/resources.arsc: 41K
+
+** MEMINFO in pid 861 [system] **
+                    native   dalvik    other    total
+            size:     7852     7943      N/A    15795
+       allocated:     5829     4777      N/A    10606
+            free:      410     3166      N/A     3576
+           (Pss):     1352      772    14979    17103
+  (shared dirty):     1928     1848     5236     9012
+    (priv dirty):     1264      688     8352    10304
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        2       Activities:        0
+          Assets:        3    AssetManagers:        3
+   Local Binders:       84    Proxy Binders:      111
+Death Recipients:       43
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      192         MEMORY_USED:      192
+ PAGECACHE_OVERFLOW:       49         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1       16             32  accounts.db
+         1       24            102  settings.db
+ 
+ Asset Allocations
+    zip:/system/app/SettingsProvider.apk:/resources.arsc: 3K
+
+** MEMINFO in pid 1119 [android.process.media] **
+                    native   dalvik    other    total
+            size:     5176     6471      N/A    11647
+       allocated:     5049     3155      N/A     8204
+            free:      110     3316      N/A     3426
+           (Pss):     1462      169     3936     5567
+  (shared dirty):     2120     1868     5676     9664
+    (priv dirty):     1364       84     2676     4124
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        4    AssetManagers:        4
+   Local Binders:       10    Proxy Binders:       19
+Death Recipients:        2
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      460         MEMORY_USED:      460
+ PAGECACHE_OVERFLOW:      122         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1       54            120  internal.db
+         1        8            165  downloads.db
+         1       41            274  external-fee3d18.db
+ 
+ Asset Allocations
+    zip:/system/app/DownloadProvider.apk:/resources.arsc: 5K
+    zip:/system/app/MediaProvider.apk:/resources.arsc: 1K
+
+** MEMINFO in pid 1247 [com.android.music] **
+                    native   dalvik    other    total
+            size:     3752     6279      N/A    10031
+       allocated:     3711     3800      N/A     7511
+            free:       16     2479      N/A     2495
+           (Pss):      513      153     2866     3532
+  (shared dirty):     2156     1868     5888     9912
+    (priv dirty):      412       68     2084     2564
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:       10    Proxy Binders:       24
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/Music.apk:/resources.arsc: 29K
+
+** MEMINFO in pid 1313 [com.tum.yahtzee] **
+Got RemoteException!
+
+** MEMINFO in pid 1230 [com.android.quicksearchbox] **
+                    native   dalvik    other    total
+            size:     3804     5639      N/A     9443
+       allocated:     3735     3123      N/A     6858
+            free:       24     2516      N/A     2540
+           (Pss):      577      155     2180     2912
+  (shared dirty):     2128     1884     6040    10052
+    (priv dirty):      472       64     1208     1744
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        3    Proxy Binders:        9
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/QuickSearchBox.apk:/resources.arsc: 18K
+
+** MEMINFO in pid 1293 [com.svox.pico] **
+                    native   dalvik    other    total
+            size:     3716     5511      N/A     9227
+       allocated:     3642     2978      N/A     6620
+            free:       25     2533      N/A     2558
+           (Pss):      402      111     1515     2028
+  (shared dirty):     2224     1884     6124    10232
+    (priv dirty):      284       20      968     1272
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        2    Proxy Binders:        5
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/PicoTts.apk:/resources.arsc: 2K
+
+** MEMINFO in pid 1090 [com.android.voicedialer] **
+                    native   dalvik    other    total
+            size:     3716     5511      N/A     9227
+       allocated:     3649     3004      N/A     6653
+            free:       34     2507      N/A     2541
+           (Pss):      414      108     1631     2153
+  (shared dirty):     2228     1888     6064    10180
+    (priv dirty):      296       16     1052     1364
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        1    Proxy Binders:        5
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+
+** MEMINFO in pid 1280 [com.android.defcontainer] **
+                    native   dalvik    other    total
+            size:     3736     5447      N/A     9183
+       allocated:     3644     2713      N/A     6357
+            free:       19     2734      N/A     2753
+           (Pss):      434      133     1533     2100
+  (shared dirty):     2180     1872     5960    10012
+    (priv dirty):      324       44      964     1332
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        1    Proxy Binders:        8
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/DefaultContainerService.apk:/resources.arsc: 1K
+
+** MEMINFO in pid 1257 [com.cooliris.media] **
+                    native   dalvik    other    total
+            size:     4136     5959      N/A    10095
+       allocated:     3809     3446      N/A     7255
+            free:       10     2513      N/A     2523
+           (Pss):      649      140     2648     3437
+  (shared dirty):     2116     1860     5904     9880
+    (priv dirty):      544       52     1684     2280
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        2    Proxy Binders:        5
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:       71         MEMORY_USED:       71
+ PAGECACHE_OVERFLOW:       13         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1       10             10  picasa.db
+ 
+ Asset Allocations
+    zip:/system/app/Gallery3D.apk:/resources.arsc: 13K
+
+** MEMINFO in pid 1239 [com.android.protips] **
+                    native   dalvik    other    total
+            size:     3716     5511      N/A     9227
+       allocated:     3648     3021      N/A     6669
+            free:       55     2490      N/A     2545
+           (Pss):      443      111     1641     2195
+  (shared dirty):     2216     1884     6072    10172
+    (priv dirty):      328       20     1076     1424
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        1    Proxy Binders:        8
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+
+** MEMINFO in pid 1099 [com.android.deskclock] **
+                    native   dalvik    other    total
+            size:     4100     6023      N/A    10123
+       allocated:     3770     3528      N/A     7298
+            free:       13     2495      N/A     2508
+           (Pss):      545      125     2464     3134
+  (shared dirty):     2188     1872     5904     9964
+    (priv dirty):      436       36     1760     2232
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        2    Proxy Binders:       12
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:       65         MEMORY_USED:       65
+ PAGECACHE_OVERFLOW:        6         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1        4             28  alarms.db
+ 
+ Asset Allocations
+    zip:/system/app/DeskClock.apk:/resources.arsc: 17K
+
+** MEMINFO in pid 1213 [com.android.providers.calendar] **
+                    native   dalvik    other    total
+            size:     4152     5767      N/A     9919
+       allocated:     3900     3285      N/A     7185
+            free:       15     2482      N/A     2497
+           (Pss):      698      134     2461     3293
+  (shared dirty):     2164     1880     5912     9956
+    (priv dirty):      592       44     1520     2156
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        4    Proxy Binders:       10
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      134         MEMORY_USED:      134
+ PAGECACHE_OVERFLOW:       25         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1       34            150  calendar.db
+ 
+ Asset Allocations
+    zip:/system/app/CalendarProvider.apk:/resources.arsc: 4K
+
+** MEMINFO in pid 1039 [com.android.launcher] **
+                    native   dalvik    other    total
+            size:     9232     5831      N/A    15063
+       allocated:     7318     3298      N/A    10616
+            free:     1237     2533      N/A     3770
+           (Pss):     3991      244     6282    10517
+  (shared dirty):     2064     1848     6920    10832
+    (priv dirty):     3892      156     4088     8136
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        7    AssetManagers:        7
+   Local Binders:       11    Proxy Binders:       25
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:       69         MEMORY_USED:       69
+ PAGECACHE_OVERFLOW:        6         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1        4             53  launcher.db
+ 
+ Asset Allocations
+    zip:/system/app/Launcher2.apk:/resources.arsc: 26K
+    zip:/system/app/QuickSearchBox.apk:/resources.arsc: 18K
+    zip:/system/app/Music.apk:/resources.arsc: 29K
+
+** MEMINFO in pid 1202 [com.android.bluetooth] **
+                    native   dalvik    other    total
+            size:     4116     5703      N/A     9819
+       allocated:     3796     3190      N/A     6986
+            free:       15     2513      N/A     2528
+           (Pss):      598      130     2180     2908
+  (shared dirty):     2160     1880     5984    10024
+    (priv dirty):      492       40     1328     1860
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        2    Proxy Binders:        8
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:       86         MEMORY_USED:       86
+ PAGECACHE_OVERFLOW:        7         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1        5            170  btopp.db
+ 
+ Asset Allocations
+    zip:/system/app/Bluetooth.apk:/resources.arsc: 13K
+
+** MEMINFO in pid 965 [com.android.phone] **
+                    native   dalvik    other    total
+            size:     4308     6087      N/A    10395
+       allocated:     4256     3370      N/A     7626
+            free:       27     2717      N/A     2744
+           (Pss):     1007      421     4440     5868
+  (shared dirty):     2120     1860     5528     9508
+    (priv dirty):      904      332     2536     3772
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        3    AssetManagers:        3
+   Local Binders:       32    Proxy Binders:       37
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      262         MEMORY_USED:      262
+ PAGECACHE_OVERFLOW:       53         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1       37            166  mmssms.db
+         1        7            109  telephony.db
+ 
+ Asset Allocations
+    zip:/system/app/Phone.apk:/resources.arsc: 97K
+    zip:/system/app/TelephonyProvider.apk:/resources.arsc: 1K
+
+** MEMINFO in pid 1144 [com.android.email] **
+                    native   dalvik    other    total
+            size:     4216     6151      N/A    10367
+       allocated:     4024     3665      N/A     7689
+            free:       15     2486      N/A     2501
+           (Pss):      848      193     3361     4402
+  (shared dirty):     2136     1864     5876     9876
+    (priv dirty):      744      104     2048     2896
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        4    Proxy Binders:       12
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      179         MEMORY_USED:      179
+ PAGECACHE_OVERFLOW:       44         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1        6             10  EmailProviderBody.db
+         1       28             33  EmailProvider.db
+         1        6              0    (attached) BodyDatabase : EmailProviderBody.db
+
+** MEMINFO in pid 1170 [com.android.mms] **
+                    native   dalvik    other    total
+            size:     3816     5895      N/A     9711
+       allocated:     3798     3375      N/A     7173
+            free:       17     2520      N/A     2537
+           (Pss):      588      173     2702     3463
+  (shared dirty):     2176     1864     5864     9904
+    (priv dirty):      480       84     1700     2264
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:       15    Proxy Binders:       32
+Death Recipients:        2
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/Mms.apk:/resources.arsc: 46K
+
+** MEMINFO in pid 989 [android.process.acore] **
+                    native   dalvik    other    total
+            size:     5188     5895      N/A    11083
+       allocated:     5094     3409      N/A     8503
+            free:       25     2486      N/A     2511
+           (Pss):     1629      174     3969     5772
+  (shared dirty):     2144     1872     5740     9756
+    (priv dirty):     1524       84     2396     4004
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:       22    AssetManagers:       22
+   Local Binders:       10    Proxy Binders:       13
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      646         MEMORY_USED:      646
+ PAGECACHE_OVERFLOW:      136         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1        4             19  user_dict.db
+         1       14             32  :memory:
+         1      107            500  contacts2.db
+         1        9              0    (attached) presence_db
+ 
+ Asset Allocations
+    zip:/system/app/UserDictionaryProvider.apk:/resources.arsc: 1K
+    zip:/system/app/ContactsProvider.apk:/resources.arsc: 1K
+    zip:/system/app/ApplicationsProvider.apk:/resources.arsc: 1K
+    zip:/system/app/Mms.apk:/resources.arsc: 46K
+    zip:/system/app/DeskClock.apk:/resources.arsc: 17K
+    zip:/system/app/Settings.apk:/resources.arsc: 147K
+    zip:/system/app/Camera.apk:/resources.arsc: 24K
+    zip:/system/app/Browser.apk:/resources.arsc: 64K
+    zip:/system/app/Calendar.apk:/resources.arsc: 31K
+    zip:/system/app/Contacts.apk:/resources.arsc: 73K
+    zip:/system/app/Calculator.apk:/resources.arsc: 5K
+    zip:/system/app/Gallery3D.apk:/resources.arsc: 13K
+    zip:/system/app/QuickSearchBox.apk:/resources.arsc: 18K
+    zip:/system/app/SpeechRecorder.apk:/resources.arsc: 1K
+    zip:/system/app/Music.apk:/resources.arsc: 29K
+
+** MEMINFO in pid 1046 [com.android.settings] **
+                    native   dalvik    other    total
+            size:     3904     5703      N/A     9607
+       allocated:     3879     3211      N/A     7090
+            free:       24     2492      N/A     2516
+           (Pss):      515      125     2429     3069
+  (shared dirty):     2192     1888     6004    10084
+    (priv dirty):      404       32     1488     1924
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        1    Proxy Binders:       16
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/Settings.apk:/resources.arsc: 147K
+
+** MEMINFO in pid 969 [com.android.systemui] **
+                    native   dalvik    other    total
+            size:     4908     5575      N/A    10483
+       allocated:     4901     3054      N/A     7955
+            free:        6     2521      N/A     2527
+           (Pss):     1054      250     7105     8409
+  (shared dirty):     2064     1860     5572     9496
+    (priv dirty):      952      160     5432     6544
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        3    AssetManagers:        3
+   Local Binders:       14    Proxy Binders:       22
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/SystemUI.apk:/resources.arsc: 17K
+    zip:/system/app/Music.apk:/resources.arsc: 29K
+// meminfo status was 0
+** Monkey aborted due to error.
+Events injected: 687
+:Dropped: keys=4 pointers=3 trackballs=0 flips=0
+## Network stats: elapsed time=146241ms (146241ms mobile, 0ms wifi, 0ms not connected)
+** System appears to have crashed at event 687 of 10000 using seed 0

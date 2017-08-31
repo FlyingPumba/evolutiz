@@ -1,0 +1,2974 @@
+:Monkey: seed=0 count=10000
+:AllowPackage: com.templaro.opsiz.aka
+:IncludeCategory: android.intent.category.LAUNCHER
+:IncludeCategory: android.intent.category.MONKEY
+// Event percentages:
+//   0: 15.0%
+//   1: 10.0%
+//   2: 15.0%
+//   3: 25.0%
+//   4: 15.0%
+//   5: 2.0%
+//   6: 2.0%
+//   7: 1.0%
+//   8: 15.0%
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=234.0 y=197.0
+:Sending Pointer ACTION_UP x=238.0 y=190.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=56.0 y=280.0
+:Sending Pointer ACTION_UP x=69.0 y=271.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=1.0
+:Sending Pointer ACTION_DOWN x=28.0 y=490.0
+:Sending Pointer ACTION_UP x=28.0 y=490.0
+:Sending Pointer ACTION_DOWN x=403.0 y=645.0
+:Sending Pointer ACTION_UP x=397.0 y=661.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=98.0 y=752.0
+:Sending Pointer ACTION_UP x=98.0 y=752.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=264.0 y=458.0
+:Sending Pointer ACTION_UP x=264.0 y=458.0
+:Sending Pointer ACTION_DOWN x=113.0 y=170.0
+:Sending Pointer ACTION_UP x=98.0 y=156.0
+    //[calendar_time:2014-08-25 19:37:17.221  system_uptime:92767]
+    // Sending event #100
+:Sending Pointer ACTION_MOVE x=2.0 y=0.0
+:Sending Pointer ACTION_DOWN x=196.0 y=463.0
+:Sending Pointer ACTION_UP x=236.0 y=454.0
+    // Rejecting start of Intent { cmp=com.android.inputmethod.latin/.LatinIMESettings } in package com.android.inputmethod.latin
+:Sending Pointer ACTION_DOWN x=107.0 y=579.0
+:Sending Pointer ACTION_UP x=107.0 y=579.0
+:Sending Pointer ACTION_MOVE x=4.0 y=1.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-1.0
+    // activityResuming(com.android.launcher)
+    // Rejecting resume of package com.android.launcher
+:Sending Pointer ACTION_DOWN x=304.0 y=685.0
+:Sending Pointer ACTION_UP x=317.0 y=674.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=1.0
+:Sending Pointer ACTION_DOWN x=102.0 y=574.0
+:Sending Pointer ACTION_UP x=102.0 y=574.0
+:Sending Pointer ACTION_DOWN x=106.0 y=130.0
+    //[calendar_time:2014-08-25 19:37:21.906  system_uptime:97453]
+    // Sending event #200
+:Sending Pointer ACTION_UP x=115.0 y=120.0
+:Sending Pointer ACTION_MOVE x=2.0 y=2.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=339.0 y=689.0
+:Sending Pointer ACTION_UP x=339.0 y=689.0
+:Sending Pointer ACTION_DOWN x=311.0 y=44.0
+:Sending Pointer ACTION_UP x=311.0 y=44.0
+:Sending Pointer ACTION_DOWN x=337.0 y=221.0
+:Sending Pointer ACTION_UP x=337.0 y=221.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=4.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=437.0 y=183.0
+:Sending Pointer ACTION_UP x=450.0 y=158.0
+:Sending Pointer ACTION_DOWN x=5.0 y=58.0
+:Sending Pointer ACTION_UP x=-4.0 y=58.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-2.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=80.0 y=200.0
+:Sending Pointer ACTION_UP x=80.0 y=200.0
+    //[calendar_time:2014-08-25 19:37:29.039  system_uptime:104587]
+    // Sending event #300
+    //[calendar_time:2014-08-25 19:37:29.050  system_uptime:104597]
+    // Sending event #300
+:Sending Pointer ACTION_MOVE x=2.0 y=-4.0
+    // Allowing start of Intent { cmp=com.templaro.opsiz.aka/.Settings } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=278.0 y=104.0
+:Sending Pointer ACTION_UP x=278.0 y=104.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=4.0
+:Sending Pointer ACTION_DOWN x=380.0 y=319.0
+:Sending Pointer ACTION_UP x=380.0 y=319.0
+:Sending Pointer ACTION_MOVE x=2.0 y=4.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=318.0 y=142.0
+:Sending Pointer ACTION_UP x=318.0 y=142.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=0.0
+:Sending Pointer ACTION_DOWN x=417.0 y=796.0
+:Sending Pointer ACTION_UP x=412.0 y=-14.0
+:Sending Pointer ACTION_DOWN x=182.0 y=84.0
+:Sending Pointer ACTION_UP x=182.0 y=84.0
+:Sending Pointer ACTION_DOWN x=19.0 y=228.0
+:Sending Pointer ACTION_UP x=23.0 y=237.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=11.0 y=702.0
+    //[calendar_time:2014-08-25 19:37:38.161  system_uptime:113708]
+    // Sending event #400
+:Sending Pointer ACTION_UP x=11.0 y=702.0
+:Sending Pointer ACTION_DOWN x=424.0 y=48.0
+:Sending Pointer ACTION_UP x=415.0 y=28.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=306.0 y=601.0
+:Sending Pointer ACTION_UP x=306.0 y=601.0
+:Sending Pointer ACTION_DOWN x=116.0 y=449.0
+:Sending Pointer ACTION_UP x=126.0 y=434.0
+:Sending Pointer ACTION_DOWN x=336.0 y=525.0
+:Sending Pointer ACTION_UP x=336.0 y=525.0
+:Sending Pointer ACTION_DOWN x=27.0 y=609.0
+:Sending Pointer ACTION_UP x=27.0 y=609.0
+:Sending Pointer ACTION_DOWN x=44.0 y=89.0
+:Sending Pointer ACTION_UP x=53.0 y=99.0
+:Sending Pointer ACTION_DOWN x=126.0 y=450.0
+:Sending Pointer ACTION_UP x=126.0 y=450.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=231.0 y=14.0
+:Sending Pointer ACTION_UP x=231.0 y=14.0
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_DOWN x=278.0 y=582.0
+:Sending Pointer ACTION_UP x=278.0 y=582.0
+:Sending Pointer ACTION_DOWN x=451.0 y=437.0
+:Sending Pointer ACTION_UP x=451.0 y=437.0
+:Sending Pointer ACTION_DOWN x=98.0 y=44.0
+:Sending Pointer ACTION_UP x=98.0 y=44.0
+    //[calendar_time:2014-08-25 19:37:49.583  system_uptime:125130]
+    // Sending event #500
+    //[calendar_time:2014-08-25 19:37:49.587  system_uptime:125136]
+    // Sending event #500
+:Sending Pointer ACTION_DOWN x=472.0 y=768.0
+:Sending Pointer ACTION_UP x=472.0 y=768.0
+:Sending Pointer ACTION_DOWN x=103.0 y=92.0
+:Sending Pointer ACTION_UP x=103.0 y=92.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=216.0 y=252.0
+:Sending Pointer ACTION_UP x=216.0 y=252.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=428.0 y=212.0
+:Sending Pointer ACTION_UP x=428.0 y=212.0
+:Sending Pointer ACTION_DOWN x=164.0 y=545.0
+:Sending Pointer ACTION_UP x=176.0 y=559.0
+:Sending Pointer ACTION_DOWN x=367.0 y=799.0
+:Sending Pointer ACTION_UP x=367.0 y=799.0
+:Sending Pointer ACTION_DOWN x=57.0 y=269.0
+:Sending Pointer ACTION_UP x=57.0 y=269.0
+:Sending Pointer ACTION_DOWN x=128.0 y=32.0
+:Sending Pointer ACTION_UP x=128.0 y=32.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-4.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=429.0 y=152.0
+:Sending Pointer ACTION_UP x=429.0 y=152.0
+:Sending Pointer ACTION_DOWN x=326.0 y=249.0
+:Sending Pointer ACTION_UP x=326.0 y=249.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+    //[calendar_time:2014-08-25 19:38:05.034  system_uptime:140581]
+    // Sending event #600
+:Sending Pointer ACTION_DOWN x=67.0 y=402.0
+:Sending Pointer ACTION_UP x=67.0 y=402.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=0.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=356.0 y=711.0
+:Sending Pointer ACTION_UP x=367.0 y=717.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_DOWN x=54.0 y=198.0
+:Sending Pointer ACTION_UP x=54.0 y=198.0
+:Sending Pointer ACTION_DOWN x=208.0 y=541.0
+:Sending Pointer ACTION_UP x=208.0 y=541.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-1.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=241.0 y=520.0
+:Sending Pointer ACTION_UP x=241.0 y=520.0
+:Sending Pointer ACTION_DOWN x=430.0 y=83.0
+:Sending Pointer ACTION_UP x=447.0 y=83.0
+:Sending Pointer ACTION_DOWN x=265.0 y=613.0
+:Sending Pointer ACTION_UP x=265.0 y=613.0
+    //[calendar_time:2014-08-25 19:38:20.687  system_uptime:156239]
+    // Sending event #700
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=318.0 y=520.0
+:Sending Pointer ACTION_UP x=318.0 y=520.0
+:Sending Pointer ACTION_MOVE x=2.0 y=1.0
+:Sending Pointer ACTION_DOWN x=388.0 y=614.0
+:Sending Pointer ACTION_UP x=386.0 y=595.0
+:Sending Pointer ACTION_DOWN x=305.0 y=352.0
+:Sending Pointer ACTION_UP x=305.0 y=352.0
+:Sending Pointer ACTION_DOWN x=295.0 y=797.0
+:Sending Pointer ACTION_UP x=295.0 y=797.0
+:Sending Pointer ACTION_DOWN x=447.0 y=8.0
+:Sending Pointer ACTION_UP x=447.0 y=8.0
+:Sending Pointer ACTION_DOWN x=326.0 y=623.0
+:Sending Pointer ACTION_UP x=326.0 y=623.0
+:Sending Pointer ACTION_DOWN x=14.0 y=548.0
+:Sending Pointer ACTION_UP x=13.0 y=548.0
+:Sending Pointer ACTION_DOWN x=168.0 y=506.0
+:Sending Pointer ACTION_UP x=168.0 y=506.0
+:Sending Pointer ACTION_DOWN x=359.0 y=662.0
+:Sending Pointer ACTION_UP x=359.0 y=662.0
+:Sending Pointer ACTION_DOWN x=479.0 y=758.0
+:Sending Pointer ACTION_UP x=479.0 y=758.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=1.0
+:Sending Pointer ACTION_MOVE x=4.0 y=1.0
+    //[calendar_time:2014-08-25 19:38:31.218  system_uptime:166764]
+    // Sending event #800
+:Sending Pointer ACTION_DOWN x=18.0 y=246.0
+:Sending Pointer ACTION_UP x=18.0 y=246.0
+:Sending Pointer ACTION_DOWN x=262.0 y=708.0
+:Sending Pointer ACTION_UP x=262.0 y=708.0
+:Sending Pointer ACTION_DOWN x=459.0 y=394.0
+:Sending Pointer ACTION_UP x=459.0 y=394.0
+:Sending Pointer ACTION_MOVE x=0.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-1.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=37.0 y=393.0
+:Sending Pointer ACTION_UP x=37.0 y=393.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+    //[calendar_time:2014-08-25 19:38:38.111  system_uptime:173658]
+    // Sending event #900
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=83.0 y=482.0
+:Sending Pointer ACTION_UP x=83.0 y=482.0
+:Sending Pointer ACTION_DOWN x=429.0 y=577.0
+:Sending Pointer ACTION_UP x=429.0 y=577.0
+:Sending Pointer ACTION_DOWN x=345.0 y=399.0
+:Sending Pointer ACTION_UP x=349.0 y=400.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=4.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=198.0 y=512.0
+:Sending Pointer ACTION_UP x=181.0 y=494.0
+:Sending Pointer ACTION_DOWN x=25.0 y=239.0
+    //[calendar_time:2014-08-25 19:38:47.363  system_uptime:182911]
+    // Sending event #1000
+:Sending Pointer ACTION_UP x=5.0 y=245.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=2.0
+:Sending Pointer ACTION_DOWN x=239.0 y=152.0
+:Sending Pointer ACTION_UP x=239.0 y=152.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=187.0 y=222.0
+:Sending Pointer ACTION_UP x=187.0 y=222.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-3.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Pointer ACTION_DOWN x=134.0 y=582.0
+:Sending Pointer ACTION_UP x=134.0 y=582.0
+:Sending Pointer ACTION_MOVE x=3.0 y=2.0
+    //[calendar_time:2014-08-25 19:38:53.197  system_uptime:188743]
+    // Sending event #1100
+:Sending Pointer ACTION_DOWN x=45.0 y=556.0
+:Sending Pointer ACTION_UP x=45.0 y=556.0
+:Sending Pointer ACTION_DOWN x=156.0 y=788.0
+:Sending Pointer ACTION_UP x=156.0 y=788.0
+:Sending Pointer ACTION_DOWN x=468.0 y=4.0
+:Sending Pointer ACTION_UP x=465.0 y=7.0
+:Sending Pointer ACTION_DOWN x=310.0 y=761.0
+:Sending Pointer ACTION_UP x=310.0 y=761.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=426.0 y=203.0
+:Sending Pointer ACTION_UP x=426.0 y=203.0
+:Sending Pointer ACTION_DOWN x=264.0 y=42.0
+:Sending Pointer ACTION_UP x=264.0 y=42.0
+:Sending Pointer ACTION_DOWN x=448.0 y=691.0
+:Sending Pointer ACTION_UP x=434.0 y=688.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-4.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=0.0
+:Sending Pointer ACTION_DOWN x=255.0 y=359.0
+:Sending Pointer ACTION_UP x=255.0 y=359.0
+:Sending Pointer ACTION_DOWN x=147.0 y=149.0
+:Sending Pointer ACTION_UP x=192.0 y=158.0
+:Sending Pointer ACTION_DOWN x=257.0 y=636.0
+:Sending Pointer ACTION_UP x=257.0 y=636.0
+:Sending Pointer ACTION_DOWN x=125.0 y=106.0
+    //[calendar_time:2014-08-25 19:39:00.624  system_uptime:196174]
+    // Sending event #1200
+:Sending Pointer ACTION_UP x=125.0 y=106.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=0.0 y=4.0
+:Sending Pointer ACTION_DOWN x=371.0 y=237.0
+:Sending Pointer ACTION_UP x=371.0 y=237.0
+:Sending Pointer ACTION_DOWN x=50.0 y=10.0
+:Sending Pointer ACTION_UP x=50.0 y=10.0
+:Sending Pointer ACTION_DOWN x=344.0 y=161.0
+:Sending Pointer ACTION_UP x=344.0 y=161.0
+:Sending Pointer ACTION_DOWN x=203.0 y=119.0
+:Sending Pointer ACTION_UP x=203.0 y=119.0
+:Sending Pointer ACTION_DOWN x=316.0 y=187.0
+:Sending Pointer ACTION_UP x=316.0 y=187.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=3.0
+:Sending Pointer ACTION_DOWN x=226.0 y=45.0
+:Sending Pointer ACTION_UP x=236.0 y=60.0
+:Sending Pointer ACTION_DOWN x=340.0 y=473.0
+:Sending Pointer ACTION_UP x=340.0 y=473.0
+:Sending Pointer ACTION_DOWN x=433.0 y=337.0
+:Sending Pointer ACTION_UP x=433.0 y=337.0
+:Sending Pointer ACTION_DOWN x=207.0 y=718.0
+:Sending Pointer ACTION_UP x=207.0 y=718.0
+:Sending Pointer ACTION_DOWN x=207.0 y=82.0
+    //[calendar_time:2014-08-25 19:39:12.396  system_uptime:207942]
+    // Sending event #1300
+:Sending Pointer ACTION_UP x=234.0 y=77.0
+    // activityResuming(com.templaro.opsiz.aka)
+:Sending Pointer ACTION_DOWN x=408.0 y=569.0
+:Sending Pointer ACTION_UP x=404.0 y=550.0
+:Sending Pointer ACTION_DOWN x=367.0 y=157.0
+:Sending Pointer ACTION_UP x=369.0 y=165.0
+:Sending Pointer ACTION_DOWN x=354.0 y=571.0
+:Sending Pointer ACTION_UP x=354.0 y=571.0
+:Sending Pointer ACTION_DOWN x=51.0 y=783.0
+:Sending Pointer ACTION_UP x=51.0 y=783.0
+:Sending Pointer ACTION_DOWN x=118.0 y=258.0
+:Sending Pointer ACTION_UP x=118.0 y=260.0
+:Sending Pointer ACTION_DOWN x=409.0 y=282.0
+:Sending Pointer ACTION_UP x=409.0 y=282.0
+:Sending Pointer ACTION_MOVE x=2.0 y=1.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=3.0
+:Sending Pointer ACTION_DOWN x=431.0 y=536.0
+:Sending Pointer ACTION_UP x=447.0 y=515.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=1.0
+    //[calendar_time:2014-08-25 19:39:21.181  system_uptime:216728]
+    // Sending event #1400
+:Sending Pointer ACTION_DOWN x=330.0 y=573.0
+:Sending Pointer ACTION_UP x=330.0 y=573.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=108.0 y=127.0
+:Sending Pointer ACTION_UP x=102.0 y=126.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=232.0 y=304.0
+:Sending Pointer ACTION_UP x=232.0 y=304.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=1.0
+:Sending Pointer ACTION_DOWN x=249.0 y=795.0
+:Sending Pointer ACTION_UP x=252.0 y=794.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=-1.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-2.0
+    //[calendar_time:2014-08-25 19:39:28.658  system_uptime:224205]
+    // Sending event #1500
+:Sending Pointer ACTION_DOWN x=293.0 y=71.0
+:Sending Pointer ACTION_UP x=293.0 y=71.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=1.0
+:Sending Pointer ACTION_DOWN x=387.0 y=436.0
+:Sending Pointer ACTION_UP x=387.0 y=436.0
+:Sending Pointer ACTION_DOWN x=126.0 y=474.0
+:Sending Pointer ACTION_UP x=126.0 y=474.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=3.0
+:Sending Pointer ACTION_DOWN x=53.0 y=455.0
+:Sending Pointer ACTION_UP x=53.0 y=455.0
+:Sending Pointer ACTION_DOWN x=241.0 y=365.0
+:Sending Pointer ACTION_UP x=241.0 y=365.0
+:Sending Pointer ACTION_DOWN x=431.0 y=417.0
+:Sending Pointer ACTION_UP x=431.0 y=417.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=172.0 y=26.0
+:Sending Pointer ACTION_UP x=174.0 y=24.0
+:Sending Pointer ACTION_DOWN x=63.0 y=298.0
+    //[calendar_time:2014-08-25 19:39:36.680  system_uptime:232227]
+    // Sending event #1600
+:Sending Pointer ACTION_UP x=63.0 y=298.0
+:Sending Pointer ACTION_DOWN x=182.0 y=144.0
+:Sending Pointer ACTION_UP x=182.0 y=144.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=2.0 y=4.0
+:Sending Pointer ACTION_DOWN x=261.0 y=640.0
+:Sending Pointer ACTION_UP x=261.0 y=640.0
+:Sending Pointer ACTION_MOVE x=3.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+    // Allowing start of Intent { cmp=com.templaro.opsiz.aka/.Settings } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=178.0 y=730.0
+:Sending Pointer ACTION_UP x=179.0 y=735.0
+:Sending Pointer ACTION_MOVE x=3.0 y=0.0
+:Sending Pointer ACTION_DOWN x=187.0 y=134.0
+:Sending Pointer ACTION_UP x=180.0 y=131.0
+    //[calendar_time:2014-08-25 19:39:45.203  system_uptime:240750]
+    // Sending event #1700
+    //[calendar_time:2014-08-25 19:39:45.207  system_uptime:240761]
+    // Sending event #1700
+:Sending Pointer ACTION_DOWN x=378.0 y=152.0
+:Sending Pointer ACTION_UP x=371.0 y=157.0
+:Sending Pointer ACTION_DOWN x=165.0 y=461.0
+:Sending Pointer ACTION_UP x=165.0 y=461.0
+:Sending Pointer ACTION_DOWN x=124.0 y=32.0
+:Sending Pointer ACTION_UP x=134.0 y=26.0
+:Sending Pointer ACTION_DOWN x=156.0 y=189.0
+:Sending Pointer ACTION_UP x=156.0 y=189.0
+:Sending Pointer ACTION_DOWN x=343.0 y=559.0
+:Sending Pointer ACTION_UP x=343.0 y=559.0
+:Sending Pointer ACTION_DOWN x=264.0 y=753.0
+:Sending Pointer ACTION_UP x=255.0 y=753.0
+:Sending Pointer ACTION_DOWN x=3.0 y=234.0
+:Sending Pointer ACTION_UP x=3.0 y=234.0
+:Sending Pointer ACTION_DOWN x=437.0 y=424.0
+:Sending Pointer ACTION_UP x=437.0 y=424.0
+:Sending Pointer ACTION_DOWN x=38.0 y=374.0
+:Sending Pointer ACTION_UP x=38.0 y=374.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=235.0 y=777.0
+:Sending Pointer ACTION_UP x=235.0 y=777.0
+:Sending Pointer ACTION_MOVE x=2.0 y=2.0
+    //[calendar_time:2014-08-25 19:39:54.101  system_uptime:249648]
+    // Sending event #1800
+:Sending Pointer ACTION_DOWN x=126.0 y=438.0
+:Sending Pointer ACTION_UP x=117.0 y=446.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=0.0 y=3.0
+:Sending Pointer ACTION_DOWN x=68.0 y=262.0
+:Sending Pointer ACTION_UP x=83.0 y=254.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=349.0 y=16.0
+:Sending Pointer ACTION_UP x=349.0 y=16.0
+:Sending Pointer ACTION_DOWN x=200.0 y=785.0
+:Sending Pointer ACTION_UP x=178.0 y=780.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=0.0
+:Sending Pointer ACTION_DOWN x=361.0 y=618.0
+:Sending Pointer ACTION_UP x=361.0 y=618.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-5.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=-5.0 y=1.0
+    //[calendar_time:2014-08-25 19:40:02.893  system_uptime:258440]
+    // Sending event #1900
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=0.0 y=1.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=2.0
+:Sending Pointer ACTION_DOWN x=18.0 y=289.0
+:Sending Pointer ACTION_UP x=18.0 y=289.0
+:Sending Pointer ACTION_DOWN x=66.0 y=167.0
+:Sending Pointer ACTION_UP x=56.0 y=191.0
+:Sending Pointer ACTION_MOVE x=3.0 y=4.0
+:Sending Pointer ACTION_DOWN x=398.0 y=437.0
+:Sending Pointer ACTION_UP x=393.0 y=454.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-1.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=-1.0 y=-4.0
+    //[calendar_time:2014-08-25 19:40:08.091  system_uptime:263641]
+    // Sending event #2000
+:Sending Pointer ACTION_DOWN x=27.0 y=4.0
+:Sending Pointer ACTION_UP x=27.0 y=4.0
+:Sending Pointer ACTION_DOWN x=469.0 y=449.0
+:Sending Pointer ACTION_UP x=469.0 y=449.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_DOWN x=182.0 y=94.0
+:Sending Pointer ACTION_UP x=186.0 y=83.0
+:Sending Pointer ACTION_DOWN x=348.0 y=603.0
+:Sending Pointer ACTION_UP x=348.0 y=603.0
+:Sending Pointer ACTION_DOWN x=149.0 y=88.0
+:Sending Pointer ACTION_UP x=149.0 y=88.0
+:Sending Pointer ACTION_DOWN x=214.0 y=554.0
+:Sending Pointer ACTION_UP x=223.0 y=557.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=146.0 y=122.0
+:Sending Pointer ACTION_UP x=151.0 y=125.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=353.0 y=597.0
+:Sending Pointer ACTION_UP x=353.0 y=597.0
+:Sending Pointer ACTION_DOWN x=155.0 y=475.0
+:Sending Pointer ACTION_UP x=155.0 y=475.0
+:Sending Pointer ACTION_DOWN x=212.0 y=332.0
+:Sending Pointer ACTION_UP x=224.0 y=341.0
+:Sending Pointer ACTION_DOWN x=478.0 y=376.0
+:Sending Pointer ACTION_UP x=-1.0 y=343.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=233.0 y=417.0
+    //[calendar_time:2014-08-25 19:40:13.165  system_uptime:268712]
+    // Sending event #2100
+:Sending Pointer ACTION_UP x=233.0 y=417.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=1.0
+:Sending Pointer ACTION_DOWN x=443.0 y=105.0
+:Sending Pointer ACTION_UP x=443.0 y=105.0
+:Sending Pointer ACTION_MOVE x=1.0 y=2.0
+:Sending Pointer ACTION_DOWN x=160.0 y=409.0
+:Sending Pointer ACTION_UP x=160.0 y=409.0
+:Sending Pointer ACTION_DOWN x=67.0 y=114.0
+:Sending Pointer ACTION_UP x=67.0 y=114.0
+:Sending Pointer ACTION_DOWN x=227.0 y=409.0
+:Sending Pointer ACTION_UP x=216.0 y=400.0
+:Sending Pointer ACTION_DOWN x=168.0 y=770.0
+:Sending Pointer ACTION_UP x=168.0 y=770.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=323.0 y=712.0
+:Sending Pointer ACTION_UP x=323.0 y=712.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=3.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-3.0
+    //[calendar_time:2014-08-25 19:40:27.663  system_uptime:283209]
+    // Sending event #2200
+:Sending Pointer ACTION_DOWN x=398.0 y=692.0
+:Sending Pointer ACTION_UP x=389.0 y=682.0
+:Sending Pointer ACTION_DOWN x=28.0 y=781.0
+:Sending Pointer ACTION_UP x=26.0 y=773.0
+:Sending Pointer ACTION_MOVE x=0.0 y=4.0
+:Sending Pointer ACTION_DOWN x=338.0 y=614.0
+:Sending Pointer ACTION_UP x=343.0 y=593.0
+:Sending Pointer ACTION_DOWN x=331.0 y=521.0
+:Sending Pointer ACTION_UP x=340.0 y=527.0
+:Sending Pointer ACTION_DOWN x=191.0 y=318.0
+:Sending Pointer ACTION_UP x=191.0 y=318.0
+:Sending Pointer ACTION_DOWN x=315.0 y=292.0
+:Sending Pointer ACTION_UP x=307.0 y=280.0
+:Sending Pointer ACTION_DOWN x=161.0 y=500.0
+:Sending Pointer ACTION_UP x=160.0 y=508.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-2.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=317.0 y=412.0
+:Sending Pointer ACTION_UP x=289.0 y=439.0
+:Sending Pointer ACTION_DOWN x=73.0 y=107.0
+:Sending Pointer ACTION_UP x=73.0 y=107.0
+:Sending Pointer ACTION_DOWN x=197.0 y=373.0
+:Sending Pointer ACTION_UP x=197.0 y=373.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=3.0
+    //[calendar_time:2014-08-25 19:40:36.331  system_uptime:291878]
+    // Sending event #2300
+:Sending Pointer ACTION_DOWN x=289.0 y=401.0
+:Sending Pointer ACTION_UP x=284.0 y=405.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=269.0 y=248.0
+:Sending Pointer ACTION_UP x=269.0 y=248.0
+:Sending Pointer ACTION_DOWN x=308.0 y=128.0
+:Sending Pointer ACTION_UP x=308.0 y=128.0
+:Sending Pointer ACTION_DOWN x=333.0 y=105.0
+:Sending Pointer ACTION_UP x=330.0 y=110.0
+:Sending Pointer ACTION_DOWN x=209.0 y=777.0
+:Sending Pointer ACTION_UP x=209.0 y=778.0
+:Sending Pointer ACTION_DOWN x=328.0 y=124.0
+:Sending Pointer ACTION_UP x=328.0 y=124.0
+:Sending Pointer ACTION_DOWN x=209.0 y=778.0
+:Sending Pointer ACTION_UP x=209.0 y=778.0
+:Sending Pointer ACTION_DOWN x=381.0 y=716.0
+:Sending Pointer ACTION_UP x=375.0 y=725.0
+:Sending Pointer ACTION_DOWN x=101.0 y=526.0
+:Sending Pointer ACTION_UP x=118.0 y=533.0
+:Sending Pointer ACTION_MOVE x=4.0 y=0.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_DOWN x=138.0 y=630.0
+    //[calendar_time:2014-08-25 19:40:47.524  system_uptime:303071]
+    // Sending event #2400
+:Sending Pointer ACTION_UP x=148.0 y=659.0
+:Sending Pointer ACTION_DOWN x=476.0 y=769.0
+:Sending Pointer ACTION_UP x=476.0 y=769.0
+:Sending Pointer ACTION_DOWN x=19.0 y=671.0
+:Sending Pointer ACTION_UP x=31.0 y=689.0
+:Sending Pointer ACTION_DOWN x=151.0 y=464.0
+:Sending Pointer ACTION_UP x=158.0 y=456.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=159.0 y=733.0
+:Sending Pointer ACTION_UP x=159.0 y=733.0
+:Sending Pointer ACTION_DOWN x=411.0 y=83.0
+:Sending Pointer ACTION_UP x=422.0 y=83.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=225.0 y=749.0
+:Sending Pointer ACTION_UP x=226.0 y=743.0
+:Sending Pointer ACTION_MOVE x=0.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=0.0
+:Sending Pointer ACTION_DOWN x=114.0 y=380.0
+:Sending Pointer ACTION_UP x=114.0 y=380.0
+:Sending Pointer ACTION_DOWN x=363.0 y=59.0
+:Sending Pointer ACTION_UP x=356.0 y=81.0
+:Sending Pointer ACTION_DOWN x=343.0 y=34.0
+    //[calendar_time:2014-08-25 19:40:52.175  system_uptime:307724]
+    // Sending event #2500
+:Sending Pointer ACTION_UP x=352.0 y=26.0
+:Sending Pointer ACTION_DOWN x=246.0 y=546.0
+:Sending Pointer ACTION_UP x=246.0 y=546.0
+:Sending Pointer ACTION_DOWN x=365.0 y=199.0
+:Sending Pointer ACTION_UP x=365.0 y=199.0
+:Sending Pointer ACTION_DOWN x=143.0 y=490.0
+:Sending Pointer ACTION_UP x=143.0 y=490.0
+:Sending Pointer ACTION_DOWN x=39.0 y=413.0
+:Sending Pointer ACTION_UP x=59.0 y=420.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=250.0 y=303.0
+:Sending Pointer ACTION_UP x=250.0 y=303.0
+:Sending Pointer ACTION_DOWN x=143.0 y=484.0
+:Sending Pointer ACTION_UP x=147.0 y=493.0
+:Sending Pointer ACTION_MOVE x=1.0 y=3.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=4.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=39.0 y=678.0
+:Sending Pointer ACTION_UP x=39.0 y=678.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=1.0
+    //[calendar_time:2014-08-25 19:40:58.506  system_uptime:314052]
+    // Sending event #2600
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=415.0 y=448.0
+:Sending Pointer ACTION_UP x=415.0 y=448.0
+:Sending Pointer ACTION_DOWN x=141.0 y=234.0
+:Sending Pointer ACTION_UP x=141.0 y=234.0
+:Sending Pointer ACTION_DOWN x=11.0 y=689.0
+:Sending Pointer ACTION_UP x=11.0 y=689.0
+:Sending Pointer ACTION_DOWN x=188.0 y=77.0
+:Sending Pointer ACTION_UP x=182.0 y=90.0
+:Sending Pointer ACTION_DOWN x=357.0 y=42.0
+:Sending Pointer ACTION_UP x=351.0 y=52.0
+:Sending Pointer ACTION_MOVE x=3.0 y=0.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=327.0 y=792.0
+:Sending Pointer ACTION_UP x=327.0 y=792.0
+:Sending Pointer ACTION_DOWN x=82.0 y=306.0
+:Sending Pointer ACTION_UP x=92.0 y=301.0
+:Sending Pointer ACTION_DOWN x=295.0 y=112.0
+    //[calendar_time:2014-08-25 19:41:03.327  system_uptime:318872]
+    // Sending event #2700
+:Sending Pointer ACTION_UP x=266.0 y=113.0
+:Sending Pointer ACTION_DOWN x=155.0 y=493.0
+:Sending Pointer ACTION_UP x=155.0 y=493.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=1.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=189.0 y=226.0
+:Sending Pointer ACTION_UP x=189.0 y=226.0
+:Sending Pointer ACTION_DOWN x=224.0 y=277.0
+:Sending Pointer ACTION_UP x=224.0 y=277.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=166.0 y=475.0
+:Sending Pointer ACTION_UP x=166.0 y=475.0
+:Sending Pointer ACTION_DOWN x=53.0 y=253.0
+:Sending Pointer ACTION_UP x=53.0 y=253.0
+:Sending Pointer ACTION_DOWN x=465.0 y=530.0
+:Sending Pointer ACTION_UP x=465.0 y=530.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_MOVE x=1.0 y=-2.0
+    //[calendar_time:2014-08-25 19:41:10.565  system_uptime:326111]
+    // Sending event #2800
+:Sending Pointer ACTION_DOWN x=372.0 y=497.0
+:Sending Pointer ACTION_UP x=372.0 y=497.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=389.0 y=699.0
+:Sending Pointer ACTION_UP x=389.0 y=699.0
+:Sending Pointer ACTION_DOWN x=466.0 y=504.0
+:Sending Pointer ACTION_UP x=466.0 y=504.0
+:Sending Pointer ACTION_DOWN x=1.0 y=457.0
+:Sending Pointer ACTION_UP x=1.0 y=457.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=288.0 y=165.0
+:Sending Pointer ACTION_UP x=311.0 y=160.0
+:Sending Pointer ACTION_DOWN x=28.0 y=190.0
+:Sending Pointer ACTION_UP x=28.0 y=190.0
+:Sending Pointer ACTION_DOWN x=376.0 y=625.0
+:Sending Pointer ACTION_UP x=368.0 y=624.0
+:Sending Pointer ACTION_DOWN x=71.0 y=114.0
+:Sending Pointer ACTION_UP x=71.0 y=114.0
+:Sending Pointer ACTION_DOWN x=177.0 y=391.0
+:Sending Pointer ACTION_UP x=166.0 y=382.0
+:Sending Pointer ACTION_DOWN x=258.0 y=770.0
+:Sending Pointer ACTION_UP x=258.0 y=770.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=4.0
+:Sending Pointer ACTION_DOWN x=168.0 y=148.0
+:Sending Pointer ACTION_UP x=168.0 y=148.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-3.0
+    //[calendar_time:2014-08-25 19:41:17.495  system_uptime:333042]
+    // Sending event #2900
+:Sending Pointer ACTION_MOVE x=3.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=182.0 y=62.0
+:Sending Pointer ACTION_UP x=176.0 y=68.0
+:Sending Pointer ACTION_DOWN x=10.0 y=144.0
+:Sending Pointer ACTION_UP x=10.0 y=144.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-1.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_DOWN x=239.0 y=237.0
+:Sending Pointer ACTION_UP x=239.0 y=237.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=2.0
+:Sending Pointer ACTION_DOWN x=269.0 y=209.0
+:Sending Pointer ACTION_UP x=269.0 y=209.0
+:Sending Pointer ACTION_DOWN x=411.0 y=532.0
+:Sending Pointer ACTION_UP x=411.0 y=532.0
+:Sending Pointer ACTION_DOWN x=182.0 y=68.0
+:Sending Pointer ACTION_UP x=177.0 y=67.0
+:Sending Pointer ACTION_DOWN x=188.0 y=34.0
+:Sending Pointer ACTION_UP x=188.0 y=34.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-4.0
+    //[calendar_time:2014-08-25 19:41:26.148  system_uptime:341695]
+    // Sending event #3000
+:Sending Pointer ACTION_DOWN x=453.0 y=117.0
+:Sending Pointer ACTION_UP x=453.0 y=117.0
+:Sending Pointer ACTION_DOWN x=322.0 y=70.0
+:Sending Pointer ACTION_UP x=322.0 y=70.0
+:Sending Pointer ACTION_DOWN x=210.0 y=600.0
+:Sending Pointer ACTION_UP x=195.0 y=615.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=99.0 y=655.0
+:Sending Pointer ACTION_UP x=102.0 y=650.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=81.0 y=797.0
+:Sending Pointer ACTION_UP x=110.0 y=5.0
+:Sending Pointer ACTION_DOWN x=217.0 y=543.0
+:Sending Pointer ACTION_UP x=217.0 y=543.0
+:Sending Pointer ACTION_MOVE x=3.0 y=2.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=455.0 y=396.0
+:Sending Pointer ACTION_UP x=455.0 y=396.0
+    //[calendar_time:2014-08-25 19:41:32.638  system_uptime:348185]
+    // Sending event #3100
+    //[calendar_time:2014-08-25 19:41:32.643  system_uptime:348192]
+    // Sending event #3100
+:Sending Pointer ACTION_DOWN x=187.0 y=135.0
+:Sending Pointer ACTION_UP x=177.0 y=130.0
+:Sending Pointer ACTION_DOWN x=153.0 y=466.0
+:Sending Pointer ACTION_UP x=162.0 y=450.0
+:Sending Pointer ACTION_DOWN x=111.0 y=189.0
+:Sending Pointer ACTION_UP x=119.0 y=203.0
+:Sending Pointer ACTION_DOWN x=283.0 y=165.0
+:Sending Pointer ACTION_UP x=299.0 y=173.0
+:Sending Pointer ACTION_MOVE x=4.0 y=0.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=19.0 y=615.0
+:Sending Pointer ACTION_UP x=18.0 y=618.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=389.0 y=50.0
+:Sending Pointer ACTION_UP x=373.0 y=63.0
+:Sending Pointer ACTION_DOWN x=60.0 y=148.0
+:Sending Pointer ACTION_UP x=60.0 y=148.0
+:Sending Pointer ACTION_DOWN x=469.0 y=123.0
+:Sending Pointer ACTION_UP x=464.0 y=123.0
+:Sending Pointer ACTION_DOWN x=25.0 y=675.0
+:Sending Pointer ACTION_UP x=25.0 y=675.0
+:Sending Pointer ACTION_DOWN x=408.0 y=604.0
+:Sending Pointer ACTION_UP x=408.0 y=604.0
+:Sending Pointer ACTION_DOWN x=254.0 y=542.0
+:Sending Pointer ACTION_UP x=254.0 y=542.0
+:Sending Pointer ACTION_DOWN x=104.0 y=41.0
+:Sending Pointer ACTION_UP x=104.0 y=41.0
+    //[calendar_time:2014-08-25 19:41:42.178  system_uptime:357725]
+    // Sending event #3200
+    //[calendar_time:2014-08-25 19:41:42.188  system_uptime:357741]
+    // Sending event #3200
+:Sending Pointer ACTION_MOVE x=-5.0 y=1.0
+:Sending Pointer ACTION_DOWN x=398.0 y=259.0
+:Sending Pointer ACTION_UP x=417.0 y=252.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=89.0 y=317.0
+:Sending Pointer ACTION_UP x=89.0 y=317.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=84.0 y=685.0
+:Sending Pointer ACTION_UP x=84.0 y=685.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=254.0 y=285.0
+:Sending Pointer ACTION_UP x=254.0 y=285.0
+:Sending Pointer ACTION_DOWN x=281.0 y=403.0
+    //[calendar_time:2014-08-25 19:41:49.980  system_uptime:365527]
+    // Sending event #3300
+:Sending Pointer ACTION_UP x=281.0 y=403.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=69.0 y=60.0
+:Sending Pointer ACTION_UP x=67.0 y=75.0
+:Sending Pointer ACTION_DOWN x=252.0 y=280.0
+:Sending Pointer ACTION_UP x=252.0 y=280.0
+:Sending Pointer ACTION_DOWN x=125.0 y=355.0
+:Sending Pointer ACTION_UP x=123.0 y=368.0
+:Sending Pointer ACTION_DOWN x=456.0 y=225.0
+:Sending Pointer ACTION_UP x=456.0 y=225.0
+:Sending Pointer ACTION_DOWN x=270.0 y=455.0
+:Sending Pointer ACTION_UP x=275.0 y=455.0
+:Sending Pointer ACTION_DOWN x=330.0 y=347.0
+:Sending Pointer ACTION_UP x=330.0 y=347.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=270.0 y=215.0
+:Sending Pointer ACTION_UP x=270.0 y=215.0
+:Sending Pointer ACTION_DOWN x=238.0 y=459.0
+:Sending Pointer ACTION_UP x=238.0 y=459.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=0.0
+:Sending Pointer ACTION_DOWN x=349.0 y=447.0
+:Sending Pointer ACTION_UP x=349.0 y=447.0
+:Sending Pointer ACTION_DOWN x=368.0 y=316.0
+:Sending Pointer ACTION_UP x=368.0 y=316.0
+:Sending Pointer ACTION_DOWN x=171.0 y=758.0
+:Sending Pointer ACTION_UP x=171.0 y=758.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-2.0
+    //[calendar_time:2014-08-25 19:41:55.384  system_uptime:370930]
+    // Sending event #3400
+:Sending Pointer ACTION_DOWN x=382.0 y=128.0
+:Sending Pointer ACTION_UP x=382.0 y=128.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=0.0 y=1.0
+:Sending Pointer ACTION_DOWN x=2.0 y=89.0
+:Sending Pointer ACTION_UP x=2.0 y=89.0
+:Sending Pointer ACTION_MOVE x=2.0 y=1.0
+:Sending Pointer ACTION_DOWN x=204.0 y=676.0
+:Sending Pointer ACTION_UP x=209.0 y=670.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=298.0 y=43.0
+:Sending Pointer ACTION_UP x=298.0 y=43.0
+:Sending Pointer ACTION_DOWN x=353.0 y=252.0
+:Sending Pointer ACTION_UP x=353.0 y=252.0
+:Sending Pointer ACTION_DOWN x=66.0 y=228.0
+:Sending Pointer ACTION_UP x=66.0 y=228.0
+:Sending Pointer ACTION_DOWN x=9.0 y=487.0
+:Sending Pointer ACTION_UP x=9.0 y=487.0
+:Sending Pointer ACTION_DOWN x=235.0 y=182.0
+    //[calendar_time:2014-08-25 19:42:05.146  system_uptime:380693]
+    // Sending event #3500
+:Sending Pointer ACTION_UP x=213.0 y=164.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=1.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=236.0 y=639.0
+:Sending Pointer ACTION_UP x=225.0 y=659.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=3.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=15.0 y=738.0
+:Sending Pointer ACTION_UP x=0.0 y=725.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=3.0
+:Sending Pointer ACTION_DOWN x=479.0 y=735.0
+:Sending Pointer ACTION_UP x=479.0 y=735.0
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=68.0 y=165.0
+    //[calendar_time:2014-08-25 19:42:20.471  system_uptime:396018]
+    // Sending event #3600
+:Sending Pointer ACTION_UP x=64.0 y=160.0
+:Sending Pointer ACTION_DOWN x=33.0 y=208.0
+:Sending Pointer ACTION_UP x=5.0 y=197.0
+:Sending Pointer ACTION_DOWN x=405.0 y=719.0
+:Sending Pointer ACTION_UP x=401.0 y=713.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-1.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=366.0 y=226.0
+:Sending Pointer ACTION_UP x=362.0 y=219.0
+:Sending Pointer ACTION_DOWN x=75.0 y=6.0
+:Sending Pointer ACTION_UP x=82.0 y=15.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-1.0
+    //[calendar_time:2014-08-25 19:42:29.666  system_uptime:405213]
+    // Sending event #3700
+    //[calendar_time:2014-08-25 19:42:29.677  system_uptime:405224]
+    // Sending event #3700
+:Sending Pointer ACTION_DOWN x=281.0 y=166.0
+:Sending Pointer ACTION_UP x=269.0 y=172.0
+:Sending Pointer ACTION_DOWN x=167.0 y=766.0
+:Sending Pointer ACTION_UP x=167.0 y=766.0
+:Sending Pointer ACTION_DOWN x=420.0 y=27.0
+:Sending Pointer ACTION_UP x=420.0 y=27.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=357.0 y=729.0
+:Sending Pointer ACTION_UP x=357.0 y=729.0
+:Sending Pointer ACTION_DOWN x=87.0 y=357.0
+:Sending Pointer ACTION_UP x=62.0 y=339.0
+:Sending Pointer ACTION_DOWN x=427.0 y=273.0
+:Sending Pointer ACTION_UP x=428.0 y=276.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=97.0 y=61.0
+:Sending Pointer ACTION_UP x=97.0 y=61.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=2.0
+:Sending Pointer ACTION_DOWN x=12.0 y=483.0
+:Sending Pointer ACTION_UP x=12.0 y=483.0
+:Sending Pointer ACTION_DOWN x=349.0 y=291.0
+:Sending Pointer ACTION_UP x=349.0 y=291.0
+:Sending Pointer ACTION_DOWN x=161.0 y=774.0
+    //[calendar_time:2014-08-25 19:42:40.213  system_uptime:415760]
+    // Sending event #3800
+:Sending Pointer ACTION_UP x=157.0 y=766.0
+:Sending Pointer ACTION_DOWN x=375.0 y=235.0
+:Sending Pointer ACTION_UP x=370.0 y=244.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=30.0 y=280.0
+:Sending Pointer ACTION_UP x=15.0 y=294.0
+:Sending Pointer ACTION_DOWN x=75.0 y=279.0
+:Sending Pointer ACTION_UP x=75.0 y=279.0
+:Sending Pointer ACTION_MOVE x=0.0 y=0.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=-3.0 y=2.0
+:Sending Pointer ACTION_DOWN x=137.0 y=362.0
+:Sending Pointer ACTION_UP x=137.0 y=362.0
+:Sending Pointer ACTION_DOWN x=39.0 y=587.0
+:Sending Pointer ACTION_UP x=39.0 y=587.0
+    //[calendar_time:2014-08-25 19:42:51.264  system_uptime:426811]
+    // Sending event #3900
+    //[calendar_time:2014-08-25 19:42:51.292  system_uptime:426840]
+    // Sending event #3900
+:Sending Pointer ACTION_MOVE x=2.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=1.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_DOWN x=14.0 y=221.0
+:Sending Pointer ACTION_UP x=14.0 y=221.0
+:Sending Pointer ACTION_DOWN x=119.0 y=596.0
+:Sending Pointer ACTION_UP x=119.0 y=596.0
+:Sending Pointer ACTION_MOVE x=3.0 y=3.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_MOVE x=1.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-3.0
+    //[calendar_time:2014-08-25 19:43:01.703  system_uptime:437249]
+    // Sending event #4000
+:Sending Pointer ACTION_MOVE x=-2.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=147.0 y=766.0
+:Sending Pointer ACTION_UP x=147.0 y=766.0
+:Sending Pointer ACTION_DOWN x=101.0 y=713.0
+:Sending Pointer ACTION_UP x=101.0 y=713.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=0.0 y=3.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=1.0 y=2.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=470.0 y=745.0
+:Sending Pointer ACTION_UP x=-24.0 y=765.0
+:Sending Pointer ACTION_DOWN x=36.0 y=126.0
+:Sending Pointer ACTION_UP x=36.0 y=126.0
+:Sending Pointer ACTION_DOWN x=384.0 y=680.0
+:Sending Pointer ACTION_UP x=384.0 y=680.0
+    //[calendar_time:2014-08-25 19:43:09.677  system_uptime:445224]
+    // Sending event #4100
+    //[calendar_time:2014-08-25 19:43:09.682  system_uptime:445229]
+    // Sending event #4100
+:Sending Pointer ACTION_MOVE x=-1.0 y=4.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_DOWN x=467.0 y=282.0
+:Sending Pointer ACTION_UP x=473.0 y=288.0
+:Sending Pointer ACTION_DOWN x=342.0 y=169.0
+:Sending Pointer ACTION_UP x=342.0 y=169.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=314.0 y=39.0
+:Sending Pointer ACTION_UP x=313.0 y=10.0
+:Sending Pointer ACTION_DOWN x=347.0 y=436.0
+:Sending Pointer ACTION_UP x=347.0 y=436.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=9.0 y=77.0
+:Sending Pointer ACTION_UP x=10.0 y=80.0
+:Sending Pointer ACTION_DOWN x=151.0 y=379.0
+:Sending Pointer ACTION_UP x=151.0 y=379.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=115.0 y=677.0
+:Sending Pointer ACTION_UP x=120.0 y=680.0
+:Sending Pointer ACTION_DOWN x=36.0 y=431.0
+:Sending Pointer ACTION_UP x=36.0 y=431.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-1.0
+    //[calendar_time:2014-08-25 19:43:18.694  system_uptime:454241]
+    // Sending event #4200
+:Sending Pointer ACTION_DOWN x=471.0 y=758.0
+:Sending Pointer ACTION_UP x=471.0 y=758.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=272.0 y=658.0
+:Sending Pointer ACTION_UP x=289.0 y=651.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=1.0
+:Sending Pointer ACTION_MOVE x=4.0 y=2.0
+:Sending Pointer ACTION_DOWN x=412.0 y=223.0
+:Sending Pointer ACTION_UP x=412.0 y=223.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=238.0 y=540.0
+:Sending Pointer ACTION_UP x=238.0 y=540.0
+    //[calendar_time:2014-08-25 19:43:26.816  system_uptime:462363]
+    // Sending event #4300
+    //[calendar_time:2014-08-25 19:43:26.822  system_uptime:462369]
+    // Sending event #4300
+:Sending Pointer ACTION_DOWN x=98.0 y=631.0
+:Sending Pointer ACTION_UP x=106.0 y=624.0
+:Sending Pointer ACTION_MOVE x=0.0 y=1.0
+:Sending Pointer ACTION_MOVE x=0.0 y=1.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=379.0 y=558.0
+:Sending Pointer ACTION_UP x=372.0 y=544.0
+:Sending Pointer ACTION_DOWN x=327.0 y=429.0
+:Sending Pointer ACTION_UP x=327.0 y=429.0
+:Sending Pointer ACTION_DOWN x=6.0 y=83.0
+:Sending Pointer ACTION_UP x=6.0 y=83.0
+:Sending Pointer ACTION_DOWN x=455.0 y=464.0
+:Sending Pointer ACTION_UP x=455.0 y=464.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_MOVE x=0.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=268.0 y=42.0
+:Sending Pointer ACTION_UP x=258.0 y=26.0
+:Sending Pointer ACTION_DOWN x=196.0 y=69.0
+    //[calendar_time:2014-08-25 19:43:39.381  system_uptime:474929]
+    // Sending event #4400
+:Sending Pointer ACTION_UP x=191.0 y=44.0
+:Sending Pointer ACTION_DOWN x=91.0 y=648.0
+:Sending Pointer ACTION_UP x=102.0 y=658.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=479.0 y=627.0
+:Sending Pointer ACTION_UP x=479.0 y=627.0
+:Sending Pointer ACTION_DOWN x=29.0 y=40.0
+:Sending Pointer ACTION_UP x=29.0 y=40.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=17.0 y=629.0
+:Sending Pointer ACTION_UP x=17.0 y=629.0
+:Sending Pointer ACTION_DOWN x=307.0 y=366.0
+:Sending Pointer ACTION_UP x=307.0 y=366.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-1.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_DOWN x=102.0 y=529.0
+:Sending Pointer ACTION_UP x=102.0 y=529.0
+    //[calendar_time:2014-08-25 19:43:44.976  system_uptime:480522]
+    // Sending event #4500
+    //[calendar_time:2014-08-25 19:43:44.986  system_uptime:480534]
+    // Sending event #4500
+:Sending Pointer ACTION_DOWN x=416.0 y=674.0
+:Sending Pointer ACTION_UP x=416.0 y=674.0
+:Sending Pointer ACTION_DOWN x=104.0 y=562.0
+:Sending Pointer ACTION_UP x=104.0 y=562.0
+:Sending Pointer ACTION_DOWN x=54.0 y=423.0
+:Sending Pointer ACTION_UP x=55.0 y=418.0
+:Sending Pointer ACTION_MOVE x=1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=2.0 y=151.0
+:Sending Pointer ACTION_UP x=2.0 y=151.0
+:Sending Pointer ACTION_DOWN x=157.0 y=763.0
+:Sending Pointer ACTION_UP x=157.0 y=763.0
+:Sending Pointer ACTION_DOWN x=420.0 y=234.0
+:Sending Pointer ACTION_UP x=420.0 y=234.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=2.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=0.0
+    //[calendar_time:2014-08-25 19:43:53.858  system_uptime:489405]
+    // Sending event #4600
+    //[calendar_time:2014-08-25 19:43:53.864  system_uptime:489413]
+    // Sending event #4600
+:Sending Pointer ACTION_DOWN x=22.0 y=421.0
+:Sending Pointer ACTION_UP x=10.0 y=411.0
+:Sending Pointer ACTION_DOWN x=478.0 y=212.0
+:Sending Pointer ACTION_UP x=478.0 y=212.0
+:Sending Pointer ACTION_DOWN x=236.0 y=472.0
+:Sending Pointer ACTION_UP x=236.0 y=472.0
+:Sending Pointer ACTION_DOWN x=407.0 y=471.0
+:Sending Pointer ACTION_UP x=407.0 y=471.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=388.0 y=434.0
+:Sending Pointer ACTION_UP x=385.0 y=454.0
+:Sending Pointer ACTION_DOWN x=53.0 y=786.0
+:Sending Pointer ACTION_UP x=53.0 y=786.0
+:Sending Pointer ACTION_DOWN x=253.0 y=546.0
+:Sending Pointer ACTION_UP x=238.0 y=527.0
+:Sending Pointer ACTION_DOWN x=247.0 y=411.0
+:Sending Pointer ACTION_UP x=247.0 y=411.0
+:Sending Pointer ACTION_DOWN x=436.0 y=122.0
+:Sending Pointer ACTION_UP x=436.0 y=122.0
+:Sending Pointer ACTION_DOWN x=106.0 y=498.0
+:Sending Pointer ACTION_UP x=106.0 y=498.0
+:Sending Pointer ACTION_DOWN x=117.0 y=722.0
+:Sending Pointer ACTION_UP x=117.0 y=722.0
+:Sending Pointer ACTION_DOWN x=47.0 y=361.0
+:Sending Pointer ACTION_UP x=60.0 y=350.0
+:Sending Pointer ACTION_DOWN x=132.0 y=25.0
+    //[calendar_time:2014-08-25 19:44:01.945  system_uptime:497492]
+    // Sending event #4700
+:Sending Pointer ACTION_UP x=132.0 y=25.0
+:Sending Pointer ACTION_DOWN x=358.0 y=79.0
+:Sending Pointer ACTION_UP x=358.0 y=79.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=201.0 y=574.0
+:Sending Pointer ACTION_UP x=193.0 y=582.0
+:Sending Pointer ACTION_DOWN x=301.0 y=561.0
+:Sending Pointer ACTION_UP x=301.0 y=561.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=124.0 y=116.0
+:Sending Pointer ACTION_UP x=131.0 y=111.0
+:Sending Pointer ACTION_DOWN x=33.0 y=416.0
+:Sending Pointer ACTION_UP x=36.0 y=430.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=3.0
+:Sending Pointer ACTION_DOWN x=287.0 y=247.0
+:Sending Pointer ACTION_UP x=274.0 y=237.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=265.0 y=325.0
+:Sending Pointer ACTION_UP x=265.0 y=325.0
+:Sending Pointer ACTION_DOWN x=398.0 y=394.0
+:Sending Pointer ACTION_UP x=398.0 y=394.0
+    //[calendar_time:2014-08-25 19:44:13.863  system_uptime:509415]
+    // Sending event #4800
+    //[calendar_time:2014-08-25 19:44:13.872  system_uptime:509421]
+    // Sending event #4800
+:Sending Pointer ACTION_MOVE x=-2.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=106.0 y=372.0
+:Sending Pointer ACTION_UP x=106.0 y=372.0
+:Sending Pointer ACTION_DOWN x=254.0 y=488.0
+:Sending Pointer ACTION_UP x=245.0 y=489.0
+:Sending Pointer ACTION_DOWN x=194.0 y=232.0
+:Sending Pointer ACTION_UP x=194.0 y=232.0
+:Sending Pointer ACTION_MOVE x=3.0 y=2.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=393.0 y=621.0
+:Sending Pointer ACTION_UP x=393.0 y=621.0
+:Sending Pointer ACTION_DOWN x=305.0 y=456.0
+:Sending Pointer ACTION_UP x=301.0 y=463.0
+:Sending Pointer ACTION_DOWN x=349.0 y=605.0
+:Sending Pointer ACTION_UP x=334.0 y=598.0
+:Sending Pointer ACTION_DOWN x=372.0 y=355.0
+:Sending Pointer ACTION_UP x=372.0 y=355.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=3.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=2.0
+    //[calendar_time:2014-08-25 19:44:22.489  system_uptime:518035]
+    // Sending event #4900
+:Sending Pointer ACTION_MOVE x=3.0 y=-5.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=-4.0 y=1.0
+:Sending Flip keyboardOpen=false
+:Sending Pointer ACTION_DOWN x=82.0 y=412.0
+:Sending Pointer ACTION_UP x=82.0 y=412.0
+:Sending Pointer ACTION_DOWN x=453.0 y=290.0
+:Sending Pointer ACTION_UP x=453.0 y=290.0
+:Sending Pointer ACTION_DOWN x=403.0 y=329.0
+:Sending Pointer ACTION_UP x=404.0 y=324.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=-4.0 y=0.0
+:Sending Pointer ACTION_DOWN x=302.0 y=155.0
+:Sending Pointer ACTION_UP x=302.0 y=147.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=0.0
+:Sending Pointer ACTION_MOVE x=4.0 y=1.0
+    //[calendar_time:2014-08-25 19:44:32.726  system_uptime:528273]
+    // Sending event #5000
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=303.0 y=719.0
+:Sending Pointer ACTION_UP x=303.0 y=719.0
+:Sending Pointer ACTION_DOWN x=26.0 y=387.0
+:Sending Pointer ACTION_UP x=44.0 y=343.0
+:Sending Pointer ACTION_DOWN x=343.0 y=99.0
+:Sending Pointer ACTION_UP x=343.0 y=99.0
+:Sending Pointer ACTION_DOWN x=434.0 y=718.0
+:Sending Pointer ACTION_UP x=434.0 y=718.0
+:Sending Pointer ACTION_MOVE x=0.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=11.0 y=725.0
+:Sending Pointer ACTION_UP x=11.0 y=725.0
+:Sending Pointer ACTION_MOVE x=2.0 y=0.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-3.0
+    //[calendar_time:2014-08-25 19:44:42.346  system_uptime:537893]
+    // Sending event #5100
+    //[calendar_time:2014-08-25 19:44:42.349  system_uptime:537895]
+    // Sending event #5100
+:Sending Pointer ACTION_DOWN x=114.0 y=699.0
+:Sending Pointer ACTION_UP x=114.0 y=699.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=107.0 y=76.0
+:Sending Pointer ACTION_UP x=113.0 y=74.0
+:Sending Pointer ACTION_DOWN x=150.0 y=126.0
+:Sending Pointer ACTION_UP x=152.0 y=123.0
+:Sending Pointer ACTION_DOWN x=456.0 y=243.0
+:Sending Pointer ACTION_UP x=445.0 y=249.0
+:Sending Pointer ACTION_DOWN x=370.0 y=85.0
+:Sending Pointer ACTION_UP x=370.0 y=85.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=460.0 y=508.0
+:Sending Pointer ACTION_UP x=461.0 y=512.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=77.0 y=677.0
+    //[calendar_time:2014-08-25 19:44:48.062  system_uptime:543608]
+    // Sending event #5200
+:Sending Pointer ACTION_UP x=65.0 y=648.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=7.0 y=287.0
+:Sending Pointer ACTION_UP x=7.0 y=287.0
+:Sending Pointer ACTION_DOWN x=74.0 y=199.0
+:Sending Pointer ACTION_UP x=74.0 y=199.0
+:Sending Pointer ACTION_DOWN x=225.0 y=184.0
+:Sending Pointer ACTION_UP x=225.0 y=184.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=1.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=113.0 y=401.0
+:Sending Pointer ACTION_UP x=124.0 y=403.0
+:Sending Pointer ACTION_DOWN x=41.0 y=222.0
+:Sending Pointer ACTION_UP x=41.0 y=222.0
+:Sending Pointer ACTION_DOWN x=125.0 y=600.0
+:Sending Pointer ACTION_UP x=125.0 y=600.0
+:Sending Pointer ACTION_DOWN x=358.0 y=20.0
+:Sending Pointer ACTION_UP x=358.0 y=20.0
+:Sending Pointer ACTION_DOWN x=329.0 y=251.0
+:Sending Pointer ACTION_UP x=329.0 y=251.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-3.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=4.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+    //[calendar_time:2014-08-25 19:44:52.930  system_uptime:548477]
+    // Sending event #5300
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=181.0 y=49.0
+:Sending Pointer ACTION_UP x=181.0 y=49.0
+:Sending Pointer ACTION_DOWN x=120.0 y=734.0
+:Sending Pointer ACTION_UP x=120.0 y=734.0
+:Sending Pointer ACTION_DOWN x=12.0 y=262.0
+:Sending Pointer ACTION_UP x=12.0 y=262.0
+:Sending Pointer ACTION_DOWN x=189.0 y=166.0
+:Sending Pointer ACTION_UP x=189.0 y=166.0
+:Sending Pointer ACTION_DOWN x=431.0 y=510.0
+:Sending Pointer ACTION_UP x=431.0 y=510.0
+:Sending Pointer ACTION_DOWN x=17.0 y=703.0
+:Sending Pointer ACTION_UP x=17.0 y=703.0
+:Sending Pointer ACTION_DOWN x=75.0 y=251.0
+:Sending Pointer ACTION_UP x=75.0 y=251.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=211.0 y=623.0
+:Sending Pointer ACTION_UP x=205.0 y=632.0
+:Sending Pointer ACTION_DOWN x=440.0 y=127.0
+:Sending Pointer ACTION_UP x=440.0 y=118.0
+:Sending Pointer ACTION_DOWN x=469.0 y=163.0
+:Sending Pointer ACTION_UP x=469.0 y=163.0
+    //[calendar_time:2014-08-25 19:44:57.710  system_uptime:553258]
+    // Sending event #5400
+:Sending Pointer ACTION_DOWN x=22.0 y=499.0
+:Sending Pointer ACTION_UP x=22.0 y=499.0
+:Sending Pointer ACTION_DOWN x=399.0 y=263.0
+:Sending Pointer ACTION_UP x=399.0 y=263.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=43.0 y=777.0
+:Sending Pointer ACTION_UP x=43.0 y=777.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=331.0 y=142.0
+:Sending Pointer ACTION_UP x=331.0 y=142.0
+:Sending Pointer ACTION_MOVE x=3.0 y=4.0
+:Sending Pointer ACTION_DOWN x=143.0 y=132.0
+:Sending Pointer ACTION_UP x=143.0 y=132.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=2.0 y=3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=3.0 y=561.0
+:Sending Pointer ACTION_UP x=3.0 y=561.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=2.0
+:Sending Pointer ACTION_DOWN x=360.0 y=72.0
+    //[calendar_time:2014-08-25 19:45:11.941  system_uptime:567488]
+    // Sending event #5500
+:Sending Pointer ACTION_UP x=360.0 y=72.0
+:Sending Pointer ACTION_MOVE x=4.0 y=4.0
+:Sending Pointer ACTION_DOWN x=182.0 y=666.0
+:Sending Pointer ACTION_UP x=182.0 y=666.0
+:Sending Pointer ACTION_DOWN x=330.0 y=11.0
+:Sending Pointer ACTION_UP x=325.0 y=7.0
+:Sending Pointer ACTION_DOWN x=315.0 y=66.0
+:Sending Pointer ACTION_UP x=315.0 y=66.0
+:Sending Pointer ACTION_MOVE x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=9.0 y=686.0
+:Sending Pointer ACTION_UP x=9.0 y=686.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-2.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=2.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+    //[calendar_time:2014-08-25 19:45:19.182  system_uptime:574729]
+    // Sending event #5600
+:Sending Pointer ACTION_MOVE x=3.0 y=0.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_DOWN x=406.0 y=353.0
+:Sending Pointer ACTION_UP x=393.0 y=363.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=4.0 y=4.0
+:Sending Pointer ACTION_DOWN x=215.0 y=699.0
+:Sending Pointer ACTION_UP x=215.0 y=699.0
+:Sending Pointer ACTION_DOWN x=246.0 y=657.0
+:Sending Pointer ACTION_UP x=247.0 y=665.0
+    //[calendar_time:2014-08-25 19:45:29.056  system_uptime:584603]
+    // Sending event #5700
+    //[calendar_time:2014-08-25 19:45:29.060  system_uptime:584608]
+    // Sending event #5700
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_MOVE x=4.0 y=4.0
+:Sending Pointer ACTION_DOWN x=324.0 y=67.0
+:Sending Pointer ACTION_UP x=324.0 y=67.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=0.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=250.0 y=752.0
+:Sending Pointer ACTION_UP x=250.0 y=752.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-3.0
+:Sending Pointer ACTION_DOWN x=88.0 y=549.0
+:Sending Pointer ACTION_UP x=88.0 y=549.0
+:Sending Pointer ACTION_DOWN x=265.0 y=161.0
+:Sending Pointer ACTION_UP x=257.0 y=164.0
+:Sending Pointer ACTION_DOWN x=338.0 y=15.0
+    //[calendar_time:2014-08-25 19:45:34.801  system_uptime:590346]
+    // Sending event #5800
+:Sending Pointer ACTION_UP x=340.0 y=20.0
+:Sending Pointer ACTION_DOWN x=385.0 y=498.0
+:Sending Pointer ACTION_UP x=385.0 y=498.0
+:Sending Pointer ACTION_DOWN x=137.0 y=209.0
+:Sending Pointer ACTION_UP x=152.0 y=209.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=307.0 y=274.0
+:Sending Pointer ACTION_UP x=303.0 y=269.0
+:Sending Pointer ACTION_MOVE x=3.0 y=0.0
+:Sending Pointer ACTION_DOWN x=111.0 y=712.0
+:Sending Pointer ACTION_UP x=111.0 y=712.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=278.0 y=330.0
+:Sending Pointer ACTION_UP x=276.0 y=340.0
+:Sending Pointer ACTION_DOWN x=130.0 y=729.0
+:Sending Pointer ACTION_UP x=130.0 y=729.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=2.0
+:Sending Pointer ACTION_DOWN x=86.0 y=638.0
+:Sending Pointer ACTION_UP x=93.0 y=646.0
+    //[calendar_time:2014-08-25 19:45:40.699  system_uptime:596246]
+    // Sending event #5900
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=0.0
+:Sending Pointer ACTION_MOVE x=3.0 y=3.0
+:Sending Pointer ACTION_DOWN x=68.0 y=742.0
+:Sending Pointer ACTION_UP x=68.0 y=742.0
+:Sending Pointer ACTION_MOVE x=3.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=3.0
+:Sending Pointer ACTION_DOWN x=386.0 y=534.0
+:Sending Pointer ACTION_UP x=388.0 y=534.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=296.0 y=652.0
+:Sending Pointer ACTION_UP x=314.0 y=634.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=2.0
+    //[calendar_time:2014-08-25 19:45:46.279  system_uptime:601826]
+    // Sending event #6000
+:Sending Pointer ACTION_DOWN x=410.0 y=141.0
+:Sending Pointer ACTION_UP x=420.0 y=132.0
+:Sending Pointer ACTION_DOWN x=313.0 y=457.0
+:Sending Pointer ACTION_UP x=312.0 y=457.0
+:Sending Pointer ACTION_DOWN x=479.0 y=33.0
+:Sending Pointer ACTION_UP x=479.0 y=33.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=3.0
+:Sending Pointer ACTION_DOWN x=444.0 y=150.0
+:Sending Pointer ACTION_UP x=465.0 y=161.0
+:Sending Pointer ACTION_DOWN x=5.0 y=499.0
+:Sending Pointer ACTION_UP x=21.0 y=512.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=1.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-3.0
+    //[calendar_time:2014-08-25 19:45:53.160  system_uptime:608707]
+    // Sending event #6100
+:Sending Pointer ACTION_MOVE x=-5.0 y=-2.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=431.0 y=773.0
+:Sending Pointer ACTION_UP x=422.0 y=768.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=441.0 y=242.0
+:Sending Pointer ACTION_UP x=441.0 y=242.0
+:Sending Pointer ACTION_DOWN x=288.0 y=179.0
+:Sending Pointer ACTION_UP x=303.0 y=184.0
+:Sending Pointer ACTION_DOWN x=286.0 y=275.0
+:Sending Pointer ACTION_UP x=286.0 y=275.0
+:Sending Pointer ACTION_MOVE x=4.0 y=0.0
+:Sending Pointer ACTION_DOWN x=372.0 y=556.0
+:Sending Pointer ACTION_UP x=372.0 y=556.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=0.0
+:Sending Pointer ACTION_DOWN x=350.0 y=486.0
+:Sending Pointer ACTION_UP x=354.0 y=494.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=2.0
+:Sending Pointer ACTION_DOWN x=59.0 y=670.0
+    //[calendar_time:2014-08-25 19:46:04.939  system_uptime:620486]
+    // Sending event #6200
+:Sending Pointer ACTION_UP x=46.0 y=664.0
+:Sending Pointer ACTION_DOWN x=184.0 y=581.0
+:Sending Pointer ACTION_UP x=192.0 y=587.0
+:Sending Pointer ACTION_MOVE x=3.0 y=1.0
+:Sending Pointer ACTION_DOWN x=15.0 y=16.0
+:Sending Pointer ACTION_UP x=15.0 y=16.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=4.0
+:Sending Pointer ACTION_DOWN x=316.0 y=65.0
+:Sending Pointer ACTION_UP x=316.0 y=65.0
+:Sending Pointer ACTION_DOWN x=142.0 y=386.0
+:Sending Pointer ACTION_UP x=142.0 y=386.0
+:Sending Pointer ACTION_DOWN x=460.0 y=298.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_UP x=460.0 y=298.0
+:Sending Pointer ACTION_MOVE x=3.0 y=2.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=6.0 y=211.0
+:Sending Pointer ACTION_UP x=6.0 y=211.0
+:Sending Pointer ACTION_DOWN x=471.0 y=383.0
+:Sending Pointer ACTION_UP x=471.0 y=383.0
+:Sending Pointer ACTION_DOWN x=372.0 y=443.0
+:Sending Pointer ACTION_UP x=372.0 y=443.0
+:Sending Pointer ACTION_DOWN x=355.0 y=717.0
+:Sending Pointer ACTION_UP x=345.0 y=730.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-4.0
+    //[calendar_time:2014-08-25 19:46:13.751  system_uptime:629298]
+    // Sending event #6300
+:Sending Pointer ACTION_DOWN x=137.0 y=160.0
+:Sending Pointer ACTION_UP x=137.0 y=160.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_MOVE x=2.0 y=2.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=245.0 y=460.0
+:Sending Pointer ACTION_UP x=242.0 y=446.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-2.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-4.0
+:Sending Pointer ACTION_DOWN x=135.0 y=149.0
+:Sending Pointer ACTION_UP x=143.0 y=141.0
+:Sending Pointer ACTION_DOWN x=290.0 y=159.0
+:Sending Pointer ACTION_UP x=290.0 y=159.0
+:Sending Flip keyboardOpen=false
+:Sending Flip keyboardOpen=true
+:Sending Pointer ACTION_MOVE x=-2.0 y=-2.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=200.0 y=377.0
+:Sending Pointer ACTION_UP x=200.0 y=377.0
+    //[calendar_time:2014-08-25 19:46:21.934  system_uptime:637481]
+    // Sending event #6400
+:Sending Pointer ACTION_MOVE x=-2.0 y=1.0
+:Sending Pointer ACTION_DOWN x=203.0 y=201.0
+:Sending Pointer ACTION_UP x=203.0 y=201.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=4.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-3.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=67.0 y=733.0
+:Sending Pointer ACTION_UP x=67.0 y=733.0
+:Sending Pointer ACTION_DOWN x=212.0 y=666.0
+:Sending Pointer ACTION_UP x=212.0 y=666.0
+:Sending Pointer ACTION_DOWN x=420.0 y=337.0
+:Sending Pointer ACTION_UP x=420.0 y=337.0
+:Sending Pointer ACTION_DOWN x=379.0 y=253.0
+:Sending Pointer ACTION_UP x=385.0 y=243.0
+:Sending Pointer ACTION_DOWN x=309.0 y=403.0
+:Sending Pointer ACTION_UP x=325.0 y=411.0
+:Sending Pointer ACTION_DOWN x=185.0 y=551.0
+:Sending Pointer ACTION_UP x=173.0 y=559.0
+:Sending Pointer ACTION_DOWN x=117.0 y=389.0
+:Sending Pointer ACTION_UP x=117.0 y=389.0
+:Sending Pointer ACTION_DOWN x=89.0 y=469.0
+:Sending Pointer ACTION_UP x=76.0 y=478.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-2.0
+    //[calendar_time:2014-08-25 19:46:29.189  system_uptime:644737]
+    // Sending event #6500
+    //[calendar_time:2014-08-25 19:46:29.195  system_uptime:644743]
+    // Sending event #6500
+:Sending Pointer ACTION_DOWN x=366.0 y=252.0
+:Sending Pointer ACTION_UP x=366.0 y=252.0
+:Sending Pointer ACTION_DOWN x=313.0 y=421.0
+:Sending Pointer ACTION_UP x=313.0 y=421.0
+:Sending Pointer ACTION_DOWN x=137.0 y=349.0
+:Sending Pointer ACTION_UP x=137.0 y=349.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.templaro.opsiz.aka/.AndroidomaticKeyerActivity } in package com.templaro.opsiz.aka
+:Sending Pointer ACTION_DOWN x=49.0 y=190.0
+:Sending Pointer ACTION_UP x=49.0 y=190.0
+:Sending Pointer ACTION_DOWN x=332.0 y=242.0
+:Sending Pointer ACTION_UP x=336.0 y=253.0
+:Sending Pointer ACTION_DOWN x=388.0 y=360.0
+:Sending Pointer ACTION_UP x=385.0 y=369.0
+:Sending Pointer ACTION_DOWN x=67.0 y=538.0
+:Sending Pointer ACTION_UP x=67.0 y=538.0
+:Sending Pointer ACTION_DOWN x=345.0 y=60.0
+:Sending Pointer ACTION_UP x=345.0 y=60.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-4.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-4.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+// NOT RESPONDING: com.templaro.opsiz.aka (pid 1322)
+act=com.android.music.musicservicecommandLoad: 2.71 / 2.79 / 1.58
+CPU usage from 4693ms to -2158ms ago:
+  38% 862/system_server: 28% user + 10% kernel / faults: 210 minor
+  36% 1322/com.templaro.opsiz.aka: 26% user + 9.5% kernel / faults: 23 minor
+  5.7% 1381/com.android.inputmethod.pinyin: 2.9% user + 2.7% kernel / faults: 3 minor
+  5.5% 800/mediaserver: 2.6% user + 2.9% kernel / faults: 16 minor
+  2.3% 1256/com.android.music: 0.7% user + 1.6% kernel / faults: 54 minor
+  0.7% 957/com.android.systemui: 0% user + 0.7% kernel / faults: 13 minor
+  0.1% 1162/android.process.media: 0% user + 0% kernel / faults: 7 minor
+  0% 993/com.android.phone: 0% user + 0% kernel / faults: 24 minor
+90% TOTAL: 61% user + 28% kernel + 0.1% softirq
+CPU usage from 1565ms to 2120ms later:
+  38% 800/mediaserver: 29% user + 9% kernel
+    38% 1419/AudioTrackThrea: 30% user + 7.2% kernel
+    1.8% 855/Playback Thread: 0% user + 1.8% kernel
+  7.2% 862/system_server: 1.8% user + 5.4% kernel
+    7.2% 893/InputDispatcher: 0% user + 7.2% kernel
+48% TOTAL: 30% user + 17% kernel
+
+procrank:
+  PID      Vss      Rss      Pss      Uss  cmdline
+  862   43924K   42424K   19211K   13548K  system_server
+ 1322   30688K   30688K   10969K    7096K  com.templaro.opsiz.aka
+ 1061   26824K   26824K    9495K    8284K  com.android.launcher
+  957   25460K   25460K    8570K    7192K  com.android.systemui
+  799   28516K   28516K    7205K    4040K  zygote
+ 1381   24316K   24316K    7122K    5228K  com.android.inputmethod.pinyin
+  981   24524K   24524K    7080K    5860K  com.android.inputmethod.latin
+ 1313   15452K   15452K    6324K    4504K  com.android.commands.monkey
+  993   22528K   22528K    5958K    4820K  com.android.phone
+ 1027   21620K   21620K    5716K    4712K  android.process.acore
+ 1162   20976K   20976K    4673K    3640K  android.process.media
+ 1173   19988K   19988K    4218K    3340K  com.android.email
+ 1200   18560K   18560K    3433K    2600K  com.android.mms
+ 1266   18540K   18540K    3393K    2500K  com.cooliris.media
+ 1234   18616K   18616K    3269K    2448K  com.android.providers.calendar
+  800    6012K    6012K    3181K    2180K  /system/bin/mediaserver
+ 1134   18484K   18484K    3124K    2300K  com.android.deskclock
+ 1256   17904K   17904K    3092K    2300K  com.android.music
+ 1218   18136K   18136K    2901K    2096K  com.android.bluetooth
+ 1146   17392K   17392K    2877K    2052K  com.android.quicksearchbox
+ 1247   16508K   16508K    2169K    1428K  com.android.protips
+ 1126   16124K   16124K    2131K    1420K  com.android.voicedialer
+ 1301   15976K   15976K    2009K    1256K  com.svox.pico
+ 1289   16348K   16348K    1992K    1248K  com.android.defcontainer
+ 1423     732K     732K     488K     480K  procrank
+  801     756K     756K     473K     440K  /system/bin/dbus-daemon
+  795     844K     844K     376K     324K  /system/bin/vold
+  798     928K     928K     349K     296K  /system/bin/rild
+  796     804K     804K     333K     280K  /system/bin/netd
+  803     628K     628K     243K     204K  /system/bin/keystore
+  808     244K     244K     225K     224K  /sbin/adbd
+  805     452K     452K     181K     172K  /system/bin/qemud
+ 1312     440K     440K     175K     128K  /system/bin/sh
+  802     468K     468K     171K     160K  /system/bin/installd
+    1     244K     244K     159K      96K  /init
+  807     412K     412K     155K     108K  /system/bin/sh
+  584     208K     208K     146K      84K  /sbin/ueventd
+  797     352K     352K     127K     120K  /system/bin/debuggerd
+  793     328K     328K     123K     116K  /system/bin/servicemanager
+// procrank status was 0
+anr traces:
+
+
+----- pid 1322 at 2014-08-25 19:46:39 -----
+Cmd line: com.templaro.opsiz.aka
+
+DALVIK THREADS:
+(mutexes: tll=0 tsl=0 tscl=0 ghl=0 hwl=0 hwll=0)
+"main" prio=5 tid=1 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6711c38 self=0x9cd6e48
+  | sysTid=1322 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=-2145907712
+  at android.os.BinderProxy.transact(Native Method)
+  at com.android.internal.view.IInputContextCallback$Stub$Proxy.setTextBeforeCursor(IInputContextCallback.java:149)
+  at com.android.internal.view.IInputConnectionWrapper.executeMessage(IInputConnectionWrapper.java:212)
+  at com.android.internal.view.IInputConnectionWrapper$MyHandler.handleMessage(IInputConnectionWrapper.java:75)
+  at android.os.Handler.dispatchMessage(Handler.java:99)
+  at android.os.Looper.loop(Looper.java:130)
+  at android.app.ActivityThread.main(ActivityThread.java:3683)
+  at java.lang.reflect.Method.invokeNative(Native Method)
+  at java.lang.reflect.Method.invoke(Method.java:507)
+  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:839)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+  at dalvik.system.NativeStart.main(Native Method)
+
+"pool-1-thread-1" prio=5 tid=22 WAIT
+  | group="main" sCount=1 dsCount=0 obj=0xb6c62338 self=0x9fb1220
+  | sysTid=1349 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167440368
+  at java.lang.Object.wait(Native Method)
+  - waiting on <0xb6c44d60> (a java.lang.VMThread)
+  at java.lang.Thread.parkFor(Thread.java:1424)
+  at java.lang.LangAccessImpl.parkFor(LangAccessImpl.java:48)
+  at sun.misc.Unsafe.park(Unsafe.java:337)
+  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:157)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2016)
+  at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:411)
+  at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1021)
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1081)
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:581)
+  at java.lang.Thread.run(Thread.java:1019)
+
+"Binder Thread #16" prio=5 tid=21 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04fb0 self=0x9f4af20
+  | sysTid=1343 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165948680
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #15" prio=5 tid=20 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04ee8 self=0x9f4a4e8
+  | sysTid=1342 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164984216
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #14" prio=5 tid=19 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04e20 self=0x9f31238
+  | sysTid=1341 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165950752
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #13" prio=5 tid=18 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04d58 self=0x9f31008
+  | sysTid=1340 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165576176
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #12" prio=5 tid=17 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04c90 self=0x9f19a48
+  | sysTid=1339 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165567632
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #11" prio=5 tid=16 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04bc8 self=0x9e433f8
+  | sysTid=1338 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165575504
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #10" prio=5 tid=15 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04b00 self=0x9de7920
+  | sysTid=1337 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164989688
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #9" prio=5 tid=14 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c049e0 self=0x9de8bc8
+  | sysTid=1336 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165020240
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #8" prio=5 tid=13 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04920 self=0x9d60600
+  | sysTid=1335 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165572560
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #7" prio=5 tid=12 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04860 self=0x9d5fa28
+  | sysTid=1334 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165580464
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #6" prio=5 tid=11 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c047a0 self=0x9de80d8
+  | sysTid=1333 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165019488
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #5" prio=5 tid=10 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c046e0 self=0x9e465f0
+  | sysTid=1332 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165017464
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #4" prio=5 tid=9 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c045e8 self=0x9db6fc8
+  | sysTid=1331 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164986096
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #3" prio=5 tid=8 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04528 self=0x9e38fe8
+  | sysTid=1330 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165580592
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #2" prio=5 tid=7 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04468 self=0x9de8590
+  | sysTid=1329 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165576368
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #1" prio=5 tid=6 SUSPENDED
+  | group="main" sCount=1 dsCount=0 obj=0xb6c03b08 self=0x9e39f88
+  | sysTid=1328 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165910032
+  at android.os.Parcel.enforceInterface(Native Method)
+  at com.android.internal.view.IInputContext$Stub.onTransact(IInputContext.java:52)
+  at android.os.Binder.execTransact(Binder.java:320)
+  at dalvik.system.NativeStart.run(Native Method)
+
+"JDWP" daemon prio=5 tid=5 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6c00740 self=0x9e46178
+  | sysTid=1327 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165912256
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Signal Catcher" daemon prio=5 tid=4 RUNNABLE
+  | group="system" sCount=0 dsCount=0 obj=0xb6c00680 self=0x9d60330
+  | sysTid=1326 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165572744
+  at dalvik.system.NativeStart.run(Native Method)
+
+"GC" daemon prio=5 tid=3 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6c005d8 self=0x9de5f18
+  | sysTid=1325 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165950904
+  at dalvik.system.NativeStart.run(Native Method)
+
+"HeapWorker" daemon prio=5 tid=2 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6c00520 self=0x9db6bf0
+  | sysTid=1324 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165962688
+  at dalvik.system.NativeStart.run(Native Method)
+
+----- end 1322 -----
+
+
+----- pid 862 at 2014-08-25 19:46:39 -----
+Cmd line: system_server
+
+DALVIK THREADS:
+(mutexes: tll=0 tsl=0 tscl=0 ghl=0 hwl=0 hwll=0)
+"main" prio=5 tid=1 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6711c38 self=0x9cd6e48
+  | sysTid=862 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=-2145907712
+  at com.android.server.SystemServer.init1(Native Method)
+  at com.android.server.SystemServer.main(SystemServer.java:625)
+  at java.lang.reflect.Method.invokeNative(Native Method)
+  at java.lang.reflect.Method.invoke(Method.java:507)
+  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:839)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+  at dalvik.system.NativeStart.main(Native Method)
+
+"gps_state_thread" prio=5 tid=51 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6e27950 self=0x9fa7560
+  | sysTid=1059 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167413736
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #15" prio=5 tid=41 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6e1cc18 self=0x9f93220
+  | sysTid=1049 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167411048
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #14" prio=5 tid=50 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dba878 self=0x9fa4298
+  | sysTid=1048 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167350520
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #13" prio=5 tid=49 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d311a8 self=0x9da97e8
+  | sysTid=1047 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165320616
+  at com.android.server.InputManager.nativeInjectInputEvent(Native Method)
+  at com.android.server.InputManager.injectInputEvent(InputManager.java:297)
+  at com.android.server.WindowManagerService.injectKeyEvent(WindowManagerService.java:5439)
+  at android.view.IWindowManager$Stub.onTransact(IWindowManager.java:110)
+  at com.android.server.WindowManagerService.onTransact(WindowManagerService.java:655)
+  at android.os.Binder.execTransact(Binder.java:320)
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #12" prio=5 tid=48 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d310e0 self=0x9da92a8
+  | sysTid=1046 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165319272
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #11" prio=5 tid=47 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d31030 self=0x9da8560
+  | sysTid=1045 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167427008
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #10" prio=5 tid=46 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c11170 self=0x9fd8ae8
+  | sysTid=1044 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167611048
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #9" prio=5 tid=45 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c110c8 self=0x9f76548
+  | sysTid=1043 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167208200
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #8" prio=5 tid=44 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6e57408 self=0x9f76020
+  | sysTid=1042 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167338240
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #7" prio=5 tid=43 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6cebac8 self=0x9f95cd8
+  | sysTid=1041 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167616640
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #6" prio=5 tid=42 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6ceba20 self=0x9fda578
+  | sysTid=1039 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167036728
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #5" prio=5 tid=40 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d54b80 self=0x9fc9130
+  | sysTid=1022 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167426104
+  at dalvik.system.NativeStart.run(Native Method)
+
+"GpsLocationProvider" prio=5 tid=39 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6cd5b58 self=0x9fa2e10
+  | sysTid=1023 nice=10 sched=0/0 cgrp=[fopen-error:2] handle=167391032
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.location.GpsLocationProvider$GpsLocationProviderThread.run(GpsLocationProvider.java:1553)
+
+"ThrottleService" prio=5 tid=38 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6ded288 self=0x9fabc90
+  | sysTid=990 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167087192
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"LocationManagerService" prio=5 tid=37 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6e2b5a8 self=0x9fa2058
+  | sysTid=987 nice=10 sched=0/0 cgrp=[fopen-error:2] handle=167425960
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.LocationManagerService.run(LocationManagerService.java:556)
+  at java.lang.Thread.run(Thread.java:1019)
+
+"watchdog" prio=5 tid=36 TIMED_WAIT
+  | group="main" sCount=1 dsCount=0 obj=0xb6c0cfb0 self=0x9f95068
+  | sysTid=959 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167334288
+  at java.lang.Object.wait(Native Method)
+  - waiting on <0xb6c0cfb0> (a com.android.server.Watchdog)
+  at java.lang.Object.wait(Object.java:395)
+  at com.android.server.Watchdog.run(Watchdog.java:400)
+
+"Binder Thread #4" prio=5 tid=35 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c89950 self=0x9f944f0
+  | sysTid=956 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167690704
+  at dalvik.system.NativeStart.run(Native Method)
+
+"backup" prio=5 tid=33 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d1a1f0 self=0x9f77460
+  | sysTid=907 nice=10 sched=0/0 cgrp=[fopen-error:2] handle=167212424
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"SoundPoolThread" prio=5 tid=32 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6db4858 self=0x9ff3fc0
+  | sysTid=905 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167314296
+  at dalvik.system.NativeStart.run(Native Method)
+
+"SoundPool" prio=5 tid=31 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dedf80 self=0x9db1300
+  | sysTid=904 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167185128
+  at dalvik.system.NativeStart.run(Native Method)
+
+"AudioService" prio=5 tid=30 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6df6e10 self=0x9fec630
+  | sysTid=903 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165021480
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.media.AudioService$AudioSystemThread.run(AudioService.java:1502)
+
+"VoldConnector" prio=5 tid=29 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dd6f00 self=0x9ff2d08
+  | sysTid=901 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167718448
+  at android.net.LocalSocketImpl.readba_native(Native Method)
+  at android.net.LocalSocketImpl.access$400(LocalSocketImpl.java:29)
+  at android.net.LocalSocketImpl$SocketInputStream.read(LocalSocketImpl.java:92)
+  at com.android.server.NativeDaemonConnector.listenToSocket(NativeDaemonConnector.java:110)
+  at com.android.server.NativeDaemonConnector.run(NativeDaemonConnector.java:83)
+  at java.lang.Thread.run(Thread.java:1019)
+
+"MountService" prio=5 tid=28 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dd6e18 self=0x9ff0d38
+  | sysTid=900 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167710304
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"Tethering" prio=5 tid=27 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d0ad00 self=0x9fefca8
+  | sysTid=899 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167706064
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"WifiService" prio=5 tid=26 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d56e18 self=0x9feed80
+  | sysTid=898 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167702184
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"ConnectivityThread" prio=5 tid=25 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d65fa0 self=0x9fed020
+  | sysTid=897 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167617824
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.ConnectivityService$ConnectivityThread.run(ConnectivityService.java:232)
+
+"NetdConnector" prio=5 tid=24 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6ce42f8 self=0x9fec508
+  | sysTid=895 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167691288
+  at android.net.LocalSocketImpl.readba_native(Native Method)
+  at android.net.LocalSocketImpl.access$400(LocalSocketImpl.java:29)
+  at android.net.LocalSocketImpl$SocketInputStream.read(LocalSocketImpl.java:92)
+  at com.android.server.NativeDaemonConnector.listenToSocket(NativeDaemonConnector.java:110)
+  at com.android.server.NativeDaemonConnector.run(NativeDaemonConnector.java:83)
+  at java.lang.Thread.run(Thread.java:1019)
+
+"InputReader" prio=10 tid=23 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d94818 self=0x9fc5c30
+  | sysTid=894 nice=-8 sched=0/0 cgrp=[fopen-error:2] handle=167533552
+  at dalvik.system.NativeStart.run(Native Method)
+
+"InputDispatcher" prio=10 tid=22 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d94788 self=0x9fc5a28
+  | sysTid=893 nice=-8 sched=0/0 cgrp=[fopen-error:2] handle=167533032
+  at android.os.Process.sendSignal(Native Method)
+  at com.android.server.am.ActivityManagerService.dumpStackTraces(ActivityManagerService.java:2762)
+  at com.android.server.am.ActivityManagerService.appNotResponding(ActivityManagerService.java:2907)
+  at com.android.server.am.ActivityRecord.keyDispatchingTimedOut(ActivityRecord.java:546)
+  at com.android.server.WindowManagerService$InputMonitor.notifyANR(WindowManagerService.java:5127)
+  at com.android.server.InputManager$Callbacks.notifyANR(InputManager.java:378)
+  at dalvik.system.NativeStart.run(Native Method)
+
+"WindowManagerPolicy" prio=5 tid=21 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c10dd8 self=0x9fc4648
+  | sysTid=892 nice=-2 sched=0/0 cgrp=[fopen-error:2] handle=167528304
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.WindowManagerService$PolicyThread.run(WindowManagerService.java:595)
+
+"WindowManager" prio=5 tid=20 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6e20560 self=0x9fc1e70
+  | sysTid=891 nice=-4 sched=0/0 cgrp=[fopen-error:2] handle=167518104
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.WindowManagerService$WMThread.run(WindowManagerService.java:558)
+
+"AlarmManager" prio=5 tid=19 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6d605b0 self=0x9fc1a38
+  | sysTid=890 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167517024
+  at com.android.server.AlarmManagerService.waitForAlarm(Native Method)
+  at com.android.server.AlarmManagerService.access$100(AlarmManagerService.java:56)
+  at com.android.server.AlarmManagerService$AlarmThread.run(AlarmManagerService.java:648)
+
+"PowerManagerService" prio=5 tid=18 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c9b598 self=0x9fc0428
+  | sysTid=889 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167428344
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"PowerManagerService.mScreenOffThread" prio=5 tid=16 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6db70d0 self=0x9fbf3c8
+  | sysTid=888 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167487800
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"UEventObserver" prio=5 tid=17 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6dfdfc8 self=0x9fba748
+  | sysTid=887 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167488456
+  at android.os.UEventObserver.next_event(Native Method)
+  at android.os.UEventObserver.access$100(UEventObserver.java:39)
+  at android.os.UEventObserver$UEventThread.run(UEventObserver.java:102)
+
+"SyncHandlerThread" prio=5 tid=15 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6e2cbc8 self=0x9f589d8
+  | sysTid=885 nice=10 sched=0/0 cgrp=[fopen-error:2] handle=167086848
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"AccountManagerService" prio=5 tid=14 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6e49038 self=0x9f4bac8
+  | sysTid=883 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165573208
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"FileObserver" prio=5 tid=13 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c46098 self=0x9db19e8
+  | sysTid=882 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167045744
+  at android.os.FileObserver$ObserverThread.observe(Native Method)
+  at android.os.FileObserver$ObserverThread.run(FileObserver.java:88)
+
+"PackageManager" prio=5 tid=12 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c29b70 self=0x9d60600
+  | sysTid=881 nice=10 sched=0/0 cgrp=[fopen-error:2] handle=165961576
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"ProcessStats" prio=5 tid=11 TIMED_WAIT
+  | group="main" sCount=1 dsCount=0 obj=0xb6c242d0 self=0x9d5fa28
+  | sysTid=880 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165960048
+  at java.lang.Object.wait(Native Method)
+  - waiting on <0xb6c242d0> (a com.android.server.am.ActivityManagerService$3)
+  at java.lang.Object.wait(Object.java:395)
+  at com.android.server.am.ActivityManagerService$3.run(ActivityManagerService.java:1448)
+
+"ActivityManager" prio=5 tid=10 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c0eca8 self=0x9de6ec8
+  | sysTid=878 nice=-2 sched=0/0 cgrp=[fopen-error:2] handle=164984936
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.am.ActivityManagerService$AThread.run(ActivityManagerService.java:1336)
+
+"android.server.ServerThread" prio=5 tid=9 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c02848 self=0x9d58cc0
+  | sysTid=874 nice=-2 sched=0/0 cgrp=[fopen-error:2] handle=165580080
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at com.android.server.ServerThread.run(SystemServer.java:542)
+
+"Binder Thread #3" prio=5 tid=8 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6bfe380 self=0x9de8590
+  | sysTid=869 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165576368
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #2" prio=5 tid=7 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6bfe2c0 self=0x9e39208
+  | sysTid=868 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165019608
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #1" prio=5 tid=6 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6bfe200 self=0x9e39f88
+  | sysTid=867 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165910032
+  at dalvik.system.NativeStart.run(Native Method)
+
+"JDWP" daemon prio=5 tid=5 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6bfd408 self=0x9e46178
+  | sysTid=866 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165912256
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Signal Catcher" daemon prio=5 tid=4 RUNNABLE
+  | group="system" sCount=0 dsCount=0 obj=0xb6bfd348 self=0x9d60330
+  | sysTid=865 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165572744
+  at dalvik.system.NativeStart.run(Native Method)
+
+"GC" daemon prio=5 tid=3 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6bfd2a0 self=0x9de5f18
+  | sysTid=864 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165950904
+  at dalvik.system.NativeStart.run(Native Method)
+
+"HeapWorker" daemon prio=5 tid=2 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6bfd1e8 self=0x9db6bf0
+  | sysTid=863 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165962688
+  at dalvik.system.NativeStart.run(Native Method)
+
+----- end 862 -----
+
+
+----- pid 993 at 2014-08-25 19:46:39 -----
+Cmd line: com.android.phone
+
+DALVIK THREADS:
+(mutexes: tll=0 tsl=0 tscl=0 ghl=0 hwl=0 hwll=0)
+"main" prio=5 tid=1 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6711c38 self=0x9cd6e48
+  | sysTid=993 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=-2145907712
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.app.ActivityThread.main(ActivityThread.java:3683)
+  at java.lang.reflect.Method.invokeNative(Native Method)
+  at java.lang.reflect.Method.invoke(Method.java:507)
+  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:839)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+  at dalvik.system.NativeStart.main(Native Method)
+
+"pool-1-thread-1" prio=5 tid=29 WAIT
+  | group="main" sCount=1 dsCount=0 obj=0xb6c1da50 self=0x9f6e508
+  | sysTid=1079 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167158928
+  at java.lang.Object.wait(Native Method)
+  - waiting on <0xb6c1dbb8> (a java.lang.VMThread)
+  at java.lang.Thread.parkFor(Thread.java:1424)
+  at java.lang.LangAccessImpl.parkFor(LangAccessImpl.java:48)
+  at sun.misc.Unsafe.park(Unsafe.java:337)
+  at java.util.concurrent.locks.LockSupport.park(LockSupport.java:157)
+  at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2016)
+  at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:411)
+  at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1021)
+  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1081)
+  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:581)
+  at java.lang.Thread.run(Thread.java:1019)
+
+"AsyncQueryWorker" prio=5 tid=28 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c70880 self=0x9f68000
+  | sysTid=1073 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167149864
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"Stk Icon Loader" prio=5 tid=27 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c6c698 self=0x9f66ba0
+  | sysTid=1072 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167144648
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"RilMessageDecoder" prio=5 tid=26 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c6bdb8 self=0x9f65e38
+  | sysTid=1071 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167141216
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"Stk Telephony service" prio=5 tid=25 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c6baf0 self=0x9f65440
+  | sysTid=1070 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167138664
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"GsmDataConnection-1" prio=5 tid=24 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c5e830 self=0x9f644b0
+  | sysTid=1069 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167134680
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"RILReceiver" prio=5 tid=23 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c3d7d0 self=0x9f62e70
+  | sysTid=1025 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167128984
+  at android.net.LocalSocketImpl.readba_native(Native Method)
+  at android.net.LocalSocketImpl.access$400(LocalSocketImpl.java:29)
+  at android.net.LocalSocketImpl$SocketInputStream.read(LocalSocketImpl.java:92)
+  at com.android.internal.telephony.RIL.readRilMessage(RIL.java:461)
+  at com.android.internal.telephony.RIL.access$200(RIL.java:206)
+  at com.android.internal.telephony.RIL$RILReceiver.run(RIL.java:560)
+  at java.lang.Thread.run(Thread.java:1019)
+
+"RILSender" prio=5 tid=22 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c3b1f8 self=0x9f62400
+  | sysTid=1024 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167125864
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"Binder Thread #16" prio=5 tid=21 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c05818 self=0x9f4af20
+  | sysTid=1021 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165948680
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #15" prio=5 tid=20 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c05750 self=0x9f4a4e8
+  | sysTid=1020 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164984216
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #14" prio=5 tid=19 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c05688 self=0x9f31238
+  | sysTid=1019 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165950752
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #13" prio=5 tid=18 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c055c0 self=0x9f31008
+  | sysTid=1018 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165576176
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #12" prio=5 tid=17 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c054f8 self=0x9f19a48
+  | sysTid=1017 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165567632
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #11" prio=5 tid=16 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c05430 self=0x9e433f8
+  | sysTid=1016 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165575504
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #10" prio=5 tid=15 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c05368 self=0x9de7920
+  | sysTid=1015 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164989688
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #9" prio=5 tid=14 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c05248 self=0x9de8bc8
+  | sysTid=1014 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165020240
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #8" prio=5 tid=13 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c05188 self=0x9d60600
+  | sysTid=1013 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165572560
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #7" prio=5 tid=12 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c050c8 self=0x9d5fa28
+  | sysTid=1012 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165580464
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #6" prio=5 tid=11 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c05008 self=0x9de80d8
+  | sysTid=1011 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165019488
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #5" prio=5 tid=10 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04f48 self=0x9e465f0
+  | sysTid=1010 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165017464
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #4" prio=5 tid=9 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04e50 self=0x9db6fc8
+  | sysTid=1009 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164986096
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #3" prio=5 tid=8 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04d90 self=0x9e38fe8
+  | sysTid=1008 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165580592
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #2" prio=5 tid=7 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04cd0 self=0x9de8590
+  | sysTid=1007 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165576368
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #1" prio=5 tid=6 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04758 self=0x9e39f88
+  | sysTid=1005 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165910032
+  at dalvik.system.NativeStart.run(Native Method)
+
+"JDWP" daemon prio=5 tid=5 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6c00fa8 self=0x9e46178
+  | sysTid=997 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165912256
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Signal Catcher" daemon prio=5 tid=4 RUNNABLE
+  | group="system" sCount=0 dsCount=0 obj=0xb6c00ee8 self=0x9d60330
+  | sysTid=996 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165572744
+  at dalvik.system.NativeStart.run(Native Method)
+
+"GC" daemon prio=5 tid=3 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6c00e40 self=0x9de5f18
+  | sysTid=995 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165950904
+  at dalvik.system.NativeStart.run(Native Method)
+
+"HeapWorker" daemon prio=5 tid=2 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6c00d88 self=0x9db6bf0
+  | sysTid=994 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165962688
+  at dalvik.system.NativeStart.run(Native Method)
+
+----- end 993 -----
+
+
+----- pid 957 at 2014-08-25 19:46:39 -----
+Cmd line: com.android.systemui
+
+DALVIK THREADS:
+(mutexes: tll=0 tsl=0 tscl=0 ghl=0 hwl=0 hwll=0)
+"main" prio=5 tid=1 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6711c38 self=0x9cd6e48
+  | sysTid=957 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=-2145907712
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.app.ActivityThread.main(ActivityThread.java:3683)
+  at java.lang.reflect.Method.invokeNative(Native Method)
+  at java.lang.reflect.Method.invoke(Method.java:507)
+  at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:839)
+  at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+  at dalvik.system.NativeStart.main(Native Method)
+
+"SystemUI StorageNotification" prio=5 tid=22 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c092b8 self=0x9f5c708
+  | sysTid=1123 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=167101336
+  at android.os.MessageQueue.nativePollOnce(Native Method)
+  at android.os.MessageQueue.next(MessageQueue.java:119)
+  at android.os.Looper.loop(Looper.java:117)
+  at android.os.HandlerThread.run(HandlerThread.java:60)
+
+"Binder Thread #16" prio=5 tid=21 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c050c0 self=0x9f4b028
+  | sysTid=980 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164990512
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #15" prio=5 tid=20 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04ff8 self=0x9f4a4e8
+  | sysTid=979 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165577184
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #14" prio=5 tid=19 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04a18 self=0x9f31110
+  | sysTid=978 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164985912
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #13" prio=5 tid=18 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04950 self=0x9f19b70
+  | sysTid=977 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164925832
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #12" prio=5 tid=17 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04888 self=0x9f19838
+  | sysTid=976 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165575504
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #11" prio=5 tid=16 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c047c0 self=0x9de7a28
+  | sysTid=975 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165912008
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #10" prio=5 tid=15 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c046f8 self=0x9e396d8
+  | sysTid=974 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164986096
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #9" prio=5 tid=14 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c045d8 self=0x9d60600
+  | sysTid=973 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165961744
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #8" prio=5 tid=13 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04518 self=0x9d58318
+  | sysTid=972 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=164967664
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #7" prio=5 tid=12 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04458 self=0x9de6ec8
+  | sysTid=971 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165959456
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #6" prio=5 tid=11 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04398 self=0x9de7480
+  | sysTid=970 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165963512
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #5" prio=5 tid=10 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c042d8 self=0x9d58640
+  | sysTid=969 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165580592
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #4" prio=5 tid=9 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c041e0 self=0x9d57240
+  | sysTid=968 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165576368
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #3" prio=5 tid=8 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04120 self=0x9de9238
+  | sysTid=967 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165021936
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #2" prio=5 tid=7 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c04060 self=0x9de9428
+  | sysTid=966 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165019608
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Binder Thread #1" prio=5 tid=6 NATIVE
+  | group="main" sCount=1 dsCount=0 obj=0xb6c03fa0 self=0x9e39f88
+  | sysTid=965 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165910032
+  at dalvik.system.NativeStart.run(Native Method)
+
+"JDWP" daemon prio=5 tid=5 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6c00808 self=0x9e46178
+  | sysTid=962 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165912256
+  at dalvik.system.NativeStart.run(Native Method)
+
+"Signal Catcher" daemon prio=5 tid=4 RUNNABLE
+  | group="system" sCount=0 dsCount=0 obj=0xb6c00748 self=0x9d60330
+  | sysTid=961 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165572744
+  at dalvik.system.NativeStart.run(Native Method)
+
+"GC" daemon prio=5 tid=3 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6c006a0 self=0x9de5f18
+  | sysTid=960 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165950904
+  at dalvik.system.NativeStart.run(Native Method)
+
+"HeapWorker" daemon prio=5 tid=2 VMWAIT
+  | group="system" sCount=1 dsCount=0 obj=0xb6c005e8 self=0x9db6bf0
+  | sysTid=958 nice=0 sched=0/0 cgrp=[fopen-error:2] handle=165962688
+  at dalvik.system.NativeStart.run(Native Method)
+
+----- end 957 -----
+// anr traces status was 0
+meminfo:
+Applications Memory Usage (kB):
+Uptime: 664210 Realtime: 664210
+
+** MEMINFO in pid 1381 [com.android.inputmethod.pinyin] **
+                    native   dalvik    other    total
+            size:     5824     6087      N/A    11911
+       allocated:     5800     3605      N/A     9405
+            free:       23     2482      N/A     2505
+           (Pss):     1550      202     5347     7099
+  (shared dirty):     2096     1872     7236    11204
+    (priv dirty):     1452      116     3312     4880
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:       12    Proxy Binders:       62
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/PinyinIME.apk:/resources.arsc: 13K
+
+** MEMINFO in pid 862 [system] **
+                    native   dalvik    other    total
+            size:     7824     8135      N/A    15959
+       allocated:     6185     4553      N/A    10738
+            free:      258     3582      N/A     3840
+           (Pss):     1576      796    16390    18762
+  (shared dirty):     1920     1848     5152     8920
+    (priv dirty):     1488      712     8636    10836
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        1       Activities:        0
+          Assets:        3    AssetManagers:        3
+   Local Binders:       85    Proxy Binders:      119
+Death Recipients:       47
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      192         MEMORY_USED:      192
+ PAGECACHE_OVERFLOW:       49         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1       16             32  accounts.db
+         1       24            102  settings.db
+ 
+ Asset Allocations
+    zip:/system/app/SettingsProvider.apk:/resources.arsc: 3K
+
+** MEMINFO in pid 1162 [android.process.media] **
+                    native   dalvik    other    total
+            size:     5176     6471      N/A    11647
+       allocated:     4340     2942      N/A     7282
+            free:      103     3529      N/A     3632
+           (Pss):     1234      173     3242     4649
+  (shared dirty):     2120     1864     5688     9672
+    (priv dirty):     1136       88     1992     3216
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        4    AssetManagers:        4
+   Local Binders:       10    Proxy Binders:       19
+Death Recipients:        2
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      466         MEMORY_USED:      466
+ PAGECACHE_OVERFLOW:      122         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1       41            302  external-fee3d18.db
+         1       54            120  internal.db
+         1        8            165  downloads.db
+ 
+ Asset Allocations
+    zip:/system/app/DownloadProvider.apk:/resources.arsc: 5K
+    zip:/system/app/MediaProvider.apk:/resources.arsc: 1K
+
+** MEMINFO in pid 1256 [com.android.music] **
+                    native   dalvik    other    total
+            size:     3752     6087      N/A     9839
+       allocated:     3708     2988      N/A     6696
+            free:       11     3099      N/A     3110
+           (Pss):      516      157     2392     3065
+  (shared dirty):     2144     1864     5760     9768
+    (priv dirty):      416       72     1612     2100
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:       12    Proxy Binders:       24
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/Music.apk:/resources.arsc: 29K
+
+** MEMINFO in pid 981 [com.android.inputmethod.latin] **
+                    native   dalvik    other    total
+            size:     8964     5639      N/A    14603
+       allocated:     6424     2957      N/A     9381
+            free:      155     2682      N/A     2837
+           (Pss):     2479      248     4327     7054
+  (shared dirty):     2060     1860     5424     9344
+    (priv dirty):     2384      164     2984     5532
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        7    Proxy Binders:       16
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      130         MEMORY_USED:      130
+ PAGECACHE_OVERFLOW:       14         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1        4             21  auto_dict.db
+         1        5             17  userbigram_dict.db
+ 
+ Asset Allocations
+    zip:/system/app/LatinIME.apk:/resources.arsc: 41K
+
+** MEMINFO in pid 1322 [com.templaro.opsiz.aka] **
+                    native   dalvik    other    total
+            size:     7012     6855      N/A    13867
+       allocated:     5961     4098      N/A    10059
+            free:       74     2757      N/A     2831
+           (Pss):     1885      608     8441    10934
+  (shared dirty):     2012     1864     9596    13472
+    (priv dirty):     1792      212     4760     6764
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:       58    Proxy Binders:       20
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+
+** MEMINFO in pid 1146 [com.android.quicksearchbox] **
+                    native   dalvik    other    total
+            size:     3804     5639      N/A     9443
+       allocated:     3735     3117      N/A     6852
+            free:       24     2522      N/A     2546
+           (Pss):      570      151     2148     2869
+  (shared dirty):     2132     1884     6044    10060
+    (priv dirty):      468       64     1200     1732
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        3    Proxy Binders:        9
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/QuickSearchBox.apk:/resources.arsc: 18K
+
+** MEMINFO in pid 1301 [com.svox.pico] **
+                    native   dalvik    other    total
+            size:     3716     5511      N/A     9227
+       allocated:     3642     2978      N/A     6620
+            free:       25     2533      N/A     2558
+           (Pss):      392      107     1507     2006
+  (shared dirty):     2232     1884     6132    10248
+    (priv dirty):      276       20      964     1260
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        2    Proxy Binders:        5
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/PicoTts.apk:/resources.arsc: 2K
+
+** MEMINFO in pid 1126 [com.android.voicedialer] **
+                    native   dalvik    other    total
+            size:     3716     5511      N/A     9227
+       allocated:     3649     3004      N/A     6653
+            free:       34     2507      N/A     2541
+           (Pss):      410      104     1607     2121
+  (shared dirty):     2228     1888     6068    10184
+    (priv dirty):      296       16     1052     1364
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        1    Proxy Binders:        5
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+
+** MEMINFO in pid 1289 [com.android.defcontainer] **
+                    native   dalvik    other    total
+            size:     3736     5447      N/A     9183
+       allocated:     3641     2687      N/A     6328
+            free:       18     2760      N/A     2778
+           (Pss):      426      129     1421     1976
+  (shared dirty):     2180     1872     5968    10020
+    (priv dirty):      320       44      876     1240
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        1    Proxy Binders:        8
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/DefaultContainerService.apk:/resources.arsc: 1K
+
+** MEMINFO in pid 1266 [com.cooliris.media] **
+                    native   dalvik    other    total
+            size:     4136     5959      N/A    10095
+       allocated:     3805     3457      N/A     7262
+            free:       14     2502      N/A     2516
+           (Pss):      645      136     2598     3379
+  (shared dirty):     2116     1860     5920     9896
+    (priv dirty):      544       52     1676     2272
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        2    Proxy Binders:        5
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:       71         MEMORY_USED:       71
+ PAGECACHE_OVERFLOW:       13         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1       10             10  picasa.db
+ 
+ Asset Allocations
+    zip:/system/app/Gallery3D.apk:/resources.arsc: 13K
+
+** MEMINFO in pid 1247 [com.android.protips] **
+                    native   dalvik    other    total
+            size:     3716     5511      N/A     9227
+       allocated:     3648     3021      N/A     6669
+            free:       55     2490      N/A     2545
+           (Pss):      439      108     1613     2160
+  (shared dirty):     2216     1884     6076    10176
+    (priv dirty):      328       20     1072     1420
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        1    Proxy Binders:        8
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+
+** MEMINFO in pid 1061 [com.android.launcher] **
+                    native   dalvik    other    total
+            size:     9524     5639      N/A    15163
+       allocated:     9013     3070      N/A    12083
+            free:      282     2569      N/A     2851
+           (Pss):     5359      232     3869     9460
+  (shared dirty):     2064     1852     5560     9476
+    (priv dirty):     5264      148     2588     8000
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        7    AssetManagers:        7
+   Local Binders:       11    Proxy Binders:       24
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:       69         MEMORY_USED:       69
+ PAGECACHE_OVERFLOW:        6         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1        4             53  launcher.db
+ 
+ Asset Allocations
+    zip:/system/app/Launcher2.apk:/resources.arsc: 26K
+    zip:/system/app/QuickSearchBox.apk:/resources.arsc: 18K
+    zip:/system/app/Music.apk:/resources.arsc: 29K
+
+** MEMINFO in pid 1234 [com.android.providers.calendar] **
+                    native   dalvik    other    total
+            size:     4152     5767      N/A     9919
+       allocated:     3899     3286      N/A     7185
+            free:       12     2481      N/A     2493
+           (Pss):      690      130     2435     3255
+  (shared dirty):     2164     1880     5924     9968
+    (priv dirty):      588       44     1516     2148
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        4    Proxy Binders:       10
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      134         MEMORY_USED:      134
+ PAGECACHE_OVERFLOW:       25         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1       34            150  calendar.db
+ 
+ Asset Allocations
+    zip:/system/app/CalendarProvider.apk:/resources.arsc: 4K
+
+** MEMINFO in pid 1134 [com.android.deskclock] **
+                    native   dalvik    other    total
+            size:     4100     6023      N/A    10123
+       allocated:     3770     3529      N/A     7299
+            free:       13     2494      N/A     2507
+           (Pss):      545      121     2435     3101
+  (shared dirty):     2184     1872     5920     9976
+    (priv dirty):      440       36     1752     2228
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        2    Proxy Binders:       12
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:       65         MEMORY_USED:       65
+ PAGECACHE_OVERFLOW:        6         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1        4             28  alarms.db
+ 
+ Asset Allocations
+    zip:/system/app/DeskClock.apk:/resources.arsc: 17K
+
+** MEMINFO in pid 1218 [com.android.bluetooth] **
+                    native   dalvik    other    total
+            size:     4120     5703      N/A     9823
+       allocated:     3800     3195      N/A     6995
+            free:       11     2508      N/A     2519
+           (Pss):      594      133     2163     2890
+  (shared dirty):     2160     1872     5996    10028
+    (priv dirty):      492       48     1332     1872
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        2    Proxy Binders:        8
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:       86         MEMORY_USED:       86
+ PAGECACHE_OVERFLOW:        7         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1        5            170  btopp.db
+ 
+ Asset Allocations
+    zip:/system/app/Bluetooth.apk:/resources.arsc: 13K
+
+** MEMINFO in pid 1173 [com.android.email] **
+                    native   dalvik    other    total
+            size:     4176     6151      N/A    10327
+       allocated:     3978     3662      N/A     7640
+            free:       17     2489      N/A     2506
+           (Pss):      800      189     3211     4200
+  (shared dirty):     2136     1864     5884     9884
+    (priv dirty):      700      104     1928     2732
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        4    Proxy Binders:       12
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      179         MEMORY_USED:      179
+ PAGECACHE_OVERFLOW:       44         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1       28             33  EmailProvider.db
+         1        6              0    (attached) BodyDatabase : EmailProviderBody.db
+         1        6             10  EmailProviderBody.db
+
+** MEMINFO in pid 993 [com.android.phone] **
+                    native   dalvik    other    total
+            size:     4348     6215      N/A    10563
+       allocated:     4251     3184      N/A     7435
+            free:       44     3031      N/A     3075
+           (Pss):     1015      417     4490     5922
+  (shared dirty):     2120     1860     5536     9516
+    (priv dirty):      916      332     2636     3884
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        3    AssetManagers:        3
+   Local Binders:       32    Proxy Binders:       17
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      262         MEMORY_USED:      262
+ PAGECACHE_OVERFLOW:       53         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1       37            166  mmssms.db
+         1        7            109  telephony.db
+ 
+ Asset Allocations
+    zip:/system/app/Phone.apk:/resources.arsc: 97K
+    zip:/system/app/TelephonyProvider.apk:/resources.arsc: 1K
+
+** MEMINFO in pid 1200 [com.android.mms] **
+                    native   dalvik    other    total
+            size:     3812     5895      N/A     9707
+       allocated:     3797     3377      N/A     7174
+            free:       14     2518      N/A     2532
+           (Pss):      580      169     2663     3412
+  (shared dirty):     2176     1864     5872     9912
+    (priv dirty):      476       84     1696     2256
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        2    AssetManagers:        2
+   Local Binders:        5    Proxy Binders:       32
+Death Recipients:        2
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/Mms.apk:/resources.arsc: 46K
+
+** MEMINFO in pid 1027 [android.process.acore] **
+                    native   dalvik    other    total
+            size:     5184     5831      N/A    11015
+       allocated:     5088     3296      N/A     8384
+            free:       27     2535      N/A     2562
+           (Pss):     1618      170     3905     5693
+  (shared dirty):     2148     1872     5748     9768
+    (priv dirty):     1516       84     2264     3864
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:       22    AssetManagers:       22
+   Local Binders:       10    Proxy Binders:       12
+Death Recipients:        0
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:      647         MEMORY_USED:      647
+ PAGECACHE_OVERFLOW:      136         MALLOC_SIZE:       50
+ 
+ DATABASES
+      pgsz     dbsz   Lookaside(b)  Dbname
+         1        4             19  user_dict.db
+         1      107            500  contacts2.db
+         1        9              0    (attached) presence_db
+         1       14             32  :memory:
+ 
+ Asset Allocations
+    zip:/system/app/UserDictionaryProvider.apk:/resources.arsc: 1K
+    zip:/system/app/ContactsProvider.apk:/resources.arsc: 1K
+    zip:/system/app/ApplicationsProvider.apk:/resources.arsc: 1K
+    zip:/system/app/Calendar.apk:/resources.arsc: 31K
+    zip:/system/app/Contacts.apk:/resources.arsc: 73K
+    zip:/system/app/Calculator.apk:/resources.arsc: 5K
+    zip:/system/app/Gallery3D.apk:/resources.arsc: 13K
+    zip:/system/app/QuickSearchBox.apk:/resources.arsc: 18K
+    zip:/system/app/SpeechRecorder.apk:/resources.arsc: 1K
+    zip:/system/app/Music.apk:/resources.arsc: 29K
+    zip:/system/app/Mms.apk:/resources.arsc: 46K
+    zip:/system/app/DeskClock.apk:/resources.arsc: 17K
+    zip:/system/app/Settings.apk:/resources.arsc: 147K
+    zip:/system/app/Camera.apk:/resources.arsc: 24K
+    zip:/system/app/Browser.apk:/resources.arsc: 64K
+
+** MEMINFO in pid 957 [com.android.systemui] **
+                    native   dalvik    other    total
+            size:     5272     5767      N/A    11039
+       allocated:     5118     3242      N/A     8360
+            free:       13     2525      N/A     2538
+           (Pss):     1277      246     7020     8543
+  (shared dirty):     2060     1860     5596     9516
+    (priv dirty):     1180      160     5692     7032
+ 
+ Objects
+           Views:        0        ViewRoots:        0
+     AppContexts:        0       Activities:        0
+          Assets:        3    AssetManagers:        3
+   Local Binders:       14    Proxy Binders:       23
+Death Recipients:        1
+ OpenSSL Sockets:        0
+ 
+ SQL
+               heap:        0         MEMORY_USED:        0
+ PAGECACHE_OVERFLOW:        0         MALLOC_SIZE:        0
+ 
+ 
+ Asset Allocations
+    zip:/system/app/SystemUI.apk:/resources.arsc: 17K
+    zip:/system/app/Music.apk:/resources.arsc: 29K
+// meminfo status was 0
+** Monkey aborted due to error.
+Events injected: 6577
+:Dropped: keys=16 pointers=57 trackballs=0 flips=0
+## Network stats: elapsed time=582514ms (582514ms mobile, 0ms wifi, 0ms not connected)
+** System appears to have crashed at event 6577 of 10000 using seed 0

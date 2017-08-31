@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="vertical"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent">
+
+	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	 android:id="@+id/level_table"
+	 android:layout_width="fill_parent"
+	 android:layout_height="wrap_content"
+	 android:stretchColumns="0,1">
+
+		<TableRow>
+			<Button android:id="@+id/up_button"
+			 android:layout_marginTop="5px"
+			 android:text="@string/up_level"/>
+		
+			<Button android:id="@+id/up_gear_button"
+			 android:layout_marginTop="5px"
+			 android:text="@string/up_gear_level"/>
+		</TableRow>
+	
+		<TableRow>
+			<TextView android:id="@+id/current_level"
+			 android:layout_width="wrap_content"
+			 android:layout_gravity="center"
+			 android:textSize="70sp"
+			 android:textStyle="bold"
+			 android:text="1"/>
+		
+			<TextView android:id="@+id/current_gear_level"
+			 android:layout_width="wrap_content"
+			 android:layout_gravity="center"
+			 android:textSize="70sp"
+			 android:textStyle="bold"
+			 android:text="0"/>
+		</TableRow>
+	
+		<TableRow>
+			<Button android:id="@+id/down_button"
+			 android:text="@string/down_level"/>
+		
+			<Button android:id="@+id/down_gear_button"
+			 android:text="@string/down_gear_level"/>
+		</TableRow>
+	
+	</TableLayout>
+
+	<TextView android:id="@+id/total_level"
+	 android:layout_width="fill_parent"
+	 android:layout_height="fill_parent"
+	 android:gravity="center"
+	 android:layout_below="@id/level_table"
+	 android:textSize="140sp"
+	 android:textStyle="bold"
+	 android:text="1"/>
+
+</RelativeLayout>

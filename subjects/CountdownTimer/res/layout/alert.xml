@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:gravity="center_horizontal"
+  android:orientation="vertical">
+  <LinearLayout
+    android:gravity="center"
+    android:id="@+id/InfoLinearLayout"
+    android:layout_width="fill_parent"
+    android:background="#EE444444"
+    android:layout_height="60sp">
+    <ImageView
+      android:id="@+id/ImageView01"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:src="@android:drawable/ic_dialog_info"
+      android:paddingLeft="10sp"
+      android:paddingRight="5sp"></ImageView>
+    <TextView
+      android:id="@+id/TextView01"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/timer_complete"
+      android:textAppearance="@style/AlertStyle"
+      android:paddingLeft="5sp"
+      android:paddingRight="10sp"></TextView>
+  </LinearLayout>
+  <LinearLayout
+    android:layout_width="fill_parent"
+    android:gravity="center"
+    android:id="@+id/ButtonLinearLayout"
+    android:layout_height="60sp"
+    android:background="#77FFFFFF">
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:minWidth="120sp"
+      android:id="@+id/newbutton"
+      android:text="@string/new_dialog_button"
+      android:visibility="gone" />
+    <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/okbutton"
+      android:minWidth="120sp"
+      android:text="@android:string/ok" />
+  </LinearLayout>
+</LinearLayout>

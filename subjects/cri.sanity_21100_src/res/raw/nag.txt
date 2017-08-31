@@ -1,0 +1,9 @@
+Thank you for installing Sanity. This is the free version.
+
+If you make a donation:
+- this notice will be suppressed;
+- you can record calls without limits;
+- you'll have access to all options;
+- you'll encourage the developer to improve Sanity.
+
+Would you like to open Market now for donating?

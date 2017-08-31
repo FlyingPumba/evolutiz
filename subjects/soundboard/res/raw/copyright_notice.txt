@@ -1,0 +1,5 @@
+The files tube.mp3 and coin.mp3 in this folder (from now simply "the files") are under the copyright of the Nintendo Corporation.
+
+The use of these files in the software Soundboard Example is consoidered Fair Use, as it is educational and non-commercial. 
+
+If you are the copyright holder and disagree with the above consideration, please contact William Killerud at william@killerud.com.

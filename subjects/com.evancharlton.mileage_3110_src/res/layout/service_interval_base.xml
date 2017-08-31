@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:mileage="http://schemas.android.com/apk/res/com.evancharlton.mileage"
+>
+	<com.evancharlton.mileage.views.DividerView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/divider_interval_info"
+	/>
+	<EditText
+		android:id="@+id/title"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:inputType="textCapWords|textAutoCorrect|textAutoComplete"
+		android:hint="@string/title"
+	/>
+	<EditText
+		android:id="@+id/description"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:inputType="textCapSentences|textAutoCorrect|textAutoComplete"
+		android:hint="@string/description"
+	/>
+	<com.evancharlton.mileage.views.DividerView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="@string/divider_interval_trigger"
+	/>
+	<com.evancharlton.mileage.views.DistanceDelta
+		android:id="@+id/distance"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:inputType="number"
+		mileage:hint="@string/distance"
+	/>
+	<com.evancharlton.mileage.views.DateDelta
+		android:id="@+id/duration"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:inputType="number"
+		mileage:hint="@string/duration"
+	/>
+</merge>

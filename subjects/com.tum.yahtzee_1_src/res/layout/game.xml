@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout
+	  android:orientation="vertical"
+	  android:layout_width="match_parent"
+	  android:layout_height="match_parent">
+	    <LinearLayout android:id="@+id/linearLayout1" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingBottom="7pt">
+	        <TextView android:textSize="14pt" android:layout_width="wrap_content" android:text="Player" android:layout_height="wrap_content" android:id="@+id/player_nr_header" android:paddingLeft="7pt" android:paddingTop="7pt"></TextView>
+	    </LinearLayout>
+	    <LinearLayout android:id="@+id/linearLayout2" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingBottom="7pt">
+	        <ImageButton android:src="@drawable/cube1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/cubeButton1"></ImageButton>
+	        <ImageButton android:src="@drawable/cube2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/cubeButton2"></ImageButton>
+	        <ImageButton android:src="@drawable/cube3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/cubeButton3"></ImageButton>
+	        <ImageButton android:src="@drawable/cube4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/cubeButton4"></ImageButton>
+	        <ImageButton android:src="@drawable/cube5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/cubeButton5"></ImageButton>
+	    </LinearLayout>
+	    <Button android:text="@string/Shake" android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/shakeButton"></Button>
+	    <LinearLayout android:id="@+id/linearLayout5" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="7pt">
+	        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/textView4" android:text="@string/SelectMove" android:layout_marginLeft="7pt" android:textSize="7pt"></TextView>
+	    </LinearLayout>
+	    <Spinner android:layout_width="match_parent" android:id="@+id/spinner1" android:layout_height="wrap_content" android:layout_marginTop="7pt" android:layout_marginBottom="7pt"></Spinner>
+	    <LinearLayout android:id="@+id/linearLayout3" android:layout_width="match_parent" android:layout_height="wrap_content">
+	        <TextView android:layout_width="wrap_content" android:text="@string/Possible" android:layout_height="wrap_content" android:id="@+id/textView2"></TextView>
+	        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/possibilityText" android:text="@string/Empty"></TextView>
+	    </LinearLayout>
+	    <LinearLayout android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="wrap_content">
+	        <TextView android:layout_width="wrap_content" android:text="@string/AdditionalPoints" android:layout_height="wrap_content" android:id="@+id/textView3"></TextView>
+	        <TextView android:layout_width="wrap_content" android:text="@string/Empty" android:layout_height="wrap_content" android:id="@+id/pointsText"></TextView>
+	    </LinearLayout>
+	    <Button android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="7pt" android:text="@string/SaveMove" android:id="@+id/continueButton"></Button>
+	</LinearLayout>
+</ScrollView>

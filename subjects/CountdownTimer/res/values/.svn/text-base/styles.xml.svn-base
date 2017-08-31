@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="Theme" parent="android:Theme">
+	</style>
+	<style name="TimerStyle">
+		<item name="android:textSize">80sp</item>
+		<item name="android:textColor">#FFF</item>
+	</style>
+	<style name="LabelStyle">
+		<item name="android:textSize">19sp</item>
+		<item name="android:textColor">#FFF</item>
+	</style>
+	<style name="ButtonStyle">
+		<item name="android:textSize">30sp</item>
+		<item name="android:textColor">#FFF</item>
+	</style>
+   <style name="AlertStyle">
+      <item name="android:textSize">19sp</item>
+      <item name="android:textColor">#FFF</item>
+   </style>	
+</resources>

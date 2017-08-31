@@ -1,0 +1,545 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: passmanager
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for passmanager...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for passmanager...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 313 source files to /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/classes
+    [javac] Note: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/src/org/bouncycastle/asn1/util/ASN1Dump.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/classes.dex...
+       [dx] Merged dex A (400 defs/584.0KiB) with dex B (2 defs/1.1KiB). Result is 402 defs/709.9KiB. Took 1.1s
+       [dx] Merged dex A (402 defs/709.9KiB) with dex B (297 defs/326.8KiB). Result is 699 defs/1286.2KiB. Took 0.7s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic00.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic00.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic00.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic01.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic01.png: 73% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic02.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic02.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic02.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic03.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic03.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic03.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic04.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic04.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic04.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic05.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic05.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic05.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic06.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic06.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic06.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic07.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic07.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic07.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic08.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic08.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic08.png: 75% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic09.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic09.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic09.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic10.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic10.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic10.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic11.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic11.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic11.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic12.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic12.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic12.png: 81% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic13.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic13.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic13.png: 79% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic14.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic14.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic14.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic15.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic15.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic15.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic16.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic16.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic16.png: 67% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic17.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic17.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic17.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic18.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic18.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic18.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic19.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic19.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic19.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic20.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic20.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic20.png: 80% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic21.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic21.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic21.png: 63% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic22.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic22.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic22.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic23.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic23.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic23.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic24.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic24.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic24.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic25.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic25.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic25.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic26.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic26.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic26.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic27.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic27.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic27.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic28.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic28.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic28.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic29.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic29.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic29.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic30.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic30.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic30.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic31.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic31.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic31.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic32.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic32.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic32.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic33.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic33.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic33.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic34.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic34.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic34.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic35.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic35.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic35.png: 72% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic36.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic36.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic36.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic37.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic37.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic37.png: 64% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic38.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic38.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic38.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic39.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic39.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic39.png: 70% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic40.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic40.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic40.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic41.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic41.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic41.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic42.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic42.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic42.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic43.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic43.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic43.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic44.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic44.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic44.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic45.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic45.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic45.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic46.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic46.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic46.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic47.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic47.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic47.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic48.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic48.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic48.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic49.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic49.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic49.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic50.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic50.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic50.png: 79% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic51.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic51.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic51.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic52.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic52.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic52.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic53.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic53.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic53.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic54.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic54.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic54.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic55.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic55.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic55.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic56.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic56.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic56.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic57.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic57.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic57.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic58.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic58.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic58.png: 71% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic59.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic59.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic59.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic60.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic60.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic60.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic61.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic61.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic61.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic62.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic62.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic62.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic63.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic63.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic63.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic64.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic64.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic64.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic65.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic65.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic65.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic66.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic66.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic66.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic67.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic67.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic67.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic68.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic68.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic68.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/ic99_blank.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic99_blank.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/ic99_blank.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/launcher.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/launcher.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/launcher.png: 96% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-hdpi/notify.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/notify.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-hdpi/notify.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic00.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic00.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic00.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic01.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic02.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic02.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic02.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic03.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic03.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic03.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic04.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic04.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic04.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic05.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic05.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic05.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic06.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic06.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic06.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic07.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic07.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic07.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic08.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic08.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic08.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic09.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic09.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic09.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic10.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic10.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic10.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic11.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic11.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic11.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic12.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic12.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic12.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic13.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic13.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic13.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic14.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic14.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic14.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic15.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic15.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic15.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic16.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic16.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic16.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic17.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic17.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic17.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic18.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic18.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic18.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic19.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic19.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic19.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic20.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic20.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic20.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic21.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic21.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic21.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic22.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic22.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic22.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic23.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic23.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic23.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic24.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic24.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic24.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic25.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic25.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic25.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic26.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic26.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic26.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic27.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic27.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic27.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic28.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic28.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic28.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic29.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic29.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic29.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic30.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic30.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic30.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic31.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic31.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic31.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic32.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic32.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic32.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic33.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic33.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic33.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic34.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic34.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic34.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic35.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic35.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic35.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic36.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic36.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic36.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic37.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic37.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic37.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic38.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic38.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic38.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic39.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic39.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic39.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic40.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic40.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic40.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic41.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic41.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic41.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic42.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic42.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic42.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic43.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic43.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic43.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic44.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic44.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic44.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic45.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic45.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic45.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic46.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic46.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic46.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic47.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic47.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic47.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic48.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic48.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic48.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic49.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic49.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic49.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic50.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic50.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic50.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic51.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic51.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic51.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic52.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic52.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic52.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic53.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic53.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic53.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic54.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic54.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic54.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic55.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic55.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic55.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic56.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic56.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic56.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic57.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic57.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic57.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic58.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic58.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic58.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic59.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic59.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic59.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic60.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic60.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic60.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic61.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic61.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic61.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic62.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic62.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic62.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic63.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic63.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic63.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic64.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic64.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic64.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic65.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic65.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic65.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic66.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic66.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic66.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic67.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic67.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic67.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic68.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic68.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic68.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/ic99_blank.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic99_blank.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/ic99_blank.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/launcher.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/launcher.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/launcher.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable-ldpi/notify.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/notify.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable-ldpi/notify.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic00.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic00.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic00.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic01.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic01.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic01.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic02.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic02.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic02.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic03.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic03.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic03.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic04.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic04.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic04.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic05.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic05.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic05.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic06.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic06.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic06.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic07.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic07.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic07.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic08.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic08.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic08.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic09.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic09.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic09.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic10.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic10.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic10.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic11.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic11.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic11.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic12.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic12.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic12.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic13.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic13.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic13.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic14.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic14.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic14.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic15.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic15.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic15.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic16.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic16.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic16.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic17.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic17.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic17.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic18.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic18.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic18.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic19.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic19.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic19.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic20.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic20.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic20.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic21.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic21.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic21.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic22.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic22.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic22.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic23.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic23.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic23.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic24.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic24.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic24.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic25.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic25.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic25.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic26.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic26.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic26.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic27.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic27.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic27.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic28.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic28.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic28.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic29.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic29.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic29.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic30.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic30.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic30.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic31.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic31.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic31.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic32.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic32.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic32.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic33.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic33.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic33.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic34.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic34.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic34.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic35.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic35.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic35.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic36.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic36.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic36.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic37.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic37.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic37.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic38.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic38.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic38.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic39.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic39.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic39.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic40.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic40.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic40.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic41.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic41.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic41.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic42.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic42.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic42.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic43.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic43.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic43.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic44.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic44.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic44.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic45.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic45.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic45.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic46.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic46.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic46.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic47.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic47.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic47.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic48.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic48.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic48.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic49.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic49.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic49.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic50.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic50.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic50.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic51.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic51.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic51.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic52.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic52.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic52.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic53.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic53.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic53.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic54.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic54.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic54.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic55.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic55.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic55.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic56.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic56.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic56.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic57.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic57.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic57.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic58.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic58.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic58.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic59.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic59.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic59.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic60.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic60.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic60.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic61.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic61.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic61.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic62.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic62.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic62.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic63.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic63.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic63.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic64.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic64.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic64.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic65.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic65.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic65.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic66.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic66.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic66.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic67.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic67.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic67.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic68.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic68.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic68.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic99_blank.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic99_blank.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic99_blank.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/ic_launcher_folder_small.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic_launcher_folder_small.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/ic_launcher_folder_small.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/launcher.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/launcher.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/launcher.png: 82% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/res/drawable/notify.png => /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/notify.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/res/drawable/notify.png: 0% size of source)
+   [crunch] Crunched 217 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating passmanager-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/passmanager-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/passwordmanager/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 1 minute 3 seconds

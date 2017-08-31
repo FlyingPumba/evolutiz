@@ -1,0 +1,54 @@
+WhoHasMyStuff (1.0.7)
+
+  * Added french translation
+  * Fixed sorting order
+
+-- Stephan Windmüller <stovocor@gmail.com>
+
+WhoHasMyStuff (1.0.6)
+
+  * Fixed crash on ICS devices
+
+-- Stephan Windmüller <stovocor@gmail.com>
+
+WhoHasMyStuff (1.0.5)
+
+  * Added brazilian portuguese translation
+  * Added hebrew translation
+
+-- Stephan Windmüller <stovocor@gmail.com>
+
+WhoHasMyStuff (1.0.4)
+
+  * Provide type selector (book, movie, money, ...) for each item
+  * Improved english translation
+  * Hide soft input when opening edit view
+
+-- Stephan Windmüller <stovocor@gmail.com>
+
+WhoHasMyStuff (1.0.3)
+
+  * Allow creation of calendar event for expected return of items
+
+-- Stephan Windmüller <stovocor@gmail.com>
+
+WhoHasMyStuff (1.0.2)
+
+  * Fixed backup data for certain characters
+
+-- Stephan Windmüller <stovocor@gmail.com>
+
+WhoHasMyStuff (1.0.1)
+
+  * Create example data on first start
+  * Added "Mark as returned" submenu entry
+  * Ask before overwriting backup file
+  * Fixed backup data for certain characters
+
+-- Stephan Windmüller <stovocor@gmail.com>
+
+WhoHasMyStuff (1.0)
+
+  * First release
+
+-- Stephan Windmüller <stovocor@gmail.com>

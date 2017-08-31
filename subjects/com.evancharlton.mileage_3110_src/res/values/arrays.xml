@@ -1,0 +1,40 @@
+<resources>
+	<string-array name="distances">
+		<item>@string/units_miles</item>
+		<item>@string/units_kilometers</item>
+	</string-array>
+	<string-array name="volumes">
+		<item>@string/units_gallons</item>
+		<item>@string/units_litres</item>
+		<item>@string/units_imperial_gallons</item>
+	</string-array>
+	<string-array name="economies">
+		<item>@string/units_miles_per_gallon</item>
+		<item>@string/units_kilometers_per_gallon</item>
+		<item>@string/units_miles_per_imperial_gallon</item>
+		<item>@string/units_kilometers_per_imperial_gallon</item>
+		<item>@string/units_miles_per_litre</item>
+		<item>@string/units_kilometers_per_litre</item>
+		<item>@string/units_gallons_per_100km</item>
+		<item>@string/units_litres_per_100km</item>
+		<item>@string/units_imperial_gallons_per_100km</item>
+	</string-array>
+	<string-array name="data_formats">
+		<item>@string/unit_price_volume</item>
+		<item>@string/cost_volume</item>
+		<item>@string/cost_unit_price</item>
+	</string-array>
+	<string-array name="data_format_values">
+		<item>0</item>
+		<item>1</item>
+		<item>2</item>
+	</string-array>
+	<string-array name="importers">
+		<item>@string/importer_sqlite</item>
+		<item>@string/importer_csv</item>
+	</string-array>
+	<string-array name="exporters">
+		<item>@string/exporter_sqlite</item>
+		<item>@string/exporter_csv</item>
+	</string-array>
+</resources>

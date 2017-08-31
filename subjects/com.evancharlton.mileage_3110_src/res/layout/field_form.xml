@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+	xmlns:android="http://schemas.android.com/apk/res/android"
+>
+	<EditText
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:hint="@string/field_title"
+		android:id="@+id/title"
+		android:inputType="textEmailSubject"
+	/>
+	<EditText
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:hint="@string/field_description"
+		android:id="@+id/description"
+		android:inputType="textShortMessage"
+	/>
+</merge>

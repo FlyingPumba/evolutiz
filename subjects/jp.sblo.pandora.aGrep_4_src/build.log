@@ -1,0 +1,126 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: Settings
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for Settings...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for Settings...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 15 source files to /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/classes.dex...
+       [dx] Merged dex A (54 defs/68.1KiB) with dex B (2 defs/1.1KiB). Result is 56 defs/80.8KiB. Took 0.4s
+       [dx] Merged dex A (56 defs/80.8KiB) with dex B (297 defs/326.8KiB). Result is 353 defs/492.5KiB. Took 0.7s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/res/drawable-hdpi/ic_menu_preferences.png => /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-hdpi/ic_menu_preferences.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-hdpi/ic_menu_preferences.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/res/drawable-hdpi/ic_menu_share.png => /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-hdpi/ic_menu_share.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-hdpi/ic_menu_share.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/res/drawable-mdpi/add.png => /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/add.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/add.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/res/drawable-mdpi/clr.png => /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/clr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/clr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/res/drawable-mdpi/ic_menu_preferences.png => /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/ic_menu_preferences.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/ic_menu_preferences.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/res/drawable-mdpi/ic_menu_share.png => /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/ic_menu_share.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/ic_menu_share.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/res/drawable-mdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/res/drawable-mdpi/search.png => /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/search.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/res/drawable-mdpi/search.png: 0% size of source)
+   [crunch] Crunched 8 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+     [aapt] Warning: AndroidManifest.xml already defines debuggable (in http://schemas.android.com/apk/res/android); using existing value in manifest.
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating Settings-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/Settings-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/jp.sblo.pandora.aGrep_4_src/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 31 seconds

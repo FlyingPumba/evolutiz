@@ -1,0 +1,325 @@
+ * Go back to explicitly storing blank fields in the database
+   (works around bug in keepassx)
+ * Add support for native code on MIPS architectures
+ * Adding Vibrate permission. On some devices notifications fail
+   without the vibrate permission.
+
+KeePassdroid (1.9.8)
+ * Fix crashes related to saving missing entries
+ * Fix issues with setting wrong expiry date
+
+KeePassDroid (1.9.7)
+  * Add Slovak translation from Typhoon
+  * Italian translation updates.
+  * iOS KeePass compatibility improvements:
+	  * Handle blank dates gracefully
+	  * Prevent crash on saving when data is missing.
+	  * Don't crash when opening menu in the Entry activity if there is no URL
+	  * Don't crash when building search index
+
+KeePassDroid (1.9.6)
+  * Fix file association errors for paths with '.'s. (Will now match paths
+    with up to 10 dots)
+  * Update Norwegian Nynorsk translations
+  * Add new icons and market graphics (thanks to Hadley)
+
+KeePassDroid (1.9.5)
+  * Update Norwegian Nynorsk translations
+  * Resize custom icons
+
+KeePassDroid (1.9.4)
+  * Add Japanese translations from Masahiro Inamura
+  * Fix issue 183 and 199 from Riksa
+  * Change search to work in memory
+
+KeePassDroid (1.9.3.1)
+  * Update Italian translations
+
+KeePassDroid (1.9.3)
+  * New setting to omit backup and recycle bin entries (based on contribution
+    from ABGH)
+  * Support databases from KeePass 1.20 (closes: #197)
+  * Handle spaces correctly when browsing for keyfiles (closes: #163)
+  * Don't clear password when browsing for a keyfile (closes: #166)
+  * Fix problems with remembering the keyfile location (closes: #167)
+
+KeePassDroid (1.9.2)
+  * Fix date display in .kdbx entries
+  * Support .kdbx format changes in KeePass 2.15
+  * Move dates to the bottom of the entry view
+
+KeePassDroid (1.9.1)
+  * Don't default to missing files
+  * Search the username field
+  * Respect mask password setting in the edit entry activity
+  * Pad entries in recent filename list
+
+KeePassDroid (1.9)
+  * New entry view design
+  * Show custom strings in .kdbx databases
+  * Fix expiry date in .kdbx databases
+
+KeePassDroid (1.8.6.4)
+  * Update Chinese translations
+  
+KeePassDroid (1.8.6.3)
+  * Fix db saving issue
+  
+KeePassDroid (1.8.6.2)
+  * Add Chinese translations
+  
+KeePassDroid (1.8.6)
+  * New native crypto implementation
+  
+KeePassDroid (1.8.5.1)
+  * Update Polish translation
+  
+KeePassDroid (1.8.5)
+  * Add default database checkbox
+  
+KeePassDroid (1.8.4)
+  * Fix crash on saving new entries
+  
+KeePassDroid (1.8.3)
+  * Guard against crash when loading icons
+  * Handle spaces correctly from file browser
+  
+KeePassDroid (1.8.2)
+  * Support Android 2.2 backup manager
+  * Add Polish translations
+  * Only show notifications if username and password exist
+  * Keep icons on entry update
+
+KeePassDroid (1.8.1)
+  * Android 1.5 compatibility fixes
+
+KeePassDroid (1.8)
+  * Layout updates
+  * Custom icon support
+  
+KeePassDroid (1.7.2)
+  * Password generator from Tolga Onbay
+  
+KeePassDroid (1.7.1)
+  * Fix timeout locking
+  
+KeePassDroid (1.7)
+  * Add icon support from Tobias Selig
+  
+KeePassDroid (1.6.3)
+  * Search tweaks from Johan Berts
+  
+KeePassDroid (1.6.2)
+  * Fix layout issues on Android 1.5
+  
+KeePassDroid (1.6.1)
+  * Add file browser for keyfiles
+  * Add missing sdcard warning
+  * Fix binary 64-bit keyfiles
+
+KeePassDroid (1.6)
+  * Add setting to control timeout duration.
+  * Add file browser
+
+KeePassDroid (1.5.9)
+  * Bump target sdk to 8
+  * Allow install to sdcard
+
+KeePassDroid (1.5.8)
+  * Update Russian translations
+  * Add Nynorsk translations
+  * Fix no compression .kdbx files
+  
+KeePassDroid (1.5.7)
+  * KeePass 2.11 compatibility fixes
+
+KeePassDroid (1.5.6)
+  * Keyfile Fix
+
+KeePassDroid (1.5.5)
+  * Twofish support for .kdb
+  * Refresh fixes
+
+KeePassDroid (1.5.4)
+  * Key file fixes
+  * Implement sorting
+
+KeePassDroid (1.5.3)
+  * Remove debug tracing
+
+KeePassDroid (1.5.2)
+  * Various crash fixes
+  * Fix group and entry deletion
+
+KeePassDroid (1.5.1)
+  * Handle .kdbx file extension
+
+KeePassDroid (1.5)
+  * Add beta read-only .kdbx support.
+
+KeePassDroid (1.0.6)
+  * Update Italian translations
+  * Font size setting
+  * URL decoding fix
+  * TAN handling
+
+KeePassDroid (1.0.5.1)
+  * Restore timeout to 5 minutes instead of 20 seconds
+
+KeePassDroid (1.0.5)
+  * Fix search after lock bug
+  * Add option to disable password masking by default
+  * Change service handling
+
+KeePassDroid (1.0.4)
+  * Fix CRLF string issues
+
+KeePassDroid (1.0.3)
+  * Update Italian translations
+  * Fix crash on saving entries
+  * Fix way empty strings were being saved (this made it look like there was
+    attachment in the Windows KeePass client).
+
+KeePassDroid (1.0.2)
+  * Fix file associations
+
+KeePassDroid (1.0.1)
+  * Fix crash on resume
+  * Fix memory leak in NativeAESCipherSpi
+  * Search index performance
+
+KeePassDroid (1.0)
+  * Performance!
+
+KeePassDroid (0.9.7)
+  * Update French translations
+  * Save and load performance improvement
+  * Fix locking issues with preference screen
+
+KeePassDroid (0.9.6)
+  * Add Russian translations
+  * Revamp settings
+  * Fix comment field in entries
+  * Fix loading after creating new dbs
+  * Fix opening from file on initial run
+
+KeePassDroid (0.9.5)
+  * Add notification based username and password copy
+  * Add German translations
+  * Try to create parent directory when creating database
+
+KeePassDroid (0.9.4)
+  * Add French translation 
+  * Fix crash on timeout.
+  
+KeePassDroid (0.9.3)
+  * Fix up translations
+  * Fix up timeouts.
+  * Display expiration time.
+
+KeePassDroid (0.9.2)
+  * Add Italian translations
+  * Multiple screen sizes
+  
+KeePassDroid (0.9.1)
+  * Add donate link
+  * Sort case insensitive
+  * Add show password checkbox
+
+KeePassDroid (0.9)
+  * Allow the creation of new databases on the device
+  * Sort entries and groups when adding or renaming.
+
+KeePassDroid (0.6)
+  * Add database settings
+  * Add password changing
+
+KeePassDroid (0.5)
+  * Correct group output logic
+  * Fix search
+  * Implement group and entry delete.
+
+KeePassDroid (0.4.1)
+  * Fix timeout locking crashes
+  * Fix lock from search screen.
+  * Increase clipboard timeout
+
+KeePassDroid (0.4)
+  * Support adding groups
+  
+KeePassDroid (0.3.4)
+  * Add context menus
+  * Deal with crash when resuming activity after the process has been killed
+  * Increase clipboard clear time as a stopgap until I come add a configurable setting.
+  * Pass upwards potentially more helpful error messages
+
+KeePassDroid (0.3.3)
+  * Add new icon and UI enhancements from Francis Jacquerye
+  * Fix crash on goto URL with no ://
+
+KeePassDroid (0.3.2)
+  * Fix the way passwords are stored
+
+KeePassDroid (0.3.1)
+  * Fix for non-ascii characters in password
+  * Add hints to fields
+
+KeePassDroid (0.3)
+  * Switch to native encryption for key preparation.  Seems to take better than half as long as bouncycastle in the emulator,
+    10 sec vs 25 sec.
+  * Implement search feature
+  * Require Android 1.5
+
+KeePassDroid (0.2.1)
+
+  * Support adding password entries
+  * Prevent crash on orientation change while loading or saving database.
+  * Fix most entries in the entry editor to be single line
+
+KeePassDroid (0.2.0)
+
+  * Support editing password entries
+  * Wrap long lines properly in entries
+
+KeePassDroid (0.1.8)
+
+  * Move database decryption into background thread
+  * Add about dialog
+
+KeePassDroid (0.1.7)
+
+  * Clear usernames and passwords from the clipboard after 30 seconds.
+
+KeePassDroid (0.1.6)
+
+  * Implement 5 minute timeout when the application is inactive.
+  * Scroll comment field when the text overflows.
+
+KeePassDroid (0.1.5)
+
+  * Improve file selection
+  * UI enhancements
+
+KeePassDroid (0.1.4)
+
+  * Add key file support
+
+KeePassDroid (0.1.3)
+
+  * Hide Meta-Info entries
+  * Change "Copy URL" to "Go to URL"
+  * Support "Go to Homepage"
+  * Support Lock menu option
+  * Fix blank password crash
+
+KeePassDroid (0.1.2)
+
+  * Fix crash when accessing the first root level group.
+
+KeePassDroid (0.1.1)
+
+  * Minor tweaks to layout.
+
+KeePassDroid (0.0.1)
+
+  * Initial Release

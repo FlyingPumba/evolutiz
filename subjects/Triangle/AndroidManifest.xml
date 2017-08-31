@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.google.android.opengles.triangle">
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:configChanges="orientation|keyboardHidden" android:label="@string/app_name" android:launchMode="singleTask" android:name=".TriangleActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    <receiver android:name="com.google.android.opengles.triangle.EmmaInstrument.SMSInstrumentedReceiver">
+<intent-filter>
+<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+</intent-filter>
+</receiver>
+<activity android:label="EmmaInstrumentationActivity" android:name="com.google.android.opengles.triangle.EmmaInstrument.InstrumentedActivity"/>
+</application>
+<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.google.android.opengles.triangle.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.google.android.opengles.triangle"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+</manifest>

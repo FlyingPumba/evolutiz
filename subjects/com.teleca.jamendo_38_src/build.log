@@ -1,0 +1,291 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: SplashscreenActivity
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for SplashscreenActivity...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for SplashscreenActivity...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 121 source files to /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/classes.dex...
+       [dx] Merged dex A (240 defs/306.7KiB) with dex B (2 defs/1.1KiB). Result is 242 defs/367.9KiB. Took 0.8s
+       [dx] Merged dex A (242 defs/367.9KiB) with dex B (297 defs/326.8KiB). Result is 539 defs/851.3KiB. Took 0.6s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/cc_loading.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/cc_loading.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/cc_loading.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/drag.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/drag.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/drag.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/icon.png: 79% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/list_cd.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_cd.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_cd.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/list_download.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_download.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_download.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/list_playlist.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_playlist.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_playlist.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/list_radio.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_radio.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_radio.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/list_search.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_search.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_search.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/list_top.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_top.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/list_top.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/logo.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/logo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/logo.png: 86% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/ratingbar_frg_gray.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/ratingbar_frg_gray.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/ratingbar_frg_gray.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/ratingbar_frg_white.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/ratingbar_frg_white.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/ratingbar_frg_white.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/splash_jamendo.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/splash_jamendo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/splash_jamendo.png: 89% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/stat_notify.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/stat_notify.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/stat_notify.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/teleca_logo.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/teleca_logo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/teleca_logo.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/teleca_logo_splash.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/teleca_logo_splash.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/teleca_logo_splash.png: 65% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/tray_handle_normal.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/tray_handle_normal.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/tray_handle_normal.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/tray_handle_pressed.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/tray_handle_pressed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/tray_handle_pressed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-hdpi/tray_handle_selected.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/tray_handle_selected.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-hdpi/tray_handle_selected.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-hdpi/drag.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-hdpi/drag.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-hdpi/drag.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-hdpi/tray_handle_normal.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-hdpi/tray_handle_normal.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-hdpi/tray_handle_normal.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-hdpi/tray_handle_pressed.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-hdpi/tray_handle_pressed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-hdpi/tray_handle_pressed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-hdpi/tray_handle_selected.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-hdpi/tray_handle_selected.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-hdpi/tray_handle_selected.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/drag.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/drag.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/drag.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/player_next_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_next_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_next_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/player_pause_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_pause_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_pause_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/player_play_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_play_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_play_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/player_prev_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_prev_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_prev_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/player_prev_list_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_prev_list_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_prev_list_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/player_stop_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_stop_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/player_stop_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/tray_handle_normal.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_handle_normal.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_handle_normal.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/tray_handle_pressed.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_handle_pressed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_handle_pressed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/tray_handle_selected.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_handle_selected.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_handle_selected.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/tray_line_normal.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_line_normal.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_line_normal.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/tray_line_pressed.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_line_pressed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_line_pressed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-land-mdpi/tray_line_selected.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_line_selected.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-land-mdpi/tray_line_selected.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/arrow_focus.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/arrow_focus.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/arrow_focus.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/arrow_rest.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/arrow_rest.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/arrow_rest.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/cc_loading.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/cc_loading.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/cc_loading.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/download.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/download.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/download.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/drag.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/drag.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/drag.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/gesture_next.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/gesture_next.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/gesture_next.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/gesture_play_pause.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/gesture_play_pause.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/gesture_play_pause.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/gesture_prev.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/gesture_prev.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/gesture_prev.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/gesture_stop.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/gesture_stop.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/gesture_stop.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/ic_menu_artist.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_artist.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_artist.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/ic_menu_cd.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_cd.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_cd.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/ic_menu_home.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_home.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_home.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/ic_menu_player.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_player.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_player.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/ic_menu_playlist.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_playlist.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_playlist.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/ic_menu_review.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_review.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ic_menu_review.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/light_bg_rest.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/light_bg_rest.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/light_bg_rest.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/list_cd.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_cd.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_cd.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/list_download.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_download.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_download.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/list_playlist.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_playlist.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_playlist.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/list_radio.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_radio.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_radio.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/list_search.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_search.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_search.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/list_star.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_star.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_star.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/list_top.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_top.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/list_top.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/logo.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/logo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/logo.png: 65% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/no_avatar.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/no_avatar.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/no_avatar.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/no_cd.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/no_cd.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/no_cd.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/no_cd_125.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/no_cd_125.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/no_cd_125.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/no_cd_300.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/no_cd_300.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/no_cd_300.png: 59% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/player_back_background.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_back_background.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_back_background.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/player_next_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_next_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_next_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/player_pause_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_pause_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_pause_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/player_play_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_play_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_play_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/player_prev_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_prev_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_prev_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/player_prev_list_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_prev_list_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_prev_list_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/player_repeat_off.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_repeat_off.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_repeat_off.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/player_repeat_on.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_repeat_on.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_repeat_on.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/player_shuffle_off.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_shuffle_off.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_shuffle_off.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/player_shuffle_on.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_shuffle_on.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_shuffle_on.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/player_stop_light.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_stop_light.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/player_stop_light.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/ratingbar_bkg.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ratingbar_bkg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ratingbar_bkg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/ratingbar_frg_gray.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ratingbar_frg_gray.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ratingbar_frg_gray.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/ratingbar_frg_white.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ratingbar_frg_white.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/ratingbar_frg_white.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/settings.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/settings.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/settings.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/splash_jamendo.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/splash_jamendo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/splash_jamendo.png: 86% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/stat_notify.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/stat_notify.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/stat_notify.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/tab_no_cd.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/tab_no_cd.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/tab_no_cd.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/tab_review.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/tab_review.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/tab_review.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/teleca_logo.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/teleca_logo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/teleca_logo.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/teleca_logo_splash.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/teleca_logo_splash.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/teleca_logo_splash.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/timeline_bkg.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/timeline_bkg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/timeline_bkg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/timeline_frg.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/timeline_frg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/timeline_frg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/tray_handle_normal.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/tray_handle_normal.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/tray_handle_normal.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/tray_handle_pressed.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/tray_handle_pressed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/tray_handle_pressed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/res/drawable-mdpi/tray_handle_selected.png => /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/tray_handle_selected.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/res/drawable-mdpi/tray_handle_selected.png: 0% size of source)
+   [crunch] Crunched 91 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating SplashscreenActivity-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/SplashscreenActivity-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.teleca.jamendo_38_src/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 48 seconds

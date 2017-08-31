@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+	<resources>
+		<string-array name="beaconInterval">
+        	<item name="3">@string/minutes_3</item>
+        	<item name="5">@string/minutes_5</item>
+        	<item name="15">@string/minutes_15</item>
+        	<item name="30">@string/minutes_30</item>
+        	<item name="60">@string/hours_1</item>
+        	<item name="120">@string/hours_2</item>
+        	<item name="360">@string/hours_6</item>
+		</string-array>
+		    
+		<string-array name="beaconIntervalValues">
+			<item name="3">3</item>
+			<item name="5">5</item>
+			<item name="15">15</item>
+			<item name="30">30</item>
+ 			<item name="60">60</item>
+ 			<item name="120">120</item>
+ 			<item name="360">360</item>
+		</string-array>
+		
+		<string-array name="qrssRate">
+		    <item name="3">@string/seconds_3</item>
+		    <item name="5">@string/seconds_5</item>
+		    <item name="10">@string/seconds_10</item>
+		    <item name="30">@string/seconds_30</item>
+		</string-array>    
+		
+		<string-array name="qrssRateValues">
+			<item name="3">3</item>
+			<item name="5">5</item>
+			<item name="10">10</item>
+			<item name="30">30</item>
+		</string-array>
+		    
+	</resources>

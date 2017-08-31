@@ -1,0 +1,24 @@
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/gen/i4nc4mp/myLock/R.java \
+ : /vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/layout/callguard.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/layout/answerprompt.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/layout/dummy.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/layout/cancelhint.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/layout/main.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/layout/dismisslayout.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/layout/togglelayout.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/xml/mainpref.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/xml/toggle_widget.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/drawable-hdpi/icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/drawable-hdpi/widg_off_icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/drawable-hdpi/widg_on_icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/drawable-mdpi/icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/drawable-ldpi/icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/values/styles.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/values/strings.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/res/values/colors.xml \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/bin/res/drawable-hdpi/icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/bin/res/drawable-hdpi/widg_off_icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/bin/res/drawable-hdpi/widg_on_icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/bin/res/drawable-mdpi/icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/bin/res/drawable-ldpi/icon.png \
+/vagrant/subjects/tool_subjects/dynodroid/i4nc4mp.myLock_28_src/bin/AndroidManifest.xml \

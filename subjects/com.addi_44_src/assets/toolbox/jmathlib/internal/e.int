@@ -1,0 +1,25 @@
+/*
+@GROUP
+general
+@SYNTAX
+e
+@DOC
+euler number
+@EXAMPLES
+<programlisting>
+e
+ans = 2.718281828459046
+</programlisting>
+@NOTES
+@SEE
+pi, eps, i, j
+*/
+
+/*
+%!@testcase
+%!  ml.executeExpression("clear('all');");
+%!  ml.executeExpression("a=e;");
+%!  assertEquals( 2.71828182, ml.getScalarValueRe("a"), 0.0001);
+%!  assertTrue( 0 == ml.getScalarValueIm("a"));
+%!
+*/

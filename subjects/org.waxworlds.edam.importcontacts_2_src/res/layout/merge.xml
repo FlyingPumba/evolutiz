@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ * merge.xml
+ *
+ * Copyright (C) 2009 Tim Marston <edam@waxworlds.org>
+ *
+ * This file is part of the Import Contacts program (hereafter referred
+ * to as "this program"). For more information, see
+ * http://www.waxworlds.org/edam/software/android/import-contacts
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+	<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1" >
+		<LinearLayout android:layout_height="fill_parent" android:orientation="vertical" android:layout_width="fill_parent">
+
+			<TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/merge_title" android:textAppearance="?android:attr/textAppearanceMedium"/>
+			<TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/merge_help" />
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			<RadioGroup android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/merge_setting">
+				<RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/merge_prompt" android:text="@string/merge_prompt" />
+				<RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/merge_keep" android:text="@string/merge_keep" />
+				<RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/merge_merge" android:text="@string/merge_merge" />
+				<RadioButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/merge_overwrite" android:text="@string/merge_overwrite" />
+			</RadioGroup>
+
+		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout android:orientation="horizontal" android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="right" android:background="@android:drawable/bottom_bar" android:weightSum="3">
+		<Button android:id="@+id/back" android:text="@string/back" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="1" android:enabled="false"/>
+		<Button android:id="@+id/next" android:text="@string/next" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_weight="1" android:enabled="false"/>
+	</LinearLayout>
+
+</LinearLayout>

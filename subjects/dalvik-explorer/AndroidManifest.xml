@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.jessies.dalvikexplorer" android:versionCode="34" android:versionName="3.4">
+    <!-- API 4 == 1.6 donut, API 17 == 4.2 jelly bean mr-1 http://developer.android.com/guide/appendix/api-levels.html -->
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="17" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" /> <!-- for GoogleTV -->
+    <application android:label="@string/app_name" android:icon="@drawable/icon">
+        <activity android:name="DalvikExplorerActivity" android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".BuildWidget" android:label="Build Widget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/build_widget_provider_info" />
+        </receiver>
+        <service android:name=".BuildWidget$UpdateService" />
+
+        <activity android:name=".BuildActivity" />
+        <activity android:name=".CharsetsActivity" />
+        <activity android:name=".CharsetActivity" />
+        <activity android:name=".DeviceActivity" />
+        <activity android:name=".EnvironmentVariablesActivity" />
+        <activity android:name=".FileSystemsActivity" />
+        <activity android:name=".FileSystemActivity" />
+        <activity android:name=".FileViewerActivity" />
+        <activity android:name=".LocalesActivity" />
+        <activity android:name=".LocaleCountriesActivity" />
+        <activity android:name=".LocaleActivity" />
+        <activity android:name=".SystemPropertiesActivity" />
+        <activity android:name=".TimeZonesActivity" />
+        <activity android:name=".TimeZoneActivity" />
+
+<receiver android:name="org.jessies.dalvikexplorer.EmmaInstrument.SMSInstrumentedReceiver">
+<intent-filter>
+<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+</intent-filter>
+</receiver>
+<activity android:label="EmmaInstrumentationActivity" android:name="org.jessies.dalvikexplorer.EmmaInstrument.InstrumentedActivity"/>
+</application>
+<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="org.jessies.dalvikexplorer.EmmaInstrument.EmmaInstrumentation" android:targetPackage="org.jessies.dalvikexplorer"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
+</manifest>

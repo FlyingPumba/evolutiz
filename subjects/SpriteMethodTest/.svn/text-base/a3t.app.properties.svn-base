@@ -1,0 +1,6 @@
+a3t.monkey=test.txt
+a3t.pkg=com.android.spritemethodtest
+a3t.mainact=.SpriteMethodTest
+a3t.out.dir=a3t_out
+a3t.userwait=4
+a3t.rw.kind=id_field_write

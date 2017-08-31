@@ -1,0 +1,129 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: muchlife
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for muchlife...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for muchlife...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 8 source files to /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/classes.dex...
+       [dx] Merged dex A (25 defs/23.1KiB) with dex B (2 defs/1.1KiB). Result is 27 defs/27.3KiB. Took 0.2s
+       [dx] Merged dex A (27 defs/27.3KiB) with dex B (297 defs/326.8KiB). Result is 324 defs/426.4KiB. Took 0.7s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/res/drawable-hdpi/background.png => /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable-hdpi/background.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable-hdpi/background.png: 83% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/res/drawable-hdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable-hdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable-hdpi/icon.png: 69% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/res/drawable-mdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable-mdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable-mdpi/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/res/drawable/five.png => /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/five.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/five.png: 68% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/res/drawable/four.png => /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/four.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/four.png: 71% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/res/drawable/menu_dice.png => /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/menu_dice.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/menu_dice.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/res/drawable/one.png => /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/one.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/one.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/res/drawable/six.png => /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/six.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/six.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/res/drawable/three.png => /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/three.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/three.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/res/drawable/two.png => /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/two.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/res/drawable/two.png: 0% size of source)
+   [crunch] Crunched 10 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating muchlife-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/muchlife-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/MunchLife/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 25 seconds

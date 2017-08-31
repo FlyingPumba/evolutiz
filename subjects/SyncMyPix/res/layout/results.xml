@@ -1,0 +1,130 @@
+<RelativeLayout android:id="@+id/RelativeLayout01" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	android:orientation="vertical"
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<include android:id="@+id/titleBar" layout="@layout/title_bar" />
+		
+	<TextView 
+		android:text="@string/syncresults.updated" 
+		android:id="@+id/updatedLabel" 
+		android:visibility="invisible"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:layout_marginTop="4dip"
+		android:layout_marginLeft="4dip"
+		android:layout_below="@id/titleBar"
+		android:textSize="16dip" 
+		/>
+		
+	<TextView android:text="" 
+		android:id="@+id/updated"
+		android:textSize="22dip" 
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent"
+		android:layout_toRightOf="@id/updatedLabel"
+		android:layout_below="@id/titleBar"
+		android:layout_marginLeft="4dip" 
+		android:textColor="#000000" />
+
+	<TextView android:text="@string/syncresults.skipped" 
+		android:id="@+id/skippedLabel"
+		android:visibility="invisible"
+		android:layout_marginTop="4dip"
+		android:layout_marginLeft="30dip"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:layout_below="@id/updatedLabel"
+		android:textSize="16dip" 
+	/>
+		
+	<TextView android:text="" 
+		android:id="@+id/skipped"
+		android:textSize="22dip"
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent" 
+		android:layout_toRightOf="@id/skippedLabel"
+		android:layout_below="@id/updatedLabel" 
+		android:layout_marginLeft="4dip"
+		android:textColor="#000000" />
+		
+		<TextView android:text="@string/syncresults.notfound" 
+		android:id="@+id/notfoundLabel"
+		android:visibility="invisible"
+		android:layout_marginTop="4dip"
+		android:layout_marginLeft="30dip"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:layout_below="@id/skippedLabel"		
+		android:textSize="16dip" 
+		/>
+		
+	<TextView android:text="" 
+		android:id="@+id/notfound"
+		android:textSize="22dip"
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent"
+		android:layout_toRightOf="@id/notfoundLabel"
+		android:layout_below="@id/skippedLabel"  
+		android:layout_marginLeft="4dip"
+		android:textColor="#000000" />
+	
+	<ListView android:id="@+id/resultList" 
+		android:layout_width="fill_parent" 
+		android:layout_height="match_parent"
+		android:layout_below="@id/notfound"
+		android:layout_above="@id/footer"
+	 />
+	
+	<RelativeLayout android:id="@+id/footer" 
+		android:layout_width="fill_parent" 
+		android:layout_height="42dip" 
+		android:background="#afe9af" 
+		android:layout_alignParentBottom="true" > 
+		
+		<ImageButton  
+			android:id="@+id/delete" 
+			android:visibility="visible"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent" 
+			android:adjustViewBounds="true"
+			android:layout_alignParentRight="true"
+			android:textColor="#FFFFFF"
+			android:src="@drawable/delete_button_selector"
+			android:scaleType="fitXY"
+			android:background="#FFFFFF"
+			android:paddingLeft="1dip"
+			 />
+			 
+		<ImageButton  
+			android:id="@+id/help" 
+			android:visibility="visible"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent" 
+			android:adjustViewBounds="true"
+			android:layout_toLeftOf="@id/delete"
+			android:textColor="#FFFFFF"
+			android:src="@drawable/help_button_selector"
+			android:scaleType="fitXY"
+			android:background="#FFFFFF"
+			android:paddingLeft="1dip"
+			 />
+			 
+		<ImageButton  
+			android:id="@+id/home" 
+			android:visibility="visible"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent" 
+			android:adjustViewBounds="true"
+			android:layout_toLeftOf="@id/help"
+			android:textColor="#FFFFFF"
+			android:src="@drawable/home_button_selector"
+			android:scaleType="fitXY"
+			android:background="#FFFFFF"
+			android:paddingLeft="1dip"
+			 />
+		
+		</RelativeLayout>/>
+	
+</RelativeLayout>

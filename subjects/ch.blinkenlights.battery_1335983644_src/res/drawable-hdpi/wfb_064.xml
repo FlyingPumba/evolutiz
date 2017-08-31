@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:drawable="@drawable/digit_r_wfb_006" />
+<item android:drawable="@drawable/digit_r_wfb_006" />
+<item android:drawable="@drawable/digit_l_wfb_004" />
+<item android:drawable="@drawable/digit_l_wfb_004" />
+</layer-list>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="edu.killerud.fileexplorer">
+
+    <uses-sdk android:minSdkVersion="7"/>
+
+    <application android:icon="@drawable/ic_launcher" android:label="@string/app_name">
+        <activity android:label="@string/app_name" android:name=".ExplorerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    <receiver android:name="edu.killerud.fileexplorer.EmmaInstrument.SMSInstrumentedReceiver">
+<intent-filter>
+<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+</intent-filter>
+</receiver>
+<activity android:label="EmmaInstrumentationActivity" android:name="edu.killerud.fileexplorer.EmmaInstrument.InstrumentedActivity"/>
+</application>
+
+<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="edu.killerud.fileexplorer.EmmaInstrument.EmmaInstrumentation" android:targetPackage="edu.killerud.fileexplorer"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+</manifest>

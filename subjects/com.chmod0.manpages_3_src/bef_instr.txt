@@ -1,0 +1,3549 @@
+class com.chmod0.manpages.BrowserActivity$1 extends android.webkit.WebChromeClient
+{
+    final android.app.Activity val$activity;
+    final com.chmod0.manpages.BrowserActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>(com.chmod0.manpages.BrowserActivity, android.app.Activity)
+    {
+        com.chmod0.manpages.BrowserActivity$1 r0;
+        com.chmod0.manpages.BrowserActivity r1;
+        android.app.Activity r2;
+        boolean[][] $r3;
+        boolean[] r4;
+
+        r0 := @this: com.chmod0.manpages.BrowserActivity$1;
+        r1 := @parameter0: com.chmod0.manpages.BrowserActivity;
+        r2 := @parameter1: android.app.Activity;
+        $r3 = <com.chmod0.manpages.BrowserActivity$1: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.chmod0.manpages.BrowserActivity$1: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[0];
+        r0.<com.chmod0.manpages.BrowserActivity$1: com.chmod0.manpages.BrowserActivity this$0> = r1;
+        r0.<com.chmod0.manpages.BrowserActivity$1: android.app.Activity val$activity> = r2;
+        specialinvoke r0.<android.webkit.WebChromeClient: void <init>()>();
+        r4[0] = 1;
+        return;
+    }
+
+    public void onProgressChanged(android.webkit.WebView, int)
+    {
+        com.chmod0.manpages.BrowserActivity$1 r0;
+        android.webkit.WebView r1;
+        int i0, $i1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.app.Activity $r4, $r5, $r6;
+
+        r0 := @this: com.chmod0.manpages.BrowserActivity$1;
+        r1 := @parameter0: android.webkit.WebView;
+        i0 := @parameter1: int;
+        $r2 = <com.chmod0.manpages.BrowserActivity$1: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.BrowserActivity$1: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        $r4 = r0.<com.chmod0.manpages.BrowserActivity$1: android.app.Activity val$activity>;
+        virtualinvoke $r4.<android.app.Activity: void setTitle(java.lang.CharSequence)>("Loading...");
+        $r5 = r0.<com.chmod0.manpages.BrowserActivity$1: android.app.Activity val$activity>;
+        $i1 = i0 * 100;
+        virtualinvoke $r5.<android.app.Activity: void setProgress(int)>($i1);
+        r3[0] = 1;
+        if i0 != 100 goto label1;
+
+        $r6 = r0.<com.chmod0.manpages.BrowserActivity$1: android.app.Activity val$activity>;
+        virtualinvoke $r6.<android.app.Activity: void setTitle(java.lang.CharSequence)>("Manpages");
+        r3[1] = 1;
+
+     label1:
+        r3[2] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.BrowserActivity$1: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.chmod0.manpages.BrowserActivity$1: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/BrowserActivity$1", 5608466405240344237L);
+        return $r0;
+    }
+}
+class com.chmod0.manpages.BrowserActivity$MyWebViewClient extends android.webkit.WebViewClient
+{
+    final com.chmod0.manpages.BrowserActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    private void <init>(com.chmod0.manpages.BrowserActivity)
+    {
+        com.chmod0.manpages.BrowserActivity$MyWebViewClient r0;
+        com.chmod0.manpages.BrowserActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.chmod0.manpages.BrowserActivity$MyWebViewClient;
+        r1 := @parameter0: com.chmod0.manpages.BrowserActivity;
+        $r2 = <com.chmod0.manpages.BrowserActivity$MyWebViewClient: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.BrowserActivity$MyWebViewClient: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        r0.<com.chmod0.manpages.BrowserActivity$MyWebViewClient: com.chmod0.manpages.BrowserActivity this$0> = r1;
+        specialinvoke r0.<android.webkit.WebViewClient: void <init>()>();
+        r3[0] = 1;
+        return;
+    }
+
+    public boolean shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String)
+    {
+        com.chmod0.manpages.BrowserActivity$MyWebViewClient r0;
+        android.webkit.WebView r1;
+        java.lang.String r2, $r9;
+        boolean[][] $r3;
+        boolean[] r4;
+        java.net.URL r5, $r8;
+        android.content.Intent r6, $r10;
+        android.net.Uri r7;
+        boolean $z0, $z1, $z2;
+        com.chmod0.manpages.BrowserActivity $r12;
+        java.lang.Exception $r13, r14;
+
+        r0 := @this: com.chmod0.manpages.BrowserActivity$MyWebViewClient;
+        r1 := @parameter0: android.webkit.WebView;
+        r2 := @parameter1: java.lang.String;
+        $r3 = <com.chmod0.manpages.BrowserActivity$MyWebViewClient: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.chmod0.manpages.BrowserActivity$MyWebViewClient: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+
+     label1:
+        $r8 = new java.net.URL;
+        specialinvoke $r8.<java.net.URL: void <init>(java.lang.String)>(r2);
+        r5 = $r8;
+        $r9 = virtualinvoke r5.<java.net.URL: java.lang.String getHost()>();
+        $z0 = virtualinvoke $r9.<java.lang.String: boolean equals(java.lang.Object)>("julien.guepin.fr");
+        r4[0] = 1;
+        if $z0 == 0 goto label3;
+
+        $z1 = 0;
+        r4[1] = 1;
+
+     label2:
+        return $z1;
+
+     label3:
+        $r10 = new android.content.Intent;
+        specialinvoke $r10.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.VIEW");
+        r6 = $r10;
+        r7 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>(r2);
+        virtualinvoke r6.<android.content.Intent: android.content.Intent setData(android.net.Uri)>(r7);
+        $r12 = r0.<com.chmod0.manpages.BrowserActivity$MyWebViewClient: com.chmod0.manpages.BrowserActivity this$0>;
+        virtualinvoke $r12.<com.chmod0.manpages.BrowserActivity: void startActivity(android.content.Intent)>(r6);
+        $z2 = 1;
+        r4[2] = 1;
+
+     label4:
+        return $z2;
+
+     label5:
+        $r13 := @caughtexception;
+        r14 = $r13;
+        virtualinvoke r14.<java.lang.Exception: void printStackTrace()>();
+        r4[3] = 1;
+        return 0;
+
+        catch java.lang.Exception from label1 to label2 with label5;
+        catch java.lang.Exception from label3 to label4 with label5;
+    }
+
+    void <init>(com.chmod0.manpages.BrowserActivity, com.chmod0.manpages.BrowserActivity$1)
+    {
+        com.chmod0.manpages.BrowserActivity$MyWebViewClient r0;
+        com.chmod0.manpages.BrowserActivity r1;
+        com.chmod0.manpages.BrowserActivity$1 r2;
+        boolean[][] $r3;
+        boolean[] r4;
+
+        r0 := @this: com.chmod0.manpages.BrowserActivity$MyWebViewClient;
+        r1 := @parameter0: com.chmod0.manpages.BrowserActivity;
+        r2 := @parameter1: com.chmod0.manpages.BrowserActivity$1;
+        $r3 = <com.chmod0.manpages.BrowserActivity$MyWebViewClient: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.chmod0.manpages.BrowserActivity$MyWebViewClient: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[2];
+        specialinvoke r0.<com.chmod0.manpages.BrowserActivity$MyWebViewClient: void <init>(com.chmod0.manpages.BrowserActivity)>(r1);
+        r4[0] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.BrowserActivity$MyWebViewClient: boolean[][] $VRi()>();
+        r1 = $r0[3];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4;
+
+        $r0 = newmultiarray (boolean)[4][];
+        <com.chmod0.manpages.BrowserActivity$MyWebViewClient: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[4];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/BrowserActivity$MyWebViewClient", -3206743650971770572L);
+        return $r0;
+    }
+}
+public class com.chmod0.manpages.BrowserActivity extends android.app.Activity
+{
+    private android.webkit.WebView webview;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.BrowserActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.chmod0.manpages.BrowserActivity;
+        $r1 = <com.chmod0.manpages.BrowserActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.BrowserActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.chmod0.manpages.BrowserActivity r0, r6;
+        android.os.Bundle r1, $r10, $r12;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.chmod0.manpages.Page r4;
+        java.lang.String r5, r7, $r18, $r40;
+        android.view.Window $r8;
+        android.content.Intent $r9;
+        java.lang.Object $r11, $r13;
+        java.lang.StringBuilder $r14, $r15, $r16, $r17, $r19, $r20, $r21, $r22, $r31, $r32, $r34, $r35, $r37, $r38, $r39;
+        int $i0, $i1;
+        android.view.View $r23;
+        android.webkit.WebView $r24, $r25, $r27, $r29, $r36;
+        com.chmod0.manpages.BrowserActivity$MyWebViewClient $r26;
+        android.webkit.WebSettings $r28;
+        com.chmod0.manpages.BrowserActivity$1 $r30;
+        boolean $z1;
+        java.io.File $r33;
+
+        r0 := @this: com.chmod0.manpages.BrowserActivity;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.chmod0.manpages.BrowserActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.BrowserActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>(r1);
+        $r8 = virtualinvoke r0.<com.chmod0.manpages.BrowserActivity: android.view.Window getWindow()>();
+        virtualinvoke $r8.<android.view.Window: boolean requestFeature(int)>(2);
+        virtualinvoke r0.<com.chmod0.manpages.BrowserActivity: void setContentView(int)>(2130903043);
+        $r9 = virtualinvoke r0.<com.chmod0.manpages.BrowserActivity: android.content.Intent getIntent()>();
+        $r10 = virtualinvoke $r9.<android.content.Intent: android.os.Bundle getExtras()>();
+        $r11 = virtualinvoke $r10.<android.os.Bundle: java.lang.Object get(java.lang.String)>("manpage");
+        $r12 = (android.os.Bundle) $r11;
+        $r13 = virtualinvoke $r12.<android.os.Bundle: java.lang.Object get(java.lang.String)>("manpage");
+        r4 = (com.chmod0.manpages.Page) $r13;
+        $r14 = new java.lang.StringBuilder;
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>()>();
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("htmlman/htmlman");
+        $i0 = virtualinvoke r4.<com.chmod0.manpages.Page: int getSection()>();
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/");
+        $r18 = virtualinvoke r4.<com.chmod0.manpages.Page: java.lang.String getName()>();
+        $r19 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r18);
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".");
+        $i1 = virtualinvoke r4.<com.chmod0.manpages.Page: int getSection()>();
+        $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".html");
+        r5 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.String toString()>();
+        $r23 = virtualinvoke r0.<com.chmod0.manpages.BrowserActivity: android.view.View findViewById(int)>(2131165188);
+        $r24 = (android.webkit.WebView) $r23;
+        r0.<com.chmod0.manpages.BrowserActivity: android.webkit.WebView webview> = $r24;
+        $r25 = r0.<com.chmod0.manpages.BrowserActivity: android.webkit.WebView webview>;
+        $r26 = new com.chmod0.manpages.BrowserActivity$MyWebViewClient;
+        specialinvoke $r26.<com.chmod0.manpages.BrowserActivity$MyWebViewClient: void <init>(com.chmod0.manpages.BrowserActivity,com.chmod0.manpages.BrowserActivity$1)>(r0, null);
+        virtualinvoke $r25.<android.webkit.WebView: void setWebViewClient(android.webkit.WebViewClient)>($r26);
+        $r27 = r0.<com.chmod0.manpages.BrowserActivity: android.webkit.WebView webview>;
+        $r28 = virtualinvoke $r27.<android.webkit.WebView: android.webkit.WebSettings getSettings()>();
+        virtualinvoke $r28.<android.webkit.WebSettings: void setJavaScriptEnabled(boolean)>(1);
+        r6 = r0;
+        $r29 = r0.<com.chmod0.manpages.BrowserActivity: android.webkit.WebView webview>;
+        $r30 = new com.chmod0.manpages.BrowserActivity$1;
+        specialinvoke $r30.<com.chmod0.manpages.BrowserActivity$1: void <init>(com.chmod0.manpages.BrowserActivity,android.app.Activity)>(r0, r6);
+        virtualinvoke $r29.<android.webkit.WebView: void setWebChromeClient(android.webkit.WebChromeClient)>($r30);
+        $z1 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean checkPageFilesOnExternalStorage(java.lang.String)>(r5);
+        r3[0] = 1;
+        if $z1 != 0 goto label1;
+
+        r7 = "http://julien.guepin.fr/android/manpages/";
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MANPAGES", "No file on ext storage");
+        r3[1] = 1;
+        goto label2;
+
+     label1:
+        $r31 = new java.lang.StringBuilder;
+        specialinvoke $r31.<java.lang.StringBuilder: void <init>()>();
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("file://");
+        $r33 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+        $r34 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r33);
+        $r35 = virtualinvoke $r34.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Android/data/com.chmod0.manpages/");
+        r7 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MANPAGES", "File present on ext storage");
+        r3[2] = 1;
+
+     label2:
+        $r36 = r0.<com.chmod0.manpages.BrowserActivity: android.webkit.WebView webview>;
+        $r37 = new java.lang.StringBuilder;
+        specialinvoke $r37.<java.lang.StringBuilder: void <init>()>();
+        $r38 = virtualinvoke $r37.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r7);
+        $r39 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r5);
+        $r40 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.String toString()>();
+        virtualinvoke $r36.<android.webkit.WebView: void loadUrl(java.lang.String)>($r40);
+        r3[3] = 1;
+        return;
+    }
+
+    public boolean onKeyDown(int, android.view.KeyEvent)
+    {
+        com.chmod0.manpages.BrowserActivity r0;
+        int i0;
+        android.view.KeyEvent r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.webkit.WebView $r4, $r5;
+        boolean $z0, $z1;
+
+        r0 := @this: com.chmod0.manpages.BrowserActivity;
+        i0 := @parameter0: int;
+        r1 := @parameter1: android.view.KeyEvent;
+        $r2 = <com.chmod0.manpages.BrowserActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.BrowserActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[2];
+        r3[0] = 1;
+        if i0 != 4 goto label1;
+
+        $r4 = r0.<com.chmod0.manpages.BrowserActivity: android.webkit.WebView webview>;
+        $z0 = virtualinvoke $r4.<android.webkit.WebView: boolean canGoBack()>();
+        r3[1] = 1;
+        if $z0 == 0 goto label1;
+
+        $r5 = r0.<com.chmod0.manpages.BrowserActivity: android.webkit.WebView webview>;
+        virtualinvoke $r5.<android.webkit.WebView: void goBack()>();
+        r3[2] = 1;
+        return 1;
+
+     label1:
+        $z1 = specialinvoke r0.<android.app.Activity: boolean onKeyDown(int,android.view.KeyEvent)>(i0, r1);
+        r3[3] = 1;
+        return $z1;
+    }
+
+    public boolean onCreateOptionsMenu(android.view.Menu)
+    {
+        com.chmod0.manpages.BrowserActivity r0;
+        android.view.Menu r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.view.MenuInflater $r4;
+        android.app.Application $r5;
+        boolean $z0;
+
+        r0 := @this: com.chmod0.manpages.BrowserActivity;
+        r1 := @parameter0: android.view.Menu;
+        $r2 = <com.chmod0.manpages.BrowserActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.BrowserActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[3];
+        $r4 = new android.view.MenuInflater;
+        $r5 = virtualinvoke r0.<com.chmod0.manpages.BrowserActivity: android.app.Application getApplication()>();
+        specialinvoke $r4.<android.view.MenuInflater: void <init>(android.content.Context)>($r5);
+        virtualinvoke $r4.<android.view.MenuInflater: void inflate(int,android.view.Menu)>(2131099648, r1);
+        $z0 = specialinvoke r0.<android.app.Activity: boolean onCreateOptionsMenu(android.view.Menu)>(r1);
+        r3[0] = 1;
+        return $z0;
+    }
+
+    public boolean onOptionsItemSelected(android.view.MenuItem)
+    {
+        com.chmod0.manpages.BrowserActivity r0;
+        android.view.MenuItem r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.view.LayoutInflater r4;
+        android.app.AlertDialog$Builder r5, r6, $r7, $r14;
+        int $i0;
+        android.view.View $r10, $r16;
+        boolean $z0;
+
+        r0 := @this: com.chmod0.manpages.BrowserActivity;
+        r1 := @parameter0: android.view.MenuItem;
+        $r2 = <com.chmod0.manpages.BrowserActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.BrowserActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[4];
+        r4 = virtualinvoke r0.<com.chmod0.manpages.BrowserActivity: android.view.LayoutInflater getLayoutInflater()>();
+        $i0 = interfaceinvoke r1.<android.view.MenuItem: int getItemId()>();
+        r3[0] = 1;
+        lookupswitch($i0)
+        {
+            case 2131165192: goto label2;
+            case 2131165193: goto label1;
+            default: goto label3;
+        };
+
+     label1:
+        $r7 = new android.app.AlertDialog$Builder;
+        specialinvoke $r7.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>(r0);
+        r5 = $r7;
+        virtualinvoke r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("About...");
+        virtualinvoke r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setIcon(int)>(2130837504);
+        $r10 = virtualinvoke r4.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>(2130903040, null, 0);
+        virtualinvoke r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setView(android.view.View)>($r10);
+        virtualinvoke r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("Ok", null);
+        virtualinvoke r5.<android.app.AlertDialog$Builder: android.app.AlertDialog show()>();
+        r3[1] = 1;
+        goto label3;
+
+     label2:
+        $r14 = new android.app.AlertDialog$Builder;
+        specialinvoke $r14.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>(r0);
+        r6 = $r14;
+        virtualinvoke r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("Sections");
+        $r16 = virtualinvoke r4.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>(2130903045, null, 0);
+        virtualinvoke r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setView(android.view.View)>($r16);
+        virtualinvoke r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("Ok", null);
+        virtualinvoke r6.<android.app.AlertDialog$Builder: android.app.AlertDialog show()>();
+        r3[2] = 1;
+
+     label3:
+        $z0 = specialinvoke r0.<android.app.Activity: boolean onOptionsItemSelected(android.view.MenuItem)>(r1);
+        r3[3] = 1;
+        return $z0;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.BrowserActivity: boolean[][] $VRi()>();
+        r1 = $r0[5];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6;
+
+        $r0 = newmultiarray (boolean)[6][];
+        <com.chmod0.manpages.BrowserActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[4];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[4];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[4];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[1];
+        $r0[5] = $r6;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/BrowserActivity", -8341393788208797992L);
+        return $r0;
+    }
+}
+public final class com.chmod0.manpages.BuildConfig extends java.lang.Object
+{
+    public static final boolean DEBUG;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.BuildConfig r0;
+
+        r0 := @this: com.chmod0.manpages.BuildConfig;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public class com.chmod0.manpages.DownloadZipTask extends com.chmod0.manpages.RotationAwareTask
+{
+    private java.lang.String destinationPath;
+    private java.lang.String sourcePath;
+    private com.chmod0.manpages.ManualActivity activity;
+    private int bytesCount;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>(com.chmod0.manpages.ManualActivity, java.lang.String, java.lang.String)
+    {
+        com.chmod0.manpages.DownloadZipTask r0;
+        com.chmod0.manpages.ManualActivity r1;
+        java.lang.String r2, r3;
+        boolean[][] $r4;
+        boolean[] r5;
+
+        r0 := @this: com.chmod0.manpages.DownloadZipTask;
+        r1 := @parameter0: com.chmod0.manpages.ManualActivity;
+        r2 := @parameter1: java.lang.String;
+        r3 := @parameter2: java.lang.String;
+        $r4 = <com.chmod0.manpages.DownloadZipTask: boolean[][] $VRc>;
+        if $r4 != null goto label0;
+
+        $r4 = staticinvoke <com.chmod0.manpages.DownloadZipTask: boolean[][] $VRi()>();
+
+     label0:
+        r5 = $r4[0];
+        specialinvoke r0.<com.chmod0.manpages.RotationAwareTask: void <init>(com.chmod0.manpages.ManualActivity)>(r1);
+        r0.<com.chmod0.manpages.DownloadZipTask: com.chmod0.manpages.ManualActivity activity> = r1;
+        r0.<com.chmod0.manpages.DownloadZipTask: java.lang.String destinationPath> = r3;
+        r0.<com.chmod0.manpages.DownloadZipTask: java.lang.String sourcePath> = r2;
+        r0.<com.chmod0.manpages.DownloadZipTask: int bytesCount> = 0;
+        r5[0] = 1;
+        return;
+    }
+
+    protected transient java.lang.Void doInBackground(java.lang.Void[])
+    {
+        com.chmod0.manpages.DownloadZipTask r0;
+        java.lang.Void[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.net.HttpURLConnection r4;
+        java.io.InputStream r5;
+        java.io.FileOutputStream r6, $r11;
+        byte[] r7;
+        byte b0;
+        java.net.URL $r8;
+        java.lang.String $r9, $r13, $r16;
+        java.net.URLConnection $r10;
+        java.lang.StringBuilder $r12, $r14, $r15;
+        int $i1, i2, $i3, $i4;
+        java.lang.Integer[] $r18;
+        java.lang.Integer $r19;
+        java.net.MalformedURLException $r20, r21;
+        java.io.IOException $r22, r23;
+
+        r0 := @this: com.chmod0.manpages.DownloadZipTask;
+        r1 := @parameter0: java.lang.Void[];
+        $r2 = <com.chmod0.manpages.DownloadZipTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.DownloadZipTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+
+     label1:
+        $r8 = new java.net.URL;
+        $r9 = r0.<com.chmod0.manpages.DownloadZipTask: java.lang.String sourcePath>;
+        specialinvoke $r8.<java.net.URL: void <init>(java.lang.String)>($r9);
+        $r10 = virtualinvoke $r8.<java.net.URL: java.net.URLConnection openConnection()>();
+        r4 = (java.net.HttpURLConnection) $r10;
+        virtualinvoke r4.<java.net.HttpURLConnection: void setDoInput(boolean)>(1);
+        virtualinvoke r4.<java.net.HttpURLConnection: void setConnectTimeout(int)>(10000);
+        virtualinvoke r4.<java.net.HttpURLConnection: void connect()>();
+        r5 = virtualinvoke r4.<java.net.HttpURLConnection: java.io.InputStream getInputStream()>();
+        $r11 = new java.io.FileOutputStream;
+        $r12 = new java.lang.StringBuilder;
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+        $r13 = r0.<com.chmod0.manpages.DownloadZipTask: java.lang.String destinationPath>;
+        $r14 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r13);
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("manpages.zip");
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.String toString()>();
+        specialinvoke $r11.<java.io.FileOutputStream: void <init>(java.lang.String)>($r16);
+        r6 = $r11;
+        r7 = newarray (byte)[4096];
+        b0 = -1;
+        r3[0] = 1;
+
+     label2:
+        $i1 = virtualinvoke r5.<java.io.InputStream: int read(byte[])>(r7);
+        i2 = $i1;
+        r3[1] = 1;
+        if $i1 == -1 goto label3;
+
+        virtualinvoke r6.<java.io.FileOutputStream: void write(byte[],int,int)>(r7, 0, i2);
+        $i3 = r0.<com.chmod0.manpages.DownloadZipTask: int bytesCount>;
+        $i4 = $i3 + i2;
+        r0.<com.chmod0.manpages.DownloadZipTask: int bytesCount> = $i4;
+        $r18 = newarray (java.lang.Integer)[1];
+        $r19 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(4096);
+        $r18[0] = $r19;
+        virtualinvoke r0.<com.chmod0.manpages.DownloadZipTask: void publishProgress(java.lang.Object[])>($r18);
+        r3[2] = 1;
+        goto label2;
+
+     label3:
+        virtualinvoke r6.<java.io.FileOutputStream: void flush()>();
+        virtualinvoke r6.<java.io.FileOutputStream: void close()>();
+        r3[3] = 1;
+
+     label4:
+        goto label7;
+
+     label5:
+        $r20 := @caughtexception;
+        r21 = $r20;
+        virtualinvoke r21.<java.net.MalformedURLException: void printStackTrace()>();
+        r3[4] = 1;
+        goto label7;
+
+     label6:
+        $r22 := @caughtexception;
+        r23 = $r22;
+        virtualinvoke r23.<java.io.IOException: void printStackTrace()>();
+        r3[5] = 1;
+
+     label7:
+        r3[6] = 1;
+        return null;
+
+        catch java.net.MalformedURLException from label1 to label4 with label5;
+        catch java.io.IOException from label1 to label4 with label6;
+    }
+
+    protected transient void onProgressUpdate(java.lang.Integer[])
+    {
+        com.chmod0.manpages.DownloadZipTask r0;
+        java.lang.Integer[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.widget.ProgressBar r4;
+        android.widget.TextView r5;
+        boolean $z0;
+        com.chmod0.manpages.ManualActivity $r6, $r9;
+        android.app.AlertDialog $r7, $r10;
+        android.view.View $r8, $r11;
+        java.lang.StringBuilder $r12, $r13, $r14;
+        int $i0, $i1;
+        java.lang.String $r15;
+
+        r0 := @this: com.chmod0.manpages.DownloadZipTask;
+        r1 := @parameter0: java.lang.Integer[];
+        $r2 = <com.chmod0.manpages.DownloadZipTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.DownloadZipTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[2];
+        specialinvoke r0.<com.chmod0.manpages.RotationAwareTask: void onProgressUpdate(java.lang.Object[])>(r1);
+        $z0 = virtualinvoke r0.<com.chmod0.manpages.DownloadZipTask: boolean isCancelled()>();
+        r3[0] = 1;
+        if $z0 != 0 goto label1;
+
+        $r6 = r0.<com.chmod0.manpages.DownloadZipTask: com.chmod0.manpages.ManualActivity activity>;
+        $r7 = $r6.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog progressDialog>;
+        $r8 = virtualinvoke $r7.<android.app.AlertDialog: android.view.View findViewById(int)>(2131165190);
+        r4 = (android.widget.ProgressBar) $r8;
+        virtualinvoke r4.<android.widget.ProgressBar: void incrementProgressBy(int)>(4096);
+        $r9 = r0.<com.chmod0.manpages.DownloadZipTask: com.chmod0.manpages.ManualActivity activity>;
+        $r10 = $r9.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog progressDialog>;
+        $r11 = virtualinvoke $r10.<android.app.AlertDialog: android.view.View findViewById(int)>(2131165191);
+        r5 = (android.widget.TextView) $r11;
+        $r12 = new java.lang.StringBuilder;
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+        $i0 = r0.<com.chmod0.manpages.DownloadZipTask: int bytesCount>;
+        $i1 = $i0 / 1000;
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i1);
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/5 400 KB");
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+        virtualinvoke r5.<android.widget.TextView: void setText(java.lang.CharSequence)>($r15);
+        r3[1] = 1;
+
+     label1:
+        r3[2] = 1;
+        return;
+    }
+
+    protected void onPostExecute(java.lang.Void)
+    {
+        com.chmod0.manpages.DownloadZipTask r0;
+        java.lang.Void r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.chmod0.manpages.ManualActivity $r4;
+        java.lang.String $r5;
+
+        r0 := @this: com.chmod0.manpages.DownloadZipTask;
+        r1 := @parameter0: java.lang.Void;
+        $r2 = <com.chmod0.manpages.DownloadZipTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.DownloadZipTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[3];
+        specialinvoke r0.<com.chmod0.manpages.RotationAwareTask: void onPostExecute(java.lang.Object)>(r1);
+        $r4 = r0.<com.chmod0.manpages.DownloadZipTask: com.chmod0.manpages.ManualActivity activity>;
+        $r5 = r0.<com.chmod0.manpages.DownloadZipTask: java.lang.String destinationPath>;
+        virtualinvoke $r4.<com.chmod0.manpages.ManualActivity: void extractZipFile(java.lang.String)>($r5);
+        r3[0] = 1;
+        return;
+    }
+
+    protected volatile void onProgressUpdate(java.lang.Object[])
+    {
+        com.chmod0.manpages.DownloadZipTask r0;
+        java.lang.Object[] r1;
+        java.lang.Integer[] $r2;
+
+        r0 := @this: com.chmod0.manpages.DownloadZipTask;
+        r1 := @parameter0: java.lang.Object[];
+        $r2 = (java.lang.Integer[]) r1;
+        virtualinvoke r0.<com.chmod0.manpages.DownloadZipTask: void onProgressUpdate(java.lang.Integer[])>($r2);
+        return;
+    }
+
+    protected volatile void onPostExecute(java.lang.Object)
+    {
+        com.chmod0.manpages.DownloadZipTask r0;
+        java.lang.Object r1;
+        java.lang.Void $r2;
+
+        r0 := @this: com.chmod0.manpages.DownloadZipTask;
+        r1 := @parameter0: java.lang.Object;
+        $r2 = (java.lang.Void) r1;
+        virtualinvoke r0.<com.chmod0.manpages.DownloadZipTask: void onPostExecute(java.lang.Void)>($r2);
+        return;
+    }
+
+    protected volatile java.lang.Object doInBackground(java.lang.Object[])
+    {
+        com.chmod0.manpages.DownloadZipTask r0;
+        java.lang.Object[] r1;
+        java.lang.Void[] $r2;
+        java.lang.Void $r3;
+
+        r0 := @this: com.chmod0.manpages.DownloadZipTask;
+        r1 := @parameter0: java.lang.Object[];
+        $r2 = (java.lang.Void[]) r1;
+        $r3 = virtualinvoke r0.<com.chmod0.manpages.DownloadZipTask: java.lang.Void doInBackground(java.lang.Void[])>($r2);
+        return $r3;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.DownloadZipTask: boolean[][] $VRi()>();
+        r1 = $r0[7];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5;
+
+        $r0 = newmultiarray (boolean)[8][];
+        <com.chmod0.manpages.DownloadZipTask: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[7];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[3];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[7] = $r5;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/DownloadZipTask", -1244656665542061400L);
+        return $r0;
+    }
+}
+public class com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation extends android.app.Instrumentation implements com.chmod0.manpages.EmmaInstrument.FinishListener
+{
+    public static java.lang.String TAG;
+    private static final java.lang.String DEFAULT_COVERAGE_FILE_PATH;
+    private final android.os.Bundle mResults;
+    private android.content.Intent mIntent;
+    private static final boolean LOGD;
+    private boolean mCoverage;
+    private java.lang.String mCoverageFilePath;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.os.Bundle $r3;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.Instrumentation: void <init>()>();
+        $r3 = new android.os.Bundle;
+        specialinvoke $r3.<android.os.Bundle: void <init>()>();
+        r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults> = $r3;
+        r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean mCoverage> = 1;
+        r2[0] = 1;
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.String $r4, $r9, $r10;
+        java.lang.StringBuilder $r5, $r6, $r7, $r8;
+        boolean $z0;
+        android.content.Intent $r11, $r13;
+        android.content.Context $r12;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        $r4 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r5 = new java.lang.StringBuilder;
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("onCreate(");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, $r9);
+        specialinvoke r0.<android.app.Instrumentation: void onCreate(android.os.Bundle)>(r1);
+        r3[0] = 1;
+        if r1 == null goto label1;
+
+        $z0 = specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean getBooleanArgument(android.os.Bundle,java.lang.String)>(r1, "coverage");
+        r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean mCoverage> = $z0;
+        $r10 = virtualinvoke r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>("coverageFile");
+        r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath> = $r10;
+        r3[1] = 1;
+
+     label1:
+        $r11 = new android.content.Intent;
+        $r12 = virtualinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: android.content.Context getTargetContext()>();
+        specialinvoke $r11.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r12, class "com/chmod0/manpages/EmmaInstrument/InstrumentedActivity");
+        r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent> = $r11;
+        $r13 = r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent>;
+        virtualinvoke $r13.<android.content.Intent: android.content.Intent setFlags(int)>(268435456);
+        virtualinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void start()>();
+        r3[2] = 1;
+        return;
+    }
+
+    public void onStart()
+    {
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.chmod0.manpages.EmmaInstrument.InstrumentedActivity r3;
+        java.lang.String $r4;
+        android.content.Intent $r5;
+        android.app.Activity $r6;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        $r4 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, "onStart()");
+        specialinvoke r0.<android.app.Instrumentation: void onStart()>();
+        staticinvoke <android.os.Looper: void prepare()>();
+        $r5 = r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent>;
+        $r6 = virtualinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: android.app.Activity startActivitySync(android.content.Intent)>($r5);
+        r3 = (com.chmod0.manpages.EmmaInstrument.InstrumentedActivity) $r6;
+        virtualinvoke r3.<com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: void setFinishListener(com.chmod0.manpages.EmmaInstrument.FinishListener)>(r0);
+        r2[0] = 1;
+        return;
+    }
+
+    private boolean getBooleanArgument(android.os.Bundle, java.lang.String)
+    {
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r0;
+        android.os.Bundle r1;
+        java.lang.String r2, r5;
+        boolean[][] $r3;
+        boolean[] r4;
+        boolean $z0, $z1;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: android.os.Bundle;
+        r2 := @parameter1: java.lang.String;
+        $r3 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[3];
+        r5 = virtualinvoke r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>(r2);
+        r4[0] = 1;
+        if r5 == null goto label1;
+
+        $z0 = staticinvoke <java.lang.Boolean: boolean parseBoolean(java.lang.String)>(r5);
+        r4[1] = 1;
+        if $z0 == 0 goto label1;
+
+        $z1 = 1;
+        r4[2] = 1;
+        goto label2;
+
+     label1:
+        $z1 = 0;
+        r4[3] = 1;
+
+     label2:
+        r4[4] = 1;
+        return $z1;
+    }
+
+    private void generateCoverageReport()
+    {
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.io.File r3, $r7;
+        java.lang.Class r4, $r10, $r11, $r12;
+        java.lang.reflect.Method r5;
+        java.lang.String $r6, $r8;
+        java.lang.Class[] $r9;
+        java.lang.Object[] $r13;
+        java.lang.Boolean $r14, $r15;
+        java.lang.ClassNotFoundException $r17, r18;
+        java.lang.SecurityException $r19, r20;
+        java.lang.NoSuchMethodException $r21, r22;
+        java.lang.IllegalArgumentException $r23, r24;
+        java.lang.IllegalAccessException $r25, r26;
+        java.lang.reflect.InvocationTargetException $r27, r28;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[4];
+        $r6 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r6, "generateCoverageReport()");
+        $r7 = new java.io.File;
+        $r8 = specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String getCoverageFilePath()>();
+        specialinvoke $r7.<java.io.File: void <init>(java.lang.String)>($r8);
+        r3 = $r7;
+
+     label1:
+        r4 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("com.vladium.emma.rt.RT");
+        $r9 = newarray (java.lang.Class)[3];
+        $r10 = virtualinvoke r3.<java.lang.Object: java.lang.Class getClass()>();
+        $r9[0] = $r10;
+        $r11 = <java.lang.Boolean: java.lang.Class TYPE>;
+        $r9[1] = $r11;
+        $r12 = <java.lang.Boolean: java.lang.Class TYPE>;
+        $r9[2] = $r12;
+        r5 = virtualinvoke r4.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("dumpCoverageData", $r9);
+        $r13 = newarray (java.lang.Object)[3];
+        $r13[0] = r3;
+        $r14 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+        $r13[1] = $r14;
+        $r15 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+        $r13[2] = $r15;
+        virtualinvoke r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r13);
+        r2[0] = 1;
+
+     label2:
+        goto label9;
+
+     label3:
+        $r17 := @caughtexception;
+        r18 = $r17;
+        specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>("Emma.jar not in the class path?", r18);
+        r2[1] = 1;
+        goto label9;
+
+     label4:
+        $r19 := @caughtexception;
+        r20 = $r19;
+        specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r20);
+        r2[2] = 1;
+        goto label9;
+
+     label5:
+        $r21 := @caughtexception;
+        r22 = $r21;
+        specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r22);
+        r2[3] = 1;
+        goto label9;
+
+     label6:
+        $r23 := @caughtexception;
+        r24 = $r23;
+        specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r24);
+        r2[4] = 1;
+        goto label9;
+
+     label7:
+        $r25 := @caughtexception;
+        r26 = $r25;
+        specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r26);
+        r2[5] = 1;
+        goto label9;
+
+     label8:
+        $r27 := @caughtexception;
+        r28 = $r27;
+        specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r28);
+        r2[6] = 1;
+
+     label9:
+        r2[7] = 1;
+        return;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label3;
+        catch java.lang.SecurityException from label1 to label2 with label4;
+        catch java.lang.NoSuchMethodException from label1 to label2 with label5;
+        catch java.lang.IllegalArgumentException from label1 to label2 with label6;
+        catch java.lang.IllegalAccessException from label1 to label2 with label7;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label8;
+    }
+
+    private java.lang.String getCoverageFilePath()
+    {
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[5];
+        $r3 = r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath>;
+        r2[0] = 1;
+        if $r3 != null goto label1;
+
+        r2[1] = 1;
+        return "/mnt/sdcard/coverage.ec";
+
+     label1:
+        $r4 = r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath>;
+        r2[2] = 1;
+        return $r4;
+    }
+
+    private boolean setCoverageFilePath(java.lang.String)
+    {
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        int $i0;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[6];
+        r3[0] = 1;
+        if r1 == null goto label1;
+
+        $i0 = virtualinvoke r1.<java.lang.String: int length()>();
+        r3[1] = 1;
+        if $i0 <= 0 goto label1;
+
+        r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath> = r1;
+        r3[2] = 1;
+        return 1;
+
+     label1:
+        r3[3] = 1;
+        return 0;
+    }
+
+    private void reportEmmaError(java.lang.Exception)
+    {
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.Exception r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.Exception;
+        $r2 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[7];
+        specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>("", r1);
+        r3[0] = 1;
+        return;
+    }
+
+    private void reportEmmaError(java.lang.String, java.lang.Exception)
+    {
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1, r5, $r9, $r14;
+        java.lang.Exception r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        java.lang.StringBuilder $r6, $r7, $r8, $r11, $r12, $r13;
+        android.os.Bundle $r10;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        r2 := @parameter1: java.lang.Exception;
+        $r3 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[8];
+        $r6 = new java.lang.StringBuilder;
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to generate emma coverage. ");
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        r5 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        $r9 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>($r9, r5, r2);
+        $r10 = r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults>;
+        $r11 = new java.lang.StringBuilder;
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\nError: ");
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r5);
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+        virtualinvoke $r10.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("stream", $r14);
+        r4[0] = 1;
+        return;
+    }
+
+    public void onActivityFinished()
+    {
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String $r3;
+        boolean $z0;
+        android.os.Bundle $r4;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[9];
+        $r3 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r3, "onActivityFinished()");
+        $z0 = r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean mCoverage>;
+        r2[0] = 1;
+        if $z0 == 0 goto label1;
+
+        specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>();
+        r2[1] = 1;
+
+     label1:
+        $r4 = r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults>;
+        virtualinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void finish(int,android.os.Bundle)>(-1, $r4);
+        r2[2] = 1;
+        return;
+    }
+
+    public void dumpIntermediateCoverage(java.lang.String)
+    {
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1, $r4, $r8, $r9, $r14;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.StringBuilder $r5, $r6, $r7, $r10, $r11, $r12, $r13;
+        boolean $z0, $z1;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[10];
+        $r4 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r5 = new java.lang.StringBuilder;
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Intermidate Dump Called with file name :");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, $r8);
+        $z0 = r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean mCoverage>;
+        r3[0] = 1;
+        if $z0 == 0 goto label2;
+
+        $z1 = specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>(r1);
+        r3[1] = 1;
+        if $z1 != 0 goto label1;
+
+        $r9 = <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r10 = new java.lang.StringBuilder;
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to set the given file path:");
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as dump target.");
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r9, $r14);
+        r3[2] = 1;
+
+     label1:
+        specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>();
+        specialinvoke r0.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>("/mnt/sdcard/coverage.ec");
+        r3[3] = 1;
+
+     label2:
+        r3[4] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        r1 = $r0[11];
+        <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG> = "EmmaInstrumentation:";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+
+        $r0 = newmultiarray (boolean)[12][];
+        <com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[5];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[8];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[3];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[4];
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r0[7] = $r8;
+        $r9 = newarray (boolean)[1];
+        $r0[8] = $r9;
+        $r10 = newarray (boolean)[3];
+        $r0[9] = $r10;
+        $r11 = newarray (boolean)[5];
+        $r0[10] = $r11;
+        $r12 = newarray (boolean)[1];
+        $r0[11] = $r12;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/EmmaInstrument/EmmaInstrumentation", -6390195098943533753L);
+        return $r0;
+    }
+}
+public interface  com.chmod0.manpages.EmmaInstrument.FinishListener extends java.lang.Object
+{
+
+    public abstract void onActivityFinished();
+
+    public abstract void dumpIntermediateCoverage(java.lang.String);
+}
+class com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector extends android.content.BroadcastReceiver
+{
+    final com.chmod0.manpages.EmmaInstrument.InstrumentedActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>(com.chmod0.manpages.EmmaInstrument.InstrumentedActivity)
+    {
+        com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector r0;
+        com.chmod0.manpages.EmmaInstrument.InstrumentedActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector;
+        r1 := @parameter0: com.chmod0.manpages.EmmaInstrument.InstrumentedActivity;
+        $r2 = <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        r0.<com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector: com.chmod0.manpages.EmmaInstrument.InstrumentedActivity this$0> = r1;
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+        r3[0] = 1;
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector r0;
+        android.content.Context r1;
+        android.content.Intent r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        android.os.Bundle r5;
+        java.lang.Object[] r6, $r13;
+        android.telephony.SmsMessage r7;
+        java.lang.String r8, r9, $r17;
+        com.chmod0.manpages.EmmaInstrument.InstrumentedActivity $r10, $r18;
+        com.chmod0.manpages.EmmaInstrument.FinishListener $r11, $r19;
+        java.lang.Object $r12, $r14;
+        int $i0;
+        byte[] $r15, $r16;
+        boolean $z0, $z1;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.content.Intent;
+        $r3 = <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+        r5 = virtualinvoke r2.<android.content.Intent: android.os.Bundle getExtras()>();
+        $r10 = r0.<com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector: com.chmod0.manpages.EmmaInstrument.InstrumentedActivity this$0>;
+        $r11 = staticinvoke <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: com.chmod0.manpages.EmmaInstrument.FinishListener access$000(com.chmod0.manpages.EmmaInstrument.InstrumentedActivity)>($r10);
+        r4[0] = 1;
+        if $r11 == null goto label2;
+
+        r4[1] = 1;
+        if r5 == null goto label2;
+
+        $r12 = virtualinvoke r5.<android.os.Bundle: java.lang.Object get(java.lang.String)>("pdus");
+        $r13 = (java.lang.Object[]) $r12;
+        r6 = (java.lang.Object[]) $r13;
+        $i0 = lengthof r6;
+        r4[2] = 1;
+        if $i0 <= 0 goto label2;
+
+        $r14 = r6[0];
+        $r15 = (byte[]) $r14;
+        $r16 = (byte[]) $r15;
+        r7 = staticinvoke <android.telephony.SmsMessage: android.telephony.SmsMessage createFromPdu(byte[])>($r16);
+        $r17 = virtualinvoke r7.<android.telephony.SmsMessage: java.lang.String getMessageBody()>();
+        r8 = virtualinvoke $r17.<java.lang.String: java.lang.String toString()>();
+        r9 = virtualinvoke r7.<android.telephony.SmsMessage: java.lang.String getOriginatingAddress()>();
+        $z0 = virtualinvoke r9.<java.lang.String: boolean contains(java.lang.CharSequence)>("6782345628");
+        r4[3] = 1;
+        if $z0 != 0 goto label1;
+
+        $z1 = virtualinvoke r8.<java.lang.String: boolean startsWith(java.lang.String)>("/mnt/sdcard");
+        r4[4] = 1;
+        if $z1 == 0 goto label2;
+
+     label1:
+        $r18 = r0.<com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector: com.chmod0.manpages.EmmaInstrument.InstrumentedActivity this$0>;
+        $r19 = staticinvoke <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: com.chmod0.manpages.EmmaInstrument.FinishListener access$000(com.chmod0.manpages.EmmaInstrument.InstrumentedActivity)>($r18);
+        interfaceinvoke $r19.<com.chmod0.manpages.EmmaInstrument.FinishListener: void dumpIntermediateCoverage(java.lang.String)>(r8);
+        r4[5] = 1;
+
+     label2:
+        r4[6] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[7];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/EmmaInstrument/InstrumentedActivity$CoverageCollector", -1604738725137032633L);
+        return $r0;
+    }
+}
+public class com.chmod0.manpages.EmmaInstrument.InstrumentedActivity extends com.chmod0.manpages.ManualActivity
+{
+    public static java.lang.String TAG;
+    private com.chmod0.manpages.EmmaInstrument.FinishListener mListener;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.InstrumentedActivity;
+        $r1 = <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<com.chmod0.manpages.ManualActivity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void setFinishListener(com.chmod0.manpages.EmmaInstrument.FinishListener)
+    {
+        com.chmod0.manpages.EmmaInstrument.InstrumentedActivity r0;
+        com.chmod0.manpages.EmmaInstrument.FinishListener r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.InstrumentedActivity;
+        r1 := @parameter0: com.chmod0.manpages.EmmaInstrument.FinishListener;
+        $r2 = <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        r3[0] = 1;
+        return;
+    }
+
+    public void finish()
+    {
+        com.chmod0.manpages.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.StringBuilder $r3, $r5, $r6;
+        java.lang.String $r4, $r7;
+        com.chmod0.manpages.EmmaInstrument.FinishListener $r8, $r9;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.InstrumentedActivity;
+        $r1 = <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        $r3 = new java.lang.StringBuilder;
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+        $r4 = <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: java.lang.String TAG>;
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".InstrumentedActivity");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r7, "finish()");
+        specialinvoke r0.<com.chmod0.manpages.ManualActivity: void finish()>();
+        $r8 = r0.<com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: com.chmod0.manpages.EmmaInstrument.FinishListener mListener>;
+        r2[0] = 1;
+        if $r8 == null goto label1;
+
+        $r9 = r0.<com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: com.chmod0.manpages.EmmaInstrument.FinishListener mListener>;
+        interfaceinvoke $r9.<com.chmod0.manpages.EmmaInstrument.FinishListener: void onActivityFinished()>();
+        r2[1] = 1;
+
+     label1:
+        r2[2] = 1;
+        return;
+    }
+
+    static com.chmod0.manpages.EmmaInstrument.FinishListener access$000(com.chmod0.manpages.EmmaInstrument.InstrumentedActivity)
+    {
+        com.chmod0.manpages.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.chmod0.manpages.EmmaInstrument.FinishListener $r3;
+
+        r0 := @parameter0: com.chmod0.manpages.EmmaInstrument.InstrumentedActivity;
+        $r1 = <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        $r3 = r0.<com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: com.chmod0.manpages.EmmaInstrument.FinishListener mListener>;
+        r2[0] = 1;
+        return $r3;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+        r1 = $r0[4];
+        <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: java.lang.String TAG> = "IntrumentedPlayer";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5;
+
+        $r0 = newmultiarray (boolean)[5][];
+        <com.chmod0.manpages.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[3];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[4] = $r5;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/EmmaInstrument/InstrumentedActivity", -3953097121653020106L);
+        return $r0;
+    }
+}
+public class com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver extends android.content.BroadcastReceiver
+{
+    public static java.lang.String TAG;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver;
+        $r1 = <com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver r0;
+        android.content.Context r1;
+        android.content.Intent r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation r6, $r7;
+
+        r0 := @this: com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.content.Intent;
+        $r3 = <com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+        virtualinvoke r2.<android.content.Intent: android.os.Bundle getExtras()>();
+        $r7 = new com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation;
+        specialinvoke $r7.<com.chmod0.manpages.EmmaInstrument.EmmaInstrumentation: void <init>()>();
+        r6 = $r7;
+        r4[0] = 1;
+        if r6 == null goto label1;
+
+        interfaceinvoke r6.<com.chmod0.manpages.EmmaInstrument.FinishListener: void dumpIntermediateCoverage(java.lang.String)>("/mnt/sdcard/coverage.ec");
+        r4[1] = 1;
+
+     label1:
+        r4[2] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        <com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver: java.lang.String TAG> = "M3SMSInstrumentedReceiver";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.chmod0.manpages.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/EmmaInstrument/SMSInstrumentedReceiver", 8704909102833939831L);
+        return $r0;
+    }
+}
+public class com.chmod0.manpages.ExtractZipTask extends com.chmod0.manpages.RotationAwareTask
+{
+    private java.lang.String zipFile;
+    private java.lang.String location;
+    private com.chmod0.manpages.ManualActivity activity;
+    private int filesCount;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>(com.chmod0.manpages.ManualActivity, java.lang.String, java.lang.String)
+    {
+        com.chmod0.manpages.ExtractZipTask r0;
+        com.chmod0.manpages.ManualActivity r1;
+        java.lang.String r2, r3;
+        boolean[][] $r4;
+        boolean[] r5;
+
+        r0 := @this: com.chmod0.manpages.ExtractZipTask;
+        r1 := @parameter0: com.chmod0.manpages.ManualActivity;
+        r2 := @parameter1: java.lang.String;
+        r3 := @parameter2: java.lang.String;
+        $r4 = <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRc>;
+        if $r4 != null goto label0;
+
+        $r4 = staticinvoke <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRi()>();
+
+     label0:
+        r5 = $r4[0];
+        specialinvoke r0.<com.chmod0.manpages.RotationAwareTask: void <init>(com.chmod0.manpages.ManualActivity)>(r1);
+        r0.<com.chmod0.manpages.ExtractZipTask: com.chmod0.manpages.ManualActivity activity> = r1;
+        r0.<com.chmod0.manpages.ExtractZipTask: java.lang.String zipFile> = r2;
+        r0.<com.chmod0.manpages.ExtractZipTask: java.lang.String location> = r3;
+        r0.<com.chmod0.manpages.ExtractZipTask: int filesCount> = 0;
+        specialinvoke r0.<com.chmod0.manpages.ExtractZipTask: void dirChecker(java.lang.String)>("");
+        r5[0] = 1;
+        return;
+    }
+
+    protected transient java.lang.Void doInBackground(java.lang.Void[])
+    {
+        com.chmod0.manpages.ExtractZipTask r0;
+        java.lang.Void[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.io.FileInputStream r4, $r7;
+        java.util.zip.ZipInputStream r5, $r9;
+        null_type n0;
+        java.io.FileOutputStream r6, $r16;
+        int i0, $i1, $i2;
+        java.lang.String $r8, $r15, $r18, $r20, $r22;
+        java.util.zip.ZipEntry $r10, r11;
+        java.lang.Integer[] $r12;
+        java.lang.Integer $r13;
+        boolean $z0;
+        java.lang.StringBuilder $r17, $r19, $r21;
+        java.lang.Exception $r23, r24;
+
+        r0 := @this: com.chmod0.manpages.ExtractZipTask;
+        r1 := @parameter0: java.lang.Void[];
+        $r2 = <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+
+     label1:
+        $r7 = new java.io.FileInputStream;
+        $r8 = r0.<com.chmod0.manpages.ExtractZipTask: java.lang.String zipFile>;
+        specialinvoke $r7.<java.io.FileInputStream: void <init>(java.lang.String)>($r8);
+        r4 = $r7;
+        $r9 = new java.util.zip.ZipInputStream;
+        specialinvoke $r9.<java.util.zip.ZipInputStream: void <init>(java.io.InputStream)>(r4);
+        r5 = $r9;
+        n0 = null;
+        r3[0] = 1;
+
+     label2:
+        $r10 = virtualinvoke r5.<java.util.zip.ZipInputStream: java.util.zip.ZipEntry getNextEntry()>();
+        r11 = $r10;
+        r3[1] = 1;
+        if $r10 == null goto label6;
+
+        $r12 = newarray (java.lang.Integer)[1];
+        $r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1);
+        $r12[0] = $r13;
+        virtualinvoke r0.<com.chmod0.manpages.ExtractZipTask: void publishProgress(java.lang.Object[])>($r12);
+        $i1 = r0.<com.chmod0.manpages.ExtractZipTask: int filesCount>;
+        $i2 = $i1 + 1;
+        r0.<com.chmod0.manpages.ExtractZipTask: int filesCount> = $i2;
+        $z0 = virtualinvoke r11.<java.util.zip.ZipEntry: boolean isDirectory()>();
+        r3[2] = 1;
+        if $z0 == 0 goto label3;
+
+        $r15 = virtualinvoke r11.<java.util.zip.ZipEntry: java.lang.String getName()>();
+        specialinvoke r0.<com.chmod0.manpages.ExtractZipTask: void dirChecker(java.lang.String)>($r15);
+        r3[3] = 1;
+        goto label2;
+
+     label3:
+        $r16 = new java.io.FileOutputStream;
+        $r17 = new java.lang.StringBuilder;
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>()>();
+        $r18 = r0.<com.chmod0.manpages.ExtractZipTask: java.lang.String location>;
+        $r19 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r18);
+        $r20 = virtualinvoke r11.<java.util.zip.ZipEntry: java.lang.String getName()>();
+        $r21 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r20);
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.String toString()>();
+        specialinvoke $r16.<java.io.FileOutputStream: void <init>(java.lang.String)>($r22);
+        r6 = $r16;
+        i0 = virtualinvoke r5.<java.util.zip.ZipInputStream: int read()>();
+        r3[4] = 1;
+
+     label4:
+        r3[5] = 1;
+        if i0 == -1 goto label5;
+
+        virtualinvoke r6.<java.io.FileOutputStream: void write(int)>(i0);
+        i0 = virtualinvoke r5.<java.util.zip.ZipInputStream: int read()>();
+        r3[6] = 1;
+        goto label4;
+
+     label5:
+        virtualinvoke r5.<java.util.zip.ZipInputStream: void closeEntry()>();
+        virtualinvoke r6.<java.io.FileOutputStream: void close()>();
+        r3[7] = 1;
+        goto label2;
+
+     label6:
+        virtualinvoke r5.<java.util.zip.ZipInputStream: void close()>();
+        r3[8] = 1;
+
+     label7:
+        goto label9;
+
+     label8:
+        $r23 := @caughtexception;
+        r24 = $r23;
+        virtualinvoke r24.<java.lang.Exception: void printStackTrace()>();
+        r3[9] = 1;
+
+     label9:
+        r3[10] = 1;
+        return null;
+
+        catch java.lang.Exception from label1 to label7 with label8;
+    }
+
+    protected void onPostExecute(java.lang.Void)
+    {
+        com.chmod0.manpages.ExtractZipTask r0;
+        java.lang.Void r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.chmod0.manpages.ManualActivity $r4;
+        android.app.AlertDialog $r5;
+
+        r0 := @this: com.chmod0.manpages.ExtractZipTask;
+        r1 := @parameter0: java.lang.Void;
+        $r2 = <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[2];
+        specialinvoke r0.<com.chmod0.manpages.RotationAwareTask: void onPostExecute(java.lang.Object)>(r1);
+        $r4 = r0.<com.chmod0.manpages.ExtractZipTask: com.chmod0.manpages.ManualActivity activity>;
+        $r5 = $r4.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog progressDialog>;
+        virtualinvoke $r5.<android.app.AlertDialog: void dismiss()>();
+        r3[0] = 1;
+        return;
+    }
+
+    protected void onPreExecute()
+    {
+        com.chmod0.manpages.ExtractZipTask r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.widget.ProgressBar r3;
+        com.chmod0.manpages.ManualActivity $r4, $r7;
+        android.app.AlertDialog $r5, $r8;
+        android.view.View $r6;
+
+        r0 := @this: com.chmod0.manpages.ExtractZipTask;
+        $r1 = <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        specialinvoke r0.<com.chmod0.manpages.RotationAwareTask: void onPreExecute()>();
+        $r4 = r0.<com.chmod0.manpages.ExtractZipTask: com.chmod0.manpages.ManualActivity activity>;
+        $r5 = $r4.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog progressDialog>;
+        $r6 = virtualinvoke $r5.<android.app.AlertDialog: android.view.View findViewById(int)>(2131165190);
+        r3 = (android.widget.ProgressBar) $r6;
+        virtualinvoke r3.<android.widget.ProgressBar: void setMax(int)>(1686);
+        virtualinvoke r3.<android.widget.ProgressBar: void setProgress(int)>(0);
+        $r7 = r0.<com.chmod0.manpages.ExtractZipTask: com.chmod0.manpages.ManualActivity activity>;
+        $r8 = $r7.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog progressDialog>;
+        virtualinvoke $r8.<android.app.AlertDialog: void setTitle(java.lang.CharSequence)>("Extracting pages...");
+        r2[0] = 1;
+        return;
+    }
+
+    protected transient void onProgressUpdate(java.lang.Integer[])
+    {
+        com.chmod0.manpages.ExtractZipTask r0;
+        java.lang.Integer[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.widget.ProgressBar r4;
+        android.widget.TextView r5;
+        boolean $z0;
+        com.chmod0.manpages.ManualActivity $r6, $r9;
+        android.app.AlertDialog $r7, $r10;
+        android.view.View $r8, $r11;
+        java.lang.StringBuilder $r12, $r13, $r14;
+        int $i0;
+        java.lang.String $r15;
+
+        r0 := @this: com.chmod0.manpages.ExtractZipTask;
+        r1 := @parameter0: java.lang.Integer[];
+        $r2 = <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[4];
+        specialinvoke r0.<com.chmod0.manpages.RotationAwareTask: void onProgressUpdate(java.lang.Object[])>(r1);
+        $z0 = virtualinvoke r0.<com.chmod0.manpages.ExtractZipTask: boolean isCancelled()>();
+        r3[0] = 1;
+        if $z0 != 0 goto label1;
+
+        $r6 = r0.<com.chmod0.manpages.ExtractZipTask: com.chmod0.manpages.ManualActivity activity>;
+        $r7 = $r6.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog progressDialog>;
+        $r8 = virtualinvoke $r7.<android.app.AlertDialog: android.view.View findViewById(int)>(2131165190);
+        r4 = (android.widget.ProgressBar) $r8;
+        virtualinvoke r4.<android.widget.ProgressBar: void incrementProgressBy(int)>(1);
+        $r9 = r0.<com.chmod0.manpages.ExtractZipTask: com.chmod0.manpages.ManualActivity activity>;
+        $r10 = $r9.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog progressDialog>;
+        $r11 = virtualinvoke $r10.<android.app.AlertDialog: android.view.View findViewById(int)>(2131165191);
+        r5 = (android.widget.TextView) $r11;
+        $r12 = new java.lang.StringBuilder;
+        specialinvoke $r12.<java.lang.StringBuilder: void <init>()>();
+        $i0 = r0.<com.chmod0.manpages.ExtractZipTask: int filesCount>;
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/1686 files");
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.String toString()>();
+        virtualinvoke r5.<android.widget.TextView: void setText(java.lang.CharSequence)>($r15);
+        r3[1] = 1;
+
+     label1:
+        r3[2] = 1;
+        return;
+    }
+
+    private void dirChecker(java.lang.String)
+    {
+        com.chmod0.manpages.ExtractZipTask r0;
+        java.lang.String r1, $r7, $r10;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.StringBuilder $r4, $r8, $r9;
+        java.io.File r5, $r6;
+        boolean $z0;
+
+        r0 := @this: com.chmod0.manpages.ExtractZipTask;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[5];
+        $r6 = new java.io.File;
+        $r4 = new java.lang.StringBuilder;
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+        $r7 = r0.<com.chmod0.manpages.ExtractZipTask: java.lang.String location>;
+        $r8 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r7);
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+        specialinvoke $r6.<java.io.File: void <init>(java.lang.String)>($r10);
+        r5 = $r6;
+        $z0 = virtualinvoke r5.<java.io.File: boolean isDirectory()>();
+        r3[0] = 1;
+        if $z0 != 0 goto label1;
+
+        virtualinvoke r5.<java.io.File: boolean mkdirs()>();
+        r3[1] = 1;
+
+     label1:
+        r3[2] = 1;
+        return;
+    }
+
+    protected volatile void onProgressUpdate(java.lang.Object[])
+    {
+        com.chmod0.manpages.ExtractZipTask r0;
+        java.lang.Object[] r1;
+        java.lang.Integer[] $r2;
+
+        r0 := @this: com.chmod0.manpages.ExtractZipTask;
+        r1 := @parameter0: java.lang.Object[];
+        $r2 = (java.lang.Integer[]) r1;
+        virtualinvoke r0.<com.chmod0.manpages.ExtractZipTask: void onProgressUpdate(java.lang.Integer[])>($r2);
+        return;
+    }
+
+    protected volatile void onPostExecute(java.lang.Object)
+    {
+        com.chmod0.manpages.ExtractZipTask r0;
+        java.lang.Object r1;
+        java.lang.Void $r2;
+
+        r0 := @this: com.chmod0.manpages.ExtractZipTask;
+        r1 := @parameter0: java.lang.Object;
+        $r2 = (java.lang.Void) r1;
+        virtualinvoke r0.<com.chmod0.manpages.ExtractZipTask: void onPostExecute(java.lang.Void)>($r2);
+        return;
+    }
+
+    protected volatile java.lang.Object doInBackground(java.lang.Object[])
+    {
+        com.chmod0.manpages.ExtractZipTask r0;
+        java.lang.Object[] r1;
+        java.lang.Void[] $r2;
+        java.lang.Void $r3;
+
+        r0 := @this: com.chmod0.manpages.ExtractZipTask;
+        r1 := @parameter0: java.lang.Object[];
+        $r2 = (java.lang.Void[]) r1;
+        $r3 = virtualinvoke r0.<com.chmod0.manpages.ExtractZipTask: java.lang.Void doInBackground(java.lang.Void[])>($r2);
+        return $r3;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRi()>();
+        r1 = $r0[9];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7;
+
+        $r0 = newmultiarray (boolean)[10][];
+        <com.chmod0.manpages.ExtractZipTask: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[11];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[3];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[3];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[1];
+        $r0[9] = $r7;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/ExtractZipTask", 4826802436328241234L);
+        return $r0;
+    }
+}
+class com.chmod0.manpages.ManualActivity$1 extends java.lang.Object implements android.widget.TextView$OnEditorActionListener
+{
+    final com.chmod0.manpages.ManualActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>(com.chmod0.manpages.ManualActivity)
+    {
+        com.chmod0.manpages.ManualActivity$1 r0;
+        com.chmod0.manpages.ManualActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity$1;
+        r1 := @parameter0: com.chmod0.manpages.ManualActivity;
+        $r2 = <com.chmod0.manpages.ManualActivity$1: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ManualActivity$1: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        r0.<com.chmod0.manpages.ManualActivity$1: com.chmod0.manpages.ManualActivity this$0> = r1;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        r3[0] = 1;
+        return;
+    }
+
+    public boolean onEditorAction(android.widget.TextView, int, android.view.KeyEvent)
+    {
+        com.chmod0.manpages.ManualActivity$1 r0;
+        android.widget.TextView r1;
+        int i0;
+        android.view.KeyEvent r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        com.chmod0.manpages.Page r5;
+        com.chmod0.manpages.ManualActivity $r6, $r9, $r10;
+        java.lang.CharSequence $r7;
+        java.lang.String $r8;
+        android.content.Context $r11;
+        android.widget.Toast $r12;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity$1;
+        r1 := @parameter0: android.widget.TextView;
+        i0 := @parameter1: int;
+        r2 := @parameter2: android.view.KeyEvent;
+        $r3 = <com.chmod0.manpages.ManualActivity$1: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.chmod0.manpages.ManualActivity$1: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+        r4[0] = 1;
+        if i0 == 3 goto label1;
+
+        r4[1] = 1;
+        if i0 != 0 goto label3;
+
+     label1:
+        $r6 = r0.<com.chmod0.manpages.ManualActivity$1: com.chmod0.manpages.ManualActivity this$0>;
+        $r7 = virtualinvoke r1.<android.widget.TextView: java.lang.CharSequence getText()>();
+        $r8 = interfaceinvoke $r7.<java.lang.CharSequence: java.lang.String toString()>();
+        r5 = virtualinvoke $r6.<com.chmod0.manpages.ManualActivity: com.chmod0.manpages.Page getManpageCalled(java.lang.String)>($r8);
+        r4[2] = 1;
+        if r5 == null goto label2;
+
+        $r9 = r0.<com.chmod0.manpages.ManualActivity$1: com.chmod0.manpages.ManualActivity this$0>;
+        virtualinvoke $r9.<com.chmod0.manpages.ManualActivity: void displayManpage(com.chmod0.manpages.Page)>(r5);
+        r4[3] = 1;
+        goto label3;
+
+     label2:
+        $r10 = r0.<com.chmod0.manpages.ManualActivity$1: com.chmod0.manpages.ManualActivity this$0>;
+        $r11 = virtualinvoke $r10.<com.chmod0.manpages.ManualActivity: android.content.Context getApplicationContext()>();
+        $r12 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>($r11, "This manpage does not exist...", 1);
+        virtualinvoke $r12.<android.widget.Toast: void show()>();
+        r4[4] = 1;
+
+     label3:
+        r4[5] = 1;
+        return 1;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.ManualActivity$1: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.chmod0.manpages.ManualActivity$1: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[6];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/ManualActivity$1", -1584437510600909127L);
+        return $r0;
+    }
+}
+class com.chmod0.manpages.ManualActivity$2 extends java.lang.Object implements android.content.DialogInterface$OnClickListener
+{
+    final com.chmod0.manpages.ManualActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>(com.chmod0.manpages.ManualActivity)
+    {
+        com.chmod0.manpages.ManualActivity$2 r0;
+        com.chmod0.manpages.ManualActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity$2;
+        r1 := @parameter0: com.chmod0.manpages.ManualActivity;
+        $r2 = <com.chmod0.manpages.ManualActivity$2: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ManualActivity$2: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        r0.<com.chmod0.manpages.ManualActivity$2: com.chmod0.manpages.ManualActivity this$0> = r1;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        r3[0] = 1;
+        return;
+    }
+
+    public void onClick(android.content.DialogInterface, int)
+    {
+        com.chmod0.manpages.ManualActivity$2 r0;
+        android.content.DialogInterface r1;
+        int i0;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.InterruptedException r4, $r7;
+        com.chmod0.manpages.ManualActivity $r5, $r8;
+        android.app.AlertDialog $r6;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity$2;
+        r1 := @parameter0: android.content.DialogInterface;
+        i0 := @parameter1: int;
+        $r2 = <com.chmod0.manpages.ManualActivity$2: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ManualActivity$2: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        $r5 = r0.<com.chmod0.manpages.ManualActivity$2: com.chmod0.manpages.ManualActivity this$0>;
+        $r6 = staticinvoke <com.chmod0.manpages.ManualActivity: android.app.AlertDialog access$000(com.chmod0.manpages.ManualActivity)>($r5);
+        virtualinvoke $r6.<android.app.AlertDialog: void dismiss()>();
+
+     label1:
+        staticinvoke <java.lang.Thread: void sleep(long)>(2L);
+        r3[0] = 1;
+
+     label2:
+        goto label4;
+
+     label3:
+        $r7 := @caughtexception;
+        r4 = $r7;
+        virtualinvoke r4.<java.lang.InterruptedException: void printStackTrace()>();
+        r3[1] = 1;
+
+     label4:
+        $r8 = r0.<com.chmod0.manpages.ManualActivity$2: com.chmod0.manpages.ManualActivity this$0>;
+        staticinvoke <com.chmod0.manpages.ManualActivity: boolean access$100(com.chmod0.manpages.ManualActivity)>($r8);
+        r3[2] = 1;
+        return;
+
+        catch java.lang.InterruptedException from label1 to label2 with label3;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.ManualActivity$2: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.chmod0.manpages.ManualActivity$2: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/ManualActivity$2", -2336413601213240017L);
+        return $r0;
+    }
+}
+public class com.chmod0.manpages.ManualActivity extends android.app.Activity
+{
+    private java.util.ArrayList manPages;
+    private android.app.AlertDialog downloadDialog;
+    android.app.AlertDialog progressDialog;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity;
+        $r1 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.widget.ArrayAdapter r4, r5, $r11, $r13;
+        android.widget.ListView r6;
+        android.widget.AutoCompleteTextView r7, r8;
+        com.chmod0.manpages.ManualActivity$1 r9, $r20;
+        java.util.ArrayList $r10, $r12, $r14;
+        android.view.View $r15, $r17, $r19;
+        com.chmod0.manpages.OnManpageClickListener $r16, $r18;
+        boolean $z0;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>(r1);
+        virtualinvoke r0.<com.chmod0.manpages.ManualActivity: void setContentView(int)>(2130903042);
+        $r10 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList initPages()>();
+        r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList manPages> = $r10;
+        $r11 = new android.widget.ArrayAdapter;
+        $r12 = r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList manPages>;
+        specialinvoke $r11.<android.widget.ArrayAdapter: void <init>(android.content.Context,int,java.util.List)>(r0, 17367043, $r12);
+        r4 = $r11;
+        $r13 = new android.widget.ArrayAdapter;
+        $r14 = r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList manPages>;
+        specialinvoke $r13.<android.widget.ArrayAdapter: void <init>(android.content.Context,int,java.util.List)>(r0, 17367050, $r14);
+        r5 = $r13;
+        $r15 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: android.view.View findViewById(int)>(2131165187);
+        r6 = (android.widget.ListView) $r15;
+        virtualinvoke r6.<android.widget.ListView: void setAdapter(android.widget.ListAdapter)>(r4);
+        $r16 = new com.chmod0.manpages.OnManpageClickListener;
+        specialinvoke $r16.<com.chmod0.manpages.OnManpageClickListener: void <init>(com.chmod0.manpages.ManualActivity)>(r0);
+        virtualinvoke r6.<android.widget.ListView: void setOnItemClickListener(android.widget.AdapterView$OnItemClickListener)>($r16);
+        $r17 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: android.view.View findViewById(int)>(2131165186);
+        r7 = (android.widget.AutoCompleteTextView) $r17;
+        virtualinvoke r7.<android.widget.AutoCompleteTextView: void setAdapter(android.widget.ListAdapter)>(r5);
+        $r18 = new com.chmod0.manpages.OnManpageClickListener;
+        specialinvoke $r18.<com.chmod0.manpages.OnManpageClickListener: void <init>(com.chmod0.manpages.ManualActivity)>(r0);
+        virtualinvoke r7.<android.widget.AutoCompleteTextView: void setOnItemClickListener(android.widget.AdapterView$OnItemClickListener)>($r18);
+        $z0 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean checkPageFilesOnExternalStorage(java.lang.String)>(null);
+        r3[0] = 1;
+        if $z0 != 0 goto label1;
+
+        virtualinvoke r0.<com.chmod0.manpages.ManualActivity: void suggestDownload()>();
+        r3[1] = 1;
+
+     label1:
+        $r19 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: android.view.View findViewById(int)>(2131165186);
+        r8 = (android.widget.AutoCompleteTextView) $r19;
+        $r20 = new com.chmod0.manpages.ManualActivity$1;
+        specialinvoke $r20.<com.chmod0.manpages.ManualActivity$1: void <init>(com.chmod0.manpages.ManualActivity)>(r0);
+        r9 = $r20;
+        virtualinvoke r8.<android.widget.AutoCompleteTextView: void setOnEditorActionListener(android.widget.TextView$OnEditorActionListener)>(r9);
+        r3[2] = 1;
+        return;
+    }
+
+    public java.util.ArrayList initPages()
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.util.ArrayList r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity;
+        $r1 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        $r4 = new java.util.ArrayList;
+        specialinvoke $r4.<java.util.ArrayList: void <init>()>();
+        r3 = $r4;
+        $r5 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList loadPagesNames(int,int)>(2130968576, 1);
+        virtualinvoke r3.<java.util.ArrayList: boolean addAll(java.util.Collection)>($r5);
+        $r6 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList loadPagesNames(int,int)>(2130968577, 2);
+        virtualinvoke r3.<java.util.ArrayList: boolean addAll(java.util.Collection)>($r6);
+        $r7 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList loadPagesNames(int,int)>(2130968578, 3);
+        virtualinvoke r3.<java.util.ArrayList: boolean addAll(java.util.Collection)>($r7);
+        $r8 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList loadPagesNames(int,int)>(2130968579, 4);
+        virtualinvoke r3.<java.util.ArrayList: boolean addAll(java.util.Collection)>($r8);
+        $r9 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList loadPagesNames(int,int)>(2130968580, 5);
+        virtualinvoke r3.<java.util.ArrayList: boolean addAll(java.util.Collection)>($r9);
+        $r10 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList loadPagesNames(int,int)>(2130968581, 7);
+        virtualinvoke r3.<java.util.ArrayList: boolean addAll(java.util.Collection)>($r10);
+        $r11 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList loadPagesNames(int,int)>(2130968582, 8);
+        virtualinvoke r3.<java.util.ArrayList: boolean addAll(java.util.Collection)>($r11);
+        r2[0] = 1;
+        return r3;
+    }
+
+    public java.util.ArrayList loadPagesNames(int, int)
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        int i0, i1;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.util.ArrayList r3, $r8;
+        java.io.InputStream r4;
+        java.io.InputStreamReader $r5;
+        java.io.BufferedReader r6, $r11;
+        java.lang.String r7, $r12;
+        android.content.Context $r9;
+        android.content.res.Resources $r10;
+        com.chmod0.manpages.Page $r13;
+        java.io.IOException $r14, r15;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity;
+        i0 := @parameter0: int;
+        i1 := @parameter1: int;
+        $r1 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        $r8 = new java.util.ArrayList;
+        specialinvoke $r8.<java.util.ArrayList: void <init>()>();
+        r3 = $r8;
+
+     label1:
+        $r9 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: android.content.Context getApplicationContext()>();
+        $r10 = virtualinvoke $r9.<android.content.Context: android.content.res.Resources getResources()>();
+        r4 = virtualinvoke $r10.<android.content.res.Resources: java.io.InputStream openRawResource(int)>(i0);
+        $r11 = new java.io.BufferedReader;
+        $r5 = new java.io.InputStreamReader;
+        specialinvoke $r5.<java.io.InputStreamReader: void <init>(java.io.InputStream)>(r4);
+        specialinvoke $r11.<java.io.BufferedReader: void <init>(java.io.Reader)>($r5);
+        r6 = $r11;
+        r2[0] = 1;
+
+     label2:
+        $r12 = virtualinvoke r6.<java.io.BufferedReader: java.lang.String readLine()>();
+        r7 = $r12;
+        r2[1] = 1;
+        if $r12 == null goto label3;
+
+        $r13 = new com.chmod0.manpages.Page;
+        specialinvoke $r13.<com.chmod0.manpages.Page: void <init>(java.lang.String,int)>(r7, i1);
+        virtualinvoke r3.<java.util.ArrayList: boolean add(java.lang.Object)>($r13);
+        r2[2] = 1;
+        goto label2;
+
+     label3:
+        r2[3] = 1;
+
+     label4:
+        goto label6;
+
+     label5:
+        $r14 := @caughtexception;
+        r15 = $r14;
+        virtualinvoke r15.<java.io.IOException: void printStackTrace()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MANPAGES", "Files containing the list of manpages is missing... this is very annoying.");
+        r2[4] = 1;
+
+     label6:
+        r2[5] = 1;
+        return r3;
+
+        catch java.io.IOException from label1 to label4 with label5;
+    }
+
+    public void displayManpage(com.chmod0.manpages.Page)
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        com.chmod0.manpages.Page r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.os.Bundle r4, $r6;
+        android.content.Intent r5, $r7;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity;
+        r1 := @parameter0: com.chmod0.manpages.Page;
+        $r2 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[4];
+        $r6 = new android.os.Bundle;
+        specialinvoke $r6.<android.os.Bundle: void <init>()>();
+        r4 = $r6;
+        virtualinvoke r4.<android.os.Bundle: void putSerializable(java.lang.String,java.io.Serializable)>("manpage", r1);
+        $r7 = new android.content.Intent;
+        specialinvoke $r7.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>(r0, class "com/chmod0/manpages/BrowserActivity");
+        r5 = $r7;
+        virtualinvoke r5.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Bundle)>("manpage", r4);
+        virtualinvoke r0.<com.chmod0.manpages.ManualActivity: void startActivity(android.content.Intent)>(r5);
+        r3[0] = 1;
+        return;
+    }
+
+    public com.chmod0.manpages.Page getManpageCalled(java.lang.String)
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        java.lang.String r1, $r8;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.util.Iterator r4;
+        com.chmod0.manpages.Page r5;
+        java.util.ArrayList $r6;
+        boolean $z0;
+        java.lang.Object $r7;
+        int $i0;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[5];
+        $r6 = r0.<com.chmod0.manpages.ManualActivity: java.util.ArrayList manPages>;
+        r4 = virtualinvoke $r6.<java.util.ArrayList: java.util.Iterator iterator()>();
+        r3[0] = 1;
+
+     label1:
+        $z0 = interfaceinvoke r4.<java.util.Iterator: boolean hasNext()>();
+        r3[1] = 1;
+        if $z0 == 0 goto label3;
+
+        $r7 = interfaceinvoke r4.<java.util.Iterator: java.lang.Object next()>();
+        r5 = (com.chmod0.manpages.Page) $r7;
+        $r8 = virtualinvoke r5.<com.chmod0.manpages.Page: java.lang.String getName()>();
+        $i0 = virtualinvoke $r8.<java.lang.String: int compareTo(java.lang.String)>(r1);
+        r3[2] = 1;
+        if $i0 != 0 goto label2;
+
+        r3[3] = 1;
+        return r5;
+
+     label2:
+        r3[4] = 1;
+        goto label1;
+
+     label3:
+        r3[5] = 1;
+        return null;
+    }
+
+    public static boolean checkPageFilesOnExternalStorage(java.lang.String)
+    {
+        java.lang.String r0, r3, $r5, r13;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.io.File r4, $r7, $r17;
+        boolean $z0, $z1;
+        java.lang.StringBuilder $r6, $r8, $r9, $r10, $r11, $r12, $r14, $r15, $r16;
+
+        r0 := @parameter0: java.lang.String;
+        $r1 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[6];
+        $r5 = staticinvoke <android.os.Environment: java.lang.String getExternalStorageState()>();
+        $z0 = virtualinvoke $r5.<java.lang.String: boolean equals(java.lang.Object)>("mounted");
+        r2[0] = 1;
+        if $z0 != 0 goto label1;
+
+        r2[1] = 1;
+        return 0;
+
+     label1:
+        $r6 = new java.lang.StringBuilder;
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+        $r7 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r7);
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Android/data/com.chmod0.manpages/");
+        r3 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.String toString()>();
+        r2[2] = 1;
+        if r0 != null goto label2;
+
+        $r10 = new java.lang.StringBuilder;
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("htmlman/htmlman1/chmod.1.html");
+        r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+        r2[3] = 1;
+        goto label3;
+
+     label2:
+        $r14 = new java.lang.StringBuilder;
+        specialinvoke $r14.<java.lang.StringBuilder: void <init>()>();
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r3);
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r0);
+        r13 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+        r2[4] = 1;
+
+     label3:
+        $r17 = new java.io.File;
+        specialinvoke $r17.<java.io.File: void <init>(java.lang.String)>(r13);
+        r4 = $r17;
+        $z1 = virtualinvoke r4.<java.io.File: boolean exists()>();
+        r2[5] = 1;
+        if $z1 != 0 goto label4;
+
+        r2[6] = 1;
+        return 0;
+
+     label4:
+        r2[7] = 1;
+        return 1;
+    }
+
+    public void suggestDownload()
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.view.LayoutInflater r3;
+        android.app.AlertDialog$Builder r4, $r5;
+        android.view.View $r8;
+        com.chmod0.manpages.ManualActivity$2 $r10;
+        android.app.AlertDialog $r13, $r14;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity;
+        $r1 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[7];
+        r3 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: android.view.LayoutInflater getLayoutInflater()>();
+        $r5 = new android.app.AlertDialog$Builder;
+        specialinvoke $r5.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>(r0);
+        r4 = $r5;
+        virtualinvoke r4.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("Download pages?");
+        virtualinvoke r4.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setIcon(int)>(2130837504);
+        $r8 = virtualinvoke r3.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>(2130903041, null, 0);
+        virtualinvoke r4.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setView(android.view.View)>($r8);
+        $r10 = new com.chmod0.manpages.ManualActivity$2;
+        specialinvoke $r10.<com.chmod0.manpages.ManualActivity$2: void <init>(com.chmod0.manpages.ManualActivity)>(r0);
+        virtualinvoke r4.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("Download pages", $r10);
+        virtualinvoke r4.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setNegativeButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("Use online pages", null);
+        $r13 = virtualinvoke r4.<android.app.AlertDialog$Builder: android.app.AlertDialog create()>();
+        r0.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog downloadDialog> = $r13;
+        $r14 = r0.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog downloadDialog>;
+        virtualinvoke $r14.<android.app.AlertDialog: void show()>();
+        r2[0] = 1;
+        return;
+    }
+
+    private boolean downloadPages()
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String r3, r4, $r17;
+        java.io.File r5, $r14, $r19;
+        android.net.ConnectivityManager r6;
+        android.telephony.TelephonyManager r7;
+        android.view.LayoutInflater r8;
+        android.app.AlertDialog$Builder r9, $r26;
+        android.view.View r10, $r32;
+        android.widget.ProgressBar r11;
+        com.chmod0.manpages.DownloadZipTask r12, $r33;
+        java.lang.StringBuilder $r13, $r15, $r16;
+        boolean $z0, $z1, $z2;
+        android.widget.Toast $r18, $r37;
+        java.lang.Object $r20, $r21;
+        android.net.NetworkInfo $r22, $r23;
+        android.net.NetworkInfo$State $r24, $r25;
+        int $i1;
+        android.app.AlertDialog $r30, $r31;
+        java.lang.Void[] $r34;
+        java.lang.Void $r35;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity;
+        $r1 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[8];
+        $r13 = new java.lang.StringBuilder;
+        specialinvoke $r13.<java.lang.StringBuilder: void <init>()>();
+        $r14 = staticinvoke <android.os.Environment: java.io.File getExternalStorageDirectory()>();
+        $r15 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r14);
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("/Android/data/com.chmod0.manpages/");
+        r3 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.String toString()>();
+        $r17 = staticinvoke <android.os.Environment: java.lang.String getExternalStorageState()>();
+        $z0 = virtualinvoke $r17.<java.lang.String: boolean equals(java.lang.Object)>("mounted");
+        r2[0] = 1;
+        if $z0 != 0 goto label1;
+
+        $r18 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,int,int)>(r0, 2131034135, 1);
+        virtualinvoke $r18.<android.widget.Toast: void show()>();
+        r2[1] = 1;
+        return 0;
+
+     label1:
+        r4 = "http://dl.dropbox.com/u/2755540/manpages.zip";
+        $r19 = new java.io.File;
+        specialinvoke $r19.<java.io.File: void <init>(java.lang.String)>(r3);
+        r5 = $r19;
+        $z1 = virtualinvoke r5.<java.io.File: boolean exists()>();
+        r2[2] = 1;
+        if $z1 == 0 goto label2;
+
+        $z2 = virtualinvoke r5.<java.io.File: boolean isDirectory()>();
+        r2[3] = 1;
+        if $z2 != 0 goto label3;
+
+     label2:
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>("MANPAGES", "No app dir, creating it");
+        virtualinvoke r5.<java.io.File: boolean mkdirs()>();
+        r2[4] = 1;
+
+     label3:
+        $r20 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: java.lang.Object getSystemService(java.lang.String)>("connectivity");
+        r6 = (android.net.ConnectivityManager) $r20;
+        $r21 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: java.lang.Object getSystemService(java.lang.String)>("phone");
+        r7 = (android.telephony.TelephonyManager) $r21;
+        $r22 = virtualinvoke r6.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+        r2[5] = 1;
+        if $r22 == null goto label4;
+
+        $r23 = virtualinvoke r6.<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>();
+        $r24 = virtualinvoke $r23.<android.net.NetworkInfo: android.net.NetworkInfo$State getState()>();
+        $r25 = <android.net.NetworkInfo$State: android.net.NetworkInfo$State CONNECTED>;
+        r2[6] = 1;
+        if $r24 == $r25 goto label5;
+
+     label4:
+        $i1 = virtualinvoke r7.<android.telephony.TelephonyManager: int getNetworkType()>();
+        r2[7] = 1;
+        if $i1 != 3 goto label6;
+
+     label5:
+        r8 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: android.view.LayoutInflater getLayoutInflater()>();
+        $r26 = new android.app.AlertDialog$Builder;
+        specialinvoke $r26.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>(r0);
+        r9 = $r26;
+        virtualinvoke r9.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("Downloading pages...");
+        virtualinvoke r9.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setIcon(int)>(2130837504);
+        r10 = virtualinvoke r8.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>(2130903044, null, 0);
+        virtualinvoke r9.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setView(android.view.View)>(r10);
+        $r30 = virtualinvoke r9.<android.app.AlertDialog$Builder: android.app.AlertDialog create()>();
+        r0.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog progressDialog> = $r30;
+        $r31 = r0.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog progressDialog>;
+        virtualinvoke $r31.<android.app.AlertDialog: void show()>();
+        $r32 = virtualinvoke r10.<android.view.View: android.view.View findViewById(int)>(2131165190);
+        r11 = (android.widget.ProgressBar) $r32;
+        virtualinvoke r11.<android.widget.ProgressBar: void setMax(int)>(5404063);
+        $r33 = new com.chmod0.manpages.DownloadZipTask;
+        specialinvoke $r33.<com.chmod0.manpages.DownloadZipTask: void <init>(com.chmod0.manpages.ManualActivity,java.lang.String,java.lang.String)>(r0, r4, r3);
+        r12 = $r33;
+        $r34 = newarray (java.lang.Void)[1];
+        $r35 = (java.lang.Void) null;
+        $r34[0] = $r35;
+        virtualinvoke r12.<com.chmod0.manpages.DownloadZipTask: android.os.AsyncTask execute(java.lang.Object[])>($r34);
+        r2[8] = 1;
+        return 1;
+
+     label6:
+        $r37 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,int,int)>(r0, 2131034134, 1);
+        virtualinvoke $r37.<android.widget.Toast: void show()>();
+        r2[9] = 1;
+        return 0;
+    }
+
+    public void extractZipFile(java.lang.String)
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        java.lang.String r1, $r9;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.StringBuilder $r4, $r7, $r8;
+        com.chmod0.manpages.ExtractZipTask r5, $r6;
+        java.lang.Void[] $r10;
+        java.lang.Void $r11;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[9];
+        $r6 = new com.chmod0.manpages.ExtractZipTask;
+        $r4 = new java.lang.StringBuilder;
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+        $r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("manpages.zip");
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        specialinvoke $r6.<com.chmod0.manpages.ExtractZipTask: void <init>(com.chmod0.manpages.ManualActivity,java.lang.String,java.lang.String)>(r0, $r9, r1);
+        r5 = $r6;
+        $r10 = newarray (java.lang.Void)[1];
+        $r11 = (java.lang.Void) null;
+        $r10[0] = $r11;
+        virtualinvoke r5.<com.chmod0.manpages.ExtractZipTask: android.os.AsyncTask execute(java.lang.Object[])>($r10);
+        r3[0] = 1;
+        return;
+    }
+
+    public boolean onCreateOptionsMenu(android.view.Menu)
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        android.view.Menu r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.view.MenuInflater $r4;
+        android.app.Application $r5;
+        boolean $z0;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity;
+        r1 := @parameter0: android.view.Menu;
+        $r2 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[10];
+        $r4 = new android.view.MenuInflater;
+        $r5 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: android.app.Application getApplication()>();
+        specialinvoke $r4.<android.view.MenuInflater: void <init>(android.content.Context)>($r5);
+        virtualinvoke $r4.<android.view.MenuInflater: void inflate(int,android.view.Menu)>(2131099649, r1);
+        $z0 = specialinvoke r0.<android.app.Activity: boolean onCreateOptionsMenu(android.view.Menu)>(r1);
+        r3[0] = 1;
+        return $z0;
+    }
+
+    public boolean onOptionsItemSelected(android.view.MenuItem)
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        android.view.MenuItem r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.view.LayoutInflater r4;
+        android.app.AlertDialog$Builder r5, r6, $r7, $r14;
+        int $i0;
+        android.view.View $r10, $r16;
+        boolean $z0;
+
+        r0 := @this: com.chmod0.manpages.ManualActivity;
+        r1 := @parameter0: android.view.MenuItem;
+        $r2 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[11];
+        r4 = virtualinvoke r0.<com.chmod0.manpages.ManualActivity: android.view.LayoutInflater getLayoutInflater()>();
+        $i0 = interfaceinvoke r1.<android.view.MenuItem: int getItemId()>();
+        r3[0] = 1;
+        tableswitch($i0)
+        {
+            case 2131165192: goto label3;
+            case 2131165193: goto label1;
+            case 2131165194: goto label2;
+            default: goto label4;
+        };
+
+     label1:
+        $r7 = new android.app.AlertDialog$Builder;
+        specialinvoke $r7.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>(r0);
+        r5 = $r7;
+        virtualinvoke r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("About...");
+        virtualinvoke r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setIcon(int)>(2130837504);
+        $r10 = virtualinvoke r4.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>(2130903040, null, 0);
+        virtualinvoke r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setView(android.view.View)>($r10);
+        virtualinvoke r5.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("Ok", null);
+        virtualinvoke r5.<android.app.AlertDialog$Builder: android.app.AlertDialog show()>();
+        r3[1] = 1;
+        goto label4;
+
+     label2:
+        virtualinvoke r0.<com.chmod0.manpages.ManualActivity: void suggestDownload()>();
+        r3[2] = 1;
+        goto label4;
+
+     label3:
+        $r14 = new android.app.AlertDialog$Builder;
+        specialinvoke $r14.<android.app.AlertDialog$Builder: void <init>(android.content.Context)>(r0);
+        r6 = $r14;
+        virtualinvoke r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setTitle(java.lang.CharSequence)>("Sections");
+        $r16 = virtualinvoke r4.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>(2130903045, null, 0);
+        virtualinvoke r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setView(android.view.View)>($r16);
+        virtualinvoke r6.<android.app.AlertDialog$Builder: android.app.AlertDialog$Builder setPositiveButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>("Ok", null);
+        virtualinvoke r6.<android.app.AlertDialog$Builder: android.app.AlertDialog show()>();
+        r3[3] = 1;
+
+     label4:
+        $z0 = specialinvoke r0.<android.app.Activity: boolean onOptionsItemSelected(android.view.MenuItem)>(r1);
+        r3[4] = 1;
+        return $z0;
+    }
+
+    static android.app.AlertDialog access$000(com.chmod0.manpages.ManualActivity)
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.app.AlertDialog $r3;
+
+        r0 := @parameter0: com.chmod0.manpages.ManualActivity;
+        $r1 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[12];
+        $r3 = r0.<com.chmod0.manpages.ManualActivity: android.app.AlertDialog downloadDialog>;
+        r2[0] = 1;
+        return $r3;
+    }
+
+    static boolean access$100(com.chmod0.manpages.ManualActivity)
+    {
+        com.chmod0.manpages.ManualActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        boolean $z0;
+
+        r0 := @parameter0: com.chmod0.manpages.ManualActivity;
+        $r1 = <com.chmod0.manpages.ManualActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[13];
+        $z0 = specialinvoke r0.<com.chmod0.manpages.ManualActivity: boolean downloadPages()>();
+        r2[0] = 1;
+        return $z0;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.ManualActivity: boolean[][] $VRi()>();
+        r1 = $r0[14];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15;
+
+        $r0 = newmultiarray (boolean)[15][];
+        <com.chmod0.manpages.ManualActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[6];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[6];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[8];
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r0[7] = $r8;
+        $r9 = newarray (boolean)[10];
+        $r0[8] = $r9;
+        $r10 = newarray (boolean)[1];
+        $r0[9] = $r10;
+        $r11 = newarray (boolean)[1];
+        $r0[10] = $r11;
+        $r12 = newarray (boolean)[5];
+        $r0[11] = $r12;
+        $r13 = newarray (boolean)[1];
+        $r0[12] = $r13;
+        $r14 = newarray (boolean)[1];
+        $r0[13] = $r14;
+        $r15 = newarray (boolean)[1];
+        $r0[14] = $r15;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/ManualActivity", 1222810557601572872L);
+        return $r0;
+    }
+}
+public class com.chmod0.manpages.OnManpageClickListener extends java.lang.Object implements android.widget.AdapterView$OnItemClickListener
+{
+    private com.chmod0.manpages.ManualActivity activity;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>(com.chmod0.manpages.ManualActivity)
+    {
+        com.chmod0.manpages.OnManpageClickListener r0;
+        com.chmod0.manpages.ManualActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.chmod0.manpages.OnManpageClickListener;
+        r1 := @parameter0: com.chmod0.manpages.ManualActivity;
+        $r2 = <com.chmod0.manpages.OnManpageClickListener: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.OnManpageClickListener: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        r0.<com.chmod0.manpages.OnManpageClickListener: com.chmod0.manpages.ManualActivity activity> = r1;
+        r3[0] = 1;
+        return;
+    }
+
+    public void onItemClick(android.widget.AdapterView, android.view.View, int, long)
+    {
+        com.chmod0.manpages.OnManpageClickListener r0;
+        android.widget.AdapterView r1;
+        android.view.View r2;
+        int i0;
+        long l1;
+        boolean[][] $r3;
+        boolean[] r4;
+        com.chmod0.manpages.ManualActivity $r5;
+        java.lang.Object $r6;
+        com.chmod0.manpages.Page $r7;
+
+        r0 := @this: com.chmod0.manpages.OnManpageClickListener;
+        r1 := @parameter0: android.widget.AdapterView;
+        r2 := @parameter1: android.view.View;
+        i0 := @parameter2: int;
+        l1 := @parameter3: long;
+        $r3 = <com.chmod0.manpages.OnManpageClickListener: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.chmod0.manpages.OnManpageClickListener: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+        $r5 = r0.<com.chmod0.manpages.OnManpageClickListener: com.chmod0.manpages.ManualActivity activity>;
+        $r6 = virtualinvoke r1.<android.widget.AdapterView: java.lang.Object getItemAtPosition(int)>(i0);
+        $r7 = (com.chmod0.manpages.Page) $r6;
+        virtualinvoke $r5.<com.chmod0.manpages.ManualActivity: void displayManpage(com.chmod0.manpages.Page)>($r7);
+        r4[0] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.OnManpageClickListener: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.chmod0.manpages.OnManpageClickListener: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/OnManpageClickListener", 4320153511175340215L);
+        return $r0;
+    }
+}
+public class com.chmod0.manpages.Page extends java.lang.Object implements java.io.Serializable
+{
+    private static final long serialVersionUID;
+    private java.lang.String name;
+    private int section;
+    private static final boolean[][] $VRc;
+
+    public void <init>(java.lang.String, int)
+    {
+        com.chmod0.manpages.Page r0;
+        java.lang.String r1;
+        int i0;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.chmod0.manpages.Page;
+        r1 := @parameter0: java.lang.String;
+        i0 := @parameter1: int;
+        $r2 = <com.chmod0.manpages.Page: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.Page: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        r0.<com.chmod0.manpages.Page: java.lang.String name> = r1;
+        r0.<com.chmod0.manpages.Page: int section> = i0;
+        r3[0] = 1;
+        return;
+    }
+
+    public java.lang.String getName()
+    {
+        com.chmod0.manpages.Page r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String $r3;
+
+        r0 := @this: com.chmod0.manpages.Page;
+        $r1 = <com.chmod0.manpages.Page: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.Page: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[1];
+        $r3 = r0.<com.chmod0.manpages.Page: java.lang.String name>;
+        r2[0] = 1;
+        return $r3;
+    }
+
+    public void setName(java.lang.String)
+    {
+        com.chmod0.manpages.Page r0;
+        java.lang.String r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.chmod0.manpages.Page;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <com.chmod0.manpages.Page: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.Page: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[2];
+        r0.<com.chmod0.manpages.Page: java.lang.String name> = r1;
+        r3[0] = 1;
+        return;
+    }
+
+    public int getSection()
+    {
+        com.chmod0.manpages.Page r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        int $i0;
+
+        r0 := @this: com.chmod0.manpages.Page;
+        $r1 = <com.chmod0.manpages.Page: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.Page: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        $i0 = r0.<com.chmod0.manpages.Page: int section>;
+        r2[0] = 1;
+        return $i0;
+    }
+
+    public void setSection(int)
+    {
+        com.chmod0.manpages.Page r0;
+        int i0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.chmod0.manpages.Page;
+        i0 := @parameter0: int;
+        $r1 = <com.chmod0.manpages.Page: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.Page: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[4];
+        r0.<com.chmod0.manpages.Page: int section> = i0;
+        r2[0] = 1;
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.chmod0.manpages.Page r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.StringBuilder $r3, $r5, $r6, $r7, $r8;
+        java.lang.String $r4, $r9;
+        int $i0;
+
+        r0 := @this: com.chmod0.manpages.Page;
+        $r1 = <com.chmod0.manpages.Page: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.Page: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[5];
+        $r3 = new java.lang.StringBuilder;
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+        $r4 = r0.<com.chmod0.manpages.Page: java.lang.String name>;
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" (");
+        $i0 = r0.<com.chmod0.manpages.Page: int section>;
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        r2[0] = 1;
+        return $r9;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.Page: boolean[][] $VRi()>();
+        r1 = $r0[6];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7;
+
+        $r0 = newmultiarray (boolean)[7][];
+        <com.chmod0.manpages.Page: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[1];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[1];
+        $r0[6] = $r7;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/Page", -8827602859226487079L);
+        return $r0;
+    }
+}
+public final class com.chmod0.manpages.R$attr extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.chmod0.manpages.R$attr r0;
+
+        r0 := @this: com.chmod0.manpages.R$attr;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.chmod0.manpages.R$drawable extends java.lang.Object
+{
+    public static final int ic_launcher;
+    public static final int ic_menu_about;
+    public static final int ic_menu_download;
+    public static final int ic_menu_sections;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.R$drawable r0;
+
+        r0 := @this: com.chmod0.manpages.R$drawable;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.chmod0.manpages.R$id extends java.lang.Object
+{
+    public static final int about_menu;
+    public static final int downloadDialog;
+    public static final int downloadProgressDialog;
+    public static final int download_menu;
+    public static final int pages_names;
+    public static final int progressBar;
+    public static final int progressText;
+    public static final int search_input;
+    public static final int section_menu;
+    public static final int textView1;
+    public static final int webview;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.R$id r0;
+
+        r0 := @this: com.chmod0.manpages.R$id;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.chmod0.manpages.R$layout extends java.lang.Object
+{
+    public static final int about_popup;
+    public static final int download_popup;
+    public static final int main;
+    public static final int pages_browser;
+    public static final int progress_popup;
+    public static final int sections_popup;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.R$layout r0;
+
+        r0 := @this: com.chmod0.manpages.R$layout;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.chmod0.manpages.R$menu extends java.lang.Object
+{
+    public static final int options_browser;
+    public static final int options_manual;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.R$menu r0;
+
+        r0 := @this: com.chmod0.manpages.R$menu;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.chmod0.manpages.R$raw extends java.lang.Object
+{
+    public static final int section1;
+    public static final int section2;
+    public static final int section3;
+    public static final int section4;
+    public static final int section5;
+    public static final int section7;
+    public static final int section8;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.R$raw r0;
+
+        r0 := @this: com.chmod0.manpages.R$raw;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.chmod0.manpages.R$string extends java.lang.Object
+{
+    public static final int about_popup_desc;
+    public static final int about_popup_licence;
+    public static final int about_popup_name;
+    public static final int app_name;
+    public static final int download_suggest;
+    public static final int error_downloading;
+    public static final int error_writing;
+    public static final int no_connection;
+    public static final int no_external_storage;
+    public static final int search;
+    public static final int sections_1_desc;
+    public static final int sections_1_title;
+    public static final int sections_2_desc;
+    public static final int sections_2_title;
+    public static final int sections_3_desc;
+    public static final int sections_3_title;
+    public static final int sections_4_desc;
+    public static final int sections_4_title;
+    public static final int sections_5_desc;
+    public static final int sections_5_title;
+    public static final int sections_6_title;
+    public static final int sections_7_desc;
+    public static final int sections_7_title;
+    public static final int sections_8_desc;
+    public static final int sections_8_title;
+    public static final int sections_title;
+
+    public void <init>()
+    {
+        com.chmod0.manpages.R$string r0;
+
+        r0 := @this: com.chmod0.manpages.R$string;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.chmod0.manpages.R extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.chmod0.manpages.R r0;
+
+        r0 := @this: com.chmod0.manpages.R;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public abstract class com.chmod0.manpages.RotationAwareTask extends android.os.AsyncTask
+{
+    com.chmod0.manpages.ManualActivity activity;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>(com.chmod0.manpages.ManualActivity)
+    {
+        com.chmod0.manpages.RotationAwareTask r0;
+        com.chmod0.manpages.ManualActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.chmod0.manpages.RotationAwareTask;
+        r1 := @parameter0: com.chmod0.manpages.ManualActivity;
+        $r2 = <com.chmod0.manpages.RotationAwareTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.RotationAwareTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        specialinvoke r0.<android.os.AsyncTask: void <init>()>();
+        r0.<com.chmod0.manpages.RotationAwareTask: com.chmod0.manpages.ManualActivity activity> = null;
+        virtualinvoke r0.<com.chmod0.manpages.RotationAwareTask: void attach(com.chmod0.manpages.ManualActivity)>(r1);
+        r3[0] = 1;
+        return;
+    }
+
+    public void detach()
+    {
+        com.chmod0.manpages.RotationAwareTask r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.chmod0.manpages.RotationAwareTask;
+        $r1 = <com.chmod0.manpages.RotationAwareTask: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.chmod0.manpages.RotationAwareTask: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[1];
+        r0.<com.chmod0.manpages.RotationAwareTask: com.chmod0.manpages.ManualActivity activity> = null;
+        r2[0] = 1;
+        return;
+    }
+
+    public void attach(com.chmod0.manpages.ManualActivity)
+    {
+        com.chmod0.manpages.RotationAwareTask r0;
+        com.chmod0.manpages.ManualActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.chmod0.manpages.RotationAwareTask;
+        r1 := @parameter0: com.chmod0.manpages.ManualActivity;
+        $r2 = <com.chmod0.manpages.RotationAwareTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.chmod0.manpages.RotationAwareTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[2];
+        r0.<com.chmod0.manpages.RotationAwareTask: com.chmod0.manpages.ManualActivity activity> = r1;
+        r3[0] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.chmod0.manpages.RotationAwareTask: boolean[][] $VRi()>();
+        r1 = $r0[3];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4;
+
+        $r0 = newmultiarray (boolean)[4][];
+        <com.chmod0.manpages.RotationAwareTask: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/chmod0/manpages/RotationAwareTask", -3031937739644193496L);
+        return $r0;
+    }
+}

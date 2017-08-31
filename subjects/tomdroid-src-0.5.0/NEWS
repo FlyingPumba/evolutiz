@@ -1,0 +1,95 @@
+﻿Tomdroid NEWS
+
+Copyright 2008, 2009, 2010, 2011 Olivier Bilodeau <olivier@bottomlesspit.org>
+
+Project hosting: https://launchpad.net/tomdroid/
+
+Please report bugs to: https://bugs.launchpad.net/tomdroid
+
+Mailing list: tomdroid-dev@lists.launchpad.net 
+Join it at: https://launchpad.net/~tomdroid-dev
+
+For more details and developer visible changes see the ChangeLog
+
+-------------------------------------------------------------------------------
+Version 0.5.0 - "long delayed because of fatherhood release" released on 2011-09-05
+
+* Search within notes from Tomdroid and system integrated search (Stefan Hammer)
+* Add a context menu with the ability to send a note (Edouard Richard)
+* Several usability improvements (Stefan Hammer)
+* Higher quality icons including brand new Tomdroid icon (Stefan Hammer, 
+  lp:593351)
+* Added UI feedback for "selected" and "pressed" events (Stefan Hammer, 
+  lp:799327)
+* List indentation increased + wrapping fix (Matthew Rasmus, lp:660116)
+* Parsing fixes regarding bullet lists (Matthew Rasmus, lp:697996)
+* Improved error handling and reporting (Benoit Garret, lp:660057, lp:689473)
+* Date on the note list is now displayed according to the phone's locale
+  (Matthew Rasmus, lp:659743)
+* Fixed SD card synchronization crashing on large note collections (Thomas 
+  Frenzel, lp:534213)
+* Fixed a crasher when sending a short note (Stefan Hammer, lp:800176)
+* More content can be translated (Benoit Soyeux)
+* New German translation (Stefan Hammer)
+* Updated French translation (Benoit Soyeux)
+
+-------------------------------------------------------------------------------
+Version 0.4.1 - "I didn't do it!" (fixed with duct tape) released on 2010-10-15
+
+* Fixed sync issues related to note identifiers (Stuart Langridge, lp:657477)
+* Error messages available in logs even in released builds (lp:657561)
+* Some strings translated to French (Benoit Soyeux)
+
+Version 0.4.0 - "I didn't do it!" released on 2010-10-09
+* One-way Note Synchronization! Two providers for now: Tomboy Web and SD Card 
+  (Benoit Garret, Rodja Trappe)
+* Vastly modernized and improved UI (Rodja Trappe, Guilherme Salgado, Matthew 
+  Stevenson, #549643)
+* Notebook templates are now hidden from note list (Benoit Garret, 
+  Guilherme Salgado, #360732)
+* Fixed warning dialog reappearing after phone rotation (Benoit Garret, #541793)
+* New note on first run giving some useful instructions (#588800)
+
+Version 0.3.1 - fundationem (fixed with a tie wrap)
+* Fixed important parsing issue with notes in +xx:xx timezones (#520543)
+* Fixed error-reporting of date parsing errors
+* Only one error displayed per synchronization attempts instead of one per note
+
+Version 0.3.0 - fundationem
+Android 1.5 or later required
+* Instant startup -- database back-end instead of files (Benoît Garret)
+* New "Sync from SD Card" menu item that will populate the notes database with
+  the notes in tomdroid/ on the SD card (Benoît Garret)
+* Significantly smaller App (went from ~380Kb to ~35Kb)
+* Note list is now sorted showing last modified notes first
+* Notification when "Sync from SD Card" is complete
+* Note title no longer shown in the note text
+* Fixed note parsing errors (#364850, #483101)
+* Fixed phone numbers in note titles (#512204)
+* Improved help messages
+* Improved error reporting to the user
+* Removed the "Load from Web" not-so-useful feature (Benoît Garret)
+
+Version 0.2.0 - this is all wrong
+Development is done using SDK 1.5 but the application is compatible with 1.x
+* Performance improvements (on my ADP1 ~50 notes loads twice as fast)
+* Responsiveness improvements: you can now see the screen updating the note 
+  list when it's parsing notes and interact with it
+* Usability/UI improvements (#364851, Benoît Garret)
+* Text no longer changes color when scrolling (#364425)
+* Fixed concurrency crashes (#389437)
+* Messages are now clearer when there are no notes in the tomdroid/ folder vs 
+  when the folder doesn't exist
+* Improved usability of the URL input dialog to load a Web note
+* Better error reporting to user when loading a note from the Web
+* Better Android lifecycle management
+* Developer related fixes (#364770, Michael Fletcher)
+
+Version 0.1.0 - the baby eating release
+* Show the list of all notes in the tomdroid directory on the sdcard
+* View individual Tomboy notes. 
+  All formatting tags should be supported.
+  Notebooks, tags and addins will not be understood.
+* You can load a note from a Web URL.
+  In that case, links to other notes won't work.
+

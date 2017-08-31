@@ -1,0 +1,2772 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/build_acteve.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: Bites
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for Bites...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/rsLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for Bites...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] No changes in the AndroidManifest files.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Found new input file
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] No need to generate new BuildConfig.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 1 source file to /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/classes...
+
+-post-compile:
+   [delete] Deleting: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/a3t/original.jar
+   [delete] Deleting: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/a3t/instrumented.jar
+      [jar] Building jar: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/a3t/original.jar
+
+instrument:
+     [java] a3t.in.jars=/vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/a3t/original.jar
+     [java] a3t.out.jar=/vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/a3t/instrumented.jar
+     [java] a3t.lib.jars=/home/vagrant/tools/acteve/jars/a3t_symbolic.jar:/home/vagrant/tools/acteve/jars/a3t_models.jar:/home/vagrant/android-sdk-linux/platforms/android-10/android.jar:/home/vagrant/tools/acteve/a3t_sdk/instrumentedframework.jar:/home/vagrant/tools/acteve/jars/a3t_stubs.jar:/home/vagrant/tools/acteve/jars/emma.jar
+     [java] a3t.inputmeths.file=null
+     [java] a3t.modelmeths.file=null
+     [java] a3t.out.dir=/vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/a3t
+     [java] a3t.sdk.dir=/home/vagrant/tools/acteve/a3t_sdk (SDK if null)
+     [java] a3t.rw.kind=ID_FIELD_WRITE
+     [java] a3t.whiteflds.file=null
+     [java] a3t.blackflds.file=null
+     [java] a3t.whitemeths.file=null
+     [java] a3t.instrflds.all=false
+     [java] SHAUVIK config.inJars=/vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/a3t/original.jar
+     [java] SHAUVIK config.libJars=/home/vagrant/tools/acteve/jars/a3t_symbolic.jar:/home/vagrant/tools/acteve/jars/a3t_models.jar:/home/vagrant/android-sdk-linux/platforms/android-10/android.jar:/home/vagrant/tools/acteve/a3t_sdk/instrumentedframework.jar:/home/vagrant/tools/acteve/jars/a3t_stubs.jar:/home/vagrant/tools/acteve/jars/emma.jar
+     [java]     public static final acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _neg(acteve.symbolic.integer.Expression)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_3;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_2, _sym_tmp_1;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_3 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         _sym_tmp_2 = interfaceinvoke _sym_tmp_3.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _neg()>();
+     [java]         return _sym_tmp_2;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cast(acteve.symbolic.integer.Expression, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_4;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_3, _sym_tmp_1;
+     [java]         int _sym_tmp_2;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_4 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         _sym_tmp_3 = interfaceinvoke _sym_tmp_4.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _cast(int)>(_sym_tmp_2);
+     [java]         return _sym_tmp_3;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Equality _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Equality) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Equality: acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, java.lang.Object, java.lang.Object)
+     [java]     {
+     [java]         acteve.symbolic.integer.Equality _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         java.lang.Object _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: java.lang.Object;
+     [java]         _sym_tmp_4 := @parameter3: java.lang.Object;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Equality) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.RefConstant: acteve.symbolic.integer.RefConstant get(java.lang.Object)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.RefConstant: acteve.symbolic.integer.RefConstant get(java.lang.Object)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Equality: acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _ne(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Equality _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Equality) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Equality: acteve.symbolic.integer.Expression _ne(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _ne(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, java.lang.Object, java.lang.Object)
+     [java]     {
+     [java]         acteve.symbolic.integer.Equality _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         java.lang.Object _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: java.lang.Object;
+     [java]         _sym_tmp_4 := @parameter3: java.lang.Object;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Equality) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.RefConstant: acteve.symbolic.integer.RefConstant get(java.lang.Object)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.RefConstant: acteve.symbolic.integer.RefConstant get(java.lang.Object)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Equality: acteve.symbolic.integer.Expression _ne(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cmpl(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.CMP _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.CMP) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.CMP: acteve.symbolic.integer.Expression _cmpl(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cmpl(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.CMP _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.CMP) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.CMP: acteve.symbolic.integer.Expression _cmpl(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cmpg(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.CMP _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.CMP) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.CMP: acteve.symbolic.integer.Expression _cmpg(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cmpg(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.CMP _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.CMP) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.CMP: acteve.symbolic.integer.Expression _cmpg(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _and(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _and(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _and(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _and(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _or(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _or(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _or(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _or(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _xor(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _xor(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _xor(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _xor(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftR(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftR(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftR(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         long _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftR(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftL(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftL(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftL(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         long _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftL(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftUR(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftUR(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftUR(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         long _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftUR(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cmp(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.LongExpression _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.LongExpression) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.integer.LongExpression: acteve.symbolic.integer.Expression _cmp(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _gt(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.IntegerExpression _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.IntegerExpression) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.integer.IntegerExpression: acteve.symbolic.integer.Expression _gt(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _lt(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.IntegerExpression _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.IntegerExpression) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.integer.IntegerExpression: acteve.symbolic.integer.Expression _lt(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _ge(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.IntegerExpression _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.IntegerExpression) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.integer.IntegerExpression: acteve.symbolic.integer.Expression _ge(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _le(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.IntegerExpression _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.IntegerExpression) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.integer.IntegerExpression: acteve.symbolic.integer.Expression _le(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int[], int, int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_6, _sym_tmp_5;
+     [java]         int[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: int[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.IntegerArrayConstant: acteve.symbolic.array.IntegerArrayConstant get(int[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         int[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.IntegerArrayConstant: acteve.symbolic.array.IntegerArrayConstant get(int[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, short[], int, short)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         short _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         short[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: short[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: short;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.ShortArrayConstant: acteve.symbolic.array.ShortArrayConstant get(short[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, short[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         short[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: short[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.ShortArrayConstant: acteve.symbolic.array.ShortArrayConstant get(short[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, char[], int, char)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         char _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         char[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: char[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: char;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.CharArrayConstant: acteve.symbolic.array.CharArrayConstant get(char[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, char[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         char[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: char[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.CharArrayConstant: acteve.symbolic.array.CharArrayConstant get(char[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, byte[], int, byte)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         byte _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         byte[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: byte[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: byte;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.ByteArrayConstant: acteve.symbolic.array.ByteArrayConstant get(byte[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, byte[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         byte[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: byte[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.ByteArrayConstant: acteve.symbolic.array.ByteArrayConstant get(byte[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, boolean[], int, boolean)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         boolean _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         boolean[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: boolean[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: boolean;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.BooleanArrayConstant: acteve.symbolic.array.BooleanArrayConstant get(boolean[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, boolean[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         boolean[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: boolean[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.BooleanArrayConstant: acteve.symbolic.array.BooleanArrayConstant get(boolean[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long[], int, long)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         long[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: long[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.LongArrayConstant: acteve.symbolic.array.LongArrayConstant get(long[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         long[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.LongArrayConstant: acteve.symbolic.array.LongArrayConstant get(long[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float[], int, float)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         float[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: float[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.FloatArrayConstant: acteve.symbolic.array.FloatArrayConstant get(float[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         float[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.FloatArrayConstant: acteve.symbolic.array.FloatArrayConstant get(float[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double[], int, double)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         double[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: double[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.DoubleArrayConstant: acteve.symbolic.array.DoubleArrayConstant get(double[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         double[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.DoubleArrayConstant: acteve.symbolic.array.DoubleArrayConstant get(double[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _alen(acteve.symbolic.integer.Expression)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_3;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_2, _sym_tmp_1;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_3 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         _sym_tmp_2 = virtualinvoke _sym_tmp_3.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _alen()>();
+     [java]         return _sym_tmp_2;
+     [java]     }
+     [java] SHAUVIK: Soot args-w -p cg off -keep-line-number -keep-bytecode-offset -dynamic-class acteve.symbolic.Util -soot-classpath /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/a3t/original.jar:/home/vagrant/tools/acteve/jars/a3t_symbolic.jar:/home/vagrant/tools/acteve/jars/a3t_models.jar:/home/vagrant/android-sdk-linux/platforms/android-10/android.jar:/home/vagrant/tools/acteve/a3t_sdk/instrumentedframework.jar:/home/vagrant/tools/acteve/jars/a3t_stubs.jar:/home/vagrant/tools/acteve/jars/emma.jar -dynamic-package acteve.symbolic.integer. -dynamic-package models. -outjar -d /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/a3t/instrumented.jar -O -validate acteve.symbolic.DummyMain
+     [java] Soot started on Sun Nov 09 06:01:46 UTC 2014
+     [java] caldwell.ben.bites.Archiver
+     [java] caldwell.ben.bites.Bites$1
+     [java] caldwell.ben.bites.Bites$2
+     [java] caldwell.ben.bites.Bites
+     [java] caldwell.ben.bites.BitesPreferences
+     [java] caldwell.ben.bites.BuildConfig
+     [java] caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation
+     [java] caldwell.ben.bites.EmmaInstrument.FinishListener
+     [java] caldwell.ben.bites.EmmaInstrument.InstrumentedActivity$CoverageCollector
+     [java] caldwell.ben.bites.EmmaInstrument.InstrumentedActivity
+     [java] caldwell.ben.bites.EmmaInstrument.SMSInstrumentedReceiver
+     [java] caldwell.ben.bites.IngredientList$1
+     [java] caldwell.ben.bites.IngredientList$2
+     [java] caldwell.ben.bites.IngredientList$3
+     [java] caldwell.ben.bites.IngredientList$4
+     [java] caldwell.ben.bites.IngredientList$5
+     [java] caldwell.ben.bites.IngredientList$6
+     [java] caldwell.ben.bites.IngredientList$IngredientAdapter
+     [java] caldwell.ben.bites.IngredientList
+     [java] caldwell.ben.bites.MethodList$1
+     [java] caldwell.ben.bites.MethodList$2
+     [java] caldwell.ben.bites.MethodList$3
+     [java] caldwell.ben.bites.MethodList$4
+     [java] caldwell.ben.bites.MethodList$5
+     [java] caldwell.ben.bites.MethodList$6
+     [java] caldwell.ben.bites.MethodList
+     [java] caldwell.ben.bites.R$array
+     [java] caldwell.ben.bites.R$attr
+     [java] caldwell.ben.bites.R$color
+     [java] caldwell.ben.bites.R$drawable
+     [java] caldwell.ben.bites.R$id
+     [java] caldwell.ben.bites.R$layout
+     [java] caldwell.ben.bites.R$string
+     [java] caldwell.ben.bites.R$style
+     [java] caldwell.ben.bites.R$xml
+     [java] caldwell.ben.bites.R
+     [java] caldwell.ben.bites.RecipeBook$Ingredients
+     [java] caldwell.ben.bites.RecipeBook$Methods
+     [java] caldwell.ben.bites.RecipeBook$Recipes
+     [java] caldwell.ben.bites.RecipeBook
+     [java] caldwell.ben.bites.RecipeBookProvider$DatabaseHelper
+     [java] caldwell.ben.bites.RecipeBookProvider
+     [java] caldwell.ben.bites.RecipeList$1
+     [java] caldwell.ben.bites.RecipeList$2
+     [java] caldwell.ben.bites.RecipeList$3
+     [java] caldwell.ben.bites.RecipeList$4
+     [java] caldwell.ben.bites.RecipeList$5
+     [java] caldwell.ben.bites.RecipeList$6
+     [java] caldwell.ben.bites.RecipeList$RecipeAdapter
+     [java] caldwell.ben.bites.RecipeList
+     [java] caldwell.ben.bites.SmsReceiver
+     [java] org.openintents.intents.AutomationIntents
+     [java] org.openintents.intents.GeneralIntents
+     [java] org.openintents.intents.ProviderIntents
+     [java] org.openintents.intents.ProviderUtils
+     [java] org.openintents.intents.ShoppingListIntents
+     [java] Instrumenting <caldwell.ben.bites.Archiver: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.Archiver: java.lang.Boolean archive(java.io.File)>
+     [java] Instrumenting <caldwell.ben.bites.Archiver: java.lang.Boolean retrieve(java.io.File)>
+     [java] Instrumenting <caldwell.ben.bites.Archiver: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.Archiver: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.Bites$1: void <init>(caldwell.ben.bites.Bites)>
+     [java] Instrumenting <caldwell.ben.bites.Bites$1: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.Bites$1: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.Bites$1: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.Bites$2: void <init>(caldwell.ben.bites.Bites)>
+     [java] Instrumenting <caldwell.ben.bites.Bites$2: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.Bites$2: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.Bites$2: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.Bites: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.Bites: void onCreate(android.os.Bundle)>
+     [java] Instrumenting <caldwell.ben.bites.Bites: void checkRecipeReceived()>
+     [java] Instrumenting <caldwell.ben.bites.Bites: android.app.Dialog onCreateDialog(int)>
+     [java] Instrumenting <caldwell.ben.bites.Bites: java.lang.String getImportedRecipeName()>
+     [java] Instrumenting <caldwell.ben.bites.Bites: void importRecipe()>
+     [java] Instrumenting <caldwell.ben.bites.Bites: void importSMSRecipe()>
+     [java] Instrumenting <caldwell.ben.bites.Bites: void importXMLDownload()>
+     [java] Instrumenting <caldwell.ben.bites.Bites: void importXMLAttachment()>
+     [java] Instrumenting <caldwell.ben.bites.Bites: void access$000(caldwell.ben.bites.Bites)>
+     [java] Instrumenting <caldwell.ben.bites.Bites: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.Bites: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.BitesPreferences: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.BitesPreferences: void onCreate(android.os.Bundle)>
+     [java] Instrumenting <caldwell.ben.bites.BitesPreferences: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.BitesPreferences: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.BuildConfig: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: void onCreate(android.os.Bundle)>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: void onStart()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: boolean getBooleanArgument(android.os.Bundle,java.lang.String)>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: java.lang.String getCoverageFilePath()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: void onActivityFinished()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: void dumpIntermediateCoverage(java.lang.String)>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.InstrumentedActivity$CoverageCollector: void <init>(caldwell.ben.bites.EmmaInstrument.InstrumentedActivity)>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.InstrumentedActivity$CoverageCollector: void onReceive(android.content.Context,android.content.Intent)>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.InstrumentedActivity$CoverageCollector: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.InstrumentedActivity: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.InstrumentedActivity: void setFinishListener(caldwell.ben.bites.EmmaInstrument.FinishListener)>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.InstrumentedActivity: void finish()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.InstrumentedActivity: caldwell.ben.bites.EmmaInstrument.FinishListener access$000(caldwell.ben.bites.EmmaInstrument.InstrumentedActivity)>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.InstrumentedActivity: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.SMSInstrumentedReceiver: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.SMSInstrumentedReceiver: void onReceive(android.content.Context,android.content.Intent)>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.SMSInstrumentedReceiver: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$1: void <init>(caldwell.ben.bites.IngredientList)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$1: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$1: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$1: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$2: void <init>(caldwell.ben.bites.IngredientList)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$2: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$2: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$2: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$3: void <init>(caldwell.ben.bites.IngredientList)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$3: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$3: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$3: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$4: void <init>(caldwell.ben.bites.IngredientList)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$4: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$4: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$4: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$5: void <init>(caldwell.ben.bites.IngredientList)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$5: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$5: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$5: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$6: void <init>(caldwell.ben.bites.IngredientList)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$6: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$6: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$6: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$IngredientAdapter: void <init>(caldwell.ben.bites.IngredientList,android.content.Context,int,android.database.Cursor,java.lang.String[],int[])>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$IngredientAdapter: android.database.Cursor runQueryOnBackgroundThread(java.lang.CharSequence)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$IngredientAdapter: void bindView(android.view.View,android.content.Context,android.database.Cursor)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$IngredientAdapter: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList$IngredientAdapter: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: void onCreate(android.os.Bundle)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: void onResume()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: void onCreateContextMenu(android.view.ContextMenu,android.view.View,android.view.ContextMenu$ContextMenuInfo)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: boolean onContextItemSelected(android.view.MenuItem)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: boolean onCreateOptionsMenu(android.view.Menu)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: boolean onOptionsItemSelected(android.view.MenuItem)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: void onListItemClick(android.widget.ListView,android.view.View,int,long)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: android.app.Dialog onCreateDialog(int)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: java.lang.String createShoppingList()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: java.util.ArrayList getListExtra()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: java.lang.String[] access$000()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: android.widget.EditText access$100(caldwell.ben.bites.IngredientList)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: android.net.Uri access$200(caldwell.ben.bites.IngredientList)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: android.net.Uri access$202(caldwell.ben.bites.IngredientList,android.net.Uri)>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.IngredientList: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$1: void <init>(caldwell.ben.bites.MethodList)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$1: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$1: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$1: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$2: void <init>(caldwell.ben.bites.MethodList)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$2: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$2: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$2: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$3: void <init>(caldwell.ben.bites.MethodList)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$3: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$3: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$3: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$4: void <init>(caldwell.ben.bites.MethodList)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$4: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$4: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$4: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$5: void <init>(caldwell.ben.bites.MethodList)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$5: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$5: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$5: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$6: void <init>(caldwell.ben.bites.MethodList)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$6: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$6: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList$6: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: void onCreate(android.os.Bundle)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: void onResume()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: void onCreateContextMenu(android.view.ContextMenu,android.view.View,android.view.ContextMenu$ContextMenuInfo)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: boolean onContextItemSelected(android.view.MenuItem)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: boolean onCreateOptionsMenu(android.view.Menu)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: boolean onOptionsItemSelected(android.view.MenuItem)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: void onListItemClick(android.widget.ListView,android.view.View,int,long)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: android.app.Dialog onCreateDialog(int)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: android.widget.EditText access$000(caldwell.ben.bites.MethodList)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: android.widget.TextView access$100(caldwell.ben.bites.MethodList)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: android.net.Uri access$200(caldwell.ben.bites.MethodList)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: android.net.Uri access$202(caldwell.ben.bites.MethodList,android.net.Uri)>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.MethodList: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.R$array: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.R$attr: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.R$color: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.R$drawable: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.R$id: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.R$layout: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.R$string: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.R$style: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.R$xml: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.R: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook$Ingredients: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook$Ingredients: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook$Ingredients: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook$Methods: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook$Methods: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook$Methods: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook$Recipes: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook$Recipes: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook$Recipes: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBook: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider$DatabaseHelper: void <init>(android.content.Context)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider$DatabaseHelper: void onCreate(android.database.sqlite.SQLiteDatabase)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider$DatabaseHelper: void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider$DatabaseHelper: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider$DatabaseHelper: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider: boolean onCreate()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider: java.lang.String getType(android.net.Uri)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider: android.net.Uri insert(android.net.Uri,android.content.ContentValues)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider: int delete(android.net.Uri,java.lang.String,java.lang.String[])>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider: int update(android.net.Uri,android.content.ContentValues,java.lang.String,java.lang.String[])>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeBookProvider: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$1: void <init>(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$1: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$1: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$1: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$2: void <init>(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$2: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$2: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$2: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$3: void <init>(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$3: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$3: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$3: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$4: void <init>(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$4: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$4: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$4: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$5: void <init>(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$5: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$5: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$5: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$6: void <init>(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$6: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$6: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$6: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$RecipeAdapter: void <init>(caldwell.ben.bites.RecipeList,android.content.Context,int,android.database.Cursor,java.lang.String[],int[])>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$RecipeAdapter: android.database.Cursor runQueryOnBackgroundThread(java.lang.CharSequence)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$RecipeAdapter: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList$RecipeAdapter: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: void onCreate(android.os.Bundle)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: void onResume()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: boolean onCreateOptionsMenu(android.view.Menu)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: boolean onOptionsItemSelected(android.view.MenuItem)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: void onCreateContextMenu(android.view.ContextMenu,android.view.View,android.view.ContextMenu$ContextMenuInfo)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: boolean onContextItemSelected(android.view.MenuItem)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: void sendEmailRecipe()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: void sendSMSRecipe()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: void onListItemClick(android.widget.ListView,android.view.View,int,long)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: void selectItem(long)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: android.app.Dialog onCreateDialog(int)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: java.lang.String[] access$000()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: android.widget.EditText access$100(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: android.widget.EditText access$200(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: android.widget.EditText access$300(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: android.net.Uri access$402(caldwell.ben.bites.RecipeList,android.net.Uri)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: android.net.Uri access$400(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: void access$500(caldwell.ben.bites.RecipeList,long)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: android.database.Cursor access$600(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: android.widget.TextView access$700(caldwell.ben.bites.RecipeList)>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.RecipeList: boolean[][] $VRi()>
+     [java] Instrumenting <caldwell.ben.bites.SmsReceiver: void <init>()>
+     [java] Instrumenting <caldwell.ben.bites.SmsReceiver: void onReceive(android.content.Context,android.content.Intent)>
+     [java] Instrumenting <caldwell.ben.bites.SmsReceiver: void <clinit>()>
+     [java] Instrumenting <caldwell.ben.bites.SmsReceiver: boolean[][] $VRi()>
+     [java] Instrumenting <org.openintents.intents.AutomationIntents: void <init>()>
+     [java] Instrumenting <org.openintents.intents.AutomationIntents: void <clinit>()>
+     [java] Instrumenting <org.openintents.intents.AutomationIntents: boolean[][] $VRi()>
+     [java] Instrumenting <org.openintents.intents.GeneralIntents: void <init>()>
+     [java] Instrumenting <org.openintents.intents.GeneralIntents: void <clinit>()>
+     [java] Instrumenting <org.openintents.intents.GeneralIntents: boolean[][] $VRi()>
+     [java] Instrumenting <org.openintents.intents.ProviderIntents: void <init>()>
+     [java] Instrumenting <org.openintents.intents.ProviderIntents: void <clinit>()>
+     [java] Instrumenting <org.openintents.intents.ProviderIntents: boolean[][] $VRi()>
+     [java] Instrumenting <org.openintents.intents.ProviderUtils: void <init>()>
+     [java] Instrumenting <org.openintents.intents.ProviderUtils: long[] getAffectedRows(android.database.sqlite.SQLiteDatabase,java.lang.String,java.lang.String,java.lang.String[])>
+     [java] Instrumenting <org.openintents.intents.ProviderUtils: void <clinit>()>
+     [java] Instrumenting <org.openintents.intents.ProviderUtils: boolean[][] $VRi()>
+     [java] Instrumenting <org.openintents.intents.ShoppingListIntents: void <init>()>
+     [java] Instrumenting <org.openintents.intents.ShoppingListIntents: void <clinit>()>
+     [java] Instrumenting <org.openintents.intents.ShoppingListIntents: boolean[][] $VRi()>
+     [java] Transforming acteve.symbolic.SymbolicOperations... 
+     [java] Transforming caldwell.ben.bites.Archiver... 
+     [java] Transforming caldwell.ben.bites.Bites$1... 
+     [java] Transforming caldwell.ben.bites.Bites$2... 
+     [java] Transforming caldwell.ben.bites.Bites... 
+     [java] Transforming caldwell.ben.bites.BitesPreferences... 
+     [java] Transforming caldwell.ben.bites.BuildConfig... 
+     [java] Transforming caldwell.ben.bites.EmmaInstrument.EmmaInstrumentation... 
+     [java] Transforming caldwell.ben.bites.EmmaInstrument.FinishListener... 
+     [java] Transforming caldwell.ben.bites.EmmaInstrument.InstrumentedActivity$CoverageCollector... 
+     [java] Transforming caldwell.ben.bites.EmmaInstrument.InstrumentedActivity... 
+     [java] Transforming caldwell.ben.bites.EmmaInstrument.SMSInstrumentedReceiver... 
+     [java] Transforming caldwell.ben.bites.IngredientList$1... 
+     [java] Transforming caldwell.ben.bites.IngredientList$2... 
+     [java] Transforming caldwell.ben.bites.IngredientList$3... 
+     [java] Transforming caldwell.ben.bites.IngredientList$4... 
+     [java] Transforming caldwell.ben.bites.IngredientList$5... 
+     [java] Transforming caldwell.ben.bites.IngredientList$6... 
+     [java] Transforming caldwell.ben.bites.IngredientList$IngredientAdapter... 
+     [java] Transforming caldwell.ben.bites.IngredientList... 
+     [java] Transforming caldwell.ben.bites.MethodList$1... 
+     [java] Transforming caldwell.ben.bites.MethodList$2... 
+     [java] Transforming caldwell.ben.bites.MethodList$3... 
+     [java] Transforming caldwell.ben.bites.MethodList$4... 
+     [java] Transforming caldwell.ben.bites.MethodList$5... 
+     [java] Transforming caldwell.ben.bites.MethodList$6... 
+     [java] Transforming caldwell.ben.bites.MethodList... 
+     [java] Transforming caldwell.ben.bites.R$array... 
+     [java] Transforming caldwell.ben.bites.R$attr... 
+     [java] Transforming caldwell.ben.bites.R$color... 
+     [java] Transforming caldwell.ben.bites.R$drawable... 
+     [java] Transforming caldwell.ben.bites.R$id... 
+     [java] Transforming caldwell.ben.bites.R$layout... 
+     [java] Transforming caldwell.ben.bites.R$string... 
+     [java] Transforming caldwell.ben.bites.R$style... 
+     [java] Transforming caldwell.ben.bites.R$xml... 
+     [java] Transforming caldwell.ben.bites.R... 
+     [java] Transforming caldwell.ben.bites.RecipeBook$Ingredients... 
+     [java] Transforming caldwell.ben.bites.RecipeBook$Methods... 
+     [java] Transforming caldwell.ben.bites.RecipeBook$Recipes... 
+     [java] Transforming caldwell.ben.bites.RecipeBook... 
+     [java] Transforming caldwell.ben.bites.RecipeBookProvider$DatabaseHelper... 
+     [java] Transforming caldwell.ben.bites.RecipeBookProvider... 
+     [java] Transforming caldwell.ben.bites.RecipeList$1... 
+     [java] Transforming caldwell.ben.bites.RecipeList$2... 
+     [java] Transforming caldwell.ben.bites.RecipeList$3... 
+     [java] Transforming caldwell.ben.bites.RecipeList$4... 
+     [java] Transforming caldwell.ben.bites.RecipeList$5... 
+     [java] Transforming caldwell.ben.bites.RecipeList$6... 
+     [java] Transforming caldwell.ben.bites.RecipeList$RecipeAdapter... 
+     [java] Transforming caldwell.ben.bites.RecipeList... 
+     [java] Transforming caldwell.ben.bites.SmsReceiver... 
+     [java] Transforming org.openintents.intents.AutomationIntents... 
+     [java] Transforming org.openintents.intents.GeneralIntents... 
+     [java] Transforming org.openintents.intents.ProviderIntents... 
+     [java] Transforming org.openintents.intents.ProviderUtils... 
+     [java] Transforming org.openintents.intents.ShoppingListIntents... 
+     [java] Writing to acteve/symbolic/SymbolicOperations.class
+     [java] Writing to caldwell/ben/bites/Archiver.class
+     [java] Writing to caldwell/ben/bites/Bites$1.class
+     [java] Writing to caldwell/ben/bites/Bites$2.class
+     [java] Writing to caldwell/ben/bites/Bites.class
+     [java] Writing to caldwell/ben/bites/BitesPreferences.class
+     [java] Writing to caldwell/ben/bites/BuildConfig.class
+     [java] Writing to caldwell/ben/bites/EmmaInstrument/EmmaInstrumentation.class
+     [java] Writing to caldwell/ben/bites/EmmaInstrument/FinishListener.class
+     [java] Writing to caldwell/ben/bites/EmmaInstrument/InstrumentedActivity$CoverageCollector.class
+     [java] Writing to caldwell/ben/bites/EmmaInstrument/InstrumentedActivity.class
+     [java] Writing to caldwell/ben/bites/EmmaInstrument/SMSInstrumentedReceiver.class
+     [java] Writing to caldwell/ben/bites/IngredientList$1.class
+     [java] Writing to caldwell/ben/bites/IngredientList$2.class
+     [java] Writing to caldwell/ben/bites/IngredientList$3.class
+     [java] Writing to caldwell/ben/bites/IngredientList$4.class
+     [java] Writing to caldwell/ben/bites/IngredientList$5.class
+     [java] Writing to caldwell/ben/bites/IngredientList$6.class
+     [java] Writing to caldwell/ben/bites/IngredientList$IngredientAdapter.class
+     [java] Writing to caldwell/ben/bites/IngredientList.class
+     [java] Writing to caldwell/ben/bites/MethodList$1.class
+     [java] Writing to caldwell/ben/bites/MethodList$2.class
+     [java] Writing to caldwell/ben/bites/MethodList$3.class
+     [java] Writing to caldwell/ben/bites/MethodList$4.class
+     [java] Writing to caldwell/ben/bites/MethodList$5.class
+     [java] Writing to caldwell/ben/bites/MethodList$6.class
+     [java] Writing to caldwell/ben/bites/MethodList.class
+     [java] Writing to caldwell/ben/bites/R$array.class
+     [java] Writing to caldwell/ben/bites/R$attr.class
+     [java] Writing to caldwell/ben/bites/R$color.class
+     [java] Writing to caldwell/ben/bites/R$drawable.class
+     [java] Writing to caldwell/ben/bites/R$id.class
+     [java] Writing to caldwell/ben/bites/R$layout.class
+     [java] Writing to caldwell/ben/bites/R$string.class
+     [java] Writing to caldwell/ben/bites/R$style.class
+     [java] Writing to caldwell/ben/bites/R$xml.class
+     [java] Writing to caldwell/ben/bites/R.class
+     [java] Writing to caldwell/ben/bites/RecipeBook$Ingredients.class
+     [java] Writing to caldwell/ben/bites/RecipeBook$Methods.class
+     [java] Writing to caldwell/ben/bites/RecipeBook$Recipes.class
+     [java] Writing to caldwell/ben/bites/RecipeBook.class
+     [java] Writing to caldwell/ben/bites/RecipeBookProvider$DatabaseHelper.class
+     [java] Writing to caldwell/ben/bites/RecipeBookProvider.class
+     [java] Writing to caldwell/ben/bites/RecipeList$1.class
+     [java] Writing to caldwell/ben/bites/RecipeList$2.class
+     [java] Writing to caldwell/ben/bites/RecipeList$3.class
+     [java] Writing to caldwell/ben/bites/RecipeList$4.class
+     [java] Writing to caldwell/ben/bites/RecipeList$5.class
+     [java] Writing to caldwell/ben/bites/RecipeList$6.class
+     [java] Writing to caldwell/ben/bites/RecipeList$RecipeAdapter.class
+     [java] Writing to caldwell/ben/bites/RecipeList.class
+     [java] Writing to caldwell/ben/bites/SmsReceiver.class
+     [java] Writing to org/openintents/intents/AutomationIntents.class
+     [java] Writing to org/openintents/intents/GeneralIntents.class
+     [java] Writing to org/openintents/intents/ProviderIntents.class
+     [java] Writing to org/openintents/intents/ProviderUtils.class
+     [java] Writing to org/openintents/intents/ShoppingListIntents.class
+     [java] Soot finished on Sun Nov 09 06:02:05 UTC 2014
+     [java] Soot has run for 0 min. 18 sec.
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/a3t/instrumented.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/a3t/instrumented.jar -> instrumented-d3743a1a86b72839e9dcb485335e1f16.jar
+      [dex] Using Pre-Dexed emma_device-e790229f52a04d2b195df6976ccc31d7.jar <- /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Found modified input file
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/classes.dex...
+       [dx] Merged dex A (57 defs/161.7KiB) with dex B (297 defs/326.8KiB). Result is 354 defs/589.2KiB. Took 1.0s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/res
+   [crunch] Crunched 0 PNG files to update cache
+
+-package-resources:
+     [aapt] No changed resources or assets. Bites.ap_ remains untouched
+
+-package:
+[apkbuilder] Found modified input file
+[apkbuilder] Creating Bites-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/Bites-debug.apk
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/caldwell.ben.bites_4_src/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 37 seconds

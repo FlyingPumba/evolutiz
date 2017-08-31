@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:mileage="http://schemas.android.com/apk/res/com.evancharlton.mileage"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:id="@+id/container"
+>
+	<com.evancharlton.mileage.views.CursorSpinner
+		android:id="@+id/vehicle"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		mileage:uri="vehicles"
+		mileage:display_field="title"
+	/>
+	<ListView
+		android:id="@android:id/list"
+		android:layout_width="fill_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+	/>
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:visibility="gone"
+		android:id="@+id/progress_container"
+	>
+		<ProgressBar
+			style="?android:attr/progressBarStyleHorizontal"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:id="@+id/progress"
+		/>
+		<!-- TODO(3.1) Add support for this -->
+		<ImageView
+			android:focusable="true"
+			android:src="@drawable/ic_menu_cancel"
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:id="@+id/cancel"
+			android:visibility="gone"
+		/>
+	</LinearLayout>
+</LinearLayout>

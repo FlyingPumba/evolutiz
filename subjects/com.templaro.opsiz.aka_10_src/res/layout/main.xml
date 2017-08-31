@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/topLinearLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#777"
+    android:orientation="vertical"
+    android:weightSum="1" android:focusableInTouchMode="false">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/bootian_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dip"
+            android:src="@drawable/bootian" android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/mode_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/toCW_label"
+            android:textAppearance="?android:attr/textAppearanceMedium" android:gravity="right" android:layout_toLeftOf="@id/bootian_imageView" android:layout_marginRight="10dip"/>
+
+        <TextView
+            android:id="@+id/beacon_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel_beacon_label"
+            android:textAppearance="?android:attr/textAppearanceMedium" android:layout_centerVertical="true" android:gravity="left" android:layout_toRightOf="@id/bootian_imageView" android:layout_marginLeft="10dip"/>
+
+    </RelativeLayout>
+
+    <TextView android:layout_height="wrap_content" 
+        android:text="@string/instruction_text" 
+        android:gravity="center_horizontal" 
+        android:layout_width="fill_parent" 
+        android:id="@+id/instructionText">
+    </TextView>
+    <EditText android:layout_height="wrap_content" 
+        android:layout_width="fill_parent" 
+        android:id="@+id/keyerEditText" 
+        android:layout_marginBottom="5dip" 
+        android:layout_marginLeft="10dip" 
+        android:layout_marginRight="10dip">
+        <requestFocus></requestFocus>
+    </EditText>
+
+    <LinearLayout
+        android:id="@+id/playButtonLinearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:fitsSystemWindows="true">
+
+        <Button
+            android:id="@+id/clearMessageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dip" 
+            android:layout_marginLeft="20dip" 
+            android:fitsSystemWindows="true" 
+            android:drawableBottom="@android:drawable/ic_input_delete" 
+            android:textSize="0dip" android:drawablePadding="0dip" android:maxHeight="0dip"/>
+
+        <Button
+            android:id="@+id/playButton"
+            android:ellipsize="none"
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:saveEnabled="false" 
+            android:fitsSystemWindows="true" 
+            android:drawableBottom="@android:drawable/ic_media_play" 
+            android:layout_weight="1" 
+            android:textSize="0dip" android:maxHeight="0dip"/>
+
+        <Button
+            android:id="@+id/addMessageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip" 
+            android:layout_marginRight="20dip" 
+            android:fitsSystemWindows="true" 
+            android:drawableBottom="@android:drawable/ic_input_add" 
+            android:textSize="0dip" android:maxHeight="0dip"/>
+
+    </LinearLayout>
+    
+     <ListView  
+         android:id="@+id/messageList"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content"  
+         android:layout_marginLeft="10dip" 
+         android:layout_marginRight="10dip" 
+         android:layout_marginTop="5dip" />
+     
+     <TextView android:id="@+id/emptyMessageList"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginRight="10dip"
+         android:layout_marginLeft="10dip"
+         android:gravity="center_horizontal"
+         android:text="@string/no_messages"  />
+    
+</LinearLayout>

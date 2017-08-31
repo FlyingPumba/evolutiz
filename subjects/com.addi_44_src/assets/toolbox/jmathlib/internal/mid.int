@@ -1,0 +1,11 @@
+@GROUP
+char
+@SYNTAX
+mid(string, leftm right)
+@DOC
+returns the part of string between left and right.
+@EXAMPLES
+mid("Hello world", 3, 6) = "llo"
+@SEE
+left, right
+

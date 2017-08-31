@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+      android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:id="@+id/hint">
+  
+      <Button 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:id="@+id/answer"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+      android:gravity="center"
+    android:text="Accept"
+    android:textColor="@color/droid" android:textSize="50sp"
+    android:background="@color/translucent_white"
+
+    />
+  
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" 
+  android:id="@+id/hinttext1"
+android:layout_above="@id/answer"
+android:layout_centerHorizontal="true"
+                android:text="press back to enable sliders"
+                android:textColor="@color/droid" android:textSize="18sp"></TextView>
+
+</RelativeLayout>

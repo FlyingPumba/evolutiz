@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent">
+	<LinearLayout 
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent">
+		<LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/game_title" android:layout_marginTop="7pt" android:layout_marginLeft="7pt" android:layout_marginBottom="7pt" android:textSize="14pt"></TextView>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/player_title"></TextView>
+			<EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/player_amount" android:inputType="number">
+				<requestFocus></requestFocus>
+			</EditText>
+			<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/game_rounds_title"></TextView>
+			<EditText android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/game_rounds" android:inputType="number">
+				<requestFocus></requestFocus>
+			</EditText>
+			<Button android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/play_button" android:layout_marginTop="7pt"></Button>
+		</LinearLayout>
+	</LinearLayout>
+</ScrollView>

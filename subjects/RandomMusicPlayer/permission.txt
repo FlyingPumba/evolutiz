@@ -1,0 +1,1 @@
+Requests WAIT_LOCK permission when Eject button is pressed on main screen, and OK button is pressed on the Dialog box that pops up.

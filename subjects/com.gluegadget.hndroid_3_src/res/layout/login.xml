@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/layout_root" android:orientation="vertical"
+	android:layout_width="200dip" android:layout_height="wrap_content"
+	android:padding="10dp">
+
+	<EditText android:id="@+id/username" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:hint="Username"
+		android:singleLine="true" android:textSize="18sp" />
+
+	<EditText android:id="@+id/password" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:hint="Password"
+		android:singleLine="true" android:textSize="18sp" android:password="true" />
+
+	<Button android:id="@+id/login_button" android:layout_width="100dp"
+		android:layout_height="wrap_content" android:text="Login" android:layout_gravity="center_horizontal" />
+</LinearLayout>

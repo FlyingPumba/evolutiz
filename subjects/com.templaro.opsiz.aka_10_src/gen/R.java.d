@@ -1,0 +1,23 @@
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/gen/com/templaro/opsiz/aka/R.java \
+ : /vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/values-de/strings.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/values-th/strings.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/layout/edit_message_prompt.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/layout/seek_bar_preference.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/layout/help.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/layout/sk.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/layout/main.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/xml/preferences.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/values-zh/strings.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/menu/main_menu.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/drawable-hdpi/bootian.png \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/values-ru/strings.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/values-es/strings.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/drawable-mdpi/bootian.png \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/drawable-ldpi/bootian.png \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/values-fr/strings.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/values-ja/strings.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/values/attrs.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/values/arrays.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/values/strings.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/res/values-ko/strings.xml \
+/vagrant/subjects/tool_subjects/dynodroid/com.templaro.opsiz.aka_10_src/bin/AndroidManifest.xml \

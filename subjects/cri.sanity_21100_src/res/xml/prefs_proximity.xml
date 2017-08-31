@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <Preference android:key="logo" />
+  <PreferenceCategory android:title="@string/proximity_cat">
+	  <CheckBoxPreference android:title="@string/disable_proximity_title"
+	                      android:summary="@string/disable_proximity_sum"
+	                      android:key="disable_proximity" />
+	  <cri.sanity.pref.PList android:title="@string/disable_delay_title"
+	                         android:summary="@string/disable_delay_sum"
+	                         android:dependency="disable_proximity"
+	                         android:key="disable_delay_s"
+	                         android:entries="@array/disable_delay_labels"
+	                         android:entryValues="@array/disable_delay_values" />
+	  <CheckBoxPreference android:title="@string/enable_proximity_title"
+	                      android:summary="@string/enable_proximity_sum"
+	                      android:dependency="disable_proximity"
+	                      android:key="enable_proximity" />
+	  <cri.sanity.pref.PList android:title="@string/enable_delay_title"
+	                         android:summary="@string/enable_delay_sum"
+	                         android:dependency="enable_proximity"
+	                         android:key="enable_delay_s"
+	                         android:entries="@array/enable_delay_labels"
+	                         android:entryValues="@array/enable_delay_values" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/screen_cat">
+    <CheckBoxPreference android:title="@string/admin_title"
+                        android:summary="@string/admin_sum"
+                        android:persistent="false"
+                        android:key="admin" />
+	  <CheckBoxPreference android:title="@string/screen_off_title"
+	                      android:summary="@string/screen_off_sum"
+	                      android:dependency="admin"
+	                      android:key="screen_off" />
+	  <CheckBoxPreference android:title="@string/screen_on_title"
+	                      android:summary="@string/screen_on_sum"
+	                      android:key="screen_on" />
+  </PreferenceCategory>
+</PreferenceScreen>

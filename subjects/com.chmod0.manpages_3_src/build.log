@@ -1,0 +1,141 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: ManualActivity
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for ManualActivity...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for ManualActivity...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 13 source files to /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/classes.dex...
+       [dx] Merged dex A (25 defs/32.2KiB) with dex B (2 defs/1.1KiB). Result is 27 defs/37.9KiB. Took 0.4s
+       [dx] Merged dex A (27 defs/37.9KiB) with dex B (297 defs/326.8KiB). Result is 324 defs/439.0KiB. Took 0.9s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-hdpi/ic_launcher.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-hdpi/ic_launcher.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-hdpi/ic_launcher.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-hdpi/ic_menu_about.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-hdpi/ic_menu_about.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-hdpi/ic_menu_about.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-hdpi/ic_menu_download.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-hdpi/ic_menu_download.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-hdpi/ic_menu_download.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-hdpi/ic_menu_sections.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-hdpi/ic_menu_sections.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-hdpi/ic_menu_sections.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-ldpi/ic_launcher.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-ldpi/ic_launcher.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-ldpi/ic_launcher.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-ldpi/ic_menu_about.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-ldpi/ic_menu_about.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-ldpi/ic_menu_about.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-ldpi/ic_menu_download.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-ldpi/ic_menu_download.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-ldpi/ic_menu_download.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-ldpi/ic_menu_sections.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-ldpi/ic_menu_sections.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-ldpi/ic_menu_sections.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-mdpi/ic_launcher.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-mdpi/ic_launcher.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-mdpi/ic_launcher.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-mdpi/ic_menu_about.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-mdpi/ic_menu_about.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-mdpi/ic_menu_about.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-mdpi/ic_menu_download.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-mdpi/ic_menu_download.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-mdpi/ic_menu_download.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-mdpi/ic_menu_sections.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-mdpi/ic_menu_sections.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-mdpi/ic_menu_sections.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-xhdpi/ic_launcher.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-xhdpi/ic_launcher.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-xhdpi/ic_launcher.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-xhdpi/ic_menu_about.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-xhdpi/ic_menu_about.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-xhdpi/ic_menu_about.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-xhdpi/ic_menu_download.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-xhdpi/ic_menu_download.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-xhdpi/ic_menu_download.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/res/drawable-xhdpi/ic_menu_sections.png => /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-xhdpi/ic_menu_sections.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/res/drawable-xhdpi/ic_menu_sections.png: 0% size of source)
+   [crunch] Crunched 16 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating ManualActivity-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/ManualActivity-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.chmod0.manpages_3_src/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 25 seconds

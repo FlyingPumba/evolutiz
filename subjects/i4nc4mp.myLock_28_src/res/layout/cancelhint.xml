@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+      android:orientation="vertical"
+      android:background="@color/translucent_white"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:id="@+id/hint">
+  
+  <!-- here we had made the bar perfectly where the sliders are on the droid but non droid users hate it -->
+      <TextView 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:id="@+id/hidetabs"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+      android:layout_marginBottom="80dip"
+      android:gravity="center"
+    android:text=""
+    android:textColor="@color/droid" android:textSize="65sp"/>
+    
+
+    
+  
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" 
+  android:id="@+id/hinttext1"
+ android:layout_alignParentBottom="true"
+ android:layout_centerHorizontal="true"
+                android:text="press back to enable sliders"
+                android:textColor="@color/droid" android:textSize="22sp"></TextView>
+  <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" 
+  android:id="@+id/hinttext2"
+android:layout_above="@id/hinttext1"
+android:layout_centerHorizontal="true"
+                android:text="press Cam or Nav to Answer"
+                android:textColor="@color/droid" android:textSize="22sp"></TextView>
+
+</RelativeLayout>

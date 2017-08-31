@@ -1,0 +1,86 @@
+# 
+# Tomboy Notes XML schema
+# Targeted at XML notes version 0.3
+# The master file is using RELAX NG compact syntax
+# 
+# Version: 0.2
+# Copyright 2008, 2011 Olivier Bilodeau <olivier@bottomlesspit.org>
+# Created as part of Tomdroid, http://launchpad.net/tomdroid
+# 
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License as published by
+# the Free Software Foundation, either version 2.1 of the License, or
+# (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License for more details.
+# 
+# You should have received a copy of the GNU Lesser General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# 
+# Based on documentation found at http://live.gnome.org/Tomboy/NoteXmlFormat
+# 
+# TODO: narrow datatype information using W3C's XML Schema datatypes
+# TODO: Find out if the ordering of elements is relevant to Tomboy (would it crash?), if not, replace commas by & at the top level
+# TODO: addins can only add tags into the note-content element, not the note element, this needs to be documented somewhere
+# TODO: dates are all in RFC 3339 format (in tomboy)
+# 
+default namespace = "http://beatniksoftware.com/tomboy"
+namespace link = "http://beatniksoftware.com/tomboy/link"
+namespace size = "http://beatniksoftware.com/tomboy/size"
+
+element note {
+  # Since we aim at validating for 0.3 notes format maybe we should force it here
+  attribute version { text },
+  element title { text },
+  element text {
+    attribute xml:space { "default" | "preserve" }?,
+    element note-content { 
+      attribute version { text }?,
+      # I'm not quite sure I nailed that grammar thing right..
+      grammar {
+      start = Note-Content
+      Note-Content = (text
+                      # I think I'm missing fontsize here but I never saw it activated
+                      # TODO add std web link and check how do addin work (bugzilla addin for instance)
+                      | element bold { Note-Content }?
+                      | element italic { Note-Content }?
+                      | element strikethrough { Note-Content }?
+                      | element highlight { Note-Content }?
+                      | element monospace { Note-Content }?
+                      | element size:small { Note-Content }?
+                      | element size:large { Note-Content }?
+                      | element size:huge { Note-Content }?
+                      | element link:broken { Note-Content }?
+                      | element link:internal { Note-Content }?
+                      | element link:url { Note-Content }?
+                      | element list { List }?
+                      | element list-item { List }?
+                      | element note-title { Note-Content }?
+                     )*
+      List = (text
+              | element list { Note-Content }?
+              | element list-item { 
+                  attribute dir { text }?, 
+                  Note-Content? }
+             )*
+      }
+    }
+  },
+  element tags { text }?,
+  # use xsd:dateTime for type?
+  element last-change-date { text },
+  element last-metadata-change-date { text }?,
+  element create-date { text },
+  element cursor-position { text }?,
+  element width { text }?,
+  element height { text }?,
+  element x { text }?,
+  element y { text }?,
+  element tags {
+    element tag { text }+
+  }?,
+  element open-on-startup { text }?
+}

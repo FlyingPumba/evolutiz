@@ -1,0 +1,3052 @@
+public class com.example.amazed.AmazedActivity extends android.app.Activity
+{
+    private com.example.amazed.AmazedView mView;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        com.example.amazed.AmazedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.amazed.AmazedActivity;
+        $r1 = <com.example.amazed.AmazedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.example.amazed.AmazedActivity r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.example.amazed.AmazedView $r4, $r6, $r7;
+        android.content.Context $r5;
+
+        r0 := @this: com.example.amazed.AmazedActivity;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.example.amazed.AmazedActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.AmazedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>(r1);
+        virtualinvoke r0.<com.example.amazed.AmazedActivity: boolean requestWindowFeature(int)>(1);
+        $r4 = new com.example.amazed.AmazedView;
+        $r5 = virtualinvoke r0.<com.example.amazed.AmazedActivity: android.content.Context getApplicationContext()>();
+        specialinvoke $r4.<com.example.amazed.AmazedView: void <init>(android.content.Context,android.app.Activity)>($r5, r0);
+        r0.<com.example.amazed.AmazedActivity: com.example.amazed.AmazedView mView> = $r4;
+        $r6 = r0.<com.example.amazed.AmazedActivity: com.example.amazed.AmazedView mView>;
+        virtualinvoke $r6.<com.example.amazed.AmazedView: void setFocusable(boolean)>(1);
+        $r7 = r0.<com.example.amazed.AmazedActivity: com.example.amazed.AmazedView mView>;
+        virtualinvoke r0.<com.example.amazed.AmazedActivity: void setContentView(android.view.View)>($r7);
+        r3[0] = 1;
+        return;
+    }
+
+    protected void onResume()
+    {
+        com.example.amazed.AmazedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.example.amazed.AmazedView $r3;
+
+        r0 := @this: com.example.amazed.AmazedActivity;
+        $r1 = <com.example.amazed.AmazedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        specialinvoke r0.<android.app.Activity: void onResume()>();
+        $r3 = r0.<com.example.amazed.AmazedActivity: com.example.amazed.AmazedView mView>;
+        virtualinvoke $r3.<com.example.amazed.AmazedView: void registerListener()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void onSaveInstanceState(android.os.Bundle)
+    {
+        com.example.amazed.AmazedActivity r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.example.amazed.AmazedView $r4;
+
+        r0 := @this: com.example.amazed.AmazedActivity;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.example.amazed.AmazedActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.AmazedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[3];
+        specialinvoke r0.<android.app.Activity: void onSaveInstanceState(android.os.Bundle)>(r1);
+        $r4 = r0.<com.example.amazed.AmazedActivity: com.example.amazed.AmazedView mView>;
+        virtualinvoke $r4.<com.example.amazed.AmazedView: void unregisterListener()>();
+        r3[0] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.amazed.AmazedActivity: boolean[][] $VRi()>();
+        r1 = $r0[4];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5;
+
+        $r0 = newmultiarray (boolean)[5][];
+        <com.example.amazed.AmazedActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[4] = $r5;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/amazed/AmazedActivity", -8350539803451790247L);
+        return $r0;
+    }
+}
+class com.example.amazed.AmazedView$1 extends java.lang.Object implements android.hardware.SensorListener
+{
+    final com.example.amazed.AmazedView this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>(com.example.amazed.AmazedView)
+    {
+        com.example.amazed.AmazedView$1 r0;
+        com.example.amazed.AmazedView r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.amazed.AmazedView$1;
+        r1 := @parameter0: com.example.amazed.AmazedView;
+        $r2 = <com.example.amazed.AmazedView$1: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.AmazedView$1: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        r0.<com.example.amazed.AmazedView$1: com.example.amazed.AmazedView this$0> = r1;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        r3[0] = 1;
+        return;
+    }
+
+    public void onSensorChanged(int, float[])
+    {
+        com.example.amazed.AmazedView$1 r0;
+        int i0;
+        float[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.example.amazed.AmazedView $r4, $r5, $r6;
+        float $f0, $f2, $f4;
+
+        r0 := @this: com.example.amazed.AmazedView$1;
+        i0 := @parameter0: int;
+        r1 := @parameter1: float[];
+        $r2 = <com.example.amazed.AmazedView$1: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.AmazedView$1: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        $r4 = r0.<com.example.amazed.AmazedView$1: com.example.amazed.AmazedView this$0>;
+        $f0 = r1[0];
+        staticinvoke <com.example.amazed.AmazedView: float access$002(com.example.amazed.AmazedView,float)>($r4, $f0);
+        $r5 = r0.<com.example.amazed.AmazedView$1: com.example.amazed.AmazedView this$0>;
+        $f2 = r1[1];
+        staticinvoke <com.example.amazed.AmazedView: float access$102(com.example.amazed.AmazedView,float)>($r5, $f2);
+        $r6 = r0.<com.example.amazed.AmazedView$1: com.example.amazed.AmazedView this$0>;
+        $f4 = r1[2];
+        staticinvoke <com.example.amazed.AmazedView: float access$202(com.example.amazed.AmazedView,float)>($r6, $f4);
+        r3[0] = 1;
+        return;
+    }
+
+    public void onAccuracyChanged(int, int)
+    {
+        com.example.amazed.AmazedView$1 r0;
+        int i0, i1;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.amazed.AmazedView$1;
+        i0 := @parameter0: int;
+        i1 := @parameter1: int;
+        $r1 = <com.example.amazed.AmazedView$1: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView$1: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        r2[0] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.amazed.AmazedView$1: boolean[][] $VRi()>();
+        r1 = $r0[3];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4;
+
+        $r0 = newmultiarray (boolean)[4][];
+        <com.example.amazed.AmazedView$1: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/amazed/AmazedView$1", -8279820555485766566L);
+        return $r0;
+    }
+}
+public class com.example.amazed.AmazedView extends android.view.View
+{
+    private com.example.amazed.Marble mMarble;
+    private com.example.amazed.Maze mMaze;
+    private android.app.Activity mActivity;
+    private android.graphics.Canvas mCanvas;
+    private android.graphics.Paint mPaint;
+    private android.graphics.Typeface mFont;
+    private int mTextPadding;
+    private int mHudTextY;
+    private static final int NULL_STATE;
+    private static final int GAME_INIT;
+    private static final int GAME_RUNNING;
+    private static final int GAME_OVER;
+    private static final int GAME_COMPLETE;
+    private static final int GAME_LANDSCAPE;
+    private static int mCurState;
+    private static final int TXT_LIVES;
+    private static final int TXT_LEVEL;
+    private static final int TXT_TIME;
+    private static final int TXT_TAP_SCREEN;
+    private static final int TXT_GAME_COMPLETE;
+    private static final int TXT_GAME_OVER;
+    private static final int TXT_TOTAL_TIME;
+    private static final int TXT_GAME_OVER_MSG_A;
+    private static final int TXT_GAME_OVER_MSG_B;
+    private static final int TXT_RESTART;
+    private static final int TXT_LANDSCAPE_MODE;
+    private static java.lang.String[] mStrings;
+    private boolean mWarning;
+    private int mCanvasWidth;
+    private int mCanvasHeight;
+    private int mCanvasHalfWidth;
+    private int mCanvasHalfHeight;
+    private boolean mPortrait;
+    private int mlevel;
+    private long mTotalTime;
+    private long mStartTime;
+    private long mEndTime;
+    private android.hardware.SensorManager mSensorManager;
+    private float mAccelX;
+    private float mAccelY;
+    private float mAccelZ;
+    private float mSensorBuffer;
+    private final android.hardware.SensorListener mSensorAccelerometer;
+    private static final boolean[][] $VRc;
+
+    public void <init>(android.content.Context, android.app.Activity)
+    {
+        com.example.amazed.AmazedView r0;
+        android.content.Context r1;
+        android.app.Activity r2, $r19;
+        boolean[][] $r3;
+        boolean[] r4;
+        android.graphics.Typeface $r5, $r6, $r11;
+        com.example.amazed.AmazedView$1 $r7;
+        android.graphics.Paint $r8, $r9, $r10, $r13;
+        java.lang.Object $r14;
+        android.hardware.SensorManager $r15, $r16;
+        android.hardware.SensorListener $r17;
+        com.example.amazed.Maze $r18;
+        com.example.amazed.Marble $r20;
+        android.content.res.Resources $r21;
+        java.lang.String[] $r22;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.app.Activity;
+        $r3 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[0];
+        specialinvoke r0.<android.view.View: void <init>(android.content.Context)>(r1);
+        $r5 = <android.graphics.Typeface: android.graphics.Typeface SANS_SERIF>;
+        $r6 = staticinvoke <android.graphics.Typeface: android.graphics.Typeface create(android.graphics.Typeface,int)>($r5, 1);
+        r0.<com.example.amazed.AmazedView: android.graphics.Typeface mFont> = $r6;
+        r0.<com.example.amazed.AmazedView: int mTextPadding> = 10;
+        r0.<com.example.amazed.AmazedView: int mHudTextY> = 440;
+        r0.<com.example.amazed.AmazedView: boolean mWarning> = 0;
+        r0.<com.example.amazed.AmazedView: int mCanvasWidth> = 0;
+        r0.<com.example.amazed.AmazedView: int mCanvasHeight> = 0;
+        r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth> = 0;
+        r0.<com.example.amazed.AmazedView: int mCanvasHalfHeight> = 0;
+        r0.<com.example.amazed.AmazedView: int mlevel> = 1;
+        r0.<com.example.amazed.AmazedView: long mTotalTime> = 0L;
+        r0.<com.example.amazed.AmazedView: long mStartTime> = 0L;
+        r0.<com.example.amazed.AmazedView: long mEndTime> = 0L;
+        r0.<com.example.amazed.AmazedView: float mAccelX> = 0.0F;
+        r0.<com.example.amazed.AmazedView: float mAccelY> = 0.0F;
+        r0.<com.example.amazed.AmazedView: float mAccelZ> = 0.0F;
+        r0.<com.example.amazed.AmazedView: float mSensorBuffer> = 0.0F;
+        $r7 = new com.example.amazed.AmazedView$1;
+        specialinvoke $r7.<com.example.amazed.AmazedView$1: void <init>(com.example.amazed.AmazedView)>(r0);
+        r0.<com.example.amazed.AmazedView: android.hardware.SensorListener mSensorAccelerometer> = $r7;
+        r0.<com.example.amazed.AmazedView: android.app.Activity mActivity> = r2;
+        $r8 = new android.graphics.Paint;
+        specialinvoke $r8.<android.graphics.Paint: void <init>()>();
+        r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint> = $r8;
+        $r9 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r9.<android.graphics.Paint: void setTextSize(float)>(14.0F);
+        $r10 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $r11 = r0.<com.example.amazed.AmazedView: android.graphics.Typeface mFont>;
+        virtualinvoke $r10.<android.graphics.Paint: android.graphics.Typeface setTypeface(android.graphics.Typeface)>($r11);
+        $r13 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r13.<android.graphics.Paint: void setAntiAlias(boolean)>(1);
+        $r14 = virtualinvoke r2.<android.app.Activity: java.lang.Object getSystemService(java.lang.String)>("sensor");
+        $r15 = (android.hardware.SensorManager) $r14;
+        r0.<com.example.amazed.AmazedView: android.hardware.SensorManager mSensorManager> = $r15;
+        $r16 = r0.<com.example.amazed.AmazedView: android.hardware.SensorManager mSensorManager>;
+        $r17 = r0.<com.example.amazed.AmazedView: android.hardware.SensorListener mSensorAccelerometer>;
+        virtualinvoke $r16.<android.hardware.SensorManager: boolean registerListener(android.hardware.SensorListener,int,int)>($r17, 2, 1);
+        $r18 = new com.example.amazed.Maze;
+        $r19 = r0.<com.example.amazed.AmazedView: android.app.Activity mActivity>;
+        specialinvoke $r18.<com.example.amazed.Maze: void <init>(android.app.Activity)>($r19);
+        r0.<com.example.amazed.AmazedView: com.example.amazed.Maze mMaze> = $r18;
+        $r20 = new com.example.amazed.Marble;
+        specialinvoke $r20.<com.example.amazed.Marble: void <init>(android.view.View)>(r0);
+        r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble> = $r20;
+        $r21 = virtualinvoke r0.<com.example.amazed.AmazedView: android.content.res.Resources getResources()>();
+        $r22 = virtualinvoke $r21.<android.content.res.Resources: java.lang.String[] getStringArray(int)>(2130968576);
+        <com.example.amazed.AmazedView: java.lang.String[] mStrings> = $r22;
+        virtualinvoke r0.<com.example.amazed.AmazedView: void switchGameState(int)>(0);
+        r4[0] = 1;
+        return;
+    }
+
+    protected void onSizeChanged(int, int, int, int)
+    {
+        com.example.amazed.AmazedView r0;
+        int i0, i1, i2, i3, $i4, $i5, $i6, $i7;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        i0 := @parameter0: int;
+        i1 := @parameter1: int;
+        i2 := @parameter2: int;
+        i3 := @parameter3: int;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[1];
+        specialinvoke r0.<android.view.View: void onSizeChanged(int,int,int,int)>(i0, i1, i2, i3);
+        r0.<com.example.amazed.AmazedView: int mCanvasWidth> = i0;
+        r0.<com.example.amazed.AmazedView: int mCanvasHeight> = i1;
+        $i4 = i0 / 2;
+        r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth> = $i4;
+        $i5 = i1 / 2;
+        r0.<com.example.amazed.AmazedView: int mCanvasHalfHeight> = $i5;
+        $i6 = r0.<com.example.amazed.AmazedView: int mCanvasHeight>;
+        $i7 = r0.<com.example.amazed.AmazedView: int mCanvasWidth>;
+        r2[0] = 1;
+        if $i6 <= $i7 goto label1;
+
+        r0.<com.example.amazed.AmazedView: boolean mPortrait> = 1;
+        r2[1] = 1;
+        goto label2;
+
+     label1:
+        r0.<com.example.amazed.AmazedView: boolean mPortrait> = 0;
+        virtualinvoke r0.<com.example.amazed.AmazedView: void switchGameState(int)>(4);
+        r2[2] = 1;
+
+     label2:
+        r2[3] = 1;
+        return;
+    }
+
+    public void gameTick()
+    {
+        com.example.amazed.AmazedView r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        int $i0;
+        boolean $z0;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        $i0 = <com.example.amazed.AmazedView: int mCurState>;
+        r2[0] = 1;
+        lookupswitch($i0)
+        {
+            case 0: goto label1;
+            case 1: goto label2;
+            default: goto label3;
+        };
+
+     label1:
+        virtualinvoke r0.<com.example.amazed.AmazedView: void initNewGame()>();
+        virtualinvoke r0.<com.example.amazed.AmazedView: void switchGameState(int)>(1);
+        r2[1] = 1;
+
+     label2:
+        $z0 = r0.<com.example.amazed.AmazedView: boolean mWarning>;
+        r2[2] = 1;
+        if $z0 != 0 goto label3;
+
+        virtualinvoke r0.<com.example.amazed.AmazedView: void updateMarble()>();
+        r2[3] = 1;
+
+     label3:
+        virtualinvoke r0.<com.example.amazed.AmazedView: void invalidate()>();
+        r2[4] = 1;
+        return;
+    }
+
+    public void initNewGame()
+    {
+        com.example.amazed.AmazedView r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.example.amazed.Marble $r3;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        $r3 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        virtualinvoke $r3.<com.example.amazed.Marble: void setLives(int)>(5);
+        r0.<com.example.amazed.AmazedView: long mTotalTime> = 0L;
+        r0.<com.example.amazed.AmazedView: int mlevel> = 0;
+        virtualinvoke r0.<com.example.amazed.AmazedView: void initLevel()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void initLevel()
+    {
+        com.example.amazed.AmazedView r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        int $i0, $i1, $i2, $i3;
+        com.example.amazed.Maze $r5;
+        android.app.Activity $r6;
+        com.example.amazed.Marble $r7;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[4];
+        $i0 = r0.<com.example.amazed.AmazedView: int mlevel>;
+        r2[0] = 1;
+        if $i0 >= 10 goto label1;
+
+        r0.<com.example.amazed.AmazedView: boolean mWarning> = 1;
+        $i1 = r0.<com.example.amazed.AmazedView: int mlevel>;
+        $i2 = $i1 + 1;
+        r0.<com.example.amazed.AmazedView: int mlevel> = $i2;
+        $r5 = r0.<com.example.amazed.AmazedView: com.example.amazed.Maze mMaze>;
+        $r6 = r0.<com.example.amazed.AmazedView: android.app.Activity mActivity>;
+        $i3 = r0.<com.example.amazed.AmazedView: int mlevel>;
+        virtualinvoke $r5.<com.example.amazed.Maze: void load(android.app.Activity,int)>($r6, $i3);
+        $r7 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        virtualinvoke $r7.<com.example.amazed.Marble: void init()>();
+        r2[1] = 1;
+        goto label2;
+
+     label1:
+        virtualinvoke r0.<com.example.amazed.AmazedView: void switchGameState(int)>(3);
+        r2[2] = 1;
+
+     label2:
+        r2[3] = 1;
+        return;
+    }
+
+    public void updateMarble()
+    {
+        com.example.amazed.AmazedView r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        float $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $f10, $f11;
+        byte $b0, $b1, $b2, $b3;
+        com.example.amazed.Marble $r3, $r4, $r6, $r7, $r9, $r10, $r11, $r14, $r15;
+        com.example.amazed.Maze $r5, $r13;
+        int $i4, $i5, $i6, $i7, $i14, $i15, $i16;
+        long $l8, $l9, $l10, $l11, $l12, $l13, $l17, $l18, $l19, $l20, $l21, $l22;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[5];
+        $f0 = r0.<com.example.amazed.AmazedView: float mAccelX>;
+        $f1 = r0.<com.example.amazed.AmazedView: float mSensorBuffer>;
+        $b0 = $f0 cmpl $f1;
+        r2[0] = 1;
+        if $b0 > 0 goto label1;
+
+        $f2 = r0.<com.example.amazed.AmazedView: float mAccelX>;
+        $f3 = r0.<com.example.amazed.AmazedView: float mSensorBuffer>;
+        $f4 = neg $f3;
+        $b1 = $f2 cmpg $f4;
+        r2[1] = 1;
+        if $b1 >= 0 goto label2;
+
+     label1:
+        $r3 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        $f5 = r0.<com.example.amazed.AmazedView: float mAccelX>;
+        virtualinvoke $r3.<com.example.amazed.Marble: void updateX(float)>($f5);
+        r2[2] = 1;
+
+     label2:
+        $f6 = r0.<com.example.amazed.AmazedView: float mAccelY>;
+        $f7 = r0.<com.example.amazed.AmazedView: float mSensorBuffer>;
+        $b2 = $f6 cmpl $f7;
+        r2[3] = 1;
+        if $b2 > 0 goto label3;
+
+        $f8 = r0.<com.example.amazed.AmazedView: float mAccelY>;
+        $f9 = r0.<com.example.amazed.AmazedView: float mSensorBuffer>;
+        $f10 = neg $f9;
+        $b3 = $f8 cmpg $f10;
+        r2[4] = 1;
+        if $b3 >= 0 goto label4;
+
+     label3:
+        $r4 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        $f11 = r0.<com.example.amazed.AmazedView: float mAccelY>;
+        virtualinvoke $r4.<com.example.amazed.Marble: void updateY(float)>($f11);
+        r2[5] = 1;
+
+     label4:
+        $r5 = r0.<com.example.amazed.AmazedView: com.example.amazed.Maze mMaze>;
+        $r6 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        $i4 = virtualinvoke $r6.<com.example.amazed.Marble: int getX()>();
+        $r7 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        $i5 = virtualinvoke $r7.<com.example.amazed.Marble: int getY()>();
+        $i6 = virtualinvoke $r5.<com.example.amazed.Maze: int getCellType(int,int)>($i4, $i5);
+        r2[6] = 1;
+        if $i6 != 1 goto label6;
+
+        $r9 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        $i7 = virtualinvoke $r9.<com.example.amazed.Marble: int getLives()>();
+        r2[7] = 1;
+        if $i7 <= 0 goto label5;
+
+        $r10 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        virtualinvoke $r10.<com.example.amazed.Marble: void death()>();
+        $r11 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        virtualinvoke $r11.<com.example.amazed.Marble: void init()>();
+        r0.<com.example.amazed.AmazedView: boolean mWarning> = 1;
+        r2[8] = 1;
+        goto label7;
+
+     label5:
+        $l8 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+        r0.<com.example.amazed.AmazedView: long mEndTime> = $l8;
+        $l9 = r0.<com.example.amazed.AmazedView: long mTotalTime>;
+        $l10 = r0.<com.example.amazed.AmazedView: long mEndTime>;
+        $l11 = r0.<com.example.amazed.AmazedView: long mStartTime>;
+        $l12 = $l10 - $l11;
+        $l13 = $l9 + $l12;
+        r0.<com.example.amazed.AmazedView: long mTotalTime> = $l13;
+        virtualinvoke r0.<com.example.amazed.AmazedView: void switchGameState(int)>(2);
+        r2[9] = 1;
+        goto label7;
+
+     label6:
+        $r13 = r0.<com.example.amazed.AmazedView: com.example.amazed.Maze mMaze>;
+        $r14 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        $i14 = virtualinvoke $r14.<com.example.amazed.Marble: int getX()>();
+        $r15 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        $i15 = virtualinvoke $r15.<com.example.amazed.Marble: int getY()>();
+        $i16 = virtualinvoke $r13.<com.example.amazed.Maze: int getCellType(int,int)>($i14, $i15);
+        r2[10] = 1;
+        if $i16 != 2 goto label7;
+
+        $l17 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+        r0.<com.example.amazed.AmazedView: long mEndTime> = $l17;
+        $l18 = r0.<com.example.amazed.AmazedView: long mTotalTime>;
+        $l19 = r0.<com.example.amazed.AmazedView: long mEndTime>;
+        $l20 = r0.<com.example.amazed.AmazedView: long mStartTime>;
+        $l21 = $l19 - $l20;
+        $l22 = $l18 + $l21;
+        r0.<com.example.amazed.AmazedView: long mTotalTime> = $l22;
+        virtualinvoke r0.<com.example.amazed.AmazedView: void initLevel()>();
+        r2[11] = 1;
+
+     label7:
+        r2[12] = 1;
+        return;
+    }
+
+    public boolean onTouchEvent(android.view.MotionEvent)
+    {
+        com.example.amazed.AmazedView r0;
+        android.view.MotionEvent r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        int $i0, $i1, $i2, $i3;
+        long $l4;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        r1 := @parameter0: android.view.MotionEvent;
+        $r2 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[6];
+        $i0 = virtualinvoke r1.<android.view.MotionEvent: int getAction()>();
+        r3[0] = 1;
+        if $i0 != 0 goto label3;
+
+        $i1 = <com.example.amazed.AmazedView: int mCurState>;
+        r3[1] = 1;
+        if $i1 == 2 goto label1;
+
+        $i2 = <com.example.amazed.AmazedView: int mCurState>;
+        r3[2] = 1;
+        if $i2 != 3 goto label2;
+
+     label1:
+        <com.example.amazed.AmazedView: int mCurState> = 0;
+        r3[3] = 1;
+        goto label3;
+
+     label2:
+        $i3 = <com.example.amazed.AmazedView: int mCurState>;
+        r3[4] = 1;
+        if $i3 != 1 goto label3;
+
+        r0.<com.example.amazed.AmazedView: boolean mWarning> = 0;
+        $l4 = staticinvoke <java.lang.System: long currentTimeMillis()>();
+        r0.<com.example.amazed.AmazedView: long mStartTime> = $l4;
+        r3[5] = 1;
+
+     label3:
+        r3[6] = 1;
+        return 1;
+    }
+
+    public boolean onKeyDown(int, android.view.KeyEvent)
+    {
+        com.example.amazed.AmazedView r0;
+        int i0;
+        android.view.KeyEvent r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        i0 := @parameter0: int;
+        r1 := @parameter1: android.view.KeyEvent;
+        $r2 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[7];
+        r3[0] = 1;
+        if i0 != 4 goto label1;
+
+        virtualinvoke r0.<com.example.amazed.AmazedView: void cleanUp()>();
+        r3[1] = 1;
+
+     label1:
+        r3[2] = 1;
+        return 1;
+    }
+
+    public void onDraw(android.graphics.Canvas)
+    {
+        com.example.amazed.AmazedView r0;
+        android.graphics.Canvas r1, $r5, $r8, $r11;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.graphics.Paint $r4, $r6, $r9, $r12;
+        int $i0, $i1, $i2;
+        float $f0, $f1;
+        com.example.amazed.Maze $r7;
+        com.example.amazed.Marble $r10;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        r1 := @parameter0: android.graphics.Canvas;
+        $r2 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[8];
+        r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas> = r1;
+        $r4 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r4.<android.graphics.Paint: void setColor(int)>(-1);
+        $r5 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $i0 = r0.<com.example.amazed.AmazedView: int mCanvasWidth>;
+        $f0 = (float) $i0;
+        $i1 = r0.<com.example.amazed.AmazedView: int mCanvasHeight>;
+        $f1 = (float) $i1;
+        $r6 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r5.<android.graphics.Canvas: void drawRect(float,float,float,float,android.graphics.Paint)>(0.0F, 0.0F, $f0, $f1, $r6);
+        $i2 = <com.example.amazed.AmazedView: int mCurState>;
+        r3[0] = 1;
+        tableswitch($i2)
+        {
+            case 1: goto label1;
+            case 2: goto label2;
+            case 3: goto label3;
+            case 4: goto label4;
+            default: goto label5;
+        };
+
+     label1:
+        $r7 = r0.<com.example.amazed.AmazedView: com.example.amazed.Maze mMaze>;
+        $r8 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r9 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r7.<com.example.amazed.Maze: void draw(android.graphics.Canvas,android.graphics.Paint)>($r8, $r9);
+        $r10 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        $r11 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r12 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r10.<com.example.amazed.Marble: void draw(android.graphics.Canvas,android.graphics.Paint)>($r11, $r12);
+        virtualinvoke r0.<com.example.amazed.AmazedView: void drawHUD()>();
+        r3[1] = 1;
+        goto label5;
+
+     label2:
+        virtualinvoke r0.<com.example.amazed.AmazedView: void drawGameOver()>();
+        r3[2] = 1;
+        goto label5;
+
+     label3:
+        virtualinvoke r0.<com.example.amazed.AmazedView: void drawGameComplete()>();
+        r3[3] = 1;
+        goto label5;
+
+     label4:
+        virtualinvoke r0.<com.example.amazed.AmazedView: void drawLandscapeMode()>();
+        r3[4] = 1;
+
+     label5:
+        virtualinvoke r0.<com.example.amazed.AmazedView: void gameTick()>();
+        r3[5] = 1;
+        return;
+    }
+
+    public void drawHUD()
+    {
+        com.example.amazed.AmazedView r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.graphics.Paint $r3, $r4, $r14, $r15, $r25, $r26, $r37, $r38, $r40, $r41, $r42, $r47;
+        android.graphics.Paint$Align $r5, $r16, $r27, $r43;
+        android.graphics.Canvas $r6, $r17, $r28, $r39, $r44;
+        java.lang.StringBuilder $r7, $r10, $r11, $r12, $r18, $r21, $r22, $r23, $r29, $r32, $r33, $r35;
+        java.lang.String[] $r8, $r19, $r30, $r45;
+        java.lang.String $r9, $r13, $r20, $r24, $r31, $r36, $r46;
+        long $l0, $l1;
+        int $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15, $i16, $i17, $i18;
+        float $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $f10;
+        com.example.amazed.Marble $r34;
+        boolean $z0;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[9];
+        $r3 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r3.<android.graphics.Paint: void setColor(int)>(-16777216);
+        $r4 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $r5 = <android.graphics.Paint$Align: android.graphics.Paint$Align LEFT>;
+        virtualinvoke $r4.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>($r5);
+        $r6 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r7 = new java.lang.StringBuilder;
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+        $r8 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r9 = $r8[2];
+        $r10 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r9);
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+        $l0 = r0.<com.example.amazed.AmazedView: long mTotalTime>;
+        $l1 = $l0 / 1000L;
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l1);
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();
+        $i2 = r0.<com.example.amazed.AmazedView: int mTextPadding>;
+        $f0 = (float) $i2;
+        $i3 = r0.<com.example.amazed.AmazedView: int mHudTextY>;
+        $f1 = (float) $i3;
+        $r14 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r6.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r13, $f0, $f1, $r14);
+        $r15 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $r16 = <android.graphics.Paint$Align: android.graphics.Paint$Align CENTER>;
+        virtualinvoke $r15.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>($r16);
+        $r17 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r18 = new java.lang.StringBuilder;
+        specialinvoke $r18.<java.lang.StringBuilder: void <init>()>();
+        $r19 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r20 = $r19[1];
+        $r21 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r20);
+        $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+        $i4 = r0.<com.example.amazed.AmazedView: int mlevel>;
+        $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i4);
+        $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.String toString()>();
+        $i5 = r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth>;
+        $f2 = (float) $i5;
+        $i6 = r0.<com.example.amazed.AmazedView: int mHudTextY>;
+        $f3 = (float) $i6;
+        $r25 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r17.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r24, $f2, $f3, $r25);
+        $r26 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $r27 = <android.graphics.Paint$Align: android.graphics.Paint$Align RIGHT>;
+        virtualinvoke $r26.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>($r27);
+        $r28 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r29 = new java.lang.StringBuilder;
+        specialinvoke $r29.<java.lang.StringBuilder: void <init>()>();
+        $r30 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r31 = $r30[0];
+        $r32 = virtualinvoke $r29.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r31);
+        $r33 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+        $r34 = r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble>;
+        $i7 = virtualinvoke $r34.<com.example.amazed.Marble: int getLives()>();
+        $r35 = virtualinvoke $r33.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i7);
+        $r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.String toString()>();
+        $i8 = r0.<com.example.amazed.AmazedView: int mCanvasWidth>;
+        $i9 = r0.<com.example.amazed.AmazedView: int mTextPadding>;
+        $i10 = $i8 - $i9;
+        $f4 = (float) $i10;
+        $i11 = r0.<com.example.amazed.AmazedView: int mHudTextY>;
+        $f5 = (float) $i11;
+        $r37 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r28.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r36, $f4, $f5, $r37);
+        $z0 = r0.<com.example.amazed.AmazedView: boolean mWarning>;
+        r2[0] = 1;
+        if $z0 == 0 goto label1;
+
+        $r38 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r38.<android.graphics.Paint: void setColor(int)>(-16776961);
+        $r39 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $i12 = r0.<com.example.amazed.AmazedView: int mCanvasHalfHeight>;
+        $i13 = $i12 - 15;
+        $f6 = (float) $i13;
+        $i14 = r0.<com.example.amazed.AmazedView: int mCanvasWidth>;
+        $f7 = (float) $i14;
+        $i15 = r0.<com.example.amazed.AmazedView: int mCanvasHalfHeight>;
+        $i16 = $i15 + 5;
+        $f8 = (float) $i16;
+        $r40 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r39.<android.graphics.Canvas: void drawRect(float,float,float,float,android.graphics.Paint)>(0.0F, $f6, $f7, $f8, $r40);
+        $r41 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r41.<android.graphics.Paint: void setColor(int)>(-1);
+        $r42 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $r43 = <android.graphics.Paint$Align: android.graphics.Paint$Align CENTER>;
+        virtualinvoke $r42.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>($r43);
+        $r44 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r45 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r46 = $r45[3];
+        $i17 = r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth>;
+        $f9 = (float) $i17;
+        $i18 = r0.<com.example.amazed.AmazedView: int mCanvasHalfHeight>;
+        $f10 = (float) $i18;
+        $r47 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r44.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r46, $f9, $f10, $r47);
+        r2[1] = 1;
+
+     label1:
+        r2[2] = 1;
+        return;
+    }
+
+    public void drawGameOver()
+    {
+        com.example.amazed.AmazedView r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.graphics.Paint $r3, $r4, $r9, $r19, $r20, $r33, $r34, $r38, $r39;
+        android.graphics.Paint$Align $r5;
+        android.graphics.Canvas $r6, $r10, $r21, $r35;
+        java.lang.String[] $r7, $r12, $r23, $r29, $r36;
+        java.lang.String $r8, $r13, $r18, $r24, $r30, $r32, $r37;
+        int $i0, $i1, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11;
+        float $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $f10, $f11, $f12, $f13, $f14, $f15;
+        java.lang.StringBuilder $r11, $r14, $r15, $r16, $r17, $r22, $r25, $r26, $r27, $r28, $r31;
+        long $l2, $l3;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[10];
+        $r3 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r3.<android.graphics.Paint: void setColor(int)>(-16777216);
+        $r4 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $r5 = <android.graphics.Paint$Align: android.graphics.Paint$Align CENTER>;
+        virtualinvoke $r4.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>($r5);
+        $r6 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r7 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r8 = $r7[5];
+        $i0 = r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth>;
+        $f0 = (float) $i0;
+        $i1 = r0.<com.example.amazed.AmazedView: int mCanvasHalfHeight>;
+        $f1 = (float) $i1;
+        $r9 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r6.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r8, $f0, $f1, $r9);
+        $r10 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r11 = new java.lang.StringBuilder;
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+        $r12 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r13 = $r12[6];
+        $r14 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r13);
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+        $l2 = r0.<com.example.amazed.AmazedView: long mTotalTime>;
+        $l3 = $l2 / 1000L;
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l3);
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("s");
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+        $i4 = r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth>;
+        $f2 = (float) $i4;
+        $i5 = r0.<com.example.amazed.AmazedView: int mCanvasHalfHeight>;
+        $f3 = (float) $i5;
+        $r19 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $f4 = virtualinvoke $r19.<android.graphics.Paint: float getFontSpacing()>();
+        $f5 = $f3 + $f4;
+        $r20 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r10.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r18, $f2, $f5, $r20);
+        $r21 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r22 = new java.lang.StringBuilder;
+        specialinvoke $r22.<java.lang.StringBuilder: void <init>()>();
+        $r23 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r24 = $r23[7];
+        $r25 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r24);
+        $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+        $i6 = r0.<com.example.amazed.AmazedView: int mlevel>;
+        $i7 = $i6 - 1;
+        $r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i7);
+        $r28 = virtualinvoke $r27.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" ");
+        $r29 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r30 = $r29[8];
+        $r31 = virtualinvoke $r28.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r30);
+        $r32 = virtualinvoke $r31.<java.lang.StringBuilder: java.lang.String toString()>();
+        $i8 = r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth>;
+        $f6 = (float) $i8;
+        $i9 = r0.<com.example.amazed.AmazedView: int mCanvasHalfHeight>;
+        $f7 = (float) $i9;
+        $r33 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $f8 = virtualinvoke $r33.<android.graphics.Paint: float getFontSpacing()>();
+        $f9 = $f8 * 2.0F;
+        $f10 = $f7 + $f9;
+        $r34 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r21.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r32, $f6, $f10, $r34);
+        $r35 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r36 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r37 = $r36[9];
+        $i10 = r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth>;
+        $f11 = (float) $i10;
+        $i11 = r0.<com.example.amazed.AmazedView: int mCanvasHeight>;
+        $f12 = (float) $i11;
+        $r38 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $f13 = virtualinvoke $r38.<android.graphics.Paint: float getFontSpacing()>();
+        $f14 = $f13 * 3.0F;
+        $f15 = $f12 - $f14;
+        $r39 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r35.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r37, $f11, $f15, $r39);
+        r2[0] = 1;
+        return;
+    }
+
+    public void drawGameComplete()
+    {
+        com.example.amazed.AmazedView r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.graphics.Paint $r3, $r4, $r9, $r19, $r20, $r24, $r25;
+        android.graphics.Paint$Align $r5;
+        android.graphics.Canvas $r6, $r10, $r21;
+        java.lang.String[] $r7, $r12, $r22;
+        java.lang.String $r8, $r13, $r18, $r23;
+        int $i0, $i1, $i4, $i5, $i6, $i7;
+        float $f0, $f1, $f2, $f3, $f4, $f5, $f6, $f7, $f8, $f9, $f10;
+        java.lang.StringBuilder $r11, $r14, $r15, $r16, $r17;
+        long $l2, $l3;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[11];
+        $r3 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r3.<android.graphics.Paint: void setColor(int)>(-16777216);
+        $r4 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $r5 = <android.graphics.Paint$Align: android.graphics.Paint$Align CENTER>;
+        virtualinvoke $r4.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>($r5);
+        $r6 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r7 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r8 = $r7[3];
+        $i0 = r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth>;
+        $f0 = (float) $i0;
+        $i1 = r0.<com.example.amazed.AmazedView: int mCanvasHalfHeight>;
+        $f1 = (float) $i1;
+        $r9 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r6.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r8, $f0, $f1, $r9);
+        $r10 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r11 = new java.lang.StringBuilder;
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+        $r12 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r13 = $r12[6];
+        $r14 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r13);
+        $r15 = virtualinvoke $r14.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(": ");
+        $l2 = r0.<com.example.amazed.AmazedView: long mTotalTime>;
+        $l3 = $l2 / 1000L;
+        $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>($l3);
+        $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("s");
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.String toString()>();
+        $i4 = r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth>;
+        $f2 = (float) $i4;
+        $i5 = r0.<com.example.amazed.AmazedView: int mCanvasHalfHeight>;
+        $f3 = (float) $i5;
+        $r19 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $f4 = virtualinvoke $r19.<android.graphics.Paint: float getFontSpacing()>();
+        $f5 = $f3 + $f4;
+        $r20 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r10.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r18, $f2, $f5, $r20);
+        $r21 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r22 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r23 = $r22[9];
+        $i6 = r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth>;
+        $f6 = (float) $i6;
+        $i7 = r0.<com.example.amazed.AmazedView: int mCanvasHeight>;
+        $f7 = (float) $i7;
+        $r24 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $f8 = virtualinvoke $r24.<android.graphics.Paint: float getFontSpacing()>();
+        $f9 = $f8 * 3.0F;
+        $f10 = $f7 - $f9;
+        $r25 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r21.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r23, $f6, $f10, $r25);
+        r2[0] = 1;
+        return;
+    }
+
+    public void drawLandscapeMode()
+    {
+        com.example.amazed.AmazedView r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.graphics.Paint $r3, $r4, $r7, $r8, $r12;
+        android.graphics.Paint$Align $r5;
+        android.graphics.Canvas $r6, $r9;
+        int $i0, $i1, $i2, $i3;
+        float $f0, $f1, $f2, $f3;
+        java.lang.String[] $r10;
+        java.lang.String $r11;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[12];
+        $r3 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r3.<android.graphics.Paint: void setColor(int)>(-1);
+        $r4 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        $r5 = <android.graphics.Paint$Align: android.graphics.Paint$Align CENTER>;
+        virtualinvoke $r4.<android.graphics.Paint: void setTextAlign(android.graphics.Paint$Align)>($r5);
+        $r6 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $i0 = r0.<com.example.amazed.AmazedView: int mCanvasWidth>;
+        $f0 = (float) $i0;
+        $i1 = r0.<com.example.amazed.AmazedView: int mCanvasHeight>;
+        $f1 = (float) $i1;
+        $r7 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r6.<android.graphics.Canvas: void drawRect(float,float,float,float,android.graphics.Paint)>(0.0F, 0.0F, $f0, $f1, $r7);
+        $r8 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r8.<android.graphics.Paint: void setColor(int)>(-16777216);
+        $r9 = r0.<com.example.amazed.AmazedView: android.graphics.Canvas mCanvas>;
+        $r10 = <com.example.amazed.AmazedView: java.lang.String[] mStrings>;
+        $r11 = $r10[10];
+        $i2 = r0.<com.example.amazed.AmazedView: int mCanvasHalfWidth>;
+        $f2 = (float) $i2;
+        $i3 = r0.<com.example.amazed.AmazedView: int mCanvasHalfHeight>;
+        $f3 = (float) $i3;
+        $r12 = r0.<com.example.amazed.AmazedView: android.graphics.Paint mPaint>;
+        virtualinvoke $r9.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>($r11, $f2, $f3, $r12);
+        r2[0] = 1;
+        return;
+    }
+
+    public void switchGameState(int)
+    {
+        com.example.amazed.AmazedView r0;
+        int i0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        i0 := @parameter0: int;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[13];
+        <com.example.amazed.AmazedView: int mCurState> = i0;
+        r2[0] = 1;
+        return;
+    }
+
+    public void registerListener()
+    {
+        com.example.amazed.AmazedView r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.hardware.SensorManager $r3;
+        android.hardware.SensorListener $r4;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[14];
+        $r3 = r0.<com.example.amazed.AmazedView: android.hardware.SensorManager mSensorManager>;
+        $r4 = r0.<com.example.amazed.AmazedView: android.hardware.SensorListener mSensorAccelerometer>;
+        virtualinvoke $r3.<android.hardware.SensorManager: boolean registerListener(android.hardware.SensorListener,int,int)>($r4, 2, 1);
+        r2[0] = 1;
+        return;
+    }
+
+    public void unregisterListener()
+    {
+        com.example.amazed.AmazedView r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.hardware.SensorManager $r3;
+        android.hardware.SensorListener $r4;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[15];
+        $r3 = r0.<com.example.amazed.AmazedView: android.hardware.SensorManager mSensorManager>;
+        $r4 = r0.<com.example.amazed.AmazedView: android.hardware.SensorListener mSensorAccelerometer>;
+        virtualinvoke $r3.<android.hardware.SensorManager: void unregisterListener(android.hardware.SensorListener)>($r4);
+        r2[0] = 1;
+        return;
+    }
+
+    public void cleanUp()
+    {
+        com.example.amazed.AmazedView r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.app.Activity $r3;
+
+        r0 := @this: com.example.amazed.AmazedView;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[16];
+        r0.<com.example.amazed.AmazedView: com.example.amazed.Marble mMarble> = null;
+        r0.<com.example.amazed.AmazedView: com.example.amazed.Maze mMaze> = null;
+        <com.example.amazed.AmazedView: java.lang.String[] mStrings> = null;
+        virtualinvoke r0.<com.example.amazed.AmazedView: void unregisterListener()>();
+        $r3 = r0.<com.example.amazed.AmazedView: android.app.Activity mActivity>;
+        virtualinvoke $r3.<android.app.Activity: void finish()>();
+        r2[0] = 1;
+        return;
+    }
+
+    static float access$002(com.example.amazed.AmazedView, float)
+    {
+        com.example.amazed.AmazedView r0;
+        float f0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @parameter0: com.example.amazed.AmazedView;
+        f0 := @parameter1: float;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[17];
+        r0.<com.example.amazed.AmazedView: float mAccelX> = f0;
+        r2[0] = 1;
+        return f0;
+    }
+
+    static float access$102(com.example.amazed.AmazedView, float)
+    {
+        com.example.amazed.AmazedView r0;
+        float f0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @parameter0: com.example.amazed.AmazedView;
+        f0 := @parameter1: float;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[18];
+        r0.<com.example.amazed.AmazedView: float mAccelY> = f0;
+        r2[0] = 1;
+        return f0;
+    }
+
+    static float access$202(com.example.amazed.AmazedView, float)
+    {
+        com.example.amazed.AmazedView r0;
+        float f0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @parameter0: com.example.amazed.AmazedView;
+        f0 := @parameter1: float;
+        $r1 = <com.example.amazed.AmazedView: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[19];
+        r0.<com.example.amazed.AmazedView: float mAccelZ> = f0;
+        r2[0] = 1;
+        return f0;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.amazed.AmazedView: boolean[][] $VRi()>();
+        r1 = $r0[20];
+        <com.example.amazed.AmazedView: int mCurState> = -1;
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16, $r17, $r18, $r19, $r20, $r21;
+
+        $r0 = newmultiarray (boolean)[21][];
+        <com.example.amazed.AmazedView: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[4];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[5];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[4];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[13];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[7];
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[3];
+        $r0[7] = $r8;
+        $r9 = newarray (boolean)[6];
+        $r0[8] = $r9;
+        $r10 = newarray (boolean)[3];
+        $r0[9] = $r10;
+        $r11 = newarray (boolean)[1];
+        $r0[10] = $r11;
+        $r12 = newarray (boolean)[1];
+        $r0[11] = $r12;
+        $r13 = newarray (boolean)[1];
+        $r0[12] = $r13;
+        $r14 = newarray (boolean)[1];
+        $r0[13] = $r14;
+        $r15 = newarray (boolean)[1];
+        $r0[14] = $r15;
+        $r16 = newarray (boolean)[1];
+        $r0[15] = $r16;
+        $r17 = newarray (boolean)[1];
+        $r0[16] = $r17;
+        $r18 = newarray (boolean)[1];
+        $r0[17] = $r18;
+        $r19 = newarray (boolean)[1];
+        $r0[18] = $r19;
+        $r20 = newarray (boolean)[1];
+        $r0[19] = $r20;
+        $r21 = newarray (boolean)[1];
+        $r0[20] = $r21;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/amazed/AmazedView", 4204673338046689688L);
+        return $r0;
+    }
+}
+public final class com.example.amazed.BuildConfig extends java.lang.Object
+{
+    public static final boolean DEBUG;
+
+    public void <init>()
+    {
+        com.example.amazed.BuildConfig r0;
+
+        r0 := @this: com.example.amazed.BuildConfig;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public class com.example.amazed.EmmaInstrument.EmmaInstrumentation extends android.app.Instrumentation implements com.example.amazed.EmmaInstrument.FinishListener
+{
+    public static java.lang.String TAG;
+    private static final java.lang.String DEFAULT_COVERAGE_FILE_PATH;
+    private final android.os.Bundle mResults;
+    private android.content.Intent mIntent;
+    private static final boolean LOGD;
+    private boolean mCoverage;
+    private java.lang.String mCoverageFilePath;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.os.Bundle $r3;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.Instrumentation: void <init>()>();
+        $r3 = new android.os.Bundle;
+        specialinvoke $r3.<android.os.Bundle: void <init>()>();
+        r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults> = $r3;
+        r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean mCoverage> = 1;
+        r2[0] = 1;
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.String $r4, $r9, $r10;
+        java.lang.StringBuilder $r5, $r6, $r7, $r8;
+        boolean $z0;
+        android.content.Intent $r11, $r13;
+        android.content.Context $r12;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        $r4 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r5 = new java.lang.StringBuilder;
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("onCreate(");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, $r9);
+        specialinvoke r0.<android.app.Instrumentation: void onCreate(android.os.Bundle)>(r1);
+        r3[0] = 1;
+        if r1 == null goto label1;
+
+        $z0 = specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean getBooleanArgument(android.os.Bundle,java.lang.String)>(r1, "coverage");
+        r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean mCoverage> = $z0;
+        $r10 = virtualinvoke r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>("coverageFile");
+        r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath> = $r10;
+        r3[1] = 1;
+
+     label1:
+        $r11 = new android.content.Intent;
+        $r12 = virtualinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: android.content.Context getTargetContext()>();
+        specialinvoke $r11.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r12, class "com/example/amazed/EmmaInstrument/InstrumentedActivity");
+        r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent> = $r11;
+        $r13 = r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent>;
+        virtualinvoke $r13.<android.content.Intent: android.content.Intent setFlags(int)>(268435456);
+        virtualinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void start()>();
+        r3[2] = 1;
+        return;
+    }
+
+    public void onStart()
+    {
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.example.amazed.EmmaInstrument.InstrumentedActivity r3;
+        java.lang.String $r4;
+        android.content.Intent $r5;
+        android.app.Activity $r6;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        $r4 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, "onStart()");
+        specialinvoke r0.<android.app.Instrumentation: void onStart()>();
+        staticinvoke <android.os.Looper: void prepare()>();
+        $r5 = r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent>;
+        $r6 = virtualinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: android.app.Activity startActivitySync(android.content.Intent)>($r5);
+        r3 = (com.example.amazed.EmmaInstrument.InstrumentedActivity) $r6;
+        virtualinvoke r3.<com.example.amazed.EmmaInstrument.InstrumentedActivity: void setFinishListener(com.example.amazed.EmmaInstrument.FinishListener)>(r0);
+        r2[0] = 1;
+        return;
+    }
+
+    private boolean getBooleanArgument(android.os.Bundle, java.lang.String)
+    {
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r0;
+        android.os.Bundle r1;
+        java.lang.String r2, r5;
+        boolean[][] $r3;
+        boolean[] r4;
+        boolean $z0, $z1;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: android.os.Bundle;
+        r2 := @parameter1: java.lang.String;
+        $r3 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[3];
+        r5 = virtualinvoke r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>(r2);
+        r4[0] = 1;
+        if r5 == null goto label1;
+
+        $z0 = staticinvoke <java.lang.Boolean: boolean parseBoolean(java.lang.String)>(r5);
+        r4[1] = 1;
+        if $z0 == 0 goto label1;
+
+        $z1 = 1;
+        r4[2] = 1;
+        goto label2;
+
+     label1:
+        $z1 = 0;
+        r4[3] = 1;
+
+     label2:
+        r4[4] = 1;
+        return $z1;
+    }
+
+    private void generateCoverageReport()
+    {
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.io.File r3, $r7;
+        java.lang.Class r4, $r10, $r11, $r12;
+        java.lang.reflect.Method r5;
+        java.lang.String $r6, $r8;
+        java.lang.Class[] $r9;
+        java.lang.Object[] $r13;
+        java.lang.Boolean $r14, $r15;
+        java.lang.ClassNotFoundException $r17, r18;
+        java.lang.SecurityException $r19, r20;
+        java.lang.NoSuchMethodException $r21, r22;
+        java.lang.IllegalArgumentException $r23, r24;
+        java.lang.IllegalAccessException $r25, r26;
+        java.lang.reflect.InvocationTargetException $r27, r28;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[4];
+        $r6 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r6, "generateCoverageReport()");
+        $r7 = new java.io.File;
+        $r8 = specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String getCoverageFilePath()>();
+        specialinvoke $r7.<java.io.File: void <init>(java.lang.String)>($r8);
+        r3 = $r7;
+
+     label1:
+        r4 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("com.vladium.emma.rt.RT");
+        $r9 = newarray (java.lang.Class)[3];
+        $r10 = virtualinvoke r3.<java.lang.Object: java.lang.Class getClass()>();
+        $r9[0] = $r10;
+        $r11 = <java.lang.Boolean: java.lang.Class TYPE>;
+        $r9[1] = $r11;
+        $r12 = <java.lang.Boolean: java.lang.Class TYPE>;
+        $r9[2] = $r12;
+        r5 = virtualinvoke r4.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("dumpCoverageData", $r9);
+        $r13 = newarray (java.lang.Object)[3];
+        $r13[0] = r3;
+        $r14 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+        $r13[1] = $r14;
+        $r15 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+        $r13[2] = $r15;
+        virtualinvoke r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r13);
+        r2[0] = 1;
+
+     label2:
+        goto label9;
+
+     label3:
+        $r17 := @caughtexception;
+        r18 = $r17;
+        specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>("Emma.jar not in the class path?", r18);
+        r2[1] = 1;
+        goto label9;
+
+     label4:
+        $r19 := @caughtexception;
+        r20 = $r19;
+        specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r20);
+        r2[2] = 1;
+        goto label9;
+
+     label5:
+        $r21 := @caughtexception;
+        r22 = $r21;
+        specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r22);
+        r2[3] = 1;
+        goto label9;
+
+     label6:
+        $r23 := @caughtexception;
+        r24 = $r23;
+        specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r24);
+        r2[4] = 1;
+        goto label9;
+
+     label7:
+        $r25 := @caughtexception;
+        r26 = $r25;
+        specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r26);
+        r2[5] = 1;
+        goto label9;
+
+     label8:
+        $r27 := @caughtexception;
+        r28 = $r27;
+        specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r28);
+        r2[6] = 1;
+
+     label9:
+        r2[7] = 1;
+        return;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label3;
+        catch java.lang.SecurityException from label1 to label2 with label4;
+        catch java.lang.NoSuchMethodException from label1 to label2 with label5;
+        catch java.lang.IllegalArgumentException from label1 to label2 with label6;
+        catch java.lang.IllegalAccessException from label1 to label2 with label7;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label8;
+    }
+
+    private java.lang.String getCoverageFilePath()
+    {
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[5];
+        $r3 = r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath>;
+        r2[0] = 1;
+        if $r3 != null goto label1;
+
+        r2[1] = 1;
+        return "/mnt/sdcard/coverage.ec";
+
+     label1:
+        $r4 = r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath>;
+        r2[2] = 1;
+        return $r4;
+    }
+
+    private boolean setCoverageFilePath(java.lang.String)
+    {
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        int $i0;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[6];
+        r3[0] = 1;
+        if r1 == null goto label1;
+
+        $i0 = virtualinvoke r1.<java.lang.String: int length()>();
+        r3[1] = 1;
+        if $i0 <= 0 goto label1;
+
+        r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath> = r1;
+        r3[2] = 1;
+        return 1;
+
+     label1:
+        r3[3] = 1;
+        return 0;
+    }
+
+    private void reportEmmaError(java.lang.Exception)
+    {
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.Exception r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.Exception;
+        $r2 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[7];
+        specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>("", r1);
+        r3[0] = 1;
+        return;
+    }
+
+    private void reportEmmaError(java.lang.String, java.lang.Exception)
+    {
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1, r5, $r9, $r14;
+        java.lang.Exception r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        java.lang.StringBuilder $r6, $r7, $r8, $r11, $r12, $r13;
+        android.os.Bundle $r10;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        r2 := @parameter1: java.lang.Exception;
+        $r3 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[8];
+        $r6 = new java.lang.StringBuilder;
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to generate emma coverage. ");
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        r5 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        $r9 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>($r9, r5, r2);
+        $r10 = r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults>;
+        $r11 = new java.lang.StringBuilder;
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\nError: ");
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r5);
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+        virtualinvoke $r10.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("stream", $r14);
+        r4[0] = 1;
+        return;
+    }
+
+    public void onActivityFinished()
+    {
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String $r3;
+        boolean $z0;
+        android.os.Bundle $r4;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[9];
+        $r3 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r3, "onActivityFinished()");
+        $z0 = r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean mCoverage>;
+        r2[0] = 1;
+        if $z0 == 0 goto label1;
+
+        specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>();
+        r2[1] = 1;
+
+     label1:
+        $r4 = r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults>;
+        virtualinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void finish(int,android.os.Bundle)>(-1, $r4);
+        r2[2] = 1;
+        return;
+    }
+
+    public void dumpIntermediateCoverage(java.lang.String)
+    {
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1, $r4, $r8, $r9, $r14;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.StringBuilder $r5, $r6, $r7, $r10, $r11, $r12, $r13;
+        boolean $z0, $z1;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[10];
+        $r4 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r5 = new java.lang.StringBuilder;
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Intermidate Dump Called with file name :");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, $r8);
+        $z0 = r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean mCoverage>;
+        r3[0] = 1;
+        if $z0 == 0 goto label2;
+
+        $z1 = specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>(r1);
+        r3[1] = 1;
+        if $z1 != 0 goto label1;
+
+        $r9 = <com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r10 = new java.lang.StringBuilder;
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to set the given file path:");
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as dump target.");
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r9, $r14);
+        r3[2] = 1;
+
+     label1:
+        specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>();
+        specialinvoke r0.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>("/mnt/sdcard/coverage.ec");
+        r3[3] = 1;
+
+     label2:
+        r3[4] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        r1 = $r0[11];
+        <com.example.amazed.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG> = "EmmaInstrumentation:";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+
+        $r0 = newmultiarray (boolean)[12][];
+        <com.example.amazed.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[5];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[8];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[3];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[4];
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r0[7] = $r8;
+        $r9 = newarray (boolean)[1];
+        $r0[8] = $r9;
+        $r10 = newarray (boolean)[3];
+        $r0[9] = $r10;
+        $r11 = newarray (boolean)[5];
+        $r0[10] = $r11;
+        $r12 = newarray (boolean)[1];
+        $r0[11] = $r12;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/amazed/EmmaInstrument/EmmaInstrumentation", -6390195098943533753L);
+        return $r0;
+    }
+}
+public interface  com.example.amazed.EmmaInstrument.FinishListener extends java.lang.Object
+{
+
+    public abstract void onActivityFinished();
+
+    public abstract void dumpIntermediateCoverage(java.lang.String);
+}
+class com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector extends android.content.BroadcastReceiver
+{
+    final com.example.amazed.EmmaInstrument.InstrumentedActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>(com.example.amazed.EmmaInstrument.InstrumentedActivity)
+    {
+        com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector r0;
+        com.example.amazed.EmmaInstrument.InstrumentedActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector;
+        r1 := @parameter0: com.example.amazed.EmmaInstrument.InstrumentedActivity;
+        $r2 = <com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        r0.<com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector: com.example.amazed.EmmaInstrument.InstrumentedActivity this$0> = r1;
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+        r3[0] = 1;
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector r0;
+        android.content.Context r1;
+        android.content.Intent r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        android.os.Bundle r5;
+        java.lang.Object[] r6, $r13;
+        android.telephony.SmsMessage r7;
+        java.lang.String r8, r9, $r17;
+        com.example.amazed.EmmaInstrument.InstrumentedActivity $r10, $r18;
+        com.example.amazed.EmmaInstrument.FinishListener $r11, $r19;
+        java.lang.Object $r12, $r14;
+        int $i0;
+        byte[] $r15, $r16;
+        boolean $z0, $z1;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.content.Intent;
+        $r3 = <com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+        r5 = virtualinvoke r2.<android.content.Intent: android.os.Bundle getExtras()>();
+        $r10 = r0.<com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector: com.example.amazed.EmmaInstrument.InstrumentedActivity this$0>;
+        $r11 = staticinvoke <com.example.amazed.EmmaInstrument.InstrumentedActivity: com.example.amazed.EmmaInstrument.FinishListener access$000(com.example.amazed.EmmaInstrument.InstrumentedActivity)>($r10);
+        r4[0] = 1;
+        if $r11 == null goto label2;
+
+        r4[1] = 1;
+        if r5 == null goto label2;
+
+        $r12 = virtualinvoke r5.<android.os.Bundle: java.lang.Object get(java.lang.String)>("pdus");
+        $r13 = (java.lang.Object[]) $r12;
+        r6 = (java.lang.Object[]) $r13;
+        $i0 = lengthof r6;
+        r4[2] = 1;
+        if $i0 <= 0 goto label2;
+
+        $r14 = r6[0];
+        $r15 = (byte[]) $r14;
+        $r16 = (byte[]) $r15;
+        r7 = staticinvoke <android.telephony.SmsMessage: android.telephony.SmsMessage createFromPdu(byte[])>($r16);
+        $r17 = virtualinvoke r7.<android.telephony.SmsMessage: java.lang.String getMessageBody()>();
+        r8 = virtualinvoke $r17.<java.lang.String: java.lang.String toString()>();
+        r9 = virtualinvoke r7.<android.telephony.SmsMessage: java.lang.String getOriginatingAddress()>();
+        $z0 = virtualinvoke r9.<java.lang.String: boolean contains(java.lang.CharSequence)>("6782345628");
+        r4[3] = 1;
+        if $z0 != 0 goto label1;
+
+        $z1 = virtualinvoke r8.<java.lang.String: boolean startsWith(java.lang.String)>("/mnt/sdcard");
+        r4[4] = 1;
+        if $z1 == 0 goto label2;
+
+     label1:
+        $r18 = r0.<com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector: com.example.amazed.EmmaInstrument.InstrumentedActivity this$0>;
+        $r19 = staticinvoke <com.example.amazed.EmmaInstrument.InstrumentedActivity: com.example.amazed.EmmaInstrument.FinishListener access$000(com.example.amazed.EmmaInstrument.InstrumentedActivity)>($r18);
+        interfaceinvoke $r19.<com.example.amazed.EmmaInstrument.FinishListener: void dumpIntermediateCoverage(java.lang.String)>(r8);
+        r4[5] = 1;
+
+     label2:
+        r4[6] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.example.amazed.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[7];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/amazed/EmmaInstrument/InstrumentedActivity$CoverageCollector", -1604738725137032633L);
+        return $r0;
+    }
+}
+public class com.example.amazed.EmmaInstrument.InstrumentedActivity extends com.example.amazed.AmazedActivity
+{
+    public static java.lang.String TAG;
+    private com.example.amazed.EmmaInstrument.FinishListener mListener;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        com.example.amazed.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.InstrumentedActivity;
+        $r1 = <com.example.amazed.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<com.example.amazed.AmazedActivity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void setFinishListener(com.example.amazed.EmmaInstrument.FinishListener)
+    {
+        com.example.amazed.EmmaInstrument.InstrumentedActivity r0;
+        com.example.amazed.EmmaInstrument.FinishListener r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.InstrumentedActivity;
+        r1 := @parameter0: com.example.amazed.EmmaInstrument.FinishListener;
+        $r2 = <com.example.amazed.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        r3[0] = 1;
+        return;
+    }
+
+    public void finish()
+    {
+        com.example.amazed.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.StringBuilder $r3, $r5, $r6;
+        java.lang.String $r4, $r7;
+        com.example.amazed.EmmaInstrument.FinishListener $r8, $r9;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.InstrumentedActivity;
+        $r1 = <com.example.amazed.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        $r3 = new java.lang.StringBuilder;
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+        $r4 = <com.example.amazed.EmmaInstrument.InstrumentedActivity: java.lang.String TAG>;
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".InstrumentedActivity");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r7, "finish()");
+        specialinvoke r0.<com.example.amazed.AmazedActivity: void finish()>();
+        $r8 = r0.<com.example.amazed.EmmaInstrument.InstrumentedActivity: com.example.amazed.EmmaInstrument.FinishListener mListener>;
+        r2[0] = 1;
+        if $r8 == null goto label1;
+
+        $r9 = r0.<com.example.amazed.EmmaInstrument.InstrumentedActivity: com.example.amazed.EmmaInstrument.FinishListener mListener>;
+        interfaceinvoke $r9.<com.example.amazed.EmmaInstrument.FinishListener: void onActivityFinished()>();
+        r2[1] = 1;
+
+     label1:
+        r2[2] = 1;
+        return;
+    }
+
+    static com.example.amazed.EmmaInstrument.FinishListener access$000(com.example.amazed.EmmaInstrument.InstrumentedActivity)
+    {
+        com.example.amazed.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.example.amazed.EmmaInstrument.FinishListener $r3;
+
+        r0 := @parameter0: com.example.amazed.EmmaInstrument.InstrumentedActivity;
+        $r1 = <com.example.amazed.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        $r3 = r0.<com.example.amazed.EmmaInstrument.InstrumentedActivity: com.example.amazed.EmmaInstrument.FinishListener mListener>;
+        r2[0] = 1;
+        return $r3;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.amazed.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+        r1 = $r0[4];
+        <com.example.amazed.EmmaInstrument.InstrumentedActivity: java.lang.String TAG> = "IntrumentedPlayer";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5;
+
+        $r0 = newmultiarray (boolean)[5][];
+        <com.example.amazed.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[3];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[4] = $r5;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/amazed/EmmaInstrument/InstrumentedActivity", -3953097121653020106L);
+        return $r0;
+    }
+}
+public class com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver extends android.content.BroadcastReceiver
+{
+    public static java.lang.String TAG;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver;
+        $r1 = <com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver r0;
+        android.content.Context r1;
+        android.content.Intent r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        com.example.amazed.EmmaInstrument.EmmaInstrumentation r6, $r7;
+
+        r0 := @this: com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.content.Intent;
+        $r3 = <com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+        virtualinvoke r2.<android.content.Intent: android.os.Bundle getExtras()>();
+        $r7 = new com.example.amazed.EmmaInstrument.EmmaInstrumentation;
+        specialinvoke $r7.<com.example.amazed.EmmaInstrument.EmmaInstrumentation: void <init>()>();
+        r6 = $r7;
+        r4[0] = 1;
+        if r6 == null goto label1;
+
+        interfaceinvoke r6.<com.example.amazed.EmmaInstrument.FinishListener: void dumpIntermediateCoverage(java.lang.String)>("/mnt/sdcard/coverage.ec");
+        r4[1] = 1;
+
+     label1:
+        r4[2] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        <com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver: java.lang.String TAG> = "M3SMSInstrumentedReceiver";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.example.amazed.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/amazed/EmmaInstrument/SMSInstrumentedReceiver", 8704909102833939831L);
+        return $r0;
+    }
+}
+public class com.example.amazed.Marble extends java.lang.Object
+{
+    private android.view.View mView;
+    private int mX;
+    private int mY;
+    private int mRadius;
+    private int mColor;
+    private int mLives;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>(android.view.View)
+    {
+        com.example.amazed.Marble r0;
+        android.view.View r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.amazed.Marble;
+        r1 := @parameter0: android.view.View;
+        $r2 = <com.example.amazed.Marble: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.Marble: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        r0.<com.example.amazed.Marble: int mX> = 0;
+        r0.<com.example.amazed.Marble: int mY> = 0;
+        r0.<com.example.amazed.Marble: int mRadius> = 8;
+        r0.<com.example.amazed.Marble: int mColor> = -1;
+        r0.<com.example.amazed.Marble: int mLives> = 5;
+        r0.<com.example.amazed.Marble: android.view.View mView> = r1;
+        virtualinvoke r0.<com.example.amazed.Marble: void init()>();
+        r3[0] = 1;
+        return;
+    }
+
+    public void init()
+    {
+        com.example.amazed.Marble r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        int $i0, $i1, $i2, $i3;
+
+        r0 := @this: com.example.amazed.Marble;
+        $r1 = <com.example.amazed.Marble: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.Marble: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[1];
+        $i0 = r0.<com.example.amazed.Marble: int mRadius>;
+        $i1 = $i0 * 6;
+        r0.<com.example.amazed.Marble: int mX> = $i1;
+        $i2 = r0.<com.example.amazed.Marble: int mRadius>;
+        $i3 = $i2 * 6;
+        r0.<com.example.amazed.Marble: int mY> = $i3;
+        r2[0] = 1;
+        return;
+    }
+
+    public void draw(android.graphics.Canvas, android.graphics.Paint)
+    {
+        com.example.amazed.Marble r0;
+        android.graphics.Canvas r1;
+        android.graphics.Paint r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        int $i0, $i1, $i2, $i3;
+        float $f0, $f1, $f2;
+
+        r0 := @this: com.example.amazed.Marble;
+        r1 := @parameter0: android.graphics.Canvas;
+        r2 := @parameter1: android.graphics.Paint;
+        $r3 = <com.example.amazed.Marble: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.amazed.Marble: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[2];
+        $i0 = r0.<com.example.amazed.Marble: int mColor>;
+        virtualinvoke r2.<android.graphics.Paint: void setColor(int)>($i0);
+        $i1 = r0.<com.example.amazed.Marble: int mX>;
+        $f0 = (float) $i1;
+        $i2 = r0.<com.example.amazed.Marble: int mY>;
+        $f1 = (float) $i2;
+        $i3 = r0.<com.example.amazed.Marble: int mRadius>;
+        $f2 = (float) $i3;
+        virtualinvoke r1.<android.graphics.Canvas: void drawCircle(float,float,float,android.graphics.Paint)>($f0, $f1, $f2, r2);
+        r4[0] = 1;
+        return;
+    }
+
+    public void updateX(float)
+    {
+        com.example.amazed.Marble r0;
+        float f0, $f1, $f2;
+        boolean[][] $r1;
+        boolean[] r2;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12;
+        android.view.View $r4, $r5;
+
+        r0 := @this: com.example.amazed.Marble;
+        f0 := @parameter0: float;
+        $r1 = <com.example.amazed.Marble: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.Marble: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        $i0 = r0.<com.example.amazed.Marble: int mX>;
+        $f1 = (float) $i0;
+        $f2 = $f1 + f0;
+        $i1 = (int) $f2;
+        r0.<com.example.amazed.Marble: int mX> = $i1;
+        $i2 = r0.<com.example.amazed.Marble: int mX>;
+        $i3 = r0.<com.example.amazed.Marble: int mRadius>;
+        $i4 = $i2 + $i3;
+        $r4 = r0.<com.example.amazed.Marble: android.view.View mView>;
+        $i5 = virtualinvoke $r4.<android.view.View: int getWidth()>();
+        r2[0] = 1;
+        if $i4 < $i5 goto label1;
+
+        $r5 = r0.<com.example.amazed.Marble: android.view.View mView>;
+        $i6 = virtualinvoke $r5.<android.view.View: int getWidth()>();
+        $i7 = r0.<com.example.amazed.Marble: int mRadius>;
+        $i8 = $i6 - $i7;
+        r0.<com.example.amazed.Marble: int mX> = $i8;
+        r2[1] = 1;
+        goto label2;
+
+     label1:
+        $i9 = r0.<com.example.amazed.Marble: int mX>;
+        $i10 = r0.<com.example.amazed.Marble: int mRadius>;
+        $i11 = $i9 - $i10;
+        r2[2] = 1;
+        if $i11 >= 0 goto label2;
+
+        $i12 = r0.<com.example.amazed.Marble: int mRadius>;
+        r0.<com.example.amazed.Marble: int mX> = $i12;
+        r2[3] = 1;
+
+     label2:
+        r2[4] = 1;
+        return;
+    }
+
+    public void updateY(float)
+    {
+        com.example.amazed.Marble r0;
+        float f0, $f1, $f2;
+        boolean[][] $r1;
+        boolean[] r2;
+        int $i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12;
+        android.view.View $r4, $r5;
+
+        r0 := @this: com.example.amazed.Marble;
+        f0 := @parameter0: float;
+        $r1 = <com.example.amazed.Marble: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.Marble: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[4];
+        $i0 = r0.<com.example.amazed.Marble: int mY>;
+        $f1 = (float) $i0;
+        $f2 = $f1 - f0;
+        $i1 = (int) $f2;
+        r0.<com.example.amazed.Marble: int mY> = $i1;
+        $i2 = r0.<com.example.amazed.Marble: int mY>;
+        $i3 = r0.<com.example.amazed.Marble: int mRadius>;
+        $i4 = $i2 + $i3;
+        $r4 = r0.<com.example.amazed.Marble: android.view.View mView>;
+        $i5 = virtualinvoke $r4.<android.view.View: int getHeight()>();
+        r2[0] = 1;
+        if $i4 < $i5 goto label1;
+
+        $r5 = r0.<com.example.amazed.Marble: android.view.View mView>;
+        $i6 = virtualinvoke $r5.<android.view.View: int getHeight()>();
+        $i7 = r0.<com.example.amazed.Marble: int mRadius>;
+        $i8 = $i6 - $i7;
+        r0.<com.example.amazed.Marble: int mY> = $i8;
+        r2[1] = 1;
+        goto label2;
+
+     label1:
+        $i9 = r0.<com.example.amazed.Marble: int mY>;
+        $i10 = r0.<com.example.amazed.Marble: int mRadius>;
+        $i11 = $i9 - $i10;
+        r2[2] = 1;
+        if $i11 >= 0 goto label2;
+
+        $i12 = r0.<com.example.amazed.Marble: int mRadius>;
+        r0.<com.example.amazed.Marble: int mY> = $i12;
+        r2[3] = 1;
+
+     label2:
+        r2[4] = 1;
+        return;
+    }
+
+    public void death()
+    {
+        com.example.amazed.Marble r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        int $i0, $i1;
+
+        r0 := @this: com.example.amazed.Marble;
+        $r1 = <com.example.amazed.Marble: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.Marble: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[5];
+        $i0 = r0.<com.example.amazed.Marble: int mLives>;
+        $i1 = $i0 - 1;
+        r0.<com.example.amazed.Marble: int mLives> = $i1;
+        r2[0] = 1;
+        return;
+    }
+
+    public void setLives(int)
+    {
+        com.example.amazed.Marble r0;
+        int i0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.amazed.Marble;
+        i0 := @parameter0: int;
+        $r1 = <com.example.amazed.Marble: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.Marble: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[6];
+        r0.<com.example.amazed.Marble: int mLives> = i0;
+        r2[0] = 1;
+        return;
+    }
+
+    public int getLives()
+    {
+        com.example.amazed.Marble r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        int $i0;
+
+        r0 := @this: com.example.amazed.Marble;
+        $r1 = <com.example.amazed.Marble: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.Marble: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[7];
+        $i0 = r0.<com.example.amazed.Marble: int mLives>;
+        r2[0] = 1;
+        return $i0;
+    }
+
+    public int getX()
+    {
+        com.example.amazed.Marble r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        int $i0;
+
+        r0 := @this: com.example.amazed.Marble;
+        $r1 = <com.example.amazed.Marble: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.Marble: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[8];
+        $i0 = r0.<com.example.amazed.Marble: int mX>;
+        r2[0] = 1;
+        return $i0;
+    }
+
+    public int getY()
+    {
+        com.example.amazed.Marble r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        int $i0;
+
+        r0 := @this: com.example.amazed.Marble;
+        $r1 = <com.example.amazed.Marble: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.Marble: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[9];
+        $i0 = r0.<com.example.amazed.Marble: int mY>;
+        r2[0] = 1;
+        return $i0;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.amazed.Marble: boolean[][] $VRi()>();
+        r1 = $r0[10];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11;
+
+        $r0 = newmultiarray (boolean)[11][];
+        <com.example.amazed.Marble: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[5];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[5];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[1];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[1];
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r0[7] = $r8;
+        $r9 = newarray (boolean)[1];
+        $r0[8] = $r9;
+        $r10 = newarray (boolean)[1];
+        $r0[9] = $r10;
+        $r11 = newarray (boolean)[1];
+        $r0[10] = $r11;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/amazed/Marble", 3268061382402408253L);
+        return $r0;
+    }
+}
+public class com.example.amazed.Maze extends java.lang.Object
+{
+    private static final int TILE_SIZE;
+    private static final int MAZE_COLS;
+    private static final int MAZE_ROWS;
+    public static final int PATH_TILE;
+    public static final int VOID_TILE;
+    public static final int EXIT_TILE;
+    private static final int VOID_COLOR;
+    private static int[] mMazeData;
+    public static final int MAX_LEVELS;
+    private android.graphics.Rect mRect;
+    private int mRow;
+    private int mCol;
+    private int mX;
+    private int mY;
+    private android.graphics.Bitmap mImgPath;
+    private android.graphics.Bitmap mImgExit;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>(android.app.Activity)
+    {
+        com.example.amazed.Maze r0;
+        android.app.Activity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.graphics.Rect $r4;
+        android.content.Context $r5, $r8;
+        android.content.res.Resources $r6, $r9;
+        android.graphics.Bitmap $r7, $r10;
+
+        r0 := @this: com.example.amazed.Maze;
+        r1 := @parameter0: android.app.Activity;
+        $r2 = <com.example.amazed.Maze: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.Maze: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        $r4 = new android.graphics.Rect;
+        specialinvoke $r4.<android.graphics.Rect: void <init>()>();
+        r0.<com.example.amazed.Maze: android.graphics.Rect mRect> = $r4;
+        $r5 = virtualinvoke r1.<android.app.Activity: android.content.Context getApplicationContext()>();
+        $r6 = virtualinvoke $r5.<android.content.Context: android.content.res.Resources getResources()>();
+        $r7 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeResource(android.content.res.Resources,int)>($r6, 2130837506);
+        r0.<com.example.amazed.Maze: android.graphics.Bitmap mImgPath> = $r7;
+        $r8 = virtualinvoke r1.<android.app.Activity: android.content.Context getApplicationContext()>();
+        $r9 = virtualinvoke $r8.<android.content.Context: android.content.res.Resources getResources()>();
+        $r10 = staticinvoke <android.graphics.BitmapFactory: android.graphics.Bitmap decodeResource(android.content.res.Resources,int)>($r9, 2130837504);
+        r0.<com.example.amazed.Maze: android.graphics.Bitmap mImgExit> = $r10;
+        r3[0] = 1;
+        return;
+    }
+
+    void load(android.app.Activity, int)
+    {
+        com.example.amazed.Maze r0;
+        android.app.Activity r1;
+        int i0, i1, $i2, $i3, $i4;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.String r4, $r20;
+        java.io.InputStream r5;
+        java.lang.Throwable r6, $r21;
+        java.lang.StringBuilder $r7, $r8, $r9, $r10, $r17, $r18, $r19;
+        int[] $r11, $r13, $r14;
+        android.content.res.AssetManager $r12;
+        java.lang.Exception $r15, r16;
+
+        r0 := @this: com.example.amazed.Maze;
+        r1 := @parameter0: android.app.Activity;
+        i0 := @parameter1: int;
+        $r2 = <com.example.amazed.Maze: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.amazed.Maze: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        $r7 = new java.lang.StringBuilder;
+        specialinvoke $r7.<java.lang.StringBuilder: void <init>()>();
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("level");
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(i0);
+        $r10 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".txt");
+        r4 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.String toString()>();
+        r5 = null;
+
+     label1:
+        $r11 = newarray (int)[520];
+        <com.example.amazed.Maze: int[] mMazeData> = $r11;
+        $r12 = virtualinvoke r1.<android.app.Activity: android.content.res.AssetManager getAssets()>();
+        r5 = virtualinvoke $r12.<android.content.res.AssetManager: java.io.InputStream open(java.lang.String)>(r4);
+        i1 = 0;
+        r3[0] = 1;
+
+     label2:
+        $r13 = <com.example.amazed.Maze: int[] mMazeData>;
+        $i2 = lengthof $r13;
+        r3[1] = 1;
+        if i1 >= $i2 goto label3;
+
+        $r14 = <com.example.amazed.Maze: int[] mMazeData>;
+        $i3 = virtualinvoke r5.<java.io.InputStream: int read()>();
+        $i4 = staticinvoke <java.lang.Character: int getNumericValue(int)>($i3);
+        $r14[i1] = $i4;
+        virtualinvoke r5.<java.io.InputStream: int read()>();
+        virtualinvoke r5.<java.io.InputStream: int read()>();
+        i1 = i1 + 1;
+        r3[2] = 1;
+        goto label2;
+
+     label3:
+        staticinvoke <com.example.amazed.Maze: void closeStream(java.io.Closeable)>(r5);
+        r3[3] = 1;
+        goto label10;
+
+     label4:
+        $r15 := @caughtexception;
+
+     label5:
+        r16 = $r15;
+        $r17 = new java.lang.StringBuilder;
+        specialinvoke $r17.<java.lang.StringBuilder: void <init>()>();
+        $r18 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("load exception: ");
+        $r19 = virtualinvoke $r18.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r16);
+        $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>("Maze", $r20);
+
+     label6:
+        staticinvoke <com.example.amazed.Maze: void closeStream(java.io.Closeable)>(r5);
+        r3[4] = 1;
+        goto label10;
+
+     label7:
+        $r21 := @caughtexception;
+
+     label8:
+        r6 = $r21;
+
+     label9:
+        staticinvoke <com.example.amazed.Maze: void closeStream(java.io.Closeable)>(r5);
+        r3[5] = 1;
+        throw r6;
+
+     label10:
+        r3[6] = 1;
+        return;
+
+        catch java.lang.Exception from label1 to label3 with label4;
+        catch java.lang.Throwable from label1 to label3 with label7;
+        catch java.lang.Throwable from label5 to label6 with label7;
+        catch java.lang.Throwable from label8 to label9 with label7;
+    }
+
+    public void draw(android.graphics.Canvas, android.graphics.Paint)
+    {
+        com.example.amazed.Maze r0;
+        android.graphics.Canvas r1;
+        android.graphics.Paint r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        int i0, $i1, $i2, $i3, $i4, $i5, $i6, $i7, $i8, $i9, $i10, $i11, $i12, $i13, $i14, $i15, $i16, $i17, $i18, $i19, $i20;
+        int[] $r5, $r6, $r8, $r10;
+        android.graphics.Bitmap $r7, $r9;
+        float $f0, $f1, $f2, $f3;
+        android.graphics.Rect $r11, $r12, $r13, $r14, $r15;
+
+        r0 := @this: com.example.amazed.Maze;
+        r1 := @parameter0: android.graphics.Canvas;
+        r2 := @parameter1: android.graphics.Paint;
+        $r3 = <com.example.amazed.Maze: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.amazed.Maze: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[2];
+        i0 = 0;
+        r4[0] = 1;
+
+     label1:
+        $r5 = <com.example.amazed.Maze: int[] mMazeData>;
+        $i1 = lengthof $r5;
+        r4[1] = 1;
+        if i0 >= $i1 goto label5;
+
+        $i2 = i0 / 20;
+        r0.<com.example.amazed.Maze: int mRow> = $i2;
+        $i3 = i0 % 20;
+        r0.<com.example.amazed.Maze: int mCol> = $i3;
+        $i4 = r0.<com.example.amazed.Maze: int mCol>;
+        $i5 = $i4 * 16;
+        r0.<com.example.amazed.Maze: int mX> = $i5;
+        $i6 = r0.<com.example.amazed.Maze: int mRow>;
+        $i7 = $i6 * 16;
+        r0.<com.example.amazed.Maze: int mY> = $i7;
+        $r6 = <com.example.amazed.Maze: int[] mMazeData>;
+        $i8 = $r6[i0];
+        r4[2] = 1;
+        if $i8 != 0 goto label2;
+
+        $r7 = r0.<com.example.amazed.Maze: android.graphics.Bitmap mImgPath>;
+        $i9 = r0.<com.example.amazed.Maze: int mX>;
+        $f0 = (float) $i9;
+        $i10 = r0.<com.example.amazed.Maze: int mY>;
+        $f1 = (float) $i10;
+        virtualinvoke r1.<android.graphics.Canvas: void drawBitmap(android.graphics.Bitmap,float,float,android.graphics.Paint)>($r7, $f0, $f1, r2);
+        r4[3] = 1;
+        goto label4;
+
+     label2:
+        $r8 = <com.example.amazed.Maze: int[] mMazeData>;
+        $i11 = $r8[i0];
+        r4[4] = 1;
+        if $i11 != 2 goto label3;
+
+        $r9 = r0.<com.example.amazed.Maze: android.graphics.Bitmap mImgExit>;
+        $i12 = r0.<com.example.amazed.Maze: int mX>;
+        $f2 = (float) $i12;
+        $i13 = r0.<com.example.amazed.Maze: int mY>;
+        $f3 = (float) $i13;
+        virtualinvoke r1.<android.graphics.Canvas: void drawBitmap(android.graphics.Bitmap,float,float,android.graphics.Paint)>($r9, $f2, $f3, r2);
+        r4[5] = 1;
+        goto label4;
+
+     label3:
+        $r10 = <com.example.amazed.Maze: int[] mMazeData>;
+        $i14 = $r10[i0];
+        r4[6] = 1;
+        if $i14 != 1 goto label4;
+
+        $r11 = r0.<com.example.amazed.Maze: android.graphics.Rect mRect>;
+        $i15 = r0.<com.example.amazed.Maze: int mX>;
+        $r11.<android.graphics.Rect: int left> = $i15;
+        $r12 = r0.<com.example.amazed.Maze: android.graphics.Rect mRect>;
+        $i16 = r0.<com.example.amazed.Maze: int mY>;
+        $r12.<android.graphics.Rect: int top> = $i16;
+        $r13 = r0.<com.example.amazed.Maze: android.graphics.Rect mRect>;
+        $i17 = r0.<com.example.amazed.Maze: int mX>;
+        $i18 = $i17 + 16;
+        $r13.<android.graphics.Rect: int right> = $i18;
+        $r14 = r0.<com.example.amazed.Maze: android.graphics.Rect mRect>;
+        $i19 = r0.<com.example.amazed.Maze: int mY>;
+        $i20 = $i19 + 16;
+        $r14.<android.graphics.Rect: int bottom> = $i20;
+        virtualinvoke r2.<android.graphics.Paint: void setColor(int)>(-16777216);
+        $r15 = r0.<com.example.amazed.Maze: android.graphics.Rect mRect>;
+        virtualinvoke r1.<android.graphics.Canvas: void drawRect(android.graphics.Rect,android.graphics.Paint)>($r15, r2);
+        r4[7] = 1;
+
+     label4:
+        i0 = i0 + 1;
+        r4[8] = 1;
+        goto label1;
+
+     label5:
+        r4[9] = 1;
+        return;
+    }
+
+    public int getCellType(int, int)
+    {
+        com.example.amazed.Maze r0;
+        int i0, i1, i2, i3, i4, i5, $i6;
+        boolean[][] $r1;
+        boolean[] r2;
+        int[] $r3;
+
+        r0 := @this: com.example.amazed.Maze;
+        i0 := @parameter0: int;
+        i1 := @parameter1: int;
+        $r1 = <com.example.amazed.Maze: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.Maze: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        i2 = i0 / 16;
+        i3 = i1 / 16;
+        i4 = 0;
+        r2[0] = 1;
+        if i3 <= 0 goto label1;
+
+        i4 = i3 * 20;
+        r2[1] = 1;
+
+     label1:
+        i5 = i4 + i2;
+        $r3 = <com.example.amazed.Maze: int[] mMazeData>;
+        $i6 = $r3[i5];
+        r2[2] = 1;
+        return $i6;
+    }
+
+    private static void closeStream(java.io.Closeable)
+    {
+        java.io.Closeable r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.io.IOException r3, $r4;
+
+        r0 := @parameter0: java.io.Closeable;
+        $r1 = <com.example.amazed.Maze: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.amazed.Maze: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[4];
+        r2[0] = 1;
+        if r0 == null goto label4;
+
+     label1:
+        interfaceinvoke r0.<java.io.Closeable: void close()>();
+        r2[1] = 1;
+
+     label2:
+        goto label4;
+
+     label3:
+        $r4 := @caughtexception;
+        r3 = $r4;
+        r2[2] = 1;
+
+     label4:
+        r2[3] = 1;
+        return;
+
+        catch java.io.IOException from label1 to label2 with label3;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.amazed.Maze: boolean[][] $VRi()>();
+        r1 = $r0[5];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6;
+
+        $r0 = newmultiarray (boolean)[6][];
+        <com.example.amazed.Maze: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[7];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[10];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[3];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[4];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[1];
+        $r0[5] = $r6;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/amazed/Maze", 8833113581649420723L);
+        return $r0;
+    }
+}
+public final class com.example.amazed.R$array extends java.lang.Object
+{
+    public static final int gameStrings;
+
+    public void <init>()
+    {
+        com.example.amazed.R$array r0;
+
+        r0 := @this: com.example.amazed.R$array;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.example.amazed.R$attr extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.example.amazed.R$attr r0;
+
+        r0 := @this: com.example.amazed.R$attr;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.example.amazed.R$drawable extends java.lang.Object
+{
+    public static final int exit;
+    public static final int icon;
+    public static final int path;
+
+    public void <init>()
+    {
+        com.example.amazed.R$drawable r0;
+
+        r0 := @this: com.example.amazed.R$drawable;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.example.amazed.R$string extends java.lang.Object
+{
+    public static final int app_name;
+
+    public void <init>()
+    {
+        com.example.amazed.R$string r0;
+
+        r0 := @this: com.example.amazed.R$string;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.example.amazed.R extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.example.amazed.R r0;
+
+        r0 := @this: com.example.amazed.R;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}

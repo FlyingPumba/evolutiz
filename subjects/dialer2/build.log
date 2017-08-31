@@ -1,0 +1,293 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/dialer2/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: DialerActivity
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for DialerActivity...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/dialer2/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for DialerActivity...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 17 source files to /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/classes.dex...
+       [dx] Merged dex A (48 defs/71.3KiB) with dex B (2 defs/1.1KiB). Result is 50 defs/84.1KiB. Took 0.4s
+       [dx] Merged dex A (50 defs/84.1KiB) with dex B (297 defs/326.8KiB). Result is 347 defs/496.0KiB. Took 0.6s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/btn_dial_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/btn_dial_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/btn_dial_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/btn_dial_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/btn_dial_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/btn_dial_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/btn_dial_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/btn_dial_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/btn_dial_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/button_backspace.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_backspace.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_backspace.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/button_call.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_call.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_call.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/button_cell.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_cell.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_cell.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/button_contact.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_contact.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_contact.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/button_contract.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_contract.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_contract.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/button_expand.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_expand.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_expand.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/button_message.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_message.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_message.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/button_phone.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_phone.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_phone.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/button_speed_dial.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_speed_dial.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/button_speed_dial.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_0_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_0_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_0_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_0_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_0_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_0_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_1_no_vm_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_1_no_vm_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_1_no_vm_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_1_no_vm_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_1_no_vm_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_1_no_vm_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_2_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_2_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_2_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_2_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_2_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_2_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_3_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_3_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_3_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_3_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_3_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_3_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_4_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_4_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_4_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_4_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_4_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_4_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_5_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_5_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_5_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_5_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_5_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_5_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_6_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_6_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_6_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_6_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_6_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_6_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_7_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_7_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_7_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_7_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_7_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_7_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_8_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_8_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_8_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_8_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_8_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_8_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_9_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_9_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_9_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_9_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_9_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_9_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_pound_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_pound_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_pound_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_pound_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_pound_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_pound_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_star_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_star_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_star_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/dial_num_star_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_star_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/dial_num_star_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/ic_dial_action_call.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_dial_action_call.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_dial_action_call.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/ic_dial_action_delete.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_dial_action_delete.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_dial_action_delete.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/ic_dial_action_voice_mail.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_dial_action_voice_mail.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_dial_action_voice_mail.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/ic_dialog_alert.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_dialog_alert.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_dialog_alert.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/ic_menu_allfriends.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_menu_allfriends.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_menu_allfriends.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/ic_menu_call.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_menu_call.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_menu_call.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/ic_menu_close_clear_cancel.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_menu_close_clear_cancel.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_menu_close_clear_cancel.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/ic_menu_preferences.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_menu_preferences.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_menu_preferences.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/ic_menu_view.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_menu_view.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/ic_menu_view.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/overlay_incoming.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/overlay_incoming.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/overlay_incoming.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/overlay_missed.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/overlay_missed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/overlay_missed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-hdpi/overlay_outgoing.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/overlay_outgoing.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-hdpi/overlay_outgoing.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/btn_dial_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/btn_dial_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/btn_dial_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/btn_dial_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/btn_dial_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/btn_dial_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/btn_dial_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/btn_dial_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/btn_dial_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/button_backspace.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/button_backspace.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/button_backspace.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/button_call.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/button_call.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/button_call.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/button_contract.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/button_contract.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/button_contract.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/button_expand.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/button_expand.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/button_expand.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/default_icon.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/default_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/default_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_0_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_0_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_0_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_0_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_0_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_0_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_1_no_vm_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_1_no_vm_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_1_no_vm_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_1_no_vm_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_1_no_vm_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_1_no_vm_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_2_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_2_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_2_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_2_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_2_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_2_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_3_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_3_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_3_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_3_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_3_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_3_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_4_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_4_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_4_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_4_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_4_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_4_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_5_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_5_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_5_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_5_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_5_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_5_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_6_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_6_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_6_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_6_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_6_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_6_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_7_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_7_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_7_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_7_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_7_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_7_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_8_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_8_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_8_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_8_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_8_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_8_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_9_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_9_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_9_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_9_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_9_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_9_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_pound_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_pound_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_pound_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_pound_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_pound_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_pound_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_star_blk.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_star_blk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_star_blk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/dial_num_star_wht.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_star_wht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/dial_num_star_wht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/ic_dialog_alert.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_dialog_alert.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_dialog_alert.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/ic_menu_allfriends.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_menu_allfriends.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_menu_allfriends.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/ic_menu_call.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_menu_call.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_menu_call.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/ic_menu_close_clear_cancel.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_menu_close_clear_cancel.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_menu_close_clear_cancel.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/ic_menu_preferences.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_menu_preferences.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_menu_preferences.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/ic_menu_view.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_menu_view.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/ic_menu_view.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/icon_starred.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/icon_starred.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/icon_starred.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/timeline_item_bg.9.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/timeline_item_bg.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/timeline_item_bg.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/timeline_item_bg_focus.9.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/timeline_item_bg_focus.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/timeline_item_bg_focus.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/timeline_item_bg_read.9.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/timeline_item_bg_read.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/timeline_item_bg_read.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/dialer2/res/drawable-mdpi/timeline_item_bg_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/timeline_item_bg_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/res/drawable-mdpi/timeline_item_bg_selected.9.png: 0% size of source)
+   [crunch] Crunched 92 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating DialerActivity-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/DialerActivity-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/dialer2/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 31 seconds

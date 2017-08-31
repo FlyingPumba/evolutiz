@@ -1,0 +1,4400 @@
+class com.example.anycut.ActivityPickerActivity$1 extends java.lang.Object
+{
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.ActivityPickerActivity$1: boolean[][] $VRi()>();
+        r1 = $r0[0];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1;
+
+        $r0 = newmultiarray (boolean)[1][];
+        <com.example.anycut.ActivityPickerActivity$1: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/ActivityPickerActivity$1", 33323L);
+        return $r0;
+    }
+}
+class com.example.anycut.ActivityPickerActivity$ActivityAdapter extends android.widget.ArrayAdapter
+{
+    android.view.LayoutInflater mInflater;
+    final com.example.anycut.ActivityPickerActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>(com.example.anycut.ActivityPickerActivity, android.app.Activity, java.util.ArrayList)
+    {
+        com.example.anycut.ActivityPickerActivity$ActivityAdapter r0;
+        com.example.anycut.ActivityPickerActivity r1;
+        android.app.Activity r2;
+        java.util.ArrayList r3;
+        boolean[][] $r4;
+        boolean[] r5;
+        android.view.LayoutInflater $r6;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$ActivityAdapter;
+        r1 := @parameter0: com.example.anycut.ActivityPickerActivity;
+        r2 := @parameter1: android.app.Activity;
+        r3 := @parameter2: java.util.ArrayList;
+        $r4 = <com.example.anycut.ActivityPickerActivity$ActivityAdapter: boolean[][] $VRc>;
+        if $r4 != null goto label0;
+
+        $r4 = staticinvoke <com.example.anycut.ActivityPickerActivity$ActivityAdapter: boolean[][] $VRi()>();
+
+     label0:
+        r5 = $r4[0];
+        r0.<com.example.anycut.ActivityPickerActivity$ActivityAdapter: com.example.anycut.ActivityPickerActivity this$0> = r1;
+        specialinvoke r0.<android.widget.ArrayAdapter: void <init>(android.content.Context,int,java.util.List)>(r2, 0, r3);
+        $r6 = virtualinvoke r2.<android.app.Activity: android.view.LayoutInflater getLayoutInflater()>();
+        r0.<com.example.anycut.ActivityPickerActivity$ActivityAdapter: android.view.LayoutInflater mInflater> = $r6;
+        r5[0] = 1;
+        return;
+    }
+
+    public android.view.View getView(int, android.view.View, android.view.ViewGroup)
+    {
+        com.example.anycut.ActivityPickerActivity$ActivityAdapter r0;
+        int i0;
+        android.view.View r1, r6, $r10;
+        android.view.ViewGroup r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper r5;
+        android.widget.TextView r7;
+        java.lang.Object $r8, $r11;
+        android.view.LayoutInflater $r9;
+        android.content.pm.ResolveInfo $r12;
+        com.example.anycut.ActivityPickerActivity $r13;
+        android.content.pm.PackageManager $r14;
+        java.lang.CharSequence $r15;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$ActivityAdapter;
+        i0 := @parameter0: int;
+        r1 := @parameter1: android.view.View;
+        r2 := @parameter2: android.view.ViewGroup;
+        $r3 = <com.example.anycut.ActivityPickerActivity$ActivityAdapter: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.anycut.ActivityPickerActivity$ActivityAdapter: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+        $r8 = virtualinvoke r0.<com.example.anycut.ActivityPickerActivity$ActivityAdapter: java.lang.Object getItem(int)>(i0);
+        r5 = (com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper) $r8;
+        r6 = r1;
+        r4[0] = 1;
+        if r6 != null goto label1;
+
+        $r9 = r0.<com.example.anycut.ActivityPickerActivity$ActivityAdapter: android.view.LayoutInflater mInflater>;
+        r6 = virtualinvoke $r9.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>(17367043, r2, 0);
+        $r10 = virtualinvoke r6.<android.view.View: android.view.View findViewById(int)>(16908308);
+        virtualinvoke r6.<android.view.View: void setTag(java.lang.Object)>($r10);
+        r4[1] = 1;
+
+     label1:
+        $r11 = virtualinvoke r6.<android.view.View: java.lang.Object getTag()>();
+        r7 = (android.widget.TextView) $r11;
+        $r12 = virtualinvoke r5.<com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: android.content.pm.ResolveInfo getInfo()>();
+        $r13 = r0.<com.example.anycut.ActivityPickerActivity$ActivityAdapter: com.example.anycut.ActivityPickerActivity this$0>;
+        $r14 = $r13.<com.example.anycut.ActivityPickerActivity: android.content.pm.PackageManager mPackageManager>;
+        $r15 = virtualinvoke $r12.<android.content.pm.ResolveInfo: java.lang.CharSequence loadLabel(android.content.pm.PackageManager)>($r14);
+        virtualinvoke r7.<android.widget.TextView: void setText(java.lang.CharSequence)>($r15);
+        r4[2] = 1;
+        return r6;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.ActivityPickerActivity$ActivityAdapter: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.example.anycut.ActivityPickerActivity$ActivityAdapter: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/ActivityPickerActivity$ActivityAdapter", 2810539940720399083L);
+        return $r0;
+    }
+}
+final class com.example.anycut.ActivityPickerActivity$LoadingTask extends com.google.android.photostream.UserTask
+{
+    final com.example.anycut.ActivityPickerActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    private void <init>(com.example.anycut.ActivityPickerActivity)
+    {
+        com.example.anycut.ActivityPickerActivity$LoadingTask r0;
+        com.example.anycut.ActivityPickerActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$LoadingTask;
+        r1 := @parameter0: com.example.anycut.ActivityPickerActivity;
+        $r2 = <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: com.example.anycut.ActivityPickerActivity this$0> = r1;
+        specialinvoke r0.<com.google.android.photostream.UserTask: void <init>()>();
+        r3[0] = 1;
+        return;
+    }
+
+    public void onPreExecute()
+    {
+        com.example.anycut.ActivityPickerActivity$LoadingTask r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.example.anycut.ActivityPickerActivity $r3;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$LoadingTask;
+        $r1 = <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[1];
+        $r3 = r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: com.example.anycut.ActivityPickerActivity this$0>;
+        virtualinvoke $r3.<com.example.anycut.ActivityPickerActivity: void setProgressBarIndeterminateVisibility(boolean)>(1);
+        r2[0] = 1;
+        return;
+    }
+
+    public transient com.example.anycut.ActivityPickerActivity$ActivityAdapter doInBackground(java.lang.Object[])
+    {
+        com.example.anycut.ActivityPickerActivity$LoadingTask r0;
+        java.lang.Object[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.content.Intent r4, $r9;
+        java.util.List r5;
+        java.util.ArrayList r6, $r15;
+        java.util.Iterator r7;
+        android.content.pm.ResolveInfo r8;
+        com.example.anycut.ActivityPickerActivity $r10, $r13, $r18, $r20, $r21;
+        android.content.pm.PackageManager $r11, $r14;
+        android.content.pm.ResolveInfo$DisplayNameComparator $r12;
+        int $i0;
+        boolean $z0;
+        java.lang.Object $r16;
+        com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper $r17;
+        com.example.anycut.ActivityPickerActivity$ActivityAdapter $r19;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$LoadingTask;
+        r1 := @parameter0: java.lang.Object[];
+        $r2 = <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[2];
+        $r9 = new android.content.Intent;
+        specialinvoke $r9.<android.content.Intent: void <init>(java.lang.String)>("android.intent.action.MAIN");
+        r4 = $r9;
+        $r10 = r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: com.example.anycut.ActivityPickerActivity this$0>;
+        $r11 = $r10.<com.example.anycut.ActivityPickerActivity: android.content.pm.PackageManager mPackageManager>;
+        r5 = virtualinvoke $r11.<android.content.pm.PackageManager: java.util.List queryIntentActivities(android.content.Intent,int)>(r4, 0);
+        $r12 = new android.content.pm.ResolveInfo$DisplayNameComparator;
+        $r13 = r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: com.example.anycut.ActivityPickerActivity this$0>;
+        $r14 = $r13.<com.example.anycut.ActivityPickerActivity: android.content.pm.PackageManager mPackageManager>;
+        specialinvoke $r12.<android.content.pm.ResolveInfo$DisplayNameComparator: void <init>(android.content.pm.PackageManager)>($r14);
+        staticinvoke <java.util.Collections: void sort(java.util.List,java.util.Comparator)>(r5, $r12);
+        $r15 = new java.util.ArrayList;
+        $i0 = interfaceinvoke r5.<java.util.List: int size()>();
+        specialinvoke $r15.<java.util.ArrayList: void <init>(int)>($i0);
+        r6 = $r15;
+        r7 = interfaceinvoke r5.<java.util.List: java.util.Iterator iterator()>();
+        r3[0] = 1;
+
+     label1:
+        $z0 = interfaceinvoke r7.<java.util.Iterator: boolean hasNext()>();
+        r3[1] = 1;
+        if $z0 == 0 goto label2;
+
+        $r16 = interfaceinvoke r7.<java.util.Iterator: java.lang.Object next()>();
+        r8 = (android.content.pm.ResolveInfo) $r16;
+        $r17 = new com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper;
+        $r18 = r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: com.example.anycut.ActivityPickerActivity this$0>;
+        specialinvoke $r17.<com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: void <init>(com.example.anycut.ActivityPickerActivity,android.content.pm.ResolveInfo)>($r18, r8);
+        virtualinvoke r6.<java.util.ArrayList: boolean add(java.lang.Object)>($r17);
+        r3[2] = 1;
+        goto label1;
+
+     label2:
+        $r19 = new com.example.anycut.ActivityPickerActivity$ActivityAdapter;
+        $r20 = r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: com.example.anycut.ActivityPickerActivity this$0>;
+        $r21 = r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: com.example.anycut.ActivityPickerActivity this$0>;
+        specialinvoke $r19.<com.example.anycut.ActivityPickerActivity$ActivityAdapter: void <init>(com.example.anycut.ActivityPickerActivity,android.app.Activity,java.util.ArrayList)>($r20, $r21, r6);
+        r3[3] = 1;
+        return $r19;
+    }
+
+    public void onPostExecute(com.example.anycut.ActivityPickerActivity$ActivityAdapter)
+    {
+        com.example.anycut.ActivityPickerActivity$LoadingTask r0;
+        com.example.anycut.ActivityPickerActivity$ActivityAdapter r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.example.anycut.ActivityPickerActivity $r4, $r5;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$LoadingTask;
+        r1 := @parameter0: com.example.anycut.ActivityPickerActivity$ActivityAdapter;
+        $r2 = <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[3];
+        $r4 = r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: com.example.anycut.ActivityPickerActivity this$0>;
+        virtualinvoke $r4.<com.example.anycut.ActivityPickerActivity: void setProgressBarIndeterminateVisibility(boolean)>(0);
+        $r5 = r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: com.example.anycut.ActivityPickerActivity this$0>;
+        virtualinvoke $r5.<com.example.anycut.ActivityPickerActivity: void setListAdapter(android.widget.ListAdapter)>(r1);
+        r3[0] = 1;
+        return;
+    }
+
+    public volatile void onPostExecute(java.lang.Object)
+    {
+        com.example.anycut.ActivityPickerActivity$LoadingTask r0;
+        java.lang.Object r1;
+        com.example.anycut.ActivityPickerActivity$ActivityAdapter $r2;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$LoadingTask;
+        r1 := @parameter0: java.lang.Object;
+        $r2 = (com.example.anycut.ActivityPickerActivity$ActivityAdapter) r1;
+        virtualinvoke r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: void onPostExecute(com.example.anycut.ActivityPickerActivity$ActivityAdapter)>($r2);
+        return;
+    }
+
+    public volatile java.lang.Object doInBackground(java.lang.Object[])
+    {
+        com.example.anycut.ActivityPickerActivity$LoadingTask r0;
+        java.lang.Object[] r1;
+        com.example.anycut.ActivityPickerActivity$ActivityAdapter $r2;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$LoadingTask;
+        r1 := @parameter0: java.lang.Object[];
+        $r2 = virtualinvoke r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: com.example.anycut.ActivityPickerActivity$ActivityAdapter doInBackground(java.lang.Object[])>(r1);
+        return $r2;
+    }
+
+    void <init>(com.example.anycut.ActivityPickerActivity, com.example.anycut.ActivityPickerActivity$1)
+    {
+        com.example.anycut.ActivityPickerActivity$LoadingTask r0;
+        com.example.anycut.ActivityPickerActivity r1;
+        com.example.anycut.ActivityPickerActivity$1 r2;
+        boolean[][] $r3;
+        boolean[] r4;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$LoadingTask;
+        r1 := @parameter0: com.example.anycut.ActivityPickerActivity;
+        r2 := @parameter1: com.example.anycut.ActivityPickerActivity$1;
+        $r3 = <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[6];
+        specialinvoke r0.<com.example.anycut.ActivityPickerActivity$LoadingTask: void <init>(com.example.anycut.ActivityPickerActivity)>(r1);
+        r4[0] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRi()>();
+        r1 = $r0[7];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6;
+
+        $r0 = newmultiarray (boolean)[8][];
+        <com.example.anycut.ActivityPickerActivity$LoadingTask: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[4];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[6] = $r5;
+        $r6 = newarray (boolean)[1];
+        $r0[7] = $r6;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/ActivityPickerActivity$LoadingTask", -8959571630461642514L);
+        return $r0;
+    }
+}
+final class com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper extends java.lang.Object
+{
+    private android.content.pm.ResolveInfo mInfo;
+    final com.example.anycut.ActivityPickerActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>(com.example.anycut.ActivityPickerActivity, android.content.pm.ResolveInfo)
+    {
+        com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper r0;
+        com.example.anycut.ActivityPickerActivity r1;
+        android.content.pm.ResolveInfo r2;
+        boolean[][] $r3;
+        boolean[] r4;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper;
+        r1 := @parameter0: com.example.anycut.ActivityPickerActivity;
+        r2 := @parameter1: android.content.pm.ResolveInfo;
+        $r3 = <com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[0];
+        r0.<com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: com.example.anycut.ActivityPickerActivity this$0> = r1;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        r0.<com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: android.content.pm.ResolveInfo mInfo> = r2;
+        r4[0] = 1;
+        return;
+    }
+
+    public java.lang.String toString()
+    {
+        com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.content.pm.ResolveInfo $r3;
+        com.example.anycut.ActivityPickerActivity $r4;
+        android.content.pm.PackageManager $r5;
+        java.lang.CharSequence $r6;
+        java.lang.String $r7;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper;
+        $r1 = <com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[1];
+        $r3 = r0.<com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: android.content.pm.ResolveInfo mInfo>;
+        $r4 = r0.<com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: com.example.anycut.ActivityPickerActivity this$0>;
+        $r5 = $r4.<com.example.anycut.ActivityPickerActivity: android.content.pm.PackageManager mPackageManager>;
+        $r6 = virtualinvoke $r3.<android.content.pm.ResolveInfo: java.lang.CharSequence loadLabel(android.content.pm.PackageManager)>($r5);
+        $r7 = interfaceinvoke $r6.<java.lang.CharSequence: java.lang.String toString()>();
+        r2[0] = 1;
+        return $r7;
+    }
+
+    public android.content.pm.ResolveInfo getInfo()
+    {
+        com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.content.pm.ResolveInfo $r3;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper;
+        $r1 = <com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        $r3 = r0.<com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: android.content.pm.ResolveInfo mInfo>;
+        r2[0] = 1;
+        return $r3;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: boolean[][] $VRi()>();
+        r1 = $r0[3];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4;
+
+        $r0 = newmultiarray (boolean)[4][];
+        <com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/ActivityPickerActivity$ResolveInfoWrapper", -1953159213054563043L);
+        return $r0;
+    }
+}
+public class com.example.anycut.ActivityPickerActivity extends android.app.ListActivity
+{
+    android.content.pm.PackageManager mPackageManager;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        com.example.anycut.ActivityPickerActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity;
+        $r1 = <com.example.anycut.ActivityPickerActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.ActivityPickerActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.ListActivity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.example.anycut.ActivityPickerActivity r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.widget.ListView $r4;
+        android.content.pm.PackageManager $r5;
+        com.example.anycut.ActivityPickerActivity$LoadingTask $r6;
+        java.lang.Object[] $r7;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.example.anycut.ActivityPickerActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.ActivityPickerActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        specialinvoke r0.<android.app.ListActivity: void onCreate(android.os.Bundle)>(r1);
+        virtualinvoke r0.<com.example.anycut.ActivityPickerActivity: boolean requestWindowFeature(int)>(5);
+        virtualinvoke r0.<com.example.anycut.ActivityPickerActivity: void setContentView(int)>(2130903042);
+        $r4 = virtualinvoke r0.<com.example.anycut.ActivityPickerActivity: android.widget.ListView getListView()>();
+        virtualinvoke $r4.<android.widget.ListView: void setTextFilterEnabled(boolean)>(1);
+        $r5 = virtualinvoke r0.<com.example.anycut.ActivityPickerActivity: android.content.pm.PackageManager getPackageManager()>();
+        r0.<com.example.anycut.ActivityPickerActivity: android.content.pm.PackageManager mPackageManager> = $r5;
+        $r6 = new com.example.anycut.ActivityPickerActivity$LoadingTask;
+        specialinvoke $r6.<com.example.anycut.ActivityPickerActivity$LoadingTask: void <init>(com.example.anycut.ActivityPickerActivity,com.example.anycut.ActivityPickerActivity$1)>(r0, null);
+        $r7 = (java.lang.Object[]) null;
+        virtualinvoke $r6.<com.example.anycut.ActivityPickerActivity$LoadingTask: com.google.android.photostream.UserTask execute(java.lang.Object[])>($r7);
+        r3[0] = 1;
+        return;
+    }
+
+    protected void onListItemClick(android.widget.ListView, android.view.View, int, long)
+    {
+        com.example.anycut.ActivityPickerActivity r0;
+        android.widget.ListView r1;
+        android.view.View r2;
+        int i0;
+        long l1;
+        boolean[][] $r3;
+        boolean[] r4;
+        com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper r5;
+        android.content.pm.ResolveInfo r6;
+        android.content.Intent r7, r8, $r13, $r21;
+        android.graphics.drawable.Drawable r9;
+        android.graphics.drawable.BitmapDrawable r10;
+        android.widget.ListAdapter $r11;
+        java.lang.Object $r12;
+        android.content.ComponentName $r14;
+        android.content.pm.ActivityInfo $r15, $r18;
+        android.content.pm.ApplicationInfo $r16;
+        java.lang.String $r17, $r19;
+        android.content.pm.PackageManager $r23, $r26;
+        java.lang.CharSequence $r24;
+        boolean $z0;
+        android.graphics.Bitmap $r27;
+
+        r0 := @this: com.example.anycut.ActivityPickerActivity;
+        r1 := @parameter0: android.widget.ListView;
+        r2 := @parameter1: android.view.View;
+        i0 := @parameter2: int;
+        l1 := @parameter3: long;
+        $r3 = <com.example.anycut.ActivityPickerActivity: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.anycut.ActivityPickerActivity: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[2];
+        $r11 = virtualinvoke r0.<com.example.anycut.ActivityPickerActivity: android.widget.ListAdapter getListAdapter()>();
+        $r12 = interfaceinvoke $r11.<android.widget.ListAdapter: java.lang.Object getItem(int)>(i0);
+        r5 = (com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper) $r12;
+        r6 = virtualinvoke r5.<com.example.anycut.ActivityPickerActivity$ResolveInfoWrapper: android.content.pm.ResolveInfo getInfo()>();
+        $r13 = new android.content.Intent;
+        specialinvoke $r13.<android.content.Intent: void <init>()>();
+        r7 = $r13;
+        $r14 = new android.content.ComponentName;
+        $r15 = r6.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+        $r16 = $r15.<android.content.pm.ActivityInfo: android.content.pm.ApplicationInfo applicationInfo>;
+        $r17 = $r16.<android.content.pm.ApplicationInfo: java.lang.String packageName>;
+        $r18 = r6.<android.content.pm.ResolveInfo: android.content.pm.ActivityInfo activityInfo>;
+        $r19 = $r18.<android.content.pm.ActivityInfo: java.lang.String name>;
+        specialinvoke $r14.<android.content.ComponentName: void <init>(java.lang.String,java.lang.String)>($r17, $r19);
+        virtualinvoke r7.<android.content.Intent: android.content.Intent setComponent(android.content.ComponentName)>($r14);
+        $r21 = new android.content.Intent;
+        specialinvoke $r21.<android.content.Intent: void <init>()>();
+        r8 = $r21;
+        virtualinvoke r8.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.INTENT", r7);
+        $r23 = r0.<com.example.anycut.ActivityPickerActivity: android.content.pm.PackageManager mPackageManager>;
+        $r24 = virtualinvoke r6.<android.content.pm.ResolveInfo: java.lang.CharSequence loadLabel(android.content.pm.PackageManager)>($r23);
+        virtualinvoke r8.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.CharSequence)>("android.intent.extra.shortcut.NAME", $r24);
+        $r26 = r0.<com.example.anycut.ActivityPickerActivity: android.content.pm.PackageManager mPackageManager>;
+        r9 = virtualinvoke r6.<android.content.pm.ResolveInfo: android.graphics.drawable.Drawable loadIcon(android.content.pm.PackageManager)>($r26);
+        $z0 = r9 instanceof android.graphics.drawable.BitmapDrawable;
+        r4[0] = 1;
+        if $z0 == 0 goto label1;
+
+        r10 = (android.graphics.drawable.BitmapDrawable) r9;
+        $r27 = virtualinvoke r10.<android.graphics.drawable.BitmapDrawable: android.graphics.Bitmap getBitmap()>();
+        virtualinvoke r8.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.ICON", $r27);
+        r4[1] = 1;
+
+     label1:
+        virtualinvoke r0.<com.example.anycut.ActivityPickerActivity: void setResult(int,android.content.Intent)>(-1, r8);
+        virtualinvoke r0.<com.example.anycut.ActivityPickerActivity: void finish()>();
+        r4[2] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.ActivityPickerActivity: boolean[][] $VRi()>();
+        r1 = $r0[3];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4;
+
+        $r0 = newmultiarray (boolean)[4][];
+        <com.example.anycut.ActivityPickerActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[3];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/ActivityPickerActivity", -1301784290237586223L);
+        return $r0;
+    }
+}
+public final class com.example.anycut.BuildConfig extends java.lang.Object
+{
+    public static final boolean DEBUG;
+
+    public void <init>()
+    {
+        com.example.anycut.BuildConfig r0;
+
+        r0 := @this: com.example.anycut.BuildConfig;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public class com.example.anycut.CreateShortcutActivity extends android.app.ListActivity implements android.content.DialogInterface$OnClickListener, android.content.DialogInterface$OnCancelListener
+{
+    private static final boolean ENABLE_ACTION_ICON_OVERLAYS;
+    private static final int REQUEST_PHONE;
+    private static final int REQUEST_TEXT;
+    private static final int REQUEST_ACTIVITY;
+    private static final int REQUEST_CUSTOM;
+    private static final int LIST_ITEM_DIRECT_CALL;
+    private static final int LIST_ITEM_DIRECT_TEXT;
+    private static final int LIST_ITEM_ACTIVITY;
+    private static final int LIST_ITEM_CUSTOM;
+    private static final int DIALOG_SHORTCUT_EDITOR;
+    private android.content.Intent mEditorIntent;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        $r1 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.ListActivity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.widget.ArrayAdapter $r4;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        specialinvoke r0.<android.app.ListActivity: void onCreate(android.os.Bundle)>(r1);
+        $r4 = staticinvoke <android.widget.ArrayAdapter: android.widget.ArrayAdapter createFromResource(android.content.Context,int,int)>(r0, 2131099648, 17367043);
+        virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: void setListAdapter(android.widget.ListAdapter)>($r4);
+        r3[0] = 1;
+        return;
+    }
+
+    protected void onListItemClick(android.widget.ListView, android.view.View, int, long)
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        android.widget.ListView r1;
+        android.view.View r2;
+        int i0;
+        long l1;
+        boolean[][] $r3;
+        boolean[] r4;
+        android.content.Intent r5, $r6, $r10, r12, $r15, r16, $r18, r19;
+        android.net.Uri $r7, $r11;
+        java.lang.CharSequence $r8, $r13;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        r1 := @parameter0: android.widget.ListView;
+        r2 := @parameter1: android.view.View;
+        i0 := @parameter2: int;
+        l1 := @parameter3: long;
+        $r3 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[2];
+        r4[0] = 1;
+        tableswitch(i0)
+        {
+            case 0: goto label1;
+            case 1: goto label2;
+            case 2: goto label3;
+            case 3: goto label4;
+            default: goto label5;
+        };
+
+     label1:
+        $r6 = new android.content.Intent;
+        $r7 = <android.provider.Contacts$Phones: android.net.Uri CONTENT_URI>;
+        specialinvoke $r6.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.PICK", $r7);
+        r5 = $r6;
+        $r8 = virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: java.lang.CharSequence getText(int)>(2131034118);
+        virtualinvoke r5.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.CharSequence)>("com.android.contacts.extra.TITLE_EXTRA", $r8);
+        virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: void startActivityForResult(android.content.Intent,int)>(r5, 1);
+        r4[1] = 1;
+        goto label5;
+
+     label2:
+        $r10 = new android.content.Intent;
+        $r11 = <android.provider.Contacts$Phones: android.net.Uri CONTENT_URI>;
+        specialinvoke $r10.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>("android.intent.action.PICK", $r11);
+        r12 = $r10;
+        $r13 = virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: java.lang.CharSequence getText(int)>(2131034119);
+        virtualinvoke r12.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.CharSequence)>("com.android.contacts.extra.TITLE_EXTRA", $r13);
+        virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: void startActivityForResult(android.content.Intent,int)>(r12, 2);
+        r4[2] = 1;
+        goto label5;
+
+     label3:
+        $r15 = new android.content.Intent;
+        specialinvoke $r15.<android.content.Intent: void <init>()>();
+        r16 = $r15;
+        virtualinvoke r16.<android.content.Intent: android.content.Intent setClass(android.content.Context,java.lang.Class)>(r0, class "com/example/anycut/ActivityPickerActivity");
+        virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: void startActivityForResult(android.content.Intent,int)>(r16, 3);
+        r4[3] = 1;
+        goto label5;
+
+     label4:
+        $r18 = new android.content.Intent;
+        specialinvoke $r18.<android.content.Intent: void <init>()>();
+        r19 = $r18;
+        virtualinvoke r19.<android.content.Intent: android.content.Intent setClass(android.content.Context,java.lang.Class)>(r0, class "com/example/anycut/CustomShortcutCreatorActivity");
+        virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: void startActivityForResult(android.content.Intent,int)>(r19, 4);
+        r4[4] = 1;
+        goto label5;
+
+     label5:
+        r4[5] = 1;
+        return;
+    }
+
+    protected void onActivityResult(int, int, android.content.Intent)
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        int i0, i1;
+        android.content.Intent r1, $r4, $r5;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        i0 := @parameter0: int;
+        i1 := @parameter1: int;
+        r1 := @parameter2: android.content.Intent;
+        $r2 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[3];
+        r3[0] = 1;
+        if i1 == -1 goto label1;
+
+        r3[1] = 1;
+        return;
+
+     label1:
+        r3[2] = 1;
+        tableswitch(i0)
+        {
+            case 1: goto label2;
+            case 2: goto label3;
+            case 3: goto label4;
+            case 4: goto label4;
+            default: goto label5;
+        };
+
+     label2:
+        $r4 = specialinvoke r0.<com.example.anycut.CreateShortcutActivity: android.content.Intent generatePhoneShortcut(android.content.Intent,int,java.lang.String,java.lang.String)>(r1, 2130837505, "tel", "android.intent.action.CALL");
+        specialinvoke r0.<com.example.anycut.CreateShortcutActivity: void startShortcutEditor(android.content.Intent)>($r4);
+        r3[3] = 1;
+        goto label5;
+
+     label3:
+        $r5 = specialinvoke r0.<com.example.anycut.CreateShortcutActivity: android.content.Intent generatePhoneShortcut(android.content.Intent,int,java.lang.String,java.lang.String)>(r1, 2130837506, "smsto", "android.intent.action.SENDTO");
+        specialinvoke r0.<com.example.anycut.CreateShortcutActivity: void startShortcutEditor(android.content.Intent)>($r5);
+        r3[4] = 1;
+        goto label5;
+
+     label4:
+        specialinvoke r0.<com.example.anycut.CreateShortcutActivity: void startShortcutEditor(android.content.Intent)>(r1);
+        r3[5] = 1;
+
+     label5:
+        r3[6] = 1;
+        return;
+    }
+
+    protected android.app.Dialog onCreateDialog(int)
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        int i0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.example.anycut.ShortcutEditorDialog $r3;
+        android.app.Dialog $r4;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        i0 := @parameter0: int;
+        $r1 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[4];
+        r2[0] = 1;
+        lookupswitch(i0)
+        {
+            case 1: goto label1;
+            default: goto label2;
+        };
+
+     label1:
+        $r3 = new com.example.anycut.ShortcutEditorDialog;
+        specialinvoke $r3.<com.example.anycut.ShortcutEditorDialog: void <init>(android.content.Context,android.content.DialogInterface$OnClickListener,android.content.DialogInterface$OnCancelListener)>(r0, r0, r0);
+        r2[1] = 1;
+        return $r3;
+
+     label2:
+        $r4 = specialinvoke r0.<android.app.ListActivity: android.app.Dialog onCreateDialog(int)>(i0);
+        r2[2] = 1;
+        return $r4;
+    }
+
+    protected void onPrepareDialog(int, android.app.Dialog)
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        int i0;
+        android.app.Dialog r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.example.anycut.ShortcutEditorDialog r4;
+        android.content.Intent $r5, $r6;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        i0 := @parameter0: int;
+        r1 := @parameter1: android.app.Dialog;
+        $r2 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[5];
+        r3[0] = 1;
+        lookupswitch(i0)
+        {
+            case 1: goto label1;
+            default: goto label2;
+        };
+
+     label1:
+        $r5 = r0.<com.example.anycut.CreateShortcutActivity: android.content.Intent mEditorIntent>;
+        r3[1] = 1;
+        if $r5 == null goto label2;
+
+        r4 = (com.example.anycut.ShortcutEditorDialog) r1;
+        $r6 = r0.<com.example.anycut.CreateShortcutActivity: android.content.Intent mEditorIntent>;
+        virtualinvoke r4.<com.example.anycut.ShortcutEditorDialog: void setIntent(android.content.Intent)>($r6);
+        r0.<com.example.anycut.CreateShortcutActivity: android.content.Intent mEditorIntent> = null;
+        r3[2] = 1;
+
+     label2:
+        r3[3] = 1;
+        return;
+    }
+
+    private void startShortcutEditor(android.content.Intent)
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        android.content.Intent r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        r1 := @parameter0: android.content.Intent;
+        $r2 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[6];
+        r0.<com.example.anycut.CreateShortcutActivity: android.content.Intent mEditorIntent> = r1;
+        virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: void showDialog(int)>(1);
+        r3[0] = 1;
+        return;
+    }
+
+    public void onCancel(android.content.DialogInterface)
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        android.content.DialogInterface r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        r1 := @parameter0: android.content.DialogInterface;
+        $r2 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[7];
+        virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: void removeDialog(int)>(1);
+        r3[0] = 1;
+        return;
+    }
+
+    public void onClick(android.content.DialogInterface, int)
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        android.content.DialogInterface r1;
+        int i0;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.example.anycut.ShortcutEditorDialog r4;
+        android.content.Intent r5;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        r1 := @parameter0: android.content.DialogInterface;
+        i0 := @parameter1: int;
+        $r2 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[8];
+        r3[0] = 1;
+        if i0 != -1 goto label1;
+
+        r4 = (com.example.anycut.ShortcutEditorDialog) r1;
+        r5 = virtualinvoke r4.<com.example.anycut.ShortcutEditorDialog: android.content.Intent getIntent()>();
+        virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: void setResult(int,android.content.Intent)>(-1, r5);
+        virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: void finish()>();
+        r3[1] = 1;
+
+     label1:
+        virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: void removeDialog(int)>(1);
+        r3[2] = 1;
+        return;
+    }
+
+    private android.content.Intent generatePhoneShortcut(android.content.Intent, int, java.lang.String, java.lang.String)
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        android.content.Intent r1, $r15, r16, $r21;
+        int i0, i2;
+        java.lang.String r2, r3, r12, r13;
+        boolean[][] $r4;
+        boolean[] r5;
+        android.net.Uri r6, r9, $r17, r20;
+        long l1, l3;
+        null_type n0, n1;
+        android.database.Cursor r7;
+        java.lang.Throwable r8, $r14;
+        android.content.ContentResolver $r10;
+        java.lang.String[] $r11;
+        android.graphics.Bitmap $r18;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        r1 := @parameter0: android.content.Intent;
+        i0 := @parameter1: int;
+        r2 := @parameter2: java.lang.String;
+        r3 := @parameter3: java.lang.String;
+        $r4 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r4 != null goto label0;
+
+        $r4 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r5 = $r4[9];
+        r6 = virtualinvoke r1.<android.content.Intent: android.net.Uri getData()>();
+        l1 = 0L;
+        n0 = null;
+        n1 = null;
+        $r10 = virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: android.content.ContentResolver getContentResolver()>();
+        $r11 = newarray (java.lang.String)[4];
+        $r11[0] = "person";
+        $r11[1] = "display_name";
+        $r11[2] = "number";
+        $r11[3] = "type";
+        r7 = virtualinvoke $r10.<android.content.ContentResolver: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>(r6, $r11, null, null, null);
+
+     label1:
+        interfaceinvoke r7.<android.database.Cursor: boolean moveToFirst()>();
+        l3 = interfaceinvoke r7.<android.database.Cursor: long getLong(int)>(0);
+        r12 = interfaceinvoke r7.<android.database.Cursor: java.lang.String getString(int)>(1);
+        r13 = interfaceinvoke r7.<android.database.Cursor: java.lang.String getString(int)>(2);
+        i2 = interfaceinvoke r7.<android.database.Cursor: int getInt(int)>(3);
+
+     label2:
+        r5[0] = 1;
+        if r7 == null goto label7;
+
+        interfaceinvoke r7.<android.database.Cursor: void close()>();
+        r5[1] = 1;
+        goto label7;
+
+     label3:
+        $r14 := @caughtexception;
+
+     label4:
+        r8 = $r14;
+
+     label5:
+        r5[2] = 1;
+        if r7 == null goto label6;
+
+        interfaceinvoke r7.<android.database.Cursor: void close()>();
+        r5[3] = 1;
+
+     label6:
+        r5[4] = 1;
+        throw r8;
+
+     label7:
+        $r15 = new android.content.Intent;
+        specialinvoke $r15.<android.content.Intent: void <init>()>();
+        r16 = $r15;
+        $r17 = <android.provider.Contacts$People: android.net.Uri CONTENT_URI>;
+        r9 = staticinvoke <android.content.ContentUris: android.net.Uri withAppendedId(android.net.Uri,long)>($r17, l3);
+        $r18 = specialinvoke r0.<com.example.anycut.CreateShortcutActivity: android.graphics.Bitmap generatePhoneNumberIcon(android.net.Uri,int,int)>(r9, i2, i0);
+        virtualinvoke r16.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.ICON", $r18);
+        r20 = staticinvoke <android.net.Uri: android.net.Uri fromParts(java.lang.String,java.lang.String,java.lang.String)>(r2, r13, null);
+        $r21 = new android.content.Intent;
+        specialinvoke $r21.<android.content.Intent: void <init>(java.lang.String,android.net.Uri)>(r3, r20);
+        virtualinvoke r16.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.INTENT", $r21);
+        virtualinvoke r16.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.intent.extra.shortcut.NAME", r12);
+        r5[5] = 1;
+        return r16;
+
+        catch java.lang.Throwable from label1 to label2 with label3;
+        catch java.lang.Throwable from label4 to label5 with label3;
+    }
+
+    private android.graphics.Bitmap generatePhoneNumberIcon(android.net.Uri, int, int)
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        android.net.Uri r1;
+        int i0, i1, i2, $i3, $i4, $i5, $i6;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.content.res.Resources r4;
+        boolean z0, z1;
+        android.graphics.Bitmap r5, r6, r7;
+        android.graphics.Canvas r8, $r15;
+        android.graphics.Paint r9, r13, $r16, $r19;
+        android.graphics.Rect r10, r11, $r17, $r18;
+        java.lang.String r12;
+        float $f0;
+        android.graphics.Bitmap$Config $r14;
+        android.graphics.Typeface $r20;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        r1 := @parameter0: android.net.Uri;
+        i0 := @parameter1: int;
+        i1 := @parameter2: int;
+        $r2 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[10];
+        r4 = virtualinvoke r0.<com.example.anycut.CreateShortcutActivity: android.content.res.Resources getResources()>();
+        z0 = 1;
+        r5 = staticinvoke <android.provider.Contacts$People: android.graphics.Bitmap loadContactPhoto(android.content.Context,android.net.Uri,int,android.graphics.BitmapFactory$Options)>(r0, r1, 0, null);
+        r3[0] = 1;
+        if r5 != null goto label2;
+
+        r6 = specialinvoke r0.<com.example.anycut.CreateShortcutActivity: android.graphics.Bitmap getPhoneActionIcon(android.content.res.Resources,int)>(r4, i1);
+        r3[1] = 1;
+        if r6 == null goto label1;
+
+        r5 = r6;
+        z1 = 0;
+        r3[2] = 1;
+        goto label2;
+
+     label1:
+        r3[3] = 1;
+        return null;
+
+     label2:
+        $f0 = virtualinvoke r4.<android.content.res.Resources: float getDimension(int)>(17104896);
+        i2 = (int) $f0;
+        $r14 = <android.graphics.Bitmap$Config: android.graphics.Bitmap$Config ARGB_8888>;
+        r7 = staticinvoke <android.graphics.Bitmap: android.graphics.Bitmap createBitmap(int,int,android.graphics.Bitmap$Config)>(i2, i2, $r14);
+        $r15 = new android.graphics.Canvas;
+        specialinvoke $r15.<android.graphics.Canvas: void <init>(android.graphics.Bitmap)>(r7);
+        r8 = $r15;
+        $r16 = new android.graphics.Paint;
+        specialinvoke $r16.<android.graphics.Paint: void <init>()>();
+        r9 = $r16;
+        virtualinvoke r9.<android.graphics.Paint: void setDither(boolean)>(1);
+        virtualinvoke r9.<android.graphics.Paint: void setFilterBitmap(boolean)>(1);
+        $r17 = new android.graphics.Rect;
+        $i3 = virtualinvoke r5.<android.graphics.Bitmap: int getWidth()>();
+        $i4 = virtualinvoke r5.<android.graphics.Bitmap: int getHeight()>();
+        specialinvoke $r17.<android.graphics.Rect: void <init>(int,int,int,int)>(0, 0, $i3, $i4);
+        r10 = $r17;
+        $r18 = new android.graphics.Rect;
+        specialinvoke $r18.<android.graphics.Rect: void <init>(int,int,int,int)>(0, 0, i2, i2);
+        r11 = $r18;
+        virtualinvoke r8.<android.graphics.Canvas: void drawBitmap(android.graphics.Bitmap,android.graphics.Rect,android.graphics.Rect,android.graphics.Paint)>(r5, r10, r11, r9);
+        r12 = null;
+        r3[4] = 1;
+        tableswitch(i0)
+        {
+            case 1: goto label3;
+            case 2: goto label4;
+            case 3: goto label5;
+            case 4: goto label8;
+            case 5: goto label8;
+            case 6: goto label6;
+            case 7: goto label7;
+            default: goto label8;
+        };
+
+     label3:
+        r12 = "H";
+        r3[5] = 1;
+        goto label8;
+
+     label4:
+        r12 = "M";
+        r3[6] = 1;
+        goto label8;
+
+     label5:
+        r12 = "W";
+        r3[7] = 1;
+        goto label8;
+
+     label6:
+        r12 = "P";
+        r3[8] = 1;
+        goto label8;
+
+     label7:
+        r12 = "O";
+        r3[9] = 1;
+
+     label8:
+        r3[10] = 1;
+        if r12 == null goto label9;
+
+        $r19 = new android.graphics.Paint;
+        specialinvoke $r19.<android.graphics.Paint: void <init>(int)>(257);
+        r13 = $r19;
+        virtualinvoke r13.<android.graphics.Paint: void setTextSize(float)>(20.0F);
+        $r20 = <android.graphics.Typeface: android.graphics.Typeface DEFAULT_BOLD>;
+        virtualinvoke r13.<android.graphics.Paint: android.graphics.Typeface setTypeface(android.graphics.Typeface)>($r20);
+        $i5 = virtualinvoke r4.<android.content.res.Resources: int getColor(int)>(2130968576);
+        virtualinvoke r13.<android.graphics.Paint: void setColor(int)>($i5);
+        $i6 = virtualinvoke r4.<android.content.res.Resources: int getColor(int)>(2130968577);
+        virtualinvoke r13.<android.graphics.Paint: void setShadowLayer(float,float,float,int)>(3.0F, 1.0F, 1.0F, $i6);
+        virtualinvoke r8.<android.graphics.Canvas: void drawText(java.lang.String,float,float,android.graphics.Paint)>(r12, 2.0F, 16.0F, r13);
+        r3[11] = 1;
+
+     label9:
+        r3[12] = 1;
+        return r7;
+    }
+
+    private android.graphics.Bitmap getPhoneActionIcon(android.content.res.Resources, int)
+    {
+        com.example.anycut.CreateShortcutActivity r0;
+        android.content.res.Resources r1;
+        int i0;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.graphics.drawable.Drawable r4;
+        android.graphics.drawable.BitmapDrawable r5;
+        boolean $z0;
+        android.graphics.Bitmap $r6;
+
+        r0 := @this: com.example.anycut.CreateShortcutActivity;
+        r1 := @parameter0: android.content.res.Resources;
+        i0 := @parameter1: int;
+        $r2 = <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[11];
+        r4 = virtualinvoke r1.<android.content.res.Resources: android.graphics.drawable.Drawable getDrawable(int)>(i0);
+        $z0 = r4 instanceof android.graphics.drawable.BitmapDrawable;
+        r3[0] = 1;
+        if $z0 == 0 goto label1;
+
+        r5 = (android.graphics.drawable.BitmapDrawable) r4;
+        $r6 = virtualinvoke r5.<android.graphics.drawable.BitmapDrawable: android.graphics.Bitmap getBitmap()>();
+        r3[1] = 1;
+        return $r6;
+
+     label1:
+        r3[2] = 1;
+        return null;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.CreateShortcutActivity: boolean[][] $VRi()>();
+        r1 = $r0[12];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13;
+
+        $r0 = newmultiarray (boolean)[13][];
+        <com.example.anycut.CreateShortcutActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[6];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[7];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[3];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[4];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[1];
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r0[7] = $r8;
+        $r9 = newarray (boolean)[3];
+        $r0[8] = $r9;
+        $r10 = newarray (boolean)[6];
+        $r0[9] = $r10;
+        $r11 = newarray (boolean)[13];
+        $r0[10] = $r11;
+        $r12 = newarray (boolean)[3];
+        $r0[11] = $r12;
+        $r13 = newarray (boolean)[1];
+        $r0[12] = $r13;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/CreateShortcutActivity", 7547784365222176136L);
+        return $r0;
+    }
+}
+public class com.example.anycut.CustomShortcutCreatorActivity extends android.app.Activity implements android.view.View$OnClickListener
+{
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        com.example.anycut.CustomShortcutCreatorActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.anycut.CustomShortcutCreatorActivity;
+        $r1 = <com.example.anycut.CustomShortcutCreatorActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.CustomShortcutCreatorActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.example.anycut.CustomShortcutCreatorActivity r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.view.View $r4, $r5;
+
+        r0 := @this: com.example.anycut.CustomShortcutCreatorActivity;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.example.anycut.CustomShortcutCreatorActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.CustomShortcutCreatorActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>(r1);
+        virtualinvoke r0.<com.example.anycut.CustomShortcutCreatorActivity: void setContentView(int)>(2130903040);
+        $r4 = virtualinvoke r0.<com.example.anycut.CustomShortcutCreatorActivity: android.view.View findViewById(int)>(2131165187);
+        virtualinvoke $r4.<android.view.View: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+        $r5 = virtualinvoke r0.<com.example.anycut.CustomShortcutCreatorActivity: android.view.View findViewById(int)>(2131165188);
+        virtualinvoke $r5.<android.view.View: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+        r3[0] = 1;
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        com.example.anycut.CustomShortcutCreatorActivity r0;
+        android.view.View r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.content.Intent r4;
+        int $i0;
+
+        r0 := @this: com.example.anycut.CustomShortcutCreatorActivity;
+        r1 := @parameter0: android.view.View;
+        $r2 = <com.example.anycut.CustomShortcutCreatorActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.CustomShortcutCreatorActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[2];
+        $i0 = virtualinvoke r1.<android.view.View: int getId()>();
+        r3[0] = 1;
+        lookupswitch($i0)
+        {
+            case 2131165187: goto label1;
+            case 2131165188: goto label2;
+            default: goto label3;
+        };
+
+     label1:
+        r4 = specialinvoke r0.<com.example.anycut.CustomShortcutCreatorActivity: android.content.Intent createShortcutIntent()>();
+        virtualinvoke r0.<com.example.anycut.CustomShortcutCreatorActivity: void setResult(int,android.content.Intent)>(-1, r4);
+        virtualinvoke r0.<com.example.anycut.CustomShortcutCreatorActivity: void finish()>();
+        r3[1] = 1;
+        goto label3;
+
+     label2:
+        virtualinvoke r0.<com.example.anycut.CustomShortcutCreatorActivity: void setResult(int)>(0);
+        virtualinvoke r0.<com.example.anycut.CustomShortcutCreatorActivity: void finish()>();
+        r3[2] = 1;
+
+     label3:
+        r3[3] = 1;
+        return;
+    }
+
+    private android.content.Intent createShortcutIntent()
+    {
+        com.example.anycut.CustomShortcutCreatorActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.content.Intent r3, $r7, $r23, $r24;
+        android.widget.EditText r4, r13, r16;
+        java.lang.String r5, r6, $r10;
+        boolean z0, z1;
+        android.view.View $r8, $r12, $r15;
+        android.text.Editable $r9, $r14, $r17;
+        android.net.Uri $r18, $r21;
+
+        r0 := @this: com.example.anycut.CustomShortcutCreatorActivity;
+        $r1 = <com.example.anycut.CustomShortcutCreatorActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.CustomShortcutCreatorActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        $r7 = new android.content.Intent;
+        specialinvoke $r7.<android.content.Intent: void <init>()>();
+        r3 = $r7;
+        $r8 = virtualinvoke r0.<com.example.anycut.CustomShortcutCreatorActivity: android.view.View findViewById(int)>(2131165184);
+        r4 = (android.widget.EditText) $r8;
+        $r9 = virtualinvoke r4.<android.widget.EditText: android.text.Editable getText()>();
+        $r10 = virtualinvoke $r9.<java.lang.Object: java.lang.String toString()>();
+        virtualinvoke r3.<android.content.Intent: android.content.Intent setAction(java.lang.String)>($r10);
+        $r12 = virtualinvoke r0.<com.example.anycut.CustomShortcutCreatorActivity: android.view.View findViewById(int)>(2131165185);
+        r13 = (android.widget.EditText) $r12;
+        $r14 = virtualinvoke r13.<android.widget.EditText: android.text.Editable getText()>();
+        r5 = virtualinvoke $r14.<java.lang.Object: java.lang.String toString()>();
+        $r15 = virtualinvoke r0.<com.example.anycut.CustomShortcutCreatorActivity: android.view.View findViewById(int)>(2131165186);
+        r16 = (android.widget.EditText) $r15;
+        $r17 = virtualinvoke r16.<android.widget.EditText: android.text.Editable getText()>();
+        r6 = virtualinvoke $r17.<java.lang.Object: java.lang.String toString()>();
+        z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>(r5);
+        z1 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>(r6);
+        r2[0] = 1;
+        if z0 != 0 goto label1;
+
+        r2[1] = 1;
+        if z1 == 0 goto label1;
+
+        $r18 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>(r5);
+        virtualinvoke r3.<android.content.Intent: android.content.Intent setData(android.net.Uri)>($r18);
+        r2[2] = 1;
+        goto label3;
+
+     label1:
+        r2[3] = 1;
+        if z1 != 0 goto label2;
+
+        r2[4] = 1;
+        if z0 == 0 goto label2;
+
+        virtualinvoke r3.<android.content.Intent: android.content.Intent setType(java.lang.String)>(r6);
+        r2[5] = 1;
+        goto label3;
+
+     label2:
+        r2[6] = 1;
+        if z1 != 0 goto label3;
+
+        r2[7] = 1;
+        if z0 != 0 goto label3;
+
+        $r21 = staticinvoke <android.net.Uri: android.net.Uri parse(java.lang.String)>(r5);
+        virtualinvoke r3.<android.content.Intent: android.content.Intent setDataAndType(android.net.Uri,java.lang.String)>($r21, r6);
+        r2[8] = 1;
+
+     label3:
+        $r23 = new android.content.Intent;
+        specialinvoke $r23.<android.content.Intent: void <init>()>();
+        $r24 = virtualinvoke $r23.<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>("android.intent.extra.shortcut.INTENT", r3);
+        r2[9] = 1;
+        return $r24;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.CustomShortcutCreatorActivity: boolean[][] $VRi()>();
+        r1 = $r0[4];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5;
+
+        $r0 = newmultiarray (boolean)[5][];
+        <com.example.anycut.CustomShortcutCreatorActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[4];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[10];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[4] = $r5;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/CustomShortcutCreatorActivity", 5315283948859479979L);
+        return $r0;
+    }
+}
+public class com.example.anycut.EmmaInstrument.EmmaInstrumentation extends android.app.Instrumentation implements com.example.anycut.EmmaInstrument.FinishListener
+{
+    public static java.lang.String TAG;
+    private static final java.lang.String DEFAULT_COVERAGE_FILE_PATH;
+    private final android.os.Bundle mResults;
+    private android.content.Intent mIntent;
+    private static final boolean LOGD;
+    private boolean mCoverage;
+    private java.lang.String mCoverageFilePath;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.os.Bundle $r3;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.Instrumentation: void <init>()>();
+        $r3 = new android.os.Bundle;
+        specialinvoke $r3.<android.os.Bundle: void <init>()>();
+        r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults> = $r3;
+        r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean mCoverage> = 1;
+        r2[0] = 1;
+        return;
+    }
+
+    public void onCreate(android.os.Bundle)
+    {
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.String $r4, $r9, $r10;
+        java.lang.StringBuilder $r5, $r6, $r7, $r8;
+        boolean $z0;
+        android.content.Intent $r11, $r13;
+        android.content.Context $r12;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        $r4 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r5 = new java.lang.StringBuilder;
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("onCreate(");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(r1);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")");
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, $r9);
+        specialinvoke r0.<android.app.Instrumentation: void onCreate(android.os.Bundle)>(r1);
+        r3[0] = 1;
+        if r1 == null goto label1;
+
+        $z0 = specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean getBooleanArgument(android.os.Bundle,java.lang.String)>(r1, "coverage");
+        r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean mCoverage> = $z0;
+        $r10 = virtualinvoke r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>("coverageFile");
+        r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath> = $r10;
+        r3[1] = 1;
+
+     label1:
+        $r11 = new android.content.Intent;
+        $r12 = virtualinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: android.content.Context getTargetContext()>();
+        specialinvoke $r11.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>($r12, class "com/example/anycut/EmmaInstrument/InstrumentedActivity");
+        r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent> = $r11;
+        $r13 = r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent>;
+        virtualinvoke $r13.<android.content.Intent: android.content.Intent setFlags(int)>(268435456);
+        virtualinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void start()>();
+        r3[2] = 1;
+        return;
+    }
+
+    public void onStart()
+    {
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.example.anycut.EmmaInstrument.InstrumentedActivity r3;
+        java.lang.String $r4;
+        android.content.Intent $r5;
+        android.app.Activity $r6;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        $r4 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, "onStart()");
+        specialinvoke r0.<android.app.Instrumentation: void onStart()>();
+        staticinvoke <android.os.Looper: void prepare()>();
+        $r5 = r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: android.content.Intent mIntent>;
+        $r6 = virtualinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: android.app.Activity startActivitySync(android.content.Intent)>($r5);
+        r3 = (com.example.anycut.EmmaInstrument.InstrumentedActivity) $r6;
+        virtualinvoke r3.<com.example.anycut.EmmaInstrument.InstrumentedActivity: void setFinishListener(com.example.anycut.EmmaInstrument.FinishListener)>(r0);
+        r2[0] = 1;
+        return;
+    }
+
+    private boolean getBooleanArgument(android.os.Bundle, java.lang.String)
+    {
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r0;
+        android.os.Bundle r1;
+        java.lang.String r2, r5;
+        boolean[][] $r3;
+        boolean[] r4;
+        boolean $z0, $z1;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: android.os.Bundle;
+        r2 := @parameter1: java.lang.String;
+        $r3 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[3];
+        r5 = virtualinvoke r1.<android.os.Bundle: java.lang.String getString(java.lang.String)>(r2);
+        r4[0] = 1;
+        if r5 == null goto label1;
+
+        $z0 = staticinvoke <java.lang.Boolean: boolean parseBoolean(java.lang.String)>(r5);
+        r4[1] = 1;
+        if $z0 == 0 goto label1;
+
+        $z1 = 1;
+        r4[2] = 1;
+        goto label2;
+
+     label1:
+        $z1 = 0;
+        r4[3] = 1;
+
+     label2:
+        r4[4] = 1;
+        return $z1;
+    }
+
+    private void generateCoverageReport()
+    {
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.io.File r3, $r7;
+        java.lang.Class r4, $r10, $r11, $r12;
+        java.lang.reflect.Method r5;
+        java.lang.String $r6, $r8;
+        java.lang.Class[] $r9;
+        java.lang.Object[] $r13;
+        java.lang.Boolean $r14, $r15;
+        java.lang.ClassNotFoundException $r17, r18;
+        java.lang.SecurityException $r19, r20;
+        java.lang.NoSuchMethodException $r21, r22;
+        java.lang.IllegalArgumentException $r23, r24;
+        java.lang.IllegalAccessException $r25, r26;
+        java.lang.reflect.InvocationTargetException $r27, r28;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[4];
+        $r6 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r6, "generateCoverageReport()");
+        $r7 = new java.io.File;
+        $r8 = specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String getCoverageFilePath()>();
+        specialinvoke $r7.<java.io.File: void <init>(java.lang.String)>($r8);
+        r3 = $r7;
+
+     label1:
+        r4 = staticinvoke <java.lang.Class: java.lang.Class forName(java.lang.String)>("com.vladium.emma.rt.RT");
+        $r9 = newarray (java.lang.Class)[3];
+        $r10 = virtualinvoke r3.<java.lang.Object: java.lang.Class getClass()>();
+        $r9[0] = $r10;
+        $r11 = <java.lang.Boolean: java.lang.Class TYPE>;
+        $r9[1] = $r11;
+        $r12 = <java.lang.Boolean: java.lang.Class TYPE>;
+        $r9[2] = $r12;
+        r5 = virtualinvoke r4.<java.lang.Class: java.lang.reflect.Method getMethod(java.lang.String,java.lang.Class[])>("dumpCoverageData", $r9);
+        $r13 = newarray (java.lang.Object)[3];
+        $r13[0] = r3;
+        $r14 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(1);
+        $r13[1] = $r14;
+        $r15 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>(0);
+        $r13[2] = $r15;
+        virtualinvoke r5.<java.lang.reflect.Method: java.lang.Object invoke(java.lang.Object,java.lang.Object[])>(null, $r13);
+        r2[0] = 1;
+
+     label2:
+        goto label9;
+
+     label3:
+        $r17 := @caughtexception;
+        r18 = $r17;
+        specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>("Emma.jar not in the class path?", r18);
+        r2[1] = 1;
+        goto label9;
+
+     label4:
+        $r19 := @caughtexception;
+        r20 = $r19;
+        specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r20);
+        r2[2] = 1;
+        goto label9;
+
+     label5:
+        $r21 := @caughtexception;
+        r22 = $r21;
+        specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r22);
+        r2[3] = 1;
+        goto label9;
+
+     label6:
+        $r23 := @caughtexception;
+        r24 = $r23;
+        specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r24);
+        r2[4] = 1;
+        goto label9;
+
+     label7:
+        $r25 := @caughtexception;
+        r26 = $r25;
+        specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r26);
+        r2[5] = 1;
+        goto label9;
+
+     label8:
+        $r27 := @caughtexception;
+        r28 = $r27;
+        specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>(r28);
+        r2[6] = 1;
+
+     label9:
+        r2[7] = 1;
+        return;
+
+        catch java.lang.ClassNotFoundException from label1 to label2 with label3;
+        catch java.lang.SecurityException from label1 to label2 with label4;
+        catch java.lang.NoSuchMethodException from label1 to label2 with label5;
+        catch java.lang.IllegalArgumentException from label1 to label2 with label6;
+        catch java.lang.IllegalAccessException from label1 to label2 with label7;
+        catch java.lang.reflect.InvocationTargetException from label1 to label2 with label8;
+    }
+
+    private java.lang.String getCoverageFilePath()
+    {
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String $r3, $r4;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[5];
+        $r3 = r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath>;
+        r2[0] = 1;
+        if $r3 != null goto label1;
+
+        r2[1] = 1;
+        return "/mnt/sdcard/coverage.ec";
+
+     label1:
+        $r4 = r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath>;
+        r2[2] = 1;
+        return $r4;
+    }
+
+    private boolean setCoverageFilePath(java.lang.String)
+    {
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        int $i0;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[6];
+        r3[0] = 1;
+        if r1 == null goto label1;
+
+        $i0 = virtualinvoke r1.<java.lang.String: int length()>();
+        r3[1] = 1;
+        if $i0 <= 0 goto label1;
+
+        r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String mCoverageFilePath> = r1;
+        r3[2] = 1;
+        return 1;
+
+     label1:
+        r3[3] = 1;
+        return 0;
+    }
+
+    private void reportEmmaError(java.lang.Exception)
+    {
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.Exception r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.Exception;
+        $r2 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[7];
+        specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>("", r1);
+        r3[0] = 1;
+        return;
+    }
+
+    private void reportEmmaError(java.lang.String, java.lang.Exception)
+    {
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1, r5, $r9, $r14;
+        java.lang.Exception r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        java.lang.StringBuilder $r6, $r7, $r8, $r11, $r12, $r13;
+        android.os.Bundle $r10;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        r2 := @parameter1: java.lang.Exception;
+        $r3 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[8];
+        $r6 = new java.lang.StringBuilder;
+        specialinvoke $r6.<java.lang.StringBuilder: void <init>()>();
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to generate emma coverage. ");
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        r5 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        $r9 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int e(java.lang.String,java.lang.String,java.lang.Throwable)>($r9, r5, r2);
+        $r10 = r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults>;
+        $r11 = new java.lang.StringBuilder;
+        specialinvoke $r11.<java.lang.StringBuilder: void <init>()>();
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("\nError: ");
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r5);
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+        virtualinvoke $r10.<android.os.Bundle: void putString(java.lang.String,java.lang.String)>("stream", $r14);
+        r4[0] = 1;
+        return;
+    }
+
+    public void onActivityFinished()
+    {
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.String $r3;
+        boolean $z0;
+        android.os.Bundle $r4;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        $r1 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[9];
+        $r3 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r3, "onActivityFinished()");
+        $z0 = r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean mCoverage>;
+        r2[0] = 1;
+        if $z0 == 0 goto label1;
+
+        specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>();
+        r2[1] = 1;
+
+     label1:
+        $r4 = r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: android.os.Bundle mResults>;
+        virtualinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void finish(int,android.os.Bundle)>(-1, $r4);
+        r2[2] = 1;
+        return;
+    }
+
+    public void dumpIntermediateCoverage(java.lang.String)
+    {
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r0;
+        java.lang.String r1, $r4, $r8, $r9, $r14;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.StringBuilder $r5, $r6, $r7, $r10, $r11, $r12, $r13;
+        boolean $z0, $z1;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        r1 := @parameter0: java.lang.String;
+        $r2 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[10];
+        $r4 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r5 = new java.lang.StringBuilder;
+        specialinvoke $r5.<java.lang.StringBuilder: void <init>()>();
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Intermidate Dump Called with file name :");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r4, $r8);
+        $z0 = r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean mCoverage>;
+        r3[0] = 1;
+        if $z0 == 0 goto label2;
+
+        $z1 = specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>(r1);
+        r3[1] = 1;
+        if $z1 != 0 goto label1;
+
+        $r9 = <com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG>;
+        $r10 = new java.lang.StringBuilder;
+        specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();
+        $r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Unable to set the given file path:");
+        $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r1);
+        $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" as dump target.");
+        $r14 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r9, $r14);
+        r3[2] = 1;
+
+     label1:
+        specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>();
+        specialinvoke r0.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>("/mnt/sdcard/coverage.ec");
+        r3[3] = 1;
+
+     label2:
+        r3[4] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>();
+        r1 = $r0[11];
+        <com.example.anycut.EmmaInstrument.EmmaInstrumentation: java.lang.String TAG> = "EmmaInstrumentation:";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12;
+
+        $r0 = newmultiarray (boolean)[12][];
+        <com.example.anycut.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[5];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[8];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[3];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[4];
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r0[7] = $r8;
+        $r9 = newarray (boolean)[1];
+        $r0[8] = $r9;
+        $r10 = newarray (boolean)[3];
+        $r0[9] = $r10;
+        $r11 = newarray (boolean)[5];
+        $r0[10] = $r11;
+        $r12 = newarray (boolean)[1];
+        $r0[11] = $r12;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/EmmaInstrument/EmmaInstrumentation", -6390195098943533753L);
+        return $r0;
+    }
+}
+public interface  com.example.anycut.EmmaInstrument.FinishListener extends java.lang.Object
+{
+
+    public abstract void onActivityFinished();
+
+    public abstract void dumpIntermediateCoverage(java.lang.String);
+}
+class com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector extends android.content.BroadcastReceiver
+{
+    final com.example.anycut.EmmaInstrument.InstrumentedActivity this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>(com.example.anycut.EmmaInstrument.InstrumentedActivity)
+    {
+        com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector r0;
+        com.example.anycut.EmmaInstrument.InstrumentedActivity r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector;
+        r1 := @parameter0: com.example.anycut.EmmaInstrument.InstrumentedActivity;
+        $r2 = <com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        r0.<com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector: com.example.anycut.EmmaInstrument.InstrumentedActivity this$0> = r1;
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+        r3[0] = 1;
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector r0;
+        android.content.Context r1;
+        android.content.Intent r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        android.os.Bundle r5;
+        java.lang.Object[] r6, $r13;
+        android.telephony.SmsMessage r7;
+        java.lang.String r8, r9, $r17;
+        com.example.anycut.EmmaInstrument.InstrumentedActivity $r10, $r18;
+        com.example.anycut.EmmaInstrument.FinishListener $r11, $r19;
+        java.lang.Object $r12, $r14;
+        int $i0;
+        byte[] $r15, $r16;
+        boolean $z0, $z1;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.content.Intent;
+        $r3 = <com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+        r5 = virtualinvoke r2.<android.content.Intent: android.os.Bundle getExtras()>();
+        $r10 = r0.<com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector: com.example.anycut.EmmaInstrument.InstrumentedActivity this$0>;
+        $r11 = staticinvoke <com.example.anycut.EmmaInstrument.InstrumentedActivity: com.example.anycut.EmmaInstrument.FinishListener access$000(com.example.anycut.EmmaInstrument.InstrumentedActivity)>($r10);
+        r4[0] = 1;
+        if $r11 == null goto label2;
+
+        r4[1] = 1;
+        if r5 == null goto label2;
+
+        $r12 = virtualinvoke r5.<android.os.Bundle: java.lang.Object get(java.lang.String)>("pdus");
+        $r13 = (java.lang.Object[]) $r12;
+        r6 = (java.lang.Object[]) $r13;
+        $i0 = lengthof r6;
+        r4[2] = 1;
+        if $i0 <= 0 goto label2;
+
+        $r14 = r6[0];
+        $r15 = (byte[]) $r14;
+        $r16 = (byte[]) $r15;
+        r7 = staticinvoke <android.telephony.SmsMessage: android.telephony.SmsMessage createFromPdu(byte[])>($r16);
+        $r17 = virtualinvoke r7.<android.telephony.SmsMessage: java.lang.String getMessageBody()>();
+        r8 = virtualinvoke $r17.<java.lang.String: java.lang.String toString()>();
+        r9 = virtualinvoke r7.<android.telephony.SmsMessage: java.lang.String getOriginatingAddress()>();
+        $z0 = virtualinvoke r9.<java.lang.String: boolean contains(java.lang.CharSequence)>("6782345628");
+        r4[3] = 1;
+        if $z0 != 0 goto label1;
+
+        $z1 = virtualinvoke r8.<java.lang.String: boolean startsWith(java.lang.String)>("/mnt/sdcard");
+        r4[4] = 1;
+        if $z1 == 0 goto label2;
+
+     label1:
+        $r18 = r0.<com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector: com.example.anycut.EmmaInstrument.InstrumentedActivity this$0>;
+        $r19 = staticinvoke <com.example.anycut.EmmaInstrument.InstrumentedActivity: com.example.anycut.EmmaInstrument.FinishListener access$000(com.example.anycut.EmmaInstrument.InstrumentedActivity)>($r18);
+        interfaceinvoke $r19.<com.example.anycut.EmmaInstrument.FinishListener: void dumpIntermediateCoverage(java.lang.String)>(r8);
+        r4[5] = 1;
+
+     label2:
+        r4[6] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.example.anycut.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[7];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/EmmaInstrument/InstrumentedActivity$CoverageCollector", -1604738725137032633L);
+        return $r0;
+    }
+}
+public class com.example.anycut.EmmaInstrument.InstrumentedActivity extends com.example.anycut.FrontDoorActivity
+{
+    public static java.lang.String TAG;
+    private com.example.anycut.EmmaInstrument.FinishListener mListener;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        com.example.anycut.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.InstrumentedActivity;
+        $r1 = <com.example.anycut.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<com.example.anycut.FrontDoorActivity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void setFinishListener(com.example.anycut.EmmaInstrument.FinishListener)
+    {
+        com.example.anycut.EmmaInstrument.InstrumentedActivity r0;
+        com.example.anycut.EmmaInstrument.FinishListener r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.InstrumentedActivity;
+        r1 := @parameter0: com.example.anycut.EmmaInstrument.FinishListener;
+        $r2 = <com.example.anycut.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        r3[0] = 1;
+        return;
+    }
+
+    public void finish()
+    {
+        com.example.anycut.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.StringBuilder $r3, $r5, $r6;
+        java.lang.String $r4, $r7;
+        com.example.anycut.EmmaInstrument.FinishListener $r8, $r9;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.InstrumentedActivity;
+        $r1 = <com.example.anycut.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[2];
+        $r3 = new java.lang.StringBuilder;
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();
+        $r4 = <com.example.anycut.EmmaInstrument.InstrumentedActivity: java.lang.String TAG>;
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+        $r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(".InstrumentedActivity");
+        $r7 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.String toString()>();
+        staticinvoke <android.util.Log: int d(java.lang.String,java.lang.String)>($r7, "finish()");
+        specialinvoke r0.<com.example.anycut.FrontDoorActivity: void finish()>();
+        $r8 = r0.<com.example.anycut.EmmaInstrument.InstrumentedActivity: com.example.anycut.EmmaInstrument.FinishListener mListener>;
+        r2[0] = 1;
+        if $r8 == null goto label1;
+
+        $r9 = r0.<com.example.anycut.EmmaInstrument.InstrumentedActivity: com.example.anycut.EmmaInstrument.FinishListener mListener>;
+        interfaceinvoke $r9.<com.example.anycut.EmmaInstrument.FinishListener: void onActivityFinished()>();
+        r2[1] = 1;
+
+     label1:
+        r2[2] = 1;
+        return;
+    }
+
+    static com.example.anycut.EmmaInstrument.FinishListener access$000(com.example.anycut.EmmaInstrument.InstrumentedActivity)
+    {
+        com.example.anycut.EmmaInstrument.InstrumentedActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.example.anycut.EmmaInstrument.FinishListener $r3;
+
+        r0 := @parameter0: com.example.anycut.EmmaInstrument.InstrumentedActivity;
+        $r1 = <com.example.anycut.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        $r3 = r0.<com.example.anycut.EmmaInstrument.InstrumentedActivity: com.example.anycut.EmmaInstrument.FinishListener mListener>;
+        r2[0] = 1;
+        return $r3;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>();
+        r1 = $r0[4];
+        <com.example.anycut.EmmaInstrument.InstrumentedActivity: java.lang.String TAG> = "IntrumentedPlayer";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5;
+
+        $r0 = newmultiarray (boolean)[5][];
+        <com.example.anycut.EmmaInstrument.InstrumentedActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[3];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[4] = $r5;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/EmmaInstrument/InstrumentedActivity", -3953097121653020106L);
+        return $r0;
+    }
+}
+public class com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver extends android.content.BroadcastReceiver
+{
+    public static java.lang.String TAG;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver;
+        $r1 = <com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.content.BroadcastReceiver: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void onReceive(android.content.Context, android.content.Intent)
+    {
+        com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver r0;
+        android.content.Context r1;
+        android.content.Intent r2;
+        boolean[][] $r3;
+        boolean[] r4;
+        com.example.anycut.EmmaInstrument.EmmaInstrumentation r6, $r7;
+
+        r0 := @this: com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.content.Intent;
+        $r3 = <com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[1];
+        virtualinvoke r2.<android.content.Intent: android.os.Bundle getExtras()>();
+        $r7 = new com.example.anycut.EmmaInstrument.EmmaInstrumentation;
+        specialinvoke $r7.<com.example.anycut.EmmaInstrument.EmmaInstrumentation: void <init>()>();
+        r6 = $r7;
+        r4[0] = 1;
+        if r6 == null goto label1;
+
+        interfaceinvoke r6.<com.example.anycut.EmmaInstrument.FinishListener: void dumpIntermediateCoverage(java.lang.String)>("/mnt/sdcard/coverage.ec");
+        r4[1] = 1;
+
+     label1:
+        r4[2] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        <com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver: java.lang.String TAG> = "M3SMSInstrumentedReceiver";
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.example.anycut.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/EmmaInstrument/SMSInstrumentedReceiver", 8704909102833939831L);
+        return $r0;
+    }
+}
+public class com.example.anycut.FrontDoorActivity extends android.app.Activity implements android.view.View$OnClickListener
+{
+    private static final int REQUEST_SHORTCUT;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>()
+    {
+        com.example.anycut.FrontDoorActivity r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.example.anycut.FrontDoorActivity;
+        $r1 = <com.example.anycut.FrontDoorActivity: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.FrontDoorActivity: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.app.Activity: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.example.anycut.FrontDoorActivity r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.view.View r4;
+
+        r0 := @this: com.example.anycut.FrontDoorActivity;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.example.anycut.FrontDoorActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.FrontDoorActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        specialinvoke r0.<android.app.Activity: void onCreate(android.os.Bundle)>(r1);
+        virtualinvoke r0.<com.example.anycut.FrontDoorActivity: void setContentView(int)>(2130903041);
+        r4 = virtualinvoke r0.<com.example.anycut.FrontDoorActivity: android.view.View findViewById(int)>(2131165189);
+        r3[0] = 1;
+        if r4 == null goto label1;
+
+        virtualinvoke r4.<android.view.View: void setOnClickListener(android.view.View$OnClickListener)>(r0);
+        r3[1] = 1;
+
+     label1:
+        r3[2] = 1;
+        return;
+    }
+
+    public void onClick(android.view.View)
+    {
+        com.example.anycut.FrontDoorActivity r0;
+        android.view.View r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.content.Intent r4, $r5;
+        int $i0;
+
+        r0 := @this: com.example.anycut.FrontDoorActivity;
+        r1 := @parameter0: android.view.View;
+        $r2 = <com.example.anycut.FrontDoorActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.FrontDoorActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[2];
+        $i0 = virtualinvoke r1.<android.view.View: int getId()>();
+        r3[0] = 1;
+        lookupswitch($i0)
+        {
+            case 2131165189: goto label1;
+            default: goto label2;
+        };
+
+     label1:
+        $r5 = new android.content.Intent;
+        specialinvoke $r5.<android.content.Intent: void <init>(android.content.Context,java.lang.Class)>(r0, class "com/example/anycut/CreateShortcutActivity");
+        r4 = $r5;
+        virtualinvoke r0.<com.example.anycut.FrontDoorActivity: void startActivityForResult(android.content.Intent,int)>(r4, 1);
+        r3[1] = 1;
+        goto label2;
+
+     label2:
+        r3[2] = 1;
+        return;
+    }
+
+    protected void onActivityResult(int, int, android.content.Intent)
+    {
+        com.example.anycut.FrontDoorActivity r0;
+        int i0, i1;
+        android.content.Intent r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.widget.Toast $r5;
+
+        r0 := @this: com.example.anycut.FrontDoorActivity;
+        i0 := @parameter0: int;
+        i1 := @parameter1: int;
+        r1 := @parameter2: android.content.Intent;
+        $r2 = <com.example.anycut.FrontDoorActivity: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.FrontDoorActivity: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[3];
+        r3[0] = 1;
+        if i1 == -1 goto label1;
+
+        r3[1] = 1;
+        return;
+
+     label1:
+        r3[2] = 1;
+        lookupswitch(i0)
+        {
+            case 1: goto label2;
+            default: goto label3;
+        };
+
+     label2:
+        virtualinvoke r1.<android.content.Intent: android.content.Intent setAction(java.lang.String)>("com.android.launcher.action.INSTALL_SHORTCUT");
+        virtualinvoke r0.<com.example.anycut.FrontDoorActivity: void sendBroadcast(android.content.Intent)>(r1);
+        $r5 = staticinvoke <android.widget.Toast: android.widget.Toast makeText(android.content.Context,int,int)>(r0, 2131034117, 0);
+        virtualinvoke $r5.<android.widget.Toast: void show()>();
+        r3[3] = 1;
+
+     label3:
+        r3[4] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.FrontDoorActivity: boolean[][] $VRi()>();
+        r1 = $r0[4];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5;
+
+        $r0 = newmultiarray (boolean)[5][];
+        <com.example.anycut.FrontDoorActivity: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[3];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[3];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[5];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[4] = $r5;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/FrontDoorActivity", -5572635804376679058L);
+        return $r0;
+    }
+}
+public final class com.example.anycut.R$array extends java.lang.Object
+{
+    public static final int mainMenu;
+
+    public void <init>()
+    {
+        com.example.anycut.R$array r0;
+
+        r0 := @this: com.example.anycut.R$array;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.example.anycut.R$attr extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.example.anycut.R$attr r0;
+
+        r0 := @this: com.example.anycut.R$attr;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.example.anycut.R$color extends java.lang.Object
+{
+    public static final int textColorIconOverlay;
+    public static final int textColorIconOverlayShadow;
+
+    public void <init>()
+    {
+        com.example.anycut.R$color r0;
+
+        r0 := @this: com.example.anycut.R$color;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.example.anycut.R$drawable extends java.lang.Object
+{
+    public static final int app_icon;
+    public static final int sym_action_call;
+    public static final int sym_action_sms;
+
+    public void <init>()
+    {
+        com.example.anycut.R$drawable r0;
+
+        r0 := @this: com.example.anycut.R$drawable;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.example.anycut.R$id extends java.lang.Object
+{
+    public static final int action;
+    public static final int cancel;
+    public static final int data;
+    public static final int newShortcut;
+    public static final int ok;
+    public static final int shortcutIcon;
+    public static final int shortcutName;
+    public static final int type;
+
+    public void <init>()
+    {
+        com.example.anycut.R$id r0;
+
+        r0 := @this: com.example.anycut.R$id;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.example.anycut.R$layout extends java.lang.Object
+{
+    public static final int custom_shortcut_creator;
+    public static final int front_door;
+    public static final int list;
+    public static final int shortcut_editor;
+
+    public void <init>()
+    {
+        com.example.anycut.R$layout r0;
+
+        r0 := @this: com.example.anycut.R$layout;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.example.anycut.R$string extends java.lang.Object
+{
+    public static final int activityShortcutActivityTitle;
+    public static final int app_name;
+    public static final int callShortcutActivityTitle;
+    public static final int customShortcutActivityTitle;
+    public static final int errorEmptyName;
+    public static final int newShortcut;
+    public static final int shortcutAction;
+    public static final int shortcutCreated;
+    public static final int shortcutData;
+    public static final int shortcutEditorTitle;
+    public static final int shortcutName;
+    public static final int shortcutType;
+    public static final int textShortcutActivityTitle;
+    public static final int welcomeString;
+    public static final int welcomeString2;
+
+    public void <init>()
+    {
+        com.example.anycut.R$string r0;
+
+        r0 := @this: com.example.anycut.R$string;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public final class com.example.anycut.R extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        com.example.anycut.R r0;
+
+        r0 := @this: com.example.anycut.R;
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        return;
+    }
+}
+public class com.example.anycut.ShortcutEditorDialog extends android.app.AlertDialog implements android.content.DialogInterface$OnClickListener, android.text.TextWatcher
+{
+    static final java.lang.String STATE_INTENT;
+    private boolean mCreated;
+    private android.content.Intent mIntent;
+    private android.widget.ImageView mIconView;
+    private android.widget.EditText mNameView;
+    private android.content.DialogInterface$OnClickListener mOnClick;
+    private android.content.DialogInterface$OnCancelListener mOnCancel;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    public void <init>(android.content.Context, android.content.DialogInterface$OnClickListener, android.content.DialogInterface$OnCancelListener)
+    {
+        com.example.anycut.ShortcutEditorDialog r0;
+        android.content.Context r1;
+        android.content.DialogInterface$OnClickListener r2, $r10;
+        android.content.DialogInterface$OnCancelListener r3, $r11;
+        boolean[][] $r4;
+        boolean[] r5;
+        android.view.View r6, $r12, $r14;
+        android.view.LayoutInflater $r7;
+        java.lang.CharSequence $r8, $r9;
+        android.widget.ImageView $r13;
+        android.widget.EditText $r15;
+
+        r0 := @this: com.example.anycut.ShortcutEditorDialog;
+        r1 := @parameter0: android.content.Context;
+        r2 := @parameter1: android.content.DialogInterface$OnClickListener;
+        r3 := @parameter2: android.content.DialogInterface$OnCancelListener;
+        $r4 = <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRc>;
+        if $r4 != null goto label0;
+
+        $r4 = staticinvoke <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRi()>();
+
+     label0:
+        r5 = $r4[0];
+        specialinvoke r0.<android.app.AlertDialog: void <init>(android.content.Context)>(r1);
+        r0.<com.example.anycut.ShortcutEditorDialog: boolean mCreated> = 0;
+        r0.<com.example.anycut.ShortcutEditorDialog: android.content.DialogInterface$OnClickListener mOnClick> = r2;
+        r0.<com.example.anycut.ShortcutEditorDialog: android.content.DialogInterface$OnCancelListener mOnCancel> = r3;
+        $r7 = virtualinvoke r0.<com.example.anycut.ShortcutEditorDialog: android.view.LayoutInflater getLayoutInflater()>();
+        r6 = virtualinvoke $r7.<android.view.LayoutInflater: android.view.View inflate(int,android.view.ViewGroup,boolean)>(2130903043, null, 0);
+        virtualinvoke r0.<com.example.anycut.ShortcutEditorDialog: void setTitle(int)>(2131034122);
+        $r8 = virtualinvoke r1.<android.content.Context: java.lang.CharSequence getText(int)>(17039370);
+        virtualinvoke r0.<com.example.anycut.ShortcutEditorDialog: void setButton(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>($r8, r0);
+        $r9 = virtualinvoke r1.<android.content.Context: java.lang.CharSequence getText(int)>(17039360);
+        $r10 = r0.<com.example.anycut.ShortcutEditorDialog: android.content.DialogInterface$OnClickListener mOnClick>;
+        virtualinvoke r0.<com.example.anycut.ShortcutEditorDialog: void setButton2(java.lang.CharSequence,android.content.DialogInterface$OnClickListener)>($r9, $r10);
+        $r11 = r0.<com.example.anycut.ShortcutEditorDialog: android.content.DialogInterface$OnCancelListener mOnCancel>;
+        virtualinvoke r0.<com.example.anycut.ShortcutEditorDialog: void setOnCancelListener(android.content.DialogInterface$OnCancelListener)>($r11);
+        virtualinvoke r0.<com.example.anycut.ShortcutEditorDialog: void setCancelable(boolean)>(1);
+        virtualinvoke r0.<com.example.anycut.ShortcutEditorDialog: void setView(android.view.View)>(r6);
+        $r12 = virtualinvoke r6.<android.view.View: android.view.View findViewById(int)>(2131165190);
+        $r13 = (android.widget.ImageView) $r12;
+        r0.<com.example.anycut.ShortcutEditorDialog: android.widget.ImageView mIconView> = $r13;
+        $r14 = virtualinvoke r6.<android.view.View: android.view.View findViewById(int)>(2131165191);
+        $r15 = (android.widget.EditText) $r14;
+        r0.<com.example.anycut.ShortcutEditorDialog: android.widget.EditText mNameView> = $r15;
+        r5[0] = 1;
+        return;
+    }
+
+    public void onClick(android.content.DialogInterface, int)
+    {
+        com.example.anycut.ShortcutEditorDialog r0;
+        android.content.DialogInterface r1;
+        int i0;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.String r4;
+        android.widget.EditText $r5, $r7;
+        android.text.Editable $r6;
+        boolean $z0;
+        android.content.Context $r8;
+        java.lang.CharSequence $r9;
+        android.content.Intent $r10;
+        android.content.DialogInterface$OnClickListener $r12;
+
+        r0 := @this: com.example.anycut.ShortcutEditorDialog;
+        r1 := @parameter0: android.content.DialogInterface;
+        i0 := @parameter1: int;
+        $r2 = <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        r3[0] = 1;
+        if i0 != -1 goto label2;
+
+        $r5 = r0.<com.example.anycut.ShortcutEditorDialog: android.widget.EditText mNameView>;
+        $r6 = virtualinvoke $r5.<android.widget.EditText: android.text.Editable getText()>();
+        r4 = virtualinvoke $r6.<java.lang.Object: java.lang.String toString()>();
+        $z0 = staticinvoke <android.text.TextUtils: boolean isEmpty(java.lang.CharSequence)>(r4);
+        r3[1] = 1;
+        if $z0 == 0 goto label1;
+
+        $r7 = r0.<com.example.anycut.ShortcutEditorDialog: android.widget.EditText mNameView>;
+        $r8 = virtualinvoke r0.<com.example.anycut.ShortcutEditorDialog: android.content.Context getContext()>();
+        $r9 = virtualinvoke $r8.<android.content.Context: java.lang.CharSequence getText(int)>(2131034126);
+        virtualinvoke $r7.<android.widget.EditText: void setError(java.lang.CharSequence)>($r9);
+        r3[2] = 1;
+        return;
+
+     label1:
+        $r10 = r0.<com.example.anycut.ShortcutEditorDialog: android.content.Intent mIntent>;
+        virtualinvoke $r10.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.intent.extra.shortcut.NAME", r4);
+        r3[3] = 1;
+
+     label2:
+        $r12 = r0.<com.example.anycut.ShortcutEditorDialog: android.content.DialogInterface$OnClickListener mOnClick>;
+        interfaceinvoke $r12.<android.content.DialogInterface$OnClickListener: void onClick(android.content.DialogInterface,int)>(r1, i0);
+        r3[4] = 1;
+        return;
+    }
+
+    protected void onCreate(android.os.Bundle)
+    {
+        com.example.anycut.ShortcutEditorDialog r0;
+        android.os.Bundle r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.os.Parcelable $r4;
+        android.content.Intent $r5, $r6, $r7;
+
+        r0 := @this: com.example.anycut.ShortcutEditorDialog;
+        r1 := @parameter0: android.os.Bundle;
+        $r2 = <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[2];
+        specialinvoke r0.<android.app.AlertDialog: void onCreate(android.os.Bundle)>(r1);
+        r3[0] = 1;
+        if r1 == null goto label1;
+
+        $r4 = virtualinvoke r1.<android.os.Bundle: android.os.Parcelable getParcelable(java.lang.String)>("intent");
+        $r5 = (android.content.Intent) $r4;
+        r0.<com.example.anycut.ShortcutEditorDialog: android.content.Intent mIntent> = $r5;
+        r3[1] = 1;
+
+     label1:
+        r0.<com.example.anycut.ShortcutEditorDialog: boolean mCreated> = 1;
+        $r6 = r0.<com.example.anycut.ShortcutEditorDialog: android.content.Intent mIntent>;
+        r3[2] = 1;
+        if $r6 == null goto label2;
+
+        $r7 = r0.<com.example.anycut.ShortcutEditorDialog: android.content.Intent mIntent>;
+        specialinvoke r0.<com.example.anycut.ShortcutEditorDialog: void loadIntent(android.content.Intent)>($r7);
+        r3[3] = 1;
+
+     label2:
+        r3[4] = 1;
+        return;
+    }
+
+    public android.os.Bundle onSaveInstanceState()
+    {
+        com.example.anycut.ShortcutEditorDialog r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.os.Bundle r3;
+        android.content.Intent $r4;
+
+        r0 := @this: com.example.anycut.ShortcutEditorDialog;
+        $r1 = <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        r3 = specialinvoke r0.<android.app.AlertDialog: android.os.Bundle onSaveInstanceState()>();
+        $r4 = virtualinvoke r0.<com.example.anycut.ShortcutEditorDialog: android.content.Intent getIntent()>();
+        virtualinvoke r3.<android.os.Bundle: void putParcelable(java.lang.String,android.os.Parcelable)>("intent", $r4);
+        r2[0] = 1;
+        return r3;
+    }
+
+    public void beforeTextChanged(java.lang.CharSequence, int, int, int)
+    {
+        com.example.anycut.ShortcutEditorDialog r0;
+        java.lang.CharSequence r1;
+        int i0, i1, i2;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.anycut.ShortcutEditorDialog;
+        r1 := @parameter0: java.lang.CharSequence;
+        i0 := @parameter1: int;
+        i1 := @parameter2: int;
+        i2 := @parameter3: int;
+        $r2 = <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[4];
+        r3[0] = 1;
+        return;
+    }
+
+    public void onTextChanged(java.lang.CharSequence, int, int, int)
+    {
+        com.example.anycut.ShortcutEditorDialog r0;
+        java.lang.CharSequence r1;
+        int i0, i1, i2;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.example.anycut.ShortcutEditorDialog;
+        r1 := @parameter0: java.lang.CharSequence;
+        i0 := @parameter1: int;
+        i1 := @parameter2: int;
+        i2 := @parameter3: int;
+        $r2 = <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[5];
+        r3[0] = 1;
+        return;
+    }
+
+    public void afterTextChanged(android.text.Editable)
+    {
+        com.example.anycut.ShortcutEditorDialog r0;
+        android.text.Editable r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        int $i0;
+        android.widget.EditText $r4, $r7;
+        android.content.Context $r5;
+        java.lang.CharSequence $r6;
+
+        r0 := @this: com.example.anycut.ShortcutEditorDialog;
+        r1 := @parameter0: android.text.Editable;
+        $r2 = <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[6];
+        $i0 = interfaceinvoke r1.<android.text.Editable: int length()>();
+        r3[0] = 1;
+        if $i0 != 0 goto label1;
+
+        $r4 = r0.<com.example.anycut.ShortcutEditorDialog: android.widget.EditText mNameView>;
+        $r5 = virtualinvoke r0.<com.example.anycut.ShortcutEditorDialog: android.content.Context getContext()>();
+        $r6 = virtualinvoke $r5.<android.content.Context: java.lang.CharSequence getText(int)>(2131034126);
+        virtualinvoke $r4.<android.widget.EditText: void setError(java.lang.CharSequence)>($r6);
+        r3[1] = 1;
+        goto label2;
+
+     label1:
+        $r7 = r0.<com.example.anycut.ShortcutEditorDialog: android.widget.EditText mNameView>;
+        virtualinvoke $r7.<android.widget.EditText: void setError(java.lang.CharSequence)>(null);
+        r3[2] = 1;
+
+     label2:
+        r3[3] = 1;
+        return;
+    }
+
+    public android.content.Intent getIntent()
+    {
+        com.example.anycut.ShortcutEditorDialog r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        android.content.Intent $r3, $r8;
+        android.widget.EditText $r4;
+        android.text.Editable $r5;
+        java.lang.String $r6;
+
+        r0 := @this: com.example.anycut.ShortcutEditorDialog;
+        $r1 = <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[7];
+        $r3 = r0.<com.example.anycut.ShortcutEditorDialog: android.content.Intent mIntent>;
+        $r4 = r0.<com.example.anycut.ShortcutEditorDialog: android.widget.EditText mNameView>;
+        $r5 = virtualinvoke $r4.<android.widget.EditText: android.text.Editable getText()>();
+        $r6 = virtualinvoke $r5.<java.lang.Object: java.lang.String toString()>();
+        virtualinvoke $r3.<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>("android.intent.extra.shortcut.NAME", $r6);
+        $r8 = r0.<com.example.anycut.ShortcutEditorDialog: android.content.Intent mIntent>;
+        r2[0] = 1;
+        return $r8;
+    }
+
+    public void setIntent(android.content.Intent)
+    {
+        com.example.anycut.ShortcutEditorDialog r0;
+        android.content.Intent r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        boolean $z0;
+
+        r0 := @this: com.example.anycut.ShortcutEditorDialog;
+        r1 := @parameter0: android.content.Intent;
+        $r2 = <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[8];
+        r0.<com.example.anycut.ShortcutEditorDialog: android.content.Intent mIntent> = r1;
+        $z0 = r0.<com.example.anycut.ShortcutEditorDialog: boolean mCreated>;
+        r3[0] = 1;
+        if $z0 == 0 goto label1;
+
+        specialinvoke r0.<com.example.anycut.ShortcutEditorDialog: void loadIntent(android.content.Intent)>(r1);
+        r3[1] = 1;
+
+     label1:
+        r3[2] = 1;
+        return;
+    }
+
+    private void loadIntent(android.content.Intent)
+    {
+        com.example.anycut.ShortcutEditorDialog r0;
+        android.content.Intent r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        android.graphics.Bitmap r4;
+        android.content.Intent$ShortcutIconResource r5;
+        int i0;
+        android.os.Parcelable $r6, $r8;
+        android.widget.ImageView $r7, $r13, $r14;
+        android.content.Context $r9;
+        android.content.res.Resources $r10;
+        java.lang.String $r11, $r12, $r17;
+        android.widget.EditText $r15, $r16;
+
+        r0 := @this: com.example.anycut.ShortcutEditorDialog;
+        r1 := @parameter0: android.content.Intent;
+        $r2 = <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[9];
+        $r6 = virtualinvoke r1.<android.content.Intent: android.os.Parcelable getParcelableExtra(java.lang.String)>("android.intent.extra.shortcut.ICON");
+        r4 = (android.graphics.Bitmap) $r6;
+        r3[0] = 1;
+        if r4 == null goto label1;
+
+        $r7 = r0.<com.example.anycut.ShortcutEditorDialog: android.widget.ImageView mIconView>;
+        virtualinvoke $r7.<android.widget.ImageView: void setImageBitmap(android.graphics.Bitmap)>(r4);
+        r3[1] = 1;
+        goto label3;
+
+     label1:
+        $r8 = virtualinvoke r1.<android.content.Intent: android.os.Parcelable getParcelableExtra(java.lang.String)>("android.intent.extra.shortcut.ICON_RESOURCE");
+        r5 = (android.content.Intent$ShortcutIconResource) $r8;
+        r3[2] = 1;
+        if r5 == null goto label2;
+
+        $r9 = virtualinvoke r0.<com.example.anycut.ShortcutEditorDialog: android.content.Context getContext()>();
+        $r10 = virtualinvoke $r9.<android.content.Context: android.content.res.Resources getResources()>();
+        $r11 = r5.<android.content.Intent$ShortcutIconResource: java.lang.String resourceName>;
+        $r12 = r5.<android.content.Intent$ShortcutIconResource: java.lang.String packageName>;
+        i0 = virtualinvoke $r10.<android.content.res.Resources: int getIdentifier(java.lang.String,java.lang.String,java.lang.String)>($r11, null, $r12);
+        $r13 = r0.<com.example.anycut.ShortcutEditorDialog: android.widget.ImageView mIconView>;
+        virtualinvoke $r13.<android.widget.ImageView: void setImageResource(int)>(i0);
+        r3[3] = 1;
+        goto label3;
+
+     label2:
+        $r14 = r0.<com.example.anycut.ShortcutEditorDialog: android.widget.ImageView mIconView>;
+        virtualinvoke $r14.<android.widget.ImageView: void setVisibility(int)>(4);
+        r3[4] = 1;
+
+     label3:
+        $r15 = r0.<com.example.anycut.ShortcutEditorDialog: android.widget.EditText mNameView>;
+        virtualinvoke $r15.<android.widget.EditText: void addTextChangedListener(android.text.TextWatcher)>(r0);
+        $r16 = r0.<com.example.anycut.ShortcutEditorDialog: android.widget.EditText mNameView>;
+        $r17 = virtualinvoke r1.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>("android.intent.extra.shortcut.NAME");
+        virtualinvoke $r16.<android.widget.EditText: void setText(java.lang.CharSequence)>($r17);
+        virtualinvoke r1.<android.content.Intent: android.content.Intent addFlags(int)>(67108864);
+        r3[5] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRi()>();
+        r1 = $r0[10];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11;
+
+        $r0 = newmultiarray (boolean)[11][];
+        <com.example.anycut.ShortcutEditorDialog: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[5];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[5];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[4] = $r5;
+        $r6 = newarray (boolean)[1];
+        $r0[5] = $r6;
+        $r7 = newarray (boolean)[4];
+        $r0[6] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r0[7] = $r8;
+        $r9 = newarray (boolean)[3];
+        $r0[8] = $r9;
+        $r10 = newarray (boolean)[6];
+        $r0[9] = $r10;
+        $r11 = newarray (boolean)[1];
+        $r0[10] = $r11;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/example/anycut/ShortcutEditorDialog", 3131030829058988338L);
+        return $r0;
+    }
+}
+final class com.google.android.photostream.UserTask$1 extends java.lang.Object implements java.util.concurrent.ThreadFactory
+{
+    private final java.util.concurrent.atomic.AtomicInteger mCount;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>()
+    {
+        com.google.android.photostream.UserTask$1 r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.util.concurrent.atomic.AtomicInteger $r3;
+
+        r0 := @this: com.google.android.photostream.UserTask$1;
+        $r1 = <com.google.android.photostream.UserTask$1: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask$1: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        $r3 = new java.util.concurrent.atomic.AtomicInteger;
+        specialinvoke $r3.<java.util.concurrent.atomic.AtomicInteger: void <init>(int)>(1);
+        r0.<com.google.android.photostream.UserTask$1: java.util.concurrent.atomic.AtomicInteger mCount> = $r3;
+        r2[0] = 1;
+        return;
+    }
+
+    public java.lang.Thread newThread(java.lang.Runnable)
+    {
+        com.google.android.photostream.UserTask$1 r0;
+        java.lang.Runnable r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.lang.StringBuilder $r4, $r6, $r8;
+        java.lang.Thread $r5;
+        java.util.concurrent.atomic.AtomicInteger $r7;
+        int $i0;
+        java.lang.String $r9;
+
+        r0 := @this: com.google.android.photostream.UserTask$1;
+        r1 := @parameter0: java.lang.Runnable;
+        $r2 = <com.google.android.photostream.UserTask$1: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask$1: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        $r5 = new java.lang.Thread;
+        $r4 = new java.lang.StringBuilder;
+        specialinvoke $r4.<java.lang.StringBuilder: void <init>()>();
+        $r6 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("UserTask #");
+        $r7 = r0.<com.google.android.photostream.UserTask$1: java.util.concurrent.atomic.AtomicInteger mCount>;
+        $i0 = virtualinvoke $r7.<java.util.concurrent.atomic.AtomicInteger: int getAndIncrement()>();
+        $r8 = virtualinvoke $r6.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>($i0);
+        $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();
+        specialinvoke $r5.<java.lang.Thread: void <init>(java.lang.Runnable,java.lang.String)>(r1, $r9);
+        r3[0] = 1;
+        return $r5;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.google.android.photostream.UserTask$1: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.google.android.photostream.UserTask$1: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/google/android/photostream/UserTask$1", 4859542779605550480L);
+        return $r0;
+    }
+}
+class com.google.android.photostream.UserTask$2 extends com.google.android.photostream.UserTask$WorkerRunnable
+{
+    final com.google.android.photostream.UserTask this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>(com.google.android.photostream.UserTask)
+    {
+        com.google.android.photostream.UserTask$2 r0;
+        com.google.android.photostream.UserTask r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.google.android.photostream.UserTask$2;
+        r1 := @parameter0: com.google.android.photostream.UserTask;
+        $r2 = <com.google.android.photostream.UserTask$2: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask$2: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[0];
+        r0.<com.google.android.photostream.UserTask$2: com.google.android.photostream.UserTask this$0> = r1;
+        specialinvoke r0.<com.google.android.photostream.UserTask$WorkerRunnable: void <init>(com.google.android.photostream.UserTask$1)>(null);
+        r3[0] = 1;
+        return;
+    }
+
+    public java.lang.Object call() throws java.lang.Exception
+    {
+        com.google.android.photostream.UserTask$2 r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.google.android.photostream.UserTask $r3;
+        java.lang.Object[] $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: com.google.android.photostream.UserTask$2;
+        $r1 = <com.google.android.photostream.UserTask$2: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask$2: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[1];
+        staticinvoke <android.os.Process: void setThreadPriority(int)>(10);
+        $r3 = r0.<com.google.android.photostream.UserTask$2: com.google.android.photostream.UserTask this$0>;
+        $r4 = r0.<com.google.android.photostream.UserTask$2: java.lang.Object[] mParams>;
+        $r5 = virtualinvoke $r3.<com.google.android.photostream.UserTask: java.lang.Object doInBackground(java.lang.Object[])>($r4);
+        r2[0] = 1;
+        return $r5;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.google.android.photostream.UserTask$2: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.google.android.photostream.UserTask$2: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/google/android/photostream/UserTask$2", 4397209120514873377L);
+        return $r0;
+    }
+}
+class com.google.android.photostream.UserTask$3 extends java.util.concurrent.FutureTask
+{
+    final com.google.android.photostream.UserTask this$0;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    void <init>(com.google.android.photostream.UserTask, java.util.concurrent.Callable)
+    {
+        com.google.android.photostream.UserTask$3 r0;
+        com.google.android.photostream.UserTask r1;
+        java.util.concurrent.Callable r2;
+        boolean[][] $r3;
+        boolean[] r4;
+
+        r0 := @this: com.google.android.photostream.UserTask$3;
+        r1 := @parameter0: com.google.android.photostream.UserTask;
+        r2 := @parameter1: java.util.concurrent.Callable;
+        $r3 = <com.google.android.photostream.UserTask$3: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.google.android.photostream.UserTask$3: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[0];
+        r0.<com.google.android.photostream.UserTask$3: com.google.android.photostream.UserTask this$0> = r1;
+        specialinvoke r0.<java.util.concurrent.FutureTask: void <init>(java.util.concurrent.Callable)>(r2);
+        r4[0] = 1;
+        return;
+    }
+
+    protected void done()
+    {
+        com.google.android.photostream.UserTask$3 r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.Object r3;
+        java.lang.InterruptedException r4, $r6;
+        android.os.Message r5, r24;
+        java.util.concurrent.ExecutionException $r7, r8;
+        java.lang.RuntimeException $r9, $r19;
+        java.lang.Throwable $r10, $r17, r18;
+        java.util.concurrent.CancellationException $r11, r12;
+        com.google.android.photostream.UserTask$InternalHandler $r13, $r20;
+        com.google.android.photostream.UserTask$UserTaskResult $r14, $r21;
+        com.google.android.photostream.UserTask $r15, $r22;
+        java.lang.Object[] $r16, $r23;
+
+        r0 := @this: com.google.android.photostream.UserTask$3;
+        $r1 = <com.google.android.photostream.UserTask$3: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask$3: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[1];
+        r3 = null;
+
+     label1:
+        r3 = virtualinvoke r0.<com.google.android.photostream.UserTask$3: java.lang.Object get()>();
+        r2[0] = 1;
+
+     label2:
+        goto label7;
+
+     label3:
+        $r6 := @caughtexception;
+        r4 = $r6;
+        staticinvoke <android.util.Log: int w(java.lang.String,java.lang.Throwable)>("UserTask", r4);
+        r2[1] = 1;
+        goto label7;
+
+     label4:
+        $r7 := @caughtexception;
+        r8 = $r7;
+        $r9 = new java.lang.RuntimeException;
+        $r10 = virtualinvoke r8.<java.util.concurrent.ExecutionException: java.lang.Throwable getCause()>();
+        specialinvoke $r9.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("An error occured while executing doInBackground()", $r10);
+        r2[2] = 1;
+        throw $r9;
+
+     label5:
+        $r11 := @caughtexception;
+        r12 = $r11;
+        $r13 = staticinvoke <com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$InternalHandler access$200()>();
+        $r14 = new com.google.android.photostream.UserTask$UserTaskResult;
+        $r15 = r0.<com.google.android.photostream.UserTask$3: com.google.android.photostream.UserTask this$0>;
+        $r16 = (java.lang.Object[]) null;
+        specialinvoke $r14.<com.google.android.photostream.UserTask$UserTaskResult: void <init>(com.google.android.photostream.UserTask,java.lang.Object[])>($r15, $r16);
+        r5 = virtualinvoke $r13.<com.google.android.photostream.UserTask$InternalHandler: android.os.Message obtainMessage(int,java.lang.Object)>(3, $r14);
+        virtualinvoke r5.<android.os.Message: void sendToTarget()>();
+        r2[3] = 1;
+        return;
+
+     label6:
+        $r17 := @caughtexception;
+        r18 = $r17;
+        $r19 = new java.lang.RuntimeException;
+        specialinvoke $r19.<java.lang.RuntimeException: void <init>(java.lang.String,java.lang.Throwable)>("An error occured while executing doInBackground()", r18);
+        r2[4] = 1;
+        throw $r19;
+
+     label7:
+        $r20 = staticinvoke <com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$InternalHandler access$200()>();
+        $r21 = new com.google.android.photostream.UserTask$UserTaskResult;
+        $r22 = r0.<com.google.android.photostream.UserTask$3: com.google.android.photostream.UserTask this$0>;
+        $r23 = newarray (java.lang.Object)[1];
+        $r23[0] = r3;
+        specialinvoke $r21.<com.google.android.photostream.UserTask$UserTaskResult: void <init>(com.google.android.photostream.UserTask,java.lang.Object[])>($r22, $r23);
+        r24 = virtualinvoke $r20.<com.google.android.photostream.UserTask$InternalHandler: android.os.Message obtainMessage(int,java.lang.Object)>(1, $r21);
+        virtualinvoke r24.<android.os.Message: void sendToTarget()>();
+        r2[5] = 1;
+        return;
+
+        catch java.lang.InterruptedException from label1 to label2 with label3;
+        catch java.util.concurrent.ExecutionException from label1 to label2 with label4;
+        catch java.util.concurrent.CancellationException from label1 to label2 with label5;
+        catch java.lang.Throwable from label1 to label2 with label6;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.google.android.photostream.UserTask$3: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.google.android.photostream.UserTask$3: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[6];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/google/android/photostream/UserTask$3", -1975387835753129800L);
+        return $r0;
+    }
+}
+class com.google.android.photostream.UserTask$4 extends java.lang.Object
+{
+    static final int[] $SwitchMap$com$google$android$photostream$UserTask$Status;
+    private static final boolean[][] $VRc;
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+        java.lang.NoSuchFieldError r2, $r7, $r10, r11;
+        com.google.android.photostream.UserTask$Status[] $r3;
+        int $i0, $i1, $i2;
+        int[] $r4, $r5, $r8;
+        com.google.android.photostream.UserTask$Status $r6, $r9;
+
+        $r0 = staticinvoke <com.google.android.photostream.UserTask$4: boolean[][] $VRi()>();
+        r1 = $r0[0];
+        $r3 = staticinvoke <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status[] values()>();
+        $i0 = lengthof $r3;
+        $r4 = newarray (int)[$i0];
+        <com.google.android.photostream.UserTask$4: int[] $SwitchMap$com$google$android$photostream$UserTask$Status> = $r4;
+
+     label0:
+        $r5 = <com.google.android.photostream.UserTask$4: int[] $SwitchMap$com$google$android$photostream$UserTask$Status>;
+        $r6 = <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status RUNNING>;
+        $i1 = virtualinvoke $r6.<com.google.android.photostream.UserTask$Status: int ordinal()>();
+        $r5[$i1] = 1;
+        r1[0] = 1;
+
+     label1:
+        goto label3;
+
+     label2:
+        $r7 := @caughtexception;
+        r2 = $r7;
+        r1[1] = 1;
+
+     label3:
+        $r8 = <com.google.android.photostream.UserTask$4: int[] $SwitchMap$com$google$android$photostream$UserTask$Status>;
+        $r9 = <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status FINISHED>;
+        $i2 = virtualinvoke $r9.<com.google.android.photostream.UserTask$Status: int ordinal()>();
+        $r8[$i2] = 2;
+        r1[2] = 1;
+
+     label4:
+        goto label6;
+
+     label5:
+        $r10 := @caughtexception;
+        r11 = $r10;
+        r1[3] = 1;
+
+     label6:
+        r1[4] = 1;
+        return;
+
+        catch java.lang.NoSuchFieldError from label0 to label1 with label2;
+        catch java.lang.NoSuchFieldError from label3 to label4 with label5;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1;
+
+        $r0 = newmultiarray (boolean)[1][];
+        <com.google.android.photostream.UserTask$4: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[5];
+        $r0[0] = $r1;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/google/android/photostream/UserTask$4", -6025617307484526578L);
+        return $r0;
+    }
+}
+class com.google.android.photostream.UserTask$InternalHandler extends android.os.Handler
+{
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    private void <init>()
+    {
+        com.google.android.photostream.UserTask$InternalHandler r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.google.android.photostream.UserTask$InternalHandler;
+        $r1 = <com.google.android.photostream.UserTask$InternalHandler: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask$InternalHandler: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<android.os.Handler: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    public void handleMessage(android.os.Message)
+    {
+        com.google.android.photostream.UserTask$InternalHandler r0;
+        android.os.Message r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.google.android.photostream.UserTask$UserTaskResult r4;
+        java.lang.Object $r5, $r8;
+        int $i0;
+        com.google.android.photostream.UserTask $r6, $r9, $r11;
+        java.lang.Object[] $r7, $r10;
+
+        r0 := @this: com.google.android.photostream.UserTask$InternalHandler;
+        r1 := @parameter0: android.os.Message;
+        $r2 = <com.google.android.photostream.UserTask$InternalHandler: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask$InternalHandler: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        $r5 = r1.<android.os.Message: java.lang.Object obj>;
+        r4 = (com.google.android.photostream.UserTask$UserTaskResult) $r5;
+        $i0 = r1.<android.os.Message: int what>;
+        r3[0] = 1;
+        tableswitch($i0)
+        {
+            case 1: goto label1;
+            case 2: goto label2;
+            case 3: goto label3;
+            default: goto label4;
+        };
+
+     label1:
+        $r6 = r4.<com.google.android.photostream.UserTask$UserTaskResult: com.google.android.photostream.UserTask mTask>;
+        $r7 = r4.<com.google.android.photostream.UserTask$UserTaskResult: java.lang.Object[] mData>;
+        $r8 = $r7[0];
+        staticinvoke <com.google.android.photostream.UserTask: void access$300(com.google.android.photostream.UserTask,java.lang.Object)>($r6, $r8);
+        r3[1] = 1;
+        goto label4;
+
+     label2:
+        $r9 = r4.<com.google.android.photostream.UserTask$UserTaskResult: com.google.android.photostream.UserTask mTask>;
+        $r10 = r4.<com.google.android.photostream.UserTask$UserTaskResult: java.lang.Object[] mData>;
+        virtualinvoke $r9.<com.google.android.photostream.UserTask: void onProgressUpdate(java.lang.Object[])>($r10);
+        r3[2] = 1;
+        goto label4;
+
+     label3:
+        $r11 = r4.<com.google.android.photostream.UserTask$UserTaskResult: com.google.android.photostream.UserTask mTask>;
+        virtualinvoke $r11.<com.google.android.photostream.UserTask: void onCancelled()>();
+        r3[3] = 1;
+
+     label4:
+        r3[4] = 1;
+        return;
+    }
+
+    void <init>(com.google.android.photostream.UserTask$1)
+    {
+        com.google.android.photostream.UserTask$InternalHandler r0;
+        com.google.android.photostream.UserTask$1 r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.google.android.photostream.UserTask$InternalHandler;
+        r1 := @parameter0: com.google.android.photostream.UserTask$1;
+        $r2 = <com.google.android.photostream.UserTask$InternalHandler: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask$InternalHandler: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[2];
+        specialinvoke r0.<com.google.android.photostream.UserTask$InternalHandler: void <init>()>();
+        r3[0] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.google.android.photostream.UserTask$InternalHandler: boolean[][] $VRi()>();
+        r1 = $r0[3];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4;
+
+        $r0 = newmultiarray (boolean)[4][];
+        <com.google.android.photostream.UserTask$InternalHandler: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[5];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/google/android/photostream/UserTask$InternalHandler", 1560026326319190156L);
+        return $r0;
+    }
+}
+public final enum class com.google.android.photostream.UserTask$Status extends java.lang.Enum
+{
+    public static final enum com.google.android.photostream.UserTask$Status PENDING;
+    public static final enum com.google.android.photostream.UserTask$Status RUNNING;
+    public static final enum com.google.android.photostream.UserTask$Status FINISHED;
+    private static final com.google.android.photostream.UserTask$Status[] $VALUES;
+    private static final boolean[][] $VRc;
+
+    public static com.google.android.photostream.UserTask$Status[] values()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+        com.google.android.photostream.UserTask$Status[] $r2, $r4;
+        java.lang.Object $r3;
+
+        $r0 = <com.google.android.photostream.UserTask$Status: boolean[][] $VRc>;
+        if $r0 != null goto label0;
+
+        $r0 = staticinvoke <com.google.android.photostream.UserTask$Status: boolean[][] $VRi()>();
+
+     label0:
+        r1 = $r0[0];
+        $r2 = <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status[] $VALUES>;
+        $r3 = virtualinvoke $r2.<java.lang.Object: java.lang.Object clone()>();
+        $r4 = (com.google.android.photostream.UserTask$Status[]) $r3;
+        r1[0] = 1;
+        return $r4;
+    }
+
+    public static com.google.android.photostream.UserTask$Status valueOf(java.lang.String)
+    {
+        java.lang.String r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.lang.Enum $r3;
+        com.google.android.photostream.UserTask$Status $r4;
+
+        r0 := @parameter0: java.lang.String;
+        $r1 = <com.google.android.photostream.UserTask$Status: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask$Status: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[1];
+        $r3 = staticinvoke <java.lang.Enum: java.lang.Enum valueOf(java.lang.Class,java.lang.String)>(class "com/google/android/photostream/UserTask$Status", r0);
+        $r4 = (com.google.android.photostream.UserTask$Status) $r3;
+        r2[0] = 1;
+        return $r4;
+    }
+
+    private void <init>(java.lang.String, int)
+    {
+        com.google.android.photostream.UserTask$Status r0;
+        java.lang.String r1;
+        int i0;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.google.android.photostream.UserTask$Status;
+        r1 := @parameter0: java.lang.String;
+        i0 := @parameter1: int;
+        $r2 = <com.google.android.photostream.UserTask$Status: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask$Status: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[2];
+        specialinvoke r0.<java.lang.Enum: void <init>(java.lang.String,int)>(r1, i0);
+        r3[0] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+        com.google.android.photostream.UserTask$Status $r2, $r3, $r4, $r6, $r7, $r8;
+        com.google.android.photostream.UserTask$Status[] $r5;
+
+        $r0 = staticinvoke <com.google.android.photostream.UserTask$Status: boolean[][] $VRi()>();
+        r1 = $r0[3];
+        $r2 = new com.google.android.photostream.UserTask$Status;
+        specialinvoke $r2.<com.google.android.photostream.UserTask$Status: void <init>(java.lang.String,int)>("PENDING", 0);
+        <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status PENDING> = $r2;
+        $r3 = new com.google.android.photostream.UserTask$Status;
+        specialinvoke $r3.<com.google.android.photostream.UserTask$Status: void <init>(java.lang.String,int)>("RUNNING", 1);
+        <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status RUNNING> = $r3;
+        $r4 = new com.google.android.photostream.UserTask$Status;
+        specialinvoke $r4.<com.google.android.photostream.UserTask$Status: void <init>(java.lang.String,int)>("FINISHED", 2);
+        <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status FINISHED> = $r4;
+        $r5 = newarray (com.google.android.photostream.UserTask$Status)[3];
+        $r6 = <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status PENDING>;
+        $r5[0] = $r6;
+        $r7 = <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status RUNNING>;
+        $r5[1] = $r7;
+        $r8 = <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status FINISHED>;
+        $r5[2] = $r8;
+        <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status[] $VALUES> = $r5;
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4;
+
+        $r0 = newmultiarray (boolean)[4][];
+        <com.google.android.photostream.UserTask$Status: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[3] = $r4;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/google/android/photostream/UserTask$Status", 8394644511464601097L);
+        return $r0;
+    }
+}
+class com.google.android.photostream.UserTask$UserTaskResult extends java.lang.Object
+{
+    final com.google.android.photostream.UserTask mTask;
+    final java.lang.Object[] mData;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    transient void <init>(com.google.android.photostream.UserTask, java.lang.Object[])
+    {
+        com.google.android.photostream.UserTask$UserTaskResult r0;
+        com.google.android.photostream.UserTask r1;
+        java.lang.Object[] r2;
+        boolean[][] $r3;
+        boolean[] r4;
+
+        r0 := @this: com.google.android.photostream.UserTask$UserTaskResult;
+        r1 := @parameter0: com.google.android.photostream.UserTask;
+        r2 := @parameter1: java.lang.Object[];
+        $r3 = <com.google.android.photostream.UserTask$UserTaskResult: boolean[][] $VRc>;
+        if $r3 != null goto label0;
+
+        $r3 = staticinvoke <com.google.android.photostream.UserTask$UserTaskResult: boolean[][] $VRi()>();
+
+     label0:
+        r4 = $r3[0];
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        r0.<com.google.android.photostream.UserTask$UserTaskResult: com.google.android.photostream.UserTask mTask> = r1;
+        r0.<com.google.android.photostream.UserTask$UserTaskResult: java.lang.Object[] mData> = r2;
+        r4[0] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.google.android.photostream.UserTask$UserTaskResult: boolean[][] $VRi()>();
+        r1 = $r0[1];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2;
+
+        $r0 = newmultiarray (boolean)[2][];
+        <com.google.android.photostream.UserTask$UserTaskResult: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/google/android/photostream/UserTask$UserTaskResult", 9253981926022L);
+        return $r0;
+    }
+}
+abstract class com.google.android.photostream.UserTask$WorkerRunnable extends java.lang.Object implements java.util.concurrent.Callable
+{
+    java.lang.Object[] mParams;
+    private static final boolean[][] $VRc;
+    private static final long serialVersionUID;
+
+    private void <init>()
+    {
+        com.google.android.photostream.UserTask$WorkerRunnable r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.google.android.photostream.UserTask$WorkerRunnable;
+        $r1 = <com.google.android.photostream.UserTask$WorkerRunnable: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask$WorkerRunnable: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        r2[0] = 1;
+        return;
+    }
+
+    void <init>(com.google.android.photostream.UserTask$1)
+    {
+        com.google.android.photostream.UserTask$WorkerRunnable r0;
+        com.google.android.photostream.UserTask$1 r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.google.android.photostream.UserTask$WorkerRunnable;
+        r1 := @parameter0: com.google.android.photostream.UserTask$1;
+        $r2 = <com.google.android.photostream.UserTask$WorkerRunnable: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask$WorkerRunnable: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[1];
+        specialinvoke r0.<com.google.android.photostream.UserTask$WorkerRunnable: void <init>()>();
+        r3[0] = 1;
+        return;
+    }
+
+    private static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+
+        $r0 = staticinvoke <com.google.android.photostream.UserTask$WorkerRunnable: boolean[][] $VRi()>();
+        r1 = $r0[2];
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3;
+
+        $r0 = newmultiarray (boolean)[3][];
+        <com.google.android.photostream.UserTask$WorkerRunnable: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[2] = $r3;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/google/android/photostream/UserTask$WorkerRunnable", 3934875462812140879L);
+        return $r0;
+    }
+}
+public abstract class com.google.android.photostream.UserTask extends java.lang.Object
+{
+    private static final java.lang.String LOG_TAG;
+    private static final int CORE_POOL_SIZE;
+    private static final int MAXIMUM_POOL_SIZE;
+    private static final int KEEP_ALIVE;
+    private static final java.util.concurrent.BlockingQueue sWorkQueue;
+    private static final java.util.concurrent.ThreadFactory sThreadFactory;
+    private static final java.util.concurrent.ThreadPoolExecutor sExecutor;
+    private static final int MESSAGE_POST_RESULT;
+    private static final int MESSAGE_POST_PROGRESS;
+    private static final int MESSAGE_POST_CANCEL;
+    private static final com.google.android.photostream.UserTask$InternalHandler sHandler;
+    private final com.google.android.photostream.UserTask$WorkerRunnable mWorker;
+    private final java.util.concurrent.FutureTask mFuture;
+    private volatile com.google.android.photostream.UserTask$Status mStatus;
+    private static final boolean[][] $VRc;
+
+    public void <init>()
+    {
+        com.google.android.photostream.UserTask r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.google.android.photostream.UserTask$Status $r3;
+        com.google.android.photostream.UserTask$2 $r4;
+        com.google.android.photostream.UserTask$3 $r5;
+        com.google.android.photostream.UserTask$WorkerRunnable $r6;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        $r1 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[0];
+        specialinvoke r0.<java.lang.Object: void <init>()>();
+        $r3 = <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status PENDING>;
+        r0.<com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$Status mStatus> = $r3;
+        $r4 = new com.google.android.photostream.UserTask$2;
+        specialinvoke $r4.<com.google.android.photostream.UserTask$2: void <init>(com.google.android.photostream.UserTask)>(r0);
+        r0.<com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$WorkerRunnable mWorker> = $r4;
+        $r5 = new com.google.android.photostream.UserTask$3;
+        $r6 = r0.<com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$WorkerRunnable mWorker>;
+        specialinvoke $r5.<com.google.android.photostream.UserTask$3: void <init>(com.google.android.photostream.UserTask,java.util.concurrent.Callable)>(r0, $r6);
+        r0.<com.google.android.photostream.UserTask: java.util.concurrent.FutureTask mFuture> = $r5;
+        r2[0] = 1;
+        return;
+    }
+
+    public final com.google.android.photostream.UserTask$Status getStatus()
+    {
+        com.google.android.photostream.UserTask r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        com.google.android.photostream.UserTask$Status $r3;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        $r1 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[1];
+        $r3 = r0.<com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$Status mStatus>;
+        r2[0] = 1;
+        return $r3;
+    }
+
+    public abstract transient java.lang.Object doInBackground(java.lang.Object[]);
+
+    public void onPreExecute()
+    {
+        com.google.android.photostream.UserTask r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        $r1 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[3];
+        r2[0] = 1;
+        return;
+    }
+
+    public void onPostExecute(java.lang.Object)
+    {
+        com.google.android.photostream.UserTask r0;
+        java.lang.Object r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        r1 := @parameter0: java.lang.Object;
+        $r2 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[4];
+        r3[0] = 1;
+        return;
+    }
+
+    public transient void onProgressUpdate(java.lang.Object[])
+    {
+        com.google.android.photostream.UserTask r0;
+        java.lang.Object[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        r1 := @parameter0: java.lang.Object[];
+        $r2 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[5];
+        r3[0] = 1;
+        return;
+    }
+
+    public void onCancelled()
+    {
+        com.google.android.photostream.UserTask r0;
+        boolean[][] $r1;
+        boolean[] r2;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        $r1 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[6];
+        r2[0] = 1;
+        return;
+    }
+
+    public final boolean isCancelled()
+    {
+        com.google.android.photostream.UserTask r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.util.concurrent.FutureTask $r3;
+        boolean $z0;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        $r1 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[7];
+        $r3 = r0.<com.google.android.photostream.UserTask: java.util.concurrent.FutureTask mFuture>;
+        $z0 = virtualinvoke $r3.<java.util.concurrent.FutureTask: boolean isCancelled()>();
+        r2[0] = 1;
+        return $z0;
+    }
+
+    public final boolean cancel(boolean)
+    {
+        com.google.android.photostream.UserTask r0;
+        boolean z0, $z1;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.util.concurrent.FutureTask $r3;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        z0 := @parameter0: boolean;
+        $r1 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[8];
+        $r3 = r0.<com.google.android.photostream.UserTask: java.util.concurrent.FutureTask mFuture>;
+        $z1 = virtualinvoke $r3.<java.util.concurrent.FutureTask: boolean cancel(boolean)>(z0);
+        r2[0] = 1;
+        return $z1;
+    }
+
+    public final java.lang.Object get() throws java.lang.InterruptedException, java.util.concurrent.ExecutionException
+    {
+        com.google.android.photostream.UserTask r0;
+        boolean[][] $r1;
+        boolean[] r2;
+        java.util.concurrent.FutureTask $r3;
+        java.lang.Object $r4;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        $r1 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r1 != null goto label0;
+
+        $r1 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r2 = $r1[9];
+        $r3 = r0.<com.google.android.photostream.UserTask: java.util.concurrent.FutureTask mFuture>;
+        $r4 = virtualinvoke $r3.<java.util.concurrent.FutureTask: java.lang.Object get()>();
+        r2[0] = 1;
+        return $r4;
+    }
+
+    public final java.lang.Object get(long, java.util.concurrent.TimeUnit) throws java.lang.InterruptedException, java.util.concurrent.ExecutionException, java.util.concurrent.TimeoutException
+    {
+        com.google.android.photostream.UserTask r0;
+        long l0;
+        java.util.concurrent.TimeUnit r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        java.util.concurrent.FutureTask $r4;
+        java.lang.Object $r5;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        l0 := @parameter0: long;
+        r1 := @parameter1: java.util.concurrent.TimeUnit;
+        $r2 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[10];
+        $r4 = r0.<com.google.android.photostream.UserTask: java.util.concurrent.FutureTask mFuture>;
+        $r5 = virtualinvoke $r4.<java.util.concurrent.FutureTask: java.lang.Object get(long,java.util.concurrent.TimeUnit)>(l0, r1);
+        r3[0] = 1;
+        return $r5;
+    }
+
+    public final transient com.google.android.photostream.UserTask execute(java.lang.Object[])
+    {
+        com.google.android.photostream.UserTask r0;
+        java.lang.Object[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.google.android.photostream.UserTask$Status $r4, $r5, $r7, $r10;
+        int[] $r6;
+        int $i0, $i1;
+        java.lang.IllegalStateException $r8, $r9;
+        com.google.android.photostream.UserTask$WorkerRunnable $r11;
+        java.util.concurrent.ThreadPoolExecutor $r12;
+        java.util.concurrent.FutureTask $r13;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        r1 := @parameter0: java.lang.Object[];
+        $r2 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[11];
+        $r4 = r0.<com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$Status mStatus>;
+        $r5 = <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status PENDING>;
+        r3[0] = 1;
+        if $r4 == $r5 goto label3;
+
+        $r6 = <com.google.android.photostream.UserTask$4: int[] $SwitchMap$com$google$android$photostream$UserTask$Status>;
+        $r7 = r0.<com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$Status mStatus>;
+        $i0 = virtualinvoke $r7.<com.google.android.photostream.UserTask$Status: int ordinal()>();
+        $i1 = $r6[$i0];
+        r3[1] = 1;
+        lookupswitch($i1)
+        {
+            case 1: goto label1;
+            case 2: goto label2;
+            default: goto label3;
+        };
+
+     label1:
+        $r8 = new java.lang.IllegalStateException;
+        specialinvoke $r8.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Cannot execute task: the task is already running.");
+        r3[2] = 1;
+        throw $r8;
+
+     label2:
+        $r9 = new java.lang.IllegalStateException;
+        specialinvoke $r9.<java.lang.IllegalStateException: void <init>(java.lang.String)>("Cannot execute task: the task has already been executed (a task can be executed only once)");
+        r3[3] = 1;
+        throw $r9;
+
+     label3:
+        $r10 = <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status RUNNING>;
+        r0.<com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$Status mStatus> = $r10;
+        virtualinvoke r0.<com.google.android.photostream.UserTask: void onPreExecute()>();
+        $r11 = r0.<com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$WorkerRunnable mWorker>;
+        $r11.<com.google.android.photostream.UserTask$WorkerRunnable: java.lang.Object[] mParams> = r1;
+        $r12 = <com.google.android.photostream.UserTask: java.util.concurrent.ThreadPoolExecutor sExecutor>;
+        $r13 = r0.<com.google.android.photostream.UserTask: java.util.concurrent.FutureTask mFuture>;
+        virtualinvoke $r12.<java.util.concurrent.ThreadPoolExecutor: void execute(java.lang.Runnable)>($r13);
+        r3[4] = 1;
+        return r0;
+    }
+
+    protected final transient void publishProgress(java.lang.Object[])
+    {
+        com.google.android.photostream.UserTask r0;
+        java.lang.Object[] r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.google.android.photostream.UserTask$UserTaskResult $r4;
+        com.google.android.photostream.UserTask$InternalHandler $r5;
+        android.os.Message $r6;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        r1 := @parameter0: java.lang.Object[];
+        $r2 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[12];
+        $r5 = <com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$InternalHandler sHandler>;
+        $r4 = new com.google.android.photostream.UserTask$UserTaskResult;
+        specialinvoke $r4.<com.google.android.photostream.UserTask$UserTaskResult: void <init>(com.google.android.photostream.UserTask,java.lang.Object[])>(r0, r1);
+        $r6 = virtualinvoke $r5.<com.google.android.photostream.UserTask$InternalHandler: android.os.Message obtainMessage(int,java.lang.Object)>(2, $r4);
+        virtualinvoke $r6.<android.os.Message: void sendToTarget()>();
+        r3[0] = 1;
+        return;
+    }
+
+    private void finish(java.lang.Object)
+    {
+        com.google.android.photostream.UserTask r0;
+        java.lang.Object r1;
+        boolean[][] $r2;
+        boolean[] r3;
+        com.google.android.photostream.UserTask$Status $r4;
+
+        r0 := @this: com.google.android.photostream.UserTask;
+        r1 := @parameter0: java.lang.Object;
+        $r2 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[13];
+        virtualinvoke r0.<com.google.android.photostream.UserTask: void onPostExecute(java.lang.Object)>(r1);
+        $r4 = <com.google.android.photostream.UserTask$Status: com.google.android.photostream.UserTask$Status FINISHED>;
+        r0.<com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$Status mStatus> = $r4;
+        r3[0] = 1;
+        return;
+    }
+
+    static com.google.android.photostream.UserTask$InternalHandler access$200()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+        com.google.android.photostream.UserTask$InternalHandler $r2;
+
+        $r0 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r0 != null goto label0;
+
+        $r0 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r1 = $r0[14];
+        $r2 = <com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$InternalHandler sHandler>;
+        r1[0] = 1;
+        return $r2;
+    }
+
+    static void access$300(com.google.android.photostream.UserTask, java.lang.Object)
+    {
+        com.google.android.photostream.UserTask r0;
+        java.lang.Object r1;
+        boolean[][] $r2;
+        boolean[] r3;
+
+        r0 := @parameter0: com.google.android.photostream.UserTask;
+        r1 := @parameter1: java.lang.Object;
+        $r2 = <com.google.android.photostream.UserTask: boolean[][] $VRc>;
+        if $r2 != null goto label0;
+
+        $r2 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+
+     label0:
+        r3 = $r2[15];
+        specialinvoke r0.<com.google.android.photostream.UserTask: void finish(java.lang.Object)>(r1);
+        r3[0] = 1;
+        return;
+    }
+
+    static void <clinit>()
+    {
+        boolean[][] $r0;
+        boolean[] r1;
+        java.util.concurrent.TimeUnit $r2;
+        java.util.concurrent.BlockingQueue $r3;
+        java.util.concurrent.ThreadFactory $r4;
+        java.util.concurrent.LinkedBlockingQueue $r5;
+        com.google.android.photostream.UserTask$1 $r6;
+        java.util.concurrent.ThreadPoolExecutor $r7;
+        com.google.android.photostream.UserTask$InternalHandler $r8;
+
+        $r0 = staticinvoke <com.google.android.photostream.UserTask: boolean[][] $VRi()>();
+        r1 = $r0[16];
+        $r5 = new java.util.concurrent.LinkedBlockingQueue;
+        specialinvoke $r5.<java.util.concurrent.LinkedBlockingQueue: void <init>(int)>(10);
+        <com.google.android.photostream.UserTask: java.util.concurrent.BlockingQueue sWorkQueue> = $r5;
+        $r6 = new com.google.android.photostream.UserTask$1;
+        specialinvoke $r6.<com.google.android.photostream.UserTask$1: void <init>()>();
+        <com.google.android.photostream.UserTask: java.util.concurrent.ThreadFactory sThreadFactory> = $r6;
+        $r7 = new java.util.concurrent.ThreadPoolExecutor;
+        $r2 = <java.util.concurrent.TimeUnit: java.util.concurrent.TimeUnit SECONDS>;
+        $r3 = <com.google.android.photostream.UserTask: java.util.concurrent.BlockingQueue sWorkQueue>;
+        $r4 = <com.google.android.photostream.UserTask: java.util.concurrent.ThreadFactory sThreadFactory>;
+        specialinvoke $r7.<java.util.concurrent.ThreadPoolExecutor: void <init>(int,int,long,java.util.concurrent.TimeUnit,java.util.concurrent.BlockingQueue,java.util.concurrent.ThreadFactory)>(1, 10, 10L, $r2, $r3, $r4);
+        <com.google.android.photostream.UserTask: java.util.concurrent.ThreadPoolExecutor sExecutor> = $r7;
+        $r8 = new com.google.android.photostream.UserTask$InternalHandler;
+        specialinvoke $r8.<com.google.android.photostream.UserTask$InternalHandler: void <init>(com.google.android.photostream.UserTask$1)>(null);
+        <com.google.android.photostream.UserTask: com.google.android.photostream.UserTask$InternalHandler sHandler> = $r8;
+        r1[0] = 1;
+        return;
+    }
+
+    private static boolean[][] $VRi()
+    {
+        boolean[][] $r0;
+        boolean[] $r1, $r2, $r3, $r4, $r5, $r6, $r7, $r8, $r9, $r10, $r11, $r12, $r13, $r14, $r15, $r16;
+
+        $r0 = newmultiarray (boolean)[17][];
+        <com.google.android.photostream.UserTask: boolean[][] $VRc> = $r0;
+        $r1 = newarray (boolean)[1];
+        $r0[0] = $r1;
+        $r2 = newarray (boolean)[1];
+        $r0[1] = $r2;
+        $r3 = newarray (boolean)[1];
+        $r0[3] = $r3;
+        $r4 = newarray (boolean)[1];
+        $r0[4] = $r4;
+        $r5 = newarray (boolean)[1];
+        $r0[5] = $r5;
+        $r6 = newarray (boolean)[1];
+        $r0[6] = $r6;
+        $r7 = newarray (boolean)[1];
+        $r0[7] = $r7;
+        $r8 = newarray (boolean)[1];
+        $r0[8] = $r8;
+        $r9 = newarray (boolean)[1];
+        $r0[9] = $r9;
+        $r10 = newarray (boolean)[1];
+        $r0[10] = $r10;
+        $r11 = newarray (boolean)[5];
+        $r0[11] = $r11;
+        $r12 = newarray (boolean)[1];
+        $r0[12] = $r12;
+        $r13 = newarray (boolean)[1];
+        $r0[13] = $r13;
+        $r14 = newarray (boolean)[1];
+        $r0[14] = $r14;
+        $r15 = newarray (boolean)[1];
+        $r0[15] = $r15;
+        $r16 = newarray (boolean)[1];
+        $r0[16] = $r16;
+        staticinvoke <com.vladium.emma.rt.RT: void r(boolean[][],java.lang.String,long)>($r0, "com/google/android/photostream/UserTask", 1086595734986497425L);
+        return $r0;
+    }
+}

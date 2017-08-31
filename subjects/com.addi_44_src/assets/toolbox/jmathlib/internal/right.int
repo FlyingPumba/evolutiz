@@ -1,0 +1,11 @@
+@GROUP
+char
+@SYNTAX
+right(string, no. of characters)
+@DOC
+Returns the right most characters from string.
+@EXAMPLES
+right("Hello world", 5) = world
+@SEE
+left, mid
+

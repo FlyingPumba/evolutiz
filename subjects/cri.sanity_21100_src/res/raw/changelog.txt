@@ -1,0 +1,220 @@
+Version 2.11:
+- New: option to vibrate when an outgoing call begins.
+- New: option to choose the vibration mode.
+- New: option to show new incoming SMS for fast reading and replying.
+- New: option to choose volume to announce SMS.
+- New: option to use an alternative way to answer automatically.
+- New: option to speed up application startup.
+- New: filter phone numbers by prefix.
+- Fix: minor bugs.
+
+Version 2.10:
+- Fix: bug when announcing the sender of SMS.
+- Fix: bug in automatic handsfree.
+- Fix: minor bugs.
+
+Version 2.09:
+- New: Anonymous calls section.
+- New: options to announce the sender of received SMS.
+- New: option to notify when automatic restoration from silent/airplane mode is activated.
+- New: option to change the audio stream to announce.
+- Fix: minor bugs.
+- Change: minor improvements.
+
+Version 2.08:
+- Fix: force close on Urgent call section.
+
+Version 2.07:
+- New: Urgent calls section.
+- New: options to block SMS.
+- New: option to pick up call before block (to avoid voicemail).
+- New: option to automatically disable the airplane mode after a given timeout.
+- New: shortcuts to enable silent or airplane mode with timeout.
+- New: shortcuts to any option.
+- New: go to the official forum.
+- Fix: minor bugs.
+- Change: user interface minor enhancements.
+
+Version 2.06:
+- New: options to answer automatically on incoming calls.
+- New: option to automatically disable the silent mode after a given timeout.
+- New: call filter by date and time.
+- Fix: call blocker bugs.
+- Fix: minor bugs.
+
+Version 2.05:
+- Fix: urgent crash on some phones.
+
+Version 2.04:
+- New: call blocker method: silent answer.
+- New: history of all calls blocked.
+- New: option to remove all call filters.
+- Fix: bug to handle multiple/concurrent calls.
+- Fix: bug in call filter when searching a contact.
+- Fix: bug turns microphone off after recording.
+- Fix: bug won't stop announcing after the answer.
+- Fix: minor bugs.
+
+Version 2.03:
+- New: option to delay signal restoring when the call is blocked through interrupting signal.
+- New: option to notify blocked calls.
+- New: function to add call filter numbers from the call log.
+- New: function for fast searching a contact in the call filter.
+- New: option for setting automatic handsfree volume.
+- Fix: bug in groups list of call filter.
+- Fix: bug in automatic recording when automatic handsfree is disabled.
+- Fix: minor bugs.
+- Change: optimizations in call blocker and annouce caller.
+
+Version 2.02:
+- New: options to block incoming calls automatically.
+- New: option to skip announcing when the phone is in silent mode.
+- New: option to show the call screen just after you manually start or stop recording.
+- Fix: bug disables screen lock on some phones.
+- Fix: bug when disabling the mobile data.
+- Fix: bug when recognizing the donate version.
+
+Version 2.01:
+- Fix: the caller was always announced.
+ 
+Version 2.00:
+- New: options to announce the caller's name when phone is ringing (text to speech).
+- New: start recording automatically filtering out the phone number.
+- New: option for turning Bluetooth off every time call ends.
+- Fix: bug when enabling and disabling devices.
+- Fix: bug when upgrading from older version.
+- Change: minor improvements.
+- Change: "Skip if headsets" option removed.
+
+Version 1.99:
+- New: option for turning on bluetooth when call starts (useful for automatic bluetooth headsets connection).
+- Fix: various bugs.
+
+Version 1.98:
+- New: you can create Sanity shortcuts in the Home screen.
+- New: profiles system for fast changing preferences.
+- Fix: various bugs.
+- Change: minor user interface improvements.
+
+Version 1.97:
+- New: option to restrict automatic recording only on incoming or outgoing calls.
+- New: options to limit automatic handsfree.
+- Fix: bug in recorder options.
+- Change: minor improvements.
+
+Version 1.96:
+- New: handsfree option "Enable at call start" can be filtered by incoming and outgoing calls.
+- New: backup and restore preferences to memory card.
+- Change: minor user interface improvements.
+
+Version 1.95:
+- New: options for automatic audio recording when headsets are plugged/unplugged.
+- New: option to delay automatic handsfree enabling when call begins.
+- New: option to silence end call sound by disabling handsfree.
+- Fix: now automatic volume can be set to the real minimum level.
+- Fix: other bugs.
+
+Version 1.94:
+- Fix: occasional crash in recording system.
+
+Version 1.93
+- New: option to limit times for automatic recording during a single call.
+- Fix: minor bugs in recording system.
+- Change: general optimizations.
+
+Version 1.92
+- New: audio records show if were incoming or outgoing calls.
+- Fix: bug when starting call recording from status bar.
+
+Version 1.91
+- New: contact names are showed in file browser (when available).
+- Fix: minor user interface bug.
+- Change: now Sanity doesn't ask you to donate everytime you open application.
+
+Version 1.9
+- New: options for automatic call recording.
+- New: option to vibrate when phone call ends.
+- New: spanish translation by LuiSKdT&AnA from Mallorca-Spain.
+- Fix: incoming phone number is properly saved when recording.
+- Change: improved audio file browser.
+- Change: improved user interface.
+
+Version 1.8:
+- New: simple file browser of recorded audio files.
+- Fix: now process properly exits when call ends without answer.
+- Fix: recored audio files were silent when "Conversation only" option was activated.
+- Fix: minor user interface bug.
+
+Version 1.7:
+- Fix: call recording isn't stopped anymore just after starting it.
+
+Version 1.6
+- New: option to allow/disable multimedia scanning of recorded audio files.
+- Fix: application is shown in "Device Administrator" panel of global Android settings.
+- Fix: random crash when resuming application.
+- Change: automatic disabling actions are not applied anymore when phone is ringing during an incoming call.
+
+Version 1.5
+- New: voice call recorder (in the free edition it's limited to maximum 2 minutes for each audio file; without limits in the donate edition).
+- Fix: now preferences are correctly saved and can be modified.
+- Fix: screen is no more turned automatically off while ringing.
+- Fix: odd behavior on multiple calls at the same time.
+- Fix: minor bugs.
+- Change: minor user interface improvements.
+
+Version 1.4
+- Fix: crash on Android 2.1 (Eclair), but now it works.
+- Fix: minor bugs.
+
+Version 1.3
+- New: option to use device administration for turning off the screen (you have to enable "Administrator" option); Android 2.2+ required.
+- Fix: crash during first start when not upgrading.
+- Fix: minor bugs.
+
+Version 1.2
+- New: option to skip automatic Wifi and Mobile Data disabling when Hotspot Wifi is enabled.
+- New: option to skip automatic Mobile Data disabling when Tethering USB is enabled.
+
+Version 1.1
+- New: option to force turn on screen when phone is far from ear.
+
+Version 1.0
+- New: volume option to mute all audio streams except the conversation one (during a call).
+- New: notification option to show automatic volume changes.
+- Fix: delay for turning on handsfree works now.
+- Fix: minor bug for handling automatic volume.
+
+Version 0.9
+- New: option for supporting phones have reversed proximity sensor.
+- New: option for supporting unrecognized bluetooth audio devices.
+- Fix: sometimes devices were not automatically restored after ringing without answer.
+- Fix: others minor bugs.
+- Change: minor user interface improvements.
+
+Version 0.8
+- Fix: user interface bugs
+
+Version 0.7
+- New: option to avoid automatic disabling of Mobile Data when GPS is enabled.
+
+Version 0.6
+- New: option to automatic enable/disable GPS during phone calls.
+- Change: featured user interface.
+
+Version 0.5
+- New: option to avoid automatic bluetooth disabling when there are bluetooth devices connected.
+- New: option to delay automatic handsfree enabler.
+- Fix: more bluetooth audio devices are recognized during phone call.
+- Fix: minor bug caused occasional crashes at call end.
+- New: tools for contacting the developer.
+
+Version 0.4
+- Fix: now bluetooth headsets are correctly handled.
+- Change: notify activity only when call starts.
+
+Version 0.3
+- New: option to force turn off screen when phone is close to ear.
+
+Version 0.2
+- First published release.
+ 

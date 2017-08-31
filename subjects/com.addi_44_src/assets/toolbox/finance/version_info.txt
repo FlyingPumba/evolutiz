@@ -1,0 +1,12 @@
+#            JMathLib 
+# Toolbox: toolbox_skeleton
+#
+# (c) 2008 Stefan Mueller (stefan@held-mueller.de)
+# 
+jmathlib.toolboxes.toolbox_skeleton.name="skeleton"
+jmathlib.toolboxes.toolbox_skeleton.version=0.0.1
+jmathlib.toolboxes.toolbox_skeleton.release=major 0.0.1
+jmathlib.toolboxes.toolbox_skeleton.description=splines
+jmathlib.toolboxes.toolbox_skeleton.date=2008/01/01
+jmathlib.toolboxes.toolbox_skeleton.copyright=(c) 2008 Stefan Mueller (stefan@held-mueller.de)
+jmathlib.toolboxes.toolbox_skeleton.message=This is a skeleton for toolbox information

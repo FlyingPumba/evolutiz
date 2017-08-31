@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="bt_reverse_timeout_labels">
+		<item>5 secondi</item>
+		<item>10 secondi</item>
+		<item>20 secondi</item>
+		<item>30 secondi</item>
+		<item>1 minuto</item>
+		<item>2 minuti</item>
+		<item>3 minuti</item>
+		<item>4 minuti</item>
+		<item>5 minuti</item>
+		<item>Spegni a fine chiamata</item>
+	</string-array>
+
+	<string-array name="disable_delay_labels">
+		<item>Immediato</item>
+		<item>1 secondo</item>
+		<item>2 secondi</item>
+		<item>3 secondi</item>
+		<item>4 secondi</item>
+		<item>5 secondi</item>
+		<item>6 secondi</item>
+		<item>7 secondi</item>
+		<item>8 secondi</item>
+		<item>9 secondi</item>
+		<item>10 secondi</item>
+		<item>15 secondi</item>
+		<item>20 secondi</item>
+		<item>25 secondi</item>
+		<item>30 secondi</item>
+	</string-array>
+
+	<string-array name="enable_delay_labels">
+		<item>Come \"Spegni in ritardo\"</item>
+		<item>Immediato</item>
+		<item>1 secondo</item>
+		<item>2 secondi</item>
+		<item>3 secondi</item>
+		<item>4 secondi</item>
+		<item>5 secondi</item>
+		<item>6 secondi</item>
+		<item>7 secondi</item>
+		<item>8 secondi</item>
+		<item>9 secondi</item>
+		<item>10 secondi</item>
+		<item>15 secondi</item>
+		<item>20 secondi</item>
+		<item>25 secondi</item>
+		<item>30 secondi</item>
+	</string-array>
+
+	<string-array name="speaker_call_labels">
+		<item>Mai</item>
+		<item>Solo chiamate ricevute</item>
+		<item>Solo chiamate effettuate</item>
+		<item>Sempre</item>
+	</string-array>
+
+	<string-array name="speaker_count_labels">
+		<item>Mai</item>
+		<item>1 volta</item>
+		<item>2 volte</item>
+		<item>3 volte</item>
+		<item>4 volte</item>
+		<item>5 volte</item>
+		<item>6 volte</item>
+		<item>7 volte</item>
+		<item>8 volte</item>
+		<item>9 volte</item>
+		<item>10 volte</item>
+		<item>15 volte</item>
+		<item>20 volte</item>
+		<item>Illimitato</item>
+	</string-array>
+
+	<string-array name="rec_src_labels">
+		<item>Microfono</item>
+		<item>Audio telefonata</item>
+		<item>Riconoscimento vocale</item>
+		<item>Audio videocamera</item>
+	</string-array>
+
+	<string-array name="rec_stop_limit_labels">
+		<item>1 minuto</item>
+		<item>2 minuti</item>
+		<item>3 minuti</item>
+		<item>5 minuti</item>
+		<item>10 minuti</item>
+		<item>15 minuti</item>
+		<item>20 minuti</item>
+		<item>30 minuti</item>
+		<item>45 minuti</item>
+		<item>1 ora</item>
+		<item>1 ora e mezza</item>
+		<item>2 ore</item>
+		<item>Illimitato</item>
+	</string-array>
+
+	<string-array name="rec_start_dir_labels">
+		<item>Tutte</item>
+		<item>Solo chiamate ricevute</item>
+		<item>Solo chiamate effettuate</item>
+	</string-array>
+
+	<string-array name="rec_start_times_labels">
+		<item>1 volta</item>
+		<item>2 volte</item>
+		<item>3 volte</item>
+		<item>4 volte</item>
+		<item>5 volte</item>
+		<item>6 volte</item>
+		<item>7 volte</item>
+		<item>8 volte</item>
+		<item>Illimitato</item>
+	</string-array>
+
+	<string-array name="rec_start_headset_labels">
+		<item>Non intervenire</item>
+		<item>Avvia se le cuffie sono connesse</item>
+		<item>Avvia se le cuffie NON sono connesse</item>
+	</string-array>
+	<string-array name="rec_stop_headset_labels">
+		<item>Non intervenire</item>
+		<item>Arresta se le cuffie sono connesse</item>
+		<item>Arresta se le cuffie NON sono connesse</item>
+	</string-array>
+
+	<string-array name="rec_autoremove_labels">
+		<item>Non rimuovere</item>
+		<item>1 giorno</item>
+		<item>2 giorni</item>
+		<item>3 giorni</item>
+		<item>7 giorni</item>
+		<item>14 giorni</item>
+		<item>30 giorni</item>
+		<item>60 giorni</item>
+		<item>90 giorni</item>
+	</string-array>
+
+	<string-array name="filter_mode_labels">
+		<item>Includi la lista, escludi gli altri numeri</item>
+		<item>Escludi la lista, includi gli altri numeri</item>
+	</string-array>
+
+	<string-array name="tts_tone_labels">
+		<item>Non intervenire</item>
+		<item>Altissimo</item>
+		<item>Alto</item>
+		<item>Medio</item>
+		<item>Basso</item>
+		<item>Bassissimo</item>
+	</string-array>
+
+	<string-array name="tts_repeat_labels">
+		<item>1 volta</item>
+		<item>2 volte</item>
+		<item>3 volte</item>
+		<item>4 volte</item>
+		<item>5 volte</item>
+		<item>6 volte</item>
+		<item>7 volte</item>
+		<item>8 volte</item>
+		<item>9 volte</item>
+		<item>10 volte</item>
+		<item>Sempre</item>
+	</string-array>
+
+	<string-array name="tts_pause_labels">
+		<item>Brevissima</item>
+		<item>Breve</item>
+		<item>Media</item>
+		<item>Lunga</item>
+		<item>Lunghissima</item>
+	</string-array>
+
+	<string-array name="block_mode_labels">
+		<item>Riaggancia</item>
+		<item>Interrompi il segnale</item>
+		<item>Risposta silenziosa</item>
+		<item>Suoneria silenziosa</item>
+	</string-array>
+
+	<string-array name="block_resume_labels">
+		<item>Immediato</item>
+		<item>30 secondi</item>
+		<item>1 minuto</item>
+		<item>2 minuti</item>
+		<item>3 minuti</item>
+		<item>4 minuti</item>
+		<item>5 minuti</item>
+		<item>10 minuti</item>
+		<item>15 minuti</item>
+		<item>20 minuti</item>
+		<item>30 minuti</item>
+		<item>60 minuti</item>
+	</string-array>
+
+	<string-array name="blocksms_max_labels">
+		<item>Nessuno</item>
+		<item>10</item>
+		<item>50</item>
+		<item>100</item>
+		<item>200</item>
+		<item>300</item>
+		<item>400</item>
+		<item>500</item>
+		<item>1000</item>
+		<item>Illimitati</item>
+	</string-array>
+
+	<string-array name="urgent_mode_labels">
+		<item>Solo suoneria</item>
+		<item>Solo vibrazione</item>
+		<item>Suoneria e vibrazione</item>
+	</string-array>
+
+	<string-array name="anonym_country_labels">
+		<item>USA, Canada (*67)</item>
+		<item>Paesi europei (#31#)</item>
+		<item>Regno Unito, Irlanda (141)</item>
+		<item>Germania (*31#)</item>
+		<item>Danimarca, Svizzera, Argentina (*31*)</item>
+		<item>Israele (*43)</item>
+		<item>Hong Kong (133)</item>
+		<item>Australia (1831)</item>
+		<item>Nuova Zelanda (0197)</item>
+		<item>Prefisso personalizzato</item>
+	</string-array>
+
+	<string-array name="vibrate_mode_labels">
+		<item>Singola breve</item>
+		<item>Singola media</item>
+		<item>Singola lunga</item>
+		<item>Doppia breve</item>
+		<item>Doppia media</item>
+		<item>Doppia lunga</item>
+		<item>Tripla breve</item>
+		<item>Tripla media</item>
+		<item>Tripla lunga</item>
+	</string-array>
+
+</resources>

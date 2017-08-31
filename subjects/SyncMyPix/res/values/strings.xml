@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="preferences.picturesHeader">Pictures</string>
+	<string name="preferences.maxquality">Maximum Quality</string>
+	<string name="preferences.maxquality.summary">Download maximum resolution / size</string>
+	<string name="preferences.cropsquare">Crop</string>
+	<string name="preferences.cropsquare.summary">Crop a 96px square using midpoint of downloaded picture</string>
+	<string name="preferences.cache">Cache to SD Card</string>
+	<string name="preferences.cache.summary">Cache up to 5Mb of pictures to SD card to save data usage</string>
+	
+	<string name="preferences.sourceHeader">Sync Source</string>
+	<string name="preferences.source">Social Network</string>
+	<string name="preferences.source.summary">Select the social network you wish to sync contact pictures from</string>
+	<string name="preferences.schedule">Schedule</string>
+	<string name="preferences.schedule.summary">Select a frequency for scheduling</string>
+	
+	<string name="preferences.matchingHeader">Matching</string>
+    <string name="preferences.skipIfConflict">Skip duplicate contacts</string>
+    <string name="preferences.skipIfConflict.summary">Skip when multiple contacts are found for a single social networking friend</string>
+    <string name="preferences.reverseNames">Reverse names</string>
+    <string name="preferences.reverseNames.summary">Reverse first and last name of social networking friend</string>
+    <string name="preferences.intelliMatch">Smart name matching</string>
+    <string name="preferences.intelliMatch.summary">Try to account for names not formatted as first name last name</string>
+    <string name="preferences.firstNames">First name only</string>
+    <string name="preferences.firstNames.summary">Match on first name only, if unique</string>
+    <string name="preferences.phoneOnly">Phone numbers only</string>
+    <string name="preferences.phoneOnly.summary">Match only if contact has a phone number</string>
+    <string name="preferences.overrideReadOnlyCheck">Override read only check</string>
+    <string name="preferences.overrideReadOnlyCheck.summary">Do not check if contacts are editable before syncing</string>
+    
+    <string name="preferences.loginstatus">Login Status</string>
+    <string name="preferences.notloggedin">Not logged in</string>
+    <string name="preferences.loggedin">Logged in</string>
+    
+    <string name="main.syncButton">Sync</string>
+    <string name="main.settingsButton">Settings</string>
+    <string name="main.resultsButton">Results</string>
+    <string name="main.donateButton">Donate</string>
+    <string name="main.logoutButton">Logout</string>
+    <string name="main.sendLogButton">Send Log</string>
+    <string name="main.aboutButton">About</string>
+    <string name="main.friendsDialog">Getting friends...</string>
+    <string name="main.logMsg">Please insert a description of your problem here</string>
+    <string name="main.error.Logerror">Error sending log</string>
+    
+    <string name="syncprogress">Syncing contacts...</string>
+    <string name="syncprogress.cancel">Cancelling sync...</string>
+    <string name="syncprogress.nosync">No sync is in progress</string>
+    
+    <string name="login.thankyou">Thank you for logging in</string>
+    <string name="login.authorization">Please wait while verifying application authorization...</string>
+    
+    <string name="app_name">SyncMyPix</string>
+    <string name="syncresults">Sync Results</string>
+    <string name="syncresults.updated">%1$s updated</string>
+    <string name="syncresults.skipped">skipped</string>
+    <string name="syncresults.notfound">and could not match</string>
+    <string name="syncresults.resultsList">Social Network Friends</string>
+    <string name="syncresults.menu.viewsynced">View synced contact</string>
+    <string name="syncresults.menu.crop">Crop picture</string>
+    <string name="syncresults.menu.addpicture">Link picture to contact</string>
+    <string name="syncresults.menu.unlink">Unlink contact</string>
+    <string name="syncresults.networkerror">Unable to resolve host. Do you have network connectivity?</string>
+    <string name="syncresults.manuallinkerror">Unable to manually link. Please try switching between 3G / WiFi</string>
+    <string name="syncresults.contactunlinkableerror">This contact is read-only and can not be linked</string>
+    <string name="syncresults.filterButton">Filter Results</string>
+    <string name="syncresults.deleteButton">Delete</string>
+    <string name="syncresults.loadingDialog">Loading...</string>
+    <string name="syncresults.syncDialog">Syncing contact...</string>
+    <string name="syncresults.helpDialog">Help</string>
+    <string name="syncresults.deleteDialog">Delete</string>
+    <string name="syncresults.deleteDialog.msg">Are you sure you want to delete all SyncMyPix pictures?</string>
+    <string name="syncresults.deletingDialog">Deleting all SyncMyPix pictures...</string>
+    <string name="syncresults.deleted">"All SyncMyPix pictures deleted"</string>
+    <string name="syncresults.addpicture.error">Unable to manually sync picture</string>
+    
+    <string name="facebooklogin">Login to Facebook</string>
+    <string name="facebooklogin.urlError">Error parsing URL</string>
+    
+    <string name="syncservice.started">SyncMyPix syncing started</string>
+    <string name="syncservice.stopped">SyncMyPix finished syncing</string>
+    <string name="syncservice.downloaderror">Error downloading from social network. Please try again later.</string>
+    <string name="syncservice.canceled">Sync cancelled by user</string>
+    <string name="syncservice.sessionerror">Session invalid. Please login</string>
+    <string name="syncservice.networkerror">No Internet connection available</string>
+    <string name="syncservice.fatalsyncerror">A fatal sync error has occurred and the operation was terminated</string>
+    <string name="syncservice.lowmemory">Low memory condition detected. Cancelling sync</string>
+        
+    <string name="resultsdescription.notfound">Contact not found</string>
+    <string name="resultsdescription.updated">Picture updated</string>
+    <string name="resultsdescription.skippedexists">Skipped: non-SyncMyPix picture exists</string>
+    <string name="resultsdescription.skippedmultiplefound">Skipped: multiple contacts found</string>
+    <string name="resultsdescription.skippedunchanged">Skipped: no update required</string>
+    <string name="resultsdescription.multipleprocessed">Multiple contacts processed; verify results</string>
+    <string name="resultsdescription.downloadfailed">Picture download failed</string>
+    <string name="resultsdescription.error">Error occurred during processing</string>
+    <string name="resultsdescription.picnotfound">Picture not found</string>
+    
+    <string name="donate">Make a donation</string>
+    <string name="website">http://code.google.com/p/syncmypix/</string>
+    <string name="help_link">http://code.google.com/p/syncmypix/wiki/Instructions</string>
+	<string name="results_help_msg"><b>Select</b> a friend to view their profile picture, or <b>long press</b> for more options</string>
+	<string name="about_info">SyncMyPix is a free, open-source Android application. For more information, including contributors, bug tracking, FAQ, and help, click the following link:</string>
+</resources>

@@ -1,0 +1,14 @@
+version 1.1 (2010-12-14)
+
+	- added file/directory chooser
+	- support for 8-bit ASCII (vCard default charset), not just 7-bit US-ASCII
+	- several bug and compatibility fixes
+
+version 1.0 (2010-07-13)
+
+	- initial release
+	- some bug fixes
+
+version 0.9 (2009-10-03)
+
+	- unstable testing release

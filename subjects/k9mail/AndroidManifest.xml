@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="13000" android:versionName="3.512" package="com.fsck.k9">
+    <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="4"/>
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+
+    <!-- Needed to get the owner name which is used when the first mail account is created -->
+    <uses-permission android:name="android.permission.READ_OWNER_DATA"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+    <!-- Needed to mark a contact as contacted -->
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="org.thialfihar.android.apg.permission.READ_KEY_DETAILS"/>
+
+    <permission android:description="@string/read_attachment_desc" android:label="@string/read_attachment_label" android:name="com.fsck.k9.permission.READ_ATTACHMENT" android:permissionGroup="android.permission-group.MESSAGES" android:protectionLevel="dangerous"/>
+    <uses-permission android:name="com.fsck.k9.permission.READ_ATTACHMENT"/>
+    <permission android:description="@string/remote_control_desc" android:label="@string/remote_control_label" android:name="com.fsck.k9.permission.REMOTE_CONTROL" android:permissionGroup="android.permission-group.MESSAGES" android:protectionLevel="dangerous"/>
+    <uses-permission android:name="com.fsck.k9.permission.REMOTE_CONTROL"/>
+    <permission android:description="@string/read_messages_desc" android:label="@string/read_messages_label" android:name="com.fsck.k9.permission.READ_MESSAGES" android:permissionGroup="android.permission-group.MESSAGES" android:protectionLevel="normal"/>
+    <uses-permission android:name="com.fsck.k9.permission.READ_MESSAGES"/>
+    <permission android:description="@string/read_messages_desc" android:label="@string/delete_messages_label" android:name="com.fsck.k9.permission.DELETE_MESSAGES" android:permissionGroup="android.permission-group.MESSAGES" android:protectionLevel="normal"/>
+    <uses-permission android:name="com.fsck.k9.permission.DELETE_MESSAGES"/>
+    <application android:allowTaskReparenting="false" android:icon="@drawable/icon" android:label="@string/app_name" android:name="K9">
+        <meta-data android:name="android.app.default_searchable" android:value=".activity.Search"/>
+
+        <activity android:configChanges="locale" android:label="@string/app_name" android:launchMode="singleInstance" android:name="com.fsck.k9.activity.Accounts">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:configChanges="locale" android:label="@string/prefs_title" android:name="com.fsck.k9.activity.setup.Prefs">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/font_size_settings_title" android:name="com.fsck.k9.activity.setup.FontSizeSettings">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/account_setup_basics_title" android:name="com.fsck.k9.activity.setup.AccountSetupBasics">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/account_setup_account_type_title" android:name="com.fsck.k9.activity.setup.AccountSetupAccountType">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/account_setup_incoming_title" android:name="com.fsck.k9.activity.setup.AccountSetupIncoming">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/account_settings_composition_title" android:name="com.fsck.k9.activity.setup.AccountSetupComposition">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/account_setup_outgoing_title" android:name="com.fsck.k9.activity.setup.AccountSetupOutgoing">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/account_setup_options_title" android:name="com.fsck.k9.activity.setup.AccountSetupOptions">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/account_setup_names_title" android:name="com.fsck.k9.activity.setup.AccountSetupNames">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/choose_folder_title" android:name="com.fsck.k9.activity.ChooseFolder" android:theme="@style/Theme.K9Dialog">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/choose_identity_title" android:name="com.fsck.k9.activity.ChooseIdentity" android:theme="@style/Theme.K9Dialog">
+        </activity>
+        <activity android:label="@string/choose_account_title" android:name="com.fsck.k9.activity.ChooseAccount" android:theme="@style/Theme.K9Dialog">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/manage_identities_title" android:name="com.fsck.k9.activity.ManageIdentities">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/edit_identity_title" android:name="com.fsck.k9.activity.EditIdentity">
+        </activity>
+        <!-- XXX Note: this activity is hacked to ignore config changes,
+             since it doesn't currently handle them correctly in code. -->
+        <activity android:configChanges="keyboardHidden|orientation|locale" android:label="@string/account_setup_check_settings_title" android:name="com.fsck.k9.activity.setup.AccountSetupCheckSettings">
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/account_settings_title_fmt" android:name="com.fsck.k9.activity.setup.AccountSettings">
+        </activity>
+
+        <activity android:configChanges="locale" android:label="@string/folder_settings_title" android:name="com.fsck.k9.activity.setup.FolderSettings" android:theme="@android:style/Theme.Dialog">
+        </activity>
+        <activity android:configChanges="locale" android:launchMode="singleTask" android:name="com.fsck.k9.activity.FolderList">
+            <intent-filter>
+                <!-- This action is only to allow an entry point for launcher shortcuts -->
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="locale" android:launchMode="singleTask" android:name="com.fsck.k9.activity.MessageList">
+        </activity>
+        <activity android:configChanges="locale" android:name="com.fsck.k9.activity.MessageView" android:theme="@android:style/Theme.Light">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <data android:host="messages" android:scheme="email"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="locale" android:enabled="false" android:label="@string/app_name" android:name="com.fsck.k9.activity.MessageCompose">
+            <intent-filter>
+                <action android:name="android.intent.action.SENDTO"/>
+                <data android:scheme="mailto"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <data android:mimeType="*/*"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MULTIPLE"/>
+                <data android:mimeType="*/*"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <data android:scheme="mailto"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <!-- Search Activity - searchable -->
+        <activity android:configChanges="locale" android:label="@string/search_action" android:name="com.fsck.k9.activity.Search">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+        </activity>
+        <activity android:configChanges="locale" android:label="@string/shortcuts_title" android:name="com.fsck.k9.activity.LauncherShortcuts">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.fsck.k9.activity.AccessibleEmailContentActivity">
+        </activity>
+
+        <receiver android:enabled="true" android:name="com.fsck.k9.service.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.BACKGROUND_DATA_SETTING_CHANGED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.android.sync.SYNC_CONN_STATUS_CHANGED"/>
+            </intent-filter>
+              <intent-filter>
+                <action android:name="com.fsck.k9.service.BroadcastReceiver.scheduleIntent"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="com.fsck.k9.service.RemoteControlReceiver" android:permission="com.fsck.k9.permission.REMOTE_CONTROL">
+               <intent-filter>
+                 <action android:name="com.fsck.k9.K9RemoteControl.set"/>
+
+             </intent-filter>
+             <intent-filter>
+                <action android:name="com.fsck.k9.K9RemoteControl.requestAccounts"/>
+
+             </intent-filter>
+         </receiver>
+        <receiver android:enabled="true" android:name="com.fsck.k9.service.CoreReceiver">
+              <intent-filter>
+                <action android:name="com.fsck.k9.service.CoreReceiver.wakeLockRelease"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name="com.fsck.k9.service.StorageReceiver">
+            <intent-filter>
+<!-- 
+android.intent.action.MEDIA_MOUNTED
+
+     * Broadcast Action:  External media is present and mounted at its mount point.
+     * The path to the mount point for the removed media is contained in the Intent.mData field.
+     * The Intent contains an extra with name "read-only" and Boolean value to indicate if the
+     * media was mounted read only.
+
+ -->
+                <action android:name="android.intent.action.MEDIA_MOUNTED"/>
+<!-- 
+
+MEDIA_EJECT and MEDIA_UNMOUNTED are not defined here: they have to be dynamically registered 
+otherwise it would make K-9 start at the wrong time
+
+ -->
+                <data android:scheme="file"/>
+            </intent-filter>
+        </receiver>
+        <service android:enabled="true" android:name="com.fsck.k9.service.MailService">
+        </service>
+        <service android:enabled="true" android:name="com.fsck.k9.service.PushService">
+         </service>
+         <service android:enabled="true" android:name="com.fsck.k9.service.PollService">
+         </service>
+         <service android:enabled="true" android:name="com.fsck.k9.service.RemoteControlService" android:permission="com.fsck.k9.permission.REMOTE_CONTROL">
+          </service>
+         <service android:enabled="true" android:name="com.fsck.k9.service.SleepService">
+         </service>
+        <provider android:authorities="com.fsck.k9.attachmentprovider" android:grantUriPermissions="true" android:multiprocess="true" android:name="com.fsck.k9.provider.AttachmentProvider" android:readPermission="com.fsck.k9.permission.READ_ATTACHMENT"/>
+        <provider android:authorities="com.fsck.k9.messageprovider" android:grantUriPermissions="true" android:multiprocess="true" android:name="com.fsck.k9.provider.MessageProvider" android:readPermission="com.fsck.k9.permission.READ_MESSAGES" android:writePermission="com.fsck.k9.permission.DELETE_MESSAGES"/>
+    <receiver android:name="com.fsck.k9.EmmaInstrument.SMSInstrumentedReceiver">
+<intent-filter>
+<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+</intent-filter>
+</receiver>
+<activity android:label="EmmaInstrumentationActivity" android:name="com.fsck.k9.EmmaInstrument.InstrumentedActivity"/>
+</application>
+<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.fsck.k9.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.fsck.k9"/>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+</manifest>

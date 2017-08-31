@@ -1,0 +1,609 @@
+Buildfile: /vagrant/subjects/tool_subjects/new/Translate/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: TranslateActivity
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for TranslateActivity...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+[gettarget] WARNING: No minSdkVersion value set. Application will install on all Android versions.
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Translate/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Translate/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Translate/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Translate/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Translate/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Translate/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Translate/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for TranslateActivity...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] Found 1 AIDL files.
+     [aidl] Compiling 1 AIDL files.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 19 source files to /vagrant/subjects/tool_subjects/new/Translate/bin/classes
+    [javac] Note: /vagrant/subjects/tool_subjects/new/Translate/src/com/beust/android/translate/TranslateActivity.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] Note: Some input files use unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/new/Translate/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/new/Translate/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/new/Translate/bin/classes.dex...
+       [dx] Merged dex A (45 defs/76.9KiB) with dex B (2 defs/1.1KiB). Result is 47 defs/91.2KiB. Took 0.6s
+       [dx] Merged dex A (47 defs/91.2KiB) with dex B (297 defs/326.8KiB). Result is 344 defs/505.5KiB. Took 0.7s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/new/Translate/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/new/Translate/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ad.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ad.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ad.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ae.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ae.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ae.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/af.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/af.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/af.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ag.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ag.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ag.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ai.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ai.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ai.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/al.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/al.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/al.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/am.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/am.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/am.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/an.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/an.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/an.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ao.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ao.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ao.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ar.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ar.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ar.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/as.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/as.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/as.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/at.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/at.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/at.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/au.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/au.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/au.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/aw.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/aw.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/aw.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ax.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ax.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ax.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/az.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/az.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/az.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ba.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ba.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ba.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/babelfish.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/babelfish.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/babelfish.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bb.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bb.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bb.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bd.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bd.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bd.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/be.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/be.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/be.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bf.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bf.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bf.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bg.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bh.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bh.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bh.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bi.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bi.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bi.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bj.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bj.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bj.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bn.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bo.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bo.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/br.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/br.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/br.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bs.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bs.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bs.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bt.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bt.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bt.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bv.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bv.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bv.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bw.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bw.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bw.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/by.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/by.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/by.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/bz.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bz.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/bz.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ca.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ca.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ca.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/catalonia.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/catalonia.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/catalonia.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cc.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cd.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cd.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cd.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cf.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cf.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cf.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cg.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ch.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ch.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ch.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ci.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ci.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ci.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ck.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ck.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ck.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cl.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cl.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cl.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cn.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/co.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/co.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/co.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cr.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cs.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cs.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cs.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cu.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cu.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cu.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cv.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cv.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cv.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cx.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cx.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cx.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cy.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cy.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cy.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/cz.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cz.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/cz.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/de.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/de.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/de.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/dj.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/dj.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/dj.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/dk.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/dk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/dk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/dm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/dm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/dm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/dz.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/dz.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/dz.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ec.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ec.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ec.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ee.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ee.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ee.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/eg.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/eg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/eg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/eh.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/eh.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/eh.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/england.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/england.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/england.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/er.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/er.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/er.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/es.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/es.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/es.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/et.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/et.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/et.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/europeanunion.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/europeanunion.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/europeanunion.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/fam.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fam.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fam.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/fi.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fi.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fi.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/fj.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fj.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fj.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/fk.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/fm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/fo.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fo.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/fr.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/fr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ga.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ga.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ga.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gb.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gb.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gb.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gd.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gd.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gd.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ge.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ge.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ge.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gf.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gf.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gf.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gh.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gh.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gh.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gi.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gi.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gi.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gl.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gl.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gl.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gn.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gp.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gp.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gp.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gq.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gq.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gq.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gr.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gs.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gs.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gs.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gt.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gt.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gt.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gu.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gu.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gu.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gw.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gw.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gw.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/gy.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gy.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/gy.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/hk.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/hk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/hk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/hm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/hm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/hm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/hn.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/hn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/hn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/hr.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/hr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/hr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ht.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ht.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ht.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/hu.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/hu.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/hu.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/id.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/id.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/id.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ie.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ie.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ie.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/il.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/il.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/il.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/in.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/in.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/in.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/io.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/io.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/io.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/iq.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/iq.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/iq.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ir.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ir.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ir.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/is.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/is.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/is.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/it.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/it.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/it.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/jm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/jm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/jm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/jo.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/jo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/jo.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/jp.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/jp.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/jp.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ke.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ke.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ke.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/kg.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/kh.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kh.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kh.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ki.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ki.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ki.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/km.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/km.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/km.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/kn.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/kp.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kp.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kp.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/kr.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/kw.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kw.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kw.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ky.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ky.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ky.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/kz.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kz.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/kz.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/la.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/la.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/la.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/lb.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lb.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lb.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/lc.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/li.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/li.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/li.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/lk.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/lr.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ls.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ls.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ls.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/lt.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lt.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lt.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/lu.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lu.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lu.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/lv.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lv.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/lv.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ly.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ly.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ly.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ma.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ma.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ma.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mc.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/md.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/md.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/md.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/me.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/me.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/me.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mg.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mh.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mh.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mh.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mk.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ml.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ml.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ml.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mn.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mo.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mo.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mp.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mp.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mp.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mq.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mq.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mq.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mr.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ms.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ms.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ms.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mt.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mt.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mt.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mu.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mu.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mu.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mv.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mv.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mv.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mw.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mw.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mw.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mx.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mx.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mx.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/my.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/my.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/my.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/mz.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mz.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/mz.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/na.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/na.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/na.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/nc.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ne.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ne.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ne.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/nf.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nf.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nf.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ng.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ng.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ng.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ni.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ni.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ni.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/nl.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nl.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nl.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/no.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/no.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/no.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/np.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/np.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/np.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/nr.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/nu.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nu.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nu.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/nz.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nz.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/nz.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/om.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/om.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/om.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/pa.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pa.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pa.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/pe.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pe.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pe.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/pf.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pf.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pf.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/pg.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ph.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ph.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ph.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/pk.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/pl.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pl.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pl.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/pm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/pn.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/pr.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ps.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ps.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ps.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/pt.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pt.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pt.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/pw.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pw.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/pw.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/py.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/py.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/py.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/qa.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/qa.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/qa.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/re.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/re.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/re.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ro.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ro.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ro.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/rs.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/rs.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/rs.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ru.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ru.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ru.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/rw.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/rw.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/rw.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sa.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sa.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sa.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sb.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sb.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sb.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sc.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/scotland.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/scotland.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/scotland.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sd.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sd.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sd.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/se.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/se.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/se.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sg.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sh.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sh.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sh.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/si.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/si.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/si.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sj.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sj.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sj.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sk.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sl.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sl.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sl.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sn.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/so.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/so.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/so.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sr.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/st.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/st.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/st.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sv.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sv.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sv.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sy.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sy.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sy.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/sz.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sz.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/sz.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tc.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/td.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/td.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/td.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tf.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tf.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tf.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tg.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/th.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/th.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/th.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tj.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tj.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tj.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tk.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tk.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tk.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tl.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tl.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tl.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tn.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/to.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/to.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/to.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tr.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tr.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tr.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tt.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tt.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tt.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tv.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tv.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tv.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tw.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tw.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tw.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/tz.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tz.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/tz.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ua.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ua.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ua.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ug.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ug.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ug.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/um.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/um.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/um.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/us.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/us.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/us.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/uy.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/uy.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/uy.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/uz.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/uz.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/uz.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/va.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/va.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/va.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/vc.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/vc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/vc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ve.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ve.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ve.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/vg.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/vg.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/vg.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/vi.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/vi.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/vi.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/vn.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/vn.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/vn.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/vu.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/vu.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/vu.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/wales.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/wales.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/wales.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/wf.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/wf.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/wf.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ws.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ws.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ws.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/ye.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ye.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/ye.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/yt.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/yt.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/yt.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/za.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/za.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/za.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/zm.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/zm.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/zm.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Translate/res/drawable/zw.png => /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/zw.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Translate/bin/res/drawable/zw.png: 0% size of source)
+   [crunch] Crunched 247 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating TranslateActivity-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/new/Translate/bin/TranslateActivity-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/new/Translate/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/new/Translate/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/new/Translate/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/new/Translate/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 44 seconds

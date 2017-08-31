@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2012 Rahul Agarwal
+ 
+  This file is part of the World Clock
+  World Clock is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  World Clock is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with World Clock.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+
+    <string name="app_name">World Clock</string>
+    <string name="menu_add">Add Zone</string>
+    <string name="menu_edit">Edit</string>
+    <string name="menu_delete">Remove</string>
+    <string name="menu_about">About</string>
+    
+    <!-- Timezone Edit Activity -->
+    <string name="title_timezone_add">Add Time Zone</string>
+    <string name="title_timezone_edit">Edit Time Zone</string>
+    <string name="timezone_pick_zone">Pick a time zone</string>
+    <string name="timezone_pick_name">Custom name</string>
+    <string name="timezone_save">Save</string>
+    <string name="timezone_cancel">Cancel</string>
+    <string name="timezone_search_filter">Type to narrow search...</string>   
+    <string name="error_must_pick_zone_name">Please select a timezone and custom name</string>
+    
+    <!-- About dialog -->	
+    <string name="about_title">AndroidOpenSourceApps.org</string>
+	<string name="about_message">This app is free software. Please consider a donation, visit <a href="http://www.androidopensourceapps.org">AndroidOpenSourceApps.org</a> to find more details.</string>
+</resources>

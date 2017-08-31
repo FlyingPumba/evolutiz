@@ -1,0 +1,108 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/build_acteve.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: SyncMyPix
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for SyncMyPix...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/rsLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for SyncMyPix...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] No changes in the AndroidManifest files.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Found new input file
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] No need to generate new BuildConfig.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 1 source file to /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/classes
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/libs/simply-facebook-0.1.3-BETA.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Using Pre-Dexed simply-facebook-0.1.3-BETA-fd47309a4ed0fbb2cb726bd821bb72a7.jar <- /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/libs/simply-facebook-0.1.3-BETA.jar
+      [dex] Using Pre-Dexed annotations-5442badee1f6d6457826eac12c92c46e.jar <- /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] Using Pre-Dexed emma_device-e790229f52a04d2b195df6976ccc31d7.jar <- /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Found modified input file
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/classes.dex...
+       [dx] Merged dex A (140 defs/238.0KiB) with dex B (29 defs/72.2KiB). Result is 169 defs/371.1KiB. Took 0.8s
+       [dx] Merged dex A (169 defs/371.1KiB) with dex B (2 defs/1.1KiB). Result is 171 defs/460.8KiB. Took 0.2s
+       [dx] Merged dex A (171 defs/460.8KiB) with dex B (297 defs/326.8KiB). Result is 468 defs/997.9KiB. Took 0.3s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/res
+   [crunch] Crunched 0 PNG files to update cache
+
+-package-resources:
+     [aapt] No changed resources or assets. SyncMyPix.ap_ remains untouched
+
+-package:
+[apkbuilder] Found modified input file
+[apkbuilder] Creating SyncMyPix-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/SyncMyPix-debug.apk
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/SyncMyPix/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 18 seconds

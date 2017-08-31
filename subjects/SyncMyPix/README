@@ -1,0 +1,22 @@
+android.permission.INTERNET
+	This permission is required to access the facebook login page and sync the photos from the facebook profile
+	Path: Start->Tap on button Sync
+
+	A3T: a3t would have exposed this as this requires only one tap on the sync button.
+
+android.permission.READ_CONTACTS:
+	
+android.permission.WRITE_CONTACTS:
+
+	Both depend on the above permission.
+
+android.permission.RECEIVE_BOOT_COMPLETED:
+
+android.permission.ACCESS_NETWORK_STATE:
+	
+android.permission.WAKE_LOCK:
+	
+
+android.permission.READ_LOGS:
+
+	This permission is trigerred when the application resumes form paused state.

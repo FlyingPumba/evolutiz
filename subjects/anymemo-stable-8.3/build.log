@@ -1,0 +1,194 @@
+Buildfile: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: MainTabs
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for MainTabs...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for MainTabs...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 139 source files to /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/classes
+    [javac] Note: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/src/oauth/signpost/AbstractOAuthProvider.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] Note: Some input files use unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/libs/httpmime-4.1.2.jar
+      [dex] input: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/libs/httpcore-4.1.2.jar
+      [dex] input: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/libs/apache-mime4j-core-0.7.jar
+      [dex] input: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/libs/httpclient-4.1.2.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/libs/httpmime-4.1.2.jar -> httpmime-4.1.2-2e79409bcd05873a29d71e60362a3f40.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/libs/httpcore-4.1.2.jar -> httpcore-4.1.2-78a82297aaf2e530776282a5af00373f.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/libs/apache-mime4j-core-0.7.jar -> apache-mime4j-core-0.7-e7d1d13bc69d4f0d9df6d70a34382e0a.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/libs/httpclient-4.1.2.jar -> httpclient-4.1.2-925e19c663daa372bda3c1433b49547a.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/classes.dex...
+       [dx] Merged dex A (327 defs/521.4KiB) with dex B (2 defs/1.1KiB). Result is 329 defs/627.4KiB. Took 1.6s
+       [dx] Merged dex A (329 defs/627.4KiB) with dex B (15 defs/17.6KiB). Result is 344 defs/802.5KiB. Took 0.4s
+       [dx] Merged dex A (344 defs/802.5KiB) with dex B (163 defs/133.4KiB). Result is 507 defs/1204.0KiB. Took 0.5s
+       [dx] Merged dex A (507 defs/1204.0KiB) with dex B (61 defs/79.1KiB). Result is 568 defs/1735.3KiB. Took 0.5s
+       [dx] Result compacted from 2810.9KiB to 967.1KiB to save 1843.8KiB
+       [dx] Merged dex A (568 defs/1735.3KiB) with dex B (273 defs/254.1KiB). Result is 841 defs/967.1KiB. Took 0.6s
+       [dx] Merged dex A (841 defs/967.1KiB) with dex B (297 defs/326.8KiB). Result is 1138 defs/1557.5KiB. Took 0.2s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/about.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/about.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/about.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/alert_dialog_icon.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/alert_dialog_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/alert_dialog_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/am_widget_frame.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/am_widget_frame.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/am_widget_frame.png: 59% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/audio.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/audio.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/audio.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/back.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/back.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/back.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/back_icon.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/back_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/back_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/close.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/close.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/close.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/color_picker_frame.9.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/color_picker_frame.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/color_picker_frame.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/database.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/database.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/database.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/dir.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/dir.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/dir.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/donate.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/donate.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/donate.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/download.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/download.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/download.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/edit.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/edit.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/edit.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/exit.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/exit.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/exit.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/export_icon.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/export_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/export_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/file_manager.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/file_manager.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/file_manager.png: 94% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/help.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/help.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/help.png: 92% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/icon.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/icon_notification.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/icon_notification.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/icon_notification.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/import_icon.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/import_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/import_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/merge.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/merge.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/merge.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/misc.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/misc.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/misc.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/next.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/next.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/next.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/open.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/open.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/open.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/options.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/options.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/options.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/picture.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/picture.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/picture.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/previous.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/previous.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/previous.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/recent.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/recent.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/recent.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/server.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/server.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/server.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/speak_a_48.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/speak_a_48.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/speak_a_48.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/speak_q_48.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/speak_q_48.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/speak_q_48.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/text.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/text.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/text.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/trash.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/trash.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/trash.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/res/drawable/undo_icon.png => /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/undo_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/res/drawable/undo_icon.png: 0% size of source)
+   [crunch] Crunched 34 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating MainTabs-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/MainTabs-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/swifthand/anymemo-stable-8.3/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 2 minutes 5 seconds

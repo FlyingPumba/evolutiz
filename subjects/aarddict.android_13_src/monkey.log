@@ -1,0 +1,302 @@
+:Monkey: seed=0 count=10000
+:AllowPackage: aarddict.android
+:IncludeCategory: android.intent.category.LAUNCHER
+:IncludeCategory: android.intent.category.MONKEY
+// Event percentages:
+//   0: 15.0%
+//   1: 10.0%
+//   2: 15.0%
+//   3: 25.0%
+//   4: 15.0%
+//   5: 2.0%
+//   6: 2.0%
+//   7: 1.0%
+//   8: 15.0%
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=aarddict.android/.LookupActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=aarddict.android/.LookupActivity } in package aarddict.android
+    // Allowing start of Intent { act=aarddict.android.ACTION_NO_DICTIONARIES cmp=aarddict.android/.DictionariesActivity } in package aarddict.android
+    // activityResuming(aarddict.android)
+    // Rejecting start of Intent { act=android.intent.action.VIEW dat=http://aarddict.org cmp=com.android.browser/.BrowserActivity } in package com.android.browser
+:Sending Pointer ACTION_DOWN x=234.0 y=197.0
+:Sending Pointer ACTION_UP x=238.0 y=190.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=56.0 y=280.0
+:Sending Pointer ACTION_UP x=69.0 y=271.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=1.0
+:Sending Pointer ACTION_DOWN x=28.0 y=490.0
+:Sending Pointer ACTION_UP x=28.0 y=490.0
+    // Rejecting start of Intent { act=android.intent.action.VIEW dat=http://aarddict.org cmp=com.android.browser/.BrowserActivity } in package com.android.browser
+:Sending Pointer ACTION_DOWN x=403.0 y=645.0
+:Sending Pointer ACTION_UP x=397.0 y=661.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=-1.0
+:Sending Pointer ACTION_DOWN x=98.0 y=752.0
+:Sending Pointer ACTION_UP x=98.0 y=752.0
+:Sending Pointer ACTION_MOVE x=0.0 y=-5.0
+:Sending Pointer ACTION_DOWN x=264.0 y=458.0
+:Sending Pointer ACTION_UP x=264.0 y=458.0
+    // Rejecting start of Intent { act=android.intent.action.VIEW dat=http://aarddict.org cmp=com.android.browser/.BrowserActivity } in package com.android.browser
+:Sending Pointer ACTION_DOWN x=113.0 y=170.0
+:Sending Pointer ACTION_UP x=98.0 y=156.0
+    //[calendar_time:2014-08-25 07:38:42.377  system_uptime:125949]
+    // Sending event #100
+    // Allowing start of Intent { cmp=aarddict.android/.LookupActivity } in package aarddict.android
+    // activityResuming(aarddict.android)
+:Sending Pointer ACTION_MOVE x=2.0 y=0.0
+:Sending Pointer ACTION_DOWN x=196.0 y=463.0
+:Sending Pointer ACTION_UP x=236.0 y=454.0
+:Sending Pointer ACTION_DOWN x=107.0 y=579.0
+:Sending Pointer ACTION_UP x=107.0 y=579.0
+:Sending Pointer ACTION_MOVE x=4.0 y=1.0
+:Sending Pointer ACTION_MOVE x=3.0 y=-1.0
+    // activityResuming(com.android.launcher)
+    // Rejecting resume of package com.android.launcher
+:Sending Pointer ACTION_DOWN x=304.0 y=685.0
+:Sending Pointer ACTION_UP x=317.0 y=674.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=1.0
+:Sending Pointer ACTION_DOWN x=102.0 y=574.0
+:Sending Pointer ACTION_UP x=102.0 y=574.0
+:Sending Pointer ACTION_DOWN x=106.0 y=130.0
+    //[calendar_time:2014-08-25 07:38:47.655  system_uptime:131227]
+    // Sending event #200
+:Sending Pointer ACTION_UP x=115.0 y=120.0
+:Sending Pointer ACTION_MOVE x=2.0 y=2.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Sending Pointer ACTION_DOWN x=339.0 y=689.0
+:Sending Pointer ACTION_UP x=339.0 y=689.0
+:Sending Pointer ACTION_DOWN x=311.0 y=44.0
+:Sending Pointer ACTION_UP x=311.0 y=44.0
+:Sending Pointer ACTION_DOWN x=337.0 y=221.0
+:Sending Pointer ACTION_UP x=337.0 y=221.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=4.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=437.0 y=183.0
+:Sending Pointer ACTION_UP x=450.0 y=158.0
+:Sending Pointer ACTION_DOWN x=5.0 y=58.0
+:Sending Pointer ACTION_UP x=-4.0 y=58.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-2.0
+    // Rejecting start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] cmp=com.android.launcher/com.android.launcher2.Launcher } in package com.android.launcher
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=aarddict.android/.LookupActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=aarddict.android/.LookupActivity } in package aarddict.android
+:Sending Pointer ACTION_DOWN x=80.0 y=200.0
+:Sending Pointer ACTION_UP x=80.0 y=200.0
+    //[calendar_time:2014-08-25 07:38:52.906  system_uptime:136478]
+    // Sending event #300
+    //[calendar_time:2014-08-25 07:38:52.916  system_uptime:136488]
+    // Sending event #300
+:Sending Pointer ACTION_MOVE x=2.0 y=-4.0
+    // Allowing start of Intent { cmp=aarddict.android/.DictionariesActivity } in package aarddict.android
+:Sending Pointer ACTION_DOWN x=278.0 y=104.0
+:Sending Pointer ACTION_UP x=278.0 y=104.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=4.0
+    // Allowing start of Intent { cmp=aarddict.android/.DictionaryInfoActivity } in package aarddict.android
+:Sending Pointer ACTION_DOWN x=380.0 y=319.0
+:Sending Pointer ACTION_UP x=380.0 y=319.0
+:Sending Pointer ACTION_MOVE x=2.0 y=4.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=318.0 y=142.0
+:Sending Pointer ACTION_UP x=318.0 y=142.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=0.0
+:Sending Pointer ACTION_DOWN x=417.0 y=796.0
+:Sending Pointer ACTION_UP x=412.0 y=-14.0
+:Sending Pointer ACTION_DOWN x=182.0 y=84.0
+:Sending Pointer ACTION_UP x=182.0 y=84.0
+:Sending Pointer ACTION_DOWN x=19.0 y=228.0
+:Sending Pointer ACTION_UP x=23.0 y=237.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=11.0 y=702.0
+    //[calendar_time:2014-08-25 07:38:59.894  system_uptime:143466]
+    // Sending event #400
+:Sending Pointer ACTION_UP x=11.0 y=702.0
+:Sending Pointer ACTION_DOWN x=424.0 y=48.0
+:Sending Pointer ACTION_UP x=415.0 y=28.0
+:Sending Pointer ACTION_MOVE x=-1.0 y=0.0
+:Sending Pointer ACTION_DOWN x=306.0 y=601.0
+:Sending Pointer ACTION_UP x=306.0 y=601.0
+:Sending Pointer ACTION_DOWN x=116.0 y=449.0
+:Sending Pointer ACTION_UP x=126.0 y=434.0
+:Sending Pointer ACTION_DOWN x=336.0 y=525.0
+:Sending Pointer ACTION_UP x=336.0 y=525.0
+:Sending Pointer ACTION_DOWN x=27.0 y=609.0
+:Sending Pointer ACTION_UP x=27.0 y=609.0
+:Sending Pointer ACTION_DOWN x=44.0 y=89.0
+:Sending Pointer ACTION_UP x=53.0 y=99.0
+:Sending Pointer ACTION_DOWN x=126.0 y=450.0
+:Sending Pointer ACTION_UP x=126.0 y=450.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=aarddict.android/.LookupActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=aarddict.android/.LookupActivity } in package aarddict.android
+:Sending Pointer ACTION_DOWN x=231.0 y=14.0
+:Sending Pointer ACTION_UP x=231.0 y=14.0
+:Sending Pointer ACTION_MOVE x=4.0 y=3.0
+:Sending Pointer ACTION_DOWN x=278.0 y=582.0
+:Sending Pointer ACTION_UP x=278.0 y=582.0
+:Sending Pointer ACTION_DOWN x=451.0 y=437.0
+:Sending Pointer ACTION_UP x=451.0 y=437.0
+:Sending Pointer ACTION_DOWN x=98.0 y=44.0
+:Sending Pointer ACTION_UP x=98.0 y=44.0
+    //[calendar_time:2014-08-25 07:39:03.068  system_uptime:146639]
+    // Sending event #500
+    //[calendar_time:2014-08-25 07:39:03.072  system_uptime:146645]
+    // Sending event #500
+:Sending Pointer ACTION_DOWN x=472.0 y=768.0
+:Sending Pointer ACTION_UP x=472.0 y=768.0
+:Sending Pointer ACTION_DOWN x=103.0 y=92.0
+:Sending Pointer ACTION_UP x=103.0 y=92.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=aarddict.android/.LookupActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=aarddict.android/.LookupActivity } in package aarddict.android
+:Sending Pointer ACTION_DOWN x=216.0 y=252.0
+:Sending Pointer ACTION_UP x=216.0 y=252.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-2.0
+:Sending Pointer ACTION_DOWN x=428.0 y=212.0
+:Sending Pointer ACTION_UP x=428.0 y=212.0
+:Sending Pointer ACTION_DOWN x=164.0 y=545.0
+:Sending Pointer ACTION_UP x=176.0 y=559.0
+:Sending Pointer ACTION_DOWN x=367.0 y=799.0
+:Sending Pointer ACTION_UP x=367.0 y=799.0
+:Sending Pointer ACTION_DOWN x=57.0 y=269.0
+:Sending Pointer ACTION_UP x=57.0 y=269.0
+:Sending Pointer ACTION_DOWN x=128.0 y=32.0
+:Sending Pointer ACTION_UP x=128.0 y=32.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-4.0
+    // activityResuming(aarddict.android)
+:Sending Pointer ACTION_MOVE x=-2.0 y=-4.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=aarddict.android/.LookupActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=aarddict.android/.LookupActivity } in package aarddict.android
+:Sending Pointer ACTION_DOWN x=429.0 y=152.0
+    // Allowing start of Intent { cmp=aarddict.android/.DictionaryInfoActivity } in package aarddict.android
+:Sending Pointer ACTION_UP x=429.0 y=152.0
+:Sending Pointer ACTION_DOWN x=326.0 y=249.0
+:Sending Pointer ACTION_UP x=326.0 y=249.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+    //[calendar_time:2014-08-25 07:39:08.891  system_uptime:152462]
+    // Sending event #600
+:Sending Pointer ACTION_DOWN x=67.0 y=402.0
+:Sending Pointer ACTION_UP x=67.0 y=402.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=0.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_DOWN x=356.0 y=711.0
+:Sending Pointer ACTION_UP x=367.0 y=717.0
+:Sending Pointer ACTION_MOVE x=1.0 y=4.0
+:Sending Pointer ACTION_DOWN x=54.0 y=198.0
+:Sending Pointer ACTION_UP x=54.0 y=198.0
+:Sending Pointer ACTION_DOWN x=208.0 y=541.0
+:Sending Pointer ACTION_UP x=208.0 y=541.0
+:Sending Pointer ACTION_MOVE x=2.0 y=-1.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=aarddict.android/.LookupActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=aarddict.android/.LookupActivity } in package aarddict.android
+    // activityResuming(aarddict.android)
+:Sending Pointer ACTION_DOWN x=241.0 y=520.0
+:Sending Pointer ACTION_UP x=241.0 y=520.0
+:Sending Pointer ACTION_DOWN x=430.0 y=83.0
+:Sending Pointer ACTION_UP x=447.0 y=83.0
+:Sending Pointer ACTION_DOWN x=265.0 y=613.0
+:Sending Pointer ACTION_UP x=265.0 y=613.0
+    //[calendar_time:2014-08-25 07:39:13.492  system_uptime:157064]
+    // Sending event #700
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=aarddict.android/.LookupActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=aarddict.android/.LookupActivity } in package aarddict.android
+    // Allowing start of Intent { cmp=aarddict.android/.DictionaryInfoActivity } in package aarddict.android
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=aarddict.android/.LookupActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=aarddict.android/.LookupActivity } in package aarddict.android
+:Sending Pointer ACTION_DOWN x=318.0 y=520.0
+:Sending Pointer ACTION_UP x=318.0 y=520.0
+:Sending Pointer ACTION_MOVE x=2.0 y=1.0
+:Sending Pointer ACTION_DOWN x=388.0 y=614.0
+:Sending Pointer ACTION_UP x=386.0 y=595.0
+:Sending Pointer ACTION_DOWN x=305.0 y=352.0
+:Sending Pointer ACTION_UP x=305.0 y=352.0
+:Sending Pointer ACTION_DOWN x=295.0 y=797.0
+:Sending Pointer ACTION_UP x=295.0 y=797.0
+:Sending Pointer ACTION_DOWN x=447.0 y=8.0
+:Sending Pointer ACTION_UP x=447.0 y=8.0
+:Sending Pointer ACTION_DOWN x=326.0 y=623.0
+:Sending Pointer ACTION_UP x=326.0 y=623.0
+:Sending Pointer ACTION_DOWN x=14.0 y=548.0
+:Sending Pointer ACTION_UP x=13.0 y=548.0
+:Sending Pointer ACTION_DOWN x=168.0 y=506.0
+:Sending Pointer ACTION_UP x=168.0 y=506.0
+:Sending Pointer ACTION_DOWN x=359.0 y=662.0
+:Sending Pointer ACTION_UP x=359.0 y=662.0
+:Sending Pointer ACTION_DOWN x=479.0 y=758.0
+:Sending Pointer ACTION_UP x=479.0 y=758.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=1.0
+:Sending Pointer ACTION_MOVE x=4.0 y=1.0
+    //[calendar_time:2014-08-25 07:39:18.639  system_uptime:162210]
+    // Sending event #800
+:Sending Pointer ACTION_DOWN x=18.0 y=246.0
+:Sending Pointer ACTION_UP x=18.0 y=246.0
+:Sending Pointer ACTION_DOWN x=262.0 y=708.0
+:Sending Pointer ACTION_UP x=262.0 y=708.0
+:Sending Pointer ACTION_DOWN x=459.0 y=394.0
+:Sending Pointer ACTION_UP x=459.0 y=394.0
+:Sending Pointer ACTION_MOVE x=0.0 y=3.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-5.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=4.0 y=-3.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-1.0
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10000000;component=aarddict.android/.LookupActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=aarddict.android/.LookupActivity } in package aarddict.android
+:Sending Pointer ACTION_DOWN x=37.0 y=393.0
+:Sending Pointer ACTION_UP x=37.0 y=393.0
+:Sending Pointer ACTION_MOVE x=-2.0 y=-1.0
+:Sending Pointer ACTION_MOVE x=-5.0 y=-1.0
+    //[calendar_time:2014-08-25 07:39:23.912  system_uptime:167483]
+    // Sending event #900
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_DOWN x=83.0 y=482.0
+:Sending Pointer ACTION_UP x=83.0 y=482.0
+:Sending Pointer ACTION_DOWN x=429.0 y=577.0
+:Sending Pointer ACTION_UP x=429.0 y=577.0
+:Sending Pointer ACTION_DOWN x=345.0 y=399.0
+    // Rejecting start of Intent { act=android.intent.action.CALL_BUTTON cmp=com.android.contacts/.DialtactsActivity } in package com.android.contacts
+:Sending Pointer ACTION_UP x=349.0 y=400.0
+:Sending Pointer ACTION_MOVE x=-3.0 y=4.0
+:Sending Pointer ACTION_MOVE x=1.0 y=-5.0
+:Sending Pointer ACTION_UP x=0.0 y=0.0
+:Sending Pointer ACTION_MOVE x=-4.0 y=-5.0
+// CRASH: aarddict.android (pid 1303)
+// Short Msg: android.content.ActivityNotFoundException
+// Long Msg: android.content.ActivityNotFoundException: No Activity found to handle Intent { act=android.intent.action.VIEW dat=mailto:esr@thyrsus.com (has extras) }
+// Build Label: Android/full_x86/generic_x86:2.3.7/GINGERBREAD/eng.juntian.20111231.141301:eng/test-keys
+// Build Changelist: eng.juntian.20111231.141301
+// Build Time: 1325312041000
+// android.content.ActivityNotFoundException: No Activity found to handle Intent { act=android.intent.action.VIEW dat=mailto:esr@thyrsus.com (has extras) }
+// 	at android.app.Instrumentation.checkStartActivityResult(Instrumentation.java:1409)
+// 	at android.app.Instrumentation.execStartActivity(Instrumentation.java:1379)
+// 	at android.app.Activity.startActivityForResult(Activity.java:2827)
+// 	at android.app.Activity.startActivity(Activity.java:2933)
+// 	at android.text.style.URLSpan.onClick(URLSpan.java:62)
+// 	at android.text.method.LinkMovementMethod.action(LinkMovementMethod.java:134)
+// 	at android.text.method.LinkMovementMethod.onKeyDown(LinkMovementMethod.java:43)
+// 	at android.widget.TextView.doKeyDown(TextView.java:4484)
+// 	at android.widget.TextView.onKeyDown(TextView.java:4288)
+// 	at android.view.KeyEvent.dispatch(KeyEvent.java:1256)
+// 	at android.view.View.dispatchKeyEvent(View.java:3855)
+// 	at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+// 	at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+// 	at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+// 	at android.widget.TabHost.dispatchKeyEvent(TabHost.java:278)
+// 	at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+// 	at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+// 	at android.view.ViewGroup.dispatchKeyEvent(ViewGroup.java:789)
+// 	at com.android.internal.policy.impl.PhoneWindow$DecorView.superDispatchKeyEvent(PhoneWindow.java:1687)
+// 	at com.android.internal.policy.impl.PhoneWindow.superDispatchKeyEvent(PhoneWindow.java:1120)
+// 	at android.app.Activity.dispatchKeyEvent(Activity.java:2073)
+// 	at com.android.internal.policy.impl.PhoneWindow$DecorView.dispatchKeyEvent(PhoneWindow.java:1663)
+// 	at android.view.ViewRoot.deliverKeyEventToViewHierarchy(ViewRoot.java:2560)
+// 	at android.view.ViewRoot.handleFinishedEvent(ViewRoot.java:2535)
+// 	at android.view.ViewRoot.handleMessage(ViewRoot.java:1867)
+// 	at android.os.Handler.dispatchMessage(Handler.java:99)
+// 	at android.os.Looper.loop(Looper.java:130)
+// 	at android.app.ActivityThread.main(ActivityThread.java:3683)
+// 	at java.lang.reflect.Method.invokeNative(Native Method)
+// 	at java.lang.reflect.Method.invoke(Method.java:507)
+// 	at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:839)
+// 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:597)
+// 	at dalvik.system.NativeStart.main(Native Method)
+// 
+** Monkey aborted due to error.
+Events injected: 961
+:Dropped: keys=0 pointers=11 trackballs=0 flips=0
+## Network stats: elapsed time=50516ms (50516ms mobile, 0ms wifi, 0ms not connected)
+** System appears to have crashed at event 961 of 10000 using seed 0

@@ -1,0 +1,147 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: WikipediaActivity
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for WikipediaActivity...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for WikipediaActivity...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 24 source files to /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/libs/phonegap-1.4.1.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/libs/phonegap-1.4.1.jar -> phonegap-1.4.1-46b5ac1a9e37c63dacb68e6585058f19.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/classes.dex...
+       [dx] Merged dex A (35 defs/52.4KiB) with dex B (2 defs/1.1KiB). Result is 37 defs/61.7KiB. Took 0.4s
+       [dx] Merged dex A (37 defs/61.7KiB) with dex B (84 defs/149.4KiB). Result is 121 defs/251.9KiB. Took 0.5s
+       [dx] Merged dex A (121 defs/251.9KiB) with dex B (297 defs/326.8KiB). Result is 418 defs/704.8KiB. Took 0.5s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-hdpi/arrow.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-hdpi/arrow.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-hdpi/arrow.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-hdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-hdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-hdpi/icon.png: 97% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-hdpi/locate.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-hdpi/locate.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-hdpi/locate.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-hdpi/pin.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-hdpi/pin.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-hdpi/pin.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-hdpi/search.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-hdpi/search.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-hdpi/search.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-ldpi/arrow.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-ldpi/arrow.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-ldpi/arrow.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-ldpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-ldpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-ldpi/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-ldpi/locate.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-ldpi/locate.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-ldpi/locate.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-ldpi/pin.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-ldpi/pin.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-ldpi/pin.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-ldpi/search.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-ldpi/search.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-ldpi/search.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-mdpi/arrow.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-mdpi/arrow.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-mdpi/arrow.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-mdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-mdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-mdpi/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-mdpi/locate.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-mdpi/locate.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-mdpi/locate.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-mdpi/pin.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-mdpi/pin.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-mdpi/pin.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-mdpi/search.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-mdpi/search.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-mdpi/search.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/res/drawable-xhdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-xhdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/res/drawable-xhdpi/icon.png: 61% size of source)
+   [crunch] Crunched 16 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+     [aapt]     (skipping file '.gitignore' due to ANDROID_AAPT_IGNORE pattern '.*')
+     [aapt]     (skipping file '.gitignore' due to ANDROID_AAPT_IGNORE pattern '.*')
+     [aapt]     (skipping file '.gitreview' due to ANDROID_AAPT_IGNORE pattern '.*')
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating WikipediaActivity-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/WikipediaActivity-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 42 seconds

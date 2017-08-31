@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2010 Holger Macht <holger@homac.de>
+
+ This file is released under the GPLv3.
+-->
+<resources>
+  <string name="app_name">Mirrored</string>
+  <string name="context_menu_delete">Delete</string>
+  <string name="context_menu_save">Save</string>
+  <string name="progress_dialog_load">Loading articles. Please wait...</string>
+  <string name="progress_dialog_save_all">Saving articles. Please wait...</string>
+  <string name="caption_offline">Offline</string>
+    <string name="error_load_article">Could not load article</string>
+  <string name="no_articles">No articles available</string>
+  <string name="switch_to_offline_mode">Switched to offline mode</string>
+  <string name="please_check_internet">Please check your internet
+  connection and try again.</string>
+  <string name="error_saving">Something went wrong while accessing the
+  SD card, please make sure it is ready and try again.</string>
+  <string name="menu_categories">Categories</string>
+  <string name="menu_preferences">Preferences</string>
+  <string name="menu_save_all">Save all</string>
+  <string name="menu_delete_all">Delete all</string>
+  <string name="menu_save_article">Save</string>
+  <string name="article_saved">Article saved</string>
+  <string name="article_deleted">Article deleted</string>
+  <string name="menu_external_browser">Open in external browser</string>
+  <string name="menu_offline_mode">Offline mode</string>
+  <string name="menu_online_mode">Online mode</string>
+  <string name="menu_refresh">Refresh</string>
+  <string name="menu_back_to_articles_list">Back to overview</string>
+  <string name="preferences_category_behaviour">Behaviour</string>
+  <string name="preferences_category_visual">Visual</string>
+  <string name="preference_start_with_category">Category to start with</string>
+  <string name="preference_start_with_category_summary">
+    Instead of displaying the headlines, start with specific category.</string>
+  <string name="preference_dark_background">Dark Background</string>
+  <string name="preference_dark_background_summary">
+    Light text on dark background.</string>
+  <string name="preference_download_images">Load Images</string>
+  <string name="preference_download_images_summary">Load images,
+  increases startup time and data traffic.</string>
+  <string name="preference_download_all_articles">Download articles on start</string>
+  <string name="preference_download_all_articles_summary">
+    Immediately download all articles when starting or choosing a
+    category. Causes longer startup times and more memory usage, but
+    also results in faster article loading.</string>
+  <string name="preference_start_with_offline_mode">Start with offline
+  mode</string>
+  <string name="preference_start_with_offline_mode_summary">Always start
+  application in offline mode.</string>
+
+  <string name="preferences_category_misc">Misc</string>
+
+  <string name="preference_about_title">About</string>
+  <string name="preference_about_dialog_title">@string/app_name</string>
+  <string name="preference_about_dialog_message">
+    Read Spiegel Online News\n
+    \n
+    Copyright (C) 2010 Holger Macht: holger@homac.de\n
+    \n
+    This application is licensed under the General Public License
+    version 3, see http://www.gnu.org/licenses/gpl.html for the full
+    license text. This software comes with absolutely no warranty, use
+    at your own risk.
+  </string>
+  <string name="preference_font_size_title">Font Size</string>
+  <string name="preference_font_size_summary">The font size for articles
+  as a relative value from 0 to 10</string>
+</resources>

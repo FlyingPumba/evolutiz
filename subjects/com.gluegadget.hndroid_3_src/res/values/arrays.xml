@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="default_action_options">
+		<item>Nothing</item>
+		<item>Open in browser</item>
+		<item>Mobile adapted view</item>
+		<item>Comments</item>
+	</string-array>
+	<string-array name="default_action_values">
+		<item>nothing</item>
+		<item>open-in-browser</item>
+		<item>mobile-adapted-view</item>
+		<item>view-comments</item>
+	</string-array>
+</resources>

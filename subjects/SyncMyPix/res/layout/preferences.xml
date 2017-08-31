@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+     
+     <EditTextPreference  
+         android:key="loginStatus" 
+         android:title="@string/preferences.loginstatus"
+         android:summary="@string/preferences.notloggedin"
+         android:enabled="false"  
+         />  
+    <PreferenceCategory android:title="@string/preferences.sourceHeader" >
+        <ListPreference
+            android:title="@string/preferences.source"
+            android:summary="@string/preferences.source.summary"
+            android:key="source"
+            android:defaultValue="com.nloko.android.syncmypix.facebook.FacebookSyncService"
+            android:entries="@array/sources"
+            android:entryValues="@array/sourceValues" />
+            
+        <ListPreference
+            android:title="@string/preferences.schedule"
+            android:summary="@string/preferences.schedule.summary"
+            android:key="sched_freq"
+            android:defaultValue="0"
+            android:entries="@array/scheduleFreq"
+            android:entryValues="@array/scheduleFreqValues" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preferences.matchingHeader">
+
+        <CheckBoxPreference
+            android:title="@string/preferences.intelliMatch"
+            android:defaultValue="true"
+            android:summary="@string/preferences.intelliMatch.summary"
+            android:key="intelliMatch" />
+            
+        <CheckBoxPreference
+            android:title="@string/preferences.phoneOnly"
+            android:defaultValue="false"
+            android:summary="@string/preferences.phoneOnly.summary"
+            android:key="phoneOnly" />
+            
+        <CheckBoxPreference
+            android:title="@string/preferences.overrideReadOnlyCheck"
+            android:defaultValue="false"
+            android:summary="@string/preferences.overrideReadOnlyCheck.summary"
+            android:key="overrideReadOnlyCheck" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preferences.picturesHeader">
+    	<CheckBoxPreference
+            android:title="@string/preferences.maxquality"
+            android:defaultValue="false"
+            android:summary="@string/preferences.maxquality.summary"
+            android:key="maxQuality" />
+        <CheckBoxPreference
+            android:title="@string/preferences.cropsquare"
+            android:defaultValue="true"
+            android:summary="@string/preferences.cropsquare.summary"
+            android:key="cropSquare" />
+        <CheckBoxPreference
+            android:title="@string/preferences.cache"
+            android:defaultValue="true"
+            android:summary="@string/preferences.cache.summary"
+            android:key="cache" />
+    </PreferenceCategory>
+    
+</PreferenceScreen>

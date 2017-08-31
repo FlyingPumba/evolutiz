@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <!-- This is our main container -->
+    
+    
+    <LinearLayout android:layout_height="50dip" android:orientation="vertical" android:layout_width="fill_parent" android:id="@+id/Spacer1"></LinearLayout>
+	<!-- This is only cosmetic, acting as a spacer -->
+	
+	
+	<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="@string/instructions_english"
+    android:id="@+id/Instructions"
+    android:textSize="25sp"
+    android:gravity="center"
+    />
+    <!-- This contains our instructions. Note the text size and gravity parameters. -->
+    
+	<LinearLayout android:layout_height="50dip" android:layout_width="fill_parent" android:orientation="vertical" android:id="@+id/Spacer"></LinearLayout>
+   	<!-- This is only cosmetic, acting as a spacer -->
+   
+	<LinearLayout android:layout_height="wrap_content" android:layout_width="fill_parent" android:gravity="center"    android:id="@+id/Buttons">
+	    <!-- This is a container for our buttons. Note that it is horizontal. 
+	    This is to make the buttons appear next to each other. Also note the gravity parameter. -->
+	    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/Coin" android:text="@string/coin_english" android:textSize="20sp" android:layout_margin="5dip"></Button>
+	    <Button android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/Tube" android:text="@string/tube_english" android:textSize="20sp" android:layout_margin="5dip" ></Button>
+	    <!-- Note the text size parameters -->
+	</LinearLayout>
+    
+</LinearLayout>

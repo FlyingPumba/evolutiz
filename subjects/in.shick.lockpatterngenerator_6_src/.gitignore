@@ -1,0 +1,10 @@
+*.swo
+*.swp
+*.vim
+bin
+build.properties
+build.xml
+gen
+local.properties
+proguard-project.txt
+proguard.cfg

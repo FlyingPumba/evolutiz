@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/callprompt"
+    >
+
+    <TextView 
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"
+    android:id="@+id/mid"
+        android:layout_alignParentBottom="true"
+      android:layout_marginBottom="80dip"
+    android:text="myLock"
+    android:textColor="@color/droid" android:textSize="20sp"
+    android:layout_centerHorizontal="true"
+    />
+    <Button  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:id="@+id/answerbutton"
+    android:text="&#10004;"
+    android:textColor="@color/droid" android:textSize="50sp"
+    android:gravity="center"
+    android:background="@color/translucent_white"
+    android:layout_toLeftOf="@id/mid"
+        android:layout_alignParentBottom="true"
+    />
+    <Button  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+    android:id="@+id/rejectbutton"
+    android:text="&#10008;"
+    android:textColor="@color/red" android:textSize="50sp"
+
+    android:background="@color/translucent_white"
+    android:layout_toRightOf="@id/mid"
+        android:layout_alignParentBottom="true"      
+    />
+</RelativeLayout>

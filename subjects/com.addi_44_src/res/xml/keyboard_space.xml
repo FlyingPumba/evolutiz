@@ -1,0 +1,24 @@
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="10%p"
+    android:horizontalGap="0px"
+    android:verticalGap="0px"
+    android:keyHeight="56dp"
+    >
+	<Row> 
+       <Key android:keyLabel="." android:keyOutputText="." android:keyEdgeFlags="left"/>
+       <Key android:keyLabel="," android:keyOutputText="," />
+       <Key android:keyLabel=";" android:keyOutputText=";" />
+       <Key android:keyLabel=":" android:keyOutputText=":" />
+       <Key android:keyLabel="&apos;" android:keyOutputText="&apos;" />
+       <Key android:keyLabel="&quot;" android:keyOutputText="&quot;" android:keyEdgeFlags="right"/>
+	</Row>
+	<Row> 
+       <Key android:keyLabel="[]" android:keyOutputText="[]" android:keyEdgeFlags="left"/>
+       <Key android:keyLabel="[" android:keyOutputText="[" />
+       <Key android:keyLabel="]" android:keyOutputText="]" />
+       <Key android:keyLabel="()" android:keyOutputText="()" />
+       <Key android:keyLabel="(" android:keyOutputText="(" />
+       <Key android:keyLabel=")" android:keyOutputText=")" android:keyEdgeFlags="right"/>
+	</Row>
+
+</Keyboard>

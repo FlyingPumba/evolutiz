@@ -1,0 +1,305 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (X11; I; SunOS 4.1.3 sun4m) [Netscape]">
+   <TITLE>JAMA: Java Matrix Package</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<CENTER>
+<TABLE BORDER CELLSPACING=0 CELLPADDING=25 BGCOLOR="#FFFFCC">
+<TR><TD><FONT SIZE=10><B><I>JAMA</I> : A Java Matrix Package</B></FONT></TD></TR>
+</TABLE>
+<P>
+<FONT SIZE=-1>
+[ <A HREF="#Background">Background</A> ] .....
+[ <A HREF="#Package">The Package</A> ] .....
+[ <A HREF="#Request">Request for Comments</A> ] .....
+[ <A HREF="#Authors">Authors</A> ] .....
+[ <A HREF="#Related">Related Links</A> ]
+</FONT>
+</CENTER>
+
+<P><HR>
+
+<P><A NAME="Background"><B><FONT SIZE=+2>Background</FONT></B></A>
+
+<P>JAMA is a basic linear algebra package for Java. It provides user-level
+classes for constructing and manipulating real, dense matrices.&nbsp; It is
+meant to provide sufficient functionality for routine problems, packaged in a
+way that is natural and understandable to non-experts.&nbsp; It is intended to
+serve as <I>the</I> standard matrix class for Java, and will be proposed as
+such to the <A
+HREF="http://www.nist.gov/cgi-bin/exit_nist.cgi?timeout=5&url=http://www.npac.syr.edu/javagrande/">Java
+Grande Forum</A> and then to <A
+HREF="http://www.nist.gov/cgi-bin/exit_nist.cgi?timeout=5&url=http://java.sun.com/">Sun</A>.&nbsp;
+A straightforward public-domain reference implementation has been developed by
+the <A HREF="http://www.mathworks.com/">MathWorks</A> and <A
+HREF="http://www.nist.gov/">NIST</A> as a strawman for such a class.&nbsp; We
+are releasing this version in order to obtain public comment.  There is no
+guarantee that future versions of JAMA will be compatible with this one.
+
+<P>A sibling matrix package, <a
+href="ftp://math.nist.gov/pub/Jampack/Jampack/AboutJampack.html">Jampack</a>,
+has also been developed at NIST and the University of Maryland.  The
+two packages arose from the need to evaluate alternate designs for
+the implementation of matrices in Java.  JAMA is based on a single
+matrix class within a strictly object-oriented framework.  Jampack
+uses a more open approach that lends itself to extension by the
+user.  As it turns out, for the casual user the packages differ
+principally in the syntax of the matrix operations.  We hope you will
+take the time to look at Jampack along with JAMA.  There is much to
+be learned from both packages.
+
+<P><B>Capabilities. </B>JAMA is comprised of six Java classes: Matrix,
+CholeskyDecomposition, LUDecomposition, QRDecomposition, SingularValueDecomposition
+and EigenvalueDecomposition.
+
+<P>The Matrix class provides the fundamental operations of numerical inear
+algebra.&nbsp; Various constructors create Matrices from two dimensional
+arrays of double precision floating point numbers.&nbsp; Various <I>gets
+</I>and <I>sets</I> provide access to submatrices and matrix elements.&nbsp;&nbsp;
+The basic arithmetic operations include matrix addition and multiplication,
+matrix norms and selected element-by-element array operations.&nbsp; A
+convenient matrix print method is also included.
+
+<P>Five fundamental matrix decompositions, which consist of pairs or triples
+of matrices, permutation vectors, and the like, produce results in five
+decomposition classes.&nbsp; These decompositions are accessed by the Matrix
+class to compute solutions of simultaneous linear equations, determinants,
+inverses and other matrix functions.&nbsp; The five decompositions are
+<UL>
+<LI>
+Cholesky Decomposition of symmetric, positive definite matrices</LI>
+
+<LI>
+LU Decomposition (Gaussian elimination) of rectangular matrices</LI>
+
+<LI>
+QR Decomposition of rectangular matrices</LI>
+
+<LI>
+Eigenvalue Decomposition of both symmetric and nonsymmetric square matrices</LI>
+
+<LI>
+Singular Value Decomposition of rectangular matrices</LI>
+</UL>
+The current JAMA deals only with real matrices. We expect that future versions
+will also address complex matrices. This has been deferred since crucial
+design decisions cannot be made until certain issues regarding the implementation
+of complex in the Java language are resolved.
+
+<P>The design of JAMA represents a compromise between the need for pure
+and elegant object-oriented design and the need to enable high performance
+implementations.
+<CENTER>&nbsp;</CENTER>
+
+<CENTER><TABLE BORDER CELLSPACING=0 CELLPADDING=10 BGCOLOR="#FFFFCC" NOSAVE >
+<CAPTION><B><I>Summary of JAMA Capabilities</I></B></CAPTION>
+
+<TR VALIGN=TOP NOSAVE>
+<TD ALIGN=RIGHT VALIGN=TOP NOSAVE><B>Object Manipulation</B></TD>
+
+<TD NOSAVE>constructors&nbsp;
+<BR>set elements&nbsp;
+<BR>get elements&nbsp;
+<BR>copy&nbsp;
+<BR>clone</TD>
+</TR>
+
+<TR VALIGN=TOP NOSAVE>
+<TD ALIGN=RIGHT NOSAVE><B>Elementary Operations</B></TD>
+
+<TD NOSAVE>addition&nbsp;
+<BR>subtraction&nbsp;
+<BR>multiplication&nbsp;
+<BR>scalar multiplication&nbsp;
+<BR>element-wise multiplication&nbsp;
+<BR>element-wise division&nbsp;
+<BR>unary minus&nbsp;
+<BR>transpose&nbsp;
+<BR>norm</TD>
+</TR>
+
+<TR VALIGN=TOP NOSAVE>
+<TD ALIGN=RIGHT NOSAVE><B>Decompositions</B></TD>
+
+<TD>Cholesky&nbsp;
+<BR>LU&nbsp;
+<BR>QR&nbsp;
+<BR>SVD&nbsp;
+<BR>symmetric eigenvalue&nbsp;
+<BR>nonsymmetric eigenvalue</TD>
+</TR>
+
+<TR VALIGN=TOP NOSAVE>
+<TD ALIGN=RIGHT NOSAVE><B>Equation Solution</B></TD>
+
+<TD>nonsingular systems&nbsp;
+<BR>least squares</TD>
+</TR>
+
+<TR VALIGN=TOP NOSAVE>
+<TD ALIGN=RIGHT VALIGN=TOP NOSAVE><B>Derived Quantities</B></TD>
+
+<TD>condition number&nbsp;
+<BR>determinant&nbsp;
+<BR>rank&nbsp;
+<BR>inverse&nbsp;
+<BR>pseudoinverse</TD>
+</TR>
+</TABLE></CENTER>
+
+<CENTER>&nbsp;</CENTER>
+
+<P><B>Example of Use.</B>&nbsp; The following simple example solves a 3x3
+linear system Ax=b and computes the
+<BR>norm of the residual.
+
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<FONT FACE="Courier New,Courier">double[][] array = {{1.,2.,3},{4.,5.,6.},{7.,8.,10.}};</FONT>
+<BR><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Matrix
+A = new Matrix(array);</FONT>
+<BR><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Matrix
+b = Matrix.random(3,1);</FONT>
+<BR><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Matrix
+x = A.solve(b);</FONT>
+<BR><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Matrix
+Residual = A.times(x).minus(b);</FONT>
+<BR><FONT FACE="Courier New,Courier">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; double
+rnorm = Residual.normInf();</FONT>
+
+<P><B>Reference Implementation.&nbsp; </B>The implementation of JAMA downloadable
+from this site is meant to be a reference implementation only.&nbsp;&nbsp;
+As such, it is pedagogical in nature.&nbsp; The algorithms employed are
+similar to those of the classic Wilkinson and Reinsch Handbook, i.e. the
+same algorithms used in <A HREF="http://www.nist.gov/cgi-bin/exit_nist.cgi?timeout=5&url=http://www.netlib.org/eispack/">EISPACK</A>,
+<A HREF="http://www.nist.gov/cgi-bin/exit_nist.cgi?timeout=5&url=http://www.netlib.org/linpack/">LINPACK</A> and <A HREF="http://www.nist.gov/cgi-bin/exit_nist.cgi?timeout=5&url=http://www.mathworks.com/">MATLAB</A>.&nbsp;
+Matrices are stored internally as native Java arrays (i.e., <FONT FACE="Courier New,Courier">double[][])</FONT>.&nbsp;
+The coding style is straightforward and readable.&nbsp; While the reference
+implementation itself should provide reasonable execution speed for small
+to moderate size applications, we fully expect software vendors and Java
+VMs to provide versions which are optimized for particular environments.
+
+<P><B>Not Covered.&nbsp;</B> JAMA is by no means a complete linear algebra
+environment.&nbsp; For example, there are no provisions for matrices with
+particular structure (e.g., banded, sparse) or for more specialized decompositions
+(e.g. Shur, generalized eigenvalue).&nbsp; Complex matrices are not included.&nbsp;
+It is not our intention to ignore these important problems.&nbsp; We expect
+that some of these (e.g. complex) will be addressed in future versions.&nbsp;
+It is our intent that the design of JAMA not preclude extension to some
+of these additional areas.
+
+<P>Finally, JAMA is not a general-purpose array class.&nbsp; Instead, it
+focuses on the principle mathematical functionality required to do numerical
+linear algebra.&nbsp; As a result, there are no methods for array operations
+such as reshaping or applying elementary functions (e.g. sine, exp, log)
+elementwise.&nbsp; Such operations, while quite useful in many applications,
+are best collected into a separate <I>array</I> class.
+
+<P>
+<HR WIDTH="100%">
+
+<A NAME="Package"><H2>The Package</H2></A>
+Version 1.0.1
+<UL>
+<LI>
+<A HREF="doc/">Documentation</A></LI>
+
+<LI>
+<A HREF="examples/MagicSquareExample.java">Example</A></LI>
+
+<LI>
+Source [ <A HREF="Jama-1.0.1.zip">zip archive, 113Kb</A> ]</LI>
+ [ <A HREF="Jama-1.0.1.tar.gz">gzipped tar file, 81Kb</A> ]
+<LI> Jar file [ <A HREF="Jama-1.0.1.jar">Jama-1.0.1.jar</A> ]
+<LI> <A HREF="ChangeLog">ChangeLog</A>
+</UL>
+<H2>
+
+<HR WIDTH="100%"></H2>
+
+<A NAME="Request"><H2>Request for Comments</H2></A>
+
+We plan to propose JAMA as the primary linear algebra package for Java.&nbsp;
+Such standardization will insure wide availability, improving the portability
+and performance of Java applications with numeric components. Because of
+this we are interested in hearing any and all comments of potential users.&nbsp;
+While we are cognisant that JAMA will not be suitable for all users, we
+hope it to be useful to the majority of routine applications.
+
+<P><B>Discussion Group</B>. A discussion group has been established for
+such comments. Comments and suggestions sent to <A HREF="mailto:jama@nist.gov">jama@nist.gov</A>
+will automatically be sent to the JAMA authors, as well as to all subscribers.&nbsp;
+To subscribe, send email to <A HREF="mailto:listproc@nist.gov">listproc@nist.gov</A>
+containing the text <B><TT>subscribe jama your-name</TT></B> in the message
+body.&nbsp; A public <A HREF="http://www.nist.gov/itl/div896/emaildir/jama/maillist.html">archive
+of the discussion</A> can be browsed.
+
+<P><FONT SIZE=-1>[Note: NIST will not use the email addresses provided for any
+purpose other than the maintenance of this discussion list.  Participants may
+remove themselves at any time by sending an email message to <A
+HREF="mailto:listproc@nist.gov">listproc@nist.gov</A> containing the text
+<B><TT>unsubscribe jama</TT></B> in the message body. See the <A
+HREF="http://www.nist.gov/public_affairs/disclaim.htm">NIST Privacy
+Policy</A>.]</FONT>
+<H2>
+
+<HR WIDTH="100%"></H2>
+
+<A NAME="Authors"><H2>Authors</H2></A>
+
+JAMA's initial design, as well as this reference implementation, was developed
+by
+<CENTER><TABLE CELLSPACING=0 CELLPADDING=20 COLS=2 WIDTH="70%" NOSAVE >
+<TR NOSAVE>
+<TD VALIGN=TOP NOSAVE>Joe Hicklin
+<BR><A HREF="http://www.nist.gov/cgi-bin/exit_nist.cgi?timeout=5&url=http://www.mathworks.com/company/cleve_bio.shtml">Cleve Moler</A>
+<BR>Peter Webb
+<DIV ALIGN=right>... <I>from <A HREF="http://www.mathworks.com/">The MathWorks&nbsp;</A>&nbsp;&nbsp;</I>&nbsp;</DIV>
+</TD>
+
+<TD><A HREF="/~RBoisvert/">Ronald F. Boisvert</A>
+<BR><A HREF="/~BMiller/">Bruce Miller</A>
+<BR><A HREF="/~RPozo/">Roldan Pozo</A>
+<BR><A HREF="/~KRemington/">Karin Remington</A>
+<DIV ALIGN=right>... <I>from <A HREF="http://www.nist.gov/">NIST</A>&nbsp;</I>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</DIV>
+</TD>
+</TR>
+</TABLE></CENTER>
+
+  <P><B>Copyright Notice</B>
+  <I>This software is a cooperative product of The MathWorks and the National 
+  Institute of Standards and Technology (NIST) which has been released to the
+  public domain.  Neither The MathWorks nor NIST assumes any responsibility
+  whatsoever for its use by other parties, and makes no guarantees, expressed
+  or implied, about its quality, reliability, or any other characteristic.</I>
+  </P>
+
+<P></P>
+<HR WIDTH="100%">
+
+<A NAME="Related"><H2>Related Links</H2></A>
+
+<UL>
+<LI>
+<A HREF="http://www.nist.gov/cgi-bin/exit_nist.cgi?timeout=5&url=http://www.npac.syr.edu/projects/javaforcse/">Java for Computational
+Science and Engineering</A></LI>
+
+<LI>
+<A HREF="/javanumerics/">Java Numerics Working Group</A></LI>
+
+<LI>
+<A HREF="http://math.nist.gov/mcsd/">NIST Mathematical and Computational
+Sciences Division</A></LI>
+</UL>
+
+<HR><FONT SIZE=-1>Identification of commercial products on this page is
+for information only, and&nbsp; does not imply recommendation or endorsement
+by the National Institute of Standards and Technology.</FONT>
+<P></P>
+<CENTER><I>Last change in this page : June 23, 1999. <A HREF="mailto:jama@nist.gov">Comments
+welcome.</A></I></CENTER>
+
+</BODY>
+</HTML>

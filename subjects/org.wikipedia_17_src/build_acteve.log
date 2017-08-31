@@ -1,0 +1,2976 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/build_acteve.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: WikipediaActivity
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for WikipediaActivity...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/rsLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for WikipediaActivity...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] No changes in the AndroidManifest files.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] No changed resources. R.java and Manifest.java untouched.
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 1 source file to /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/classes...
+
+-post-compile:
+   [delete] Deleting: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/a3t/original.jar
+      [jar] Building jar: /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/a3t/original.jar
+
+instrument:
+     [java] a3t.in.jars=/vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/a3t/original.jar:/vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/libs/phonegap-1.4.1.jar
+     [java] a3t.out.jar=/vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/a3t/instrumented.jar
+     [java] a3t.lib.jars=/home/vagrant/tools/acteve/jars/a3t_symbolic.jar:/home/vagrant/tools/acteve/jars/a3t_models.jar:/home/vagrant/android-sdk-linux/platforms/android-10/android.jar:/home/vagrant/tools/acteve/a3t_sdk/instrumentedframework.jar:/home/vagrant/tools/acteve/jars/a3t_stubs.jar:/home/vagrant/tools/acteve/jars/emma.jar
+     [java] a3t.inputmeths.file=null
+     [java] a3t.modelmeths.file=null
+     [java] a3t.out.dir=/vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/a3t
+     [java] a3t.sdk.dir=/home/vagrant/tools/acteve/a3t_sdk (SDK if null)
+     [java] a3t.rw.kind=ID_FIELD_WRITE
+     [java] a3t.whiteflds.file=null
+     [java] a3t.blackflds.file=null
+     [java] a3t.whitemeths.file=null
+     [java] a3t.instrflds.all=false
+     [java] SHAUVIK config.inJars=/vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/a3t/original.jar:/vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/libs/phonegap-1.4.1.jar
+     [java] SHAUVIK config.libJars=/home/vagrant/tools/acteve/jars/a3t_symbolic.jar:/home/vagrant/tools/acteve/jars/a3t_models.jar:/home/vagrant/android-sdk-linux/platforms/android-10/android.jar:/home/vagrant/tools/acteve/a3t_sdk/instrumentedframework.jar:/home/vagrant/tools/acteve/jars/a3t_stubs.jar:/home/vagrant/tools/acteve/jars/emma.jar
+     [java] Failed to load class: com.phonegap.CameraLauncher
+     [java] couldn't find class: org.apache.commons.codec.binary.Base64 (is your soot-class-path set properly?)
+     [java]     public static final acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _plus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _minus(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _mul(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _div(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _rem(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _neg(acteve.symbolic.integer.Expression)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_3;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_2, _sym_tmp_1;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_3 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         _sym_tmp_2 = interfaceinvoke _sym_tmp_3.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _neg()>();
+     [java]         return _sym_tmp_2;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cast(acteve.symbolic.integer.Expression, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Algebraic _sym_tmp_4;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_3, _sym_tmp_1;
+     [java]         int _sym_tmp_2;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_4 = (acteve.symbolic.integer.Algebraic) _sym_tmp_1;
+     [java]         _sym_tmp_3 = interfaceinvoke _sym_tmp_4.<acteve.symbolic.integer.Algebraic: acteve.symbolic.integer.Expression _cast(int)>(_sym_tmp_2);
+     [java]         return _sym_tmp_3;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Equality _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Equality) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Equality: acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, java.lang.Object, java.lang.Object)
+     [java]     {
+     [java]         acteve.symbolic.integer.Equality _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         java.lang.Object _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: java.lang.Object;
+     [java]         _sym_tmp_4 := @parameter3: java.lang.Object;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Equality) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.RefConstant: acteve.symbolic.integer.RefConstant get(java.lang.Object)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.RefConstant: acteve.symbolic.integer.RefConstant get(java.lang.Object)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Equality: acteve.symbolic.integer.Expression _eq(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _ne(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Equality _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Equality) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Equality: acteve.symbolic.integer.Expression _ne(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _ne(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, java.lang.Object, java.lang.Object)
+     [java]     {
+     [java]         acteve.symbolic.integer.Equality _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         java.lang.Object _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: java.lang.Object;
+     [java]         _sym_tmp_4 := @parameter3: java.lang.Object;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Equality) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.RefConstant: acteve.symbolic.integer.RefConstant get(java.lang.Object)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.RefConstant: acteve.symbolic.integer.RefConstant get(java.lang.Object)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Equality: acteve.symbolic.integer.Expression _ne(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cmpl(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.CMP _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.CMP) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.CMP: acteve.symbolic.integer.Expression _cmpl(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cmpl(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.CMP _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.CMP) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.CMP: acteve.symbolic.integer.Expression _cmpl(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cmpg(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float, float)
+     [java]     {
+     [java]         acteve.symbolic.integer.CMP _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float;
+     [java]         _sym_tmp_4 := @parameter3: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.CMP) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.CMP: acteve.symbolic.integer.Expression _cmpg(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cmpg(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double, double)
+     [java]     {
+     [java]         acteve.symbolic.integer.CMP _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double;
+     [java]         _sym_tmp_4 := @parameter3: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.CMP) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.CMP: acteve.symbolic.integer.Expression _cmpg(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _and(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _and(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _and(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _and(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _or(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _or(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _or(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _or(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _xor(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _xor(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _xor(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _xor(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftR(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftR(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftR(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         long _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftR(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftL(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftL(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftL(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         long _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftL(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftUR(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftUR(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _shiftUR(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.Bitwise _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         long _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.Bitwise) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = interfaceinvoke _sym_tmp_6.<acteve.symbolic.integer.Bitwise: acteve.symbolic.integer.Expression _shiftUR(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _cmp(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long, long)
+     [java]     {
+     [java]         acteve.symbolic.integer.LongExpression _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long;
+     [java]         _sym_tmp_4 := @parameter3: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.LongExpression) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.integer.LongExpression: acteve.symbolic.integer.Expression _cmp(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _gt(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.IntegerExpression _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.IntegerExpression) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.integer.IntegerExpression: acteve.symbolic.integer.Expression _gt(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _lt(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.IntegerExpression _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.IntegerExpression) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.integer.IntegerExpression: acteve.symbolic.integer.Expression _lt(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _ge(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.IntegerExpression _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.IntegerExpression) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.integer.IntegerExpression: acteve.symbolic.integer.Expression _ge(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _le(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int, int)
+     [java]     {
+     [java]         acteve.symbolic.integer.IntegerExpression _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4, _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int;
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.integer.IntegerExpression) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.integer.IntegerExpression: acteve.symbolic.integer.Expression _le(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int[], int, int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_6, _sym_tmp_5;
+     [java]         int[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: int[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.IntegerArrayConstant: acteve.symbolic.array.IntegerArrayConstant get(int[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, int[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         int[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: int[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.IntegerArrayConstant: acteve.symbolic.array.IntegerArrayConstant get(int[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, short[], int, short)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         short _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         short[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: short[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: short;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.ShortArrayConstant: acteve.symbolic.array.ShortArrayConstant get(short[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, short[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         short[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: short[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.ShortArrayConstant: acteve.symbolic.array.ShortArrayConstant get(short[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, char[], int, char)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         char _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         char[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: char[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: char;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.CharArrayConstant: acteve.symbolic.array.CharArrayConstant get(char[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, char[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         char[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: char[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.CharArrayConstant: acteve.symbolic.array.CharArrayConstant get(char[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, byte[], int, byte)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         byte _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         byte[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: byte[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: byte;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.ByteArrayConstant: acteve.symbolic.array.ByteArrayConstant get(byte[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, byte[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         byte[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: byte[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.ByteArrayConstant: acteve.symbolic.array.ByteArrayConstant get(byte[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, boolean[], int, boolean)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         boolean _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         boolean[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: boolean[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: boolean;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.BooleanArrayConstant: acteve.symbolic.array.BooleanArrayConstant get(boolean[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, boolean[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         boolean[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: boolean[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.BooleanArrayConstant: acteve.symbolic.array.BooleanArrayConstant get(boolean[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long[], int, long)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         long _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         long[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: long[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: long;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.LongArrayConstant: acteve.symbolic.array.LongArrayConstant get(long[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.LongConstant: acteve.symbolic.integer.LongConstant get(long)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, long[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         long[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: long[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.LongArrayConstant: acteve.symbolic.array.LongArrayConstant get(long[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float[], int, float)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         float _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         float[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: float[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: float;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.FloatArrayConstant: acteve.symbolic.array.FloatArrayConstant get(float[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.FloatConstant: acteve.symbolic.integer.FloatConstant get(float)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, float[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         float[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: float[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.FloatArrayConstant: acteve.symbolic.array.FloatArrayConstant get(float[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double[], int, double)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_8;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_7, _sym_tmp_3, _sym_tmp_2, _sym_tmp_1;
+     [java]         double _sym_tmp_6;
+     [java]         int _sym_tmp_5;
+     [java]         double[] _sym_tmp_4;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_4 := @parameter3: double[];
+     [java]         _sym_tmp_5 := @parameter4: int;
+     [java]         _sym_tmp_6 := @parameter5: double;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         if _sym_tmp_3 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_8 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_8 = staticinvoke <acteve.symbolic.array.DoubleArrayConstant: acteve.symbolic.array.DoubleArrayConstant get(double[])>(_sym_tmp_4);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_5);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         if _sym_tmp_3 != null goto label4;
+     [java] 
+     [java]         _sym_tmp_3 = staticinvoke <acteve.symbolic.integer.DoubleConstant: acteve.symbolic.integer.DoubleConstant get(double)>(_sym_tmp_6);
+     [java] 
+     [java]      label4:
+     [java]         nop;
+     [java]         _sym_tmp_7 = virtualinvoke _sym_tmp_8.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aset(acteve.symbolic.integer.Expression,acteve.symbolic.integer.Expression)>(_sym_tmp_2, _sym_tmp_3);
+     [java]         return _sym_tmp_7;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression, acteve.symbolic.integer.Expression, double[], int)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_6;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_5, _sym_tmp_2, _sym_tmp_1;
+     [java]         int _sym_tmp_4;
+     [java]         double[] _sym_tmp_3;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_2 := @parameter1: acteve.symbolic.integer.Expression;
+     [java]         _sym_tmp_3 := @parameter2: double[];
+     [java]         _sym_tmp_4 := @parameter3: int;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         if _sym_tmp_2 != null goto label1;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_6 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         goto label2;
+     [java] 
+     [java]      label1:
+     [java]         _sym_tmp_6 = staticinvoke <acteve.symbolic.array.DoubleArrayConstant: acteve.symbolic.array.DoubleArrayConstant get(double[])>(_sym_tmp_3);
+     [java] 
+     [java]      label2:
+     [java]         nop;
+     [java]         if _sym_tmp_2 != null goto label3;
+     [java] 
+     [java]         _sym_tmp_2 = staticinvoke <acteve.symbolic.integer.IntegerConstant: acteve.symbolic.integer.IntegerConstant get(int)>(_sym_tmp_4);
+     [java] 
+     [java]      label3:
+     [java]         nop;
+     [java]         _sym_tmp_5 = virtualinvoke _sym_tmp_6.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _aget(acteve.symbolic.integer.Expression)>(_sym_tmp_2);
+     [java]         return _sym_tmp_5;
+     [java]     }
+     [java]     public static final acteve.symbolic.integer.Expression _alen(acteve.symbolic.integer.Expression)
+     [java]     {
+     [java]         acteve.symbolic.array.Array _sym_tmp_3;
+     [java]         acteve.symbolic.integer.Expression _sym_tmp_2, _sym_tmp_1;
+     [java] 
+     [java]         _sym_tmp_1 := @parameter0: acteve.symbolic.integer.Expression;
+     [java]         if _sym_tmp_1 != null goto label0;
+     [java] 
+     [java]         return null;
+     [java] 
+     [java]      label0:
+     [java]         _sym_tmp_3 = (acteve.symbolic.array.Array) _sym_tmp_1;
+     [java]         _sym_tmp_2 = virtualinvoke _sym_tmp_3.<acteve.symbolic.array.Array: acteve.symbolic.integer.Expression _alen()>();
+     [java]         return _sym_tmp_2;
+     [java]     }
+     [java] SHAUVIK: Soot args-w -p cg off -keep-line-number -keep-bytecode-offset -dynamic-class acteve.symbolic.Util -soot-classpath /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/a3t/original.jar:/vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/libs/phonegap-1.4.1.jar:/home/vagrant/tools/acteve/jars/a3t_symbolic.jar:/home/vagrant/tools/acteve/jars/a3t_models.jar:/home/vagrant/android-sdk-linux/platforms/android-10/android.jar:/home/vagrant/tools/acteve/a3t_sdk/instrumentedframework.jar:/home/vagrant/tools/acteve/jars/a3t_stubs.jar:/home/vagrant/tools/acteve/jars/emma.jar -dynamic-package acteve.symbolic.integer. -dynamic-package models. -outjar -d /vagrant/subjects/tool_subjects/dynodroid/org.wikipedia_17_src/bin/a3t/instrumented.jar -O -validate acteve.symbolic.DummyMain
+     [java] Soot started on Sun Nov 09 06:28:43 UTC 2014
+     [java] com.borismus.webintent.WebIntent
+     [java] com.chariotsolutions.toast.plugin.ToastPlugin$RunnableToast
+     [java] com.chariotsolutions.toast.plugin.ToastPlugin
+     [java] com.phonegap.menu.AppMenu$1
+     [java] com.phonegap.menu.AppMenu
+     [java] com.phonegap.menu.MenuInfo
+     [java] com.phonegap.plugins.globalization.GlobalizationCommand
+     [java] com.phonegap.plugins.globalization.GlobalizationError
+     [java] com.phonegap.plugins.globalization.Resources
+     [java] com.phonegap.softkeyboard.SoftKeyBoard
+     [java] com.phonegap.urlcache.URLCache
+     [java] com.schaul.plugins.share.Share
+     [java] org.wikipedia.ApplicationVersion
+     [java] org.wikipedia.BuildConfig
+     [java] org.wikipedia.CacheModePlugin
+     [java] org.wikipedia.EmmaInstrument.EmmaInstrumentation
+     [java] org.wikipedia.EmmaInstrument.FinishListener
+     [java] org.wikipedia.EmmaInstrument.InstrumentedActivity$CoverageCollector
+     [java] org.wikipedia.EmmaInstrument.InstrumentedActivity
+     [java] org.wikipedia.EmmaInstrument.SMSInstrumentedReceiver
+     [java] org.wikipedia.HttpApi
+     [java] org.wikipedia.NearMePlugin
+     [java] org.wikipedia.PreferencesPlugin
+     [java] org.wikipedia.R$attr
+     [java] org.wikipedia.R$drawable
+     [java] org.wikipedia.R$id
+     [java] org.wikipedia.R$layout
+     [java] org.wikipedia.R$menu
+     [java] org.wikipedia.R$string
+     [java] org.wikipedia.R$xml
+     [java] org.wikipedia.R
+     [java] org.wikipedia.SearchSuggestionsProvider
+     [java] org.wikipedia.SelectTextPlugin
+     [java] org.wikipedia.WikipediaActivity
+     [java] org.wikipedia.WikipediaApp
+     [java] com.phonegap.AccelListener
+     [java] com.phonegap.App
+     [java] com.phonegap.AudioHandler
+     [java] com.phonegap.AudioPlayer
+     [java] com.phonegap.AuthenticationToken
+     [java] com.phonegap.BatteryListener$1
+     [java] com.phonegap.BatteryListener
+     [java] com.phonegap.CallbackServer
+     [java] com.phonegap.Capture
+     [java] com.phonegap.CompassListener
+     [java] com.phonegap.ContactAccessor$WhereOptions
+     [java] com.phonegap.ContactAccessor
+     [java] com.phonegap.ContactAccessorSdk5
+     [java] com.phonegap.ContactManager
+     [java] com.phonegap.CordovaChromeClient$1
+     [java] com.phonegap.CordovaChromeClient$2
+     [java] com.phonegap.CordovaChromeClient$3
+     [java] com.phonegap.CordovaChromeClient$4
+     [java] com.phonegap.CordovaChromeClient$5
+     [java] com.phonegap.CordovaChromeClient$6
+     [java] com.phonegap.CordovaChromeClient$7
+     [java] com.phonegap.CordovaChromeClient$8
+     [java] com.phonegap.CordovaChromeClient$9
+     [java] com.phonegap.CordovaChromeClient
+     [java] com.phonegap.CordovaWebViewClient$1$1
+     [java] com.phonegap.CordovaWebViewClient$1
+     [java] com.phonegap.CordovaWebViewClient
+     [java] com.phonegap.Device$1
+     [java] com.phonegap.Device
+     [java] com.phonegap.DirectoryManager
+     [java] com.phonegap.DroidGap$1$1
+     [java] com.phonegap.DroidGap$1
+     [java] com.phonegap.DroidGap$2
+     [java] com.phonegap.DroidGap$3
+     [java] com.phonegap.DroidGap$4
+     [java] com.phonegap.DroidGap$5
+     [java] com.phonegap.DroidGap$6
+     [java] com.phonegap.DroidGap$7$1
+     [java] com.phonegap.DroidGap$7
+     [java] com.phonegap.DroidGap
+     [java] com.phonegap.ExifHelper
+     [java] com.phonegap.FileTransfer$1
+     [java] com.phonegap.FileTransfer$2
+     [java] com.phonegap.FileTransfer
+     [java] com.phonegap.FileUploadResult
+     [java] com.phonegap.FileUtils
+     [java] com.phonegap.GeoBroker
+     [java] com.phonegap.GeoListener
+     [java] com.phonegap.GpsListener
+     [java] com.phonegap.HttpHandler
+     [java] com.phonegap.LinearLayoutSoftKeyboardDetect
+     [java] com.phonegap.NetworkListener
+     [java] com.phonegap.NetworkManager$1
+     [java] com.phonegap.NetworkManager
+     [java] com.phonegap.Notification$1$1
+     [java] com.phonegap.Notification$1
+     [java] com.phonegap.Notification$2$1
+     [java] com.phonegap.Notification$2$2
+     [java] com.phonegap.Notification$2$3
+     [java] com.phonegap.Notification$2
+     [java] com.phonegap.Notification$3$1
+     [java] com.phonegap.Notification$3
+     [java] com.phonegap.Notification$4$1
+     [java] com.phonegap.Notification$4
+     [java] com.phonegap.Notification
+     [java] com.phonegap.PreferenceNode
+     [java] com.phonegap.PreferenceSet
+     [java] com.phonegap.StandAlone
+     [java] com.phonegap.Storage
+     [java] com.phonegap.TempListener
+     [java] com.phonegap.api.IPlugin
+     [java] com.phonegap.api.LOG
+     [java] com.phonegap.api.PhonegapActivity
+     [java] com.phonegap.api.Plugin
+     [java] com.phonegap.api.PluginManager$1
+     [java] com.phonegap.api.PluginManager
+     [java] com.phonegap.api.PluginResult$Status
+     [java] com.phonegap.api.PluginResult
+     [java] com.phonegap.file.EncodingException
+     [java] com.phonegap.file.FileExistsException
+     [java] com.phonegap.file.InvalidModificationException
+     [java] com.phonegap.file.NoModificationAllowedException
+     [java] com.phonegap.file.TypeMismatchException
+     [java] Instrumenting <com.borismus.webintent.WebIntent: void <init>()>
+     [java] Instrumenting <com.borismus.webintent.WebIntent: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.borismus.webintent.WebIntent: void onNewIntent(android.content.Intent)>
+     [java] Instrumenting <com.borismus.webintent.WebIntent: void startActivity(java.lang.String,android.net.Uri,java.lang.String,java.util.Map)>
+     [java] Instrumenting <com.borismus.webintent.WebIntent: void <clinit>()>
+     [java] Instrumenting <com.borismus.webintent.WebIntent: boolean[][] $VRi()>
+     [java] Instrumenting <com.chariotsolutions.toast.plugin.ToastPlugin$RunnableToast: void <init>(com.chariotsolutions.toast.plugin.ToastPlugin,java.lang.String,int)>
+     [java] Instrumenting <com.chariotsolutions.toast.plugin.ToastPlugin$RunnableToast: void run()>
+     [java] Instrumenting <com.chariotsolutions.toast.plugin.ToastPlugin$RunnableToast: void <clinit>()>
+     [java] Instrumenting <com.chariotsolutions.toast.plugin.ToastPlugin$RunnableToast: boolean[][] $VRi()>
+     [java] Instrumenting <com.chariotsolutions.toast.plugin.ToastPlugin: void <init>()>
+     [java] Instrumenting <com.chariotsolutions.toast.plugin.ToastPlugin: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.chariotsolutions.toast.plugin.ToastPlugin: void <clinit>()>
+     [java] Instrumenting <com.chariotsolutions.toast.plugin.ToastPlugin: boolean[][] $VRi()>
+     [java] Instrumenting <com.phonegap.menu.AppMenu$1: void <init>(com.phonegap.menu.AppMenu,android.view.Menu,com.phonegap.menu.AppMenu)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu$1: void run()>
+     [java] Instrumenting <com.phonegap.menu.AppMenu$1: void <clinit>()>
+     [java] Instrumenting <com.phonegap.menu.AppMenu$1: boolean[][] $VRi()>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: void <init>()>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: void getScreenDensity()>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: com.phonegap.api.PluginResult setMenuState(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: com.phonegap.api.PluginResult refresh(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: com.phonegap.api.PluginResult createMenu(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: com.phonegap.api.PluginResult updateMenu(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: com.phonegap.menu.MenuInfo parseInfo(org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: android.graphics.drawable.Drawable getIcon(java.lang.String)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: boolean isMenuChanged()>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: boolean buildMenu(android.view.Menu)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: boolean buildHoneycombMenu(android.view.Menu)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: boolean onMenuItemSelected(android.view.MenuItem)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: void onMessage(java.lang.String,java.lang.Object)>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: void <clinit>()>
+     [java] Instrumenting <com.phonegap.menu.AppMenu: boolean[][] $VRi()>
+     [java] Instrumenting <com.phonegap.menu.MenuInfo: void <init>()>
+     [java] Instrumenting <com.phonegap.menu.MenuInfo: void <clinit>()>
+     [java] Instrumenting <com.phonegap.menu.MenuInfo: boolean[][] $VRi()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: void <init>()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: org.json.JSONObject getLocaleName()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: org.json.JSONObject getDateToString(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: org.json.JSONObject getStringtoDate(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: org.json.JSONObject getDatePattern(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: org.json.JSONObject getDateNames(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: org.json.JSONObject getIsDayLightSavingsTime(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: org.json.JSONObject getFirstDayOfWeek(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: org.json.JSONObject getNumberToString(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: org.json.JSONObject getStringToNumber(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: org.json.JSONObject getNumberPattern(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: org.json.JSONObject getCurrencyPattern(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: java.text.DecimalFormat getNumberFormatInstance(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: void <clinit>()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationCommand: boolean[][] $VRi()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationError: void <init>()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationError: void <init>(java.lang.String)>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationError: java.lang.String getErrorString()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationError: int getErrorCode()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationError: void <clinit>()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.GlobalizationError: boolean[][] $VRi()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.Resources: void <init>()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.Resources: void <clinit>()>
+     [java] Instrumenting <com.phonegap.plugins.globalization.Resources: boolean[][] $VRi()>
+     [java] Instrumenting <com.phonegap.softkeyboard.SoftKeyBoard: void <init>()>
+     [java] Instrumenting <com.phonegap.softkeyboard.SoftKeyBoard: void showKeyBoard()>
+     [java] Instrumenting <com.phonegap.softkeyboard.SoftKeyBoard: void hideKeyBoard()>
+     [java] Instrumenting <com.phonegap.softkeyboard.SoftKeyBoard: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.softkeyboard.SoftKeyBoard: void <clinit>()>
+     [java] Instrumenting <com.phonegap.softkeyboard.SoftKeyBoard: boolean[][] $VRi()>
+     [java] Instrumenting <com.phonegap.urlcache.URLCache: void <init>()>
+     [java] Instrumenting <com.phonegap.urlcache.URLCache: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.urlcache.URLCache: java.lang.String md5(java.lang.String)>
+     [java] Instrumenting <com.phonegap.urlcache.URLCache: void <clinit>()>
+     [java] Instrumenting <com.phonegap.urlcache.URLCache: boolean[][] $VRi()>
+     [java] Instrumenting <com.schaul.plugins.share.Share: void <init>()>
+     [java] Instrumenting <com.schaul.plugins.share.Share: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.schaul.plugins.share.Share: void doSendIntent(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.schaul.plugins.share.Share: void <clinit>()>
+     [java] Instrumenting <com.schaul.plugins.share.Share: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.ApplicationVersion: void <init>()>
+     [java] Instrumenting <org.wikipedia.ApplicationVersion: org.json.JSONObject getVersion()>
+     [java] Instrumenting <org.wikipedia.ApplicationVersion: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <org.wikipedia.ApplicationVersion: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.ApplicationVersion: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.BuildConfig: void <init>()>
+     [java] Instrumenting <org.wikipedia.CacheModePlugin: void <init>()>
+     [java] Instrumenting <org.wikipedia.CacheModePlugin: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <org.wikipedia.CacheModePlugin: boolean isSynch(java.lang.String)>
+     [java] Instrumenting <org.wikipedia.CacheModePlugin: void setCacheMode(java.lang.String)>
+     [java] Instrumenting <org.wikipedia.CacheModePlugin: int getModeValue(java.lang.String)>
+     [java] Instrumenting <org.wikipedia.CacheModePlugin: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.CacheModePlugin: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: void <init>()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: void onCreate(android.os.Bundle)>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: void onStart()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: boolean getBooleanArgument(android.os.Bundle,java.lang.String)>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: void generateCoverageReport()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: java.lang.String getCoverageFilePath()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: boolean setCoverageFilePath(java.lang.String)>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.Exception)>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: void reportEmmaError(java.lang.String,java.lang.Exception)>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: void onActivityFinished()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: void dumpIntermediateCoverage(java.lang.String)>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.EmmaInstrumentation: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.InstrumentedActivity$CoverageCollector: void <init>(org.wikipedia.EmmaInstrument.InstrumentedActivity)>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.InstrumentedActivity$CoverageCollector: void onReceive(android.content.Context,android.content.Intent)>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.InstrumentedActivity$CoverageCollector: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.InstrumentedActivity$CoverageCollector: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.InstrumentedActivity: void <init>()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.InstrumentedActivity: void setFinishListener(org.wikipedia.EmmaInstrument.FinishListener)>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.InstrumentedActivity: void finish()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.InstrumentedActivity: org.wikipedia.EmmaInstrument.FinishListener access$000(org.wikipedia.EmmaInstrument.InstrumentedActivity)>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.InstrumentedActivity: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.InstrumentedActivity: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.SMSInstrumentedReceiver: void <init>()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.SMSInstrumentedReceiver: void onReceive(android.content.Context,android.content.Intent)>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.SMSInstrumentedReceiver: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.EmmaInstrument.SMSInstrumentedReceiver: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.HttpApi: void <init>()>
+     [java] Instrumenting <org.wikipedia.HttpApi: java.lang.String getContent(java.lang.String)>
+     [java] Instrumenting <org.wikipedia.HttpApi: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.HttpApi: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.NearMePlugin: void <init>()>
+     [java] Instrumenting <org.wikipedia.NearMePlugin: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <org.wikipedia.NearMePlugin: void onActivityResult(int,int,android.content.Intent)>
+     [java] Instrumenting <org.wikipedia.NearMePlugin: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.NearMePlugin: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.PreferencesPlugin: void <init>()>
+     [java] Instrumenting <org.wikipedia.PreferencesPlugin: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <org.wikipedia.PreferencesPlugin: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.PreferencesPlugin: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.R$attr: void <init>()>
+     [java] Instrumenting <org.wikipedia.R$drawable: void <init>()>
+     [java] Instrumenting <org.wikipedia.R$id: void <init>()>
+     [java] Instrumenting <org.wikipedia.R$layout: void <init>()>
+     [java] Instrumenting <org.wikipedia.R$menu: void <init>()>
+     [java] Instrumenting <org.wikipedia.R$string: void <init>()>
+     [java] Instrumenting <org.wikipedia.R$xml: void <init>()>
+     [java] Instrumenting <org.wikipedia.R: void <init>()>
+     [java] Instrumenting <org.wikipedia.SearchSuggestionsProvider: void <init>()>
+     [java] Instrumenting <org.wikipedia.SearchSuggestionsProvider: java.lang.String getType(android.net.Uri)>
+     [java] Instrumenting <org.wikipedia.SearchSuggestionsProvider: boolean onCreate()>
+     [java] Instrumenting <org.wikipedia.SearchSuggestionsProvider: java.lang.String getDefaultLanguage()>
+     [java] Instrumenting <org.wikipedia.SearchSuggestionsProvider: android.database.Cursor query(android.net.Uri,java.lang.String[],java.lang.String,java.lang.String[],java.lang.String)>
+     [java] Instrumenting <org.wikipedia.SearchSuggestionsProvider: android.net.Uri insert(android.net.Uri,android.content.ContentValues)>
+     [java] Instrumenting <org.wikipedia.SearchSuggestionsProvider: int update(android.net.Uri,android.content.ContentValues,java.lang.String,java.lang.String[])>
+     [java] Instrumenting <org.wikipedia.SearchSuggestionsProvider: int delete(android.net.Uri,java.lang.String,java.lang.String[])>
+     [java] Instrumenting <org.wikipedia.SearchSuggestionsProvider: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.SearchSuggestionsProvider: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.SelectTextPlugin: void <init>()>
+     [java] Instrumenting <org.wikipedia.SelectTextPlugin: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <org.wikipedia.SelectTextPlugin: boolean isSynch(java.lang.String)>
+     [java] Instrumenting <org.wikipedia.SelectTextPlugin: void selectText()>
+     [java] Instrumenting <org.wikipedia.SelectTextPlugin: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.SelectTextPlugin: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.WikipediaActivity: void <init>()>
+     [java] Instrumenting <org.wikipedia.WikipediaActivity: void onCreate(android.os.Bundle)>
+     [java] Instrumenting <org.wikipedia.WikipediaActivity: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.WikipediaActivity: boolean[][] $VRi()>
+     [java] Instrumenting <org.wikipedia.WikipediaApp: void <init>()>
+     [java] Instrumenting <org.wikipedia.WikipediaApp: void migrateDatabaseFromvc1()>
+     [java] Instrumenting <org.wikipedia.WikipediaApp: void onCreate()>
+     [java] Instrumenting <org.wikipedia.WikipediaApp: void <clinit>()>
+     [java] Instrumenting <org.wikipedia.WikipediaApp: boolean[][] $VRi()>
+     [java] Instrumenting <com.phonegap.AccelListener: void <init>()>
+     [java] Instrumenting <com.phonegap.AccelListener: void setContext(com.phonegap.api.PhonegapActivity)>
+     [java] Instrumenting <com.phonegap.AccelListener: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.AccelListener: boolean isSynch(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AccelListener: void onDestroy()>
+     [java] Instrumenting <com.phonegap.AccelListener: int start()>
+     [java] Instrumenting <com.phonegap.AccelListener: void stop()>
+     [java] Instrumenting <com.phonegap.AccelListener: void onAccuracyChanged(android.hardware.Sensor,int)>
+     [java] Instrumenting <com.phonegap.AccelListener: void onSensorChanged(android.hardware.SensorEvent)>
+     [java] Instrumenting <com.phonegap.AccelListener: int getStatus()>
+     [java] Instrumenting <com.phonegap.AccelListener: void setTimeout(float)>
+     [java] Instrumenting <com.phonegap.AccelListener: float getTimeout()>
+     [java] Instrumenting <com.phonegap.AccelListener: void setStatus(int)>
+     [java] Instrumenting <com.phonegap.AccelListener: void <clinit>()>
+     [java] Instrumenting <com.phonegap.App: void <init>()>
+     [java] Instrumenting <com.phonegap.App: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.App: void clearCache()>
+     [java] Instrumenting <com.phonegap.App: void loadUrl(java.lang.String,org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.App: void cancelLoadUrl()>
+     [java] Instrumenting <com.phonegap.App: void clearHistory()>
+     [java] Instrumenting <com.phonegap.App: void backHistory()>
+     [java] Instrumenting <com.phonegap.App: void overrideBackbutton(boolean)>
+     [java] Instrumenting <com.phonegap.App: boolean isBackbuttonOverridden()>
+     [java] Instrumenting <com.phonegap.App: void exitApp()>
+     [java] Instrumenting <com.phonegap.AudioHandler: void <init>()>
+     [java] Instrumenting <com.phonegap.AudioHandler: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioHandler: boolean isSynch(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioHandler: void onDestroy()>
+     [java] Instrumenting <com.phonegap.AudioHandler: void onMessage(java.lang.String,java.lang.Object)>
+     [java] Instrumenting <com.phonegap.AudioHandler: boolean release(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioHandler: void startRecordingAudio(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioHandler: void stopRecordingAudio(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioHandler: void startPlayingAudio(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioHandler: void seekToAudio(java.lang.String,int)>
+     [java] Instrumenting <com.phonegap.AudioHandler: void pausePlayingAudio(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioHandler: void stopPlayingAudio(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioHandler: float getCurrentPositionAudio(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioHandler: float getDurationAudio(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioHandler: void setAudioOutputDevice(int)>
+     [java] Instrumenting <com.phonegap.AudioHandler: int getAudioOutputDevice()>
+     [java] Instrumenting <com.phonegap.AudioHandler: void setVolume(java.lang.String,float)>
+     [java] Instrumenting <com.phonegap.AudioHandler: void <clinit>()>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void <init>(com.phonegap.AudioHandler,java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void destroy()>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void startRecording(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void moveFile(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void stopRecording()>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void startPlaying(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void seekToPlaying(int)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void pausePlaying()>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void stopPlaying()>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void onCompletion(android.media.MediaPlayer)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: long getCurrentPosition()>
+     [java] Instrumenting <com.phonegap.AudioPlayer: boolean isStreaming(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: float getDuration(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void onPrepared(android.media.MediaPlayer)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: float getDurationInSeconds()>
+     [java] Instrumenting <com.phonegap.AudioPlayer: boolean onError(android.media.MediaPlayer,int,int)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void setState(int)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: int getState()>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void setVolume(float)>
+     [java] Instrumenting <com.phonegap.AudioPlayer: void <clinit>()>
+     [java] Instrumenting <com.phonegap.AuthenticationToken: void <init>()>
+     [java] Instrumenting <com.phonegap.AuthenticationToken: java.lang.String getUserName()>
+     [java] Instrumenting <com.phonegap.AuthenticationToken: void setUserName(java.lang.String)>
+     [java] Instrumenting <com.phonegap.AuthenticationToken: java.lang.String getPassword()>
+     [java] Instrumenting <com.phonegap.AuthenticationToken: void setPassword(java.lang.String)>
+     [java] Instrumenting <com.phonegap.BatteryListener$1: void <init>(com.phonegap.BatteryListener)>
+     [java] Instrumenting <com.phonegap.BatteryListener$1: void onReceive(android.content.Context,android.content.Intent)>
+     [java] Instrumenting <com.phonegap.BatteryListener: void <init>()>
+     [java] Instrumenting <com.phonegap.BatteryListener: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.BatteryListener: void onDestroy()>
+     [java] Instrumenting <com.phonegap.BatteryListener: void removeBatteryListener()>
+     [java] Instrumenting <com.phonegap.BatteryListener: org.json.JSONObject getBatteryInfo(android.content.Intent)>
+     [java] Instrumenting <com.phonegap.BatteryListener: void updateBatteryInfo(android.content.Intent)>
+     [java] Instrumenting <com.phonegap.BatteryListener: void sendUpdate(org.json.JSONObject,boolean)>
+     [java] Instrumenting <com.phonegap.BatteryListener: void access$000(com.phonegap.BatteryListener,android.content.Intent)>
+     [java] Instrumenting <com.phonegap.CallbackServer: void <init>()>
+     [java] Instrumenting <com.phonegap.CallbackServer: void init(java.lang.String)>
+     [java] Instrumenting <com.phonegap.CallbackServer: void reinit(java.lang.String)>
+     [java] Instrumenting <com.phonegap.CallbackServer: boolean usePolling()>
+     [java] Instrumenting <com.phonegap.CallbackServer: int getPort()>
+     [java] Instrumenting <com.phonegap.CallbackServer: java.lang.String getToken()>
+     [java] Instrumenting <com.phonegap.CallbackServer: void startServer()>
+     [java] Instrumenting <com.phonegap.CallbackServer: void restartServer()>
+     [java] Instrumenting <com.phonegap.CallbackServer: void run()>
+     [java] Instrumenting <com.phonegap.CallbackServer: void stopServer()>
+     [java] Instrumenting <com.phonegap.CallbackServer: void destroy()>
+     [java] Instrumenting <com.phonegap.CallbackServer: int getSize()>
+     [java] Instrumenting <com.phonegap.CallbackServer: java.lang.String getJavascript()>
+     [java] Instrumenting <com.phonegap.CallbackServer: void sendJavascript(java.lang.String)>
+     [java] Instrumenting <com.phonegap.CallbackServer: java.lang.String encode(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.CallbackServer: void convert(java.lang.String,java.lang.StringBuilder,java.lang.String)>
+     [java] Instrumenting <com.phonegap.Capture: void <init>()>
+     [java] Instrumenting <com.phonegap.Capture: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.Capture: org.json.JSONObject getFormatData(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.Capture: org.json.JSONObject getImageData(java.lang.String,org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.Capture: org.json.JSONObject getAudioVideoData(java.lang.String,org.json.JSONObject,boolean)>
+     [java] Instrumenting <com.phonegap.Capture: void captureAudio()>
+     [java] Instrumenting <com.phonegap.Capture: void captureImage()>
+     [java] Instrumenting <com.phonegap.Capture: void captureVideo(double)>
+     [java] Instrumenting <com.phonegap.Capture: void onActivityResult(int,int,android.content.Intent)>
+     [java] Instrumenting <com.phonegap.Capture: org.json.JSONObject createMediaFile(android.net.Uri)>
+     [java] Instrumenting <com.phonegap.Capture: org.json.JSONObject createErrorObject(int,java.lang.String)>
+     [java] Instrumenting <com.phonegap.Capture: void fail(org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.CompassListener: void <init>()>
+     [java] Instrumenting <com.phonegap.CompassListener: void setContext(com.phonegap.api.PhonegapActivity)>
+     [java] Instrumenting <com.phonegap.CompassListener: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.CompassListener: boolean isSynch(java.lang.String)>
+     [java] Instrumenting <com.phonegap.CompassListener: void onDestroy()>
+     [java] Instrumenting <com.phonegap.CompassListener: int start()>
+     [java] Instrumenting <com.phonegap.CompassListener: void stop()>
+     [java] Instrumenting <com.phonegap.CompassListener: void onAccuracyChanged(android.hardware.Sensor,int)>
+     [java] Instrumenting <com.phonegap.CompassListener: void onSensorChanged(android.hardware.SensorEvent)>
+     [java] Instrumenting <com.phonegap.CompassListener: int getStatus()>
+     [java] Instrumenting <com.phonegap.CompassListener: float getHeading()>
+     [java] Instrumenting <com.phonegap.CompassListener: void setTimeout(long)>
+     [java] Instrumenting <com.phonegap.CompassListener: long getTimeout()>
+     [java] Instrumenting <com.phonegap.CompassListener: void setStatus(int)>
+     [java] Instrumenting <com.phonegap.CompassListener: org.json.JSONObject getCompassHeading()>
+     [java] Instrumenting <com.phonegap.CompassListener: void <clinit>()>
+     [java] Instrumenting <com.phonegap.ContactAccessor$WhereOptions: void <init>(com.phonegap.ContactAccessor)>
+     [java] Instrumenting <com.phonegap.ContactAccessor$WhereOptions: void setWhere(java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessor$WhereOptions: java.lang.String getWhere()>
+     [java] Instrumenting <com.phonegap.ContactAccessor$WhereOptions: void setWhereArgs(java.lang.String[])>
+     [java] Instrumenting <com.phonegap.ContactAccessor$WhereOptions: java.lang.String[] getWhereArgs()>
+     [java] Instrumenting <com.phonegap.ContactAccessor: void <init>()>
+     [java] Instrumenting <com.phonegap.ContactAccessor: boolean isRequired(java.lang.String,java.util.HashMap)>
+     [java] Instrumenting <com.phonegap.ContactAccessor: java.util.HashMap buildPopulationSet(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.ContactAccessor: java.lang.String getJsonString(org.json.JSONObject,java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: void <init>(android.webkit.WebView,android.app.Activity)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONArray search(org.json.JSONArray,org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONObject getContactById(java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONArray populateContactArray(int,java.util.HashMap,android.database.Cursor)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: com.phonegap.ContactAccessor$WhereOptions buildIdClause(java.util.Set,java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONObject populateContact(org.json.JSONObject,org.json.JSONArray,org.json.JSONArray,org.json.JSONArray,org.json.JSONArray,org.json.JSONArray,org.json.JSONArray,org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: com.phonegap.ContactAccessor$WhereOptions buildWhereClause(org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: boolean isWildCardSearch(org.json.JSONArray)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONObject organizationQuery(android.database.Cursor)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONObject addressQuery(android.database.Cursor)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONObject nameQuery(android.database.Cursor)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONObject phoneQuery(android.database.Cursor)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONObject emailQuery(android.database.Cursor)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONObject imQuery(android.database.Cursor)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONObject websiteQuery(android.database.Cursor)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: org.json.JSONObject photoQuery(android.database.Cursor,java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: java.lang.String save(org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: java.lang.String modifyContact(java.lang.String,org.json.JSONObject,java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: void insertWebsite(java.util.ArrayList,org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: void insertIm(java.util.ArrayList,org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: void insertOrganization(java.util.ArrayList,org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: void insertAddress(java.util.ArrayList,org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: void insertEmail(java.util.ArrayList,org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: void insertPhone(java.util.ArrayList,org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: void insertPhoto(java.util.ArrayList,org.json.JSONObject)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: byte[] getPhotoBytes(java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: java.io.InputStream getPathFromUri(java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: java.lang.String createNewContact(org.json.JSONObject,java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: boolean remove(java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: int getPhoneType(java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: java.lang.String getPhoneType(int)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: int getContactType(java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: java.lang.String getContactType(int)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: int getOrgType(java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: java.lang.String getOrgType(int)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: int getAddressType(java.lang.String)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: java.lang.String getAddressType(int)>
+     [java] Instrumenting <com.phonegap.ContactAccessorSdk5: void <clinit>()>
+     [java] Instrumenting <com.phonegap.ContactManager: void <init>()>
+     [java] Instrumenting <com.phonegap.ContactManager: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$1: void <init>(com.phonegap.CordovaChromeClient,android.webkit.JsResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$1: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$2: void <init>(com.phonegap.CordovaChromeClient,android.webkit.JsResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$2: void onCancel(android.content.DialogInterface)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$3: void <init>(com.phonegap.CordovaChromeClient,android.webkit.JsResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$3: boolean onKey(android.content.DialogInterface,int,android.view.KeyEvent)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$4: void <init>(com.phonegap.CordovaChromeClient,android.webkit.JsResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$4: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$5: void <init>(com.phonegap.CordovaChromeClient,android.webkit.JsResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$5: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$6: void <init>(com.phonegap.CordovaChromeClient,android.webkit.JsResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$6: void onCancel(android.content.DialogInterface)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$7: void <init>(com.phonegap.CordovaChromeClient,android.webkit.JsResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$7: boolean onKey(android.content.DialogInterface,int,android.view.KeyEvent)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$8: void <init>(com.phonegap.CordovaChromeClient,android.widget.EditText,android.webkit.JsPromptResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$8: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$9: void <init>(com.phonegap.CordovaChromeClient,android.webkit.JsPromptResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient$9: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient: void <init>(android.content.Context)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient: boolean onJsAlert(android.webkit.WebView,java.lang.String,java.lang.String,android.webkit.JsResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient: boolean onJsConfirm(android.webkit.WebView,java.lang.String,java.lang.String,android.webkit.JsResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient: boolean onJsPrompt(android.webkit.WebView,java.lang.String,java.lang.String,java.lang.String,android.webkit.JsPromptResult)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient: void onExceededDatabaseQuota(java.lang.String,java.lang.String,long,long,long,android.webkit.WebStorage$QuotaUpdater)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient: void onConsoleMessage(java.lang.String,int,java.lang.String)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient: boolean onConsoleMessage(android.webkit.ConsoleMessage)>
+     [java] Instrumenting <com.phonegap.CordovaChromeClient: void onGeolocationPermissionsShowPrompt(java.lang.String,android.webkit.GeolocationPermissions$Callback)>
+     [java] Instrumenting <com.phonegap.CordovaWebViewClient$1$1: void <init>(com.phonegap.CordovaWebViewClient$1)>
+     [java] Instrumenting <com.phonegap.CordovaWebViewClient$1$1: void run()>
+     [java] Instrumenting <com.phonegap.CordovaWebViewClient$1: void <init>(com.phonegap.CordovaWebViewClient)>
+     [java] Instrumenting <com.phonegap.CordovaWebViewClient$1: void run()>
+     [java] Instrumenting <com.phonegap.CordovaWebViewClient: void <init>(com.phonegap.DroidGap)>
+     [java] Instrumenting <com.phonegap.CordovaWebViewClient: boolean shouldOverrideUrlLoading(android.webkit.WebView,java.lang.String)>
+     [java] Instrumenting <com.phonegap.CordovaWebViewClient: void onReceivedHttpAuthRequest(android.webkit.WebView,android.webkit.HttpAuthHandler,java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.CordovaWebViewClient: void onPageStarted(android.webkit.WebView,java.lang.String,android.graphics.Bitmap)>
+     [java] Instrumenting <com.phonegap.CordovaWebViewClient: void onPageFinished(android.webkit.WebView,java.lang.String)>
+     [java] Instrumenting <com.phonegap.CordovaWebViewClient: void onReceivedError(android.webkit.WebView,int,java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.CordovaWebViewClient: void onReceivedSslError(android.webkit.WebView,android.webkit.SslErrorHandler,android.net.http.SslError)>
+     [java] Instrumenting <com.phonegap.Device$1: void <init>(com.phonegap.Device,com.phonegap.api.PhonegapActivity)>
+     [java] Instrumenting <com.phonegap.Device$1: void onReceive(android.content.Context,android.content.Intent)>
+     [java] Instrumenting <com.phonegap.Device: void <init>()>
+     [java] Instrumenting <com.phonegap.Device: void setContext(com.phonegap.api.PhonegapActivity)>
+     [java] Instrumenting <com.phonegap.Device: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.Device: boolean isSynch(java.lang.String)>
+     [java] Instrumenting <com.phonegap.Device: void onDestroy()>
+     [java] Instrumenting <com.phonegap.Device: void initTelephonyReceiver()>
+     [java] Instrumenting <com.phonegap.Device: java.lang.String getPlatform()>
+     [java] Instrumenting <com.phonegap.Device: java.lang.String getUuid()>
+     [java] Instrumenting <com.phonegap.Device: java.lang.String getPhonegapVersion()>
+     [java] Instrumenting <com.phonegap.Device: java.lang.String getModel()>
+     [java] Instrumenting <com.phonegap.Device: java.lang.String getProductName()>
+     [java] Instrumenting <com.phonegap.Device: java.lang.String getOSVersion()>
+     [java] Instrumenting <com.phonegap.Device: java.lang.String getSDKVersion()>
+     [java] Instrumenting <com.phonegap.Device: java.lang.String getTimeZoneID()>
+     [java] Instrumenting <com.phonegap.Device: void <clinit>()>
+     [java] Instrumenting <com.phonegap.DirectoryManager: void <init>()>
+     [java] Instrumenting <com.phonegap.DirectoryManager: boolean testFileExists(java.lang.String)>
+     [java] Instrumenting <com.phonegap.DirectoryManager: long getFreeDiskSpace(boolean)>
+     [java] Instrumenting <com.phonegap.DirectoryManager: long freeSpaceCalculation(java.lang.String)>
+     [java] Instrumenting <com.phonegap.DirectoryManager: boolean testSaveLocationExists()>
+     [java] Instrumenting <com.phonegap.DirectoryManager: java.io.File constructFilePaths(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DirectoryManager: java.lang.String getTempDirectoryPath(android.content.Context)>
+     [java] Instrumenting <com.phonegap.DroidGap$1$1: void <init>(com.phonegap.DroidGap$1,int)>
+     [java] Instrumenting <com.phonegap.DroidGap$1$1: void run()>
+     [java] Instrumenting <com.phonegap.DroidGap$1: void <init>(com.phonegap.DroidGap,com.phonegap.DroidGap,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap$1: void run()>
+     [java] Instrumenting <com.phonegap.DroidGap$2: void <init>(com.phonegap.DroidGap,com.phonegap.DroidGap)>
+     [java] Instrumenting <com.phonegap.DroidGap$2: void run()>
+     [java] Instrumenting <com.phonegap.DroidGap$3: void <init>(com.phonegap.DroidGap,int,com.phonegap.DroidGap,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap$3: void run()>
+     [java] Instrumenting <com.phonegap.DroidGap$4: void <init>(com.phonegap.DroidGap,com.phonegap.DroidGap)>
+     [java] Instrumenting <com.phonegap.DroidGap$4: void onCancel(android.content.DialogInterface)>
+     [java] Instrumenting <com.phonegap.DroidGap$5: void <init>(com.phonegap.DroidGap,com.phonegap.DroidGap,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap$5: void run()>
+     [java] Instrumenting <com.phonegap.DroidGap$6: void <init>(com.phonegap.DroidGap,com.phonegap.DroidGap,java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap$6: void run()>
+     [java] Instrumenting <com.phonegap.DroidGap$7$1: void <init>(com.phonegap.DroidGap$7)>
+     [java] Instrumenting <com.phonegap.DroidGap$7$1: void onClick(android.content.DialogInterface,int)>
+     [java] Instrumenting <com.phonegap.DroidGap$7: void <init>(com.phonegap.DroidGap,com.phonegap.DroidGap,java.lang.String,java.lang.String,java.lang.String,boolean)>
+     [java] Instrumenting <com.phonegap.DroidGap$7: void run()>
+     [java] Instrumenting <com.phonegap.DroidGap: void <init>()>
+     [java] Instrumenting <com.phonegap.DroidGap: void setAuthenticationToken(com.phonegap.AuthenticationToken,java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: com.phonegap.AuthenticationToken removeAuthenticationToken(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: com.phonegap.AuthenticationToken getAuthenticationToken(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: void clearAuthenticationTokens()>
+     [java] Instrumenting <com.phonegap.DroidGap: void onCreate(android.os.Bundle)>
+     [java] Instrumenting <com.phonegap.DroidGap: void init()>
+     [java] Instrumenting <com.phonegap.DroidGap: void setWebViewClient(android.webkit.WebView,android.webkit.WebViewClient)>
+     [java] Instrumenting <com.phonegap.DroidGap: void handleActivityParameters()>
+     [java] Instrumenting <com.phonegap.DroidGap: void loadUrl(java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: void loadUrlIntoView(java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: void loadUrl(java.lang.String,int)>
+     [java] Instrumenting <com.phonegap.DroidGap: void loadUrlIntoView(java.lang.String,int)>
+     [java] Instrumenting <com.phonegap.DroidGap: void cancelLoadUrl()>
+     [java] Instrumenting <com.phonegap.DroidGap: void clearCache()>
+     [java] Instrumenting <com.phonegap.DroidGap: void clearHistory()>
+     [java] Instrumenting <com.phonegap.DroidGap: boolean backHistory()>
+     [java] Instrumenting <com.phonegap.DroidGap: void onConfigurationChanged(android.content.res.Configuration)>
+     [java] Instrumenting <com.phonegap.DroidGap: boolean getBooleanProperty(java.lang.String,boolean)>
+     [java] Instrumenting <com.phonegap.DroidGap: int getIntegerProperty(java.lang.String,int)>
+     [java] Instrumenting <com.phonegap.DroidGap: java.lang.String getStringProperty(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: double getDoubleProperty(java.lang.String,double)>
+     [java] Instrumenting <com.phonegap.DroidGap: void setBooleanProperty(java.lang.String,boolean)>
+     [java] Instrumenting <com.phonegap.DroidGap: void setIntegerProperty(java.lang.String,int)>
+     [java] Instrumenting <com.phonegap.DroidGap: void setStringProperty(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: void setDoubleProperty(java.lang.String,double)>
+     [java] Instrumenting <com.phonegap.DroidGap: void onPause()>
+     [java] Instrumenting <com.phonegap.DroidGap: void onNewIntent(android.content.Intent)>
+     [java] Instrumenting <com.phonegap.DroidGap: void onResume()>
+     [java] Instrumenting <com.phonegap.DroidGap: void onDestroy()>
+     [java] Instrumenting <com.phonegap.DroidGap: void postMessage(java.lang.String,java.lang.Object)>
+     [java] Instrumenting <com.phonegap.DroidGap: void addService(java.lang.String,java.lang.String)>
+     [java] type Ljava/lang/Deprecated;
+     [java] Instrumenting <com.phonegap.DroidGap: void sendJavascript(java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: void showWebPage(java.lang.String,boolean,boolean,java.util.HashMap)>
+     [java] Instrumenting <com.phonegap.DroidGap: void spinnerStart(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: void spinnerStop()>
+     [java] Instrumenting <com.phonegap.DroidGap: void endActivity()>
+     [java] Instrumenting <com.phonegap.DroidGap: boolean onKeyDown(int,android.view.KeyEvent)>
+     [java] Instrumenting <com.phonegap.DroidGap: void startActivityForResult(android.content.Intent,int)>
+     [java] Instrumenting <com.phonegap.DroidGap: void startActivityForResult(com.phonegap.api.IPlugin,android.content.Intent,int)>
+     [java] Instrumenting <com.phonegap.DroidGap: void onActivityResult(int,int,android.content.Intent)>
+     [java] Instrumenting <com.phonegap.DroidGap: void setActivityResultCallback(com.phonegap.api.IPlugin)>
+     [java] Instrumenting <com.phonegap.DroidGap: void onReceivedError(int,java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: void displayError(java.lang.String,java.lang.String,java.lang.String,boolean)>
+     [java] Instrumenting <com.phonegap.DroidGap: void loadConfiguration()>
+     [java] Instrumenting <com.phonegap.DroidGap: void addWhiteListEntry(java.lang.String,boolean)>
+     [java] Instrumenting <com.phonegap.DroidGap: boolean isUrlWhiteListed(java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: boolean onCreateOptionsMenu(android.view.Menu)>
+     [java] Instrumenting <com.phonegap.DroidGap: boolean onPrepareOptionsMenu(android.view.Menu)>
+     [java] Instrumenting <com.phonegap.DroidGap: boolean onOptionsItemSelected(android.view.MenuItem)>
+     [java] Instrumenting <com.phonegap.DroidGap: void access$000(com.phonegap.DroidGap)>
+     [java] Instrumenting <com.phonegap.DroidGap: java.util.Stack access$100(com.phonegap.DroidGap)>
+     [java] Instrumenting <com.phonegap.DroidGap: void access$200(com.phonegap.DroidGap,java.lang.String)>
+     [java] Instrumenting <com.phonegap.DroidGap: void <clinit>()>
+     [java] Instrumenting <com.phonegap.ExifHelper: void <init>()>
+     [java] Instrumenting <com.phonegap.ExifHelper: void createInFile(java.lang.String)>
+     [java] Instrumenting <com.phonegap.ExifHelper: void createOutFile(java.lang.String)>
+     [java] Instrumenting <com.phonegap.ExifHelper: void readExifData()>
+     [java] Instrumenting <com.phonegap.ExifHelper: void writeExifData()>
+     [java] Instrumenting <com.phonegap.FileTransfer$1: void <init>()>
+     [java] Instrumenting <com.phonegap.FileTransfer$1: boolean verify(java.lang.String,javax.net.ssl.SSLSession)>
+     [java] Instrumenting <com.phonegap.FileTransfer$2: void <init>(com.phonegap.FileTransfer)>
+     [java] Instrumenting <com.phonegap.FileTransfer$2: java.security.cert.X509Certificate[] getAcceptedIssuers()>
+     [java] Instrumenting <com.phonegap.FileTransfer$2: void checkClientTrusted(java.security.cert.X509Certificate[],java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileTransfer$2: void checkServerTrusted(java.security.cert.X509Certificate[],java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileTransfer: void <init>()>
+     [java] Instrumenting <com.phonegap.FileTransfer: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileTransfer: void trustAllHosts()>
+     [java] Instrumenting <com.phonegap.FileTransfer: org.json.JSONObject createFileTransferError(int,java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileTransfer: java.lang.String getArgument(org.json.JSONArray,int,java.lang.String)>
+     [java] Exception in thread "main" soot.SootMethodRefImpl$ClassResolutionFailedException: Class org.apache.commons.codec.binary.Base64 doesn't have method encodeBase64([byte[]]) : byte[]; failed to resolve in superclasses and interfacesLooking in org.apache.commons.codec.binary.Base64 which has methods []
+     [java] 
+     [java] 	at soot.SootMethodRefImpl.resolve(SootMethodRefImpl.java:183)
+     [java] 	at soot.SootMethodRefImpl.resolve(SootMethodRefImpl.java:109)
+     [java] 	at soot.jimple.internal.AbstractInvokeExpr.getMethod(AbstractInvokeExpr.java:54)
+     [java] 	at acteve.instrumentor.Instrumentor.handleInvokeExpr(Instrumentor.java:409)
+     [java] Instrumenting <com.phonegap.FileTransfer: com.phonegap.FileUploadResult upload(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,org.json.JSONObject,boolean,boolean)>
+     [java] Instrumenting <com.phonegap.FileTransfer: org.json.JSONObject download(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileTransfer: java.io.InputStream getPathFromUri(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileTransfer: void <clinit>()>
+     [java] 	at acteve.instrumentor.Instrumentor.instrument(Instrumentor.java:270)Instrumenting <com.phonegap.FileUploadResult: void <init>()>
+     [java] 	at acteve.instrumentor.Instrumentor.instrument(Instrumentor.java:214)
+     [java] 	at acteve.instrumentor.Main.internalTransform(Main.java:77)
+     [java] 	at soot.SceneTransformer.transform(SceneTransformer.java:39)
+     [java] 	at soot.Transform.apply(Transform.java:89)
+     [java] 	at soot.ScenePack.internalApply(ScenePack.java:43)
+     [java] 	at soot.Pack.apply(Pack.java:114)
+     [java] 	at soot.PackManager.runWholeProgramPacks(PackManager.java:418)
+     [java] 	at soot.PackManager.runPacks(PackManager.java:336)
+     [java] 	at soot.Main.run(Main.java:198)
+     [java] 	at soot.Main.main(Main.java:141)
+     [java] 	at acteve.instrumentor.Main.main(Main.java:128)
+     [java] 
+     [java] Instrumenting <com.phonegap.FileUploadResult: long getBytesSent()>
+     [java] Instrumenting <com.phonegap.FileUploadResult: void setBytesSent(long)>
+     [java] Instrumenting <com.phonegap.FileUploadResult: int getResponseCode()>
+     [java] Instrumenting <com.phonegap.FileUploadResult: void setResponseCode(int)>
+     [java] Instrumenting <com.phonegap.FileUploadResult: java.lang.String getResponse()>
+     [java] Instrumenting <com.phonegap.FileUploadResult: void setResponse(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUploadResult: org.json.JSONObject toJSONObject()>
+     [java] Instrumenting <com.phonegap.FileUtils: void <init>()>
+     [java] Instrumenting <com.phonegap.FileUtils: com.phonegap.api.PluginResult execute(java.lang.String,org.json.JSONArray,java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: void notifyDelete(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject resolveLocalFileSystemURI(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONArray readEntries(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject transferTo(java.lang.String,org.json.JSONObject,java.lang.String,boolean)>
+     [java] Instrumenting <com.phonegap.FileUtils: java.io.File createDestination(java.lang.String,java.io.File,java.io.File)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject copyFile(java.io.File,java.io.File)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject copyDirectory(java.io.File,java.io.File)>
+     [java] Instrumenting <com.phonegap.FileUtils: boolean isCopyOnItself(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject moveFile(java.io.File,java.io.File)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject moveDirectory(java.io.File,java.io.File)>
+     [java] Instrumenting <com.phonegap.FileUtils: boolean removeRecursively(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: boolean removeDirRecursively(java.io.File)>
+     [java] Instrumenting <com.phonegap.FileUtils: boolean remove(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject getFile(java.lang.String,java.lang.String,org.json.JSONObject,boolean)>
+     [java] Instrumenting <com.phonegap.FileUtils: java.io.File createFileObject(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject getParent(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: boolean atRootDirectory(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject getMetadata(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject getFileMetadata(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject requestFileSystem(int)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject getEntry(java.io.File)>
+     [java] Instrumenting <com.phonegap.FileUtils: org.json.JSONObject getEntry(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: boolean isSynch(java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: java.lang.String readAsText(java.lang.String,java.lang.String)>
+     [java] Instrumenting <com.phonegap.FileUtils: java.lang.String readAsDataURL(java.lang.String)>
+
+BUILD FAILED
+/home/vagrant/tools/acteve/a3t-app.xml:71: The following error occurred while executing this line:
+/home/vagrant/tools/acteve/build.xml:89: Java returned: 1
+
+Total time: 28 seconds

@@ -1,0 +1,177 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: SplashScreen
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for SplashScreen...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for SplashScreen...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [aapt] aapt: warning: string 'no_thansk' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res; found: fr
+     [aapt] aapt: warning: string 'rate' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res; found: fr
+     [aapt] aapt: warning: string 'remind_me' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res; found: fr
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 23 source files to /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/classes
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/classes.dex...
+       [dx] Merged dex A (53 defs/83.8KiB) with dex B (2 defs/1.1KiB). Result is 55 defs/101.6KiB. Took 0.4s
+       [dx] Merged dex A (55 defs/101.6KiB) with dex B (297 defs/326.8KiB). Result is 352 defs/520.2KiB. Took 0.6s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable-xlarge/cancel.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable-xlarge/cancel.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable-xlarge/cancel.png: 93% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable-xlarge/checkmark.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable-xlarge/checkmark.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable-xlarge/checkmark.png: 93% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/blokish2.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish2.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish2.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/blokish_21_1.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_21_1.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_21_1.png: 86% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/blokish_21_youtube_arrow.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_21_youtube_arrow.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_21_youtube_arrow.png: 89% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/blokish_2_pieces.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_2_pieces.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_2_pieces.png: 76% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/blokish_dragging.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_dragging.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_dragging.png: 85% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/blokish_rotating.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_rotating.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_rotating.png: 86% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/blokish_scroll.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_scroll.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_scroll.png: 96% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/blokish_title.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_title.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blokish_title.png: 67% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/blue.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blue.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blue.png: 84% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/blue_bold.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blue_bold.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/blue_bold.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/bol_blauw.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/bol_blauw.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/bol_blauw.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/bol_geel.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/bol_geel.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/bol_geel.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/bol_groen.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/bol_groen.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/bol_groen.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/bol_rood.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/bol_rood.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/bol_rood.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/bullet_ball_glass_yellow.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/bullet_ball_glass_yellow.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/bullet_ball_glass_yellow.png: 71% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/cancel.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/cancel.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/cancel.png: 74% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/checkmark.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/checkmark.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/checkmark.png: 83% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/checkmark_48.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/checkmark_48.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/checkmark_48.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/green.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/green.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/green.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/green_bold.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/green_bold.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/green_bold.png: 82% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/help_48.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/help_48.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/help_48.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/left_48.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/left_48.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/left_48.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/orange.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/orange.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/orange.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/orange_bold.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/orange_bold.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/orange_bold.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/preferences_48.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/preferences_48.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/preferences_48.png: 90% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/red.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/red.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/red.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/red_bold.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/red_bold.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/red_bold.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/restart_48.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/restart_48.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/restart_48.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res/drawable/spinner_blue_76.png => /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/spinner_blue_76.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/res/drawable/spinner_blue_76.png: 0% size of source)
+   [crunch] Crunched 31 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+     [aapt] aapt: warning: string 'no_thansk' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res; found: fr
+     [aapt] aapt: warning: string 'rate' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res; found: fr
+     [aapt] aapt: warning: string 'remind_me' has no default translation in /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/res; found: fr
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating SplashScreen-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/SplashScreen-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/org.scoutant.blokish_13_src/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 33 seconds

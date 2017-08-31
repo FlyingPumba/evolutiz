@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="gamemodeDisplay">
+		<item>Standard Munchkin</item>
+		<item>Epic Munchkin</item>
+	</string-array>
+	
+	<string-array name="gamemode">
+		<item>std</item>
+		<item>epic</item>
+	</string-array>
+</resources>

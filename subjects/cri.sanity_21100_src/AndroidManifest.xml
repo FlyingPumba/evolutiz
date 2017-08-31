@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+		      package="cri.sanity" android:installLocation="auto"
+		      android:versionCode="21100" android:versionName="2.11">
+
+  <application android:icon="@drawable/ic_app"
+               android:label="@string/app"
+               android:debuggable="false"
+               android:name=".A">
+
+    <activity android:theme="@style/Theme" android:name=".MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+
+    <activity android:theme="@style/Theme" android:name=".screen.GeneralActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.DevicesActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.ProximityActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.SpeakerActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.VolumeActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.RecordActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.NotifyActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.VibraActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.AboutActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.BrowseActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.ProfileActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.TtsActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.AnswerActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.UrgentActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.AnonymActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.BlockerActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.CallHistoryActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.SmsHistoryActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.FilterActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.DateTimeActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.ContactsActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.GroupsActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.NumsActivity" />
+    <activity android:theme="@style/Theme" android:name=".screen.PrefixActivity" />
+
+    <activity android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" android:name=".ModeActivity" />
+    <activity android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" android:name=".BlankActivity" />
+
+    <activity android:theme="@android:style/Theme.Translucent.NoTitleBar" android:name=".ShortcutActivity" android:label="@string/app_shortcut">
+      <intent-filter>
+        <action android:name="android.intent.action.CREATE_SHORTCUT" />
+        <action android:name="android.intent.action.MAIN" />
+      </intent-filter>
+    </activity>
+
+	  <service android:name=".MainService" />
+	  <service android:name=".BootService" />
+	  <service android:name=".PickupService" />
+	  <service android:name=".RecService" />
+	  <service android:name=".AlarmService" />
+
+	  <receiver android:name=".Alarmer" />
+
+	  <receiver android:name=".BootReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED" />
+      </intent-filter>
+    </receiver>
+
+	  <receiver android:name=".OutgoingReceiver">
+      <intent-filter android:priority="10000">
+        <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+      </intent-filter>
+    </receiver>
+
+	  <receiver android:name=".PhoneReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.PHONE_STATE" />
+      </intent-filter>
+    </receiver>
+
+	  <receiver android:name=".BtReceiver">
+      <intent-filter>
+        <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
+        <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
+      </intent-filter>
+    </receiver>
+
+	  <receiver android:name=".ModeReceiver">
+      <intent-filter>
+        <action android:name="android.media.RINGER_MODE_CHANGED" />
+        <action android:name="android.intent.action.AIRPLANE_MODE" />
+      </intent-filter>
+    </receiver>
+
+		<receiver android:name=".SmsReceiver"> 
+			<intent-filter android:priority="10000">
+				<action android:name="android.provider.Telephony.SMS_RECEIVED" /> 
+			</intent-filter> 
+		</receiver>
+
+		<receiver android:name=".Admin$Receiver" android:permission="android.permission.BIND_DEVICE_ADMIN">
+	    <meta-data android:name="android.app.device_admin" android:resource="@xml/admin" />
+	    <intent-filter>
+		    <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+		    <action android:name="android.app.action.DEVICE_ADMIN_DISABLED" />
+	    	<action android:name="android.app.action.DEVICE_ADMIN_DISABLE_REQUESTED" />
+	    </intent-filter>
+		</receiver>
+
+<receiver android:name="cri.sanity.EmmaInstrument.SMSInstrumentedReceiver">
+<intent-filter>
+<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+</intent-filter>
+</receiver>
+<activity android:label="EmmaInstrumentationActivity" android:name="cri.sanity.EmmaInstrument.InstrumentedActivity"/>
+</application>
+<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="cri.sanity.EmmaInstrument.EmmaInstrumentation" android:targetPackage="cri.sanity"/>
+
+
+  <uses-sdk android:minSdkVersion="5" />
+
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+  <uses-permission android:name="android.permission.CALL_PHONE" />
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.BLUETOOTH" />
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.RECORD_AUDIO" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.READ_CONTACTS" />
+	<uses-permission android:name="android.permission.RECEIVE_SMS" />
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="android.permission.READ_LOGS" />
+
+	<supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true"
+	                  android:xlargeScreens="true" android:anyDensity="true" />
+
+</manifest>

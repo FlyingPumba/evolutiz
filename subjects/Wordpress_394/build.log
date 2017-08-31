@@ -1,0 +1,427 @@
+Buildfile: /vagrant/subjects/tool_subjects/new/Wordpress_394/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: Wordpress
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for Wordpress...
+[gettarget] Project Target:   Android 4.1.2
+[gettarget] API level:        16
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Wordpress_394/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for Wordpress...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [aapt] aapt: warning: string 'above_text' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs ca cs da de es fi fr hr id in it mk nb pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'added_successfully' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs ca cs da de es fi fr hr id in it ja mk nb pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'added_successfully_image_error' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs ca cs da de es fi fr hr id in it ja mk nb pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'align_thumb_to_center' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs cs de es fi fr hr id in it ja mk pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'below_text' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs ca cs da de es fi fr hr id in it mk nb pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'getting_preview' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: in
+     [aapt] aapt: warning: string 'getting_preview_attempting' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: in
+     [aapt] aapt: warning: string 'page_preview' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: in
+     [aapt] aapt: warning: string 'page_title' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: cs in
+     [aapt] aapt: warning: string 'pictures' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: cs in
+     [aapt] aapt: warning: string 'place_image' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs ca cs da de es fi fr hr id in it mk nb pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'post_preview' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: in
+     [aapt] aapt: warning: string 'preview' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: in
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 77 source files to /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/classes
+    [javac] Note: Some input files use or override a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/classes
+      [dex] input: /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/CWAC-Task.jar
+      [dex] input: /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/tagsoup-1.2.1.jar
+      [dex] input: /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/CWAC-AdapterWrapper.jar
+      [dex] input: /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/httpmime-4.1.2.jar
+      [dex] input: /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/CWAC-Bus.jar
+      [dex] input: /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/android-support-v4.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/CWAC-Task.jar -> CWAC-Task-e494b1b56a4afaf4d748556d9b39b89a.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/tagsoup-1.2.1.jar -> tagsoup-1.2.1-aab656fb2277d4a9497c4696f7399ce8.jar
+       [dx] warning: Ignoring InnerClasses attribute for an anonymous inner class
+       [dx] (org.ccil.cowan.tagsoup.Parser$1) that doesn't come with an
+       [dx] associated EnclosingMethod attribute. This class was probably produced by a
+       [dx] compiler that did not target the modern .class file format. The recommended
+       [dx] solution is to recompile the class from source, using an up-to-date compiler
+       [dx] and without specifying any "-target" type options. The consequence of ignoring
+       [dx] this warning is that reflective operations on this class will incorrectly
+       [dx] indicate that it is *not* an inner class.
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/CWAC-AdapterWrapper.jar -> CWAC-AdapterWrapper-d094fa440c8a3af9ba18c778f8e21a5c.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/httpmime-4.1.2.jar -> httpmime-4.1.2-01211b1a12eebaa505f6078dac62433b.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/CWAC-Bus.jar -> CWAC-Bus-992a1179a626d832293d196cf94a44b7.jar
+      [dex] Pre-Dexing /vagrant/subjects/tool_subjects/new/Wordpress_394/libs/android-support-v4.jar -> android-support-v4-96f9e356b7f1ddc7fce2d11760cac2ef.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/classes.dex...
+       [dx] Merged dex A (361 defs/553.2KiB) with dex B (9 defs/8.9KiB). Result is 370 defs/679.8KiB. Took 1.5s
+       [dx] Merged dex A (370 defs/679.8KiB) with dex B (22 defs/133.2KiB). Result is 392 defs/1011.8KiB. Took 0.6s
+       [dx] Merged dex A (392 defs/1011.8KiB) with dex B (1 defs/1.5KiB). Result is 393 defs/1318.5KiB. Took 0.3s
+       [dx] Result compacted from 1841.6KiB to 699.5KiB to save 1142.0KiB
+       [dx] Merged dex A (393 defs/1318.5KiB) with dex B (15 defs/17.6KiB). Result is 408 defs/699.5KiB. Took 0.5s
+       [dx] Merged dex A (408 defs/699.5KiB) with dex B (11 defs/7.9KiB). Result is 419 defs/854.8KiB. Took 0.3s
+       [dx] Merged dex A (419 defs/854.8KiB) with dex B (61 defs/106.0KiB). Result is 480 defs/1198.8KiB. Took 0.3s
+       [dx] Merged dex A (480 defs/1198.8KiB) with dex B (297 defs/326.8KiB). Result is 777 defs/1961.2KiB. Took 0.2s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/new/Wordpress_394/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi-v11/notification_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi-v11/notification_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi-v11/notification_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/add.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/add.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/add.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/app_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/app_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/app_icon.png: 50% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/btn_check_off_pressed.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_check_off_pressed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_check_off_pressed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/btn_check_off_selected.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_check_off_selected.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_check_off_selected.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/btn_check_on_pressed.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_check_on_pressed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_check_on_pressed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/btn_check_on_selected.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_check_on_selected.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_check_on_selected.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/btn_dropdown_normal.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_dropdown_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_dropdown_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/btn_dropdown_pressed.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_dropdown_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_dropdown_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/btn_dropdown_selected.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_dropdown_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/btn_dropdown_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/comment_badge.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/comment_badge.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/comment_badge.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/comments_tab.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/comments_tab.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/comments_tab.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/comments_tab_active.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/comments_tab_active.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/comments_tab_active.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/content_bg.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/content_bg.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/content_bg.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/dashboard_wp_logo.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/dashboard_wp_logo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/dashboard_wp_logo.png: 73% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/gallery_selected_default.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/gallery_selected_default.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/gallery_selected_default.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/grey_wp_button.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/grey_wp_button.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/grey_wp_button.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/grey_wp_button_active.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/grey_wp_button_active.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/grey_wp_button_active.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/grey_wp_button_down.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/grey_wp_button_down.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/grey_wp_button_down.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/ic_menu_home.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/ic_menu_home.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/ic_menu_home.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/notification_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/notification_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/notification_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/pages_tab.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/pages_tab.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/pages_tab.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/pages_tab_active.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/pages_tab_active.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/pages_tab_active.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/posts_tab.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/posts_tab.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/posts_tab.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/posts_tab_active.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/posts_tab_active.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/posts_tab_active.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/posts_tab_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/posts_tab_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/posts_tab_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/right_shadow.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/right_shadow.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/right_shadow.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/stats_tab.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/stats_tab.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/stats_tab.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/stats_tab_active.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/stats_tab_active.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/stats_tab_active.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/title_bar_shadow.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/title_bar_shadow.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/title_bar_shadow.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/wp_check_off.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_check_off.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_check_off.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/wp_check_on.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_check_on.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_check_on.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/wp_small.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_small.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_small.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/wp_small_down.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_small_down.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_small_down.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/wp_small_over.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_small_over.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_small_over.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/wp_small_toggle.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_small_toggle.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_small_toggle.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-hdpi/wp_statusbar_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_statusbar_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-hdpi/wp_statusbar_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-ldpi-v11/notification_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-ldpi-v11/notification_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-ldpi-v11/notification_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-ldpi/notification_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-ldpi/notification_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-ldpi/notification_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-mdpi-v11/notification_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-mdpi-v11/notification_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-mdpi-v11/notification_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-mdpi/notification_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-mdpi/notification_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-mdpi/notification_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-xhdpi-v11/notification_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-xhdpi-v11/notification_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-xhdpi-v11/notification_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable-xhdpi/notification_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-xhdpi/notification_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable-xhdpi/notification_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/action_bar_shadow.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/action_bar_shadow.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/action_bar_shadow.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/action_item_selected.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/action_item_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/action_item_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/add.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/add.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/add.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/add_small.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/add_small.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/add_small.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/app_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/app_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/app_icon.png: 92% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/arrow_down.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/arrow_down.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/arrow_down.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/arrow_up.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/arrow_up.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/arrow_up.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/attachment.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/attachment.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/attachment.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/browser_reload.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/browser_reload.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/browser_reload.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/btn_check_off_pressed.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_check_off_pressed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_check_off_pressed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/btn_check_off_selected.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_check_off_selected.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_check_off_selected.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/btn_check_on_pressed.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_check_on_pressed.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_check_on_pressed.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/btn_check_on_selected.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_check_on_selected.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_check_on_selected.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/btn_dropdown_normal.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_dropdown_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_dropdown_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/btn_dropdown_pressed.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_dropdown_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_dropdown_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/btn_dropdown_selected.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_dropdown_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/btn_dropdown_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/comment_badge.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/comment_badge.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/comment_badge.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/comments_tab.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/comments_tab.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/comments_tab.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/comments_tab_active.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/comments_tab_active.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/comments_tab_active.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/comments_tab_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/comments_tab_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/comments_tab_icon.png: 52% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/content_bg.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/content_bg.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/content_bg.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_btn_down_shadow.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_btn_down_shadow.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_btn_down_shadow.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_button_down.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_button_down.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_button_down.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_icon_comments.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_comments.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_comments.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_icon_new_page.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_new_page.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_new_page.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_icon_new_post.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_new_post.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_new_post.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_icon_pages.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_pages.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_pages.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_icon_photo.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_photo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_photo.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_icon_posts.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_posts.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_posts.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_icon_settings.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_settings.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_settings.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_icon_stats.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_stats.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_stats.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_icon_subs.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_subs.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_subs.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/dashboard_icon_video.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_video.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/dashboard_icon_video.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/drafts_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/drafts_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/drafts_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/drop_down_arrow.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/drop_down_arrow.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/drop_down_arrow.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/gallery_selected_default.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/gallery_selected_default.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/gallery_selected_default.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/grey_wp_button.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/grey_wp_button.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/grey_wp_button.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/grey_wp_button_active.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/grey_wp_button_active.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/grey_wp_button_active.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/grey_wp_button_down.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/grey_wp_button_down.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/grey_wp_button_down.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/home_small.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/home_small.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/home_small.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/ic_menu_home.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/ic_menu_home.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/ic_menu_home.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/ic_popup_sync_1.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/ic_popup_sync_1.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/ic_popup_sync_1.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/icon_titlebar_home.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/icon_titlebar_home.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/icon_titlebar_home.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/icon_titlebar_home_active.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/icon_titlebar_home_active.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/icon_titlebar_home_active.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/icon_titlebar_refresh.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/icon_titlebar_refresh.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/icon_titlebar_refresh.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/icon_titlebar_refresh_active.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/icon_titlebar_refresh_active.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/icon_titlebar_refresh_active.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/media.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/media.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/media.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/menu_button_bg.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/menu_button_bg.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/menu_button_bg.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/new_account_logo.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/new_account_logo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/new_account_logo.png: 97% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/pages_tab.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/pages_tab.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/pages_tab.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/pages_tab_active.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/pages_tab_active.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/pages_tab_active.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/pages_tab_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/pages_tab_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/pages_tab_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/placeholder.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/placeholder.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/placeholder.png: 97% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/popup.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/popup.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/popup.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/posts_tab.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/posts_tab.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/posts_tab.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/posts_tab_active.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/posts_tab_active.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/posts_tab_active.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/posts_tab_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/posts_tab_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/posts_tab_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_arrow_down.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_arrow_down.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_arrow_down.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_arrow_up.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_arrow_up.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_arrow_up.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_bottom_frame.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_bottom_frame.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_bottom_frame.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_disambig_bottom_bg.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_disambig_bottom_bg.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_disambig_bottom_bg.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_disambig_divider.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_disambig_divider.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_disambig_divider.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_drop_shadow.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_drop_shadow.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_drop_shadow.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_photo_frame.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_photo_frame.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_photo_frame.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_slider_background.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_background.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_background.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_slider_btn_normal.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_btn_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_btn_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_slider_btn_on.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_btn_on.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_btn_on.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_slider_btn_pressed.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_btn_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_btn_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_slider_btn_selected.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_btn_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_btn_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_slider_grip_left.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_grip_left.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_grip_left.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_slider_grip_right.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_grip_right.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_slider_grip_right.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/quickcontact_top_frame.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_top_frame.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/quickcontact_top_frame.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/spinner_white_48.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/spinner_white_48.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/spinner_white_48.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/stats_tab.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/stats_tab.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/stats_tab.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/stats_tab_active.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/stats_tab_active.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/stats_tab_active.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/stats_tab_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/stats_tab_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/stats_tab_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/title_bar_shadow.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/title_bar_shadow.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/title_bar_shadow.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/video.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/video.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/video.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wp_check_off.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_check_off.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_check_off.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wp_check_on.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_check_on.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_check_on.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wp_logo.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_logo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_logo.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wp_logo_actionbar.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_logo_actionbar.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_logo_actionbar.png: 91% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wp_logo_home.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_logo_home.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_logo_home.png: 98% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wp_small.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_small.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_small.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wp_small_down.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_small_down.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_small_down.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wp_small_over.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_small_over.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_small_over.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wp_small_toggle.9.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_small_toggle.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_small_toggle.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wp_statusbar_icon.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_statusbar_icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wp_statusbar_icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wpcom.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wpcom.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wpcom.png: 85% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/new/Wordpress_394/res/drawable/wplogo.png => /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wplogo.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/res/drawable/wplogo.png: 73% size of source)
+   [crunch] Crunched 133 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+     [aapt] Warning: AndroidManifest.xml already defines debuggable (in http://schemas.android.com/apk/res/android); using existing value in manifest.
+     [aapt] aapt: warning: string 'above_text' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs ca cs da de es fi fr hr id in it mk nb pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'added_successfully' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs ca cs da de es fi fr hr id in it ja mk nb pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'added_successfully_image_error' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs ca cs da de es fi fr hr id in it ja mk nb pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'align_thumb_to_center' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs cs de es fi fr hr id in it ja mk pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'below_text' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs ca cs da de es fi fr hr id in it mk nb pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'getting_preview' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: in
+     [aapt] aapt: warning: string 'getting_preview_attempting' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: in
+     [aapt] aapt: warning: string 'page_preview' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: in
+     [aapt] aapt: warning: string 'page_title' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: cs in
+     [aapt] aapt: warning: string 'pictures' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: cs in
+     [aapt] aapt: warning: string 'place_image' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: bs ca cs da de es fi fr hr id in it mk nb pl pt ru sk sv zh
+     [aapt] aapt: warning: string 'post_preview' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: in
+     [aapt] aapt: warning: string 'preview' has no default translation in /vagrant/subjects/tool_subjects/new/Wordpress_394/res; found: in
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating Wordpress-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/Wordpress-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/new/Wordpress_394/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 1 minute 43 seconds

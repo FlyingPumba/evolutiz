@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory
+    android:title="@string/pref_category_alarm">
+    <RingtonePreference
+      android:key="@string/pref_alarmsound"
+      android:title="@string/pref_alarmsound_title"
+      android:summary="@string/pref_alarmsound_summary"
+      android:ringtoneType="all" />
+    <CheckBoxPreference
+      android:key="@string/pref_vibrate"
+      android:title="@string/pref_vibrate_title"
+      android:summaryOn="@string/pref_vibrate_summaryon"
+      android:summaryOff="@string/pref_vibrate_summaryoff"
+      android:defaultValue="true" />
+    <CheckBoxPreference
+      android:key="@string/pref_flashled"
+      android:title="@string/pref_flashled_title"
+      android:summaryOn="@string/pref_flashled_summaryon"
+      android:summaryOff="@string/pref_flashled_summaryoff"
+      android:defaultValue="true" />
+    <ListPreference
+      android:key="@string/pref_flashled_color"
+      android:title="@string/pref_flashled_color_title"
+      android:summary="@string/pref_flashled_color_summary"
+      android:entries="@array/pref_led_color_values"
+      android:entryValues="@array/pref_led_color_values"
+      android:dependency="@string/pref_flashled" />
+    <CheckBoxPreference
+      android:key="@string/pref_wakescreen"
+      android:title="@string/pref_wakescreen_title"
+      android:summaryOn="@string/pref_wakescreen_summaryon"
+      android:summaryOff="@string/pref_wakescreen_summaryoff"
+      android:defaultValue="true" />
+    <ListPreference
+      android:key="@string/pref_timeout"
+      android:title="@string/pref_timeout_title"
+      android:dialogTitle="@string/pref_timeout_dialogtitle"
+      android:summary="@string/pref_timeout_summary"
+      android:entries="@array/pref_timeout_values"
+      android:entryValues="@array/pref_timeout_values"
+      android:defaultValue="5" />
+  </PreferenceCategory>
+  <PreferenceCategory
+    android:title="@string/pref_category_other">
+    <CheckBoxPreference
+      android:key="@string/pref_show_persistent_notification"
+      android:title="@string/pref_show_persistent_notification_title"
+      android:summaryOn="@string/pref_show_persistent_notification_summaryon"
+      android:summaryOff="@string/pref_show_persistent_notification_summaryoff"
+      android:defaultValue="true" />
+  </PreferenceCategory>
+</PreferenceScreen>

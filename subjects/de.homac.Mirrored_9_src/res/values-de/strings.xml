@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2010 Holger Macht <holger@homac.de>
+
+ This file is released under the GPLv3.
+-->
+<resources>
+  <string name="app_name">Gespiegelt</string>
+  <string name="context_menu_delete">Löschen</string>
+  <string name="context_menu_save">Speichern</string>
+  <string name="progress_dialog_load">Artikel werden geladen. Bitte warten...</string>
+  <string name="progress_dialog_save_all">Artikel werden gespeichert. Bitte warten...</string>
+   <string name="error_load_article">Artikel konnte nicht geladen werden</string>
+  <string name="caption_offline">Offline</string>
+  <string name="no_articles">Keine Artikel verfügbar</string>
+  <string name="switch_to_offline_mode">Offline-Modus gestartet</string>
+  <string name="please_check_internet">Bitte Internetverbindung
+  überprüfen und erneut versuchen.</string>
+  <string name="error_saving">Fehler beim Zugriff auf die
+  SD-Karte. Bitte stellen Sie sicher, dass die SD-Karte funktionsfähig
+  ist und versuchen Sie es erneut.</string>
+  <string name="menu_categories">Kategorien</string>
+  <string name="menu_preferences">Einstellungen</string>
+  <string name="menu_save_all">Alle speichern</string>
+  <string name="menu_delete_all">Alle löschen</string>
+  <string name="menu_save_article">Speichern</string>
+  <string name="article_saved">Artikel gespeichert</string>
+  <string name="article_deleted">Artikel gelöscht</string>
+  <string name="menu_external_browser">In externem Browser öffnen</string>
+  <string name="menu_offline_mode">Offline-Modus</string>
+  <string name="menu_online_mode">Online-Modus</string>
+  <string name="menu_refresh">Neu laden</string>
+  <string name="menu_back_to_articles_list">Zurück zur Übersicht</string>
+  <string name="preferences_category_behaviour">Verhalten</string>
+  <string name="preferences_category_visual">Erscheinungsbild</string>
+  <string name="preference_start_with_category">Kategorie beim Start</string>
+  <string name="preference_start_with_category_summary">
+    Zeige spezielle Kategorie anstelle der Schlagzeilen beim Programmstart.</string>
+  <string name="preference_dark_background">Dunkler Hintergrund</string>
+  <string name="preference_dark_background_summary">Heller Text auf
+  dunklem Grund.</string>
+  <string name="preference_download_images">Bilder laden</string>
+  <string name="preference_download_images_summary">Bilder werden
+  geladen. Erhöht die Startzeit und das Datenvolumen.</string>
+  <string name="preference_download_all_articles">Artikel sofort
+  laden</string>
+  <string name="preference_download_all_articles_summary">
+    Beim Starten sofort die gesamten Artikel herunterladen. Führt zu
+    höherem Speicherverbrauch und längeren Startzeiten. Führt jedoch
+    auch dazu, dass die Artikel schneller angezeigt werden.</string>
+  <string name="preference_start_with_offline_mode">Start im
+  Offline-Modus</string>
+  <string name="preference_start_with_offline_mode_summary">Die Anwendung
+  immer im Offline-Modus starten.</string>
+
+  <string name="preferences_category_misc">Sonstiges</string>
+  <string name="preference_about_title">Über</string>
+  <string name="preference_about_dialog_title">@string/app_name</string>
+  <string name="preference_about_dialog_message">
+    Lesen von Spiegel Online Nachrichten\n
+    \n
+    Copyright (C) 2010 Holger Macht: holger@homac.de\n
+    \n
+    Diese Anwendung ist unter der General Public License Version 3
+    veröffentlicht. Auf http://www.gnu.org/licenses/gpl.html finden Sie
+    den vollständigen Lizenstext. Diese Software kommt mit keinerlei
+    Garantie oder Haftung für etwaige Schäden. Verwendung auf eigene
+    Gefahr.
+    </string>
+  <string name="preference_font_size_title">Schriftgröße</string>
+  <string name="preference_font_size_summary">Die Schriftgröße für
+  Artikel als ein relativer Wert von 0 bis 10</string>
+</resources>

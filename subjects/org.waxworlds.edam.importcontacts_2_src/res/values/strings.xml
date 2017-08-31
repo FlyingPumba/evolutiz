@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ * strings.xml
+ *
+ * Copyright (C) 2009 Tim Marston <edam@waxworlds.org>
+ *
+ * This file is part of the Import Contacts program (hereafter referred
+ * to as "this program"). For more information, see
+ * http://www.waxworlds.org/edam/software/android/import-contacts
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<resources>
+
+	<string name="app_name">Import Contacts</string>
+
+	<string name="back">Back</string>
+	<string name="next">Next</string>
+	<string name="abort">Abort</string>
+
+	<string name="intro_title">Welcome</string>
+	<string name="intro_help"><b>Import Contacts is an application to help you import your contacts directly to your Android device without the need to upload them to Google first. Contacts (vCard ".vcf" files) are imported from your SD card directly in to the phones contact list.</b></string>
+	<string name="intro_author">For help using this application or more information, click the link below. Import Contacts is free software, licensed under the GPL version 3. To report bugs to the author or get hold of the source code to this application, visit:</string>
+	<string name="intro_link">The Import Contacts homepage</string>
+	<string name="intro_disclaimer">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</string>
+
+	<string name="fileordir_file">Import contacts from a single vCard file</string>
+	<string name="fileordir_filehelp">You will be asked to select a \".vcf\" file which will be scanned for contacts (vCard files can contain multiple contacts in one file).</string>
+	<string name="fileordir_dir">Scan a folder to scan for vCard files and import any contacts found</string>
+	<string name="fileordir_dirhelp">You will be asked to select a folder on your SD card and any contacts in any \".vcf\" files found will be imported. This is useful when you have a lot of vCard files.</string>
+
+	<string name="filechooser_title_dir">Choose Directory</string>
+	<string name="filechooser_title_file">Choose File</string>
+	<string name="filechooser_current_dir"><b>Selected Directory:</b></string>
+	<string name="filechooser_current_file"><b>Selected File:</b></string>
+	<string name="filechooser_ok">Ok</string>
+	<string name="filechooser_path_sdcard">SD Card</string>
+
+	<string name="vcf_title">Import vCard Files</string>
+	<string name="vcf_help">To import contacts from one or more vCard files, you must specify <b>either</b> a folder to look for vCard files in, <b>or</b> an individual vCard file. If you select a folder, all contacts in any \".vcf\" files in that folder will be imported. Alternatively, if you select an individual \".vcf\" file, any contacts that it contains will be imported.</string>
+	<string name="vcf_location_dir">Folder (to scan) for vCards:</string>
+	<string name="vcf_location_file">vCard file:</string>
+
+	<string name="merge_title">Duplicate Contacts</string>
+	<string name="merge_help">What should we do if we import a contact with the same name as a contact that already exists on the phone?</string>
+	<string name="merge_prompt">Ask me what to do</string>
+	<string name="merge_keep">Skip; keep the phone contact</string>
+	<string name="merge_merge">Merge; adding only new details to the phone contact</string>
+	<string name="merge_overwrite">Replace; discard the phone contact, then import</string>
+
+	<string name="doit_title">Import Contacts</string>
+	<string name="doit_ready">Are you ready to begin importing contacts?</string>
+	<string name="doit_begin">Begin</string>
+	<string name="doit_creates">Created:</string>
+	<string name="doit_overwrites">Replaced:</string>
+	<string name="doit_merges">Merged:</string>
+	<string name="doit_skips">Skipped:</string>
+	<string name="doit_caching">Caching...</string>
+	<string name="doit_scanning">Scanning...</string>
+	<string name="doit_alldone">All done!</string>
+	<string name="doit_aborted">Aborted!</string>
+	<string name="doit_close">Close</string>
+	<string name="doit_mergeask1">"Contact '"</string>
+	<string name="doit_mergeask2">"' already exists:"</string>
+	<string name="doit_importaborted">Importing contacts was aborted!</string>
+
+	<string name="mergeprompt_title">Duplicate Contact</string>
+	<string name="mergeprompt_help">This contact already exists:</string>
+	<string name="mergeprompt_always">Always do this, stop asking!</string>
+
+	<string name="error_title">An error occured!</string>
+	<string name="error_ok">Ok</string>
+	<string name="error_continue">Continue</string>
+	<string name="error_abort">Abort</string>
+
+	<string name="error_locationnotfound">The location you have specified to import vCards from does not exist! Check you have specified a valid directory or file.</string>
+	<string name="error_locationpermissions">We don\'t have permission to scan for files in the specified location!</string>
+	<string name="error_locationnofiles">There are no files to import at the specified location! Check you have specified the right location and that the files from which you want to import contacts are there.</string>
+	<string name="error_filenotfound">"Can't open file: "</string>
+	<string name="error_fileisempty">"File is empty: "</string>
+	<string name="error_ioerror">"Can\'t read file: "</string>
+	<string name="error_vcf_parse">"Error parsing vCard in: "</string>
+	<string name="error_vcf_malformed">vCard is malformed</string>
+	<string name="error_vcf_noname">vCard has no entries that can be used as a contact name!</string>
+	<string name="error_vcf_version">vCard uses an invalid version</string>
+	<string name="error_vcf_charset">vCard uses unsupported charset</string>
+	<string name="error_vcf_encoding">vCard uses unsupported encoding</string>
+
+</resources>

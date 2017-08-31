@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2010-2012 Michael Shick
+
+This file is part of 'Lock Pattern Generator'.
+
+'Lock Pattern Generator' is free software: you can redistribute it and/or
+modify it under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your option)
+any later version.
+
+'Lock Pattern Generator' is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
+
+You should have received a copy of the GNU General Public License along with
+'Lock Pattern Generator'.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/generation_pref_category">
+        <EditTextPreference
+            android:title="@string/path_min_pref"
+            android:inputType="number"
+            android:defaultValue="4"
+            android:key="dummy_pattern_min"
+            android:widgetLayout="@layout/pattern_min_pref_widget"
+            />
+        <EditTextPreference
+            android:title="@string/path_max_pref"
+            android:inputType="number"
+            android:defaultValue="5"
+            android:key="dummy_pattern_max"
+            android:widgetLayout="@layout/pattern_max_pref_widget"
+            />
+        <EditTextPreference
+            android:title="@string/grid_length_pref"
+            android:inputType="number"
+            android:defaultValue="3"
+            android:key="dummy_grid_length"
+            android:widgetLayout="@layout/grid_length_pref_widget"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/display_pref_category">
+        <ListPreference
+            android:title="@string/highlight_pref"
+            android:summary="@string/highlight_pref_summary"
+            android:entries="@array/highlight_entries"
+            android:entryValues="@array/highlight_values"
+            android:dialogTitle="@string/highlight_pref"
+            android:defaultValue="first"
+            android:key="highlight_mode"
+            android:widgetLayout="@layout/highlight_pref_widget"
+            />
+        <CheckBoxPreference
+            android:title="@string/tactile_feedback_pref"
+            android:summary="@string/tactile_feedback_pref_summary"
+            android:defaultValue="false"
+            android:key="tactile_feedback"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/derp_pref_category">
+        <CheckBoxPreference
+            android:title="@string/separation_reminder_pref"
+            android:summary="@string/separation_reminder_pref_summary"
+            android:defaultValue="true"
+            android:key="remind_of_separation"
+            />
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Welcome to Addi!</string>
+    <string name="app_name">Addi</string>
+    <string name="addi_version">Addi version: </string>
+    <string name="run">run</string>
+    
+    <string name="edit_save">File saved.</string>
+    <string name="edit_save_run">File save, now attempting to run.</string>
+    <string name="edit_quit">Exited without saving file.</string>
+        
+    <string name="error_no_addiplot">You should download AddiPlot for this to work.</string>
+    <string name="error_addi_edit">Directory not found or permissions incorrect.</string>
+        
+</resources>

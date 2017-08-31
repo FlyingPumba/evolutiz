@@ -1,0 +1,10 @@
+How to compile:
+
+
+Run
+ $ android update project --path . --target "android-4"
+ $ make refresh
+
+then:
+ $ ant debug
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- ESPAGNOL -->
+
+	<string name="yes">Si</string>
+	<string name="no">No</string>
+
+	<string name="help">Ayuda</string>
+	<string name="preferences">Ajustes</string>
+
+	<string name="back">Volver</string>
+	<string name="cancel">Cancelar</string>
+
+	<string name="newnew">Nuevo</string>
+	<string name="delete">Borrar</string>
+
+	<!-- app -->
+	
+	<string name="flip">Dar la vuelta a la pieza</string>
+	<string name="i_pass">Paso el turno</string>
+	
+	<string name="quit">¿Sarlir del juego?</string>
+	<string name="social">Comunidad</string>
+		
+	<string name="new_game">Nueva partida</string>
+	<string name="red_ko">Los Rojos no pueden jugar más</string>
+	<string name="congratulations">Felicitaciones, has ganado, con numero de casillas : </string>
+	<string name="try_next">¡Prueva el nivel siguente!</string>
+	<string name="wins_with_score">ganan con numero de casillas</string>
+	
+	<string name="Red">los Rojos</string>
+	<string name="Green">Los Verdes</string>
+	<string name="Blue">Los Azules</string>
+	<string name="Orange">Los Naranjos</string>
+
+    <!-- rate form -->
+	<string name="if_you_enjoy">Para emejorar el juego. ¿Un voto y talvez un comentario en el Android Market?</string>
+	<string name="now">Si</string>
+	<string name="later">Más tarde</string>
+	<string name="never">No</string>
+	
+</resources>
+

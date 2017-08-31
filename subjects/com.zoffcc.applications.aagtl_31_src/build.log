@@ -1,0 +1,419 @@
+Buildfile: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/build.xml
+
+emma:
+
+-set-mode-check:
+
+-set-debug-files:
+
+-check-env:
+ [checkenv] Android SDK Tools Revision 23.0.2
+ [checkenv] Installed at /home/vagrant/android-sdk-linux
+
+-setup:
+     [echo] Project Name: aagtl
+  [gettype] Project Type: Self-Tested Application
+
+-set-debug-mode:
+
+-debug-obfuscation-check:
+
+-pre-build:
+
+-build-setup:
+[getbuildtools] Using latest Build Tools: 20.0.0
+     [echo] Resolving Build Target for aagtl...
+[gettarget] Project Target:   Android 2.3.3
+[gettarget] API level:        10
+     [echo] ----------
+     [echo] Creating output directories if needed...
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/rsObj
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/rsLibs
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/gen
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/classes
+    [mkdir] Created dir: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/dexedLibs
+     [echo] ----------
+     [echo] Resolving Dependencies for aagtl...
+[dependency] Library dependencies:
+[dependency] No Libraries
+[dependency] 
+[dependency] ------------------
+[dependency] API<=15: Adding annotations.jar to the classpath.
+     [echo] ----------
+     [echo] Building Libraries with 'instrument'...
+   [subant] No sub-builds to iterate on
+
+-code-gen:
+[mergemanifest] Merging AndroidManifest files into one.
+[mergemanifest] Manifest merger disabled. Using project manifest only.
+     [echo] Handling aidl files...
+     [aidl] No AIDL files to compile.
+     [echo] ----------
+     [echo] Handling RenderScript files...
+     [echo] ----------
+     [echo] Handling Resources...
+     [aapt] Generating resource IDs...
+     [echo] ----------
+     [echo] Handling BuildConfig class...
+[buildconfig] Generating BuildConfig class.
+
+-pre-compile:
+
+-compile:
+    [javac] Compiling 143 source files to /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/classes
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/bpi/sdbm/illuminance/SolarPosition.java:39: warning: unmappable character for encoding UTF-8
+    [javac]  * be determined with an accuracy of 0.5 minutes of arc for the period 1999�2015."
+    [javac]                                                                            ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/luckycatlabs/sunrisesunset/calculator/SolarEventCalculator.java:552: warning: unmappable character for encoding UTF-8
+    [javac] 		// ok s� langt
+    [javac] 		       ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/luckycatlabs/sunrisesunset/calculator/SolarEventCalculator.java:584: warning: unmappable character for encoding UTF-8
+    [javac] 		// gesch�tzt!!!!!
+    [javac] 		        ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/luckycatlabs/sunrisesunset/calculator/SolarEventCalculator.java:587: warning: unmappable character for encoding UTF-8
+    [javac] 		// gesch�tzt!!!!!
+    [javac] 		        ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/luckycatlabs/sunrisesunset/calculator/SolarEventCalculator.java:719: warning: unmappable character for encoding UTF-8
+    [javac] 		double MoonElevation = Deg(Math.asin(zhor)); // ok regner ikke m�ne elevation helt riktig...
+    [javac] 		                                                                ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/ArrowView.java:152: warning: unmappable character for encoding UTF-8
+    [javac] 		int start = 0; // 0�
+    [javac] 		                   ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/ArrowView.java:153: warning: unmappable character for encoding UTF-8
+    [javac] 		int end = 360; // 360�
+    [javac] 		                     ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/ArrowView.java:194: warning: unmappable character for encoding UTF-8
+    [javac] 		c.drawText("target: " + String.valueOf((int) display_bearing) + " �", 10, 2 * 34, text_paint);
+    [javac] 		                                                                  ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/ArrowView.java:196: warning: unmappable character for encoding UTF-8
+    [javac] 		c.drawText("my heading: " + String.valueOf((int) this.main_aagtl.cross.gps_heading) + " �",
+    [javac] 		                                                                                        ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:64: warning: unmappable character for encoding UTF-8
+    [javac] 		//System.out.println("lat_d_m_m=" + in.lat_sign + "" + in.lat_deg + "� " + in.lat_min + "." + in.lat_min_fractions);
+    [javac] 		                                                                     ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:73: warning: unmappable character for encoding UTF-8
+    [javac] 		//System.out.println("lon_d_m_m=" + in.lon_sign + "" + in.lon_deg + "� " + in.lon_min + "." + in.lon_min_fractions);
+    [javac] 		                                                                     ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:85: warning: unmappable character for encoding UTF-8
+    [javac] 			//  N 48� 12.134 E 016� 21.629
+    [javac] 			        ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:85: warning: unmappable character for encoding UTF-8
+    [javac] 			//  N 48� 12.134 E 016� 21.629
+    [javac] 			                      ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:89: warning: unmappable character for encoding UTF-8
+    [javac] 			t.lat_deg = Integer.parseInt(lat.split("�", 2)[0]);
+    [javac] 			                                        ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:90: warning: unmappable character for encoding UTF-8
+    [javac] 			t.lat_min = Integer.parseInt(lat.split("�", 2)[1].split("\\.", 2)[0].trim());
+    [javac] 			                                        ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:91: warning: unmappable character for encoding UTF-8
+    [javac] 			t.lat_min_fractions = Integer.parseInt(lat.split("�", 2)[1].split("\\.", 2)[1].trim());
+    [javac] 			                                                  ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:103: warning: unmappable character for encoding UTF-8
+    [javac] 			t.lon_deg = Integer.parseInt(lon.split("�", 2)[0]);
+    [javac] 			                                        ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:104: warning: unmappable character for encoding UTF-8
+    [javac] 			t.lon_min = Integer.parseInt(lon.split("�", 2)[1].split("\\.", 2)[0].trim());
+    [javac] 			                                        ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:105: warning: unmappable character for encoding UTF-8
+    [javac] 			t.lon_min_fractions = Integer.parseInt(lon.split("�", 2)[1].split("\\.", 2)[1].trim());
+    [javac] 			                                                  ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:162: warning: unmappable character for encoding UTF-8
+    [javac] 		//System.out.println("lat_d_m_m=" + ret.lat_sign + "" + ret.lat_deg + "� " + ret.lat_min + "." + ret.lat_min_fractions);
+    [javac] 		                                                                       ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/Coordinate.java:178: warning: unmappable character for encoding UTF-8
+    [javac] 		//System.out.println("lon_d_m_m=" + ret.lon_sign + "" + ret.lon_deg + "� " + ret.lon_min + "." + ret.lon_min_fractions);
+    [javac] 		                                                                       ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:38: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&agrave;", "�" }, { "&Agrave;", "�" }, { "&acirc;", "�" }, { "&auml;", "�" }, { "&Auml;", "�" },
+    [javac] 			               ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:38: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&agrave;", "�" }, { "&Agrave;", "�" }, { "&acirc;", "�" }, { "&auml;", "�" }, { "&Auml;", "�" },
+    [javac] 			                                    ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:38: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&agrave;", "�" }, { "&Agrave;", "�" }, { "&acirc;", "�" }, { "&auml;", "�" }, { "&Auml;", "�" },
+    [javac] 			                                                        ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:38: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&agrave;", "�" }, { "&Agrave;", "�" }, { "&acirc;", "�" }, { "&auml;", "�" }, { "&Auml;", "�" },
+    [javac] 			                                                                           ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:38: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&agrave;", "�" }, { "&Agrave;", "�" }, { "&acirc;", "�" }, { "&auml;", "�" }, { "&Auml;", "�" },
+    [javac] 			                                                                                              ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:39: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Acirc;", "�" }, { "&aring;", "�" }, { "&Aring;", "�" }, { "&aelig;", "�" }, { "&AElig;", "�" },
+    [javac] 			              ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:39: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Acirc;", "�" }, { "&aring;", "�" }, { "&Aring;", "�" }, { "&aelig;", "�" }, { "&AElig;", "�" },
+    [javac] 			                                  ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:39: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Acirc;", "�" }, { "&aring;", "�" }, { "&Aring;", "�" }, { "&aelig;", "�" }, { "&AElig;", "�" },
+    [javac] 			                                                      ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:39: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Acirc;", "�" }, { "&aring;", "�" }, { "&Aring;", "�" }, { "&aelig;", "�" }, { "&AElig;", "�" },
+    [javac] 			                                                                          ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:39: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Acirc;", "�" }, { "&aring;", "�" }, { "&Aring;", "�" }, { "&aelig;", "�" }, { "&AElig;", "�" },
+    [javac] 			                                                                                              ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:40: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&ccedil;", "�" }, { "&Ccedil;", "�" }, { "&eacute;", "�" }, { "&Eacute;", "�" }, { "&egrave;", "�" },
+    [javac] 			               ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:40: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&ccedil;", "�" }, { "&Ccedil;", "�" }, { "&eacute;", "�" }, { "&Eacute;", "�" }, { "&egrave;", "�" },
+    [javac] 			                                    ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:40: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&ccedil;", "�" }, { "&Ccedil;", "�" }, { "&eacute;", "�" }, { "&Eacute;", "�" }, { "&egrave;", "�" },
+    [javac] 			                                                         ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:40: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&ccedil;", "�" }, { "&Ccedil;", "�" }, { "&eacute;", "�" }, { "&Eacute;", "�" }, { "&egrave;", "�" },
+    [javac] 			                                                                              ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:40: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&ccedil;", "�" }, { "&Ccedil;", "�" }, { "&eacute;", "�" }, { "&Eacute;", "�" }, { "&egrave;", "�" },
+    [javac] 			                                                                                                   ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:41: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Egrave;", "�" }, { "&ecirc;", "�" }, { "&Ecirc;", "�" }, { "&euml;", "�" }, { "&Euml;", "�" },
+    [javac] 			               ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:41: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Egrave;", "�" }, { "&ecirc;", "�" }, { "&Ecirc;", "�" }, { "&euml;", "�" }, { "&Euml;", "�" },
+    [javac] 			                                   ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:41: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Egrave;", "�" }, { "&ecirc;", "�" }, { "&Ecirc;", "�" }, { "&euml;", "�" }, { "&Euml;", "�" },
+    [javac] 			                                                       ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:41: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Egrave;", "�" }, { "&ecirc;", "�" }, { "&Ecirc;", "�" }, { "&euml;", "�" }, { "&Euml;", "�" },
+    [javac] 			                                                                          ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:41: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Egrave;", "�" }, { "&ecirc;", "�" }, { "&Ecirc;", "�" }, { "&euml;", "�" }, { "&Euml;", "�" },
+    [javac] 			                                                                                             ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:42: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&iuml;", "�" }, { "&Iuml;", "�" }, { "&ocirc;", "�" }, { "&Ocirc;", "�" }, { "&ouml;", "�" },
+    [javac] 			             ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:42: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&iuml;", "�" }, { "&Iuml;", "�" }, { "&ocirc;", "�" }, { "&Ocirc;", "�" }, { "&ouml;", "�" },
+    [javac] 			                                ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:42: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&iuml;", "�" }, { "&Iuml;", "�" }, { "&ocirc;", "�" }, { "&Ocirc;", "�" }, { "&ouml;", "�" },
+    [javac] 			                                                    ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:42: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&iuml;", "�" }, { "&Iuml;", "�" }, { "&ocirc;", "�" }, { "&Ocirc;", "�" }, { "&ouml;", "�" },
+    [javac] 			                                                                        ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:42: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&iuml;", "�" }, { "&Iuml;", "�" }, { "&ocirc;", "�" }, { "&Ocirc;", "�" }, { "&ouml;", "�" },
+    [javac] 			                                                                                           ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:43: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Ouml;", "�" }, { "&oslash;", "�" }, { "&Oslash;", "�" }, { "&szlig;", "�" }, { "&ugrave;", "�" },
+    [javac] 			             ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:43: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Ouml;", "�" }, { "&oslash;", "�" }, { "&Oslash;", "�" }, { "&szlig;", "�" }, { "&ugrave;", "�" },
+    [javac] 			                                  ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:43: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Ouml;", "�" }, { "&oslash;", "�" }, { "&Oslash;", "�" }, { "&szlig;", "�" }, { "&ugrave;", "�" },
+    [javac] 			                                                       ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:43: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Ouml;", "�" }, { "&oslash;", "�" }, { "&Oslash;", "�" }, { "&szlig;", "�" }, { "&ugrave;", "�" },
+    [javac] 			                                                                           ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:43: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Ouml;", "�" }, { "&oslash;", "�" }, { "&Oslash;", "�" }, { "&szlig;", "�" }, { "&ugrave;", "�" },
+    [javac] 			                                                                                                ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:44: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Ugrave;", "�" }, { "&ucirc;", "�" }, { "&Ucirc;", "�" }, { "&uuml;", "�" }, { "&Uuml;", "�" },
+    [javac] 			               ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:44: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Ugrave;", "�" }, { "&ucirc;", "�" }, { "&Ucirc;", "�" }, { "&uuml;", "�" }, { "&Uuml;", "�" },
+    [javac] 			                                   ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:44: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Ugrave;", "�" }, { "&ucirc;", "�" }, { "&Ucirc;", "�" }, { "&uuml;", "�" }, { "&Uuml;", "�" },
+    [javac] 			                                                       ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:44: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Ugrave;", "�" }, { "&ucirc;", "�" }, { "&Ucirc;", "�" }, { "&uuml;", "�" }, { "&Uuml;", "�" },
+    [javac] 			                                                                          ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/com/zoffcc/applications/aagtl/StringUtils.java:44: warning: unmappable character for encoding UTF-8
+    [javac] 			{ "&Ugrave;", "�" }, { "&ucirc;", "�" }, { "&Ucirc;", "�" }, { "&uuml;", "�" }, { "&Uuml;", "�" },
+    [javac] 			                                                                                             ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/Renderer.java:372: warning: unmappable character for encoding UTF-8
+    [javac] 	 *    &nbsp; &nbsp; &nbsp; &nbsp; return '�'+alt+'�';<br />
+    [javac] 	                                          ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/Renderer.java:372: warning: unmappable character for encoding UTF-8
+    [javac] 	 *    &nbsp; &nbsp; &nbsp; &nbsp; return '�'+alt+'�';<br />
+    [javac] 	                                                  ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/StreamEncodingDetector.java:238: warning: unmappable character for encoding UTF-8
+    [javac] 			if (b2==0x6F && b3==0xA7 && b4==0x94) return setEncoding(EBCDIC,"default EBCDIC encoding (<?xml...> detected)",0,false); // first four bytes are "<?xm" in EBCDIC ("Lo��" in Windows-1252)
+    [javac] 			                                                                                                                                                                      ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/StreamEncodingDetector.java:238: warning: unmappable character for encoding UTF-8
+    [javac] 			if (b2==0x6F && b3==0xA7 && b4==0x94) return setEncoding(EBCDIC,"default EBCDIC encoding (<?xml...> detected)",0,false); // first four bytes are "<?xm" in EBCDIC ("Lo��" in Windows-1252)
+    [javac] 			                                                                                                                                                                       ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/StreamEncodingDetector.java:239: warning: unmappable character for encoding UTF-8
+    [javac] 			if (b2==0x5A && b3==0xC4 && b4==0xD6) return setEncoding(EBCDIC,"default EBCDIC encoding (<!DOCTYPE...> detected)",0,false); // first four bytes are "<!DO" in EBCDIC ("LZ��" in Windows-1252)
+    [javac] 			                                                                                                                                                                          ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/StreamEncodingDetector.java:239: warning: unmappable character for encoding UTF-8
+    [javac] 			if (b2==0x5A && b3==0xC4 && b4==0xD6) return setEncoding(EBCDIC,"default EBCDIC encoding (<!DOCTYPE...> detected)",0,false); // first four bytes are "<!DO" in EBCDIC ("LZ��" in Windows-1252)
+    [javac] 			                                                                                                                                                                           ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/StreamEncodingDetector.java:240: warning: unmappable character for encoding UTF-8
+    [javac] 			if ((b2&b3&b4&0x80)!=0) return setEncoding(EBCDIC,"default EBCDIC-compatible encoding (HTML element detected)",0,false); // all of the 3 bytes after the '<' have the high-order bit set, indicating EBCDIC letters such as "<HTM" ("L���" in Windows-1252), or "<htm" ("L���" in Windows-1252)
+    [javac] 			                                                                                                                                                                                                                                      ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/StreamEncodingDetector.java:240: warning: unmappable character for encoding UTF-8
+    [javac] 			if ((b2&b3&b4&0x80)!=0) return setEncoding(EBCDIC,"default EBCDIC-compatible encoding (HTML element detected)",0,false); // all of the 3 bytes after the '<' have the high-order bit set, indicating EBCDIC letters such as "<HTM" ("L���" in Windows-1252), or "<htm" ("L���" in Windows-1252)
+    [javac] 			                                                                                                                                                                                                                                       ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/StreamEncodingDetector.java:240: warning: unmappable character for encoding UTF-8
+    [javac] 			if ((b2&b3&b4&0x80)!=0) return setEncoding(EBCDIC,"default EBCDIC-compatible encoding (HTML element detected)",0,false); // all of the 3 bytes after the '<' have the high-order bit set, indicating EBCDIC letters such as "<HTM" ("L���" in Windows-1252), or "<htm" ("L���" in Windows-1252)
+    [javac] 			                                                                                                                                                                                                                                        ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/StreamEncodingDetector.java:240: warning: unmappable character for encoding UTF-8
+    [javac] 			if ((b2&b3&b4&0x80)!=0) return setEncoding(EBCDIC,"default EBCDIC-compatible encoding (HTML element detected)",0,false); // all of the 3 bytes after the '<' have the high-order bit set, indicating EBCDIC letters such as "<HTM" ("L���" in Windows-1252), or "<htm" ("L���" in Windows-1252)
+    [javac] 			                                                                                                                                                                                                                                                                          ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/StreamEncodingDetector.java:240: warning: unmappable character for encoding UTF-8
+    [javac] 			if ((b2&b3&b4&0x80)!=0) return setEncoding(EBCDIC,"default EBCDIC-compatible encoding (HTML element detected)",0,false); // all of the 3 bytes after the '<' have the high-order bit set, indicating EBCDIC letters such as "<HTM" ("L���" in Windows-1252), or "<htm" ("L���" in Windows-1252)
+    [javac] 			                                                                                                                                                                                                                                                                           ^
+    [javac] /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/StreamEncodingDetector.java:240: warning: unmappable character for encoding UTF-8
+    [javac] 			if ((b2&b3&b4&0x80)!=0) return setEncoding(EBCDIC,"default EBCDIC-compatible encoding (HTML element detected)",0,false); // all of the 3 bytes after the '<' have the high-order bit set, indicating EBCDIC letters such as "<HTM" ("L���" in Windows-1252), or "<htm" ("L���" in Windows-1252)
+    [javac] 			                                                                                                                                                                                                                                                                            ^
+    [javac] Note: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/src/net/htmlparser/jericho/NodeIterator.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] Note: Some input files use unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+    [javac] 68 warnings
+    [javac] Creating empty /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/classes/net/htmlparser/jericho/package-info.class
+     [echo] Instrumenting classes from /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/classes...
+
+-post-compile:
+
+-obfuscate:
+
+-dex:
+      [dex] input: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/classes
+      [dex] input: /home/vagrant/android-sdk-linux/tools/support/annotations.jar
+      [dex] input: /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/support/annotations.jar -> annotations-5442badee1f6d6457826eac12c92c46e.jar
+      [dex] Pre-Dexing /home/vagrant/android-sdk-linux/tools/lib/emma_device.jar -> emma_device-e790229f52a04d2b195df6976ccc31d7.jar
+      [dex] Converting compiled files and external libraries into /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/classes.dex...
+       [dx] Merged dex A (242 defs/599.9KiB) with dex B (2 defs/1.1KiB). Result is 244 defs/730.7KiB. Took 1.2s
+       [dx] Merged dex A (244 defs/730.7KiB) with dex B (297 defs/326.8KiB). Result is 541 defs/1314.4KiB. Took 0.8s
+
+-crunch:
+   [crunch] Crunching PNG Files in source dir: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res
+   [crunch] To destination dir: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/icon.png: 89% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/icon_bak1.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/icon_bak1.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/icon_bak1.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/icon_bak2.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/icon_bak2.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/icon_bak2.png: 85% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_down_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_down_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_down_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_down_disabled_focused.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_down_disabled_focused.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_down_disabled_focused.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_down_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_down_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_down_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_down_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_down_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_down_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_down_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_down_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_down_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_input_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_input_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_input_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_input_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_input_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_input_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_input_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_input_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_input_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_input_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_input_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_input_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_up_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_up_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_up_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_up_disabled_focused.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_up_disabled_focused.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_up_disabled_focused.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_up_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_up_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_up_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_up_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_up_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_up_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-hdpi/timepicker_up_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_up_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-hdpi/timepicker_up_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_down_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_down_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_down_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_down_disabled_focused.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_down_disabled_focused.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_down_disabled_focused.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_down_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_down_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_down_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_down_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_down_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_down_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_down_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_down_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_down_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_input_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_input_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_input_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_input_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_input_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_input_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_input_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_input_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_input_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_input_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_input_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_input_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_up_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_up_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_up_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_up_disabled_focused.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_up_disabled_focused.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_up_disabled_focused.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_up_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_up_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_up_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_up_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_up_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_up_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-ldpi/timepicker_up_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_up_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-ldpi/timepicker_up_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/icon.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/icon.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/icon.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_down_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_down_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_down_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_down_disabled_focused.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_down_disabled_focused.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_down_disabled_focused.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_down_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_down_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_down_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_down_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_down_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_down_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_down_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_down_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_down_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_input_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_input_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_input_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_input_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_input_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_input_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_input_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_input_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_input_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_input_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_input_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_input_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_up_disabled.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_up_disabled.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_up_disabled.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_up_disabled_focused.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_up_disabled_focused.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_up_disabled_focused.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_up_normal.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_up_normal.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_up_normal.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_up_pressed.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_up_pressed.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_up_pressed.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable-mdpi/timepicker_up_selected.9.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_up_selected.9.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable-mdpi/timepicker_up_selected.9.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable/arrow_off.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable/arrow_off.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable/arrow_off.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable/follow.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable/follow.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable/follow.png: 0% size of source)
+   [crunch] Processing image to cache: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/res/drawable/follow_off.png => /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable/follow_off.png
+   [crunch]   (processed image to cache entry /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/res/drawable/follow_off.png: 0% size of source)
+   [crunch] Crunched 50 PNG files to update cache
+
+-package-resources:
+     [aapt] Creating full resource package...
+
+-package:
+[apkbuilder] Current build type is different than previous build: forced apkbuilder run.
+[apkbuilder] Creating aagtl-debug-unaligned.apk and signing it with a debug key...
+
+-post-package:
+
+-do-debug:
+ [zipalign] Running zip align on final apk...
+     [echo] Debug Package: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/aagtl-debug.apk
+[propertyfile] Creating new property file: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/build.prop
+[propertyfile] Updating property file: /vagrant/subjects/tool_subjects/dynodroid/com.zoffcc.applications.aagtl_31_src/bin/build.prop
+
+-post-build:
+
+debug:
+
+BUILD SUCCESSFUL
+Total time: 56 seconds

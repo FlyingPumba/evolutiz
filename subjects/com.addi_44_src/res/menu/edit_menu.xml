@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/editMenuSave"
+        android:title="Save" />
+	<item android:id="@+id/editMenuSaveRun"
+        android:title="Save and Run" />
+    <item android:id="@+id/editMenuQuit"
+        android:title="Quit" />
+    <item android:id="@+id/editMenuPreferences"
+        android:title="Preferences" />
+</menu>

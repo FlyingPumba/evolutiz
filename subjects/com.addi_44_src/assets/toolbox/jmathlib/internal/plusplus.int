@@ -1,0 +1,27 @@
+/*
+@GROUP
+internal
+@SYNTAX
+++
+@DOC
+add 1.0 to a number or variabe
+@EXAMPLES
+<programlisting>
+2++
+ans=3
+
+[1,2,3]++
+ans=[2,3,4]
+</programlisting>
+@SEE
+minusminus, plus, minus
+*/
+
+/*
+%!@testcase
+%!  ml.executeExpression("a=2;");
+%!  ml.executeExpression("a++;");
+%!  assertTrue(3 == ml.getScalarValueRe("a"));
+%!  assertTrue(0 == ml.getScalarValueIm("a"));
+%!
+*/
