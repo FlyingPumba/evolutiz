@@ -39,9 +39,18 @@ coverage.xml
 env/
 
 *.apk
+motifcore.script.init.*
+share/
+lib/python2.7
+include/
 
 # OS generated
 .DS_Store
 .DS_Store?
 .Spotlight-V100
 Thumbs.db
+
+**/intermediate/
+**/coverages
+main-debug/
+output*
