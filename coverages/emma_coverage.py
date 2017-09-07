@@ -121,12 +121,13 @@ def get_suite_coverage(scripts, device, apk_dir, package_name, gen, pop):
 	time.sleep(0.5)
 	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " pull /mnt/sdcard/coverage.ec")
 	os.system(
-		"java -cp " + settings.ANDROID_HOME + "tools/lib/emma.jar emma report -r html -in coverage.em,coverage.ec")
+		"java -cp $ANDROID_HOME/tools/lib/emma.jar emma report -r html -in coverage.em,coverage.ec")
 
-	html_file = apk_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
+	html_file = settings.WORKING_DIR + apk_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
 	try:
 		coverage_str = extract_coverage(html_file)
-	except:
+	except Exception, e:
+		print "Exception occurred trying to extra coverage from html file", e.strerror
 		return 0, len(unique_crashes)
 
 	if coverage_str.find("%") != -1:
