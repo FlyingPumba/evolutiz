@@ -13,6 +13,15 @@ import settings
 results = []
 idle_devices = []
 
+# 0. prepare wrapper for eval function
+def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, apk_dir, package_name, gen, pop):
+	try:
+		print "starting eval_suite_parallel_wrapper for individual ", pop
+		return eval_suite_parallel(individual, device, apk_dir, package_name, gen, pop)
+	except Exception as e:
+		print "There was an error evaluating individual in parallel"
+		print e
+		return pop, (0, 0, 0), device
 
 def process_results(data):
 	indi_index, fitness, device = data
@@ -29,6 +38,10 @@ def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name
 	:param pool_size:
 	:return: When all individuals have been evaluated
 	"""
+	
+	if settings.DEBUG:
+		print "### Starting evaluation in parallel"
+		print "idle devices=", idle_devices
 
 	# init global states
 	while len(results) > 0:
@@ -36,17 +49,12 @@ def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name
 	while len(idle_devices) > 0:
 		idle_devices.pop()
 
-	# 0. prepare wrapper for eval function
-	def eval_suite_parallel_wrapper(individual, device, apk_dir, package_name, gen, pop):
-		try:
-			return eval_suite_parallel(individual, device, apk_dir, package_name, gen, pop)
-		except Exception as e:
-			print "There was an error evaluating individual in parallel"
-			print e
-			return pop, (None, None, None), device
-
 	# 1. get idle devices
 	idle_devices.extend(emulator.get_devices())
+
+	if settings.DEBUG:
+		print "idle devices after extending from emulator.get_devices()=", idle_devices
+		print "number of devices", len(idle_devices)
 
 	# 2. aissign tasks to devices
 	pool = mp.Pool(processes=len(idle_devices))
@@ -54,8 +62,17 @@ def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name
 		while len(idle_devices) == 0:
 			print "Waiting for idle_devices"
 			print idle_devices
-			time.sleep(0.5) # a veces se cuelga aca
-		pool.apply_async(eval_suite_parallel_wrapper, args=(individuals[i], idle_devices.pop(0), apk_dir, package_name, gen, i), callback=process_results)
+			time.sleep(1)
+		
+		device = idle_devices.pop(0)
+		if settings.DEBUG:
+			print "assigning task to device ", device
+			print "individual is ", i
+
+		pool.apply_async(eval_suite_parallel_wrapper, args=(eval_suite_parallel, individuals[i], device, apk_dir, package_name, gen, i), callback=process_results)
+
+		# apply_result = pool.apply_async(eval_suite_parallel_wrapper, args=(eval_suite_parallel, individuals[i], device, apk_dir, package_name, gen, i))
+		# process_results(apply_result.get())
 
 	print "### evaluate_in_parallel is wating for all processes to finish ... "
 	# should wait for all processes to finish
@@ -97,7 +114,7 @@ def evolve(population, toolbox, mu, lambda_, cxpb, mutpb, ngen, apk_dir, package
 	# Begin the generational process
 	for gen in range(1, ngen + 1):
 
-		print "Starting generation", gen
+		print "Starting generation ", gen
 
 		# Vary the population
 		offspring = varOr(population, toolbox, lambda_, cxpb, mutpb)
