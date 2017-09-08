@@ -43,7 +43,7 @@ import settings
 from coverages import emma_coverage
 from coverages import ella_coverage
 from coverages import act_coverage
-from plot import two_d_line
+from plot import two_d_line, history_network
 from devices import emulator
 from crashes import crash_handler
 from analysers import static_analyser
@@ -155,24 +155,30 @@ def eval_suite(individual, device, apk_dir, package_name, gen, pop):
 	script_path = []
 
 	# for length objective
+	if settings.DEBUG:
+		print "Generating motifcore scripts to evaluate individual"
 	suite_lengths = []
 	for index, seq in enumerate(individual):
 		# generate script file list
-		script = open(apk_dir + "/intermediate/motifcore.evo.script." + str(gen) + "." + str(pop) + "." + str(index), "w")
-		script.write(settings.MOTIFCORE_SCRIPT_HEADER)
+		filename = apk_dir + "/intermediate/motifcore.evo.script." + str(gen) + "." + str(pop) + "." + str(index)
+		with open(filename, "w+") as script:
+			script.write(settings.MOTIFCORE_SCRIPT_HEADER)
 
-		length = 0
-		for line in seq:
-			script.write(line + "\n")
-			length += 1
+			length = 0
+			for line in seq:
+			  script.write(line + "\n")
+			  length += 1
 
-		suite_lengths.append(length)
+			suite_lengths.append(length)
 
-		script.close()
-		script_path.append(os.path.abspath(
-			apk_dir + "/intermediate/motifcore.evo.script." + str(gen) + "." + str(pop) + "." + str(index)))
+			# script.flush()
+			# os.fsync(script.fileno())
+			script.close()
+			script_path.append(os.path.abspath(filename))
 
 	# give a script and package, return the coverage by running all seqs
+	if settings.DEBUG:
+		print "Sending motifcore scripts to evaluate individual"
 	if apk_dir.endswith(".apk_output"):
 		coverage, num_crashes = act_coverage.get_suite_coverage(script_path, device, apk_dir, package_name, gen, pop)
 	else:
@@ -264,7 +270,7 @@ def get_package_name(path):
 
 	assert apk_path is not None
 
-	get_package_cmd = "$ANDROID_HOME/build-tools/25.0.3/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package= | awk 'BEGIN {FS=\"\\\"\"}{print $2}'"
+	get_package_cmd = "$ANDROID_HOME/build-tools/26.0.1/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package= | awk 'BEGIN {FS=\"\\\"\"}{print $2}'"
 	package_name = subprocess.Popen(get_package_cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
 	return package_name, apk_path
 
@@ -367,7 +373,7 @@ def main(instrumented_app_dir):
 														ngen=settings.GENERATION,
 														apk_dir=instrumented_app_dir,
 														package_name=package_name,
-														stats=stats, halloffame=hof, verbose=True)
+														stats=stats, halloffame=hof, verbose=settings.DEBUG)
 
 	# persistent
 	logbook_file = open(instrumented_app_dir + "/intermediate/logbook.pickle", 'wb')
@@ -387,10 +393,16 @@ def main(instrumented_app_dir):
 	two_d_line.plot(logbook, 1, instrumented_app_dir)
 	two_d_line.plot(logbook, 2, instrumented_app_dir)
 
+	print "\n\n\n### Finished main"
+
+	print "\n\n\n### Writting final population"
+
+	#best = tools.sortLogNondominated(population, 1, first_front_only=True)
+	for ind in population:
+		print "Individual with fitness: ", ind.fitness
 
 # draw history network
-# history_network.plot(history, instrumented_app_dir)
-
+	#history_network.plot(history, instrumented_app_dir)
 
 if __name__ == "__main__":
 	app_dir = sys.argv[1]

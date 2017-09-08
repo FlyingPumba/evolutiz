@@ -1,2 +1,11 @@
 #!/bin/sh
-python main.py subjects/a2dp.Vol_93_src > "output.$(date +%Y-%m-%d_%H-%M).log" 2>&1
+LOG="output.$(date +%Y-%m-%d_%H-%M).log"
+touch $LOG
+echo "Starting time: $(date +%Y-%m-%d_%H-%M)" >> $LOG
+echo "Settings used: \n" >> $LOG
+cat settings.py >> $LOG
+echo "\n" >> $LOG
+
+python main.py subjects/a2dp.Vol_93_src >> $LOG 2>&1
+
+echo "Finishing time: $(date +%Y-%m-%d_%H-%M)" >> $LOG
