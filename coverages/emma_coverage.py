@@ -84,10 +84,12 @@ def get_suite_coverage(scripts, device, apk_dir, package_name, gen, pop):
 	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell pm clear " + package_name)
 	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/coverage.ec")
 
-	os.chdir(apk_dir)
 	ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
 	coverage_folder = str(gen) + "." + str(pop) + "." + ts
-	os.system("mkdir coverages/" + coverage_folder)
+
+	os.chdir(settings.WORKING_DIR)
+	os.chdir(apk_dir)
+	os.system("mkdir -p coverages/" + coverage_folder)
 	os.system("cp bin/coverage.em coverages/" + coverage_folder)
 	os.chdir("coverages/" + coverage_folder)
 
