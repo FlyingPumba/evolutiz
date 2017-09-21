@@ -81,6 +81,9 @@ def initPop(container, func, n, apk_dir, package_name):
 			print "### Call apply_async"
 		pool.apply_async(func, args=(idle_devices.pop(0), apk_dir, package_name), callback=process_results)
 
+		# res = pool.apply(func, args=(idle_devices.pop(0), apk_dir, package_name))
+		# process_results(res)
+
 	# should wait for all processes finish
 	pool.close()
 	pool.join()

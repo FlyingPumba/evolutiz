@@ -161,6 +161,10 @@ def eval_suite(individual, device, apk_dir, package_name, gen, pop):
 	for index, seq in enumerate(individual):
 		# generate script file list
 		filename = apk_dir + "/intermediate/motifcore.evo.script." + str(gen) + "." + str(pop) + "." + str(index)
+		# check that directory exists before creating file
+		dirname = os.path.dirname(filename)
+		if not os.path.exists(dirname):
+			os.makedirs(dirname)
 		with open(filename, "w+") as script:
 			script.write(settings.MOTIFCORE_SCRIPT_HEADER)
 
@@ -170,12 +174,7 @@ def eval_suite(individual, device, apk_dir, package_name, gen, pop):
 			  length += 1
 
 			suite_lengths.append(length)
-
-			# script.flush()
-			# os.fsync(script.fileno())
-			script.close()
-			script_path.append(os.path.abspath(filename))
-
+		script_path.append(os.path.abspath(filename))
 	# give a script and package, return the coverage by running all seqs
 	if settings.DEBUG:
 		print "Sending motifcore scripts to evaluate individual"
@@ -241,6 +240,7 @@ toolbox.register("evaluate", eval_suite)
 toolbox.register("mate", tools.cxUniform, indpb=0.5)
 # mutate should change seq order in the suite as well
 toolbox.register("mutate", mut_suite, indpb=0.5)
+
 # toolbox.register("select", tools.selTournament, tournsize=5)
 toolbox.register("select", tools.selNSGA2)
 
