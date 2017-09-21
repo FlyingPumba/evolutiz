@@ -51,7 +51,7 @@ def handle(device, apk_dir, script_path, gen, pop, index, unique_crashes):
 		pass
 	else:
 		# save the crash report
-		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " pull /mnt/sdcard/bugreport.crash " + apk_dir + "/")
+		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " pull /mnt/sdcard/bugreport.crash " + apk_dir)
 		# filter duplicate crashes
 		with open(apk_dir + "/bugreport.crash") as bug_report_file:
 			content = ""
