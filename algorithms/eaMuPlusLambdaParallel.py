@@ -7,6 +7,7 @@ from deap import tools
 
 from devices import emulator
 import settings
+import traceback
 
 
 # global results for mp callback
@@ -20,7 +21,8 @@ def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, apk_dir
 		return eval_suite_parallel(individual, device, apk_dir, package_name, gen, pop)
 	except Exception as e:
 		print "There was an error evaluating individual in parallel"
-		print e
+		# print e
+		traceback.print_exc()
 		return pop, (0, 0, 0), device
 
 def process_results(data):
@@ -70,9 +72,9 @@ def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name
 			print "individual is ", i
 
 		pool.apply_async(eval_suite_parallel_wrapper, args=(eval_suite_parallel, individuals[i], device, apk_dir, package_name, gen, i), callback=process_results)
-
-		# apply_result = pool.apply_async(eval_suite_parallel_wrapper, args=(eval_suite_parallel, individuals[i], device, apk_dir, package_name, gen, i))
-		# process_results(apply_result.get())
+		# res = pool.apply(eval_suite_parallel_wrapper,
+		#				 args=(eval_suite_parallel, individuals[i], device, apk_dir, package_name, gen, i))
+		# process_results(res)
 
 	print "### evaluate_in_parallel is wating for all processes to finish ... "
 	# should wait for all processes to finish
