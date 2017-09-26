@@ -18,7 +18,11 @@ idle_devices = []
 def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, apk_dir, package_name, gen, pop):
 	try:
 		print "starting eval_suite_parallel_wrapper for individual ", pop
-		return eval_suite_parallel(individual, device, apk_dir, package_name, gen, pop)
+		start_time = time.time()
+		result = eval_suite_parallel(individual, device, apk_dir, package_name, gen, pop)
+		elapsed_time = time.time() - start_time
+		print "Elapsed seconds to evaluate individual was ", elapsed_time
+		return result
 	except Exception as e:
 		print "There was an error evaluating individual in parallel"
 		# print e
