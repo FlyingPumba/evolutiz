@@ -5,7 +5,7 @@ import multiprocessing as mp
 
 from deap import tools
 
-from devices import emulator
+from devices import any_device
 import settings
 import traceback
 
@@ -56,10 +56,10 @@ def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name
 		idle_devices.pop()
 
 	# 1. get idle devices
-	idle_devices.extend(emulator.get_devices())
+	idle_devices.extend(any_device.get_devices())
 
 	if settings.DEBUG:
-		print "idle devices after extending from emulator.get_devices()=", idle_devices
+		print "idle devices after extending from any_device.get_devices()=", idle_devices
 		print "number of devices", len(idle_devices)
 
 	# 2. aissign tasks to devices

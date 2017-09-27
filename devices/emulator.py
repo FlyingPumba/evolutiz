@@ -79,9 +79,9 @@ def boot_devices():
 		print "Booting Device:", device_name
 		time.sleep(0.3)
 		if settings.HEADLESS:
-			sub.Popen('cd "$(dirname "$(which emulator)")" && ./emulator -avd ' + device_name + " -wipe-data -no-window -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			sub.Popen('/usr/local/android-sdk/emulator/emulator -avd ' + device_name + " -wipe-data -no-window -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 		else:
-			sub.Popen('cd "$(dirname "$(which emulator)")" && ./emulator -avd ' + device_name + " -wipe-data -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			sub.Popen('/usr/local/android-sdk/emulator/emulator -avd ' + device_name + " -wipe-data -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 		print "Waiting", settings.AVD_BOOT_DELAY, "seconds"
 		time.sleep(settings.AVD_BOOT_DELAY)
 

@@ -44,7 +44,7 @@ from coverages import emma_coverage
 from coverages import ella_coverage
 from coverages import act_coverage
 from plot import two_d_line, history_network
-from devices import emulator
+from devices import any_device
 from crashes import crash_handler
 from analysers import static_analyser
 from init import initRepeatParallel
@@ -258,7 +258,7 @@ def get_package_name(path):
 	else:
 		# build the apk
 		# settings.PROJECT_FOLDER = path
-		# emulator.pack_and_deploy_aut()
+		# any_device.pack_and_deploy_aut()
 
 		# now find its name
 		for file_name in os.listdir(path + "/bin"):
@@ -290,14 +290,13 @@ def main(instrumented_app_dir):
 	else:
 		print "Runnning on unknown OS"
 
-	# get emulator device
 	print "Preparing devices ..."
-	emulator.boot_devices()
-	emulator.prepare_motifcore()
-	emulator.clean_sdcard()
+	any_device.boot_devices()
+	any_device.prepare_motifcore()
+	any_device.clean_sdcard()
 
 	# log the devices
-	devices = emulator.get_devices()
+	devices = any_device.get_devices()
 
 	# get package name and prepare apk if necessary
 	package_name, apk_path = get_package_name(instrumented_app_dir)

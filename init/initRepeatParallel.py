@@ -32,7 +32,7 @@
 import multiprocessing as mp
 import time
 
-from devices import emulator
+from devices import any_device
 import settings
 
 
@@ -67,10 +67,10 @@ def initPop(container, func, n, apk_dir, package_name):
 		idle_devices.pop()
 
 	# 1. get idle devices
-	idle_devices.extend(emulator.get_devices())
+	idle_devices.extend(any_device.get_devices())
 
 	if settings.DEBUG:
-		print "idle devices after extending from emulator.get_devices()=", idle_devices
+		print "idle devices after extending from any_device.get_devices()=", idle_devices
 
 	# 2. aissign tasks to devices
 	pool = mp.Pool(processes=len(idle_devices))
