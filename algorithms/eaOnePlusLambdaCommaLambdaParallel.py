@@ -5,7 +5,7 @@ from deap import tools
 from algorithms.parallalel_evaluation import evaluate_in_parallel
 
 def evolve(population, toolbox, lambda_, cxpb, mutpb, ngen, apk_dir, package_name,
-		   stats=None, halloffame=None, verbose=__debug__):
+		   stats=None, verbose=__debug__):
 	# 1 + (lambda, lambda) starts with population of only one individual
 	assert len(population) == 1
 
@@ -24,9 +24,6 @@ def evolve(population, toolbox, lambda_, cxpb, mutpb, ngen, apk_dir, package_nam
 		if not population[i].fitness.valid:
 			del population[i]
 
-	if halloffame is not None:
-		halloffame.update(population)
-
 	record = stats.compile(population) if stats is not None else {}
 	logbook.record(gen=0, nevals=len(invalid_ind), **record)
 	if verbose:
@@ -38,7 +35,7 @@ def evolve(population, toolbox, lambda_, cxpb, mutpb, ngen, apk_dir, package_nam
 		print "Starting generation ", gen
 
 		# Vary the population
-		offspring = varOr(population, toolbox, lambda_, cxpb, mutpb)
+		offspring = varOr(population, toolbox, lambda_, apk_dir, package_name, gen)
 
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
@@ -46,28 +43,10 @@ def evolve(population, toolbox, lambda_, cxpb, mutpb, ngen, apk_dir, package_nam
 		# this function will eval and match each invalid_ind to its fitness
 		evaluate_in_parallel(toolbox.evaluate, invalid_ind, apk_dir, package_name, gen)
 
-		# if settings.DEBUG:
-		# 	for indi in invalid_ind:
-		# 		print indi.fitness.values
-
-		# discard invalid offspring individual
-		for i in range(len(offspring) - 1, -1, -1):
-			if not offspring[i].fitness.valid:
-				print "### Warning: Invalid Fitness"
-				del offspring[i]
-
-		# Update the hall of fame with the generated individuals
-		print "### Updating Hall of Fame ..."
-		if halloffame is not None:
-			halloffame.update(offspring)
-
-		# assert fitness
-		invalid_ind_post = [ind for ind in population + offspring if not ind.fitness.valid]
-		print "### assert len(invalid_ind) == 0, len = ", len(invalid_ind_post)
-		assert len(invalid_ind_post) == 0
-
-		# Select the next generation population
-		population[:] = toolbox.select(population + offspring, mu)
+		best_ind = tools.sortNondominated(offspring + population, 1)
+		if (best_ind != population[0]):
+			# the parent was improved by one individual of the offspring
+			population = [best_ind]
 
 		# Update the statistics with the new population
 		record = stats.compile(population) if stats is not None else {}
@@ -83,24 +62,28 @@ def evolve(population, toolbox, lambda_, cxpb, mutpb, ngen, apk_dir, package_nam
 	return population, logbook
 
 
-def varOr(population, toolbox, lambda_, cxpb, mutpb):
-	assert (cxpb + mutpb) <= 1.0, ("The sum of the crossover and mutation "
-								   "probabilities must be smaller or equal to 1.0.")
-
-	offspring = []
+def varOr(population, toolbox, lambda_, apk_dir, package_name, gen):
+	parent = population[0]
+	# generate lambda_ mutants
+	mutants = []
 	for _ in xrange(lambda_):
-		op_choice = random.random()
-		if op_choice < cxpb:  # Apply crossover
-			ind1, ind2 = map(toolbox.clone, random.sample(population, 2))
-			ind1, ind2 = toolbox.mate(ind1, ind2)
-			del ind1.fitness.values
-			offspring.append(ind1)
-		elif op_choice < cxpb + mutpb:  # Apply mutation
-			ind = toolbox.clone(random.choice(population))
-			ind, = toolbox.mutate(ind)
-			del ind.fitness.values
-			offspring.append(ind)
-		else:  # Apply reproduction
-			offspring.append(random.choice(population))
+		ind = toolbox.clone(parent)
+		ind, = toolbox.mutate(ind)
+		del ind.fitness.values
+		mutants.append(ind)
+
+	evaluate_in_parallel(toolbox.evaluate, mutants, apk_dir, package_name, gen)
+	best_ind = tools.sortNondominated(mutants, 1)
+
+	# generate lambda_ offspring
+	offspring = []
+	while len(offspring) < lambda_:
+		p1 = toolbox.clone(parent)
+		p2 = toolbox.clone(best_ind)
+		ind1, ind2 = toolbox.mate(p1, p2)
+		del ind1.fitness.values
+		del ind2.fitness.values
+		offspring.append(ind1)
+		offspring.append(ind2)
 
 	return offspring
