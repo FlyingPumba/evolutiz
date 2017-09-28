@@ -1,13 +1,6 @@
 import random
-import time
 import pickle
-import multiprocessing as mp
-
 from deap import tools
-
-from devices import any_device
-import settings
-import traceback
 
 from algorithms.parallalel_evaluation import evaluate_in_parallel
 

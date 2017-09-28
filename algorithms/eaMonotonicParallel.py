@@ -1,7 +1,7 @@
-import pickle
 import random
-
+import pickle
 from deap import tools
+
 from algorithms.parallalel_evaluation import evaluate_in_parallel
 
 def evolve(population, toolbox, cxpb, mutpb, ngen, apk_dir, package_name,
