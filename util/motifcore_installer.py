@@ -36,8 +36,10 @@ def install(motifcore_path, motifcore_script_path, device):
 	adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
 	# push
-	adb.sudo_push(device, motifcore_path, "/system/framework")
-	adb.sudo_push(device, motifcore_script_path, "/system/bin")
+	filename = adb.sudo_push(device, motifcore_path, "/system/framework")
+	adb.sudo_shell_command(device, "chmod 777 /system/framework/" + filename)
+	filename = adb.sudo_push(device, motifcore_script_path, "/system/bin")
+	adb.sudo_shell_command(device, "chmod 777 /system/bin/" + filename)
 
 	# recover permission
 	adb.sudo_shell_command(device, "mount -o ro,remount /system")

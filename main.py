@@ -94,20 +94,16 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	ret = []
 
 	# clear data
-	adb.sudo_shell_command(device, "pm clear " + package_name)
+	adb.shell_command(device, "pm clear " + package_name)
 
 	# start motifcore
 	print "... Start generating a sequence"
-	# command = Command("$ANDROID_HOME/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " -v --throttle " + str(
-	# 	settings.THROTTLE) + " " + str(motifcore_events))
-	# command.run(timeout=600)
-	cmd = "$ANDROID_HOME/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml -v " + str(
+	motifcore_cmd = "motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml -v " + str(
 		motifcore_events)
-	os.system(settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + cmd)
+	adb.sudo_shell_command(device, motifcore_cmd, timeout = True)
 
 	# need to kill motifcore when timeout
-	kill_motifcore_cmd = "shell ps | awk '/com\.android\.commands\.motifcore/ { system(\"$ANDROID_HOME/platform-tools/adb -s " + device + " shell kill \" $2) }'"
-	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " " + kill_motifcore_cmd)
+	adb.sudo_shell_command(device, "ps | awk '/com\.android\.commands\.motifcore/ { kill $2 }'")
 
 	print "... Finish generating a sequence"
 	# access the generated script, should ignore the first launch activity
