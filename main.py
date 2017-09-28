@@ -45,6 +45,7 @@ from coverages import ella_coverage
 from coverages import act_coverage
 from plot import two_d_line, history_network
 from devices import any_device
+from devices import adb
 from crashes import crash_handler
 from analysers import static_analyser
 from init import initRepeatParallel
@@ -93,7 +94,7 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	ret = []
 
 	# clear data
-	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell pm clear " + package_name)
+	adb.sudo_shell_command(device, "pm clear " + package_name)
 
 	# start motifcore
 	print "... Start generating a sequence"
@@ -103,6 +104,7 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	cmd = "$ANDROID_HOME/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml -v " + str(
 		motifcore_events)
 	os.system(settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + cmd)
+
 	# need to kill motifcore when timeout
 	kill_motifcore_cmd = "shell ps | awk '/com\.android\.commands\.motifcore/ { system(\"$ANDROID_HOME/platform-tools/adb -s " + device + " shell kill \" $2) }'"
 	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " " + kill_motifcore_cmd)

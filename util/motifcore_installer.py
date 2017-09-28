@@ -29,21 +29,15 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-import os
-
+from devices import adb
 
 def install(motifcore_path, motifcore_script_path, device):
 	# obtain write permission
-	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell mount -o rw,remount /system")
+	adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
 	# push
-	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " push " + motifcore_path + " /system/framework")
-	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " push " + motifcore_script_path + " /system/bin")
+	adb.sudo_push(device, motifcore_path, "/system/framework")
+	adb.sudo_push(device, motifcore_script_path, "/system/bin")
 
 	# recover permission
-	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell mount -o ro,remount /system")
-
-
-if __name__ == "__main__":
-	os.chdir("..")
-	install("lib/motifcore.jar", "resources/motifcore", "emulator-5554")
+	adb.sudo_shell_command(device, "mount -o ro,remount /system")

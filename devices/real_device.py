@@ -97,7 +97,7 @@ def disable_systemui():
 
 def prepare_motifcore():
 	for device in get_devices():
-		motifcore_installer.install(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motif", device)
+		motifcore_installer.install(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device)
 
 
 def kill_motifcore(device):
