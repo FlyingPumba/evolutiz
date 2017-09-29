@@ -66,7 +66,7 @@ class eaMonotonicParallel:
 				evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, gen)
 
 				sorted_inds = sorted(offspring + parents, key=attrgetter("fitness"), reverse=True)
-				next_population.extend(sorted_inds[0])
+				next_population.append(sorted_inds[0])
 
 			self.population = next_population
 

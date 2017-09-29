@@ -1,82 +1,94 @@
 import pickle
 import random
-from deap import tools
+from operator import attrgetter
 
+from deap import tools, creator, base
+
+import settings
+from algorithms.eval_suite_single_objective import eval_suite
+from algorithms.mut_suite import mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
 
-def evolve(population, toolbox, cxpb, mutpb, ngen, apk_dir, package_name,
-		   stats=None, verbose=__debug__):
-	logbook = tools.Logbook()
-	logbook.header = ['gen', 'nevals'] + (stats.fields if stats else [])
+class eaSteadyStateParallel:
+	def __init__(self):
+		self.cxpb = settings.CXPB
+		self.mutpb = settings.MUTPB
+		self.ngen = settings.GENERATION
 
-	# Evaluate the individuals with an invalid fitness
-	invalid_ind = [ind for ind in population if not ind.fitness.valid]
-	evaluate_in_parallel(toolbox.evaluate, invalid_ind, apk_dir, package_name, 0)
+	def setup(self, toolbox, apk_dir, package_name, verbose=False):
+		# assumes toolbox has registered:
+		# "individual" to generate individuals
+		# "population" to generate population
+		self.toolbox = toolbox
+		self.apk_dir = apk_dir
+		self.package_name = package_name
+		self.verbose = verbose
 
-	# discard invalid population individual
-	for i in range(len(population) - 1, -1, -1):
-		if not population[i].fitness.valid:
-			del population[i]
+		### deap framework setup
+		creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
+		creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
-	record = stats.compile(population) if stats is not None else {}
-	logbook.record(gen=0, nevals=len(invalid_ind), **record)
-	if verbose:
-		print logbook.stream
+		self.toolbox.register("evaluate", eval_suite)
+		# mate crossover two suites
+		self.toolbox.register("mate", tools.cxUniform, indpb=0.5)
+		# mutate should change seq order in the suite as well
+		self.toolbox.register("mutate", mut_suite, indpb=0.5)
 
-	# Begin the generational process
-	for gen in range(1, ngen + 1):
+		# self.toolbox.register("select", tools.selTournament, tournsize=5)
+		self.toolbox.register("select", tools.selNSGA2)
 
-		print "Starting generation ", gen
+		print "### Initialising population ...."
+		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, apk_dir=self.apk_dir,
+												  package_name=self.package_name)
 
-		offspring, parents = varOr(population, toolbox, cxpb, mutpb)
+	def evolve(self):
 
-		population.remove(parents[0])
-		population.remove(parents[1])
+		# Evaluate the individuals with an invalid fitness
+		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
+		evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, 0)
 
-		# Evaluate the individuals with an invalid fitness in offspring
-		invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
-		evaluate_in_parallel(toolbox.evaluate, invalid_ind, apk_dir, package_name, gen)
+		# discard invalid self.population individual
+		for i in range(len(self.population) - 1, -1, -1):
+			if not self.population[i].fitness.valid:
+				del self.population[i]
 
-		sorted_inds = tools.sortNondominated(offspring + parents, 1)
-		# sorted_inds is a list of Pareto fronts (lists),
-		# the first list includes nondominated individuals.
+		# Begin the generational process
+		for gen in range(1, self.ngen + 1):
 
-		# TODO: What happens if there is no nondominated individuals ?
-		# len(sorted_inds[0]) == 0 ?
+			print "Starting generation ", gen
 
-		population.extend(sorted_inds[0][0])
+			offspring, parents = self.varOr(self.population)
 
-		# Update the statistics with the new population
-		record = stats.compile(population) if stats is not None else {}
-		logbook.record(gen=gen, nevals=len(invalid_ind), **record)
-		if verbose:
-			print logbook.stream
+			self.population.remove(parents[0])
+			self.population.remove(parents[1])
 
-		# in case interrupted
-		logbook_file = open(apk_dir + "/intermediate/logbook.pickle", 'wb')
-		pickle.dump(logbook, logbook_file)
-		logbook_file.close()
+			# Evaluate the individuals with an invalid fitness in offspring
+			invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
+			evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, gen)
 
-	return population, logbook
+			sorted_inds = sorted(offspring + parents, key=attrgetter("fitness"), reverse=True)
+			self.population.append(sorted_inds[0])
+
+		return self.population
 
 
-def varOr(population, toolbox, cxpb, mutpb):
+	def varOr(self, population):
 
-	parents = tools.selTournament(population, 2, tournsize=5)  # TODO: check if tournsize is correct
+		parents = tools.selTournament(population, 2, tournsize=5)  # TODO: check if tournsize is correct
 
-	ind1, ind2 = map(toolbox.clone, parents)
+		ind1, ind2 = map(self.toolbox.clone, parents)
 
-	op_choice = random.random()
-	if op_choice < cxpb:  # Apply crossover
-		ind1, ind2 = toolbox.mate(ind1, ind2)
-		del ind1.fitness.values
-		del ind2.fitness.values
+		op_choice = random.random()
+		if op_choice < self.cxpb:  # Apply crossover
+			ind1, ind2 = self.toolbox.mate(ind1, ind2)
+			del ind1.fitness.values
+			del ind2.fitness.values
 
-	op_choice = random.random()
-	if op_choice < mutpb:  # Apply mutation
-		ind1 = toolbox.mutate(ind1)
-		del ind1.fitness.values
-		ind2 = toolbox.mutate(ind2)
-		del ind2.fitness.values
+		op_choice = random.random()
+		if op_choice < self.mutpb:  # Apply mutation
+			ind1 = self.toolbox.mutate(ind1)
+			del ind1.fitness.values
+			ind2 = self.toolbox.mutate(ind2)
+			del ind2.fitness.values
 
-	return [ind1, ind2], parents
+		return [ind1, ind2], parents
