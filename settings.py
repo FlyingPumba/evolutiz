@@ -6,11 +6,11 @@ HEADLESS = True
 EMMA_ED = "emma/" # folder for instrumented builds with emma
 ORIGINAL_PATH = "subjects/" # folder for origignal sources
 
-USE_REAL_DEVICES = True
-USE_EMULATORS = False
+USE_REAL_DEVICES = False
+USE_EMULATORS = True
 
 # === Emulator ===
-DEVICE_NUM = 3
+DEVICE_NUM = 0
 AVD_BOOT_DELAY = 0 # 40
 AVD_SERIES = "Nexus_4_API_19"
 EVAL_TIMEOUT = 120
