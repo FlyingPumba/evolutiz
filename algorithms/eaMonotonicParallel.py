@@ -73,23 +73,23 @@ class eaMonotonicParallel:
 		return self.population
 
 
-	def varOr(population, toolbox, cxpb, mutpb):
+	def varOr(self, population):
 
 		parents = tools.selTournament(population, 2, tournsize=5)  # TODO: check if tournsize is correct
 
-		ind1, ind2 = map(toolbox.clone, parents)
+		ind1, ind2 = map(self.toolbox.clone, parents)
 
 		op_choice = random.random()
-		if op_choice < cxpb:  # Apply crossover
-			ind1, ind2 = toolbox.mate(ind1, ind2)
+		if op_choice < self.cxpb:  # Apply crossover
+			ind1, ind2 = self.toolbox.mate(ind1, ind2)
 			del ind1.fitness.values
 			del ind2.fitness.values
 
 		op_choice = random.random()
-		if op_choice < mutpb:  # Apply mutation
-			ind1 = toolbox.mutate(ind1)
+		if op_choice < self.mutpb:  # Apply mutation
+			ind1 = self.toolbox.mutate(ind1)
 			del ind1.fitness.values
-			ind2 = toolbox.mutate(ind2)
+			ind2 = self.toolbox.mutate(ind2)
 			del ind2.fitness.values
 
 		return [ind1, ind2], parents
