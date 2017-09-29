@@ -14,7 +14,7 @@ def shell_command(device, command, timeout = False):
     #os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell " + command)
 
 def sudo_shell_command(device, command, timeout = False):
-    shell_command(device, "\" su -c '" + command + "'\"", timeout)
+    shell_command(device, "\" su -s sh -c '" + command + "'\"", timeout)
     # os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell \" su -c '" + command + "'\"")
 
 def push(device, src, dest):
