@@ -1,75 +1,93 @@
 import pickle
 import random
-from deap import tools
+from deap import tools, base, creator
 
+import settings
+from algorithms.mut_suite import mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
+from algorithms.eval_suite_single_objective import eval_suite
 
-def evolve(population, toolbox, cxpb, mutpb, ngen, apk_dir, package_name,
-		   stats=None, verbose=__debug__):
-	logbook = tools.Logbook()
-	logbook.header = ['gen', 'nevals'] + (stats.fields if stats else [])
+class eaStandardParallel:
 
-	# Evaluate the individuals with an invalid fitness
-	invalid_ind = [ind for ind in population if not ind.fitness.valid]
-	evaluate_in_parallel(toolbox.evaluate, invalid_ind, apk_dir, package_name, 0)
+	def __init__(self):
+		self.cxpb = settings.CXPB
+		self.mutpb = settings.MUTPB
+		self.ngen = settings.GENERATION
 
-	# discard invalid population individual
-	for i in range(len(population) - 1, -1, -1):
-		if not population[i].fitness.valid:
-			del population[i]
+	def setup(self, toolbox, apk_dir, package_name, verbose=False):
 
-	record = stats.compile(population) if stats is not None else {}
-	logbook.record(gen=0, nevals=len(invalid_ind), **record)
-	if verbose:
-		print logbook.stream
+		# assumes toolbox has registered:
+		# "individual" to generate individuals
+		# "population" to generate population
+		self.toolbox = toolbox
+		self.apk_dir = apk_dir
+		self.package_name = package_name
+		self.verbose = verbose
 
-	# Begin the generational process
-	for gen in range(1, ngen + 1):
+		### deap framework setup
+		creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
+		creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
-		print "Starting generation ", gen
+		self.toolbox.register("evaluate", eval_suite)
+		# mate crossover two suites
+		self.toolbox.register("mate", tools.cxUniform, indpb=0.5)
+		# mutate should change seq order in the suite as well
+		self.toolbox.register("mutate", mut_suite, indpb=0.5)
 
-		next_population = []
-		while len(next_population) < len(population):
-			offspring = varOr(population, toolbox, cxpb, mutpb)
-			next_population.extend(offspring)
+		# self.toolbox.register("select", tools.selTournament, tournsize=5)
+		self.toolbox.register("select", tools.selNSGA2)
 
-		population = next_population
+		print "### Initialising population ...."
+		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, apk_dir=self.apk_dir,
+										package_name=self.package_name)
+
+	def evolve(self):
 
 		# Evaluate the individuals with an invalid fitness
-		invalid_ind = [ind for ind in population if not ind.fitness.valid]
-		evaluate_in_parallel(toolbox.evaluate, invalid_ind, apk_dir, package_name, gen)
+		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
+		evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, 0)
 
-		# Update the statistics with the new population
-		record = stats.compile(population) if stats is not None else {}
-		logbook.record(gen=gen, nevals=len(invalid_ind), **record)
-		if verbose:
-			print logbook.stream
+		# discard invalid self.population individual
+		for i in range(len(self.population) - 1, -1, -1):
+			if not self.population[i].fitness.valid:
+				del self.population[i]
 
-		# in case interrupted
-		logbook_file = open(apk_dir + "/intermediate/logbook.pickle", 'wb')
-		pickle.dump(logbook, logbook_file)
-		logbook_file.close()
+		# Begin the generational process
+		for gen in range(1, self.ngen + 1):
 
-	return population, logbook
+			print "Starting generation ", gen
+
+			next_population = []
+			while len(next_population) < len(self.population):
+				offspring = self.varOr(self.population)
+				next_population.extend(offspring)
+
+			self.population = next_population
+
+			# Evaluate the individuals with an invalid fitness
+			invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
+			evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, gen)
+
+		return self.population
 
 
-def varOr(population, toolbox, cxpb, mutpb):
+	def varOr(self, population, toolbox, cxpb, mutpb):
 
-	parents = tools.selTournament(population, 2, tournsize=5)  # TODO: check if tournsize is correct
+		parents = tools.selTournament(population, 2, tournsize=5)  # TODO: check if tournsize is correct
 
-	ind1, ind2 = map(toolbox.clone, parents)
+		ind1, ind2 = map(toolbox.clone, parents)
 
-	op_choice = random.random()
-	if op_choice < cxpb:  # Apply crossover
-		ind1, ind2 = toolbox.mate(ind1, ind2)
-		del ind1.fitness.values
-		del ind2.fitness.values
+		op_choice = random.random()
+		if op_choice < cxpb:  # Apply crossover
+			ind1, ind2 = toolbox.mate(ind1, ind2)
+			del ind1.fitness.values
+			del ind2.fitness.values
 
-	op_choice = random.random()
-	if op_choice < mutpb:  # Apply mutation
-		ind1 = toolbox.mutate(ind1)
-		del ind1.fitness.values
-		ind2 = toolbox.mutate(ind2)
-		del ind2.fitness.values
+		op_choice = random.random()
+		if op_choice < mutpb:  # Apply mutation
+			ind1 = toolbox.mutate(ind1)
+			del ind1.fitness.values
+			ind2 = toolbox.mutate(ind2)
+			del ind2.fitness.values
 
-	return [ind1, ind2]
+		return [ind1, ind2]
