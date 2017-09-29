@@ -1,103 +1,109 @@
 import random
 import pickle
-from deap import tools
+from deap import tools, creator, base
 
+import settings
+from algorithms.eval_suite_multi_objective import eval_suite
+from algorithms.mut_suite import mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
 
-def evolve(population, toolbox, mu, lambda_, cxpb, mutpb, ngen, apk_dir, package_name,
-		   stats=None, halloffame=None, verbose=__debug__):
-	logbook = tools.Logbook()
-	logbook.header = ['gen', 'nevals'] + (stats.fields if stats else [])
+class eaMuPlusLambda:
 
-	# Evaluate the individuals with an invalid fitness
-	invalid_ind = [ind for ind in population if not ind.fitness.valid]
-	# fitnesses = toolbox.map(toolbox.evaluate, invalid_ind)
-	# for ind, fit in zip(invalid_ind, fitnesses):
-	# 	ind.fitness.values = fit
-	evaluate_in_parallel(toolbox.evaluate, invalid_ind, apk_dir, package_name, 0)
+	def __init__(self):
+		self.cxpb = settings.CXPB
+		self.mutpb = settings.MUTPB
+		self.ngen = settings.GENERATION
+		self.mu = settings.POPULATION_SIZE
+		self.lambda_ = settings.OFFSPRING_SIZE
 
-	# discard invalid population individual
-	for i in range(len(population) - 1, -1, -1):
-		if not population[i].fitness.valid:
-			del population[i]
+		assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
+									   "probabilities must be smaller or equal to 1.0.")
 
-	if halloffame is not None:
-		halloffame.update(population)
+	def setup(self, toolbox, apk_dir, package_name, verbose=False):
+		# assumes toolbox has registered:
+		# "individual" to generate individuals
+		# "population" to generate population
+		self.toolbox = toolbox
+		self.apk_dir = apk_dir
+		self.package_name = package_name
+		self.verbose = verbose
 
-	record = stats.compile(population) if stats is not None else {}
-	logbook.record(gen=0, nevals=len(invalid_ind), **record)
-	if verbose:
-		print logbook.stream
+		### deap framework setup
+		creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
+		creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
-	# Begin the generational process
-	for gen in range(1, ngen + 1):
+		self.toolbox.register("evaluate", eval_suite)
+		# mate crossover two suites
+		self.toolbox.register("mate", tools.cxUniform, indpb=0.5)
+		# mutate should change seq order in the suite as well
+		self.toolbox.register("mutate", mut_suite, indpb=0.5)
 
-		print "Starting generation ", gen
+		# self.toolbox.register("select", tools.selTournament, tournsize=5)
+		self.toolbox.register("select", tools.selNSGA2)
 
-		# Vary the population
-		offspring = varOr(population, toolbox, lambda_, cxpb, mutpb)
+		print "### Initialising population ...."
+		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, apk_dir=self.apk_dir,
+												  package_name=self.package_name)
+
+
+	def evolve(self):
 
 		# Evaluate the individuals with an invalid fitness
-		invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
+		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
+		evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, 0)
 
-		# this function will eval and match each invalid_ind to its fitness
-		evaluate_in_parallel(toolbox.evaluate, invalid_ind, apk_dir, package_name, gen)
+		# discard invalid population individual
+		for i in range(len(self.population) - 1, -1, -1):
+			if not self.population[i].fitness.valid:
+				del self.population[i]
 
-		# if settings.DEBUG:
-		# 	for indi in invalid_ind:
-		# 		print indi.fitness.values
+		# Begin the generational process
+		for gen in range(1, self.ngen + 1):
 
-		# discard invalid offspring individual
-		for i in range(len(offspring) - 1, -1, -1):
-			if not offspring[i].fitness.valid:
-				print "### Warning: Invalid Fitness"
-				del offspring[i]
+			print "Starting generation ", gen
 
-		# Update the hall of fame with the generated individuals
-		print "### Updating Hall of Fame ..."
-		if halloffame is not None:
-			halloffame.update(offspring)
+			# Vary the population
+			offspring = self.varOr(self.population)
 
-		# assert fitness
-		invalid_ind_post = [ind for ind in population + offspring if not ind.fitness.valid]
-		print "### assert len(invalid_ind) == 0, len = ", len(invalid_ind_post)
-		assert len(invalid_ind_post) == 0
+			# Evaluate the individuals with an invalid fitness
+			invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
 
-		# Select the next generation population
-		population[:] = toolbox.select(population + offspring, mu)
+			# this function will eval and match each invalid_ind to its fitness
+			evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, gen)
 
-		# Update the statistics with the new population
-		record = stats.compile(population) if stats is not None else {}
-		logbook.record(gen=gen, nevals=len(invalid_ind), **record)
-		if verbose:
-			print logbook.stream
+			# discard invalid offspring individual
+			for i in range(len(offspring) - 1, -1, -1):
+				if not offspring[i].fitness.valid:
+					print "### Warning: Invalid Fitness"
+					del offspring[i]
 
-		# in case interrupted
-		logbook_file = open(apk_dir + "/intermediate/logbook.pickle", 'wb')
-		pickle.dump(logbook, logbook_file)
-		logbook_file.close()
+			# assert fitness
+			invalid_ind_post = [ind for ind in self.population + offspring if not ind.fitness.valid]
+			print "### assert len(invalid_ind) == 0, len = ", len(invalid_ind_post)
+			assert len(invalid_ind_post) == 0
 
-	return population, logbook
+			# Select the next generation population
+			self.population[:] = self.toolbox.select(self.population + offspring, self.mu)
+
+		return self.population
 
 
-def varOr(population, toolbox, lambda_, cxpb, mutpb):
-	assert (cxpb + mutpb) <= 1.0, ("The sum of the crossover and mutation "
-								   "probabilities must be smaller or equal to 1.0.")
+	def varOr(self, population):
 
-	offspring = []
-	for _ in xrange(lambda_):
-		op_choice = random.random()
-		if op_choice < cxpb:  # Apply crossover
-			ind1, ind2 = map(toolbox.clone, random.sample(population, 2))
-			ind1, ind2 = toolbox.mate(ind1, ind2)
-			del ind1.fitness.values
-			offspring.append(ind1)
-		elif op_choice < cxpb + mutpb:  # Apply mutation
-			ind = toolbox.clone(random.choice(population))
-			ind, = toolbox.mutate(ind)
-			del ind.fitness.values
-			offspring.append(ind)
-		else:  # Apply reproduction
-			offspring.append(random.choice(population))
+		offspring = []
+		for _ in xrange(self.lambda_):
+			op_choice = random.random()
+			if op_choice < self.cxpb:  # Apply crossover
+				ind1, ind2 = map(self.toolbox.clone, random.sample(population, 2))
+				ind1, ind2 = self.toolbox.mate(ind1, ind2)
+				del ind1.fitness.values
+				offspring.append(ind1)
+			elif op_choice < self.cxpb + self.mutpb:  # Apply mutation
+				ind = self.toolbox.clone(random.choice(population))
+				ind, = self.toolbox.mutate(ind)
+				del ind.fitness.values
+				offspring.append(ind)
+			else:  # Apply reproduction
+				offspring.append(random.choice(population))
 
-	return offspring
+		return offspring

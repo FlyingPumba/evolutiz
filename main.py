@@ -158,13 +158,6 @@ if __name__ == "__main__":
 	eaStrategy = None
 	if genetic_algorithm == "standard":
 		eaStrategy = eaStandardParallel()
-	elif genetic_algorithm == "onePlusLambda":
-		# population, logbook = eaMuPlusLambdaParallel.evolve(population, toolbox, settings.POPULATION_SIZE,
-		# 													settings.OFFSPRING_SIZE,
-		# 													cxpb=settings.CXPB, mutpb=settings.MUTPB,
-		# 													ngen=settings.GENERATION,
-		# 													apk_dir=instrumented_app_dir,
-		# 													package_name=package_name,
-		# 													halloffame=hof, verbose=settings.DEBUG)
-		pass
+	elif genetic_algorithm == "muPlusLambda":
+		eaStrategy = eaMuPlusLambdaParallel()
 	main(app_dir, eaStrategy)
