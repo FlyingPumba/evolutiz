@@ -37,8 +37,8 @@ import sys
 from deap import tools, base
 
 import settings
-from algorithms import eaMuPlusLambdaParallel
 from algorithms.eaMonotonicParallel import eaMonotonicParallel
+from algorithms.eaMuPlusLambdaParallel import eaMuPlusLambdaParallel
 from algorithms.eaStandardParallel import eaStandardParallel
 from algorithms.gen_individual import gen_individual
 from analysers import static_analyser

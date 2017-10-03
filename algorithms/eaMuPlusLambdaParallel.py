@@ -7,7 +7,7 @@ from algorithms.eval_suite_multi_objective import eval_suite
 from algorithms.mut_suite import mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
 
-class eaMuPlusLambda:
+class eaMuPlusLambdaParallel:
 
 	def __init__(self):
 		self.cxpb = settings.CXPB
