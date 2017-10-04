@@ -24,6 +24,6 @@ def sudo_push(device, src, dest):
     filename = os.path.basename(src)
     aux_file = "/sdcard/" + filename
     push(device, src, aux_file)
-    sudo_shell_command(device, "cp " + aux_file + " " + dest)
+    sudo_shell_command(device, "cat " + aux_file + " > " + dest)
     sudo_shell_command(device, "rm " + aux_file)
     return filename
