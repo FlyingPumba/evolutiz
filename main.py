@@ -37,7 +37,9 @@ import sys
 from deap import tools, base
 
 import settings
+from algorithms.eaDynaMosaParallel import eaDynaMosaParallel
 from algorithms.eaMonotonicParallel import eaMonotonicParallel
+from algorithms.eaMosaParallel import eaMosaParallel
 from algorithms.eaMuPlusLambdaParallel import eaMuPlusLambdaParallel
 from algorithms.eaOnePlusLambdaCommaLambdaParallel import eaOnePlusLambdaCommaLambdaParallel
 from algorithms.eaStandardParallel import eaStandardParallel
@@ -169,4 +171,8 @@ if __name__ == "__main__":
 		eaStrategy = eaMuPlusLambdaParallel()
 	elif genetic_algorithm == "onePlusLambdaCommaLambda":
 		eaStrategy = eaOnePlusLambdaCommaLambdaParallel()
+	elif genetic_algorithm == "mosa":
+		eaStrategy = eaMosaParallel()
+	elif genetic_algorithm == "dynaMosa":
+		eaStrategy = eaDynaMosaParallel()
 	main(app_dir, eaStrategy)

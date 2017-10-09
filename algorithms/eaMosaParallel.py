@@ -6,7 +6,7 @@ import settings
 from algorithms.eval_suite_multi_objective import eval_suite
 from algorithms.mut_suite import mut_suite
 
-class eaStandardParallel:
+class eaMosaParallel:
 
 	def __init__(self):
 		self.cxpb = settings.CXPB
