@@ -25,7 +25,7 @@ class eaStandardParallel:
 		self.verbose = verbose
 
 		### deap framework setup
-		creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
+		creator.create("FitnessCovLen", base.Fitness, weights=10.0)
 		creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
 		self.toolbox.register("evaluate", eval_suite)
