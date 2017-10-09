@@ -45,7 +45,6 @@ class eaMuPlusLambdaParallel:
 		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, apk_dir=self.apk_dir,
 												  package_name=self.package_name)
 
-
 	def evolve(self):
 
 		# Evaluate the individuals with an invalid fitness

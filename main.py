@@ -39,7 +39,9 @@ from deap import tools, base
 import settings
 from algorithms.eaMonotonicParallel import eaMonotonicParallel
 from algorithms.eaMuPlusLambdaParallel import eaMuPlusLambdaParallel
+from algorithms.eaOnePlusLambdaCommaLambdaParallel import eaOnePlusLambdaCommaLambdaParallel
 from algorithms.eaStandardParallel import eaStandardParallel
+from algorithms.eaSteadyStateParallel import eaSteadyStateParallel
 from algorithms.gen_individual import gen_individual
 from analysers import static_analyser
 from devices import any_device
@@ -161,6 +163,10 @@ if __name__ == "__main__":
 		eaStrategy = eaStandardParallel()
 	elif genetic_algorithm == "monotonic":
 		eaStrategy = eaMonotonicParallel()
+	elif genetic_algorithm == "steady":
+		eaStrategy = eaSteadyStateParallel()
 	elif genetic_algorithm == "muPlusLambda":
 		eaStrategy = eaMuPlusLambdaParallel()
+	elif genetic_algorithm == "onePlusLambdaCommaLambda":
+		eaStrategy = eaOnePlusLambdaCommaLambdaParallel()
 	main(app_dir, eaStrategy)
