@@ -55,25 +55,25 @@ def prepare_apk(devices, instrumented_app_dir):
     return package_name
 
 
-    def get_package_name(path):
-        apk_path = None
-        if path.endswith(".apk"):
-            apk_path = path
-        else:
-            # build the apk
-            # settings.PROJECT_FOLDER = path
-            # any_device.pack_and_deploy_aut()
+def get_package_name(path):
+    apk_path = None
+    if path.endswith(".apk"):
+        apk_path = path
+    else:
+        # build the apk
+        # settings.PROJECT_FOLDER = path
+        # any_device.pack_and_deploy_aut()
 
-            # now find its name
-            for file_name in os.listdir(path + "/bin"):
-                if file_name == "bugroid-instrumented.apk":
-                    apk_path = path + "/bin/bugroid-instrumented.apk"
-                    break
-                elif file_name.endswith("-debug.apk"):
-                    apk_path = path + "/bin/" + file_name
+        # now find its name
+        for file_name in os.listdir(path + "/bin"):
+            if file_name == "bugroid-instrumented.apk":
+                apk_path = path + "/bin/bugroid-instrumented.apk"
+                break
+            elif file_name.endswith("-debug.apk"):
+                apk_path = path + "/bin/" + file_name
 
-        assert apk_path is not None
+    assert apk_path is not None
 
-        get_package_cmd = "$ANDROID_HOME/build-tools/26.0.1/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package= | awk 'BEGIN {FS=\"\\\"\"}{print $2}'"
-        package_name = subprocess.Popen(get_package_cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
-        return package_name, apk_path
+    get_package_cmd = "$ANDROID_HOME/build-tools/26.0.1/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package= | awk 'BEGIN {FS=\"\\\"\"}{print $2}'"
+    package_name = subprocess.Popen(get_package_cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+    return package_name, apk_path
