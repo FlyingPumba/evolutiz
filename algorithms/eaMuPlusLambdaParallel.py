@@ -45,8 +45,6 @@ class eaMuPlusLambdaParallel:
 		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, apk_dir=self.apk_dir,
 												  package_name=self.package_name)
 
-	def evolve(self):
-
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
 		evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, 0)
@@ -56,8 +54,14 @@ class eaMuPlusLambdaParallel:
 			if not self.population[i].fitness.valid:
 				del self.population[i]
 
+	def evolve(self):
+
 		# Begin the generational process
 		for gen in range(1, self.ngen + 1):
+
+			if not self.toolbox.time_budget_available():
+				print "Time budget run out, exiting"
+				break
 
 			print "Starting generation ", gen
 

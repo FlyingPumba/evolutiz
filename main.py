@@ -31,6 +31,7 @@
 
 import platform
 import sys
+import time
 
 from deap import tools, base
 
@@ -47,6 +48,7 @@ from devices import any_device
 from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
 
+start_time = None
 
 def main(instrumented_app_dir, eaStrategy):
 	"""
@@ -78,6 +80,7 @@ def main(instrumented_app_dir, eaStrategy):
 	toolbox = base.Toolbox()
 	toolbox.register("individual", gen_individual)
 	toolbox.register("population", initRepeatParallel.initPop, list, toolbox.individual)
+	toolbox.register("time_budget_available", time_budget_available)
 
 	# hof = tools.HallOfFame(6)
 	# pareto front can be large, there is a similarity option parameter
@@ -85,6 +88,9 @@ def main(instrumented_app_dir, eaStrategy):
 
 	# genetic algorithm
 	eaStrategy.setup(toolbox, instrumented_app_dir, package_name)
+
+	global start_time
+	start_time = time.time()
 	population = eaStrategy.evolve()
 
 	print "\n\n\n### Finished main"
@@ -93,6 +99,10 @@ def main(instrumented_app_dir, eaStrategy):
 	for ind in population:
 		print "Individual with fitness: ", ind.fitness
 
+def time_budget_available():
+	current_time = time.time()
+	elapsed_time = current_time - start_time
+	return elapsed_time < settings.SEARCH_BUDGET_IN_SECONDS
 
 if __name__ == "__main__":
 	app_dir = sys.argv[1]
