@@ -60,7 +60,7 @@ class eaMuPlusLambdaParallel:
 		for gen in range(1, self.ngen + 1):
 
 			if not self.toolbox.time_budget_available():
-				print "Time budget run out, exiting"
+				print "Time budget run out, exiting evolve"
 				break
 
 			print "Starting generation ", gen
@@ -72,7 +72,16 @@ class eaMuPlusLambdaParallel:
 			invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
 
 			# this function will eval and match each invalid_ind to its fitness
-			evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, gen)
+			completed_evaluation = evaluate_in_parallel(self.toolbox.evaluate,
+														invalid_ind,
+														self.apk_dir,
+														self.package_name,
+														gen,
+														self.toolbox.time_budget_available)
+			
+			if not completed_evaluation:
+				print "Time budget run out durring parallel evaluation, exiting evolve"
+				break
 
 			# discard invalid offspring individual
 			for i in range(len(offspring) - 1, -1, -1):

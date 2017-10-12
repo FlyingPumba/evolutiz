@@ -34,7 +34,7 @@ def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, apk_dir
         return pop, (0, 0, 0), device
 
 
-def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name, gen):
+def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name, gen, time_budget_available = lambda: True):
     """ Evaluate the individuals fitnesses and assign them to each individual
     :param eval_fitness: The fitness evaluation fucntion
     :param individuals: The individuals under evaluation
@@ -61,11 +61,17 @@ def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name
 
     # 2. aissign tasks to devices
     pool = mp.Pool(processes=len(idle_devices))
+    time_out = False
     for i in range(0, len(individuals)):
-        while len(idle_devices) == 0:
+        while len(idle_devices) == 0 and time_budget_available():
             print "Waiting for idle_devices"
             print idle_devices
             time.sleep(1)
+
+        if not time_budget_available():
+            print "Time budget run out, exiting parallel evaluation"
+            time_out = True
+            break
 
         device = idle_devices.pop(0)
         if settings.DEBUG:
@@ -89,3 +95,5 @@ def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name
     while len(results) > 0:
         i, fitness = results.pop(0)
         individuals[i].fitness.values = fitness
+
+    return not time_out
