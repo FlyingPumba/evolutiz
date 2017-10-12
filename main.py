@@ -67,6 +67,11 @@ def main(instrumented_app_dir, eaStrategy):
 
 	print "Preparing devices ..."
 	any_device.boot_devices()
+
+	# start time budget
+	global start_time
+	start_time = time.time()
+
 	any_device.prepare_motifcore()
 	any_device.clean_sdcard()
 
@@ -88,9 +93,6 @@ def main(instrumented_app_dir, eaStrategy):
 
 	# genetic algorithm
 	eaStrategy.setup(toolbox, instrumented_app_dir, package_name)
-
-	global start_time
-	start_time = time.time()
 	population = eaStrategy.evolve()
 
 	print "\n\n\n### Finished main"

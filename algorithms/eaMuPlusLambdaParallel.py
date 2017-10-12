@@ -47,7 +47,12 @@ class eaMuPlusLambdaParallel:
 
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-		evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, 0)
+		evaluate_in_parallel(self.toolbox.evaluate,
+							 invalid_ind,
+							 self.apk_dir,
+							 self.package_name,
+							 0,
+							 self.toolbox.time_budget_available)
 
 		# discard invalid population individual
 		for i in range(len(self.population) - 1, -1, -1):
@@ -78,7 +83,7 @@ class eaMuPlusLambdaParallel:
 														self.package_name,
 														gen,
 														self.toolbox.time_budget_available)
-			
+
 			if not completed_evaluation:
 				print "Time budget run out durring parallel evaluation, exiting evolve"
 				break
