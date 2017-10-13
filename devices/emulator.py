@@ -34,10 +34,14 @@ import time
 
 import subprocess as sub
 
+import logger
 import settings
 from util import motifcore_installer
 from util import pack_and_deploy
+import multiprocessing as mp
 
+installed_devices = 0
+total_devices = 0
 
 def get_devices():
 	""" will also get devices ready
@@ -51,18 +55,18 @@ def get_devices():
 	for seg in segs:
 		device = seg.split("\t")[0].strip()
 		if seg.startswith("emulator-"):
-			print "Checking if boot animation is over"
-			p = sub.Popen('$ANDROID_HOME/platform-tools/adb -s ' + device +
-			              ' shell getprop init.svc.bootanim', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
-			output, errors = p.communicate()
-			if output.strip() != "stopped":
-				print "Animation is not over yet"
-				time.sleep(10)
-				print "Waiting for the emulator:", device
-				return get_devices()
-			else:
-				print "Added device"
-				ret.append(device)
+			# print "Checking if boot animation is over"
+			# p = sub.Popen('$ANDROID_HOME/platform-tools/adb -s ' + device +
+			#               ' shell getprop init.svc.bootanim', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			# output, errors = p.communicate()
+			# if output.strip() != "stopped":
+			# 	print "Animation is not over yet"
+			# 	time.sleep(10)
+			# 	print "Waiting for the emulator:", device
+			# 	return get_devices()
+			# else:
+			# 	print "Added device"
+			ret.append(device)
 
 	assert len(ret) > 0
 
@@ -74,14 +78,19 @@ def boot_devices():
 	prepare the env of the device
 	:return:
 	"""
+
+	logger.log_progress("\nBooting devices: " + str(0) + "/" + str(settings.DEVICE_NUM))
+
 	for i in range(0, settings.DEVICE_NUM):
 		device_name = settings.AVD_SERIES + "_" + str(i)
 		print "Booting Device:", device_name
+		logger.log_progress("\rBooting devices: " + str(i+1) + "/" + str(settings.DEVICE_NUM))
+
 		time.sleep(0.3)
 		if settings.HEADLESS:
-			sub.Popen('/usr/local/android-sdk/emulator/emulator -avd ' + device_name + " -wipe-data -no-window -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			sub.Popen('$ANDROID_HOME/emulator/emulator -avd ' + device_name + " -wipe-data -no-window -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 		else:
-			sub.Popen('/usr/local/android-sdk/emulator/emulator -avd ' + device_name + " -wipe-data -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			sub.Popen('$ANDROID_HOME/emulator/emulator -avd ' + device_name + " -wipe-data -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 		print "Waiting", settings.AVD_BOOT_DELAY, "seconds"
 		time.sleep(settings.AVD_BOOT_DELAY)
 
@@ -102,10 +111,32 @@ def clean_sdcard():
 		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm -rf /mnt/sdcard/*")
 
 
+def prepare_motifcore_callback(success):
+	global installed_devices
+	installed_devices += 1
+	global total_devices
+	logger.log_progress("\rPreparing motifcore in devices: " + str(installed_devices) + "/" + str(total_devices))
+
 def prepare_motifcore():
 	print "Preparing motifcore"
-	for device in get_devices():
-		motifcore_installer.install(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device)
+	devices = get_devices()
+
+	pool = mp.Pool(processes=len(devices))
+
+	global installed_devices
+	installed_devices = 0
+	global total_devices
+	total_devices = len(devices)
+
+	logger.log_progress("\nPreparing motifcore in devices: " + str(installed_devices) + "/" + str(total_devices))
+
+	for device in devices:
+		pool.apply_async(motifcore_installer.install,
+						 args=(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device),
+						 callback=prepare_motifcore_callback)
+
+	pool.close()
+	pool.join()
 
 
 def pack_and_deploy_aut():
@@ -113,7 +144,7 @@ def pack_and_deploy_aut():
 	pack_and_deploy.main(get_devices())
 
 
-def destory_devices():
+def destroy_devices():
 	# for device in get_devices():
 	# 	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " emu kill")
 	# do force kill
@@ -121,4 +152,4 @@ def destory_devices():
 
 
 if __name__ == "__main__":
-	destory_devices()
+	destroy_devices()

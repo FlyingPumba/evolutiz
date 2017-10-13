@@ -32,9 +32,12 @@
 import platform
 import sys
 import time
+from datetime import datetime
 
+import os
 from deap import tools, base
 
+import logger
 import settings
 from algorithms.eaDynaMosaParallel import eaDynaMosaParallel
 from algorithms.eaMonotonicParallel import eaMonotonicParallel
@@ -49,6 +52,8 @@ from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
 
 start_time = None
+apk_dir = None
+package_name = None
 
 def main(instrumented_app_dir, eaStrategy):
 	"""
@@ -56,6 +61,14 @@ def main(instrumented_app_dir, eaStrategy):
 	:param instrumented_app_dir: The instrumentation folder of the app | apk file path for closed-source app
 	"""
 
+	global apk_dir
+	apk_dir = instrumented_app_dir
+
+	logger.prepare()
+	logger.clear_progress()
+	logger.log_progress("Sapienz\n")
+
+	# platform specific settings
 	host_system = platform.system()
 	if host_system == "Darwin":
 		print "Running on Mac OS"
@@ -79,6 +92,7 @@ def main(instrumented_app_dir, eaStrategy):
 	devices = any_device.get_devices()
 
 	# get package name and prepare apk if necessary
+	global package_name
 	package_name = prepare_apk(devices, instrumented_app_dir)
 
 	# register common functions in toolbox
@@ -86,13 +100,15 @@ def main(instrumented_app_dir, eaStrategy):
 	toolbox.register("individual", gen_individual)
 	toolbox.register("population", initRepeatParallel.initPop, list, toolbox.individual)
 	toolbox.register("time_budget_available", time_budget_available)
+	toolbox.register("get_apk_dir", get_apk_dir)
+	toolbox.register("get_package_name", get_package_name)
 
 	# hof = tools.HallOfFame(6)
 	# pareto front can be large, there is a similarity option parameter
 	hof = tools.ParetoFront()
 
 	# genetic algorithm
-	eaStrategy.setup(toolbox, instrumented_app_dir, package_name)
+	eaStrategy.setup(toolbox)
 	population = eaStrategy.evolve()
 
 	print "\n\n\n### Finished main"
@@ -101,10 +117,21 @@ def main(instrumented_app_dir, eaStrategy):
 	for ind in population:
 		print "Individual with fitness: ", ind.fitness
 
+	# recover stdout and stderr
+	logger.restore()
+
 def time_budget_available():
 	current_time = time.time()
 	elapsed_time = current_time - start_time
 	return elapsed_time < settings.SEARCH_BUDGET_IN_SECONDS
+
+def get_apk_dir():
+	global apk_dir
+	return apk_dir
+
+def get_package_name():
+	global package_name
+	return package_name
 
 if __name__ == "__main__":
 	app_dir = sys.argv[1]

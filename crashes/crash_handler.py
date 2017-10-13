@@ -32,6 +32,8 @@
 import subprocess
 import os
 
+from devices import adb
+
 
 def handle(device, apk_dir, script_path, gen, pop, index, unique_crashes):
 	"""
@@ -43,7 +45,9 @@ def handle(device, apk_dir, script_path, gen, pop, index, unique_crashes):
 	:return: True if it is a real crash
 	"""
 
-	p = subprocess.Popen("$ANDROID_HOME/platform-tools/adb -s " + device + " shell ls /mnt/sdcard/bugreport.crash", stdout=subprocess.PIPE,
+	p = subprocess.Popen("$ANDROID_HOME/platform-tools/adb -s " + device +
+						 " shell ls /mnt/sdcard/bugreport.crash",
+						 stdout=subprocess.PIPE,
 						 stderr=subprocess.PIPE, shell=True)
 	output, errors = p.communicate()
 	if output.find("No such file or directory") != -1:
@@ -51,7 +55,7 @@ def handle(device, apk_dir, script_path, gen, pop, index, unique_crashes):
 		pass
 	else:
 		# save the crash report
-		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " pull /mnt/sdcard/bugreport.crash " + apk_dir)
+		adb.pull(device, "/mnt/sdcard/bugreport.crash", apk_dir)
 		# filter duplicate crashes
 		with open(apk_dir + "/bugreport.crash") as bug_report_file:
 			content = ""
@@ -59,25 +63,27 @@ def handle(device, apk_dir, script_path, gen, pop, index, unique_crashes):
 				if line_no == 0:
 					# should not caused by android itself
 					if line.startswith("// CRASH: com.android."):
-						os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/bugreport.crash")
+						adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
 						return False
 					continue
 				content += line
 			if content in unique_crashes:
-				os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/bugreport.crash")
+				adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
 				return False
 			else:
 				unique_crashes.add(content)
 
-		# ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
-		os.system("mv " + apk_dir + "/bugreport.crash " + apk_dir + "/crashes/" + "bugreport." + str(gen) + "." + str(
-			pop) + "." + str(index))
+		individual_suffix = str(gen) + "." + str(pop) + "." + str(index)
+		os.system("mv " + apk_dir + "/bugreport.crash "
+				  + apk_dir + "/crashes/" + "bugreport." + individual_suffix)
+
 		# save the script, indicate its ith gen
-		os.system("cp " + script_path + " " + apk_dir + "/crashes/" + "script." + str(gen) + "." + str(pop) + "." + str(
-			index))
+		os.system("cp " + script_path + " "
+				  + apk_dir + "/crashes/" + "script." + individual_suffix)
+
 		print "### Caught a crash."
-		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/bugreport.crash")
+		adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
 		return True
 
-	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/bugreport.crash")
+	adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
 	return False

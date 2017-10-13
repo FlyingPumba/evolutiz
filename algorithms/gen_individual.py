@@ -61,10 +61,11 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	# access the generated script, should ignore the first launch activity
 	script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]
 	ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
-	os.system(
-		"$ANDROID_HOME/platform-tools/adb -s " + device + " pull " + settings.MOTIFCORE_SCRIPT_PATH + " " + apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(
-			index))
-	script = open(apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index))
+
+	motifcore_script_filename = apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index)
+	adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename)
+
+	script = open(motifcore_script_filename)
 	is_content = False
 	is_skipped_first = False
 	for line in script:
@@ -82,7 +83,7 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	script.close()
 
 	# deal with crash
-	crash_handler.handle(device, apk_dir, apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index),"init", ts, index, unique_crashes)
+	crash_handler.handle(device, apk_dir, motifcore_script_filename, "init", ts, index, unique_crashes)
 
 	print "... Exiting get_sequence method"
 

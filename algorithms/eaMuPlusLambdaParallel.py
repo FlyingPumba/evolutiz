@@ -19,13 +19,13 @@ class eaMuPlusLambdaParallel:
 		assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
 									   "probabilities must be smaller or equal to 1.0.")
 
-	def setup(self, toolbox, apk_dir, package_name, verbose=False):
+	def setup(self, toolbox, verbose=False):
 		# assumes toolbox has registered:
 		# "individual" to generate individuals
 		# "population" to generate population
 		self.toolbox = toolbox
-		self.apk_dir = apk_dir
-		self.package_name = package_name
+		self.apk_dir = toolbox.get_apk_dir()
+		self.package_name = toolbox.get_package_name()
 		self.verbose = verbose
 
 		### deap framework setup
@@ -47,12 +47,11 @@ class eaMuPlusLambdaParallel:
 
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-		evaluate_in_parallel(self.toolbox.evaluate,
+		evaluate_in_parallel(self.toolbox,
 							 invalid_ind,
 							 self.apk_dir,
 							 self.package_name,
-							 0,
-							 self.toolbox.time_budget_available)
+							 0)
 
 		# discard invalid population individual
 		for i in range(len(self.population) - 1, -1, -1):
@@ -77,12 +76,11 @@ class eaMuPlusLambdaParallel:
 			invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
 
 			# this function will eval and match each invalid_ind to its fitness
-			completed_evaluation = evaluate_in_parallel(self.toolbox.evaluate,
+			completed_evaluation = evaluate_in_parallel(self.toolbox,
 														invalid_ind,
 														self.apk_dir,
 														self.package_name,
-														gen,
-														self.toolbox.time_budget_available)
+														gen)
 
 			if not completed_evaluation:
 				print "Time budget run out durring parallel evaluation, exiting evolve"

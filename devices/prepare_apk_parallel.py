@@ -2,18 +2,28 @@ import multiprocessing as mp
 import os
 import subprocess
 
+import logger
 import settings
 from analysers import static_analyser
+from devices import adb
 
+installed_devices = 0
+total_devices = 0
 
 def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
     static_analyser.upload_string_xml(device, decoded_dir, package_name)
 
     print "### Installing apk:", apk_path
-    os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/bugreport.crash")
-    os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " uninstall " + package_name)
-    os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " install " + apk_path)
+    adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+    adb.uninstall(device, package_name)
+    adb.install(device, apk_path)
+    return True
 
+def process_results(success):
+    global installed_devices
+    installed_devices += 1
+    global total_devices
+    logger.log_progress("\rInstalling apk on devices: " + str(installed_devices) + "/" + str(total_devices))
 
 def prepare_apk(devices, instrumented_app_dir):
     package_name, apk_path = get_package_name(instrumented_app_dir)
@@ -24,6 +34,7 @@ def prepare_apk(devices, instrumented_app_dir):
     print "### Working on apk:", package_name
     # static analysis
     if settings.ENABLE_STRING_SEEDING:
+        logger.log_progress("\nRunning static analysis on apk")
         output_dir = None
         if instrumented_app_dir.endswith(".apk_output"):
             output_dir = instrumented_app_dir
@@ -37,14 +48,21 @@ def prepare_apk(devices, instrumented_app_dir):
     else:
         decoded_dir = instrumented_app_dir + "/bin/" + apk_path.split("/")[-1].split(".apk")[0]
 
+    global installed_devices
+    installed_devices = 0
+    global total_devices
+    total_devices = len(devices)
+    logger.log_progress("\nInstalling apk on devices: " + str(installed_devices) + "/" + str(total_devices))
+
     pool = mp.Pool(processes=len(devices))
 
     for device in devices:
         pool.apply_async(push_apk_and_string_xml,
-                         args=(device, decoded_dir, package_name, apk_path))
+                         args=(device, decoded_dir, package_name, apk_path),
+                         callback=process_results)
 
     pool.close()
-    pool.join()  # intermediate should be in app folder
+    pool.join()
 
     os.system("rm -rf " + instrumented_app_dir + "/intermediate")
     os.system("mkdir -p " + instrumented_app_dir + "/intermediate")

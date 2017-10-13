@@ -32,6 +32,7 @@
 import multiprocessing as mp
 import time
 
+import logger
 from devices import any_device
 import settings
 
@@ -39,14 +40,21 @@ import settings
 # global results for mp callback
 results = []
 idle_devices = []
-
+total_individuals = 0
 
 def process_results(data):
 	if settings.DEBUG:
 		print "Got results", data
 	individual, device = data
+
+	global results
 	results.append(individual)
+
+	global idle_devices
 	idle_devices.append(device)
+
+	global total_individuals
+	logger.log_progress("\rInit population in parallel: " + str(len(results)) + "/" + str(total_individuals))
 
 
 def initPop(container, func, n, apk_dir, package_name):
@@ -59,6 +67,10 @@ def initPop(container, func, n, apk_dir, package_name):
 		print "### Init population in parallel"
 		print "n=", n
 		print "idle devices=", idle_devices
+
+	global total_individuals
+	total_individuals = n
+	logger.log_progress("\nInit population in parallel: " + str(len(results)) + "/" + str(total_individuals))
 
 	ret = []
 	while len(results) > 0:
@@ -77,6 +89,7 @@ def initPop(container, func, n, apk_dir, package_name):
 	for i in range(0, n):
 		while len(idle_devices) == 0:
 			time.sleep(0.1)
+
 		if settings.DEBUG:
 			print "### Call apply_async"
 		pool.apply_async(func, args=(idle_devices.pop(0), apk_dir, package_name), callback=process_results)
