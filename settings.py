@@ -6,8 +6,8 @@ HEADLESS = True
 EMMA_ED = "emma/" # folder for instrumented builds with emma
 ORIGINAL_PATH = "subjects/" # folder for origignal sources
 
-USE_REAL_DEVICES = True
-USE_EMULATORS = False
+USE_REAL_DEVICES = False
+USE_EMULATORS = True
 
 # === Emulator ===
 DEVICE_NUM = 0
@@ -29,14 +29,14 @@ WORKING_DIR = '/home/ivan/src/sapienz/'
 SEQUENCE_LENGTH_MIN = 20
 SEQUENCE_LENGTH_MAX = 500
 SUITE_SIZE = 5 # 5
-POPULATION_SIZE = 10# 50
+POPULATION_SIZE = 5 # 50
 OFFSPRING_SIZE = 5 # 50
-GENERATION = 5 # 100
+GENERATION = 100 # 100
 # Crossover probability
 CXPB = 0.7
 # Mutation probability
 MUTPB = 0.3
-SEARCH_BUDGET_IN_SECONDS = 60 * 1 # 60 * 60 # = 1 hour
+SEARCH_BUDGET_IN_SECONDS = 60 * 15 # 60 * 60 # = 1 hour
 
 
 # === Only for main_multi ===
