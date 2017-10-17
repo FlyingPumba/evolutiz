@@ -34,6 +34,7 @@ import subprocess as sub
 import time
 
 import settings
+from devices import adb
 from util import motifcore_installer
 from util import pack_and_deploy
 
@@ -77,22 +78,14 @@ def reboot_all_devices():
 	prepare the env of the device
 	:return:
 	"""
-	adb_root()
 	for device in get_devices():
-		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " reboot")
-
+		adb.sudo_shell_command(device, "reboot")
 	time.sleep(settings.AVD_BOOT_DELAY)
-	adb_root()
-
-
-def adb_root():
-	for device in get_devices():
-		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " root")
 
 
 def disable_systemui():
 	for device in get_devices():
-		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell service call activity 42 s16 com.android.systemui")
+		adb.shell_command(device, "service call activity 42 s16 com.android.systemui")
 
 
 def prepare_motifcore():
@@ -101,14 +94,12 @@ def prepare_motifcore():
 
 
 def kill_motifcore(device):
-	os.system(
-		"$ANDROID_HOME/platform-tools/adb -s " + device + " shell ps | awk '/com\.android\.commands\.motifcore/ { system(\"$ANDROID_HOME/platform-tools/adb -s " + device + " shell kill \" $2) }'")
+	adb.pkill(device, "motifcore")
 
 
 def kill_all_motifcore():
 	for device in get_devices():
-		os.system(
-			"$ANDROID_HOME/platform-tools/adb -s " + device + " shell ps | awk '/com\.android\.commands\.motifcore/ { system(\"$ANDROID_HOME/platform-tools/adb -s " + device + " shell kill \" $2) }'")
+		kill_motifcore(device)
 
 
 def pack_and_deploy_aut():
@@ -123,10 +114,10 @@ def clean_device_app(device, package_name):
 
 	print "### kill motifcore ..."
 	kill_motifcore(device)
-	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell pm clear " + package_name)
-	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell am force-stop " + package_name)
-	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " uninstall " + package_name)
-	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/bugreport.crash")
+	adb.shell_command(device, "pm clear " + package_name)
+	adb.shell_command(device, "am force-stop " + package_name)
+	adb.shell_command(device, "uninstall " + package_name)
+	adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
 	print "### clean device app finished"
 
 

@@ -142,14 +142,3 @@ def prepare_motifcore():
 def pack_and_deploy_aut():
 	# instrument the app under test
 	pack_and_deploy.main(get_devices())
-
-
-def destroy_devices():
-	# for device in get_devices():
-	# 	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " emu kill")
-	# do force kill
-	os.system("kill -9  $(ps aux | grep 'emulator' | awk '{print $2}')")
-
-
-if __name__ == "__main__":
-	destroy_devices()

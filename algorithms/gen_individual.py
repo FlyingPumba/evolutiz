@@ -1,9 +1,11 @@
 import datetime
 import os
 import random
+import traceback
 
 from deap import creator
 
+import logger
 import settings
 from crashes import crash_handler
 from devices import adb
@@ -55,7 +57,7 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	adb.sudo_shell_command(device, motifcore_cmd, timeout = True)
 
 	# need to kill motifcore when timeout
-	adb.sudo_shell_command(device, "ps | awk '/com\.android\.commands\.motifcore/ { kill $2 }'")
+	adb.pkill(device, "motifcore")
 
 	print "... Finish generating a sequence"
 	# access the generated script, should ignore the first launch activity
@@ -91,9 +93,14 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 
 
 def gen_individual(device, apk_dir, package_name):
-	if settings.DEBUG:
-		print "Generate Individual on device, ", device
-	suite = get_suite(device, apk_dir, package_name)
-	if settings.DEBUG:
-		print "Finished generating individual"
-	return (creator.Individual(suite), device)
+	try:
+		if settings.DEBUG:
+			print "Generate Individual on device, ", device
+		suite = get_suite(device, apk_dir, package_name)
+		if settings.DEBUG:
+			print "Finished generating individual"
+		return (creator.Individual(suite), device)
+	except Exception as e:
+		traceback.print_exc(file=logger.orig_stdout)
+		print e
+		return False

@@ -66,7 +66,7 @@ def main(instrumented_app_dir, eaStrategy):
 
 	logger.prepare()
 	logger.clear_progress()
-	logger.log_progress("Sapienz\n")
+	logger.log_progress("Sapienz")
 
 	# platform specific settings
 	host_system = platform.system()
@@ -111,11 +111,7 @@ def main(instrumented_app_dir, eaStrategy):
 	eaStrategy.setup(toolbox)
 	population = eaStrategy.evolve()
 
-	print "\n\n\n### Finished main"
-
-	print "\n\n\n### Writting final population"
-	for ind in population:
-		print "Individual with fitness: ", ind.fitness
+	print "\n### Finished main"
 
 	# recover stdout and stderr
 	logger.restore()

@@ -29,18 +29,24 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import traceback
 
+import logger
 from devices import adb
 
 def install(motifcore_path, motifcore_script_path, device):
-	# obtain write permission
-	adb.sudo_shell_command(device, "mount -o rw,remount /system")
+	try:
+		# obtain write permission
+		adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
-	# push
-	filename = adb.sudo_push(device, motifcore_path, "/system/framework/motifcore.jar")
-	adb.sudo_shell_command(device, "chmod 777 /system/framework/" + filename)
-	filename = adb.sudo_push(device, motifcore_script_path, "/system/bin/motifcore")
-	adb.sudo_shell_command(device, "chmod 777 /system/bin/" + filename)
+		# push
+		filename = adb.sudo_push(device, motifcore_path, "/system/framework/motifcore.jar")
+		adb.sudo_shell_command(device, "chmod 777 /system/framework/" + filename)
+		filename = adb.sudo_push(device, motifcore_script_path, "/system/bin/motifcore")
+		adb.sudo_shell_command(device, "chmod 777 /system/bin/" + filename)
 
-	# recover permission
-	adb.sudo_shell_command(device, "mount -o ro,remount /system")
-	return True
+		# recover permission
+		adb.sudo_shell_command(device, "mount -o ro,remount /system")
+		return True
+	except Exception as e:
+		traceback.print_exc(file=logger.orig_stdout)
+		print e
+		return False

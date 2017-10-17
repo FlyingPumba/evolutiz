@@ -13,11 +13,11 @@ error_filename = None
 
 def prepare():
     # redirect stdout and stderr
-    current_datetime = datetime.today().strftime("%Y-%m-%d_%H-%M")
+    starting_datetime = datetime.today().strftime("%Y-%m-%d_%H-%M")
     global output_filename
-    output_filename = "output." + current_datetime + ".log"
+    output_filename = "output." + starting_datetime + ".log"
     global error_filename
-    error_filename = "output." + current_datetime + ".log.err"
+    error_filename = "output." + starting_datetime + ".log.err"
 
     global output_file
     output_file = open(output_filename, 'w')
@@ -27,8 +27,13 @@ def prepare():
     error_file = open(error_filename, 'w')
     sys.stderr = error_file
 
+    print starting_datetime
+
 
 def restore():
+    ending_datetime = datetime.today().strftime("%Y-%m-%d_%H-%M")
+    print ending_datetime
+
     global orig_stdout
     sys.stdout = orig_stdout
     global orig_stderr

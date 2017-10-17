@@ -39,3 +39,6 @@ def uninstall(device, package_name):
 
 def install(device, apk_path):
     adb_command(device, "install " + apk_path)
+
+def pkill(device, string):
+    sudo_shell_command(device, "ps | grep " + string +" | while read -r line; do arr=($line); kill ${arr[1]}; done")

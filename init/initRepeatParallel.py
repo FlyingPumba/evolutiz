@@ -69,6 +69,7 @@ def initPop(container, func, n, apk_dir, package_name):
 		print "idle devices=", idle_devices
 
 	global total_individuals
+	global results
 	total_individuals = n
 	logger.log_progress("\nInit population in parallel: " + str(len(results)) + "/" + str(total_individuals))
 

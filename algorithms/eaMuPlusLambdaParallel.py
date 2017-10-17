@@ -2,6 +2,7 @@ import random
 import pickle
 from deap import tools, creator, base
 
+import logger
 import settings
 from algorithms.eval_suite_multi_objective import eval_suite
 from algorithms.mut_suite import mut_suite
@@ -15,6 +16,10 @@ class eaMuPlusLambdaParallel:
 		self.ngen = settings.GENERATION
 		self.mu = settings.POPULATION_SIZE
 		self.lambda_ = settings.OFFSPRING_SIZE
+
+		self.best_historic_crashes = 0
+		self.best_historic_length = 0
+		self.best_historic_coverage = 0
 
 		assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
 									   "probabilities must be smaller or equal to 1.0.")
@@ -58,6 +63,8 @@ class eaMuPlusLambdaParallel:
 			if not self.population[i].fitness.valid:
 				del self.population[i]
 
+		self.update_best_historic_objectives_achieved(self.population)
+
 	def evolve(self):
 
 		# Begin the generational process
@@ -68,6 +75,7 @@ class eaMuPlusLambdaParallel:
 				break
 
 			print "Starting generation ", gen
+			logger.log_progress("Starting generation ", gen)
 
 			# Vary the population
 			offspring = self.varOr(self.population)
@@ -92,10 +100,7 @@ class eaMuPlusLambdaParallel:
 					print "### Warning: Invalid Fitness"
 					del offspring[i]
 
-			# assert fitness
-			invalid_ind_post = [ind for ind in self.population + offspring if not ind.fitness.valid]
-			print "### assert len(invalid_ind) == 0, len = ", len(invalid_ind_post)
-			assert len(invalid_ind_post) == 0
+			self.update_best_historic_objectives_achieved(offspring)
 
 			# Select the next generation population
 			self.population[:] = self.toolbox.select(self.population + offspring, self.mu)
@@ -122,3 +127,22 @@ class eaMuPlusLambdaParallel:
 				offspring.append(random.choice(population))
 
 		return offspring
+
+	def update_best_historic_objectives_achieved(self, population):
+		for ind in population:
+			fit = ind.fitness
+			crashes = fit[0]
+			coverage = fit[1]
+			length = fit[2]
+
+			if crashes > self.best_historic_crashes:
+				self.best_historic_crashes = crashes
+			if coverage > self.best_historic_coverage:
+				self.best_historic_coverage = coverage
+			if crashes > 0 and length < self.best_historic_length:
+				self.best_historic_length = length
+
+		logger.log_progress("\n- Best historic crashes: " + self.best_historic_crashes)
+		logger.log_progress("\n- Best historic coverage: " + self.best_historic_coverage)
+		logger.log_progress("\n- Best historic length: " + self.best_historic_length)
+
