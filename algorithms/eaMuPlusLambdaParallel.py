@@ -130,8 +130,7 @@ class eaMuPlusLambdaParallel:
 
 	def update_best_historic_objectives_achieved(self, population):
 		for ind in population:
-			fit = ind.fitness
-			print fit
+			fit = ind.fitness.values
 			crashes = fit[0]
 			coverage = fit[1]
 			length = fit[2]
