@@ -75,7 +75,7 @@ class eaMuPlusLambdaParallel:
 				break
 
 			print "Starting generation ", gen
-			logger.log_progress("Starting generation ", gen)
+			logger.log_progress("\nStarting generation " + str(gen))
 
 			# Vary the population
 			offspring = self.varOr(self.population)
@@ -142,7 +142,7 @@ class eaMuPlusLambdaParallel:
 			if crashes > 0 and length < self.best_historic_length:
 				self.best_historic_length = length
 
-		logger.log_progress("\n- Best historic crashes: " + self.best_historic_crashes)
-		logger.log_progress("\n- Best historic coverage: " + self.best_historic_coverage)
-		logger.log_progress("\n- Best historic length: " + self.best_historic_length)
+		logger.log_progress("\n- Best historic crashes: " + str(self.best_historic_crashes))
+		logger.log_progress("\n- Best historic coverage: " + str(self.best_historic_coverage))
+		logger.log_progress("\n- Best historic length: " + str(self.best_historic_length))
 
