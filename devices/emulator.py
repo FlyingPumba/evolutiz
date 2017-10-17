@@ -36,6 +36,7 @@ import subprocess as sub
 
 import logger
 import settings
+from devices import adb
 from util import motifcore_installer
 from util import pack_and_deploy
 import multiprocessing as mp
@@ -86,11 +87,15 @@ def boot_devices():
 		print "Booting Device:", device_name
 		logger.log_progress("\rBooting devices: " + str(i+1) + "/" + str(settings.DEVICE_NUM))
 
+		emulator = "$ANDROID_HOME/emulator/emulator"
+		common_flags = " -wipe-data -no-boot-anim -writable-system -use-system-libs -qemu"
+
 		time.sleep(0.3)
 		if settings.HEADLESS:
-			sub.Popen('$ANDROID_HOME/emulator/emulator -avd ' + device_name + " -wipe-data -no-window -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			sub.Popen(emulator + ' -avd ' + device_name + common_flags + " -no-window", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 		else:
-			sub.Popen('$ANDROID_HOME/emulator/emulator -avd ' + device_name + " -wipe-data -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			sub.Popen(emulator + ' -avd ' + device_name + common_flags, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+
 		print "Waiting", settings.AVD_BOOT_DELAY, "seconds"
 		time.sleep(settings.AVD_BOOT_DELAY)
 
@@ -105,11 +110,9 @@ def boot_devices():
 def clean_sdcard():
 	print "Cleaning SD card"
 	for device in get_devices():
-		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell mount -o rw,remount rootfs /")
-		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell chmod 777 /mnt/sdcard")
-
-		os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm -rf /mnt/sdcard/*")
-
+		adb.sudo_shell_command(device, "mount -o rw,remount rootfs")
+		adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
+		adb.sudo_shell_command(device, "rm -rf /mnt/sdcard/*")
 
 def prepare_motifcore_callback(success):
 	global installed_devices
