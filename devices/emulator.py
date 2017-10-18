@@ -80,9 +80,11 @@ def boot_devices():
 	:return:
 	"""
 
+	current_devices = get_devices()
+
 	logger.log_progress("\nBooting devices: " + str(0) + "/" + str(settings.DEVICE_NUM))
 
-	for i in range(0, settings.DEVICE_NUM):
+	for i in range(len(current_devices), settings.DEVICE_NUM):
 		device_name = settings.AVD_SERIES + "_" + str(i)
 		print "Booting Device:", device_name
 		logger.log_progress("\rBooting devices: " + str(i+1) + "/" + str(settings.DEVICE_NUM))
@@ -96,16 +98,10 @@ def boot_devices():
 		else:
 			sub.Popen(emulator + ' -avd ' + device_name + common_flags, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 
-		print "Waiting", settings.AVD_BOOT_DELAY, "seconds"
-		time.sleep(settings.AVD_BOOT_DELAY)
 
-	# device_name = settings.AVD_SERIES
-	# print "Booting Device:", device_name
-	# time.sleep(0.3)
-	# if settings.HEADLESS:
-	# 	p = sub.Popen('cd "$(dirname "$(which emulator)")" && ./emulator -avd ' + device_name + " -wipe-data -no-window -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
-	# else:
-	# 	p = sub.Popen('cd "$(dirname "$(which emulator)")" && ./emulator -avd ' + device_name + " -wipe-data -writable-system -use-system-libs", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+	while len(get_devices()) < settings.DEVICE_NUM:
+		print "Waiting ", settings.AVD_BOOT_DELAY, " seconds for emulators to be ready"
+		time.sleep(settings.AVD_BOOT_DELAY)
 
 def clean_sdcard():
 	print "Cleaning SD card"
