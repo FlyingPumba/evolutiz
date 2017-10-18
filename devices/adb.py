@@ -42,4 +42,4 @@ def install(device, apk_path):
 
 def pkill(device, string):
     adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb -s " + device + " shell "
-    os.system(adb_cmd_prefix + "ps | grep " + string + " | awk '{print $2}' | xargs " + adb_cmd_prefix + "kill")
+    os.system(adb_cmd_prefix + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd_prefix + "kill pid")

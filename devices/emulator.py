@@ -69,8 +69,6 @@ def get_devices():
 			# 	print "Added device"
 			ret.append(device)
 
-	assert len(ret) > 0
-
 	return ret
 
 
@@ -87,21 +85,28 @@ def boot_devices():
 	for i in range(len(current_devices), settings.DEVICE_NUM):
 		device_name = settings.AVD_SERIES + "_" + str(i)
 		print "Booting Device:", device_name
-		logger.log_progress("\rBooting devices: " + str(i+1) + "/" + str(settings.DEVICE_NUM))
+		logger.log_progress("\rBooting devices: " + str(i + 1) + "/" + str(settings.DEVICE_NUM))
 
 		emulator = "$ANDROID_HOME/emulator/emulator"
-		common_flags = " -wipe-data -no-boot-anim -writable-system -use-system-libs -qemu"
 
 		time.sleep(0.3)
 		if settings.HEADLESS:
-			sub.Popen(emulator + ' -avd ' + device_name + common_flags + " -no-window", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			# -no-window flag can't be at the end
+			flags = " -wipe-data -no-window -no-boot-anim -writable-system -use-system-libs -qemu"
+			sub.Popen(emulator + ' -avd ' + device_name + flags, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 		else:
-			sub.Popen(emulator + ' -avd ' + device_name + common_flags, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			flags = " -wipe-data -no-boot-anim -writable-system -use-system-libs -qemu"
+			sub.Popen(emulator + ' -avd ' + device_name + flags, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 
-
-	while len(get_devices()) < settings.DEVICE_NUM:
 		print "Waiting ", settings.AVD_BOOT_DELAY, " seconds for emulators to be ready"
 		time.sleep(settings.AVD_BOOT_DELAY)
+
+	logger.log_progress(
+		"\nWaiting for devices to be ready: " + str(len(get_devices())) + "/" + str(settings.DEVICE_NUM))
+	while len(get_devices()) < settings.DEVICE_NUM:
+		logger.log_progress("\rWaiting for devices to be ready: " + str(len(get_devices())) + "/" + str(settings.DEVICE_NUM))
+		time.sleep(15)
+
 
 def clean_sdcard():
 	print "Cleaning SD card"
