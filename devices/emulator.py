@@ -145,6 +145,8 @@ def prepare_motifcore():
 		# 				 args=(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device))
 		# prepare_motifcore_callback(res)
 		motifcore_installer.install(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device)
+		installed_devices += 1
+		logger.log_progress("\rPreparing motifcore in devices: " + str(installed_devices) + "/" + str(total_devices))
 
 	pool.close()
 	pool.join()
