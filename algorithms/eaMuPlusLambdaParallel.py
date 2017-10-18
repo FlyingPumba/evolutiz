@@ -50,6 +50,8 @@ class eaMuPlusLambdaParallel:
 		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, apk_dir=self.apk_dir,
 												  package_name=self.package_name)
 
+		return
+
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
 		evaluate_in_parallel(self.toolbox,

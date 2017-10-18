@@ -43,7 +43,7 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	std_out_file = apk_dir + "/intermediate/" + "output.stdout"
 	random.seed()
 
-	motifcore_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
+	motifcore_events = settings.SEQUENCE_LENGTH_MIN
 
 	ret = []
 
