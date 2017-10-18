@@ -107,6 +107,9 @@ def boot_devices():
 		logger.log_progress("\rWaiting for devices to be ready: " + str(len(get_devices())) + "/" + str(settings.DEVICE_NUM))
 		time.sleep(15)
 
+	logger.log_progress(
+		"\rWaiting for devices to be ready: " + str(len(get_devices())) + "/" + str(settings.DEVICE_NUM))
+
 
 def clean_sdcard():
 	print "Cleaning SD card"
