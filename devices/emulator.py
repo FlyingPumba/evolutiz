@@ -55,7 +55,7 @@ def get_devices():
 	segs = output.split("\n")
 	for seg in segs:
 		device = seg.split("\t")[0].strip()
-		if seg.startswith("emulator-"):
+		if seg.startswith("emulator-") and "offline" not in seg:
 			# print "Checking if boot animation is over"
 			# p = sub.Popen('$ANDROID_HOME/platform-tools/adb -s ' + device +
 			#               ' shell getprop init.svc.bootanim', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)

@@ -94,6 +94,7 @@ def main(instrumented_app_dir, eaStrategy):
 	# get package name and prepare apk if necessary
 	global package_name
 	package_name = prepare_apk(devices, instrumented_app_dir)
+	logger.log_progress("\nWorking on package: " + package_name)
 
 	# register common functions in toolbox
 	toolbox = base.Toolbox()
