@@ -35,6 +35,8 @@ from devices import adb
 def install(motifcore_path, motifcore_script_path, device):
 	try:
 		# obtain write permission
+		adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
+		adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
 		adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
 		# push
