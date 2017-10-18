@@ -110,7 +110,7 @@ def main(instrumented_app_dir, eaStrategy):
 
 	# genetic algorithm
 	eaStrategy.setup(toolbox)
-	population = eaStrategy.evolve()
+	#population = eaStrategy.evolve()
 
 	print "\n### Finished main"
 
