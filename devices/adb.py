@@ -41,5 +41,5 @@ def install(device, apk_path):
     adb_command(device, "install " + apk_path)
 
 def pkill(device, string):
-    # sudo_shell_command(device, "ps | grep " + string +" | while read -r line; do arr=($line); kill ${arr[1]}; done")
-    pass
+    adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb -s " + device + " shell "
+    os.system(adb_cmd_prefix + "ps | grep " + string + " | awk '{print $2}' | xargs " + adb_cmd_prefix + "kill")
