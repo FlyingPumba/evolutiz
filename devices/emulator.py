@@ -56,18 +56,15 @@ def get_devices():
 	for seg in segs:
 		device = seg.split("\t")[0].strip()
 		if seg.startswith("emulator-") and "offline" not in seg:
-			# print "Checking if boot animation is over"
-			# p = sub.Popen('$ANDROID_HOME/platform-tools/adb -s ' + device +
-			#               ' shell getprop init.svc.bootanim', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
-			# output, errors = p.communicate()
-			# if output.strip() != "stopped":
-			# 	print "Animation is not over yet"
-			# 	time.sleep(10)
-			# 	print "Waiting for the emulator:", device
-			# 	return get_devices()
-			# else:
-			# 	print "Added device"
-			ret.append(device)
+			print "Checking if boot animation is over for device " + device
+			p = sub.Popen('$ANDROID_HOME/platform-tools/adb -s ' + device +
+			              ' shell getprop init.svc.bootanim', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			output, errors = p.communicate()
+			if output.strip() != "stopped":
+				print "Animation is not over yet"
+			else:
+				print "Added device"
+				ret.append(device)
 
 	return ret
 
