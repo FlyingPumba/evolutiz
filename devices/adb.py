@@ -43,7 +43,6 @@ def uninstall(device, package_name):
 def install(device, package_name, apk_path):
     adb_command(device, "install " + apk_path)
 
-
     cmd = adb_cmd_prefix + " -s " + device + " shell pm list packages | grep " + package_name
     res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
     if package_name not in res:
