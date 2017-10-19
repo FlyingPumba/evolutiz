@@ -54,7 +54,7 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	print "... Start generating a sequence"
 	motifcore_cmd = "motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml -v " + str(
 		motifcore_events)
-	adb.sudo_shell_command(device, motifcore_cmd, timeout = True)
+	adb.shell_command(device, motifcore_cmd, timeout = True)
 
 	# need to kill motifcore when timeout
 	adb.pkill(device, "motifcore")

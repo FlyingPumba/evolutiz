@@ -1,10 +1,13 @@
 import os
+import subprocess
 
 import logger
 import settings
 
+adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb"
+
 def adb_command(device, command, timeout = False):
-    adb_cmd = "$ANDROID_HOME/platform-tools/adb -s " + device + " " + command
+    adb_cmd = adb_cmd_prefix + " -s " + device + " " + command
     print "executing adb command: ", command
     if timeout:
         os.system(settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + adb_cmd + logger.redirect_string())
@@ -37,9 +40,14 @@ def pull(device, src, dest):
 def uninstall(device, package_name):
     adb_command(device, "uninstall " + package_name)
 
-def install(device, apk_path):
+def install(device, package_name, apk_path):
     adb_command(device, "install " + apk_path)
 
+    cmd = adb_cmd_prefix + " -s " + device + " shell pm list packages | grep " + package_name
+    res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+    if package_name not in res:
+        raise Exception("Unable to install apk: " + apk_path)
+
 def pkill(device, string):
-    adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb -s " + device + " shell "
-    os.system(adb_cmd_prefix + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd_prefix + "kill pid")
+    adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
+    os.system(adb_cmd + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd + "kill pid")

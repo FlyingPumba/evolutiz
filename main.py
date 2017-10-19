@@ -84,6 +84,7 @@ def main(instrumented_app_dir, eaStrategy):
 	# start time budget
 	global start_time
 	start_time = time.time()
+	print "Start time is " +  datetime.today().strftime("%Y-%m-%d_%H-%M")
 
 	any_device.prepare_motifcore()
 	any_device.clean_sdcard()
