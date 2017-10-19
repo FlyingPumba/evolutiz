@@ -1,6 +1,7 @@
 import multiprocessing as mp
 import os
 import subprocess
+import traceback
 
 import logger
 import settings
@@ -11,13 +12,18 @@ installed_devices = 0
 total_devices = 0
 
 def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
-    static_analyser.upload_string_xml(device, decoded_dir, package_name)
+    try:
+        static_analyser.upload_string_xml(device, decoded_dir, package_name)
 
-    print "### Installing apk:", apk_path
-    adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
-    adb.uninstall(device, package_name)
-    adb.install(device, apk_path)
-    return True
+        print "### Installing apk:", apk_path
+        adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+        adb.uninstall(device, package_name)
+        adb.install(device, package_name, apk_path)
+        return True
+    except Exception as e:
+        traceback.print_exc(file=logger.orig_stdout)
+        print e
+        return False
 
 def process_results(success):
     global installed_devices
