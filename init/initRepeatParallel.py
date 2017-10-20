@@ -43,8 +43,6 @@ idle_devices = []
 total_individuals = 0
 
 def process_results(data):
-	if settings.DEBUG:
-		print "Got results", data
 	individual, device = data
 
 	global results

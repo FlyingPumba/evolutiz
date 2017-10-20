@@ -36,7 +36,7 @@ GENERATION = 100 # 100
 CXPB = 0.7
 # Mutation probability
 MUTPB = 0.3
-SEARCH_BUDGET_IN_SECONDS = 60 * 15 # 60 * 60 # = 1 hour
+SEARCH_BUDGET_IN_SECONDS = 60 * 60 # 60 * 60 # = 1 hour
 
 
 # === Only for main_multi ===
