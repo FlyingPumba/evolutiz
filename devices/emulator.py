@@ -67,7 +67,7 @@ def get_devices():
 				p = sub.Popen('$ANDROID_HOME/platform-tools/adb -s ' + device +
 							  ' shell pm list packages', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 				output, errors = p.communicate()
-				if "Error" not in output.strip():
+				if "Error: Could not access the Package Manager" not in output.strip():
 					print "Added device"
 					ret.append(device)
 
