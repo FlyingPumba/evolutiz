@@ -63,8 +63,13 @@ def get_devices():
 			if output.strip() != "stopped":
 				print "Animation is not over yet"
 			else:
-				print "Added device"
-				ret.append(device)
+				print "Checking package manager is ready for device " + device
+				p = sub.Popen('$ANDROID_HOME/platform-tools/adb -s ' + device +
+							  ' shell pm list packages', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+				output, errors = p.communicate()
+				if "Error" not in output.strip():
+					print "Added device"
+					ret.append(device)
 
 	return ret
 
