@@ -1,5 +1,6 @@
 import datetime
 import os
+import time
 import random
 import traceback
 
@@ -56,33 +57,42 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 		motifcore_events)
 	adb.shell_command(device, motifcore_cmd, timeout = True)
 
-	# need to kill motifcore when timeout
-	adb.pkill(device, "motifcore")
-
 	print "... Finish generating a sequence"
 	# access the generated script, should ignore the first launch activity
 	script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]
 	ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
 
 	motifcore_script_filename = apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index)
-	adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename)
 
-	script = open(motifcore_script_filename)
-	is_content = False
-	is_skipped_first = False
-	for line in script:
-		line = line.strip()
-		if line.find("start data >>") != -1:
-			is_content = True
+	while True:
+		try:
+			# need to kill motifcore when timeout
+			adb.pkill(device, "motifcore")
+
+			adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename)
+			script = open(motifcore_script_filename)
+			is_content = False
+			is_skipped_first = False
+			for line in script:
+				line = line.strip()
+				if line.find("start data >>") != -1:
+					is_content = True
+					continue
+				if is_content and line != "":
+					if is_skipped_first == False:
+						is_skipped_first = True
+						continue
+					if is_skipped_first:
+						ret.append(line)
+
+			script.close()
+			break
+		except Exception as e:
+			logger.log_progress("There was an error trying to pull motifcore script: " + motifcore_script_filename)
+			# traceback.print_exc(file=logger.orig_stdout)
+			print e
+			time.sleep(1)
 			continue
-		if is_content and line != "":
-			if is_skipped_first == False:
-				is_skipped_first = True
-				continue
-			if is_skipped_first:
-				ret.append(line)
-
-	script.close()
 
 	# deal with crash
 	crash_handler.handle(device, apk_dir, motifcore_script_filename, "init", ts, index, unique_crashes)
