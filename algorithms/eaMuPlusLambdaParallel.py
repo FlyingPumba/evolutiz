@@ -52,11 +52,15 @@ class eaMuPlusLambdaParallel:
 
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-		evaluate_in_parallel(self.toolbox,
+		completed_evaluation = evaluate_in_parallel(self.toolbox,
 							 invalid_ind,
 							 self.apk_dir,
 							 self.package_name,
 							 0)
+
+		if not completed_evaluation:
+			print "Time budget run out durring parallel evaluation, exiting setup"
+			return
 
 		# discard invalid population individual
 		for i in range(len(self.population) - 1, -1, -1):
