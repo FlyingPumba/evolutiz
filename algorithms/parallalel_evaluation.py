@@ -77,8 +77,8 @@ def evaluate_in_parallel(toolbox, individuals, apk_dir, package_name, gen):
     time_out = False
     for i in range(0, len(individuals)):
         while len(idle_devices) == 0 and toolbox.time_budget_available():
-            print "Waiting for idle_devices"
-            print idle_devices
+            # print "Waiting for idle_devices"
+            # print idle_devices
             time.sleep(1)
 
         if not toolbox.time_budget_available():
