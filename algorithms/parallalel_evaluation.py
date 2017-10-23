@@ -98,16 +98,18 @@ def evaluate_in_parallel(toolbox, individuals, apk_dir, package_name, gen):
     #				 args=(eval_suite_parallel, individuals[i], device, apk_dir, package_name, gen, i))
     # process_results(res)
 
-    print "### evaluate_in_parallel is wating for all processes to finish ... "
-    # should wait for all processes to finish
     pool.close()
-    pool.join()
 
-    print "### ... evaluate_in_parallel finished"
-    # assign results
     if not time_out:
+        # should wait for all processes to finish
+        print "### evaluate_in_parallel is wating for all processes to finish ... "
+        pool.join()
+        print "### ... evaluate_in_parallel finished"
+        # assign results
         while len(results) > 0:
             i, fitness = results.pop(0)
             individuals[i].fitness.values = fitness
+    else:
+        pool.terminate()
 
     return not time_out
