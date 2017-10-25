@@ -1,0 +1,18 @@
+For 2.0 (in rough order)
+------------------------
+
+Sync with Google Books, and include pref to get login and store token (Using OAuth), etc.
+
+Complete the book data provider abstraction, so that multiple providers (more that Google Books, but start with that) can easily be supported.
+
+See Google Books "bookshelf" which now has read, want to read, rating, review, etc 
+(When I started this app, that is *exactly* what I had in mind, and Google Books did not have said features, now they do
+-- need to basically rewrite this to just leverage that stuff - maybe even throw out the data model here?)
+
+Book object stores multiple ISBNs now, make sure approp fallbacks are in code where one or other not present.
+
+Buttons (add book, etc) should look better use an image or something.
+
+Profile and performance optimize.
+
+Full tests - with coverage/emma.

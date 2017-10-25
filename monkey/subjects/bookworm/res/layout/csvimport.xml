@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:paddingTop="10dp"
+	android:paddingBottom="20dp" android:background="@drawable/book_bgrnd_noheader_textarea">
+
+	<TextView android:id="@+id/bookimportlabel"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_marginTop="10dp" android:layout_marginLeft="10dp"
+		style="@style/subsubtitledkred" android:gravity="center_horizontal"
+		android:text="@string/labelImportCSV" />
+
+	<TextView android:id="@+id/bookimportexplain"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_marginTop="5dp" android:layout_marginLeft="5dp"
+		android:layout_marginRight="5dp" style="@style/blacksmallsmall"
+		android:gravity="center_horizontal" android:text="@string/msgImportCSVInstructions" />
+
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:paddingTop="3dp" android:paddingBottom="3dp" android:gravity="center_horizontal">
+		<Button android:id="@+id/bookimportparsebutton"
+			android:layout_width="100dp" android:layout_height="wrap_content"
+			android:layout_marginTop="2dp" android:layout_marginBottom="5dp"
+			android:layout_marginLeft="5dp" android:layout_marginRight="2dp"
+			android:layout_gravity="center" android:background="@drawable/button_gray"
+			style="@style/button" android:text="@string/btnParse" />
+
+		<Button android:id="@+id/bookimportimportbutton"
+			android:layout_width="100dp" android:layout_height="wrap_content"
+			android:layout_marginTop="2dp" android:layout_marginBottom="5dp"
+			android:layout_marginLeft="2dp" android:layout_marginRight="2dp"
+			android:layout_gravity="center" android:background="@drawable/button_gray"
+			style="@style/button" android:text="@string/btnImport" />
+
+		<Button android:id="@+id/bookimporthelpbutton"
+			android:layout_width="100dp" android:layout_height="wrap_content"
+			android:layout_marginTop="2dp" android:layout_marginBottom="5dp"
+			android:layout_marginLeft="2dp" android:layout_marginRight="5dp"
+			android:layout_gravity="center" android:background="@drawable/button_gray"
+			style="@style/button" android:text="Help" />
+	</LinearLayout>
+
+	<TextView android:id="@+id/bookimportmeta"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_marginTop="5dp" android:layout_marginLeft="5dp"
+		android:layout_marginRight="5dp" style="@style/blacksmallsmall"
+		android:gravity="center_horizontal" />
+
+	<ListView android:id="@+id/bookimportlistview"
+		android:layout_width="fill_parent" android:layout_height="0dp"
+		android:layout_weight="1" android:cacheColorHint="#00000000" />
+	<!-- <TextView android:id="@+id/bookimportlistviewempty" android:layout_width="fill_parent" 
+		android:layout_height="wrap_content" android:layout_marginTop="10dp" android:layout_marginLeft="5dp" 
+		android:layout_marginRight="5dp" style="@style/blackmed" android:gravity="center_horizontal" 
+		/> -->
+
+</LinearLayout>
+

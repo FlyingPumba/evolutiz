@@ -1,0 +1,8 @@
+syntax: glob
+
+exp
+bin
+gen
+map.txt
+*~
+build.sh

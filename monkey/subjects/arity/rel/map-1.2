@@ -1,0 +1,383 @@
+calculator.Calculator -> calculator.Calculator:
+    android.widget.TextView result -> a
+    android.widget.EditText input -> b
+    android.widget.ListView historyView -> c
+    calculator.History history -> d
+    calculator.HistoryAdapter adapter -> e
+    org.javia.arity.Symbols symbols -> f
+    calculator.Defs defs -> g
+    int nDigits -> h
+    boolean pendingClearResult -> i
+    java.lang.String[] builtins -> j
+    char[][] ALPHA -> k
+    char[][] DIGITS -> l
+    char[][] DIGITS2 -> m
+    android.os.Handler handler -> n
+    java.lang.StringBuilder oneChar -> o
+    android.view.KeyEvent KEY_DEL -> p
+    void onCreate(android.os.Bundle) -> onCreate
+    void onPause() -> onPause
+    boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    void afterTextChanged(android.text.Editable) -> afterTextChanged
+    void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
+    boolean onKey(android.view.View,int,android.view.KeyEvent) -> onKey
+    void log(java.lang.String) -> a
+    void evaluate() -> a
+    java.lang.String formatEval(org.javia.arity.Complex) -> a
+    java.lang.String evaluate(java.lang.String) -> b
+    void onKey(char) -> a
+    void onEnter(java.lang.String) -> c
+    void changeInput(java.lang.String) -> d
+    void onUp() -> d
+    void doEnter() -> b
+    void doBackspace() -> c
+calculator.Calculator$1 -> calculator.e:
+    calculator.Calculator this$0 -> a
+    void handleMessage(android.os.Message) -> handleMessage
+calculator.CalculatorEditable -> calculator.b:
+    boolean isRec -> a
+    android.text.SpannableStringBuilder replace(int,int,java.lang.CharSequence,int,int) -> replace
+    boolean isOperator(char) -> a
+    android.text.Editable replace(int,int,java.lang.CharSequence,int,int) -> replace
+calculator.CalculatorEditable$Factory -> calculator.h:
+    android.text.Editable newEditable(java.lang.CharSequence) -> newEditable
+calculator.Defs -> calculator.c:
+    java.util.ArrayList lines -> a
+    org.javia.arity.Symbols symbols -> b
+    void doRead(java.io.DataInputStream) -> a
+    void doWrite(java.io.DataOutputStream) -> a
+calculator.FileHandler -> calculator.d:
+    java.lang.String fileName -> a
+    android.content.Context context -> b
+    int version -> c
+    java.io.DataInputStream openInput() -> c
+    void load() -> a
+    void save() -> b
+    void doRead(java.io.DataInputStream) -> a
+    void doWrite(java.io.DataOutputStream) -> a
+calculator.History -> calculator.i:
+    java.util.ArrayList entries -> a
+    int pos -> b
+    calculator.HistoryEntry aboveTop -> c
+    void doRead(java.io.DataInputStream) -> a
+    void doWrite(java.io.DataOutputStream) -> a
+    calculator.HistoryEntry currentEntry() -> d
+    boolean onEnter(java.lang.String,java.lang.String) -> a
+    void moveToPos(int,java.lang.String) -> a
+    boolean moveUp(java.lang.String) -> a
+    boolean moveDown(java.lang.String) -> b
+    java.lang.String getText() -> c
+calculator.HistoryAdapter -> calculator.f:
+    android.view.LayoutInflater inflater -> a
+    calculator.History history -> b
+    int getCount() -> getCount
+    java.lang.Object getItem(int) -> getItem
+    long getItemId(int) -> getItemId
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+calculator.HistoryAdapter$TagData -> calculator.g:
+    android.widget.TextView input -> a
+    android.widget.TextView result -> b
+    android.widget.TextView separator -> c
+calculator.HistoryEntry -> calculator.a:
+    java.lang.String line -> a
+    java.lang.String editLine -> b
+    java.lang.String result -> c
+    void save(java.io.DataOutputStream) -> a
+calculator.KeyboardView -> calculator.KeyboardView:
+    char[][] keys -> a
+    int nLine -> b
+    int nCol -> c
+    android.graphics.Paint downPaint -> d
+    int width -> e
+    int height -> f
+    android.graphics.Bitmap bitmap -> g
+    boolean isDown -> h
+    float downX -> i
+    float downY -> j
+    int downLine -> k
+    int downCol -> l
+    float cellw -> m
+    float cellh -> n
+    calculator.Calculator calculator -> o
+    calculator.KeyboardView aboveView -> p
+    boolean isLarge -> q
+    void init(char[][],calculator.KeyboardView) -> a
+    void onSizeChanged(int,int,int,int) -> onSizeChanged
+    void drawDrawable(android.graphics.Canvas,int,float,float) -> a
+    float getY(int) -> a
+    float getX(int) -> b
+    void draw(android.graphics.Canvas) -> draw
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    void invalidateCell(int,int) -> a
+calculator.ListBuiltins -> calculator.ListBuiltins:
+    void onCreate(android.os.Bundle) -> onCreate
+calculator.ListDefs -> calculator.ListDefs:
+    void onCreate(android.os.Bundle) -> onCreate
+org.javia.arity.ArityException -> a.m:
+org.javia.arity.BaseMath -> a.o:
+org.javia.arity.ByteStack -> a.y:
+    byte[] data -> a
+    int size -> b
+    void clear() -> a
+    void push(byte) -> a
+    void pop(int) -> a
+    byte[] toArray() -> b
+org.javia.arity.CompiledFunction -> a.a:
+    java.util.Random random -> a
+    double[] constsRe -> b
+    double[] constsIm -> c
+    org.javia.arity.Function[] funcs -> d
+    byte[] code -> e
+    int arity -> f
+    double[] NO_ARGS -> g
+    org.javia.arity.EvalContext context -> h
+    org.javia.arity.Complex[] NO_ARGS_COMPLEX -> i
+    int arity() -> a
+    java.lang.String toString() -> toString
+    void checkArity(int) -> a
+    double eval() -> b
+    double eval(double) -> a
+    double eval(double,double) -> a
+    double eval(double[]) -> a
+    double eval(double[],org.javia.arity.EvalContext) -> a
+    int exec(org.javia.arity.EvalContext,int,boolean) -> a
+    int execWithoutCheck(org.javia.arity.EvalContext,int) -> b
+    org.javia.arity.Complex evalComplex() -> c
+    org.javia.arity.Complex eval(org.javia.arity.Complex) -> a
+    org.javia.arity.Complex eval(org.javia.arity.Complex,org.javia.arity.Complex) -> a
+    org.javia.arity.Complex eval(org.javia.arity.Complex[]) -> a
+    org.javia.arity.Complex eval(org.javia.arity.Complex[],org.javia.arity.EvalContext) -> a
+    int execWithoutCheckComplex(org.javia.arity.EvalContext,int) -> a
+org.javia.arity.Compiler -> a.t:
+    org.javia.arity.SyntaxException exception -> a
+    org.javia.arity.Lexer lexer -> b
+    org.javia.arity.RPN rpn -> c
+    org.javia.arity.DeclarationParser declParser -> d
+    org.javia.arity.OptCodeGen codeGen -> e
+    org.javia.arity.SimpleCodeGen simpleCodeGen -> f
+    org.javia.arity.Declaration decl -> g
+    org.javia.arity.Function compileSimple(org.javia.arity.Symbols,java.lang.String) -> a
+    org.javia.arity.Function compile(org.javia.arity.Symbols,java.lang.String) -> b
+    org.javia.arity.FunctionAndName compileWithName(org.javia.arity.Symbols,java.lang.String) -> c
+org.javia.arity.Complex -> a.r:
+    double re -> a
+    double im -> b
+    org.javia.arity.Complex set(double,double) -> a
+    org.javia.arity.Complex set(org.javia.arity.Complex) -> a
+    java.lang.String toString() -> toString
+    double asReal() -> a
+    org.javia.arity.Complex negate() -> b
+    boolean isInfinite() -> c
+    boolean isNaN() -> d
+    double abs() -> e
+    double abs2() -> f
+    org.javia.arity.Complex mul(org.javia.arity.Complex) -> b
+    org.javia.arity.Complex div(org.javia.arity.Complex) -> c
+    org.javia.arity.Complex sqrt() -> g
+    org.javia.arity.Complex mod(org.javia.arity.Complex) -> d
+    org.javia.arity.Complex log() -> h
+    org.javia.arity.Complex exp() -> i
+    org.javia.arity.Complex pow(org.javia.arity.Complex) -> e
+    org.javia.arity.Complex lgamma() -> j
+    org.javia.arity.Complex sin() -> k
+    org.javia.arity.Complex sinh() -> l
+    org.javia.arity.Complex cos() -> m
+    org.javia.arity.Complex cosh() -> n
+    org.javia.arity.Complex tan() -> o
+    org.javia.arity.Complex tanh() -> p
+    org.javia.arity.Complex asin() -> q
+    org.javia.arity.Complex acos() -> r
+    org.javia.arity.Complex swap() -> s
+    org.javia.arity.Complex normalizeInfinity() -> t
+    org.javia.arity.Complex sqrt1z() -> u
+org.javia.arity.Constant -> a.n:
+    org.javia.arity.Complex value -> a
+    org.javia.arity.Complex evalComplex() -> c
+    double eval() -> b
+    java.lang.String toString() -> toString
+org.javia.arity.Declaration -> a.x:
+    java.lang.String[] NO_ARGS -> e
+    java.lang.String name -> a
+    java.lang.String[] args -> b
+    int arity -> c
+    java.lang.String expression -> d
+    void parse(java.lang.String,org.javia.arity.Lexer,org.javia.arity.DeclarationParser) -> a
+org.javia.arity.DeclarationParser -> a.k:
+    java.lang.String[] NO_ARGS -> c
+    java.lang.String name -> a
+    int arity -> b
+    java.util.Vector args -> d
+    org.javia.arity.SyntaxException exception -> e
+    void start() -> a
+    void push(org.javia.arity.Token) -> a
+    java.lang.String[] argNames() -> b
+org.javia.arity.DoubleStack -> a.c:
+    double[] re -> a
+    double[] im -> b
+    int size -> c
+    void clear() -> a
+    void push(double,double) -> a
+    void pop(int) -> a
+    double[] getRe() -> b
+    double[] getIm() -> c
+org.javia.arity.EvalContext -> a.f:
+    double[] stackRe -> a
+    org.javia.arity.Complex[] stackComplex -> b
+    int stackBase -> c
+    double[] args1 -> d
+    double[] args2 -> e
+    org.javia.arity.Complex[] args1c -> f
+    org.javia.arity.Complex[] args2c -> g
+org.javia.arity.Function -> a.g:
+    int cachedArity -> a
+    int arity() -> a
+    double eval() -> b
+    double eval(double) -> a
+    double eval(double,double) -> a
+    double eval(double[]) -> a
+    org.javia.arity.Complex evalComplex() -> c
+    org.javia.arity.Complex eval(org.javia.arity.Complex) -> a
+    org.javia.arity.Complex eval(org.javia.arity.Complex,org.javia.arity.Complex) -> a
+    org.javia.arity.Complex eval(org.javia.arity.Complex[]) -> a
+org.javia.arity.FunctionAndName -> a.h:
+    org.javia.arity.Function function -> a
+    java.lang.String name -> b
+    java.lang.String sizeTruncate(java.lang.String,int) -> a
+    java.lang.String doubleToString(double,int) -> a
+    java.lang.String doubleToString(double,int,int) -> a
+    java.lang.String complexToString$4b7e7aaf(org.javia.arity.Complex,int) -> a
+org.javia.arity.FunctionStack -> a.p:
+    org.javia.arity.Function[] data -> a
+    int size -> b
+    void clear() -> a
+    void push(org.javia.arity.Function) -> a
+    org.javia.arity.Function[] toArray() -> b
+org.javia.arity.Lexer -> a.e:
+    org.javia.arity.Token TOK_ADD -> e
+    org.javia.arity.Token TOK_SUB -> f
+    org.javia.arity.Token TOK_MUL -> a
+    org.javia.arity.Token TOK_DIV -> g
+    org.javia.arity.Token TOK_MOD -> h
+    org.javia.arity.Token TOK_UMIN -> b
+    org.javia.arity.Token TOK_POWER -> i
+    org.javia.arity.Token TOK_FACT -> j
+    org.javia.arity.Token TOK_SQRT -> k
+    org.javia.arity.Token TOK_LPAREN -> c
+    org.javia.arity.Token TOK_RPAREN -> d
+    org.javia.arity.Token TOK_COMMA -> l
+    org.javia.arity.Token TOK_END -> m
+    org.javia.arity.Token TOK_NUMBER -> n
+    org.javia.arity.Token TOK_CONST -> o
+    char[] input -> p
+    int pos -> q
+    org.javia.arity.SyntaxException exception -> r
+    void scan(java.lang.String,org.javia.arity.TokenConsumer) -> a
+    org.javia.arity.Token nextToken() -> a
+org.javia.arity.MoreMath -> a.i:
+    double[] GAMMA -> a
+    double[] FACT -> b
+    double asinh(double) -> a
+    double acosh(double) -> b
+    double atanh(double) -> c
+    double gcd(double,double) -> a
+    double lgamma(double) -> h
+    double factorial(double) -> d
+    double combinations(double,double) -> b
+    double permutations(double,double) -> c
+    boolean isPiMultiple(double) -> i
+    double sin(double) -> e
+    double cos(double) -> f
+    double tan(double) -> g
+org.javia.arity.OptCodeGen -> a.u:
+    org.javia.arity.EvalContext context -> h
+    int sp -> i
+    org.javia.arity.Complex[] stack -> j
+    double[] traceConstsRe -> k
+    double[] traceConstsIm -> l
+    org.javia.arity.Function[] traceFuncs -> m
+    byte[] traceCode -> n
+    org.javia.arity.CompiledFunction tracer -> o
+    int intrinsicArity -> g
+    void start() -> a
+    void push(org.javia.arity.Token) -> a
+org.javia.arity.RPN -> a.q:
+    java.util.Stack stack -> b
+    int prevTokenId -> c
+    org.javia.arity.TokenConsumer consumer -> a
+    org.javia.arity.SyntaxException exception -> d
+    void start() -> a
+    org.javia.arity.Token top() -> b
+    void popHigher(int) -> a
+    boolean isOperand(int) -> b
+    void push(org.javia.arity.Token) -> a
+org.javia.arity.SimpleCodeGen -> a.l:
+    org.javia.arity.SyntaxException HAS_ARGUMENTS -> a
+    org.javia.arity.ByteStack code -> b
+    org.javia.arity.DoubleStack consts -> c
+    org.javia.arity.FunctionStack funcs -> d
+    org.javia.arity.Symbols symbols -> e
+    org.javia.arity.SyntaxException exception -> f
+    org.javia.arity.SimpleCodeGen setSymbols(org.javia.arity.Symbols) -> a
+    void start() -> a
+    void push(org.javia.arity.Token) -> a
+    org.javia.arity.CompiledFunction getFun() -> b
+org.javia.arity.Symbol -> a.v:
+    java.lang.String name -> e
+    int arity -> f
+    byte op -> a
+    org.javia.arity.Function fun -> b
+    double valueRe -> c
+    double valueIm -> d
+    java.lang.String getName() -> a
+    int getArity() -> b
+    org.javia.arity.Symbol newEmpty(org.javia.arity.Symbol) -> a
+    org.javia.arity.Symbol setKey(java.lang.String,int) -> a
+    boolean equals(java.lang.Object) -> equals
+    int hashCode() -> hashCode
+org.javia.arity.Symbols -> a.b:
+    org.javia.arity.Symbol[] builtin -> a
+    org.javia.arity.Symbol shell -> b
+    org.javia.arity.Compiler compiler -> c
+    java.util.Hashtable symbols -> d
+    java.util.Vector delta -> e
+    java.util.Stack frames -> f
+    java.lang.String[] defines -> g
+    boolean isDefinition(java.lang.String) -> a
+    org.javia.arity.Complex evalComplex(java.lang.String) -> b
+    org.javia.arity.FunctionAndName compileWithName(java.lang.String) -> c
+    org.javia.arity.Function compile(java.lang.String) -> d
+    void define(java.lang.String,org.javia.arity.Function) -> a
+    void define(org.javia.arity.FunctionAndName) -> a
+    void define(java.lang.String,double) -> a
+    void pushFrame() -> a
+    void popFrame() -> b
+    org.javia.arity.Symbol[] getTopFrame() -> c
+    void addArguments(java.lang.String[]) -> a
+    void add(org.javia.arity.Symbol) -> a
+    org.javia.arity.Symbol lookup(java.lang.String,int) -> a
+org.javia.arity.SyntaxException -> a.j:
+    java.lang.String expression -> a
+    java.lang.String message -> c
+    int position -> b
+    java.lang.String toString() -> toString
+    org.javia.arity.SyntaxException set(java.lang.String,int) -> a
+org.javia.arity.Token -> a.w:
+    int priority -> a
+    int assoc -> b
+    int id -> c
+    byte vmop -> d
+    double value -> e
+    java.lang.String name -> f
+    int arity -> g
+    int position -> h
+    java.lang.String toString() -> toString
+org.javia.arity.TokenConsumer -> a.s:
+    void start() -> a
+    void push(org.javia.arity.Token) -> a
+org.javia.arity.VM -> a.d:
+    java.lang.String[] opcodeName -> a
+    java.lang.String[] comment -> b
+    byte[] builtinArity -> c

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">Just Sit</string>
+<string name="duration_label">Meditation Duration (min)</string>
+<string name="preparation_label">Preparation Time (s)</string>
+<string name="sit">Sit!</string>
+<string name="prep_label">Prepare to Sit</string>
+<string name="meditate_label">Sit!</string>
+<string name="default_prep_time">30</string>
+<string name="default_meditation_time">30</string>
+<string name="menu_settings">Settings</string>
+<string name="menu_about">About</string>
+<string name="author">by Brock M. Tice</string>
+<string name="dummy_version">Version: 0.0.k5</string>
+<string name="gpl_notice">JustSit and its icons are free software: you can redistribute them and/or modify them under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\nJustSit is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\nSee the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with JustSit. If not, see http://www.gnu.org/licenses.\n\nSounds licensed under Creative Commons Sampling Plus 1.0 License. See http://code.google.com/p/justsit for details.</string>
+<string name="screen_on_label">Keep screen on</string>
+<string name="airplane_mode_label">Airplane Mode</string>
+<string name="silent_mode_label">Silent Mode (w/ Vibrate)</string>
+<string name="airplane_mode_on">Enabling Airplane Mode</string>
+<string name="airplane_mode_off">Disabling Airplane Mode</string>
+<string name="invalid_prep_time">Invalid Prep Time\nUsing Default Time</string>
+<string name="invalid_meditation_time">Invalid Meditation Time\nUsing Default Time</string>
+<string name="maximize_volume_label">Maximize Chime Volume</string>
+</resources>

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/568/trunk/src/com/totsp/bookworm/model
+END
+Book.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/568/trunk/src/com/totsp/bookworm/model/Book.java
+END
+Author.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/512/trunk/src/com/totsp/bookworm/model/Author.java
+END
+BookUserData.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/512/trunk/src/com/totsp/bookworm/model/BookUserData.java
+END
+BookListStats.java
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/!svn/ver/343/trunk/src/com/totsp/bookworm/model/BookListStats.java
+END

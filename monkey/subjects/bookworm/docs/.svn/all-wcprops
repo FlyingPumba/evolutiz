@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/svn/!svn/ver/535/trunk/docs
+END
+online_book_apps.txt
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/69/trunk/docs/online_book_apps.txt
+END
+TODO.txt
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/svn/!svn/ver/246/trunk/docs/TODO.txt
+END
+imp_exp_db.txt
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/535/trunk/docs/imp_exp_db.txt
+END
+NOTES.txt
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/!svn/ver/521/trunk/docs/NOTES.txt
+END
+MyLibrary.xml
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/326/trunk/docs/MyLibrary.xml
+END
+queries.sql
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/327/trunk/docs/queries.sql
+END
+book_search_response.xml
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/75/trunk/docs/book_search_response.xml
+END
+book_search_mult_response.xml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/136/trunk/docs/book_search_mult_response.xml
+END

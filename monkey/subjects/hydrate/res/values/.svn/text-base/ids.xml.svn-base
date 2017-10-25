@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <item name="headerAmountTextView" type="id"/>
+    <item name="last_entry_textview" type="id"/>
+    <item name="goal_textview" type="id"/>
+    <item name="over_under_textview" type="id" />
+</resources>

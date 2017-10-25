@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svn/!svn/ver/572/trunk/res/layout
+END
+main.xml
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/552/trunk/res/layout/main.xml
+END
+csvimport.xml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/572/trunk/res/layout/csvimport.xml
+END
+search_listview_footer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/350/trunk/res/layout/search_listview_footer.xml
+END
+book_simple_list_item.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/544/trunk/res/layout/book_simple_list_item.xml
+END
+html_view.xml
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/572/trunk/res/layout/html_view.xml
+END
+bookform.xml
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/572/trunk/res/layout/bookform.xml
+END
+booksearch.xml
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/572/trunk/res/layout/booksearch.xml
+END
+preferences.xml
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/571/trunk/res/layout/preferences.xml
+END
+bookdetaildrawer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/572/trunk/res/layout/bookdetaildrawer.xml
+END

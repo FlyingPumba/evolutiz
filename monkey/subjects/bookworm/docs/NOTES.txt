@@ -1,0 +1,72 @@
+Create parallel "Android Test" project to use instrumentation/etc. 
+
+adb -e shell
+# cd data/data 
+
+sqlite3 [path to db]
+select * from sqlite_master;
+.tables
+.schema
+.header
+etc
+
+android update project
+  change build.xml project name if different than Main activity
+  ant install
+  ant coverage (see group, it's there now, but still unsupported)
+  
+  android update project -p PATH 
+  android update test-project -p PATH -m TEST_PROJ_PATH
+  
+  after doing so if build.properties tested.project.dir is set - tests can't compile, install fails?
+  
+can't do the market:// intent search thing from emulator (no market app)
+some hacks to install market app there
+
+also have to install zxing manually for emulator, of course
+
+for standard junit tests in eclipse - edit run config, remove android api library, add jdk and junit 3
+  
+Hard to find HttpClient 4 site, part of new HttpComponents:
+http://hc.apache.org/httpcomponents-client/index.html 
+  
+HttpClient constants:
+http://hc.apache.org/httpcomponents-core/httpcore/apidocs/constant-values.html#org.apache.http.params.CoreProtocolPNames.HTTP_CONTENT_CHARSET
+
+Use XMLReader over SaxParser direct - also see XmlPullParser.
+Also android shortcut - Xml.parse
+
+Need to document/describe 3 separate projects, Android, Android Test, Plain Test
+
+Instrumentation is required, even if don't want to use monitor? 
+
+look carefully at orientation changes and how they affect things - 
+use android:configChanges="keyboardHidden|orientation" to react
+
+use onSaveInstanceState/onRestoreInstanceState to restore in memory state from you app ANY TIME it is KILLED/RESTARTED
+this includes orientation changes, onRetainConfigurationInstance can also be used, but it ONLY works for orientation change
+
+@+id/foo is the namespace of current application and + means create new id
+@android:id/foo is the android namespace
+a? refers back to same config file, rather than another already defined resource
+
+units: use sp for fonts, which can scale by preference, and dp for everything else
+
+easier clickHandlers 
+class MyActivity extends Activity {
+    public void myClickHandler(View target) {
+        // Do stuff
+    }
+}
+<Button android:onClick="myClickHandler" />
+
+hierarchyviewer and layoutopt
+
+android:gravity positions the contents of that view (i.e. what’s inside the view), 
+whereas android:layout_gravity positions the view with respect to its parent 
+
+IF you have list view items in a list view that are focusable, the list click listener won't fire. 
+For example, an EditText, or more subtle, "android:inputType="text"" on a TextView
+
+logcat filterspec - adb -d logcat "*:s BookWorm:v"
+

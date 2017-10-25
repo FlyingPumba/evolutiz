@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/165/trunk/res/xml
+END
+settings.xml
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/!svn/ver/165/trunk/res/xml/settings.xml
+END
+one_cell_widget_settings.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/150/trunk/res/xml/one_cell_widget_settings.xml
+END
+two_cell_widget_settings.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/155/trunk/res/xml/two_cell_widget_settings.xml
+END
