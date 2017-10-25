@@ -47,15 +47,27 @@ def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, apk_dir
         traceback.print_exc()
         return pop, (0, 0, 0), device
 
-def instrument_apk(app_path):
-    pass
+def instrument_apk(app_path, app_name):
+    os.system("cd " + app_path)
+    os.system("ant clean")
+    os.system("ant emma debug &> " + RESULTDIR + app_name + "/build.log")
+    os.system("ant installd &> " + RESULTDIR + app_name + "/install.log")
+    os.system("cp bin/coverage.em &> " + RESULTDIR + app_name + "/")
+
+    p = sub.Popen("ls bin/*-debug.apk", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+    apk_path, errors = p.communicate()
+
+    p = sub.Popen("aapt d xmltree $app AndroidManifest.xml | grep package | awk 'BEGIN {FS=\"\"\"}{print $2}'", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+    package_name, errors = p.communicate()
+
+    return apk_path, package_name
 
 def process_app_result(result):
     pass
 
 def run_monkey_one_app(app_path, device):
     try:
-        instrument_apk(app_path)
+        apk_path, package_name = instrument_apk(app_path, "app_name")
         #package_name = prepare_apk([device], app_path)
 
         # run logcat
