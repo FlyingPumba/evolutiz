@@ -50,4 +50,4 @@ def install(device, package_name, apk_path):
 
 def pkill(device, string):
     adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
-    os.system(adb_cmd + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd + "kill pid")
+    os.system(adb_cmd + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd + "kill pid " + logger.redirect_string())

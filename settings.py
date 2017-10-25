@@ -28,15 +28,15 @@ WORKING_DIR = '/home/ivan/src/sapienz/'
 # === GA parameters ===
 SEQUENCE_LENGTH_MIN = 20
 SEQUENCE_LENGTH_MAX = 500
-SUITE_SIZE = 5 # 5
-POPULATION_SIZE = 5 # 50
-OFFSPRING_SIZE = 5 # 50
+SUITE_SIZE = 3 # 5
+POPULATION_SIZE = 3 # 50
+OFFSPRING_SIZE = 3 # 50
 GENERATION = 100 # 100
 # Crossover probability
 CXPB = 0.7
 # Mutation probability
 MUTPB = 0.3
-SEARCH_BUDGET_IN_SECONDS = 60 * 30 # 60 * 60 # = 1 hour
+SEARCH_BUDGET_IN_SECONDS = 60 * 45 # 60 * 60 # = 1 hour
 
 
 # === Only for main_multi ===
