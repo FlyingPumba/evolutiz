@@ -56,8 +56,16 @@
    				android:resource="@xml/two_cell_widget_settings" />
    		</receiver>
    		 -->
-    </application>
-    
+   <receiver android:name="com.frankcalise.h2droid.EmmaInstrument.SMSInstrumentedReceiver">
+	    <intent-filter>
+		       <action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+		        </intent-filter>
+		         </receiver>
+		   <activity android:label="EmmaInstrumentationActivity" android:name="com.frankcalise.h2droid.EmmaInstrument.InstrumentedActivity"/>
+	    </application>
+    <instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.frankcalise.h2droid.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.frankcalise.h2droid"/>
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     
 
 </manifest> 

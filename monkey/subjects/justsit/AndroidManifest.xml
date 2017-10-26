@@ -13,7 +13,18 @@
     <activity android:name="RunTimer"></activity>
 <activity android:name="JsAbout"></activity>
 <activity android:name="JsSettings"></activity>
-</application>
+
+  <receiver android:name="com.brocktice.JustSit.EmmaInstrument.SMSInstrumentedReceiver">
+  <intent-filter>
+    <action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+  </intent-filter>
+  </receiver>
+  <activity android:label="EmmaInstrumentationActivity" android:name="com.brocktice.JustSit.EmmaInstrument.InstrumentedActivity"/>
+  </application>
+   <instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.brocktice.JustSit.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.brocktice.JustSit"/>
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
 <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 <uses-permission android:name="android.permission.WAKE_LOCK" />
 <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />

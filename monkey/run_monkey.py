@@ -12,7 +12,7 @@ from datetime import datetime
 # global results for mp callback
 from devices.prepare_apk_parallel import prepare_apk
 
-RESULTDIR="results/monkey/"
+BASE_RESULTDIR="../../results/"
 
 results = []
 idle_devices = []
@@ -47,18 +47,28 @@ def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, apk_dir
         traceback.print_exc()
         return pop, (0, 0, 0), device
 
-def instrument_apk(app_path, app_name):
+def instrument_apk(app_path):
+    result_dir = BASE_RESULTDIR + "package_name"+ "/"
+
+    print app_path
+    print result_dir
+
     os.system("cd " + app_path)
+    os.system("mkdir -p " + result_dir)
     os.system("ant clean")
-    os.system("ant emma debug &> " + RESULTDIR + app_name + "/build.log")
-    os.system("ant installd &> " + RESULTDIR + app_name + "/install.log")
-    os.system("cp bin/coverage.em &> " + RESULTDIR + app_name + "/")
+    os.system("ant emma debug &> " + result_dir + "build.log")
+    os.system("ant installd &> " + result_dir + "install.log")
+    os.system("cp bin/coverage.em &> " + result_dir)
 
     p = sub.Popen("ls bin/*-debug.apk", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     apk_path, errors = p.communicate()
 
-    p = sub.Popen("aapt d xmltree $app AndroidManifest.xml | grep package | awk 'BEGIN {FS=\"\"\"}{print $2}'", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+    p = sub.Popen(
+        "monkey/android-sdk-linux/build-tools/20.0.0/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package | awk 'BEGIN {FS=\"\\\"\"}{print $2}'",
+        stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     package_name, errors = p.communicate()
+    print package_name
+    print errors
 
     return apk_path, package_name
 
@@ -67,7 +77,8 @@ def process_app_result(result):
 
 def run_monkey_one_app(app_path, device):
     try:
-        apk_path, package_name = instrument_apk(app_path, "app_name")
+        apk_path, package_name = instrument_apk(app_path)
+        print package_name
         #package_name = prepare_apk([device], app_path)
 
         # run logcat
@@ -88,9 +99,9 @@ def run_monkey_one_app(app_path, device):
         return False
 
 def run_monkey(app_paths):
-    logger.prepare()
-    logger.clear_progress()
-    logger.log_progress("Monkey")
+    # logger.prepare()
+    # logger.clear_progress()
+    # logger.log_progress("Monkey")
 
     print "Preparing devices ..."
     any_device.boot_devices()
@@ -124,13 +135,13 @@ def run_monkey(app_paths):
     print "### Finished run_monkey"
 
     # recover stdout and stderr
-    logger.restore()
+    # logger.restore()
 
 def get_subject_paths():
-    p = sub.Popen("ls -d1 $PWD/monkey/subjects/*", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+    p = sub.Popen("ls -d $PWD/monkey/subjects/*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     output, errors = p.communicate()
     app_paths = []
-    for line in output:
+    for line in output.strip().split('\n'):
         app_paths.append(line)
     return app_paths
 

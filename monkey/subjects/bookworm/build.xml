@@ -32,7 +32,7 @@
          as ADT.
          This file is an integral part of the build system for your application and
          should be checked in in Version Control Systems. -->
-    <property file="default.properties" />
+    <property file="project.properties" />
 
     <!-- Custom Android task to deal with the project target, and import the proper rules.
          This requires ant 1.6.0 or above. -->
@@ -44,9 +44,9 @@
         <pathelement path="${sdk.dir}/tools/lib/jarutils.jar" />
     </path>
 
-    <taskdef name="setup"
+    <!-- <taskdef name="setup"
         classname="com.android.ant.SetupTask"
-        classpathref="android.antlibs" />
+	classpathref="android.antlibs" /> -->
 
     <!-- Execute the Android Setup task that will setup some properties specific to the target,
          and import the build rules files.
@@ -62,6 +62,7 @@
          This will ensure that the properties are setup correctly but that your customized
          build steps are used.
     -->
-    <setup />
+    <!-- <setup /> -->
+    <import file="${sdk.dir}/tools/ant/build.xml" />
 
 </project>

@@ -12,7 +12,4 @@
 /home/ivan/src/sapienz/monkey/subjects/arity/res/values/arrays.xml \
 /home/ivan/src/sapienz/monkey/subjects/arity/res/layout/main.xml \
 /home/ivan/src/sapienz/monkey/subjects/arity/res/layout/history_line.xml \
-/home/ivan/src/sapienz/monkey/subjects/arity/bin/res/drawable/icon.png \
-/home/ivan/src/sapienz/monkey/subjects/arity/bin/res/drawable/enter.png \
-/home/ivan/src/sapienz/monkey/subjects/arity/bin/res/drawable/delete.png \
 /home/ivan/src/sapienz/monkey/subjects/arity/bin/AndroidManifest.xml \
