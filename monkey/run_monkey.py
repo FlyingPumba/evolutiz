@@ -12,8 +12,6 @@ from datetime import datetime
 # global results for mp callback
 from devices.prepare_apk_parallel import prepare_apk
 
-BASE_RESULTDIR="../../results/"
-
 results = []
 idle_devices = []
 total_individuals = 0
@@ -47,37 +45,31 @@ def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, apk_dir
         traceback.print_exc()
         return pop, (0, 0, 0), device
 
-def instrument_apk(app_path):
-    result_dir = BASE_RESULTDIR + "package_name"+ "/"
-
-    print app_path
-    print result_dir
-
-    os.system("cd " + app_path)
+def instrument_apk(app_path, result_dir):
+    os.chdir(app_path)
     os.system("mkdir -p " + result_dir)
-    os.system("ant clean")
-    os.system("ant emma debug &> " + result_dir + "build.log")
-    os.system("ant installd &> " + result_dir + "install.log")
-    os.system("cp bin/coverage.em &> " + result_dir)
+    os.system("ant clean emma debug > " + result_dir + "/build.log")
+    os.system("cp bin/coverage.em " + result_dir + "/")
 
     p = sub.Popen("ls bin/*-debug.apk", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     apk_path, errors = p.communicate()
+    apk_path = apk_path.split('\n')[0]
 
     p = sub.Popen(
-        "monkey/android-sdk-linux/build-tools/20.0.0/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package | awk 'BEGIN {FS=\"\\\"\"}{print $2}'",
+        "../../android-sdk-linux/build-tools/20.0.0/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package | awk 'BEGIN {FS=\"\\\"\"}{print $2}'",
         stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     package_name, errors = p.communicate()
-    print package_name
-    print errors
 
     return apk_path, package_name
 
-def process_app_result(result):
-    pass
+def process_app_result(success):
+    idle_devices.append(success[1])
 
 def run_monkey_one_app(app_path, device):
     try:
-        apk_path, package_name = instrument_apk(app_path)
+        folder_name = os.path.basename(app_path)
+        result_dir = "../../results/" + folder_name
+        apk_path, package_name = instrument_apk(app_path, result_dir)
         print package_name
         #package_name = prepare_apk([device], app_path)
 
@@ -91,12 +83,12 @@ def run_monkey_one_app(app_path, device):
 
         # obtain coverage
 
-        return True
+        return (True, device)
     except Exception as e:
         print "There was an error running monkey on app: " + app_path
         # print e
         traceback.print_exc()
-        return False
+        return (False, device)
 
 def run_monkey(app_paths):
     # logger.prepare()
@@ -120,7 +112,7 @@ def run_monkey(app_paths):
     time_out = False
     for i in range(0, len(app_paths)):
         while len(idle_devices) == 0:
-            time.sleep(60)
+            time.sleep(10)
 
         device = idle_devices.pop(0)
 
@@ -142,7 +134,8 @@ def get_subject_paths():
     output, errors = p.communicate()
     app_paths = []
     for line in output.strip().split('\n'):
-        app_paths.append(line)
+        if "hydrate" not in line: # hydrate app doesn't compile yet, so don't bother
+            app_paths.append(line.rstrip('/')) # remove trailing forward slash
     return app_paths
 
 if __name__ == "__main__":
