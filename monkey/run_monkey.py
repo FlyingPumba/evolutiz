@@ -1,4 +1,4 @@
-import multiprocessing as mp
+import multiprocessing.pool
 import time
 import traceback
 import subprocess as sub
@@ -12,76 +12,82 @@ from datetime import datetime
 # global results for mp callback
 from devices.prepare_apk_parallel import prepare_apk
 
+EXPERIMENT_TIME = 15
+COVERAGE_INTERVAL = 5
+timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
+
 results = []
 idle_devices = []
 total_individuals = 0
 
-def process_results(data):
-    indi_index, fitness, device = data
-    print "Finished evaluating an individual: ", indi_index, " ", fitness, " ", device
+class NoDaemonProcess(multiprocessing.Process):
+    # make 'daemon' attribute always return False
+    def _get_daemon(self):
+        return False
+    def _set_daemon(self, value):
+        pass
+    daemon = property(_get_daemon, _set_daemon)
 
-    global results
-    results.append((indi_index, fitness))
-
-    global idle_devices
-    idle_devices.append(device)
-
-    global total_individuals
-    logger.log_progress("\rEvaluating in parallel: " + str(len(results)) + "/" + str(total_individuals))
-
-
-# 0. prepare wrapper for eval function
-def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, apk_dir, package_name, gen, pop):
-    try:
-        print "starting eval_suite_parallel_wrapper for individual ", pop
-        start_time = time.time()
-        result = eval_suite_parallel(individual, device, apk_dir, package_name, gen, pop)
-        elapsed_time = time.time() - start_time
-        print "Elapsed seconds to evaluate individual was ", elapsed_time
-        return result
-    except Exception as e:
-        print "There was an error evaluating individual in parallel"
-        # print e
-        traceback.print_exc()
-        return pop, (0, 0, 0), device
+# We sub-class multiprocessing.pool.Pool instead of multiprocessing.Pool
+# because the latter is only a wrapper function, not a proper class.
+class NoDaemonPool(multiprocessing.pool.Pool):
+    Process = NoDaemonProcess
 
 def instrument_apk(app_path, result_dir):
     os.chdir(app_path)
     os.system("mkdir -p " + result_dir)
-    os.system("ant clean emma debug > " + result_dir + "/build.log")
+    os.system("ant clean emma debug 2>&1 > " + result_dir + "/build.log")
     os.system("cp bin/coverage.em " + result_dir + "/")
 
     p = sub.Popen("ls bin/*-debug.apk", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     apk_path, errors = p.communicate()
-    apk_path = apk_path.split('\n')[0]
+    apk_path = apk_path.rstrip('\n')
 
     p = sub.Popen(
         "../../android-sdk-linux/build-tools/20.0.0/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package | awk 'BEGIN {FS=\"\\\"\"}{print $2}'",
         stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     package_name, errors = p.communicate()
+    package_name = package_name.rstrip('\n')
 
     return apk_path, package_name
 
 def process_app_result(success):
     idle_devices.append(success[1])
 
+def startIntermediateCoverage(device, result_dir):
+    iterations = EXPERIMENT_TIME / COVERAGE_INTERVAL
+    for i in range(0, iterations):
+        time.sleep(60 * COVERAGE_INTERVAL) # sleep for interval time
+        collectCoverage(device, result_dir)
+
+def collectCoverage(device, result_dir):
+    os.system(adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
+    os.system(adb.adb_cmd_prefix + " -s " + device + " pull /mnt/sdcard/coverage.ec " + result_dir + "/coverage.e")
+
 def run_monkey_one_app(app_path, device):
     try:
         folder_name = os.path.basename(app_path)
         result_dir = "../../results/" + folder_name
         apk_path, package_name = instrument_apk(app_path, result_dir)
-        print package_name
-        #package_name = prepare_apk([device], app_path)
+
+        os.system(adb.adb_cmd_prefix + " -s " + device + " install " + apk_path + " 2>&1 >"  + result_dir  +"/install.log")
 
         # run logcat
-        #os.system(adb.adb_cmd_prefix  +" -s " + device + " logcat &> " + RESULTDIR + package_name  +"/monkey.logcat &")
+        os.system(adb.adb_cmd_prefix  +" -s " + device + " logcat  2>&1 >" + result_dir  +"/monkey.logcat &")
 
         # start dumping intermediate coverage
-
+        p = multiprocessing.Process(target=startIntermediateCoverage, args=(device, result_dir))
+        p.start()
 
         # start running monkey with timeout 1h
+        # should we add "--throttle 200" flag ? It's used in the experiments of "Are we there yet?" but it's usage in the sapienz experiments are unclear.
+        monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v 1000000 --ignore-crashes --ignore-timeouts --ignore-security-exceptions 2>&1 > " + result_dir + "/monkey.log"
+        os.system(monkey_cmd)
 
-        # obtain coverage
+        p.join()
+
+        # collect final coverage
+        collectCoverage(device, result_dir)
 
         return (True, device)
     except Exception as e:
@@ -108,7 +114,7 @@ def run_monkey(app_paths):
     idle_devices.extend(any_device.get_devices())
 
     # 2. aissign tasks to devices
-    pool = mp.Pool(processes=len(idle_devices))
+    pool = NoDaemonPool(processes=len(idle_devices))
     time_out = False
     for i in range(0, len(app_paths)):
         while len(idle_devices) == 0:
@@ -143,4 +149,4 @@ if __name__ == "__main__":
     # python -m monkey.run_monkey
 
     app_paths = get_subject_paths()
-    run_monkey(app_paths)
+    run_monkey(app_paths[0:1])
