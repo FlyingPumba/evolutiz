@@ -60,7 +60,7 @@ def startIntermediateCoverage(device, result_dir, monkey_finished_event):
     iterations = EXPERIMENT_TIME / COVERAGE_INTERVAL
     for i in range(0, iterations):
         for j in range (0, COVERAGE_INTERVAL):
-            if monkey_finished_event.isSet():
+            if monkey_finished_event.is_set():
                 break
             time.sleep(60)
 
