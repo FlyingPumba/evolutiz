@@ -12,8 +12,8 @@ from datetime import datetime
 # global results for mp callback
 from devices.prepare_apk_parallel import prepare_apk
 
-EXPERIMENT_TIME = 15
-COVERAGE_INTERVAL = 5
+EXPERIMENT_TIME = 20
+COVERAGE_INTERVAL = 10
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
 
 results = []
@@ -34,9 +34,10 @@ class NoDaemonPool(multiprocessing.pool.Pool):
     Process = NoDaemonProcess
 
 def instrument_apk(app_path, result_dir):
+    logger.log_progress("\nInstrumenting app:" + app_path)
     os.chdir(app_path)
     os.system("mkdir -p " + result_dir)
-    os.system("ant clean emma debug 2>&1 > " + result_dir + "/build.log")
+    os.system("ant clean emma debug 2>&1 >" + result_dir + "/build.log")
     os.system("cp bin/coverage.em " + result_dir + "/")
 
     p = sub.Popen("ls bin/*-debug.apk", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
@@ -53,16 +54,26 @@ def instrument_apk(app_path, result_dir):
 
 def process_app_result(success):
     idle_devices.append(success[1])
+    return True
 
-def startIntermediateCoverage(device, result_dir):
+def startIntermediateCoverage(device, result_dir, monkey_finished_event):
     iterations = EXPERIMENT_TIME / COVERAGE_INTERVAL
     for i in range(0, iterations):
-        time.sleep(60 * COVERAGE_INTERVAL) # sleep for interval time
-        collectCoverage(device, result_dir)
+        for j in range (0, COVERAGE_INTERVAL):
+            if monkey_finished_event.isSet():
+                break
+            time.sleep(60)
 
-def collectCoverage(device, result_dir):
+        if monkey_finished_event.isSet():
+            break
+        logger.log_progress("\nCollecting intermediate coverage in device: " + device)
+        collectCoverage(device, result_dir, suffix=str(i))
+    return True
+
+def collectCoverage(device, result_dir, suffix=""):
     os.system(adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
-    os.system(adb.adb_cmd_prefix + " -s " + device + " pull /mnt/sdcard/coverage.ec " + result_dir + "/coverage.e")
+    os.system(adb.adb_cmd_prefix + " -s " + device + " pull /mnt/sdcard/coverage.ec " + result_dir + "/coverage" + suffix + ".ec")
+    return True
 
 def run_monkey_one_app(app_path, device):
     try:
@@ -76,13 +87,18 @@ def run_monkey_one_app(app_path, device):
         os.system(adb.adb_cmd_prefix  +" -s " + device + " logcat  2>&1 >" + result_dir  +"/monkey.logcat &")
 
         # start dumping intermediate coverage
-        p = multiprocessing.Process(target=startIntermediateCoverage, args=(device, result_dir))
+        monkey_finished_event = multiprocessing.Event()
+        p = multiprocessing.Process(target=startIntermediateCoverage, args=(device, result_dir, monkey_finished_event))
         p.start()
 
         # start running monkey with timeout 1h
         # should we add "--throttle 200" flag ? It's used in the experiments of "Are we there yet?" but it's usage in the sapienz experiments are unclear.
-        monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v 1000000 --ignore-crashes --ignore-timeouts --ignore-security-exceptions 2>&1 > " + result_dir + "/monkey.log"
+        logger.log_progress("\nStarting monkey for app: " + app_path + " in device: " + device)
+        monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v 1000000 --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 2>&1 >" + result_dir + "/monkey.log"
         os.system(monkey_cmd)
+
+        logger.log_progress("\nMonkey finished for app: " + app_path)
+        monkey_finished_event.set()
 
         p.join()
 
@@ -97,9 +113,9 @@ def run_monkey_one_app(app_path, device):
         return (False, device)
 
 def run_monkey(app_paths):
-    # logger.prepare()
-    # logger.clear_progress()
-    # logger.log_progress("Monkey")
+    logger.prepare()
+    logger.clear_progress()
+    logger.log_progress("Monkey")
 
     print "Preparing devices ..."
     any_device.boot_devices()
@@ -133,7 +149,7 @@ def run_monkey(app_paths):
     print "### Finished run_monkey"
 
     # recover stdout and stderr
-    # logger.restore()
+    logger.restore()
 
 def get_subject_paths():
     p = sub.Popen("ls -d $PWD/monkey/subjects/*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
