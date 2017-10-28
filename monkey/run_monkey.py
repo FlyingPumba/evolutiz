@@ -64,15 +64,15 @@ def startIntermediateCoverage(device, result_dir, monkey_finished_event):
                 break
             time.sleep(60)
 
-        if monkey_finished_event.isSet():
+        if monkey_finished_event.is_set():
             break
         logger.log_progress("\nCollecting intermediate coverage in device: " + device)
         collectCoverage(device, result_dir, suffix=str(i))
     return True
 
 def collectCoverage(device, result_dir, suffix=""):
-    os.system(adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
-    os.system(adb.adb_cmd_prefix + " -s " + device + " pull /mnt/sdcard/coverage.ec " + result_dir + "/coverage" + suffix + ".ec")
+    os.system("date;" + adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE" + " 2>&1")
+    os.system("date;" + adb.adb_cmd_prefix + " -s " + device + " pull /mnt/sdcard/coverage.ec " + result_dir + "/coverage" + suffix + ".ec" + " 2>&1")
     return True
 
 def run_monkey_one_app(app_path, device):
@@ -94,7 +94,7 @@ def run_monkey_one_app(app_path, device):
         # start running monkey with timeout 1h
         # should we add "--throttle 200" flag ? It's used in the experiments of "Are we there yet?" but it's usage in the sapienz experiments are unclear.
         logger.log_progress("\nStarting monkey for app: " + app_path + " in device: " + device)
-        monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v 1000000 --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 2>&1 >" + result_dir + "/monkey.log"
+        monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 1000000 2>&1 >" + result_dir + "/monkey.log"
         os.system(monkey_cmd)
 
         logger.log_progress("\nMonkey finished for app: " + app_path)
