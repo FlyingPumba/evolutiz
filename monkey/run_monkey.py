@@ -35,7 +35,6 @@ class NoDaemonPool(multiprocessing.pool.Pool):
 
 def instrument_apk(app_path, result_dir):
     logger.log_progress("\nInstrumenting app:" + app_path)
-    os.chdir(app_path)
     os.system("mkdir -p " + result_dir)
     os.system("ant clean emma debug 2>&1 >" + result_dir + "/build.log")
     os.system("cp bin/coverage.em " + result_dir + "/")
@@ -85,6 +84,7 @@ def run_monkey_one_app(app_path, device):
         folder_name = os.path.basename(app_path)
         result_dir = "../../results/" + folder_name
 
+        os.chdir(app_path)
         os.system("rm " + result_dir + "/*")
 
         apk_path, package_name = instrument_apk(app_path, result_dir)
@@ -181,4 +181,4 @@ if __name__ == "__main__":
     # python -m monkey.run_monkey
 
     app_paths = get_subject_paths()
-    run_monkey(app_paths[0:1])
+    run_monkey(app_paths[0:2])
