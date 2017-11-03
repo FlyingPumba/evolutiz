@@ -84,6 +84,9 @@ def run_monkey_one_app(app_path, device):
     try:
         folder_name = os.path.basename(app_path)
         result_dir = "../../results/" + folder_name
+
+        os.system("rm " + result_dir + "/*")
+
         apk_path, package_name = instrument_apk(app_path, result_dir)
 
         os.system(adb.adb_cmd_prefix + " -s " + device + " install " + apk_path + " 2>&1 >"  + result_dir  +"/install.log")
@@ -94,7 +97,8 @@ def run_monkey_one_app(app_path, device):
         adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
         # run logcat
-        os.system(adb.adb_cmd_prefix  +" -s " + device + " logcat  2>&1 >" + result_dir  +"/monkey.logcat &")
+        logcat_file = open(result_dir  +"/monkey.logcat", 'w')
+        sub.Popen(adb.adb_cmd_prefix  +" -s " + device + " logcat", stdout=logcat_file, stderr=logcat_file, shell=True)
 
         # start dumping intermediate coverage
         #monkey_finished_event = multiprocessing.Event()
