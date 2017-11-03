@@ -12,7 +12,7 @@ from datetime import datetime
 # global results for mp callback
 from devices.prepare_apk_parallel import prepare_apk
 
-EXPERIMENT_TIME = 20
+EXPERIMENT_TIME = 5
 COVERAGE_INTERVAL = 10
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
 
@@ -56,7 +56,7 @@ def process_app_result(success):
     idle_devices.append(success[1])
     return True
 
-def startIntermediateCoverage(device, result_dir, monkey_finished_event):
+def startIntermediateCoverage(device, package_name, result_dir, monkey_finished_event):
     iterations = EXPERIMENT_TIME / COVERAGE_INTERVAL
     for i in range(0, iterations):
         for j in range (0, COVERAGE_INTERVAL):
@@ -67,12 +67,17 @@ def startIntermediateCoverage(device, result_dir, monkey_finished_event):
         if monkey_finished_event.is_set():
             break
         logger.log_progress("\nCollecting intermediate coverage in device: " + device)
-        collectCoverage(device, result_dir, suffix=str(i))
+        collectCoverage(device, package_name, result_dir, suffix=str(i))
     return True
 
-def collectCoverage(device, result_dir, suffix=""):
-    os.system("date;" + adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE" + " 2>&1")
-    os.system("date;" + adb.adb_cmd_prefix + " -s " + device + " pull /mnt/sdcard/coverage.ec " + result_dir + "/coverage" + suffix + ".ec" + " 2>&1")
+def collectCoverage(device, package_name, result_dir, suffix=""):
+    logger.log_progress("\nSending coverage broadcast in device: " + device + " at: " + str(datetime.today()))
+    os.system(adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE" + logger.redirect_string())
+
+    logger.log_progress("\nPulling coverage from device: " + device + " at: " + str(datetime.today()))
+    coverageFilePath = "/data/data/" + package_name + "/files/coverage.ec"
+    os.system(adb.adb_cmd_prefix + " -s " + device + " pull " + coverageFilePath + " " + result_dir + "/coverage" + suffix + ".ec" + logger.redirect_string())
+
     return True
 
 def run_monkey_one_app(app_path, device):
@@ -83,27 +88,34 @@ def run_monkey_one_app(app_path, device):
 
         os.system(adb.adb_cmd_prefix + " -s " + device + " install " + apk_path + " 2>&1 >"  + result_dir  +"/install.log")
 
+        logger.log_progress("Preparing device: " + device + " sdcard folder")
+        adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
+        adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
+        adb.sudo_shell_command(device, "mount -o rw,remount /system")
+
         # run logcat
         os.system(adb.adb_cmd_prefix  +" -s " + device + " logcat  2>&1 >" + result_dir  +"/monkey.logcat &")
 
         # start dumping intermediate coverage
-        monkey_finished_event = multiprocessing.Event()
-        p = multiprocessing.Process(target=startIntermediateCoverage, args=(device, result_dir, monkey_finished_event))
-        p.start()
+        #monkey_finished_event = multiprocessing.Event()
+        # p = multiprocessing.Process(target=startIntermediateCoverage, args=(device, result_dir, monkey_finished_event))
+        # p.start()
 
         # start running monkey with timeout 1h
         # should we add "--throttle 200" flag ? It's used in the experiments of "Are we there yet?" but it's usage in the sapienz experiments are unclear.
-        logger.log_progress("\nStarting monkey for app: " + app_path + " in device: " + device)
+        logger.log_progress("\nStarting monkey for app: " + app_path + " in device: " + device + " at: " + str(datetime.today()))
         monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 1000000 2>&1 >" + result_dir + "/monkey.log"
         os.system(monkey_cmd)
 
-        logger.log_progress("\nMonkey finished for app: " + app_path)
-        monkey_finished_event.set()
+        adb.pkill(device, "monkey")
 
-        p.join()
+        logger.log_progress("\nMonkey finished for app: " + app_path)
+        #monkey_finished_event.set()
+
+        # p.join()
 
         # collect final coverage
-        collectCoverage(device, result_dir)
+        collectCoverage(device, package_name, result_dir)
 
         return (True, device)
     except Exception as e:
@@ -156,7 +168,7 @@ def get_subject_paths():
     output, errors = p.communicate()
     app_paths = []
     for line in output.strip().split('\n'):
-        if "hydrate" not in line: # hydrate app doesn't compile yet, so don't bother
+        if "hydrate" not in line and "a2dp" not in line: # hydrate app doesn't compile yet, so don't bother
             app_paths.append(line.rstrip('/')) # remove trailing forward slash
     return app_paths
 
