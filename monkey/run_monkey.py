@@ -14,6 +14,7 @@ from devices.prepare_apk_parallel import prepare_apk
 
 EXPERIMENT_TIME = 5
 COVERAGE_INTERVAL = 10
+REPETITIONS=2
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
 
 results = []
@@ -55,19 +56,20 @@ def process_app_result(success):
     idle_devices.append(success[1])
     return True
 
-def startIntermediateCoverage(device, package_name, result_dir, monkey_finished_event):
-    iterations = EXPERIMENT_TIME / COVERAGE_INTERVAL
-    for i in range(0, iterations):
-        for j in range (0, COVERAGE_INTERVAL):
-            if monkey_finished_event.is_set():
-                break
-            time.sleep(60)
-
-        if monkey_finished_event.is_set():
-            break
-        logger.log_progress("\nCollecting intermediate coverage in device: " + device)
-        collectCoverage(device, package_name, result_dir, suffix=str(i))
-    return True
+# def startIntermediateCoverage(device, package_name, result_dir, monkey_finished_event):
+#     iterations = EXPERIMENT_TIME / COVERAGE_INTERVAL
+#     for i in range(0, iterations):
+#         for j in range (0, COVERAGE_INTERVAL):
+#             if monkey_finished_event.is_set():
+#                 break
+#             time.sleep(60)
+#
+#         if monkey_finished_event.is_set():
+#             break
+#         logger.log_progress("\nCollecting intermediate coverage in device: " + device)
+#         # fix suffix
+#         collectCoverage(device, package_name, result_dir, suffix=str(i))
+#     return True
 
 def collectCoverage(device, package_name, result_dir, suffix=""):
     logger.log_progress("\nSending coverage broadcast in device: " + device + " at: " + str(datetime.today()))
@@ -75,7 +77,7 @@ def collectCoverage(device, package_name, result_dir, suffix=""):
 
     logger.log_progress("\nPulling coverage from device: " + device + " at: " + str(datetime.today()))
     coverageFilePath = "/data/data/" + package_name + "/files/coverage.ec"
-    os.system(adb.adb_cmd_prefix + " -s " + device + " pull " + coverageFilePath + " " + result_dir + "/coverage" + suffix + ".ec" + logger.redirect_string())
+    os.system(adb.adb_cmd_prefix + " -s " + device + " pull " + coverageFilePath + " " + result_dir + "/coverage.ec" + suffix + logger.redirect_string())
 
     return True
 
@@ -96,30 +98,40 @@ def run_monkey_one_app(app_path, device):
         adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
         adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
-        # run logcat
-        logcat_file = open(result_dir  +"/monkey.logcat", 'w')
-        sub.Popen(adb.adb_cmd_prefix  +" -s " + device + " logcat", stdout=logcat_file, stderr=logcat_file, shell=True)
+        for repetition in range(0, REPETITIONS):
+            logger.log_progress("\nStarting repetition: " + str(repetition) + "for app: " + app_path)
+            files_repetition_suffix = "." + str(repetition)
 
-        # start dumping intermediate coverage
-        #monkey_finished_event = multiprocessing.Event()
-        # p = multiprocessing.Process(target=startIntermediateCoverage, args=(device, result_dir, monkey_finished_event))
-        # p.start()
+            # clear package data from previous runs
+            adb.shell_command(device, "pm clear " + package_name)
 
-        # start running monkey with timeout 1h
-        # should we add "--throttle 200" flag ? It's used in the experiments of "Are we there yet?" but it's usage in the sapienz experiments are unclear.
-        logger.log_progress("\nStarting monkey for app: " + app_path + " in device: " + device + " at: " + str(datetime.today()))
-        monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 1000000 2>&1 >" + result_dir + "/monkey.log"
-        os.system(monkey_cmd)
+            # clear logcat
+            os.system(adb.adb_cmd_prefix  +" -s " + device + " logcat -c")
 
-        adb.pkill(device, "monkey")
+            # run logcat
+            logcat_file = open(result_dir + "/monkey.logcat" + files_repetition_suffix, 'w')
+            sub.Popen(adb.adb_cmd_prefix  +" -s " + device + " logcat", stdout=logcat_file, stderr=logcat_file, shell=True)
 
-        logger.log_progress("\nMonkey finished for app: " + app_path)
-        #monkey_finished_event.set()
+            # start dumping intermediate coverage
+            #monkey_finished_event = multiprocessing.Event()
+            # p = multiprocessing.Process(target=startIntermediateCoverage, args=(device, result_dir, monkey_finished_event))
+            # p.start()
 
-        # p.join()
+            # start running monkey with timeout EXPERIMENT_TIME
+            # TODO: should we add "--throttle 200" flag ? It's used in the experiments of "Are we there yet?" but it's usage in the sapienz experiments are unclear.
+            logger.log_progress("\nStarting monkey for app: " + app_path + " in device: " + device + " at: " + str(datetime.today()))
+            monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 1000000 2>&1 >" + result_dir + "/monkey.log" + files_repetition_suffix
+            os.system(monkey_cmd)
 
-        # collect final coverage
-        collectCoverage(device, package_name, result_dir)
+            adb.pkill(device, "monkey")
+
+            logger.log_progress("\nMonkey finished for app: " + app_path)
+            #monkey_finished_event.set()
+
+            # p.join()
+
+            # collect final coverage
+            collectCoverage(device, package_name, result_dir, suffix=files_repetition_suffix)
 
         return (True, device)
     except Exception as e:
