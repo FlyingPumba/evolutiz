@@ -12,9 +12,9 @@ from datetime import datetime
 # global results for mp callback
 from devices.prepare_apk_parallel import prepare_apk
 
-EXPERIMENT_TIME = 5
+EXPERIMENT_TIME = 10
 COVERAGE_INTERVAL = 10
-REPETITIONS=2
+REPETITIONS=3
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
 
 results = []
@@ -193,4 +193,4 @@ if __name__ == "__main__":
     # python -m monkey.run_monkey
 
     app_paths = get_subject_paths()
-    run_monkey(app_paths[0:2])
+    run_monkey(app_paths[0:3])
