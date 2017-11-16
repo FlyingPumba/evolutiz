@@ -163,6 +163,16 @@
             android:exported="true"
             android:authorities="com.zapta.apps.maniana.BACKUP_FILE_PROVIDER" >
         </provider>
-    </application>
+
+<receiver android:name="com.zapta.apps.maniana.EmmaInstrument.SMSInstrumentedReceiver">
+  <intent-filter>
+    <action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+  </intent-filter>
+  </receiver>
+  <activity android:label="EmmaInstrumentationActivity" android:name="com.zapta.apps.maniana.EmmaInstrument.InstrumentedActivity"/>
+  </application>
+   <instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.zapta.apps.maniana.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.zapta.apps.maniana"/>
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 
 </manifest>
