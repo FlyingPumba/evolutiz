@@ -14,7 +14,7 @@ from devices.prepare_apk_parallel import prepare_apk
 
 EXPERIMENT_TIME = 10
 COVERAGE_INTERVAL = 10
-REPETITIONS=3
+REPETITIONS=1
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
 
 results = []
@@ -36,9 +36,15 @@ class NoDaemonPool(multiprocessing.pool.Pool):
 
 def instrument_apk(app_path, result_dir):
     logger.log_progress("\nInstrumenting app:" + app_path)
-    os.system("mkdir -p " + result_dir)
-    os.system("ant clean emma debug 2>&1 >" + result_dir + "/build.log")
-    os.system("cp bin/coverage.em " + result_dir + "/")
+
+    result_code = os.system("mkdir -p " + result_dir)
+    if result_code != 0: raise Exception("Unable to create result dir")
+
+    result_code = os.system("ant clean emma debug 2>&1 >" + result_dir + "/build.log")
+    if result_code != 0: raise Exception("Unable run ant clean emma debug")
+
+    result_code = os.system("cp bin/coverage.em " + result_dir + "/" + logger.redirect_string())
+    if result_code != 0: raise Exception("Unable to copy coverage.em file")
 
     p = sub.Popen("ls bin/*-debug.apk", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     apk_path, errors = p.communicate()
@@ -99,7 +105,7 @@ def run_monkey_one_app(app_path, device):
         adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
         for repetition in range(0, REPETITIONS):
-            logger.log_progress("\nStarting repetition: " + str(repetition) + "for app: " + app_path)
+            logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + app_path)
             files_repetition_suffix = "." + str(repetition)
 
             # clear package data from previous runs
@@ -193,4 +199,4 @@ if __name__ == "__main__":
     # python -m monkey.run_monkey
 
     app_paths = get_subject_paths()
-    run_monkey(app_paths[0:3])
+    run_monkey(app_paths)
