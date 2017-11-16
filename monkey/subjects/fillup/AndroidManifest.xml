@@ -64,6 +64,16 @@
             android:name="com.github.wdkapps.fillup.FileSelectionActivity"
             android:label="@string/title_activity_fileselect" >
         </activity>
-    </application>
+
+<receiver android:name="com.github.wdkapps.fillup.EmmaInstrument.SMSInstrumentedReceiver">
+  <intent-filter>
+    <action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+  </intent-filter>
+  </receiver>
+  <activity android:label="EmmaInstrumentationActivity" android:name="com.github.wdkapps.fillup.EmmaInstrument.InstrumentedActivity"/>
+  </application>
+   <instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.github.wdkapps.fillup.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.github.wdkapps.fillup"/>
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 
 </manifest>

@@ -1,4 +1,4 @@
-package arity.calculator.EmmaInstrument;
+package com.github.wdkapps.fillup.EmmaInstrument;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
-public class InstrumentedActivity extends arity.calculator.Calculator {
+public class InstrumentedActivity extends com.github.wdkapps.fillup.StartupActivity {
 public static String TAG = "IntrumentedPlayer";
 
 	private FinishListener mListener;
