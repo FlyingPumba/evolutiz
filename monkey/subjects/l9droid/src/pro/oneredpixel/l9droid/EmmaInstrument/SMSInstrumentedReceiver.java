@@ -1,4 +1,4 @@
-package arity.calculator.EmmaInstrument;
+package pro.oneredpixel.l9droid.EmmaInstrument;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

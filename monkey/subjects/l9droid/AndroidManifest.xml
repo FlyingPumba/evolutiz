@@ -32,6 +32,16 @@
         <activity android:name="LibraryGameInstallActivity"></activity>
         <activity android:name="RestoreGameActivity"></activity>
         <activity android:name="SelectFileActivity"></activity>
-    </application>
+
+<receiver android:name="pro.oneredpixel.l9droid.EmmaInstrument.SMSInstrumentedReceiver">
+  <intent-filter>
+    <action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+  </intent-filter>
+  </receiver>
+  <activity android:label="EmmaInstrumentationActivity" android:name="pro.oneredpixel.l9droid.EmmaInstrument.InstrumentedActivity"/>
+  </application>
+   <instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="pro.oneredpixel.l9droid.EmmaInstrument.EmmaInstrumentation" android:targetPackage="pro.oneredpixel.l9droid"/>
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 
 </manifest>
