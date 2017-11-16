@@ -87,13 +87,13 @@ def run_monkey_one_app(app_path, device):
         result_dir = "../../results/" + folder_name
 
         os.chdir(app_path)
-        os.system("rm " + result_dir + "/*")
+        os.system("rm " + result_dir + "/*" + logger.redirect_string())
 
         apk_path, package_name = instrument_apk(app_path, result_dir)
 
         os.system(adb.adb_cmd_prefix + " -s " + device + " install " + apk_path + " 2>&1 >"  + result_dir  +"/install.log")
 
-        logger.log_progress("Preparing device: " + device + " sdcard folder")
+        logger.log_progress("\nPreparing device: " + device + " sdcard folder")
         adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
         adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
         adb.sudo_shell_command(device, "mount -o rw,remount /system")
