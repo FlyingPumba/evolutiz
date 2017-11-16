@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="widget_update_time_millis_id">14400000</integer>
+    <integer name="popup_menu_show_animation_millis_id">75</integer>
+    <integer name="popup_menu_dismiss_animation_millis_id">100</integer>
+    <integer name="long_press_min_millis_id">600</integer>
+    <integer name="sound_effect_volume_percent">15</integer>
+
+</resources>

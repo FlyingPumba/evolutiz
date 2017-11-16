@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOTE: version code nnxxx is for release nn. xxx is incremented on each signed build -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zapta.apps.maniana"
+    android:versionCode="26015"
+    android:versionName="1.26" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:name=".main.MyApp"
+        android:allowBackup="true"
+        android:backupAgent=".backup.AppBackupHelper"
+        android:icon="@drawable/app_icon"
+        android:label="@string/translated_app_name" >
+        <meta-data
+            android:name="com.google.android.backup.api_key"
+            android:value="AEdPqrEAAAAIuy5K_Vn8AGynwe5lz1SxJqwTxbg5gnd4bb3hPg" />
+
+        <!--
+        - NOTE: android:configChanges per 
+        - http://code.google.com/p/maniana/issues/attachmentText?id=132 
+        -->
+        <activity
+            android:name=".main.MainActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:label="@string/translated_app_name"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="*"
+                    android:mimeType="application/json"
+                    android:pathPattern=".*" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".help.PopupMessageActivity"
+            android:configChanges="orientation"
+            android:label="@string/translated_app_name"
+            android:theme="@android:style/Theme.Translucent" >
+        </activity>
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/settings_top_level_title" >
+        </activity>
+        <!-- NOTE: the label of the voice recongition activity is not visible to users(?) -->
+        <activity
+            android:name=".editors.VoiceRecognition"
+            android:label="Voice Recognition" >
+        </activity>
+
+        <receiver
+            android:name=".widget.ListWidgetProvider1"
+            android:label="@string/widget_name_list_4x1" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_list_info_size_1" />
+        </receiver>
+        <receiver
+            android:name=".widget.ListWidgetProvider2"
+            android:label="@string/widget_name_list_4x2" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_list_info_size_2" />
+        </receiver>
+        <receiver
+            android:name=".widget.ListWidgetProvider3"
+            android:label="@string/widget_name_list_4x3" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_list_info_size_3" />
+        </receiver>
+        <receiver
+            android:name=".widget.ListWidgetProvider4"
+            android:label="@string/widget_name_list_2x2" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_list_info_size_4" />
+        </receiver>
+        <receiver
+            android:name=".widget.ListWidgetProvider5"
+            android:label="@string/widget_name_list_4x4" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_list_info_size_5" />
+        </receiver>
+        <receiver
+            android:name=".widget.ListWidgetProvider6"
+            android:label="@string/widget_name_list_3x3" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_list_info_size_6" />
+        </receiver>
+        <receiver
+            android:name=".widget.IconWidgetProvider"
+            android:label="@string/widget_name_icon" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_icon_info" />
+        </receiver>
+        <receiver
+            android:name=".services.MidnightTicker"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.zapta.apps.maniana.MIDNIGHT_TRIGGER_ACTION" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".notifications.NotificationSimulator"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.zapta.apps.maniana.notifications.SIMULATE" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name=".services.BackupFileProvider"
+            android:grantUriPermissions="true"
+            android:exported="true"
+            android:authorities="com.zapta.apps.maniana.BACKUP_FILE_PROVIDER" >
+        </provider>
+    </application>
+
+</manifest>

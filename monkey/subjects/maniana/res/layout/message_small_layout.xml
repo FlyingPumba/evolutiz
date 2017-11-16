@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#b8000000" >
+
+    <FrameLayout
+        android:id="@+id/message_small_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/message_small_border"
+       >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:padding="15dip" >
+
+            <WebView
+                android:id="@+id/message_small_webview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 />
+        </FrameLayout>
+    </FrameLayout>
+
+</FrameLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <dimen name="place_holder_sp">10sp</dimen>
+    <dimen name="place_holder_dip">10dip</dimen>
+
+    <dimen name="widget_margin">8dip</dimen>
+    <dimen name="icon_widget_label_top_margin">12dip</dimen>
+    <dimen name="icon_widget_label_right_margin">0dip</dimen>
+
+    <dimen name="page_main_menu_left_padding">15dip</dimen>
+    
+    <!-- Text editor dimensions -->
+    <dimen name="editor_color_marker_width">30dip</dimen>
+    <dimen name="editor_text_edit_left_margin">2dip</dimen>
+
+    <!-- Portrait Width -->
+    <dimen name="list_widget_width_1x_portrait">80dip</dimen>
+    <dimen name="list_widget_width_2x_portrait">145dip</dimen>
+    <dimen name="list_widget_width_3x_portrait">220dip</dimen>
+    <dimen name="list_widget_width_4x_portrait">304dip</dimen>
+
+    <!-- Portrait Height -->
+    <dimen name="list_widget_height_x1_portrait">92dip</dimen>
+    <dimen name="list_widget_height_x2_portrait">186dip</dimen>
+    <dimen name="list_widget_height_x3_portrait">286dip</dimen>
+    <dimen name="list_widget_height_x4_portrait">380dip</dimen>
+
+    <!-- Landscape Width -->
+    <dimen name="list_widget_width_1x_landscape">112dip</dimen>
+    <dimen name="list_widget_width_2x_landscape">192dip</dimen>
+    <dimen name="list_widget_width_3x_landscape">318dip</dimen>
+    <dimen name="list_widget_width_4x_landscape">400dip</dimen>
+
+    <!-- Landscape Height -->
+    <dimen name="list_widget_height_x1_landscape">68dip</dimen>
+    <dimen name="list_widget_height_x2_landscape">132dip</dimen>
+    <dimen name="list_widget_height_x3_landscape">204dip</dimen>
+    <dimen name="list_widget_height_x4_landscape">278dip</dimen>
+
+</resources>

@@ -1,0 +1,5 @@
+body { color: black; background: white; font-family: Verdana, sans-serif; }
+h1{ color: #006600; background: white; font-family: Verdana, sans-serif; margin-bottom: 1.0em; font-size:140%}
+h2,h3 { color: #006600; background: white; font-family: Verdana, sans-serif; margin-top: 1.5em; margin-bottom: 0.5em;}
+h4 { color: #3333ff; background: white; font-family: Verdana, sans-serif; margin-top: 1.5em; margin-bottom: 0.0em;}
+li { margin-left: -20; margin-right: 10%; margin-top: 0.5em; margin-bottom: 0.5em; }

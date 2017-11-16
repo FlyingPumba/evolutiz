@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000"
+    android:padding="0dip" >
+
+    <RelativeLayout
+        android:id="@+id/widget_list_paper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="#00000000"
+        android:padding="0dip" >
+
+        <LinearLayout
+            android:id="@+id/widget_list_bitmaps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:orientation="vertical"
+            android:padding="0dip" >
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_4x1_portrait"
+                style="@style/ListWidgetPortraitBitmap"
+                android:layout_width="@dimen/list_widget_width_4x_portrait"
+                android:layout_height="@dimen/list_widget_height_x1_portrait"
+                android:background="#00000000" />
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_4x1_landscape"
+                style="@style/ListWidgetLandscapeBitmap"
+                android:layout_width="@dimen/list_widget_width_4x_landscape"
+                android:layout_height="@dimen/list_widget_height_x1_landscape"
+                android:background="#00000000" />
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_4x2_portrait"
+                style="@style/ListWidgetPortraitBitmap"
+                android:layout_width="@dimen/list_widget_width_4x_portrait"
+                android:layout_height="@dimen/list_widget_height_x2_portrait"
+                android:background="#00000000" />
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_4x2_landscape"
+                style="@style/ListWidgetLandscapeBitmap"
+                android:layout_width="@dimen/list_widget_width_4x_landscape"
+                android:layout_height="@dimen/list_widget_height_x2_landscape"
+                android:background="#00000000" />
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_4x3_portrait"
+                style="@style/ListWidgetPortraitBitmap"
+                android:layout_width="@dimen/list_widget_width_4x_portrait"
+                android:layout_height="@dimen/list_widget_height_x3_portrait"
+                android:background="#00000000" />
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_4x3_landscape"
+                style="@style/ListWidgetLandscapeBitmap"
+                android:layout_width="@dimen/list_widget_width_4x_landscape"
+                android:layout_height="@dimen/list_widget_height_x3_landscape"
+                android:background="#00000000" />
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_2x2_portrait"
+                style="@style/ListWidgetPortraitBitmap"
+                android:layout_width="@dimen/list_widget_width_2x_portrait"
+                android:layout_height="@dimen/list_widget_height_x2_portrait"
+                android:background="#00000000" />
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_2x2_landscape"
+                style="@style/ListWidgetLandscapeBitmap"
+                android:layout_width="@dimen/list_widget_width_2x_landscape"
+                android:layout_height="@dimen/list_widget_height_x2_landscape"
+                android:background="#00000000" />
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_4x4_portrait"
+                style="@style/ListWidgetPortraitBitmap"
+                android:layout_width="@dimen/list_widget_width_4x_portrait"
+                android:layout_height="@dimen/list_widget_height_x4_portrait"
+                android:background="#00000000" />
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_4x4_landscape"
+                style="@style/ListWidgetLandscapeBitmap"
+                android:layout_width="@dimen/list_widget_width_4x_landscape"
+                android:layout_height="@dimen/list_widget_height_x4_landscape"
+                android:background="#00000000" />
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_3x3_portrait"
+                style="@style/ListWidgetPortraitBitmap"
+                android:layout_width="@dimen/list_widget_width_3x_portrait"
+                android:layout_height="@dimen/list_widget_height_x3_portrait"
+                android:background="#00000000" />
+
+            <ImageView
+                android:id="@+id/widget_list_bitmap_3x3_landscape"
+                style="@style/ListWidgetLandscapeBitmap"
+                android:layout_width="@dimen/list_widget_width_3x_landscape"
+                android:layout_height="@dimen/list_widget_height_x3_landscape"
+                android:background="#00000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="35dip"
+            android:layout_alignLeft="@id/widget_list_bitmaps"
+            android:layout_alignRight="@id/widget_list_bitmaps"
+            android:layout_alignTop="@id/widget_list_bitmaps"
+            android:background="#00000000"
+            android:orientation="horizontal"
+            android:paddingRight="3dip" >
+
+            <FrameLayout
+                android:id="@+id/widget_list_toolbar_title_overlay"
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="#00000000" >
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/widget_list_toolbar_add_by_text_overlay"
+                android:layout_width="35dip"
+                android:layout_height="fill_parent"
+                android:background="#00000000" >
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/widget_list_toolbar_add_by_voice_overlay"
+                android:layout_width="35dip"
+                android:layout_height="fill_parent"
+                android:background="#00000000" >
+            </FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

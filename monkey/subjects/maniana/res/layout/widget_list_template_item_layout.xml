@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_item_view"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="@android:color/transparent"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dip"
+            android:layout_weight="0.1"
+            android:background="@android:color/transparent" >
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/widget_item_color"
+            android:layout_width="6dip"
+            android:layout_height="0dip"
+            android:layout_marginLeft="1dip"
+            android:layout_weight="0.65" >
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dip"
+            android:layout_weight="0.25"
+            android:background="@android:color/transparent" >
+        </FrameLayout>
+    </LinearLayout>
+
+    <com.zapta.apps.maniana.view.ExtendedTextView
+        android:id="@+id/widget_item_text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/transparent"
+        android:ellipsize="end"
+        android:paddingLeft="7dip"
+        android:paddingRight="5dip"
+        android:scrollHorizontally="false"
+        android:singleLine="true"
+        android:textColor="@color/color_place_holder" >
+    </com.zapta.apps.maniana.view.ExtendedTextView>
+
+</LinearLayout>

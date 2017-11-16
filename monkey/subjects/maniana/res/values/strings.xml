@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="translation_language_code">en</string>
+    <string name="canonical_app_name">Maniana</string>
+    <string name="place_holder">(tbd)</string>
+    <string name="right_arrow_character">→</string>
+    <string name="down_arrow_character">↓</string>
+    <string name="main_menu_debug">Debug</string>
+</resources>

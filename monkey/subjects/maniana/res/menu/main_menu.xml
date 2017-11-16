@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/main_menu_settings"
+        android:icon="@drawable/main_menu_settings"
+        android:title="@string/main_menu_Settings"/>
+
+    <item
+        android:id="@+id/main_menu_help"
+        android:icon="@drawable/main_menu_help"
+        android:title="@string/main_menu_Help"/>
+
+    <item
+        android:id="@+id/main_menu_about"
+        android:icon="@drawable/main_menu_about"
+        android:title="@string/main_menu_About"/>
+    
+    <item
+        android:id="@+id/main_menu_debug"
+        android:icon="@drawable/main_menu_debug"
+        android:title="Debug"/>
+
+</menu>

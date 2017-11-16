@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#333333" >
+
+        <TextView
+            android:id="@+id/tvGameName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/tvCategory"
+            android:paddingLeft="21dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvGameName"
+            android:layout_toLeftOf="@+id/ibAdd"
+            android:paddingBottom="5dp"
+            android:paddingLeft="21dp"
+            android:paddingRight="5dp"
+            android:textColor="#999999"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="32dp"
+            android:scaleType="center"
+            android:src="@drawable/ic_back" />
+
+        <ImageButton
+            android:id="@+id/ibAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="@android:drawable/btn_default_small"
+            android:src="@drawable/ic_install" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/llInstalled"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp" >
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvAboutLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="ABOUT"
+                android:textColor="#009900"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/tvAuthorsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="AUTHORS"
+                android:textColor="#009900"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvAuthors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:maniana="http://schemas.android.com/apk/res/com.zapta.apps.maniana" >
+
+    <PreferenceScreen android:title="@string/settings_section_name_Sound" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefAllowSoundKey"
+            android:summaryOff="@string/settings_sound_summary_off"
+            android:summaryOn="@string/settings_sound_summary_on"
+            android:title="@string/settings_sound_title" />
+
+        <ListPreference
+            android:defaultValue="always"
+            android:dependency="prefAllowSoundKey"
+            android:entries="@array/applauseLevelNames"
+            android:entryValues="@array/applauseLevelValues"
+            android:key="prefApplauseLevelKey"
+            android:summary="@string/place_holder"
+            android:title="@string/settings_applause_title" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/settings_section_name_Behavior" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefStartupAnimationKey"
+            android:summaryOff="@string/settings_startup_animation_summary_off"
+            android:summaryOn="@string/settings_startup_animation_summary_on"
+            android:title="@string/settings_startup_animation_title" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefVerboseMessagesKey"
+            android:summaryOff="@string/settings_detailed_messages_summary_off"
+            android:summaryOn="@string/settings_detailed_messages_summary_on"
+            android:title="@string/settings_detailed_messages_title" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="prefDailyNotificationKey"
+            android:summaryOff="@string/settings_daily_notification_summary_off"
+            android:summaryOn="@string/settings_daily_notification_summary_on"
+            android:title="@string/settings_daily_notification_title" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:dependency="prefDailyNotificationKey"
+            android:key="prefNotificationLedKey"
+            android:summaryOff="@string/settings_notification_led_summary_off"
+            android:summaryOn="@string/settings_notification_led_summary_on"
+            android:title="@string/settings_notification_led_title" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefCalendarLaunchKey"
+            android:summaryOff="@string/settings_calendar_launch_summary_off"
+            android:summaryOn="@string/settings_calendar_launch_summary_on"
+            android:title="@string/settings_calendar_launch_title" />
+
+        <PreferenceScreen
+            android:summary="@string/settings_section_shaker_summary"
+            android:title="@string/settings_section_name_Shaker" >
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="prefShakerEnableKey"
+                android:summaryOff="@string/settings_shaker_enabled_summary_off"
+                android:summaryOn="@string/settings_shaker_enabled_summary_on"
+                android:title="@string/settings_shaker_enabled_title" />
+
+            <com.zapta.apps.maniana.settings.SeekBarPreference
+                android:defaultValue="5"
+                android:dependency="prefShakerEnableKey"
+                android:key="prefShakerForceKey"
+                android:title="@string/settings_shaker_force_level_title"
+                maniana:maxValue="10"
+                maniana:minValue="1"
+                maniana:summaryFormat="@string/settings_shaker_force_level_summary_format"
+                maniana:valueFormat="%d" />
+
+            <ListPreference
+                android:defaultValue="new_text"
+                android:dependency="prefShakerEnableKey"
+                android:entries="@array/shakerActionNames"
+                android:entryValues="@array/shakerActionValues"
+                android:key="prefShakerActionKey"
+                android:summary="@string/place_holder"
+                android:title="@string/settings_shaker_action_title" />
+        </PreferenceScreen>
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/settings_section_name_Tasks" >
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefAutoSortKey"
+            android:summaryOff="@string/settings_auto_sort_summary_off"
+            android:summaryOn="@string/settings_auto_sort_summary_on"
+            android:title="@string/settings_auto_sort_title" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefAddToTopKey"
+            android:summaryOff="@string/settings_add_to_top_summary_off"
+            android:summaryOn="@string/settings_add_to_top_summary_on"
+            android:title="@string/settings_add_to_top_title" />
+
+        <com.zapta.apps.maniana.settings.ItemColorsPreference
+            android:defaultValue="none,red,blue,green,green"
+            android:key="prefItemColorsKey"
+            android:summary="@string/settings_select_task_colors_summary"
+            android:title="@string/settings_select_task_colors_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefAutoDailyCleanupKey"
+            android:summaryOff="@string/settings_daily_cleanup_summary_off"
+            android:summaryOn="@string/settings_daily_cleanup_summary_on"
+            android:title="@string/settings_daily_cleanup_title" />
+
+        <ListPreference
+            android:defaultValue="never"
+            android:entries="@array/lockPeriodNames"
+            android:entryValues="@array/lockPeriodValues"
+            android:key="prefLockPeriodKey"
+            android:summary="@string/place_holder"
+            android:title="@string/settings_lock_expiration_title" />
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="prefPagesScreenKey"
+        android:title="@string/settings_section_name_Pages" >
+        <Preference
+            android:key="prefPageSelectThemeKey"
+            android:summary="@string/settings_select_page_theme_summary"
+            android:title="@string/settings_select_page_theme_title" >
+        </Preference>
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefPageBackgroundPaperKey"
+            android:summaryOff="@string/settings_paper_summary_off"
+            android:summaryOn="@string/settings_paper_summary_on"
+            android:title="@string/settings_paper_title" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:defaultValue="#ffffffff"
+            android:key="prefPagePaperColorKey"
+            android:summary="@string/settings_paper_color_summary"
+            android:title="@string/settings_paper_color_title" />
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:defaultValue="#ffffffc0"
+            android:key="prefPageBackgroundSolidColorKey"
+            android:summary="@string/settings_background_color_summary"
+            android:title="@string/settings_background_color_title" />
+
+        <com.zapta.apps.maniana.settings.PageIconSetPreference
+            android:defaultValue="handdrawn"
+            android:key="prefPageIconSetKey"
+            android:title="@string/settings_page_icons_title"
+            maniana:summaryFormat="@string/settings_page_icons_summary" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:defaultValue="#ffffddaa"
+            android:key="prefPageItemDividerColorKey"
+            android:summary="@string/settings_page_task_divider_color_summary"
+            android:title="@string/settings_page_task_divider_color_title" />
+
+        <PreferenceScreen
+            android:summary="@string/settings_section_title_text_summary"
+            android:title="@string/settings_section_name_Title_Text" >
+            <com.zapta.apps.maniana.settings.FontPreference
+                android:defaultValue="impact"
+                android:key="prefPageTitleFontKey"
+                android:title="@string/settings_font_selector_title"
+                maniana:summaryFormat="@string/settings_font_selector_summary" />
+
+            <com.zapta.apps.maniana.settings.SeekBarPreference
+                android:defaultValue="34"
+                android:key="prefPageTitleFontSizePtKey"
+                android:title="@string/settings_text_size_title"
+                maniana:maxValue="40"
+                maniana:minValue="20"
+                maniana:summaryFormat="@string/settings_text_size_summary"
+                maniana:valueFormat="@string/settings_text_size_format_d_points" />
+
+            <net.margaritov.preference.colorpicker.ColorPickerPreference
+                android:defaultValue="#ff0077ff"
+                android:key="prefPageTitleTodayColorKey"
+                android:summary="@string/settings_today_page_title_color_summary"
+                android:title="@string/settings_today_page_title_color_title" />
+            <net.margaritov.preference.colorpicker.ColorPickerPreference
+                android:defaultValue="#ffcc0000"
+                android:key="prefPageTitleTomorrowColorKey"
+                android:summary="@string/settings_tomorrow_page_title_color_summary"
+                android:title="@string/settings_tomorrow_page_title_color_title" />
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:summary="@string/settings_section_task_text_summary"
+            android:title="@string/settings_section_name_Task_Text" >
+            <com.zapta.apps.maniana.settings.FontPreference
+                android:defaultValue="cursive"
+                android:key="prefItemFontKey"
+                android:title="@string/settings_font_selector_title"
+                maniana:summaryFormat="@string/settings_font_selector_summary" />
+
+            <com.zapta.apps.maniana.settings.SeekBarPreference
+                android:defaultValue="16"
+                android:key="prefPageItemFontSizePtKey"
+                android:title="@string/settings_text_size_title"
+                maniana:maxValue="26"
+                maniana:minValue="12"
+                maniana:summaryFormat="@string/settings_text_size_summary"
+                maniana:valueFormat="@string/settings_text_size_format_d_points" />
+
+            <net.margaritov.preference.colorpicker.ColorPickerPreference
+                android:defaultValue="#ff000000"
+                android:key="prefPageTextColorKey"
+                android:summary="@string/settings_task_color_summary"
+                android:title="@string/settings_task_color_title" />
+            <net.margaritov.preference.colorpicker.ColorPickerPreference
+                android:defaultValue="#ff888888"
+                android:key="prefPageCompletedTextColorKey"
+                android:summary="@string/settings_completed_task_color_summary"
+                android:title="@string/settings_completed_task_color_title" />
+        </PreferenceScreen>
+    </PreferenceScreen>
+    <PreferenceScreen
+        android:key="prefWidgetScreenKey"
+        android:title="@string/settings_section_name_List_Widget" >
+        <Preference
+            android:key="prefWidgetSelectThemeKey"
+            android:summary="@string/settings_select_widget_theme_summary"
+            android:title="@string/settings_select_widget_theme_title" >
+        </Preference>
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefWidgetBackgroundPaperKey"
+            android:summaryOff="@string/settings_paper_summary_off"
+            android:summaryOn="@string/settings_paper_summary_on"
+            android:title="@string/settings_paper_title" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:defaultValue="#ffffffff"
+            android:key="prefWidgetPaperColorKey"
+            android:summary="@string/settings_paper_color_summary"
+            android:title="@string/settings_paper_color_title" />
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:defaultValue="#44000000"
+            android:key="prefWidgetBackgroundColorKey"
+            android:summary="@string/settings_background_color_summary"
+            android:title="@string/settings_background_color_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefWidgetShowToolbarKey"
+            android:summaryOff="@string/settings_widget_show_toolbar_summary_off"
+            android:summaryOn="@string/settings_widget_show_toolbar_summary_on"
+            android:title="@string/settings_widget_show_toolbar_title" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="prefWidgetShowToolbarKey"
+            android:key="prefWidgetShowDateKey"
+            android:summaryOff="@string/settings_widget_show_date_summary_off"
+            android:summaryOn="@string/settings_widget_show_date_summary_on"
+            android:title="@string/settings_widget_show_date_title" />
+
+        <PreferenceScreen
+            android:key="prefWidgetTaskTextScreenKey"
+            android:summary="@string/settings_section_task_text_summary"
+            android:title="@string/settings_section_name_Task_Text" >
+            <com.zapta.apps.maniana.settings.FontPreference
+                android:defaultValue="cursive"
+                android:key="prefWidgetItemFontKey"
+                android:title="@string/settings_font_selector_title"
+                maniana:summaryFormat="@string/settings_font_selector_summary" />
+
+            <com.zapta.apps.maniana.settings.SeekBarPreference
+                android:defaultValue="18"
+                android:key="prefWidgetItemFontSizePtKey"
+                android:title="@string/settings_text_size_title"
+                maniana:maxValue="24"
+                maniana:minValue="10"
+                maniana:summaryFormat="@string/settings_text_size_summary"
+                maniana:valueFormat="@string/settings_text_size_format_d_points" />
+
+            <CheckBoxPreference
+                android:defaultValue="true"
+                android:key="prefWidgetAutoFitKey"
+                android:summaryOff="@string/settings_widget_sauto_fit_summary_off"
+                android:summaryOn="@string/settings_widget_auto_fit_summary_on"
+                android:title="@string/settings_widget_auto_fit_title" />
+
+            <net.margaritov.preference.colorpicker.ColorPickerPreference
+                android:defaultValue="#ff330000"
+                android:key="prefWidgetTextColorKey"
+                android:summary="@string/settings_task_color_summary"
+                android:title="@string/settings_task_color_title" />
+
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="prefWidgetSingleLineKey"
+                android:summaryOff="@string/settings_widget_single_line_summary_off"
+                android:summaryOn="@string/settings_widget_single_line_summary_on"
+                android:title="@string/settings_widget_single_line_title" />
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:key="prefWidgetShowCompletedKey"
+                android:summaryOff="@string/settings_widget_show_completed_tasks_summary_off"
+                android:summaryOn="@string/settings_widget_show_completed_tasks_summary_on"
+                android:title="@string/settings_widget_show_completed_tasks_title" />
+
+            <net.margaritov.preference.colorpicker.ColorPickerPreference
+                android:defaultValue="#ff888888"
+                android:key="prefWidgetCompletedTextColorKey"
+                android:summary="@string/settings_completed_task_color_summary"
+                android:title="@string/settings_completed_task_color_title" />
+        </PreferenceScreen>
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/settings_section_name_Backup" >
+        <Preference
+            android:key="prefBackupHelpKey"
+            android:summary="@string/settings_backup_help_summary"
+            android:title="@string/settings_backup_help_title" />
+        <Preference
+            android:key="prefBackupKey"
+            android:summary="@string/settings_backup_do_backup_summary"
+            android:title="@string/settings_backup_do_backup_title" />
+    </PreferenceScreen>
+    <PreferenceScreen android:title="@string/settings_section_name_Miscellaneous" >
+        <Preference
+            android:key="prefVersionInfoKey"
+            android:summary="@string/settings_misc_release_info_summary"
+            android:title="@string/settings_misc_release_info_title" >
+        </Preference>
+        <Preference
+            android:key="prefShareKey"
+            android:summary="@string/settings_misc_tell_a_friend_summary"
+            android:title="@string/settings_misc_tell_a_friend_title" >
+        </Preference>
+        <Preference
+            android:key="prefFeedbackKey"
+            android:summary="@string/settings_misc_feedback_summary"
+            android:title="@string/settings_misc_feedback_title" >
+        </Preference>
+        <Preference
+            android:key="prefRestoreDefaultsKey"
+            android:summary="@string/settings_misc_restore_defaults_summary"
+            android:title="@string/settings_misc_restore_defaults_title" >
+        </Preference>
+    </PreferenceScreen>
+
+</PreferenceScreen>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ContentDescription" severity="ignore" />
+    <issue id="DefaultLocale" severity="ignore" />
+    <issue id="ExportedContentProvider" severity="ignore" />
+    <issue id="ExportedReceiver">
+        <ignore path="AndroidManifest.xml" />
+    </issue>
+    <issue id="HardcodedText" severity="informational" />
+    <issue id="IconDensities" severity="informational" />
+    <issue id="IconDipSize" severity="informational" />
+    <issue id="IconDuplicatesConfig" severity="informational" />
+    <issue id="IconLocation" severity="informational" />
+    <issue id="IconMissingDensityFolder" severity="informational" />
+    <issue id="TypographyEllipsis" severity="ignore" />
+    <issue id="UseCompoundDrawables">
+        <ignore path="res/layout/main_menu_entry.xml" />
+        <ignore path="res/layout/thumbnail_selector_item_layout.xml" />
+    </issue>
+    <issue id="UselessParent">
+        <ignore path="res/layout/main_menu_entry.xml" />
+    </issue>
+    <issue id="ViewConstructor">
+        <ignore path="src/com/zapta/apps/maniana/view/ItemView.java" />
+    </issue>
+</lint>

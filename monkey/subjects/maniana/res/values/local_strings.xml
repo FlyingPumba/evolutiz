@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+    * Strings in this files are translated to localized languages. Translation 
+    * is managed by Crowdin.net at http://crowdin.net/project/maniana. The translation
+    * of this and other files are pulled by crowdin.net using the script pull_translations.sh.
+    -->
+
+
+    <!-- General -->
+    <string name="translation_language_name">English</string>
+    <string name="translated_app_name">Maniana</string>
+
+    <!-- Startup Error messages -->
+    <string name="launch_error_Error_loading_task_list">Error loading task list</string>
+
+    <!-- Task editor related -->
+    <string name="editor_title_Edit_Task">Edit Task</string>
+    <string name="editor_title_New_Task">New Task</string>
+    <string name="editor_Empty_task_deleted">Empty task deleted</string>
+
+    <!-- Page organize outcomes -->
+    <string name="organize_outcome_Deleted_one_completed_task">Deleted one completed task</string>
+    <string name="organize_outcome_Deleted_d_completed_tasks">Deleted %d completed tasks</string>
+    <string name="organize_outcome_Tasks_reordered">Tasks reordered</string>
+    <string name="organize_outcome_Tasks_reordered_Long_press_to_delete_one_completed_task">Tasks reordered. Long press to delete one completed task</string>
+    <string name="organize_outcome_Tasks_reordered_Long_press_to_delete_d_completed_tasks">Tasks reordered. Long press to delete %d completed tasks</string>
+    <string name="organize_outcome_Page_already_organized_Long_press_to_delete_one_completed_task">Page already organized. Long press to delete one completed task</string>
+    <string name="organize_outcome_Page_already_organized_Long_press_to_delete_d_completed_tasks">Page already organized. Long press to delete %d completed tasks</string>
+    <string name="organize_outcome_Page_already_organized">Page already organized</string>
+
+    <!-- Undo -->
+    <string name="undo_Restored_one_deleted_task">Restored one deleted task</string>
+    <string name="undo_Restored_d_deleted_tasks">Restored %d deleted tasks</string>
+
+    <!-- Backup/Restore -->
+    <string name="backup_restore_Failed_to_read_backup_file">Error reading the backup file</string>
+    <string name="backup_restore_Error_loading_the_backup_file">Error loading the backup file</string>
+    <string name="backup_restore_Task_list_replaced">Task list replaced</string>
+    <string name="backup_restore_Task_list_merged">Task list merged</string>
+    <string name="backup_restore_Task_list_not_changed">Task list not changed</string>
+    <string name="backup_restore_dialog_Merge">Merge</string>
+    <string name="backup_restore_dialog_Replace">Replace</string>
+    <string name="backup_restore_dialog_Keep">Keep</string>
+    <string name="backup_restore_dialog_Delete">Delete</string>
+    <string name="backup_restore_dialog_Add">Add</string>
+    <string name="backup_restore_dialog_Total">Total</string>
+    <string name="backup_restore_dialog_title">Import Tasks Into Maniana"?"</string>
+    <string name="backup_restore_dialog_sub_title">Task summary</string>
+
+    <!-- Notification -->
+    <string name="notification_title_single_task">You have one active task</string>
+    <string name="notification_title_d_tasks">You have %d active tasks</string>
+    <string name="notification_content">Tap to open Maniana</string>
+
+    <!-- Page operations -->
+    <string name="Auto_sorted">Auto sorted</string>
+
+    <!-- Page related -->
+    <string name="page_title_Today">Today</string>
+    <string name="page_title_Maniana">Maniana</string>
+
+    <!-- Item menu -->
+    <string name="item_menu_Done">Done</string>
+    <string name="item_menu_To_Do">To Do</string>
+    <string name="item_menu_Edit">Edit</string>
+    <string name="item_menu_Lock">Lock</string>
+    <string name="item_menu_Unlock">Unlock</string>
+    <string name="item_menu_Delete">Delete</string>
+
+    <!-- Voice Recognition -->
+    <string name="voice_recognition_Dictate_a_new_task">Dictate a new task</string>
+    <string name="voice_recognition_Select_best_match">Select best match</string>
+
+    <!-- Widget -->
+    <string name="widget_Maniana_data_not_found">Maniana data not found</string>
+    <string name="widget_no_tasks">no tasks</string>
+    <string name="widget_no_active_tasks">no active tasks</string>
+
+    <!-- Color Picker -->
+    <string name="color_picker_Press_on_a_color_below_to_apply_it">Press on a color below to apply it</string>
+    <string name="color_picker_Select_Color">Select Color</string>
+
+    <!-- Item Color -->
+    <string name="item_color_none">None</string>
+    <string name="item_color_red">Red</string>
+    <string name="item_color_blue">Blue</string>
+    <string name="item_color_green">Green</string>
+    <string name="item_color_gold">Gold</string>
+    <string name="item_color_cyan">Cyan</string>
+    <string name="item_color_purple">Purple</string>
+    <string name="item_color_yellow">Yellow</string>
+    <string name="item_color_black">Black</string>
+    <string name="item_color_white">White</string>
+    <string name="item_colors_hint">Hint: select more task colors in Settings.</string>
+
+    <!-- Main Menu -->
+    <string name="main_menu_Settings">Settings</string>
+    <string name="main_menu_About">About</string>
+    <string name="main_menu_Help">Help</string>
+
+    <!-- Setting Activity -->
+    <string name="settings_restore_default_confirmation_text">Revert all settings to default values (does not affect task data)?</string>
+    <string name="settings_restore_default_confirmation_yes">Revert</string>
+    <string name="settings_Restoring_defaults">Restoring defaults...</string>
+    <string name="share_email_subject">Check out \"Maniana To Do List\"</string>
+    <string name="share_email_body_text">Check out Maniana, a free fun and easy to use todo list app on the Android Market:</string>
+    <string name="share_email_chooser_title">Share using</string>
+    <string name="time_string_tonight">tonight</string>
+    <string name="time_string_in_d_hours">in %d hours</string>
+    <string name="time_string_in_d_days">in %d days</string>
+
+    <!-- Settings/Sound -->
+    <string name="settings_section_name_Sound">Sound</string>
+    <string name="settings_sound_title">Sound</string>
+    <string name="settings_sound_summary_on">Sound is enabled</string>
+    <string name="settings_sound_summary_off">Sound is disabled</string>
+    <string name="settings_applause_title">Applause</string>
+    <string name="settings_applause_name_never">Never</string>
+    <string name="settings_applause_name_sometimes">Surprise Me</string>
+    <string name="settings_applause_name_always">Always</string>
+    <string name="settings_applause_summary_never">Never applaud when I complete a task</string>
+    <string name="settings_applause_summary_sometimes">Surprise me</string>
+    <string name="settings_applause_summary_always">Always applaud when I complete a task</string>
+    <string name="settings_applause_summary_sound_is_off">Sound is off</string>
+
+    <!-- Settings/Behavior -->
+    <string name="settings_section_name_Behavior">Behavior</string>
+    <string name="settings_startup_animation_title">Startup Animation</string>
+    <string name="settings_startup_animation_summary_on">Enabled (review Maniana page)</string>
+    <string name="settings_startup_animation_summary_off">Disabled (faster app start)</string>
+    <string name="settings_detailed_messages_title">Detailed Messages</string>
+    <string name="settings_detailed_messages_summary_on">Enabled (trainee mode)</string>
+    <string name="settings_detailed_messages_summary_off">Disabled (expert mode)</string>
+    <string name="settings_daily_notification_title">Daily Notification</string>
+    <string name="settings_daily_notification_summary_on">Will notify daily if having active tasks</string>
+    <string name="settings_daily_notification_summary_off">Daily notification is off</string>
+    <string name="settings_notification_led_title">Notification LED</string>
+    <string name="settings_notification_led_summary_on">Will also activate notification LED (when available)</string>
+    <string name="settings_notification_led_summary_off">Will not activate notification LED</string>
+    <string name="settings_calendar_launch_title">Google Calendar</string>
+    <string name="settings_calendar_launch_summary_on">Clicking on today\'s date launches Google Calendar</string>
+    <string name="settings_calendar_launch_summary_off">Clicking on today\'s date is ignored</string>
+
+    <!-- Settings/Tasks -->
+    <string name="settings_section_name_Tasks">Tasks</string>
+    <string name="settings_auto_sort_title">Auto Task Sort</string>
+    <string name="settings_auto_sort_summary_on">Forcing task order (active before completed before locked)</string>
+    <string name="settings_auto_sort_summary_off">Allowing arbitrary task order</string>
+    <string name="settings_add_to_top_title">Add To Top</string>
+    <string name="settings_add_to_top_summary_on">New tasks are added at list top</string>
+    <string name="settings_add_to_top_summary_off">New tasks are added at list bottom</string>
+    <string name="settings_select_task_colors_dialog_title">Task Colors</string>
+    <string name="settings_select_task_colors_title">Task Colors</string>
+    <string name="settings_select_task_colors_summary">Click to select and arrange available task colors</string>
+    <string name="settings_daily_cleanup_title">Daily Task Cleanup</string>
+    <string name="settings_daily_cleanup_summary_on">Deleting completed tasks every midnight</string>
+    <string name="settings_daily_cleanup_summary_off">Daily deletion of completed tasks is disabled</string>
+    <string name="settings_lock_expiration_title">Lock Expiration</string>
+    <string name="settings_lock_expiration_name_once_a_week">Once a week</string>
+    <string name="settings_lock_expiration_name_once_a_month">Once a month</string>
+    <string name="settings_lock_expiration_name_never">Never</string>
+
+    <!-- Settings/Shaker -->
+    <string name="settings_section_name_Shaker">Shaking Action</string>
+    <string name="settings_section_shaker_summary">Click to set shaking action</string>
+    <string name="settings_shaker_enabled_title">Shake Detection</string>
+    <string name="settings_shaker_enabled_summary_on">Enabled in Maniana pages</string>
+    <string name="settings_shaker_enabled_summary_off">Shake detection is disabled</string>
+    <string name="settings_shaker_force_level_title">Detection Level</string>
+    <string name="settings_shaker_force_level_summary_format">Shaking magnitude %d or higher</string>
+    <string name="settings_shaker_action_title">Shake Action</string>
+    <string name="settings_shaker_action_name_add_by_text">New task by text</string>
+    <string name="settings_shaker_action_name_add_by_voice">New task by voice</string>
+    <string name="settings_shaker_action_name_clean">Clean page</string>
+    <string name="settings_shaker_action_name_quit">Quit Maniana</string>
+
+    <!-- Settings/Pages -->
+    <string name="settings_section_name_Pages">Pages</string>
+    <string name="settings_select_page_theme_title">Set By Theme</string>
+    <string name="shaking_service_not_available">Shake detection not supported</string>
+    <string name="settings_select_page_theme_summary">Click to select a predefined page setting</string>
+    <string name="settings_page_icons_title">Icons</string>
+    <string name="settings_page_icons_summary">Using %s icons</string>
+    <string name="settings_page_task_divider_color_title">Task Divider Color</string>
+    <string name="settings_page_task_divider_color_summary">Color of lines between tasks</string>
+
+    <!-- Settings/Pages/Title Text -->
+    <string name="settings_section_name_Title_Text">Title Text</string>
+    <string name="settings_section_title_text_summary">Click to set title text properties</string>
+    <string name="settings_today_page_title_color_title">Today Color</string>
+    <string name="settings_today_page_title_color_summary">Today title text color</string>
+    <string name="settings_tomorrow_page_title_color_title">Maniana Color</string>
+    <string name="settings_tomorrow_page_title_color_summary">Maniana title text color</string>
+
+    <!-- Settings/Pages/Task Text -->
+    <!-- No section specific strings, using only common strings -->
+
+
+    <!-- Settings/List Widget -->
+    <string name="settings_section_name_List_Widget">List Widget</string>
+    <string name="settings_select_widget_theme_title">Set By Theme</string>
+    <string name="settings_select_widget_theme_summary">Click to select a predefined widget setting</string>
+    <string name="settings_widget_show_toolbar_title">Show Toolbar</string>
+    <string name="settings_widget_show_toolbar_summary_on">Showing widget toolbar</string>
+    <string name="settings_widget_show_toolbar_summary_off">Hiding widget toolbar</string>
+    <string name="settings_widget_show_date_title">Show Date</string>
+    <string name="settings_widget_show_date_summary_on">Show today\'s date in widget title</string>
+    <string name="settings_widget_show_date_summary_off">Not showing date in widget title</string>
+
+    <!-- Settings/Widget/Task Text -->
+    <string name="settings_widget_single_line_title">Single Line</string>
+    <string name="settings_widget_single_line_summary_on">Limiting tasks to a single line</string>
+    <string name="settings_widget_single_line_summary_off">Wrapping longer tasks onto a second line</string>
+    <string name="settings_widget_show_completed_tasks_title">Show Completed Tasks</string>
+    <string name="settings_widget_show_completed_tasks_summary_on">Showing also completed tasks</string>
+    <string name="settings_widget_show_completed_tasks_summary_off">Showing only active tasks</string>
+    <string name="settings_widget_auto_fit_title">Auto Fit</string>
+    <string name="settings_widget_auto_fit_summary_on">If needed, will try to fit content to widget size (smaller text, single line, etc)</string>
+    <string name="settings_widget_sauto_fit_summary_off">Will not try to fit content to widget size</string>
+
+    <!-- Settings / Backup -->
+    <string name="settings_section_name_Backup">Backup</string>
+    <string name="settings_backup_do_backup_chooser_title">Select Dropbox Or Google Drive</string>
+    <string name="settings_backup_no_app_error">Did not find Dropbox or Google Drive apps.</string>
+    <string name="settings_backup_do_backup_title">Do Backup</string>
+    <string name="settings_backup_do_backup_summary">Click to send a backup file. Only Dropbox and Google Drive are currently supported. GMail is not!</string>
+    <string name="settings_backup_help_title">Read This First!</string>
+    <string name="settings_backup_help_summary">Click to read IMPORTANT instructions on how to successfuly backup and restore.</string>
+
+    <!-- Settings/Miscellaneous -->
+    <string name="settings_section_name_Miscellaneous">Miscellaneous</string>
+    <string name="settings_misc_release_info_title">Release Info</string>
+    <string name="settings_misc_release_info_summary">Click to see release info</string>
+    <string name="settings_misc_tell_a_friend_title">Tell A Friend</string>
+    <string name="settings_misc_tell_a_friend_summary">Click to tell a friend about Maniana</string>
+    <string name="settings_misc_feedback_title">Send Us Feedback</string>
+    <string name="settings_misc_feedback_summary">Click to provide feedback to the developers</string>
+    <string name="settings_misc_restore_defaults_title">Reset All Settings</string>
+    <string name="settings_misc_restore_defaults_summary">Click to restore the original settings. Does not affect task data</string>
+
+    <!-- Settings Common -->
+    <string name="settings_section_name_Task_Text">Task Text</string>
+    <string name="settings_section_task_text_summary">Click to set task text properties</string>
+    <string name="settings_text_size_title">Size</string>
+    <string name="settings_text_size_summary">Using %d points text size</string>
+    <string name="settings_text_size_format_d_points">%dpt</string>
+    <string name="settings_font_selector_title">Font</string>
+    <string name="settings_font_selector_summary">Using %s font</string>
+    <string name="settings_task_color_title">Color</string>
+    <string name="settings_task_color_summary">Text color of active tasks</string>
+    <string name="settings_completed_task_color_title">Completed Task Color</string>
+    <string name="settings_completed_task_color_summary">Text color of completed tasks</string>
+    <string name="settings_paper_title">Paper</string>
+    <string name="settings_paper_summary_on">Using paper background</string>
+    <string name="settings_paper_summary_off">Paper background disabled</string>
+    <string name="settings_paper_color_title">Paper color</string>
+    <string name="settings_paper_color_summary">Paper Color</string>
+    <string name="settings_background_color_title">Background Color</string>
+    <string name="settings_background_color_summary">Background Color</string>
+
+    <!-- Font names -->
+    <string name="font_name_Cursive">Cursive</string>
+    <string name="font_name_Elegant">Elegant</string>
+    <string name="font_name_Sans_Serif">Sans Serif</string>
+    <string name="font_name_Serif">Serif</string>
+    <string name="font_name_Italic">Italic</string>
+    <string name="font_name_Impact">Impact</string>
+
+    <!-- Icon Set names -->
+    <string name="page_icon_set_name_Hand_Drawn">Hand Drawn</string>
+    <string name="page_icon_set_name_Modern">Modern</string>
+    <string name="page_icon_set_name_Party">Party</string>
+    <string name="page_icon_set_name_White_Silhouette">White Silhouette</string>
+    <string name="page_icon_set_name_Black_Silhouette">Black Silhouette</string>
+
+    <!-- Page theme Names -->
+    <string name="page_theme_name_paper">On Paper</string>
+    <string name="page_theme_name_yellow">Yellow Pages</string>
+    <string name="page_theme_name_dark">Dark Knight</string>
+    <string name="page_theme_name_notebook">Notebook</string>
+
+    <!-- Widget theme namaes -->
+    <string name="widget_theme_name_paper">Paper Trail</string>
+    <string name="widget_theme_name_semi_transparanet">Crystal Clear</string>
+    <string name="widget_theme_name_large_text">Think Big</string>
+    <string name="widget_theme_name_pink">Legally Blonde</string>
+    <string name="widget_theme_name_small_text">Fine Print</string>
+
+    <!-- Manifest -->
+    <string name="settings_top_level_title">Maniana Settings</string>
+    <string name="widget_name_list_4x1">Maniana List 4x1</string>
+    <string name="widget_name_list_4x2">Maniana List 4x2</string>
+    <string name="widget_name_list_4x3">Maniana List 4x3</string>
+    <string name="widget_name_list_4x4">Maniana List 4x4</string>
+    <string name="widget_name_list_2x2">Maniana List 2x2</string>
+    <string name="widget_name_list_3x3">Maniana List 3x3</string>
+    <string name="widget_name_icon">Maniana Icon</string>
+
+    <!-- Sample tasks (for new users) -->
+    <string name="sample_tast_text_11">Drag left to switch page</string>
+    <string name="sample_tast_text_12">Tap on this task and select Done</string>
+    <string name="sample_tast_text_13">Tap on the arrow to do this task tomorrow</string>
+    <string name="sample_tast_text_14">Tap on the red mark to change its color</string>
+    <string name="sample_tast_text_15">Long press on this task and move it up</string>
+    <string name="sample_tast_text_16">Open the menu and see Settings and Help for more features</string>
+    <string name="sample_tast_text_21">This task will be moved to the Today page on midnight</string>
+
+    <!-- Common -->
+    <string name="dialog_cancel">Cancel</string>
+
+</resources>

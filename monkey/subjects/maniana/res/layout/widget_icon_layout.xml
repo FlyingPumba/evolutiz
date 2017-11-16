@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_icon_top_view"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+ 
+    android:padding="@dimen/widget_margin" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="5dip"
+        android:src="@drawable/app_icon" >
+    </ImageView>
+
+    <FrameLayout
+        android:id="@+id/widget_icon_label_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="@dimen/icon_widget_label_right_margin"
+        android:layout_marginTop="@dimen/icon_widget_label_top_margin"
+        android:background="@drawable/widget_icon_label_border"
+        android:padding="2dip" >
+
+        <TextView
+            android:id="@+id/widget_icon_label_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:paddingBottom="0dip"
+            android:paddingLeft="6dip"
+            android:paddingRight="6dip"
+            android:paddingTop="0dip"
+            android:text="@string/place_holder"
+            android:textColor="#ff444444"
+            android:textSize="16sp"
+            android:textStyle="bold" >
+        </TextView>
+    </FrameLayout>
+
+</RelativeLayout>

@@ -1,0 +1,46 @@
+<html>
+<head>
+<style type="text/css">
+li { margin-left: -1.2em; }
+body { color: black; background: white; font-family: Verdana, sans-serif; }
+.cell-num {  background: #e0e0e0; text-align: center; }
+.cell-top {  background: #ffffaa; text-align: center; }
+.cell-left {  background: #ffffaa; text-align: left; }
+</style>
+</head>
+<body>
+<span style="color:#000099"><b>${str_title}</b></span>
+<br><br>
+${str_sub_title}:<br>
+<br>
+<center>
+<table border="1" cellspacing="0" cellpadding="8" bordercolor="#888888">
+<tr>
+  <td class="cell-top"></td>
+  <td class="cell-top"><b>${str_merge}</b></td>
+  <td class="cell-top"><b>${str_replace}</b></td>
+</tr>
+<tr>
+  <td class="cell-left">${str_keep}</td>
+  <td class="cell-num">${merge-keep}</td>
+  <td class="cell-num">${replace-keep}</td>
+</tr>
+<tr>
+  <td class="cell-left">${str_delete}</td>
+  <td class="cell-num">${merge-delete}</td>
+  <td class="cell-num">${replace-delete}</td>
+</tr>
+<tr>
+  <td class="cell-left">${str_add}</td>
+  <td class="cell-num">${merge-add}</td>
+  <td class="cell-num">${replace-add}</td>
+</tr>
+<tr>
+  <td class="cell-left">${str_total}</td>
+  <td class="cell-num">${merge-total}</td>
+  <td class="cell-num">${replace-total}</td>
+</tr>
+</table>
+</center>
+</body>
+</html>

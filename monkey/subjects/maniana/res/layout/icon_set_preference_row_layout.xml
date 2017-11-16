@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:background="@drawable/list_selector_press_background"
+    android:orientation="horizontal"
+    android:padding="5dp" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/icon_set_selector_background"
+        android:orientation="horizontal"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip" >
+
+        <ImageView
+            android:id="@+id/icon_set_preference_icon1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:paddingBottom="12dip"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip"
+            android:paddingTop="12dip"
+            android:src="@drawable/place_holder" />
+
+        <ImageView
+            android:id="@+id/icon_set_preference_icon2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:paddingBottom="12dip"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip"
+            android:paddingTop="12dip"
+            android:src="@drawable/place_holder" />
+
+        <ImageView
+            android:id="@+id/icon_set_preference_icon3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:paddingBottom="12dip"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip"
+            android:paddingTop="12dip"
+            android:src="@drawable/place_holder" />
+
+        <ImageView
+            android:id="@+id/icon_set_preference_icon4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:paddingBottom="12dip"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip"
+            android:paddingTop="12dip"
+            android:src="@drawable/place_holder" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+    </FrameLayout>
+
+    <RadioButton
+        android:id="@+id/icon_set_preference_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0"
+        android:clickable="false" >
+    </RadioButton>
+
+</LinearLayout>

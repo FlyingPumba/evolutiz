@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <dimen name="editor_color_marker_width">30dip</dimen>
+    <dimen name="editor_text_edit_left_margin">5dip</dimen>
+
+</resources>

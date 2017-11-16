@@ -1,0 +1,110 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/rlMain"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent" >
+
+	<RelativeLayout
+	    android:id="@+id/lmain"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/etCmd"
+	    android:layout_below="@+id/ivPicture" >
+
+		<ListView
+		    android:id="@+id/lvLog"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentBottom="true"
+		    android:layout_alignParentLeft="true"
+		    android:layout_alignParentTop="true"
+		    android:layout_toLeftOf="@+id/lvHistory"
+		    android:drawSelectorOnTop="false"
+		    android:transcriptMode="alwaysScroll" >
+
+		</ListView>
+       
+		<ListView
+		    android:id="@+id/lvHistory"
+		    android:layout_width="100dp"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentRight="true"
+		    android:paddingLeft="5dp"
+		    android:stackFromBottom="true"
+		    android:transcriptMode="alwaysScroll"
+		    android:visibility="visible" >
+
+		</ListView>
+	</RelativeLayout>
+
+	<EditText
+	    android:id="@+id/etCmd"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentLeft="true"
+	    android:layout_alignTop="@+id/ibCmd"
+	    android:layout_toLeftOf="@+id/ibCmd"
+	    android:background="@android:drawable/edit_text"
+	    android:ems="10"
+	    android:imeOptions="normal|flagNoExtractUi"
+	    android:inputType="textNoSuggestions" />
+
+	<Button
+	    android:id="@+id/bEnter"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignTop="@+id/ibMenu"
+	    android:layout_toLeftOf="@+id/ibMenu"
+	    android:background="@android:drawable/btn_default_small"
+	    android:nextFocusDown="@+id/bEnter"
+	    android:nextFocusRight="@+id/bEnter"
+	    android:nextFocusUp="@+id/bEnter"
+	    android:text="Enter"
+	    android:visibility="invisible" >
+
+	</Button>
+	<Button
+	    android:id="@+id/bSpace"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignTop="@+id/ibMenu"
+	    android:layout_toLeftOf="@+id/bEnter"
+	    android:nextFocusDown="@+id/bSpace"
+	    android:nextFocusLeft="@+id/bSpace"
+	    android:nextFocusRight="@+id/bEnter"
+	    android:nextFocusUp="@+id/bSpace"
+	    android:text="Space"
+	    android:background="@android:drawable/btn_default_small"
+	    android:visibility="invisible" />
+	<ImageView
+		android:id="@+id/ivPicture"
+		android:layout_width="100dp"
+		android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"
+		android:adjustViewBounds="true"
+		android:scaleType="fitXY"
+		android:src="@drawable/ic_launcher"
+		android:visibility="visible" />
+
+	<ImageButton
+	    android:id="@+id/ibCmd"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_toLeftOf="@+id/ibMenu"
+	    android:background="@android:drawable/btn_default_small"
+	    android:src="@drawable/ic_do" />
+
+	<ImageButton
+	    android:id="@+id/ibMenu"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_alignParentRight="true"
+	    android:background="@android:drawable/btn_default_small"
+	    android:src="@drawable/ic_menu_vertical" />
+
+</RelativeLayout>

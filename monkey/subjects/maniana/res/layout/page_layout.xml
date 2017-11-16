@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/page_paper_color"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/page_title_section"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/place_holder_dip"
+        android:paddingTop="@dimen/place_holder_dip" >
+
+        <com.zapta.apps.maniana.view.ExtendedTextView
+            android:id="@+id/page_title_text"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="0dip"
+            android:paddingLeft="4dip"
+            android:paddingRight="10dip"
+            android:paddingTop="0dip"
+            android:text="@string/place_holder"
+            android:textSize="55dip" />
+
+        <LinearLayout
+            android:id="@+id/page_date_time_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:soundEffectsEnabled="false" >
+
+            <TextView
+                android:id="@+id/page_day_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/place_holder"
+                android:textColor="#666666"
+                android:textSize="@dimen/place_holder_sp" />
+
+            <TextView
+                android:id="@+id/page_date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/place_holder"
+                android:textColor="#666666"
+                android:textSize="@dimen/place_holder_sp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/page_main_menu_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:longClickable="false"
+            android:paddingLeft="@dimen/page_main_menu_left_padding"
+            android:paddingRight="12dip"
+            android:soundEffectsEnabled="false"
+            android:src="@drawable/main_menu_button_version_1" >
+        </ImageButton>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/page_title_divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#ff000000" />
+
+    <com.zapta.apps.maniana.view.ItemListView
+        android:id="@+id/page_item_list"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+        android:clickable="false"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:listSelector="@android:color/transparent" >
+    </com.zapta.apps.maniana.view.ItemListView>
+
+    <LinearLayout
+        android:id="@+id/page_buttom_section"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dip"
+        android:paddingTop="15dip" >
+
+        <ImageButton
+            android:id="@+id/page_undo_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:longClickable="false"
+            android:paddingLeft="8dip"
+            android:paddingRight="30dip"
+            android:soundEffectsEnabled="false"
+            android:src="@drawable/place_holder" >
+        </ImageButton>
+
+        <FrameLayout
+            android:layout_width="0dip"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:background="#00000000" >
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/page_add_by_text_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dip"
+            android:background="@android:color/transparent"
+            android:longClickable="false"
+            android:paddingLeft="15dip"
+            android:paddingRight="10dip"
+            android:soundEffectsEnabled="false"
+            android:src="@drawable/place_holder" >
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/page_add_by_voice_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dip"
+            android:background="@android:color/transparent"
+            android:longClickable="false"
+            android:paddingLeft="15dip"
+            android:paddingRight="10dip"
+            android:soundEffectsEnabled="false"
+            android:src="@drawable/place_holder" >
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/page_clean_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:longClickable="true"
+            android:paddingLeft="15dip"
+            android:paddingRight="8dip"
+            android:soundEffectsEnabled="false"
+            android:src="@drawable/place_holder" >
+        </ImageButton>
+    </LinearLayout>
+
+</LinearLayout>

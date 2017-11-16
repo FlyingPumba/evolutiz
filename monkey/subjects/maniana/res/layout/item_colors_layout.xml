@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/page_paper_color"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#00000000"
+    android:orientation="vertical" >
+
+    <com.mobeta.android.dslv.DragSortListView
+       
+        xmlns:dslv="http://schemas.android.com/apk/res/com.zapta.apps.maniana"
+        android:id="@+id/item_colors_list_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="0dp"
+        android:background="#00000000"
+        android:dividerHeight="1dp"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        dslv:collapsed_height="2dp"
+        dslv:drag_enabled="true"
+        dslv:drag_scroll_start="0.33"
+        dslv:float_alpha="0.4"
+        dslv:max_drag_scroll_speed="0.5"
+        dslv:slide_shuffle_speed="0.3"
+        dslv:track_drag_sort="false"
+        dslv:use_default_controller="false" />
+
+</LinearLayout>

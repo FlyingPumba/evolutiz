@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_colors_drag_background"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:id="@+id/item_colors_item_clickable_area"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <CheckBox
+            android:id="@+id/item_colors_item_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="20dip" />
+
+        <ImageView
+            android:id="@+id/item_colors_item_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0"
+            android:clickable="false"
+            android:paddingLeft="5dip"
+            android:src="@drawable/place_holder" />
+
+        <TextView
+            android:id="@+id/item_colors_item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:paddingLeft="20dip"
+            android:text="@string/place_holder"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/item_colors_item_drag_handle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="15dip"
+        android:layout_marginLeft="15dip"
+        android:layout_marginRight="15dip"
+        android:layout_marginTop="15dip"
+        android:background="@android:color/transparent"
+        android:clickable="false"
+        android:longClickable="false"
+        android:soundEffectsEnabled="false"
+        android:src="@drawable/drag_handle" >
+    </ImageButton>
+
+</LinearLayout>

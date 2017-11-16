@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Lock expiration period -->
+    <string-array name="lockPeriodNames">
+        <item>@string/settings_lock_expiration_name_once_a_week</item>
+        <item>@string/settings_lock_expiration_name_once_a_month</item>
+        <item>@string/settings_lock_expiration_name_never</item>
+    </string-array>
+    <string-array name="lockPeriodValues">
+        <item>weekly</item>
+        <item>monthly</item>
+        <item>never</item>
+    </string-array>
+
+    <!-- Applause -->
+    <string-array name="applauseLevelNames">
+        <item>@string/settings_applause_name_never</item>
+        <item>@string/settings_applause_name_sometimes</item>
+        <item>@string/settings_applause_name_always</item>
+    </string-array>
+    <string-array name="applauseLevelValues">
+        <item>never</item>
+        <item>sometimes</item>
+        <item>always</item>
+    </string-array>
+    <string-array name="applauseLevelSummaries">
+        <item>@string/settings_applause_summary_never</item>
+        <item>@string/settings_applause_summary_sometimes</item>
+        <item>@string/settings_applause_summary_always</item>
+    </string-array>
+
+    <!-- Shake detector -->
+    <string-array name="shakerActionNames">
+        <item>@string/settings_shaker_action_name_add_by_text</item>
+        <item>@string/settings_shaker_action_name_add_by_voice</item>
+        <item>@string/settings_shaker_action_name_clean</item>
+        <item>@string/settings_shaker_action_name_quit</item>
+    </string-array>
+    <string-array name="shakerActionValues">
+        <item>new_text</item>
+        <item>new_voice</item>
+        <item>clean</item>
+        <item>quit</item>
+    </string-array>
+
+</resources>

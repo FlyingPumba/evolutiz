@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="graphics_source.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.42"
+     inkscape:cx="563.58986"
+     inkscape:cy="777.06564"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1192"
+     inkscape:window-height="603"
+     inkscape:window-x="40"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#0000ff;fill-opacity:0.62549018999999995;stroke:none;opacity:0"
+       id="rect3069"
+       width="28"
+       height="28"
+       x="408.54434"
+       y="302.84933"
+       rx="5"
+       ry="5"
+       inkscape:export-filename="/Users/tal/projects/maniana/repo/Maniana/res/drawable-hdpi/widget_add_by_text.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       style="fill:#444444;fill-opacity:1;stroke:none"
+       d="M 422.03125 305.84375 C 420.36925 305.84375 419.03125 307.18175 419.03125 308.84375 L 419.03125 313.34375 L 414.53125 313.34375 C 412.86925 313.34375 411.53125 314.68175 411.53125 316.34375 L 411.53125 317.34375 C 411.53125 319.00575 412.86925 320.34375 414.53125 320.34375 L 419.03125 320.34375 L 419.03125 324.84375 C 419.03125 326.50575 420.36925 327.84375 422.03125 327.84375 L 423.03125 327.84375 C 424.69325 327.84375 426.03125 326.50575 426.03125 324.84375 L 426.03125 320.34375 L 430.53125 320.34375 C 432.19325 320.34375 433.53125 319.00575 433.53125 317.34375 L 433.53125 316.34375 C 433.53125 314.68175 432.19325 313.34375 430.53125 313.34375 L 426.03125 313.34375 L 426.03125 308.84375 C 426.03125 307.18175 424.69325 305.84375 423.03125 305.84375 L 422.03125 305.84375 z "
+       id="rect3071"
+       inkscape:export-filename="/Users/tal/projects/maniana/repo/Maniana/res/drawable-hdpi/widget_add_by_text.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       transform="matrix(1.2408196,0,0,1.05125,-119.36646,-44.519023)"
+       d="m 510.82045,370.19809 a 3.6266351,4.2806182 0 1 1 -7.25327,0 3.6266351,4.2806182 0 1 1 7.25327,0 z"
+       sodipodi:ry="4.2806182"
+       sodipodi:rx="3.6266351"
+       sodipodi:cy="370.19809"
+       sodipodi:cx="507.19382"
+       id="path4332"
+       style="fill:#fefefe;fill-opacity:0.50196078;stroke:none"
+       sodipodi:type="arc" />
+    <rect
+       style="opacity:0;fill:#8e0000;fill-opacity:0.6;stroke:none"
+       id="rect3755"
+       width="28"
+       height="28"
+       x="477.25983"
+       y="302.13901"
+       rx="5"
+       ry="5"
+       inkscape:export-filename="/Users/tal/projects/maniana/repo/Maniana/res/drawable-hdpi/widget_add_by_voice.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <path
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/Users/tal/projects/maniana/repo/Maniana/res/drawable-hdpi/widget_add_by_voice.png"
+       inkscape:connector-curvature="0"
+       id="path3757"
+       d="m 491.2598,302.88301 c -0.44674,0 -0.87318,0.063 -1.29209,0.14219 l 0,6.00602 -2.0009,0 0,-5.29527 c -1.6388,0.91367 -2.70929,2.47062 -2.70929,4.26465 l 0,7.0367 0,0.17768 c 4e-5,8.4e-4 0.0418,-9.1e-4 0.0418,0 0.11341,2.74127 2.71787,4.93995 5.96072,4.93995 3.24289,0 5.84732,-2.19868 5.96073,-4.93995 0.002,-0.0608 0.0418,-0.11613 0.0418,-0.17768 l 0,-7.0367 c 0,-1.79403 -1.07064,-3.35098 -2.70944,-4.26465 l 0,5.29527 -2.00079,0 0,-6.00602 c -0.41898,-0.079 -0.84541,-0.14219 -1.2922,-0.14219 z m -10.67092,12.15429 c 0,4.44559 3.72645,8.16183 8.67023,8.95579 l 0,1.99015 -4.66864,0 0,3.41177 13.33865,0 0,-3.41177 -4.66841,0 0,-1.99015 c 4.94355,-0.79396 8.67001,-4.5102 8.67001,-8.95579 l -2.66773,0 c 0,3.76854 -3.58318,6.82344 -8.00319,6.82344 -4.42001,0 -8.00319,-3.0549 -8.00319,-6.82344 l -2.66773,0 z"
+       style="fill:#444444;fill-opacity:1;stroke:none" />
+    <text
+       xml:space="preserve"
+       style="font-size:4px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="422.6846"
+       y="352.18826"
+       id="text3759"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3761"
+         x="422.6846"
+         y="352.18826">Widget header icons</tspan><tspan
+         sodipodi:role="line"
+         x="422.6846"
+         y="357.18826"
+         id="tspan3765">Export as 28x28 png.</tspan><tspan
+         sodipodi:role="line"
+         x="422.6846"
+         y="362.18826"
+         id="tspan3763">Each icon contains an invisible 28x28 boundary</tspan></text>
+    <rect
+       inkscape:export-ydpi="90"
+       inkscape:export-xdpi="90"
+       inkscape:export-filename="/Users/tal/projects/maniana/repo/Maniana/res/drawable-hdpi/widget_add_by_voice.png"
+       ry="5"
+       rx="5"
+       y="301.85535"
+       x="445.11292"
+       height="28"
+       width="28"
+       id="rect2991"
+       style="opacity:0;fill:#8e0000;fill-opacity:0.6;stroke:none" />
+    <path
+       style="fill:#444444;fill-opacity:1;stroke:none"
+       d="M 459.125 302.09375 C 456.84588 302.09375 454.86021 303.3484 453.84375 305.21875 C 453.83933 305.22548 453.84813 305.24325 453.84375 305.25 C 453.81104 305.31086 453.78065 305.3754 453.75 305.4375 C 453.5893 305.71049 453.47628 306.01359 453.375 306.3125 C 453.31255 306.49682 453.25671 306.68236 453.21875 306.875 C 453.16389 307.15345 453.125 307.4259 453.125 307.71875 L 453.125 308.09375 L 453.125 314.75 L 453.125 314.9375 C 453.12504 314.93834 453.15625 314.93659 453.15625 314.9375 C 453.26966 317.67877 455.88215 319.875 459.125 319.875 C 462.36789 319.875 464.94909 317.67877 465.0625 314.9375 C 465.0645 314.8767 465.125 314.81155 465.125 314.75 L 465.125 308.09375 L 465.125 307.71875 C 465.125 307.63308 465.09858 307.55329 465.09375 307.46875 C 465.06066 306.88937 464.92715 306.32271 464.6875 305.8125 C 464.67757 305.79136 464.6665 305.771 464.65625 305.75 C 463.74502 303.59651 461.61132 302.09375 459.125 302.09375 z M 448.4375 314.75 C 448.4375 319.19559 452.18122 322.92479 457.125 323.71875 L 457.125 325.6875 L 452.4375 325.6875 L 452.4375 329.125 L 465.78125 329.125 L 465.78125 325.6875 L 461.125 325.6875 L 461.125 323.71875 C 466.06855 322.92479 469.78125 319.19559 469.78125 314.75 L 467.125 314.75 C 467.125 318.51854 463.54501 321.5625 459.125 321.5625 C 454.70499 321.5625 451.125 318.51854 451.125 314.75 L 448.4375 314.75 z "
+       id="path2997"
+       inkscape:export-filename="/Users/tal/projects/maniana/repo/Maniana/res/drawable-hdpi/widget_add_by_voice.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="opacity:0.59051723000000000;fill:none;stroke:#919191;stroke-width:2.77099999999999991;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       id="rect2995"
+       width="21.228643"
+       height="19.228645"
+       x="561.99518"
+       y="269.86935"
+       ry="3.3116622" />
+    <path
+       style="opacity:0.59051723000000000;fill:#919191;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;fill-opacity:1"
+       d="m 573.83064,273.88735 0.0334,3.32661 -8.9991,0 0,4.50479 8.9991,0 0.0334,3.36125 6.45661,-5.71761 -6.52351,-5.47504 z"
+       id="rect3773"
+       inkscape:connector-curvature="0" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text3798"
+       y="277.80811"
+       x="607.80859"
+       style="font-size:4px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         y="277.80811"
+         x="607.80859"
+         id="tspan3800"
+         sodipodi:role="line">Notification icon. Export is 24w x 28h</tspan><tspan
+         id="tspan3804"
+         y="282.80811"
+         x="607.80859"
+         sodipodi:role="line" /></text>
+  </g>
+</svg>
