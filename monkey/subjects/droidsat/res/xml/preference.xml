@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="DroidSat Display Options">
+		<ListPreference android:entryValues="@array/displayType" android:entries="@array/displayType" android:defaultValue="Stereographic" android:summary="Display Mode" android:key="displayType"></ListPreference>
+		
+		<CheckBoxPreference android:summary="Red Screen"
+			android:key="redScreenOn" android:defaultValue="false"></CheckBoxPreference>
+		<CheckBoxPreference android:key="altAzOn"
+			android:defaultValue="true" android:summary="Show Alt/Az Grid"></CheckBoxPreference>
+		<CheckBoxPreference android:summary="Show selected satellite's path"
+		 	android:key="satelliteTrackOn" android:defaultValue="true"></CheckBoxPreference>
+		<CheckBoxPreference android:key="darkSatsOn" android:defaultValue="true"
+			android:summary="Show non-sunlit satellites"></CheckBoxPreference>
+		<CheckBoxPreference android:key="lowSatsOn" android:defaultValue="true"
+			android:summary="Show below horizon satellites"></CheckBoxPreference>
+	
+<CheckBoxPreference android:key="sensorOrientationOn" android:defaultValue="true" android:summary="Use compass and orientation sensors"></CheckBoxPreference>
+
+</PreferenceCategory>
+
+	<PreferenceCategory android:title="DroidSat Display Values">
+		
+		<ListPreference android:entries="@array/gridSizes"
+			android:key="altAzGridSize" android:entryValues="@array/gridSizes"
+			android:summary="alt/az grid size (degrees)" android:defaultValue="30" android:dependency="altAzOn"></ListPreference>
+		<ListPreference android:entries="@array/textSizes"
+			android:summary="text size" android:key="textSize"
+			android:entryValues="@array/textSizes" android:defaultValue="medium"></ListPreference>
+		<ListPreference android:summary="line thickness" android:key="lineThickness" android:entries="@array/textSizes" android:defaultValue="medium" android:entryValues="@array/textSizes" /><ListPreference android:entries="@array/forgroundColors"
+			android:summary="text colour" android:key="textColor"
+			android:entryValues="@array/forgroundColors" android:defaultValue="green"></ListPreference>
+		<ListPreference android:entries="@array/forgroundColors"
+			android:summary="satellite colour" android:key="satColor"
+			android:entryValues="@array/forgroundColors" android:defaultValue="red"></ListPreference>
+		<ListPreference android:entries="@array/forgroundColors"
+			android:summary="alt/az grid colour" android:key="altAzColor"
+			android:entryValues="@array/forgroundColors" android:defaultValue="green" android:dependency="altAzOn"></ListPreference>
+		<ListPreference android:entries="@array/smoothing"
+			android:key="altAzSmoothing"
+			android:entryValues="@array/smoothing" android:summary="alt/az grid quality" android:defaultValue="medium" android:dependency="altAzOn"></ListPreference>
+		<ListPreference android:entries="@array/smoothing"
+			android:entryValues="@array/smoothing" android:summary="orientation sensor and compass sensitivity" android:defaultValue="high" android:key="sensorSensitivity"></ListPreference>
+		
+	
+</PreferenceCategory>
+
+<PreferenceCategory android:title="Location">
+	<CheckBoxPreference android:summary="Enter location manually" android:key="manualLocation"></CheckBoxPreference>
+	<EditTextPreference android:summary="Latitude" android:key="manualLat" android:dependency="manualLocation" android:defaultValue="49"></EditTextPreference>
+	<EditTextPreference android:key="manualLon" android:summary="Longitude" android:dependency="manualLocation" android:defaultValue="-122"></EditTextPreference>
+</PreferenceCategory>
+
+</PreferenceScreen>

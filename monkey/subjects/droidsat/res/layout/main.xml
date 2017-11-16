@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent">
+    <com.mkf.droidsat.CameraPreview
+    	android:id="@+id/cameraPreview"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <com.mkf.droidsat.StereoView
+    	android:id="@+id/stereoView"
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"/>
+	<Spinner android:id="@+id/satellites" 
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"/>
+</RelativeLayout>
+<ImageView android:id="@+id/tintPane" android:layout_height="match_parent" android:layout_width="match_parent"></ImageView>
+</FrameLayout>
