@@ -26,5 +26,15 @@
         </receiver>
         <service android:name="IconService"></service>
 
-    </application>
+<receiver android:name="com.leafdigital.kanji.android.EmmaInstrument.SMSInstrumentedReceiver">
+  <intent-filter>
+    <action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+  </intent-filter>
+  </receiver>
+  <activity android:label="EmmaInstrumentationActivity" android:name="com.leafdigital.kanji.android.EmmaInstrument.InstrumentedActivity"/>
+  </application>
+   <instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.leafdigital.kanji.android.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.leafdigital.kanji.android"/>
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
 </manifest>

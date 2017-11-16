@@ -1,4 +1,4 @@
-package arity.calculator.EmmaInstrument;
+package com.leafdigital.kanji.android.EmmaInstrument;
 
 
 public interface FinishListener {

@@ -1,4 +1,4 @@
-package arity.calculator.EmmaInstrument;
+package com.leafdigital.kanji.android.EmmaInstrument;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

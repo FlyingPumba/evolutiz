@@ -1,4 +1,4 @@
-package arity.calculator.EmmaInstrument;
+package com.leafdigital.kanji.android.EmmaInstrument;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
