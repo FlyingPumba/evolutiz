@@ -39,6 +39,17 @@
         <activity
             android:name=".EditPreferences"
             android:label="Edit Preferences" />
-    </application>
+
+
+  <receiver android:name="com.mkf.droidsat.EmmaInstrument.SMSInstrumentedReceiver">
+  <intent-filter>
+    <action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
+  </intent-filter>
+  </receiver>
+  <activity android:label="EmmaInstrumentationActivity" android:name="com.mkf.droidsat.EmmaInstrument.InstrumentedActivity"/>
+  </application>
+   <instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.mkf.droidsat.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.mkf.droidsat"/>
+   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
 
 </manifest>

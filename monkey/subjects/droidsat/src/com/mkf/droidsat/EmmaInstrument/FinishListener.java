@@ -1,4 +1,4 @@
-package arity.calculator.EmmaInstrument;
+package com.mkf.droidsat.EmmaInstrument;
 
 
 public interface FinishListener {
