@@ -89,7 +89,7 @@ def boot_devices():
 		print "Booting Device:", device_name
 		logger.log_progress("\rBooting devices: " + str(i + 1) + "/" + str(settings.DEVICE_NUM))
 
-		emulator = "$ANDROID_HOME/emulator/emulator"
+		emulator = "export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator"
 
 		time.sleep(0.3)
 		if settings.HEADLESS:
