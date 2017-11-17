@@ -78,10 +78,10 @@ def process_app_result(success):
 #     return True
 
 def collectCoverage(device, package_name, result_dir, suffix=""):
-    logger.log_progress("\nSending coverage broadcast in device: " + device + " at: " + datetime.today().strftime("%H:%m:%S"))
+    logger.log_progress("\nSending coverage broadcast in device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
     os.system(adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE" + logger.redirect_string())
 
-    logger.log_progress("\nPulling coverage from device: " + device + " at: " + datetime.today().strftime("%H:%m:%S"))
+    logger.log_progress("\nPulling coverage from device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
     coverageFilePath = "/data/data/" + package_name + "/files/coverage.ec"
     os.system(adb.adb_cmd_prefix + " -s " + device + " pull " + coverageFilePath + " " + result_dir + "/coverage.ec" + suffix + logger.redirect_string())
 
@@ -125,7 +125,7 @@ def run_monkey_one_app(app_path, device):
 
             # start running monkey with timeout EXPERIMENT_TIME
             # TODO: should we add "--throttle 200" flag ? It's used in the experiments of "Are we there yet?" but it's usage in the sapienz experiments are unclear.
-            logger.log_progress("\nStarting monkey for app: " + folder_name + " in device: " + device + " at: " + datetime.today().strftime("%H:%m:%S"))
+            logger.log_progress("\nStarting monkey for app: " + folder_name + " in device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
             monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 1000000 2>&1 >" + result_dir + "/monkey.log" + files_repetition_suffix
             os.system(monkey_cmd)
 
