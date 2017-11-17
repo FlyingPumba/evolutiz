@@ -12,7 +12,7 @@ from datetime import datetime
 # global results for mp callback
 from devices.prepare_apk_parallel import prepare_apk
 
-EXPERIMENT_TIME = 30
+EXPERIMENT_TIME = 10
 COVERAGE_INTERVAL = 10
 REPETITIONS=2
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
@@ -34,8 +34,8 @@ class NoDaemonProcess(multiprocessing.Process):
 class NoDaemonPool(multiprocessing.pool.Pool):
     Process = NoDaemonProcess
 
-def instrument_apk(app_path, result_dir):
-    logger.log_progress("\nInstrumenting app:" + app_path)
+def instrument_apk(folder_name, app_path, result_dir):
+    logger.log_progress("\nInstrumenting app:" + folder_name)
 
     result_code = os.system("mkdir -p " + result_dir)
     if result_code != 0: raise Exception("Unable to create result dir")
@@ -88,24 +88,24 @@ def collectCoverage(device, package_name, result_dir, suffix=""):
     return True
 
 def run_monkey_one_app(app_path, device):
+    folder_name = os.path.basename(app_path)
     try:
-        folder_name = os.path.basename(app_path)
         result_dir = "../../results/" + folder_name
 
         os.chdir(app_path)
         os.system("rm " + result_dir + "/*" + logger.redirect_string())
 
-        apk_path, package_name = instrument_apk(app_path, result_dir)
+        apk_path, package_name = instrument_apk(folder_name, app_path, result_dir)
 
         os.system(adb.adb_cmd_prefix + " -s " + device + " install " + apk_path + " 2>&1 >"  + result_dir  +"/install.log")
 
-        logger.log_progress("\nPreparing device: " + device + " sdcard folder")
+        logger.log_progress("\nPreparing device: " + device + " sdcard")
         adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
         adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
         adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
         for repetition in range(0, REPETITIONS):
-            logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + app_path)
+            logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
             files_repetition_suffix = "." + str(repetition)
 
             # clear package data from previous runs
@@ -125,13 +125,13 @@ def run_monkey_one_app(app_path, device):
 
             # start running monkey with timeout EXPERIMENT_TIME
             # TODO: should we add "--throttle 200" flag ? It's used in the experiments of "Are we there yet?" but it's usage in the sapienz experiments are unclear.
-            logger.log_progress("\nStarting monkey for app: " + app_path + " in device: " + device + " at: " + str(datetime.today()))
+            logger.log_progress("\nStarting monkey for app: " + folder_name + " in device: " + device + " at: " + str(datetime.today()))
             monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 1000000 2>&1 >" + result_dir + "/monkey.log" + files_repetition_suffix
             os.system(monkey_cmd)
 
             adb.pkill(device, "monkey")
 
-            logger.log_progress("\nMonkey finished for app: " + app_path)
+            logger.log_progress("\nMonkey finished for app: " + folder_name)
             #monkey_finished_event.set()
 
             # p.join()
@@ -141,8 +141,7 @@ def run_monkey_one_app(app_path, device):
 
         return (True, device)
     except Exception as e:
-        print "There was an error running monkey on app: " + app_path
-        # print e
+        logger.log_progress("\nThere was an error running monkey on app: " + folder_name)
         traceback.print_exc()
         return (False, device)
 
