@@ -12,9 +12,9 @@ from datetime import datetime
 # global results for mp callback
 from devices.prepare_apk_parallel import prepare_apk
 
-EXPERIMENT_TIME = 10
+EXPERIMENT_TIME = 30
 COVERAGE_INTERVAL = 10
-REPETITIONS=1
+REPETITIONS=2
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
 
 results = []

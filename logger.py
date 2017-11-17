@@ -4,6 +4,8 @@ from datetime import datetime
 
 import os
 
+import settings
+
 orig_stdout = sys.stdout
 orig_stderr = sys.stderr
 output_file = None
@@ -17,9 +19,9 @@ def prepare():
     # redirect stdout and stderr
     starting_datetime = datetime.today().strftime("%Y-%m-%d_%H-%M")
     global output_filename
-    output_filename = "output." + starting_datetime + ".log"
+    output_filename = settings.WORKING_DIR + "output." + starting_datetime + ".log"
     global error_filename
-    error_filename = "output." + starting_datetime + ".log.err"
+    error_filename = settings.WORKING_DIR + "output." + starting_datetime + ".log.err"
 
     global output_file
     output_file = open(output_filename, 'w')
