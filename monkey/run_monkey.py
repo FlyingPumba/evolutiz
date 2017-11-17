@@ -5,14 +5,18 @@ import subprocess as sub
 
 import os
 
+import numpy
+
 import logger
+import settings
+from coverages import emma_coverage
 from devices import any_device, adb
 from datetime import datetime
 
 # global results for mp callback
 from devices.prepare_apk_parallel import prepare_apk
 
-EXPERIMENT_TIME = 10
+EXPERIMENT_TIME = 5
 COVERAGE_INTERVAL = 10
 REPETITIONS=2
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
@@ -146,10 +150,6 @@ def run_monkey_one_app(app_path, device):
         return (False, device)
 
 def run_monkey(app_paths):
-    logger.prepare()
-    logger.clear_progress()
-    logger.log_progress("Monkey")
-
     print "Preparing devices ..."
     any_device.boot_devices()
 
@@ -181,8 +181,61 @@ def run_monkey(app_paths):
 
     print "### Finished run_monkey"
 
-    # recover stdout and stderr
-    logger.restore()
+def process_results(app_paths):
+    results_per_app = {}
+    for app_path in app_paths:
+        folder_name = os.path.basename(app_path)
+        current_relative_dir = "monkey/results/" + folder_name
+        os.chdir(current_relative_dir)
+
+        results_per_repetition = []
+        for repetition in range(0, REPETITIONS):
+            unique_crashes = set()
+            crashes_length = []
+            coverage = 0
+
+            events_count = 0
+            current_test_content = ""
+
+            with open("monkey.log."+str(repetition), "r") as monkey_log_file:
+                for line_no, line in enumerate(monkey_log_file):
+                    if line.startswith(":Sending"):
+                        events_count += 1
+                        current_test_content += line
+                    if line.startswith("// CRASH:") and not line.startswith("// CRASH: com.android."):
+                        if current_test_content not in unique_crashes:
+                            unique_crashes.add(current_test_content)
+                            crashes_length.append(events_count)
+
+                            events_count = 0
+                            current_test_content = ""
+                        # TODO: What happens if we found a repeated crash but with different length ?
+
+            coverage_filename = "coverage.ec." + str(repetition)
+
+            os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em," + coverage_filename + logger.redirect_string())
+
+            html_file = settings.WORKING_DIR + current_relative_dir + "/coverage/index.html"
+
+            try:
+                coverage_str = emma_coverage.extract_coverage(html_file)
+                os.system("mv coverage/ coverage." + str(repetition) + logger.redirect_string())
+            except Exception, e:
+                print "Exception occurred trying to extra coverage from html file: ", str(e)
+
+            if coverage_str.find("%") != -1:
+                coverage = int(coverage_str.split("%")[0])
+
+            avg_crash_length = 0
+            if len(crashes_length) > 0:
+                avg_crash_length = numpy.mean(crashes_length)
+
+            results_per_repetition.append((coverage, avg_crash_length, len(unique_crashes)))
+
+        results_per_app[folder_name] = results_per_repetition
+
+    return results_per_app
+
 
 def get_subject_paths():
     p = sub.Popen("ls -d $PWD/monkey/subjects/*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
@@ -197,5 +250,16 @@ if __name__ == "__main__":
     # run this script from the root folder as:
     # python -m monkey.run_monkey
 
+    logger.prepare()
+    logger.clear_progress()
+    logger.log_progress("Monkey")
+
     app_paths = get_subject_paths()
     run_monkey(app_paths)
+    results_per_app = process_results(app_paths)
+
+    logger.log_progress("\n"+str(results_per_app))
+    print str(results_per_app)
+
+    # recover stdout and stderr
+    logger.restore()
