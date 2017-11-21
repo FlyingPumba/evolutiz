@@ -203,13 +203,11 @@ def process_results(app_paths):
                         events_count += 1
                         current_test_content += line
                     if line.startswith("// CRASH:") and not line.startswith("// CRASH: com.android."):
+                        crashes_length.append(events_count)
+                        events_count = 0
                         if current_test_content not in unique_crashes:
                             unique_crashes.add(current_test_content)
-                            crashes_length.append(events_count)
-
-                            events_count = 0
                             current_test_content = ""
-                        # TODO: What happens if we found a repeated crash but with different length ?
 
             coverage_filename = "coverage.ec." + str(repetition)
 
