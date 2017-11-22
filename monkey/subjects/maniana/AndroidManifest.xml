@@ -173,6 +173,7 @@
   </application>
    <instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.zapta.apps.maniana.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.zapta.apps.maniana"/>
    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
 
 </manifest>
