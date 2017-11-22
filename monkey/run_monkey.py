@@ -161,9 +161,8 @@ def run_monkey(app_paths):
 
     idle_devices.extend(any_device.get_devices())
 
-    # 2. aissign tasks to devices
+    # 2. assign tasks to devices
     pool = NoDaemonPool(processes=len(idle_devices))
-    time_out = False
     for i in range(0, len(app_paths)):
         while len(idle_devices) == 0:
             time.sleep(10)
