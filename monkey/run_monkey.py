@@ -38,7 +38,7 @@ class NoDaemonProcess(multiprocessing.Process):
 class NoDaemonPool(multiprocessing.pool.Pool):
     Process = NoDaemonProcess
 
-def instrument_apk(folder_name, app_path, result_dir):
+def instrument_apk(folder_name, result_dir):
     logger.log_progress("\nInstrumenting app: " + folder_name)
 
     result_code = os.system("mkdir -p " + result_dir)
@@ -152,9 +152,6 @@ def run_monkey(app_paths):
     print "Preparing devices ..."
     any_device.boot_devices()
 
-    # start time budget
-    global start_time
-    start_time = time.time()
     print "Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M")
 
     any_device.clean_sdcard()
