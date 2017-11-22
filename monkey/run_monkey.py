@@ -128,9 +128,8 @@ def run_monkey_one_app(app_path, device):
             # p.start()
 
             # start running monkey with timeout EXPERIMENT_TIME
-            # TODO: should we add "--throttle 200" flag ? It's used in the experiments of "Are we there yet?" but it's usage in the sapienz experiments are unclear.
             logger.log_progress("\nStarting monkey for app: " + folder_name + " in device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
-            monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 1000000 2>&1 >" + result_dir + "/monkey.log" + files_repetition_suffix
+            monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v --throttle 200 --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 1000000 2>&1 >" + result_dir + "/monkey.log" + files_repetition_suffix
             os.system(monkey_cmd)
 
             adb.pkill(device, "monkey")
