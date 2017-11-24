@@ -58,14 +58,21 @@ def run_sapienz_one_app(app_path, devices):
         result_dir = "../../results/" + folder_name
 
         os.chdir(app_path)
+        global apk_dir
+        apk_dir = app_path
         os.system("rm " + result_dir + "/*" + logger.redirect_string())
 
         instrument_apk(folder_name, result_dir)
+        global package_name
         package_name = prepare_apk(devices, app_path)
 
         for repetition in range(0, REPETITIONS):
             logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
-            files_repetition_suffix = "." + str(repetition)
+
+            # start time budget
+            global start_time
+            start_time = time.time()
+            print "Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M")
 
             for device in devices:
                 # clear package data from previous runs
@@ -101,6 +108,7 @@ def run_sapienz_one_app(app_path, devices):
 
 def time_budget_available():
     current_time = time.time()
+    global start_time
     elapsed_time = current_time - start_time
     return elapsed_time < settings.SEARCH_BUDGET_IN_SECONDS
 
@@ -131,11 +139,6 @@ def run_sapienz(app_paths):
         adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
     for i in range(0, len(app_paths)):
-        # start time budget
-        global start_time
-        start_time = time.time()
-        print "Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M")
-
         run_sapienz_one_app(app_paths[i], devices)
 
     print "### Finished run_sapienz"
@@ -214,7 +217,7 @@ if __name__ == "__main__":
     logger.clear_progress()
     logger.log_progress("Sapienz")
 
-    app_paths = get_subject_paths()
+    app_paths = get_subject_paths()[0:1]
     run_sapienz(app_paths)
     results_per_app = process_results(app_paths)
 

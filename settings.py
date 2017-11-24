@@ -10,7 +10,7 @@ USE_REAL_DEVICES = False
 USE_EMULATORS = True
 
 # === Emulator ===
-DEVICE_NUM = 4
+DEVICE_NUM = 2
 AVD_BOOT_DELAY = 40 # 40
 AVD_SERIES = "Nexus_4_API_19"
 EVAL_TIMEOUT = 120
@@ -36,7 +36,7 @@ GENERATION = 100 # 100
 CXPB = 0.7
 # Mutation probability
 MUTPB = 0.3
-SEARCH_BUDGET_IN_SECONDS = 60 * 45 # 60 * 60 # = 1 hour
+SEARCH_BUDGET_IN_SECONDS = 60 * 15 # 60 * 60 # = 1 hour
 
 
 # === Only for main_multi ===
