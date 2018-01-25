@@ -16,9 +16,9 @@ from datetime import datetime
 # global results for mp callback
 from devices.prepare_apk_parallel import prepare_apk
 
-EXPERIMENT_TIME = 5
+EXPERIMENT_TIME = 15
 COVERAGE_INTERVAL = 10
-REPETITIONS=2
+REPETITIONS=4
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
 
 results = []
@@ -91,36 +91,30 @@ def collectCoverage(device, package_name, result_dir, suffix=""):
 
     return True
 
-def run_monkey_one_app(app_path, device):
-    folder_name = os.path.basename(app_path)
+def run_monkey_one_app(app_path, apk_path, package_name, device_name, device_number, result_dir):
     try:
-        result_dir = "../../results/" + folder_name
-
         os.chdir(app_path)
-        os.system("rm " + result_dir + "/*" + logger.redirect_string())
 
-        apk_path, package_name = instrument_apk(folder_name, app_path, result_dir)
+        os.system(adb.adb_cmd_prefix + " -s " + device_name + " install " + apk_path + " 2>&1 >" + result_dir + "/install.log" + "." + device_name)
 
-        os.system(adb.adb_cmd_prefix + " -s " + device + " install " + apk_path + " 2>&1 >"  + result_dir  +"/install.log")
-
-        logger.log_progress("\nPreparing device: " + device + " sdcard")
-        adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
-        adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
-        adb.sudo_shell_command(device, "mount -o rw,remount /system")
+        logger.log_progress("\nPreparing device: " + device_name + " sdcard")
+        adb.sudo_shell_command(device_name, "mount -o rw,remount rootfs /")
+        adb.sudo_shell_command(device_name, "chmod 777 /mnt/sdcard")
+        adb.sudo_shell_command(device_name, "mount -o rw,remount /system")
 
         for repetition in range(0, REPETITIONS):
-            logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
-            files_repetition_suffix = "." + str(repetition)
+            logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + package_name + " in device: " + device_name)
+            log_files_suffix = "." + str(repetition) + "." + str(device_number)
 
             # clear package data from previous runs
-            adb.shell_command(device, "pm clear " + package_name)
+            adb.shell_command(device_name, "pm clear " + package_name)
 
             # clear logcat
-            os.system(adb.adb_cmd_prefix  +" -s " + device + " logcat -c")
+            os.system(adb.adb_cmd_prefix +" -s " + device_name + " logcat -c")
 
             # run logcat
-            logcat_file = open(result_dir + "/monkey.logcat" + files_repetition_suffix, 'w')
-            sub.Popen(adb.adb_cmd_prefix  +" -s " + device + " logcat", stdout=logcat_file, stderr=logcat_file, shell=True)
+            logcat_file = open(result_dir + "/monkey.logcat" + log_files_suffix, 'w')
+            sub.Popen(adb.adb_cmd_prefix +" -s " + device_name + " logcat", stdout=logcat_file, stderr=logcat_file, shell=True)
 
             # start dumping intermediate coverage
             #monkey_finished_event = multiprocessing.Event()
@@ -128,25 +122,25 @@ def run_monkey_one_app(app_path, device):
             # p.start()
 
             # start running monkey with timeout EXPERIMENT_TIME
-            logger.log_progress("\nStarting monkey for app: " + folder_name + " in device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
-            monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v --throttle 200 --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 1000000 2>&1 >" + result_dir + "/monkey.log" + files_repetition_suffix
+            logger.log_progress("\nStarting monkey for app: " + package_name + " in device: " + device_name + " at: " + datetime.today().strftime("%H:%M:%S"))
+            monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device_name + " shell monkey -p " + package_name + " -v --throttle 200 --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 1000000 2>&1 >" + result_dir + "/monkey.log" + log_files_suffix
             os.system(monkey_cmd)
 
-            adb.pkill(device, "monkey")
+            adb.pkill(device_name, "monkey")
 
-            logger.log_progress("\nMonkey finished for app: " + folder_name)
+            logger.log_progress("\nMonkey finished for app: " + package_name + " in device: " + device_name + " at: " + datetime.today().strftime("%H:%M:%S"))
             #monkey_finished_event.set()
 
             # p.join()
 
             # collect final coverage
-            collectCoverage(device, package_name, result_dir, suffix=files_repetition_suffix)
+            collectCoverage(device_name, package_name, result_dir, suffix=log_files_suffix)
 
-        return (True, device)
+        return (True, device_name)
     except Exception as e:
-        logger.log_progress("\nThere was an error running monkey on app: " + folder_name)
+        logger.log_progress("\nThere was an error running monkey on app: " + package_name)
         traceback.print_exc()
-        return (False, device)
+        return (False, device_name)
 
 def run_monkey(app_paths):
     print "Preparing devices ..."
@@ -160,15 +154,27 @@ def run_monkey(app_paths):
 
     # 2. assign tasks to devices
     pool = NoDaemonPool(processes=len(idle_devices))
+    
     for i in range(0, len(app_paths)):
-        while len(idle_devices) == 0:
+        while len(idle_devices) != settings.DEVICE_NUM:
             time.sleep(10)
 
-        device = idle_devices.pop(0)
+        app_path = app_paths[i]
+        folder_name = os.path.basename(app_path)
+        result_dir = "../../results/" + folder_name
 
-        pool.apply_async(run_monkey_one_app,
-                         args=(app_paths[i], device),
-                         callback=process_app_result)
+        os.chdir(app_path)
+        os.system("rm " + result_dir + "/*" + logger.redirect_string())
+
+        apk_path, package_name = instrument_apk(folder_name, app_path, result_dir)
+
+        for j in range(0, settings.DEVICE_NUM):
+
+            device = idle_devices.pop(0)
+
+            pool.apply_async(run_monkey_one_app,
+                             args=(app_path, apk_path, package_name, device, j, result_dir),
+                             callback=process_app_result)
 
     print "run_monkey is wating for all processes to finish ... "
     pool.close()
@@ -181,49 +187,53 @@ def process_results(app_paths):
     for app_path in app_paths:
         folder_name = os.path.basename(app_path)
         current_relative_dir = "monkey/results/" + folder_name
-        os.chdir(current_relative_dir)
+        os.chdir(settings.WORKING_DIR + current_relative_dir)
 
         results_per_repetition = []
         for repetition in range(0, REPETITIONS):
             unique_crashes = set()
             crashes_length = []
-            coverage = 0
+            max_coverage = 0
 
-            events_count = 0
-            current_test_content = ""
+            for device_number in range(0, settings.DEVICE_NUM):
+                log_files_suffix = "." + str(repetition) + "." + str(device_number)
 
-            with open("monkey.log."+str(repetition), "r") as monkey_log_file:
-                for line_no, line in enumerate(monkey_log_file):
-                    if line.startswith(":Sending"):
-                        events_count += 1
-                        current_test_content += line
-                    if line.startswith("// CRASH:") and not line.startswith("// CRASH: com.android."):
-                        crashes_length.append(events_count)
-                        events_count = 0
-                        if current_test_content not in unique_crashes:
-                            unique_crashes.add(current_test_content)
-                            current_test_content = ""
+                events_count = 0
+                current_test_content = ""
 
-            coverage_filename = "coverage.ec." + str(repetition)
+                with open("monkey.log" + log_files_suffix, "r") as monkey_log_file:
+                    for line_no, line in enumerate(monkey_log_file):
+                        if line.startswith(":Sending"):
+                            events_count += 1
+                            current_test_content += line
+                        if line.startswith("// CRASH:") and not line.startswith("// CRASH: com.android."):
+                            crashes_length.append(events_count)
+                            events_count = 0
+                            if current_test_content not in unique_crashes:
+                                unique_crashes.add(current_test_content)
+                                current_test_content = ""
 
-            os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em," + coverage_filename + logger.redirect_string())
+                coverage_filename = "coverage.ec" + log_files_suffix
+                os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em," + coverage_filename + logger.redirect_string())
 
-            html_file = settings.WORKING_DIR + current_relative_dir + "/coverage/index.html"
+                html_file = settings.WORKING_DIR + current_relative_dir + "/coverage/index.html"
 
-            try:
-                coverage_str = emma_coverage.extract_coverage(html_file)
-                os.system("mv coverage/ coverage." + str(repetition) + logger.redirect_string())
-            except Exception, e:
-                print "Exception occurred trying to extra coverage from html file: ", str(e)
+                try:
+                    coverage_str = emma_coverage.extract_coverage(html_file)
+                    os.system("mv coverage/ coverage" + log_files_suffix + logger.redirect_string())
+                except Exception, e:
+                    print "Exception occurred trying to extra coverage from html file: ", str(e)
 
-            if coverage_str.find("%") != -1:
-                coverage = int(coverage_str.split("%")[0])
+                if coverage_str.find("%") != -1:
+                    coverage = int(coverage_str.split("%")[0])
+                    if coverage > max_coverage:
+                        max_coverage = coverage
 
             avg_crash_length = 0
             if len(crashes_length) > 0:
                 avg_crash_length = numpy.mean(crashes_length)
 
-            results_per_repetition.append((coverage, avg_crash_length, len(unique_crashes)))
+            results_per_repetition.append((max_coverage, avg_crash_length, len(unique_crashes)))
 
         results_per_app[folder_name] = results_per_repetition
 
@@ -247,7 +257,7 @@ if __name__ == "__main__":
     logger.clear_progress()
     logger.log_progress("Monkey")
 
-    app_paths = get_subject_paths()
+    app_paths = get_subject_paths()[0:1]
     run_monkey(app_paths)
     results_per_app = process_results(app_paths)
 
