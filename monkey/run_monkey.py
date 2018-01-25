@@ -154,7 +154,7 @@ def run_monkey(app_paths):
 
     # 2. assign tasks to devices
     pool = NoDaemonPool(processes=len(idle_devices))
-    
+
     for i in range(0, len(app_paths)):
         while len(idle_devices) != settings.DEVICE_NUM:
             time.sleep(10)
@@ -166,7 +166,7 @@ def run_monkey(app_paths):
         os.chdir(app_path)
         os.system("rm " + result_dir + "/*" + logger.redirect_string())
 
-        apk_path, package_name = instrument_apk(folder_name, app_path, result_dir)
+        apk_path, package_name = instrument_apk(folder_name, result_dir)
 
         for j in range(0, settings.DEVICE_NUM):
 
