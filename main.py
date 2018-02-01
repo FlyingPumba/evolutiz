@@ -94,7 +94,12 @@ def main(instrumented_app_dir, eaStrategy):
 
 	# get package name and prepare apk if necessary
 	global package_name
-	package_name = prepare_apk(devices, instrumented_app_dir)
+	package_name, installation_successful = prepare_apk(devices, instrumented_app_dir)
+	if not installation_successful:
+		logger.log_progress("\nUnable to install apk in all devices")
+		print "\n### Finished main"
+		logger.restore()
+
 	logger.log_progress("\nWorking on package: " + package_name)
 
 	# register common functions in toolbox

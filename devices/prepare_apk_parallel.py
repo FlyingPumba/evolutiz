@@ -19,13 +19,16 @@ def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
         adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
         adb.uninstall(device, package_name)
         adb.install(device, package_name, apk_path)
-        return True
+        return (True, apk_path, device)
     except Exception as e:
         traceback.print_exc(file=logger.orig_stdout)
         print e
-        return False
+        return (False, apk_path, device)
 
-def process_results(success):
+def process_results(result):
+    if not result[0]:
+        logger.log_progress("\rInstalling apk on devices: Failed to install apk " + result[1] + " on device: " + result[2])
+        return
     global installed_devices
     installed_devices += 1
     global total_devices
@@ -76,7 +79,7 @@ def prepare_apk(devices, instrumented_app_dir):
     os.system("mkdir -p " + instrumented_app_dir + "/crashes")
     os.system("rm -rf " + instrumented_app_dir + "/coverages")
     os.system("mkdir -p " + instrumented_app_dir + "/coverages")
-    return package_name
+    return package_name, (installed_devices == total_devices)
 
 
 def get_package_name(path):

@@ -43,6 +43,10 @@ idle_devices = []
 total_individuals = 0
 
 def process_results(data):
+	if data == False:
+		logger.log_progress("\rInit population in parallel: failed to generate_individual")
+		return
+
 	individual, device = data
 
 	global results

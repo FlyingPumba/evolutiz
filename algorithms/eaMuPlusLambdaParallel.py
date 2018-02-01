@@ -49,6 +49,9 @@ class eaMuPlusLambdaParallel:
 		print "### Initialising population ...."
 		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, apk_dir=self.apk_dir,
 												  package_name=self.package_name)
+		if (len(self.population) < settings.POPULATION_SIZE):
+			logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
+			return
 
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
@@ -59,7 +62,7 @@ class eaMuPlusLambdaParallel:
 							 0)
 
 		if not completed_evaluation:
-			print "Time budget run out durring parallel evaluation, exiting setup"
+			logger.log_progress("\nTime budget run out durring parallel evaluation, exiting setup")
 			return
 
 		# discard invalid population individual

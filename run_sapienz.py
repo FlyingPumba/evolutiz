@@ -64,7 +64,10 @@ def run_sapienz_one_app(app_path, devices):
 
         instrument_apk(folder_name, result_dir)
         global package_name
-        package_name = prepare_apk(devices, app_path)
+        package_name, installation_successful = prepare_apk(devices, app_path)
+        if not installation_successful:
+            logger.log_progress("\nUnable to install apk in all devices")
+            return False
 
         for repetition in range(0, REPETITIONS):
             logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
@@ -99,11 +102,11 @@ def run_sapienz_one_app(app_path, devices):
 
             # p.join()
 
-        return (True, device)
+        return True
     except Exception as e:
-        logger.log_progress("\nThere was an error running monkey on app: " + folder_name)
+        logger.log_progress("\nThere was an error running sapienz on app: " + folder_name)
         traceback.print_exc()
-        return (False, device)
+        return False
 
 
 def time_budget_available():
@@ -139,7 +142,11 @@ def run_sapienz(app_paths):
         adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
     for i in range(0, len(app_paths)):
-        run_sapienz_one_app(app_paths[i], devices)
+        success = run_sapienz_one_app(app_paths[i], devices)
+        if not success:
+            logger.log_progress("\nThere was an error running sapienz on app: " + app_paths[i])
+            break
+
 
     print "### Finished run_sapienz"
 
@@ -211,7 +218,7 @@ def get_subject_paths():
 
 if __name__ == "__main__":
     # run this script from the root folder as:
-    # python -m monkey.run_sapienz
+    # python run_sapienz
 
     logger.prepare()
     logger.clear_progress()
