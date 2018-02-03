@@ -105,7 +105,7 @@ def get_suite_coverage(scripts, device, apk_dir, package_name, gen, pop):
 						+ " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
 						  "--string-seeding /mnt/sdcard/" + package_name + "_strings.xml " \
 						+ "-f /mnt/sdcard/" + script_name + " 1"
-		adb.sudo_shell_command(device, motifcore_cmd, timeout=True)
+		adb.sudo_shell_command(device, motifcore_cmd, timeout=settings.EVAL_TIMEOUT)
 
 		# need to manually kill motifcore when timeout
 		adb.pkill(device, "motifcore")

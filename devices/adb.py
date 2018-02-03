@@ -6,21 +6,21 @@ import settings
 
 adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb"
 
-def adb_command(device, command, timeout = False):
+def adb_command(device, command, timeout = -1):
     adb_cmd = adb_cmd_prefix + " -s " + device + " " + command
     print "executing adb command: ", command
-    if timeout:
-        os.system(settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + adb_cmd + logger.redirect_string())
+    if timeout != -1:
+        exit_code = subprocess.call(settings.TIMEOUT_CMD + " " + str(timeout) + " " + adb_cmd + logger.redirect_string(), shell=True)
+        return exit_code == 124 # return wheter it got timed out or not
     else:
         os.system(adb_cmd + logger.redirect_string())
+        return False # didn't get timed out
 
-def shell_command(device, command, timeout = False):
+def shell_command(device, command, timeout = -1):
     adb_command(device, "shell " + command, timeout)
-    #os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell " + command)
 
-def sudo_shell_command(device, command, timeout = False):
+def sudo_shell_command(device, command, timeout = -1):
     shell_command(device, "\" su -s sh -c '" + command + "'\"", timeout)
-    # os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell \" su -c '" + command + "'\"")
 
 def push(device, src, dest):
     adb_command(device, "push " + src + " " + dest)

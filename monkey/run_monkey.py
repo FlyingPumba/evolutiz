@@ -83,7 +83,11 @@ def process_app_result(success):
 
 def collectCoverage(device, package_name, result_dir, suffix=""):
     logger.log_progress("\nSending coverage broadcast in device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
-    os.system(adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE" + logger.redirect_string())
+    got_timed_out = adb.shell_command(device,
+                      "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE" + logger.redirect_string(),
+                      60*20)
+    if got_timed_out:
+        return False
 
     logger.log_progress("\nPulling coverage from device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
     coverageFilePath = "/data/data/" + package_name + "/files/coverage.ec"
@@ -102,7 +106,9 @@ def run_monkey_one_app(app_path, apk_path, package_name, device_name, device_num
         adb.sudo_shell_command(device_name, "chmod 777 /mnt/sdcard")
         adb.sudo_shell_command(device_name, "mount -o rw,remount /system")
 
-        for repetition in range(0, REPETITIONS):
+        repetition = 0
+
+        while repetition < REPETITIONS:
             logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + package_name + " in device: " + device_name)
             log_files_suffix = "." + str(repetition) + "." + str(device_number)
 
@@ -134,7 +140,13 @@ def run_monkey_one_app(app_path, apk_path, package_name, device_name, device_num
             # p.join()
 
             # collect final coverage
-            collectCoverage(device_name, package_name, result_dir, suffix=log_files_suffix)
+            success = collectCoverage(device_name, package_name, result_dir, suffix=log_files_suffix)
+            if not success:
+                logger.log_progress(
+                    "\nCoverage collection timed out for app: " + package_name + " in device: " + device_name + " at: " + datetime.today().strftime(
+                        "%H:%M:%S" + "\n Repeating current repetition"))
+            else:
+                repetition = repetition + 1
 
         return (True, device_name)
     except Exception as e:
