@@ -10,7 +10,7 @@ USE_REAL_DEVICES = False
 USE_EMULATORS = True
 
 # === Emulator ===
-DEVICE_NUM = 2
+DEVICE_NUM = 3
 AVD_BOOT_DELAY = 40 # 40
 AVD_SERIES = "Nexus_4_API_19"
 EVAL_TIMEOUT = 120
@@ -28,15 +28,15 @@ WORKING_DIR = '/home/ivan/src/sapienz/'
 # === GA parameters ===
 SEQUENCE_LENGTH_MIN = 20
 SEQUENCE_LENGTH_MAX = 500
-SUITE_SIZE = 3 # 5
-POPULATION_SIZE = 3 # 50
-OFFSPRING_SIZE = 3 # 50
-GENERATION = 100 # 100
+SUITE_SIZE = 5 # 5
+POPULATION_SIZE = 10 # 50
+OFFSPRING_SIZE = 10 # 50
+GENERATION = 50 # 100
 # Crossover probability
 CXPB = 0.7
 # Mutation probability
 MUTPB = 0.3
-SEARCH_BUDGET_IN_SECONDS = 60 * 15 # 60 * 60 # = 1 hour
+SEARCH_BUDGET_IN_SECONDS = 60 * 60 # 60 * 60 # = 1 hour
 
 
 # === Only for main_multi ===

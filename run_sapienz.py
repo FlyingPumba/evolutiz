@@ -17,10 +17,7 @@ from devices import any_device
 from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
 
-EXPERIMENT_TIME = 5
-COVERAGE_INTERVAL = 10
 REPETITIONS = 2
-timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
 
 start_time = None
 apk_dir = None
