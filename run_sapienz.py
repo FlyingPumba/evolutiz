@@ -57,7 +57,7 @@ def run_sapienz_one_app(app_path, devices):
         os.chdir(app_path)
         global apk_dir
         apk_dir = app_path
-        os.system("rm " + result_dir + "/*" + logger.redirect_string())
+        os.system("rm -r " + result_dir + "/*" + logger.redirect_string())
 
         instrument_apk(folder_name, result_dir)
         global package_name

@@ -46,26 +46,26 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 
 	motifcore_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
 
-	ret = []
-
-	# clear data
-	adb.shell_command(device, "pm clear " + package_name)
-
-	# start motifcore
-	print "... Start generating a sequence"
-	motifcore_cmd = "motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml -v " + str(
-		motifcore_events)
-	adb.shell_command(device, motifcore_cmd, timeout = True)
-
-	print "... Finish generating a sequence"
-	# access the generated script, should ignore the first launch activity
-	script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]
-	ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
-
-	motifcore_script_filename = apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index)
-
 	while True:
 		try:
+			ret = []
+
+			# clear data
+			adb.shell_command(device, "pm clear " + package_name)
+
+			# start motifcore
+			print "... Start generating a sequence"
+			motifcore_cmd = "motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml -v " + str(
+				motifcore_events)
+			adb.shell_command(device, motifcore_cmd, timeout=True)
+
+			print "... Finish generating a sequence"
+			# access the generated script, should ignore the first launch activity
+			script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]
+			ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
+
+			motifcore_script_filename = apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index)
+
 			# need to kill motifcore when timeout
 			adb.pkill(device, "motifcore")
 
