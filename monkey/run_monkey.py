@@ -176,7 +176,7 @@ def run_monkey(app_paths):
         result_dir = "../../results/" + folder_name
 
         os.chdir(app_path)
-        os.system("rm " + result_dir + "/*" + logger.redirect_string())
+        os.system("rm -r " + result_dir + "/*" + logger.redirect_string())
 
         apk_path, package_name = instrument_apk(folder_name, result_dir)
 
