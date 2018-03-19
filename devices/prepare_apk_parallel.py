@@ -2,6 +2,7 @@ import multiprocessing as mp
 import os
 import subprocess
 import traceback
+from datetime import datetime as dt
 
 import logger
 import settings
@@ -13,12 +14,15 @@ total_devices = 0
 
 def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
     try:
+        start_time = dt.now()
         static_analyser.upload_string_xml(device, decoded_dir, package_name)
 
         print "### Installing apk:", apk_path
         adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
         adb.uninstall(device, package_name)
         adb.install(device, package_name, apk_path)
+
+        logger.log_progress("\rpush_apk_and_string_xml on device " + device + " took " + str((dt.now() - start_time).seconds))
         return (True, apk_path, device)
     except Exception as e:
         traceback.print_exc(file=logger.orig_stdout)
@@ -83,6 +87,7 @@ def prepare_apk(devices, instrumented_app_dir):
 
 
 def get_package_name(path):
+    start_time = dt.now()
     apk_path = None
     if path.endswith(".apk"):
         apk_path = path
@@ -103,4 +108,6 @@ def get_package_name(path):
 
     get_package_cmd = "$ANDROID_HOME/build-tools/26.0.1/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package= | awk 'BEGIN {FS=\"\\\"\"}{print $2}'"
     package_name = subprocess.Popen(get_package_cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+
+    logger.log_progress("\rget_package_name took " + str((dt.now() - start_time).seconds))
     return package_name, apk_path

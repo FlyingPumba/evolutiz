@@ -15,6 +15,8 @@ class CanNotInitSeqException(Exception):
 	pass
 
 def get_suite(device, apk_dir, package_name):
+	start_time = datetime.datetime.now()
+
 	ret = []
 	unique_crashes = set()
 	if settings.DEBUG:
@@ -37,10 +39,14 @@ def get_suite(device, apk_dir, package_name):
 	if settings.DEBUG:
 		print "... Exiting get_suite method"
 
+	logger.log_progress("\rget_suite took " + str((datetime.datetime.now() - start_time).seconds))
+
 	return ret
 
 
 def get_sequence(device, apk_dir, package_name, index, unique_crashes):
+	start_time = datetime.datetime.now()
+
 	std_out_file = apk_dir + "/intermediate/" + "output.stdout"
 	random.seed()
 
@@ -98,6 +104,8 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	crash_handler.handle(device, apk_dir, motifcore_script_filename, "init", ts, index, unique_crashes)
 
 	print "... Exiting get_sequence method"
+
+	logger.log_progress("\rget_sequence took " + str((datetime.datetime.now() - start_time).seconds))
 
 	return ret
 
