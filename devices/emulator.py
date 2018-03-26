@@ -94,10 +94,10 @@ def boot_devices():
 		time.sleep(0.3)
 		if settings.HEADLESS:
 			# -no-window flag can't be at the end
-			flags = " -wipe-data -no-window -no-boot-anim -writable-system -use-system-libs -qemu"
+			flags = " -wipe-data -no-window -no-boot-anim -writable-system"
 			sub.Popen(emulator + ' -avd ' + device_name + flags, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 		else:
-			flags = " -wipe-data -no-boot-anim -writable-system -use-system-libs -qemu"
+			flags = " -wipe-data -no-boot-anim -writable-system"
 			sub.Popen(emulator + ' -avd ' + device_name + flags, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 
 		print "Waiting ", settings.AVD_BOOT_DELAY, " seconds for emulators to be ready"
