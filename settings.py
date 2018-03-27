@@ -10,7 +10,7 @@ USE_REAL_DEVICES = False
 USE_EMULATORS = True
 
 # === Emulator ===
-DEVICE_NUM = 1
+DEVICE_NUM = 8
 AVD_BOOT_DELAY = 40 # 40
 AVD_SERIES = "Nexus_4_API_19"
 EVAL_TIMEOUT = 120
@@ -20,7 +20,7 @@ TIMEOUT_CMD = "timeout"
 
 # === Env. Paths ===
 # path should end with a '/'
-ANDROID_HOME = '/opt/android-sdk/'
+ANDROID_HOME = '/usr/local/android-sdk/'
 # the path of sapienz folder
 WORKING_DIR = '/home/ivan/src/sapienz/'
 
@@ -29,9 +29,9 @@ WORKING_DIR = '/home/ivan/src/sapienz/'
 SEQUENCE_LENGTH_MIN = 20
 SEQUENCE_LENGTH_MAX = 500
 SUITE_SIZE = 5 # 5
-POPULATION_SIZE = 10 # 50
-OFFSPRING_SIZE = 10 # 50
-GENERATION = 50 # 100
+POPULATION_SIZE = 50 # 50
+OFFSPRING_SIZE = 50 # 50
+GENERATION = 100 # 100
 # Crossover probability
 CXPB = 0.7
 # Mutation probability
