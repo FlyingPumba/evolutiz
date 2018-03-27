@@ -22,7 +22,7 @@ def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
         adb.uninstall(device, package_name)
         adb.install(device, package_name, apk_path)
 
-        logger.log_progress("\npush_apk_and_string_xml on device " + device + " took " + str((dt.now() - start_time).seconds))
+        # logger.log_progress("\npush_apk_and_string_xml on device " + device + " took " + str((dt.now() - start_time).seconds))
         return (True, apk_path, device)
     except Exception as e:
         traceback.print_exc(file=logger.orig_stdout)
@@ -109,5 +109,5 @@ def get_package_name(path):
     get_package_cmd = "$ANDROID_HOME/build-tools/27.0.3/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package= | awk 'BEGIN {FS=\"\\\"\"}{print $2}'"
     package_name = subprocess.Popen(get_package_cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
 
-    logger.log_progress("\nget_package_name took " + str((dt.now() - start_time).seconds))
+    # logger.log_progress("\nget_package_name took " + str((dt.now() - start_time).seconds))
     return package_name, apk_path

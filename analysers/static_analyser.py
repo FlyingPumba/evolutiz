@@ -43,7 +43,7 @@ def decode_apk(input_apk, output_dir):
 
 	os.system("java -jar " + settings.WORKING_DIR + "lib/apktool.jar d -f " + input_apk + logger.redirect_string())
 
-	logger.log_progress("\ndecode_apk took " + str((dt.now() - start_time).seconds))
+	# logger.log_progress("\ndecode_apk took " + str((dt.now() - start_time).seconds))
 
 
 def upload_string_xml(device, decoded_dir, package_name):
@@ -56,5 +56,5 @@ def upload_string_xml(device, decoded_dir, package_name):
 	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/" + package_name + "_strings.xml" + logger.redirect_string())
 	os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " push " + string_xml_path + " /mnt/sdcard/" + package_name + "_strings.xml" + logger.redirect_string())
 
-	logger.log_progress("\nupload_string_xml took " + str((dt.now() - start_time).seconds))
+	# logger.log_progress("\nupload_string_xml took " + str((dt.now() - start_time).seconds))
 

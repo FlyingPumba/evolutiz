@@ -33,7 +33,7 @@ def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, apk_dir
         result = eval_suite_parallel(individual, device, apk_dir, package_name, gen, pop)
         elapsed_time = time.time() - start_time
         print "Elapsed seconds to evaluate individual was ", elapsed_time
-        logger.log_progress("\nElapsed seconds to evaluate individual was " + str(elapsed_time))
+        # logger.log_progress("\nElapsed seconds to evaluate individual was " + str(elapsed_time))
         return result
     except Exception as e:
         print "There was an error evaluating individual in parallel"

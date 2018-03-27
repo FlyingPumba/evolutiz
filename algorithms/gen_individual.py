@@ -39,7 +39,7 @@ def get_suite(device, apk_dir, package_name):
 	if settings.DEBUG:
 		print "... Exiting get_suite method"
 
-	logger.log_progress("\nget_suite took " + str((datetime.datetime.now() - start_time).seconds))
+	# logger.log_progress("\nget_suite took " + str((datetime.datetime.now() - start_time).seconds))
 
 	return ret
 
@@ -105,7 +105,7 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 
 	print "... Exiting get_sequence method"
 
-	logger.log_progress("\nget_sequence took " + str((datetime.datetime.now() - start_time).seconds))
+	# logger.log_progress("\nget_sequence took " + str((datetime.datetime.now() - start_time).seconds))
 
 	return ret
 
