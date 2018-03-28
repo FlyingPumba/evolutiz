@@ -18,7 +18,7 @@ from devices.prepare_apk_parallel import prepare_apk
 
 EXPERIMENT_TIME = 5
 COVERAGE_INTERVAL = 10
-REPETITIONS=2
+REPETITIONS=1
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
 
 results = []
@@ -183,6 +183,7 @@ def run_monkey(app_paths):
 def process_results(app_paths):
     results_per_app = {}
     for app_path in app_paths:
+        logger.log_progress(app_path)
         folder_name = os.path.basename(app_path)
         current_relative_dir = "monkey/results/" + folder_name
         os.chdir(current_relative_dir)
@@ -210,7 +211,7 @@ def process_results(app_paths):
 
             coverage_filename = "coverage.ec." + str(repetition)
 
-            os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em," + coverage_filename + logger.redirect_string())
+            os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em," + coverage_filename + " -sp " + app_path + "/src " + logger.redirect_string())
 
             html_file = settings.WORKING_DIR + current_relative_dir + "/coverage/index.html"
 
@@ -251,8 +252,8 @@ if __name__ == "__main__":
     logger.clear_progress()
     logger.log_progress("Monkey")
 
-    app_paths = get_subject_paths()
-    run_monkey(app_paths)
+    app_paths = get_subject_paths()[0:1]
+    # run_monkey(app_paths)
     results_per_app = process_results(app_paths)
 
     logger.log_progress("\n"+str(results_per_app))
