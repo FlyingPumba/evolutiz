@@ -17,7 +17,7 @@ from devices import any_device
 from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
 
-REPETITIONS = 10
+REPETITIONS = 1
 
 start_time = None
 apk_dir = None
