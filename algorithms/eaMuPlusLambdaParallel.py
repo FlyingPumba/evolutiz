@@ -24,13 +24,14 @@ class eaMuPlusLambdaParallel:
 		assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
 									   "probabilities must be smaller or equal to 1.0.")
 
-	def setup(self, toolbox, verbose=False):
+	def setup(self, toolbox, stats = None, verbose=False):
 		# assumes toolbox has registered:
 		# "individual" to generate individuals
 		# "population" to generate population
 		self.toolbox = toolbox
 		self.apk_dir = toolbox.get_apk_dir()
 		self.package_name = toolbox.get_package_name()
+		self.stats = stats
 		self.verbose = verbose
 
 		### deap framework setup
@@ -74,6 +75,14 @@ class eaMuPlusLambdaParallel:
 
 	def evolve(self):
 
+		# record first population in logbook
+		logbook = tools.Logbook()
+		logbook.header = ['gen', 'nevals'] + (self.stats.fields if self.stats else [])
+
+		record = self.stats.compile(self.population) if self.stats is not None else {}
+		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
+		logbook.record(gen=0, nevals=len(invalid_ind), **record)
+
 		# Begin the generational process
 		for gen in range(1, self.ngen + 1):
 
@@ -111,6 +120,15 @@ class eaMuPlusLambdaParallel:
 
 			# Select the next generation population
 			self.population[:] = self.toolbox.select(self.population + offspring, self.mu)
+
+			# Update the statistics with the new population
+			record = self.stats.compile(self.population) if self.stats is not None else {}
+			logbook.record(gen=gen, nevals=len(invalid_ind), **record)
+
+			# dump logbook in case we are interrupted
+			logbook_file = open(self.apk_dir + "/intermediate/logbook.pickle", 'wb')
+			pickle.dump(logbook, logbook_file)
+			logbook_file.close()
 
 		return self.population
 

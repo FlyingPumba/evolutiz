@@ -27,14 +27,15 @@
 # THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
+import pickle
 import platform
 import sys
 import time
 from datetime import datetime
 
 import os
+
+import numpy
 from deap import tools, base
 
 import logger
@@ -50,6 +51,7 @@ from algorithms.gen_individual import gen_individual
 from devices import any_device
 from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
+from plot import two_d_line
 
 start_time = None
 apk_dir = None
@@ -110,15 +112,47 @@ def main(instrumented_app_dir, eaStrategy):
 	toolbox.register("get_apk_dir", get_apk_dir)
 	toolbox.register("get_package_name", get_package_name)
 
+	# log the history
+	history = tools.History()
+	# Decorate the variation operators
+	toolbox.decorate("mate", history.decorator)
+	toolbox.decorate("mutate", history.decorator)
+
+	stats = tools.Statistics(lambda ind: ind.fitness.values)
+	# axis = 0, the numpy.mean will return an array of results
+	stats.register("avg", numpy.mean, axis=0)
+	stats.register("std", numpy.std, axis=0)
+	stats.register("min", numpy.min, axis=0)
+	stats.register("max", numpy.max, axis=0)
+	stats.register("pop_fitness", return_as_is)
+
 	# hof = tools.HallOfFame(6)
 	# pareto front can be large, there is a similarity option parameter
 	hof = tools.ParetoFront()
 
 	# genetic algorithm
-	eaStrategy.setup(toolbox)
-	population = eaStrategy.evolve()
+	eaStrategy.setup(toolbox, stats=stats)
+	population, logbook = eaStrategy.evolve()
 
 	print "\n### Finished main"
+
+	# write stats
+	logbook_file = open(instrumented_app_dir + "/intermediate/logbook.pickle", 'wb')
+	pickle.dump(logbook, logbook_file)
+	logbook_file.close()
+
+	hof_file = open(instrumented_app_dir + "/intermediate/hof.pickle", 'wb')
+	pickle.dump(hof, hof_file)
+	hof_file.close()
+
+	history_file = open(instrumented_app_dir + "/intermediate/history.pickle", 'wb')
+	pickle.dump(history, history_file)
+	history_file.close()
+
+	# draw graph
+	two_d_line.plot(logbook, 0, instrumented_app_dir)
+	two_d_line.plot(logbook, 1, instrumented_app_dir)
+	two_d_line.plot(logbook, 2, instrumented_app_dir)
 
 	# recover stdout and stderr
 	logger.restore()
@@ -135,6 +169,9 @@ def get_apk_dir():
 def get_package_name():
 	global package_name
 	return package_name
+
+def return_as_is(a):
+	return a
 
 if __name__ == "__main__":
 	app_dir = sys.argv[1]

@@ -140,7 +140,6 @@ def run_sapienz(app_paths):
     for i in range(0, len(app_paths)):
         success = run_sapienz_one_app(app_paths[i], devices)
         if not success:
-            logger.log_progress("\nThere was an error running sapienz on app: " + app_paths[i])
             break
 
 
