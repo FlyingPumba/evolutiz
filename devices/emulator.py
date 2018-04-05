@@ -91,14 +91,16 @@ def boot_devices():
 
 		emulator = "export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator"
 
+		logs = " > " + device_name + ".log 2>" + device_name + ".err"
+
 		time.sleep(0.3)
 		if settings.HEADLESS:
 			# -no-window flag can't be at the end
-			flags = " -wipe-data -no-window -no-boot-anim -writable-system"
-			sub.Popen(emulator + ' -avd ' + device_name + flags, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			flags = " -wipe-data -no-window -no-boot-anim -writable-system -verbose -debug all"
+			sub.Popen(emulator + ' -avd ' + device_name + flags + logs, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 		else:
-			flags = " -wipe-data -no-boot-anim -writable-system"
-			sub.Popen(emulator + ' -avd ' + device_name + flags, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			flags = " -wipe-data -no-boot-anim -writable-system -verbose -debug all"
+			sub.Popen(emulator + ' -avd ' + device_name + flags + logs, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 
 		print "Waiting ", settings.AVD_BOOT_DELAY, " seconds for emulators to be ready"
 		time.sleep(settings.AVD_BOOT_DELAY)
