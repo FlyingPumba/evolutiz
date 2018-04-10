@@ -130,7 +130,7 @@ class eaMuPlusLambdaParallel:
 			pickle.dump(logbook, logbook_file)
 			logbook_file.close()
 
-		return self.population
+		return self.population, logbook
 
 
 	def varOr(self, population):

@@ -1,4 +1,3 @@
-import random
 import pickle
 from deap import tools, creator, base
 
@@ -8,7 +7,7 @@ from algorithms.eval_suite_multi_objective import eval_suite
 from algorithms.mut_suite import mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
 
-class randomParallel:
+class eaMuPlusLambdaParallel:
 
 	def __init__(self):
 		self.cxpb = settings.CXPB
@@ -47,20 +46,21 @@ class randomParallel:
 		# self.toolbox.register("select", tools.selTournament, tournsize=5)
 		self.toolbox.register("select", tools.selNSGA2)
 
+	def initPopulation(self):
 		print "### Initialising population ...."
-		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, apk_dir=self.apk_dir,
+		self.population = self.toolbox.population(n=settings.DEVICE_NUM, apk_dir=self.apk_dir,
 												  package_name=self.package_name)
-		if (len(self.population) < settings.POPULATION_SIZE):
+		if (len(self.population) < settings.DEVICE_NUM):
 			logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
 			return
 
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
 		completed_evaluation = evaluate_in_parallel(self.toolbox,
-							 invalid_ind,
-							 self.apk_dir,
-							 self.package_name,
-							 0)
+													invalid_ind,
+													self.apk_dir,
+													self.package_name,
+													0)
 
 		if not completed_evaluation:
 			logger.log_progress("\nTime budget run out durring parallel evaluation, exiting setup")
@@ -74,7 +74,6 @@ class randomParallel:
 		self.update_best_historic_objectives_achieved(self.population)
 
 	def evolve(self):
-
 		# record first population in logbook
 		logbook = tools.Logbook()
 		logbook.header = ['gen', 'nevals'] + (self.stats.fields if self.stats else [])
@@ -94,10 +93,11 @@ class randomParallel:
 			logger.log_progress("\nStarting generation " + str(gen))
 
 			# Vary the population
-			offspring = self.varOr(self.population)
+			new_population = self.toolbox.population(n=settings.DEVICE_NUM, apk_dir=self.apk_dir,
+													  package_name=self.package_name)
 
 			# Evaluate the individuals with an invalid fitness
-			invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
+			invalid_ind = [ind for ind in new_population if not ind.fitness.valid]
 
 			# this function will eval and match each invalid_ind to its fitness
 			completed_evaluation = evaluate_in_parallel(self.toolbox,
@@ -111,18 +111,15 @@ class randomParallel:
 				break
 
 			# discard invalid offspring individual
-			for i in range(len(offspring) - 1, -1, -1):
-				if not offspring[i].fitness.valid:
+			for i in range(len(new_population) - 1, -1, -1):
+				if not new_population[i].fitness.valid:
 					print "### Warning: Invalid Fitness"
-					del offspring[i]
+					del new_population[i]
 
-			self.update_best_historic_objectives_achieved(offspring)
-
-			# Select the next generation population
-			self.population[:] = self.toolbox.select(self.population + offspring, self.mu)
+			self.update_best_historic_objectives_achieved(new_population)
 
 			# Update the statistics with the new population
-			record = self.stats.compile(self.population) if self.stats is not None else {}
+			record = self.stats.compile(new_population) if self.stats is not None else {}
 			logbook.record(gen=gen, nevals=len(invalid_ind), **record)
 
 			# dump logbook in case we are interrupted
@@ -130,28 +127,7 @@ class randomParallel:
 			pickle.dump(logbook, logbook_file)
 			logbook_file.close()
 
-		return self.population
-
-
-	def varOr(self, population):
-
-		offspring = []
-		for _ in xrange(self.lambda_):
-			op_choice = random.random()
-			if op_choice < self.cxpb:  # Apply crossover
-				ind1, ind2 = map(self.toolbox.clone, random.sample(population, 2))
-				ind1, ind2 = self.toolbox.mate(ind1, ind2)
-				del ind1.fitness.values
-				offspring.append(ind1)
-			elif op_choice < self.cxpb + self.mutpb:  # Apply mutation
-				ind = self.toolbox.clone(random.choice(population))
-				ind, = self.toolbox.mutate(ind)
-				del ind.fitness.values
-				offspring.append(ind)
-			else:  # Apply reproduction
-				offspring.append(random.choice(population))
-
-		return offspring
+		return self.population, logbook
 
 	def update_best_historic_objectives_achieved(self, population):
 		for ind in population:
