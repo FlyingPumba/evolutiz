@@ -38,7 +38,7 @@ def process_results(result):
     global total_devices
     logger.log_progress("\rInstalling apk on devices: " + str(installed_devices) + "/" + str(total_devices))
 
-def prepare_apk(devices, instrumented_app_dir):
+def prepare_apk(devices, instrumented_app_dir, result_dir):
     package_name, apk_path = get_package_name(instrumented_app_dir)
     # for css subjects
     if instrumented_app_dir.endswith(".apk"):
@@ -77,12 +77,12 @@ def prepare_apk(devices, instrumented_app_dir):
     pool.close()
     pool.join()
 
-    os.system("rm -rf " + instrumented_app_dir + "/intermediate")
-    os.system("mkdir -p " + instrumented_app_dir + "/intermediate")
-    os.system("rm -rf " + instrumented_app_dir + "/crashes")
-    os.system("mkdir -p " + instrumented_app_dir + "/crashes")
-    os.system("rm -rf " + instrumented_app_dir + "/coverages")
-    os.system("mkdir -p " + instrumented_app_dir + "/coverages")
+    os.system("rm -rf " + result_dir + "/intermediate")
+    os.system("mkdir -p " + result_dir + "/intermediate")
+    os.system("rm -rf " + result_dir + "/crashes")
+    os.system("mkdir -p " + result_dir + "/crashes")
+    os.system("rm -rf " + result_dir + "/coverages")
+    os.system("mkdir -p " + result_dir + "/coverages")
     return package_name, (installed_devices == total_devices)
 
 

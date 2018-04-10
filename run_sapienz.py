@@ -30,6 +30,7 @@ REPETITIONS = 1
 
 start_time = None
 apk_dir = None
+result_dir = None
 package_name = None
 
 
@@ -60,6 +61,7 @@ def instrument_apk(folder_name, result_dir):
 def run_sapienz_one_app(strategy, app_path, devices):
     folder_name = os.path.basename(app_path)
     try:
+        global result_dir
         result_dir = "../../results/" + folder_name
 
         os.chdir(app_path)
@@ -69,7 +71,7 @@ def run_sapienz_one_app(strategy, app_path, devices):
 
         instrument_apk(folder_name, result_dir)
         global package_name
-        package_name, installation_successful = prepare_apk(devices, app_path)
+        package_name, installation_successful = prepare_apk(devices, app_path, result_dir)
         if not installation_successful:
             logger.log_progress("\nUnable to install apk in all devices")
             return False
@@ -92,6 +94,7 @@ def run_sapienz_one_app(strategy, app_path, devices):
             toolbox.register("population", initRepeatParallel.initPop, list, toolbox.individual)
             toolbox.register("time_budget_available", time_budget_available)
             toolbox.register("get_apk_dir", get_apk_dir)
+            toolbox.register("get_result_dir", get_result_dir)
             toolbox.register("get_package_name", get_package_name)
 
             stats = tools.Statistics(lambda ind: ind.fitness.values)
@@ -122,7 +125,6 @@ def run_sapienz_one_app(strategy, app_path, devices):
             logger.log_progress("\nSapienz finished for app: " + folder_name)
 
             # write stats
-            os.system("mkdir " + result_dir + "/intermediate")
             logbook_file = open(result_dir + "/intermediate/logbook.pickle", 'wb')
             pickle.dump(logbook, logbook_file)
             logbook_file.close()
@@ -158,13 +160,16 @@ def get_apk_dir():
     global apk_dir
     return apk_dir
 
+def get_result_dir():
+    global result_dir
+    return result_dir
 
 def get_package_name():
     global package_name
     return package_name
 
 def return_as_is(a):
-	return a
+    return a
 
 
 def run_sapienz(strategy, app_paths):

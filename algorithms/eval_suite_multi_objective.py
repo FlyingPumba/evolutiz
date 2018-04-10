@@ -5,7 +5,7 @@ import numpy
 import settings
 from coverages import act_coverage, emma_coverage
 
-def eval_suite(individual, device, apk_dir, package_name, gen, pop):
+def eval_suite(individual, device, toolbox, gen, pop):
 	# for get_motifcore_suite_coverage
 	script_path = []
 
@@ -15,7 +15,7 @@ def eval_suite(individual, device, apk_dir, package_name, gen, pop):
 	suite_lengths = []
 	for index, seq in enumerate(individual):
 		# generate script file list
-		filename = apk_dir + "/intermediate/motifcore.evo.script." + str(gen) + "." + str(pop) + "." + str(index)
+		filename = toolbox.get_result_dir() + "/intermediate/motifcore.evo.script." + str(gen) + "." + str(pop) + "." + str(index)
 		# check that directory exists before creating file
 		dirname = os.path.dirname(filename)
 		if not os.path.exists(dirname):
@@ -33,10 +33,10 @@ def eval_suite(individual, device, apk_dir, package_name, gen, pop):
 	# give a script and package, return the coverage by running all seqs
 	if settings.DEBUG:
 		print "Sending motifcore scripts to evaluate individual"
-	if apk_dir.endswith(".apk_output"):
-		coverage, num_crashes = act_coverage.get_suite_coverage(script_path, device, apk_dir, package_name, gen, pop)
+	if toolbox.get_apk_dir().endswith(".apk_output"):
+		coverage, num_crashes = act_coverage.get_suite_coverage(script_path, device, toolbox.get_apk_dir(), toolbox.get_package_name(), gen, pop)
 	else:
-		coverage, num_crashes = emma_coverage.get_suite_coverage(script_path, device, apk_dir, package_name, gen, pop)
+		coverage, num_crashes = emma_coverage.get_suite_coverage(script_path, device, toolbox, gen, pop)
 	print "### Coverage = ", coverage
 	print "### Lengths = ", suite_lengths
 	print "### #Crashes = ", num_crashes

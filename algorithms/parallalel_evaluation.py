@@ -26,11 +26,11 @@ def process_results(data):
 
 
 # 0. prepare wrapper for eval function
-def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, apk_dir, package_name, gen, pop):
+def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, toolbox, gen, pop):
     try:
         print "starting eval_suite_parallel_wrapper for individual ", pop
         start_time = time.time()
-        result = eval_suite_parallel(individual, device, apk_dir, package_name, gen, pop)
+        result = eval_suite_parallel(individual, device, toolbox, gen, pop)
         elapsed_time = time.time() - start_time
         print "Elapsed seconds to evaluate individual was ", elapsed_time
         # logger.log_progress("\nElapsed seconds to evaluate individual was " + str(elapsed_time))
@@ -42,7 +42,7 @@ def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, apk_dir
         return pop, (0, 0, 0), device
 
 
-def evaluate_in_parallel(toolbox, individuals, apk_dir, package_name, gen):
+def evaluate_in_parallel(toolbox, individuals, gen):
     """ Evaluate the individuals fitnesses and assign them to each individual
     :param eval_fitness: The fitness evaluation fucntion
     :param individuals: The individuals under evaluation
@@ -93,10 +93,10 @@ def evaluate_in_parallel(toolbox, individuals, apk_dir, package_name, gen):
             print "individual is ", i
 
         pool.apply_async(eval_suite_parallel_wrapper,
-                         args=(toolbox.evaluate, individuals[i], device, apk_dir, package_name, gen, i),
+                         args=(toolbox.evaluate, individuals[i], device, toolbox, gen, i),
                          callback=process_results)
     # res = pool.apply(eval_suite_parallel_wrapper,
-    #				 args=(eval_suite_parallel, individuals[i], device, apk_dir, package_name, gen, i))
+    #				 args=(eval_suite_parallel, individuals[i], device, toolbox, gen, i))
     # process_results(res)
 
     pool.close()

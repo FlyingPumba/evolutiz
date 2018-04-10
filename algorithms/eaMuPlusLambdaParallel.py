@@ -29,8 +29,6 @@ class eaMuPlusLambdaParallel:
 		# "individual" to generate individuals
 		# "population" to generate population
 		self.toolbox = toolbox
-		self.apk_dir = toolbox.get_apk_dir()
-		self.package_name = toolbox.get_package_name()
 		self.stats = stats
 		self.verbose = verbose
 
@@ -49,19 +47,14 @@ class eaMuPlusLambdaParallel:
 
 	def initPopulation(self):
 		print "### Initialising population ...."
-		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, apk_dir=self.apk_dir,
-												  package_name=self.package_name)
+		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, toolbox=self.toolbox)
 		if (len(self.population) < settings.POPULATION_SIZE):
 			logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
 			return
 
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-		completed_evaluation = evaluate_in_parallel(self.toolbox,
-													invalid_ind,
-													self.apk_dir,
-													self.package_name,
-													0)
+		completed_evaluation = evaluate_in_parallel(self.toolbox, invalid_ind, 0)
 
 		if not completed_evaluation:
 			logger.log_progress("\nTime budget run out durring parallel evaluation, exiting setup")
@@ -100,11 +93,7 @@ class eaMuPlusLambdaParallel:
 			invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
 
 			# this function will eval and match each invalid_ind to its fitness
-			completed_evaluation = evaluate_in_parallel(self.toolbox,
-														invalid_ind,
-														self.apk_dir,
-														self.package_name,
-														gen)
+			completed_evaluation = evaluate_in_parallel(self.toolbox, invalid_ind, gen)
 
 			if not completed_evaluation:
 				print "Time budget run out durring parallel evaluation, exiting evolve"
@@ -126,7 +115,7 @@ class eaMuPlusLambdaParallel:
 			logbook.record(gen=gen, nevals=len(invalid_ind), **record)
 
 			# dump logbook in case we are interrupted
-			logbook_file = open(self.apk_dir + "/intermediate/logbook.pickle", 'wb')
+			logbook_file = open(self.toolbox.get_result_dir() + "/intermediate/logbook.pickle", 'wb')
 			pickle.dump(logbook, logbook_file)
 			logbook_file.close()
 
