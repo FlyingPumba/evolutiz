@@ -94,12 +94,6 @@ def run_sapienz_one_app(strategy, app_path, devices):
             toolbox.register("get_apk_dir", get_apk_dir)
             toolbox.register("get_package_name", get_package_name)
 
-            # log the history
-            history = tools.History()
-            # Decorate the variation operators
-            toolbox.decorate("mate", history.decorator)
-            toolbox.decorate("mutate", history.decorator)
-
             stats = tools.Statistics(lambda ind: ind.fitness.values)
             # axis = 0, the numpy.mean will return an array of results
             stats.register("avg", numpy.mean, axis=0)
@@ -112,8 +106,17 @@ def run_sapienz_one_app(strategy, app_path, devices):
             # pareto front can be large, there is a similarity option parameter
             hof = tools.ParetoFront()
 
-            # genetic algorithm
+            # setup toolbox specific stuff by strategy
             strategy.setup(toolbox, stats=stats)
+
+            # log the history
+            history = tools.History()
+            # Decorate the variation operators
+            toolbox.decorate("mate", history.decorator)
+            toolbox.decorate("mutate", history.decorator)
+
+            # run the strategy
+            strategy.initPopulation()
             population, logbook = strategy.evolve()
 
             logger.log_progress("\nSapienz finished for app: " + folder_name)

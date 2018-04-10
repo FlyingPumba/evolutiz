@@ -47,6 +47,7 @@ class eaMuPlusLambdaParallel:
 		# self.toolbox.register("select", tools.selTournament, tournsize=5)
 		self.toolbox.register("select", tools.selNSGA2)
 
+	def initPopulation(self):
 		print "### Initialising population ...."
 		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, apk_dir=self.apk_dir,
 												  package_name=self.package_name)
@@ -57,10 +58,10 @@ class eaMuPlusLambdaParallel:
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
 		completed_evaluation = evaluate_in_parallel(self.toolbox,
-							 invalid_ind,
-							 self.apk_dir,
-							 self.package_name,
-							 0)
+													invalid_ind,
+													self.apk_dir,
+													self.package_name,
+													0)
 
 		if not completed_evaluation:
 			logger.log_progress("\nTime budget run out durring parallel evaluation, exiting setup")
@@ -74,7 +75,6 @@ class eaMuPlusLambdaParallel:
 		self.update_best_historic_objectives_achieved(self.population)
 
 	def evolve(self):
-
 		# record first population in logbook
 		logbook = tools.Logbook()
 		logbook.header = ['gen', 'nevals'] + (self.stats.fields if self.stats else [])
