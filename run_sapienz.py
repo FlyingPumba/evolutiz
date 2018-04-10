@@ -1,4 +1,6 @@
+import argparse
 import os
+import pickle
 import subprocess as sub
 import traceback
 import time
@@ -9,13 +11,20 @@ from deap import tools, base
 
 import logger
 import settings
+from algorithms.eaDynaMosaParallel import eaDynaMosaParallel
+from algorithms.eaMonotonicParallel import eaMonotonicParallel
+from algorithms.eaMosaParallel import eaMosaParallel
 from algorithms.eaMuPlusLambdaParallel import eaMuPlusLambdaParallel
+from algorithms.eaOnePlusLambdaCommaLambdaParallel import eaOnePlusLambdaCommaLambdaParallel
+from algorithms.eaStandardParallel import eaStandardParallel
+from algorithms.eaSteadyStateParallel import eaSteadyStateParallel
+from algorithms.randomParallel import randomParallel
 from algorithms.gen_individual import gen_individual
-from coverages import emma_coverage
 from devices import adb
 from devices import any_device
 from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
+from plot import two_d_line
 
 REPETITIONS = 1
 
@@ -48,7 +57,7 @@ def instrument_apk(folder_name, result_dir):
 
     return apk_path, package_name
 
-def run_sapienz_one_app(app_path, devices):
+def run_sapienz_one_app(strategy, app_path, devices):
     folder_name = os.path.basename(app_path)
     try:
         result_dir = "../../results/" + folder_name
@@ -85,18 +94,48 @@ def run_sapienz_one_app(app_path, devices):
             toolbox.register("get_apk_dir", get_apk_dir)
             toolbox.register("get_package_name", get_package_name)
 
+            # log the history
+            history = tools.History()
+            # Decorate the variation operators
+            toolbox.decorate("mate", history.decorator)
+            toolbox.decorate("mutate", history.decorator)
+
+            stats = tools.Statistics(lambda ind: ind.fitness.values)
+            # axis = 0, the numpy.mean will return an array of results
+            stats.register("avg", numpy.mean, axis=0)
+            stats.register("std", numpy.std, axis=0)
+            stats.register("min", numpy.min, axis=0)
+            stats.register("max", numpy.max, axis=0)
+            stats.register("pop_fitness", return_as_is)
+
             # hof = tools.HallOfFame(6)
             # pareto front can be large, there is a similarity option parameter
             hof = tools.ParetoFront()
 
             # genetic algorithm
-            eaStrategy = eaMuPlusLambdaParallel()
-            eaStrategy.setup(toolbox)
-            population = eaStrategy.evolve()
+            strategy.setup(toolbox, stats=stats)
+            population, logbook = strategy.evolve()
 
             logger.log_progress("\nSapienz finished for app: " + folder_name)
 
-            # p.join()
+            # write stats
+            os.system("mkdir " + result_dir + "/intermediate")
+            logbook_file = open(result_dir + "/intermediate/logbook.pickle", 'wb')
+            pickle.dump(logbook, logbook_file)
+            logbook_file.close()
+
+            hof_file = open(result_dir + "/intermediate/hof.pickle", 'wb')
+            pickle.dump(hof, hof_file)
+            hof_file.close()
+
+            history_file = open(result_dir + "/intermediate/history.pickle", 'wb')
+            pickle.dump(history, history_file)
+            history_file.close()
+
+            # draw graph
+            two_d_line.plot(logbook, 0, result_dir)
+            two_d_line.plot(logbook, 1, result_dir)
+            two_d_line.plot(logbook, 2, result_dir)
 
         return True
     except Exception as e:
@@ -121,8 +160,11 @@ def get_package_name():
     global package_name
     return package_name
 
+def return_as_is(a):
+	return a
 
-def run_sapienz(app_paths):
+
+def run_sapienz(strategy, app_paths):
     print "Preparing devices ..."
     any_device.boot_devices()
 
@@ -138,7 +180,7 @@ def run_sapienz(app_paths):
         adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
     for i in range(0, len(app_paths)):
-        success = run_sapienz_one_app(app_paths[i], devices)
+        success = run_sapienz_one_app(strategy, app_paths[i], devices)
         if not success:
             break
 
@@ -146,8 +188,8 @@ def run_sapienz(app_paths):
     print "### Finished run_sapienz"
 
 
-def get_subject_paths():
-    p = sub.Popen("ls -d $PWD/monkey/subjects/*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+def get_subject_paths(subjects_directory):
+    p = sub.Popen("ls -d " + subjects_directory + "*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     output, errors = p.communicate()
     app_paths = []
     for line in output.strip().split('\n'):
@@ -160,12 +202,35 @@ if __name__ == "__main__":
     # run this script from the root folder as:
     # python run_sapienz
 
+    possible_strategies = {
+        "standard": eaStandardParallel(),
+        "monotonic": eaMonotonicParallel(),
+        "steady": eaSteadyStateParallel(),
+        "muPlusLambda": eaMuPlusLambdaParallel(),
+        "onePlusLambdaCommaLambda": eaOnePlusLambdaCommaLambdaParallel(),
+        "mosa": eaMosaParallel(),
+        "dynaMosa": eaDynaMosaParallel(),
+        "random": randomParallel()
+    }
+
+    # parse args
+    parser = argparse.ArgumentParser(description='Run Sapienz experiment with different strategies.')
+    parser.add_argument('-d', '--subjects', dest='subjects_directory', default='$PWD/monkey/subjects/',
+                        help='Directory where subjects are located')
+    parser.add_argument('-s', '--strategy', dest='selected_strategy', default='muPlusLambda',
+                        choices=possible_strategies.keys(), help='Strategy to be used')
+    args = parser.parse_args()
+
+    # run Sapienz exp
     logger.prepare()
     logger.clear_progress()
     logger.log_progress("Sapienz")
 
-    app_paths = get_subject_paths()[0:1]
-    run_sapienz(app_paths)
+    app_paths = get_subject_paths(args.subjects_directory)[0:1]
+    strategy = possible_strategies[args.selected_strategy]
+    run_sapienz(strategy, app_paths)
+
+    # process results
     # results_per_app = process_results(app_paths)
 
     # logger.log_progress("\n" + str(results_per_app))
