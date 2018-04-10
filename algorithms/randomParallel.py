@@ -16,9 +16,12 @@ class eaMuPlusLambdaParallel:
 		self.mu = settings.POPULATION_SIZE
 		self.lambda_ = settings.OFFSPRING_SIZE
 
-		self.best_historic_crashes = 0
-		self.best_historic_length = 0
-		self.best_historic_coverage = 0
+		self.best_historic_crashes_measure = 0
+		self.best_historic_length_measure = 0
+		self.best_historic_coverage_measure = 0
+		self.best_historic_crashes_individual = 0
+		self.best_historic_length_individual = 0
+		self.best_historic_coverage_individual = 0
 
 		assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
 									   "probabilities must be smaller or equal to 1.0.")
@@ -127,7 +130,10 @@ class eaMuPlusLambdaParallel:
 			pickle.dump(logbook, logbook_file)
 			logbook_file.close()
 
-		return self.population, logbook
+		best_population = self.best_historic_coverage_individual, self.best_historic_crashes_individual, \
+						  self.best_historic_length_individual
+
+		return best_population, logbook
 
 	def update_best_historic_objectives_achieved(self, population):
 		for ind in population:
@@ -136,14 +142,19 @@ class eaMuPlusLambdaParallel:
 			coverage = fit[1]
 			length = fit[2]
 
-			if crashes > self.best_historic_crashes:
-				self.best_historic_crashes = crashes
-			if coverage > self.best_historic_coverage:
-				self.best_historic_coverage = coverage
-			if crashes > 0 and length < self.best_historic_length:
-				self.best_historic_length = length
+			if crashes > self.best_historic_crashes_measure:
+				self.best_historic_crashes_measure = crashes
+				self.best_historic_crashes_individual = ind
 
-		logger.log_progress("\n- Best historic crashes: " + str(self.best_historic_crashes))
-		logger.log_progress("\n- Best historic coverage: " + str(self.best_historic_coverage))
-		logger.log_progress("\n- Best historic length: " + str(self.best_historic_length))
+			if coverage > self.best_historic_coverage_measure:
+				self.best_historic_coverage_measure = coverage
+				self.best_historic_coverage_individual = ind
+
+			if crashes > 0 and length < self.best_historic_length_measure:
+				self.best_historic_length_measure = length
+				self.best_historic_length_individual = ind
+
+		logger.log_progress("\n- Best historic crashes: " + str(self.best_historic_crashes_measure))
+		logger.log_progress("\n- Best historic coverage: " + str(self.best_historic_coverage_measure))
+		logger.log_progress("\n- Best historic length: " + str(self.best_historic_length_measure))
 

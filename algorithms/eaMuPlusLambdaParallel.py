@@ -162,8 +162,10 @@ class eaMuPlusLambdaParallel:
 
 			if crashes > self.best_historic_crashes:
 				self.best_historic_crashes = crashes
+
 			if coverage > self.best_historic_coverage:
 				self.best_historic_coverage = coverage
+
 			if crashes > 0 and length < self.best_historic_length:
 				self.best_historic_length = length
 
