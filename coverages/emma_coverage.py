@@ -124,7 +124,7 @@ def get_suite_coverage(scripts, device, result_dir, package_name, gen, pop):
 	adb.pull(device, "/mnt/sdcard/coverage.ec", "coverage.ec")
 	os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec" + logger.redirect_string())
 
-	html_file = settings.WORKING_DIR + result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
+	html_file = result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
 	try:
 		coverage_str = extract_coverage(html_file)
 	except Exception, e:
