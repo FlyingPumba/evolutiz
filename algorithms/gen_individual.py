@@ -14,7 +14,7 @@ from devices import adb
 class CanNotInitSeqException(Exception):
 	pass
 
-def get_suite(device, toolbox):
+def get_suite(device, result_dir, package_name):
 	start_time = datetime.datetime.now()
 
 	ret = []
@@ -28,7 +28,7 @@ def get_suite(device, toolbox):
 		seq = []
 		repeated = 0
 		while len(seq) <= 2:
-			seq = get_sequence(device, toolbox, i, unique_crashes)
+			seq = get_sequence(device, result_dir, package_name, i, unique_crashes)
 			# print seq
 			repeated += 1
 			if repeated > 20:
@@ -44,10 +44,10 @@ def get_suite(device, toolbox):
 	return ret
 
 
-def get_sequence(device, toolbox, index, unique_crashes):
+def get_sequence(device, result_dir, package_name, index, unique_crashes):
 	start_time = datetime.datetime.now()
 
-	std_out_file = toolbox.get_result_dir() + "/intermediate/" + "output.stdout"
+	std_out_file = result_dir + "/intermediate/" + "output.stdout"
 	random.seed()
 
 	motifcore_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
@@ -57,11 +57,11 @@ def get_sequence(device, toolbox, index, unique_crashes):
 			ret = []
 
 			# clear data
-			adb.shell_command(device, "pm clear " + toolbox.package_name())
+			adb.shell_command(device, "pm clear " + package_name)
 
 			# start motifcore
 			print "... Start generating a sequence"
-			motifcore_cmd = "motifcore -p " + toolbox.package_name() + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + toolbox.package_name() + "_strings.xml -v " + str(
+			motifcore_cmd = "motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml -v " + str(
 				motifcore_events)
 			adb.shell_command(device, motifcore_cmd, timeout=True)
 
@@ -70,7 +70,7 @@ def get_sequence(device, toolbox, index, unique_crashes):
 			script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]
 			ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
 
-			motifcore_script_filename = toolbox.get_result_dir() + "/intermediate/" + script_name + ".init." + ts + "." + str(index)
+			motifcore_script_filename = result_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index)
 
 			# need to kill motifcore when timeout
 			adb.pkill(device, "motifcore")
@@ -101,7 +101,7 @@ def get_sequence(device, toolbox, index, unique_crashes):
 			continue
 
 	# deal with crash
-	crash_handler.handle(device, toolbox, motifcore_script_filename, "init", ts, index, unique_crashes)
+	crash_handler.handle(device, result_dir, motifcore_script_filename, "init", ts, index, unique_crashes)
 
 	print "... Exiting get_sequence method"
 
@@ -110,11 +110,11 @@ def get_sequence(device, toolbox, index, unique_crashes):
 	return ret
 
 
-def gen_individual(device, toolbox):
+def gen_individual(device, result_dir, package_name):
 	try:
 		if settings.DEBUG:
 			print "Generate Individual on device, ", device
-		suite = get_suite(device, toolbox)
+		suite = get_suite(device, result_dir, package_name)
 		if settings.DEBUG:
 			print "Finished generating individual"
 		return (creator.Individual(suite), device)

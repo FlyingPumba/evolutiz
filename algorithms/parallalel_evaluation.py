@@ -26,11 +26,11 @@ def process_results(data):
 
 
 # 0. prepare wrapper for eval function
-def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, toolbox, gen, pop):
+def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, result_dir, apk_dir, package_name, gen, pop):
     try:
         print "starting eval_suite_parallel_wrapper for individual ", pop
         start_time = time.time()
-        result = eval_suite_parallel(individual, device, toolbox, gen, pop)
+        result = eval_suite_parallel(individual, device, result_dir, apk_dir, package_name, gen, pop)
         elapsed_time = time.time() - start_time
         print "Elapsed seconds to evaluate individual was ", elapsed_time
         # logger.log_progress("\nElapsed seconds to evaluate individual was " + str(elapsed_time))
@@ -93,7 +93,8 @@ def evaluate_in_parallel(toolbox, individuals, gen):
             print "individual is ", i
 
         pool.apply_async(eval_suite_parallel_wrapper,
-                         args=(toolbox.evaluate, individuals[i], device, toolbox, gen, i),
+                         args=(toolbox.evaluate, individuals[i], device, toolbox.get_result_dir(),
+                               toolbox.get_apk_dir(), toolbox.get_package_name(), gen, i),
                          callback=process_results)
     # res = pool.apply(eval_suite_parallel_wrapper,
     #				 args=(eval_suite_parallel, individuals[i], device, toolbox, gen, i))

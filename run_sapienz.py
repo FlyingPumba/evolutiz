@@ -62,7 +62,7 @@ def run_sapienz_one_app(strategy, app_path, devices):
     folder_name = os.path.basename(app_path)
     try:
         global result_dir
-        result_dir = "../../results/" + folder_name
+        result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + folder_name
 
         os.chdir(app_path)
         global apk_dir
@@ -91,7 +91,7 @@ def run_sapienz_one_app(strategy, app_path, devices):
             # register common functions in toolbox
             toolbox = base.Toolbox()
             toolbox.register("individual", gen_individual)
-            toolbox.register("population", initRepeatParallel.initPop, list, toolbox.individual)
+            toolbox.register("population", initRepeatParallel.initPop, toolbox.individual)
             toolbox.register("time_budget_available", time_budget_available)
             toolbox.register("get_apk_dir", get_apk_dir)
             toolbox.register("get_result_dir", get_result_dir)

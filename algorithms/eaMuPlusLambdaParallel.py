@@ -47,7 +47,7 @@ class eaMuPlusLambdaParallel:
 
 	def initPopulation(self):
 		print "### Initialising population ...."
-		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, toolbox=self.toolbox)
+		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(), package_name=self.toolbox.get_package_name())
 		if (len(self.population) < settings.POPULATION_SIZE):
 			logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
 			return

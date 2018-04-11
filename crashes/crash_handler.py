@@ -35,7 +35,7 @@ import os
 from devices import adb
 
 
-def handle(device, toolbox, script_path, gen, pop, index, unique_crashes):
+def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
 	"""
 	:param device:
 	:param apk_dir:
@@ -55,9 +55,9 @@ def handle(device, toolbox, script_path, gen, pop, index, unique_crashes):
 		pass
 	else:
 		# save the crash report
-		adb.pull(device, "/mnt/sdcard/bugreport.crash", toolbox.get_result_dir())
+		adb.pull(device, "/mnt/sdcard/bugreport.crash", result_dir)
 		# filter duplicate crashes
-		with open(toolbox.get_result_dir() + "/bugreport.crash") as bug_report_file:
+		with open(result_dir + "/bugreport.crash") as bug_report_file:
 			content = ""
 			for line_no, line in enumerate(bug_report_file):
 				if line_no == 0:
@@ -74,12 +74,12 @@ def handle(device, toolbox, script_path, gen, pop, index, unique_crashes):
 				unique_crashes.add(content)
 
 		individual_suffix = str(gen) + "." + str(pop) + "." + str(index)
-		os.system("mv " + toolbox.get_result_dir() + "/bugreport.crash "
-				  + toolbox.get_result_dir() + "/crashes/" + "bugreport." + individual_suffix)
+		os.system("mv " + result_dir + "/bugreport.crash "
+				  + result_dir + "/crashes/" + "bugreport." + individual_suffix)
 
 		# save the script, indicate its ith gen
 		os.system("cp " + script_path + " "
-				  + toolbox.get_result_dir() + "/crashes/" + "script." + individual_suffix)
+				  + result_dir + "/crashes/" + "script." + individual_suffix)
 
 		print "### Caught a crash."
 		adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
