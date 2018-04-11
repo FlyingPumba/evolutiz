@@ -16,6 +16,7 @@ class eaMuPlusLambdaParallel:
 		self.ngen = settings.GENERATION
 		self.mu = settings.POPULATION_SIZE
 		self.lambda_ = settings.OFFSPRING_SIZE
+		self.population = None
 
 		self.best_historic_crashes = 0
 		self.best_historic_length = 0
@@ -71,6 +72,9 @@ class eaMuPlusLambdaParallel:
 		# record first population in logbook
 		logbook = tools.Logbook()
 		logbook.header = ['gen', 'nevals'] + (self.stats.fields if self.stats else [])
+
+		if self.population is None:
+			return [], logbook
 
 		record = self.stats.compile(self.population) if self.stats is not None else {}
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
