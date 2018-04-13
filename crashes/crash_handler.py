@@ -85,5 +85,4 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
 		adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
 		return True
 
-	adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
 	return False
