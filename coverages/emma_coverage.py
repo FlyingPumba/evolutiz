@@ -128,7 +128,7 @@ def get_suite_coverage(scripts, device, result_dir, package_name, gen, pop):
 	try:
 		coverage_str = extract_coverage(html_file)
 	except Exception, e:
-		print "Exception occurred trying to extra coverage from html file", e.strerror
+		print "Exception occurred trying to extract coverage from html file", e.strerror
 		return 0, len(unique_crashes)
 
 	if coverage_str.find("%") != -1:
