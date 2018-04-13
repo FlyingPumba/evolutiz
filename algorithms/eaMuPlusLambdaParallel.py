@@ -149,9 +149,9 @@ class eaMuPlusLambdaParallel:
 	def update_best_historic_objectives_achieved(self, population):
 		for ind in population:
 			fit = ind.fitness.values
-			crashes = fit[0]
-			coverage = fit[1]
-			length = fit[2]
+			coverage = fit[0]
+			length = fit[1]
+			crashes = fit[2]
 
 			if crashes > self.best_historic_crashes:
 				self.best_historic_crashes = crashes
