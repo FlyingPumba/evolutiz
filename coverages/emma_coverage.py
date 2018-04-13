@@ -84,7 +84,9 @@ def get_suite_coverage(scripts, device, result_dir, package_name, gen, pop):
 	# clean states
 	adb.shell_command(device, "am force-stop " + package_name)
 	adb.shell_command(device, "pm clear " + package_name)
-	adb.shell_command(device, "rm /mnt/sdcard/coverage.ec")
+
+	coverage_path_in_device = "/data/data/" + package_name + "/files/coverage.ec"
+	adb.shell_command(device, "rm " + coverage_path_in_device)
 
 	ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
 	coverage_folder = str(gen) + "." + str(pop) + "." + ts
@@ -121,7 +123,7 @@ def get_suite_coverage(scripts, device, result_dir, package_name, gen, pop):
 	print "### Getting EMMA coverage.ec and report ..."
 	adb.shell_command(device, "pm clear " + package_name)
 	time.sleep(0.5)
-	adb.pull(device, "/mnt/sdcard/coverage.ec", "coverage.ec")
+	adb.pull(device, coverage_path_in_device, "coverage.ec")
 	os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec" + logger.redirect_string())
 
 	html_file = result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
