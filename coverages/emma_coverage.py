@@ -85,8 +85,12 @@ def get_suite_coverage(scripts, device, result_dir, package_name, gen, pop):
 	adb.shell_command(device, "am force-stop " + package_name)
 	adb.shell_command(device, "pm clear " + package_name)
 
-	coverage_path_in_device = "/data/data/" + package_name + "/files/coverage.ec"
+	application_files = "/data/data/" + package_name + "/files"
+	coverage_path_in_device = application_files + "/coverage.ec"
+	coverage_backup_path_before_clear = "/mnt/sdcard/coverage.ec"
+
 	adb.shell_command(device, "rm " + coverage_path_in_device)
+	adb.shell_command(device, "rm " + coverage_backup_path_before_clear)
 
 	ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
 	coverage_folder = str(gen) + "." + str(pop) + "." + ts
@@ -117,13 +121,19 @@ def get_suite_coverage(scripts, device, result_dir, package_name, gen, pop):
 			# no crash, can broadcast
 			adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
 
+
+		# save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
+		adb.shell_command(device, "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear)
 		# close app
 		adb.shell_command(device, "pm clear " + package_name)
+		# restore the coverage.ec file from /mnt/sdcard to app files
+		adb.shell_command(device, "mkdir " + application_files)
+		adb.shell_command(device, "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device)
 
 	print "### Getting EMMA coverage.ec and report ..."
 	adb.shell_command(device, "pm clear " + package_name)
 	time.sleep(0.5)
-	adb.pull(device, coverage_path_in_device, "coverage.ec")
+	adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
 	os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec" + logger.redirect_string())
 
 	html_file = result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
