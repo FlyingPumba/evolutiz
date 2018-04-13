@@ -78,7 +78,7 @@ def extract_coverage(path):
 
 
 # return accumulative coverage and average length
-def get_suite_coverage(scripts, device, result_dir, package_name, gen, pop):
+def get_suite_coverage(scripts, device, result_dir, apk_dir, package_name, gen, pop):
 	unique_crashes = set()
 
 	# clean states
@@ -134,7 +134,7 @@ def get_suite_coverage(scripts, device, result_dir, package_name, gen, pop):
 	adb.shell_command(device, "pm clear " + package_name)
 	time.sleep(0.5)
 	adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
-	os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec" + logger.redirect_string())
+	os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + apk_dir + "/src " + logger.redirect_string())
 
 	html_file = result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
 	try:

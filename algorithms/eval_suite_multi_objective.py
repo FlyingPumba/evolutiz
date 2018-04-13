@@ -36,7 +36,7 @@ def eval_suite(individual, device, result_dir, apk_dir, package_name, gen, pop):
 	if apk_dir.endswith(".apk_output"):
 		coverage, num_crashes = act_coverage.get_suite_coverage(script_path, device, apk_dir, package_name, gen, pop)
 	else:
-		coverage, num_crashes = emma_coverage.get_suite_coverage(script_path, device, result_dir, package_name, gen, pop)
+		coverage, num_crashes = emma_coverage.get_suite_coverage(script_path, device, result_dir, apk_dir, package_name, gen, pop)
 	print "### Coverage = ", coverage
 	print "### Lengths = ", suite_lengths
 	print "### #Crashes = ", num_crashes
