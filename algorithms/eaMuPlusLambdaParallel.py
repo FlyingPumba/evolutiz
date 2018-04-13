@@ -1,5 +1,7 @@
 import random
 import pickle
+import sys
+
 from deap import tools, creator, base
 
 import logger
@@ -19,7 +21,7 @@ class eaMuPlusLambdaParallel:
 		self.population = None
 
 		self.best_historic_crashes = 0
-		self.best_historic_length = 0
+		self.best_historic_length = sys.maxint
 		self.best_historic_coverage = 0
 
 		assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
@@ -164,5 +166,6 @@ class eaMuPlusLambdaParallel:
 
 		logger.log_progress("\n- Best historic crashes: " + str(self.best_historic_crashes))
 		logger.log_progress("\n- Best historic coverage: " + str(self.best_historic_coverage))
-		logger.log_progress("\n- Best historic length: " + str(self.best_historic_length))
+		if self.best_historic_crashes > 0:
+			logger.log_progress("\n- Best historic length: " + str(self.best_historic_length))
 
