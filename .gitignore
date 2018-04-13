@@ -54,3 +54,5 @@ Thumbs.db
 **/coverages
 main-debug/
 output*
+Nexus_4_API_19_*
+**/*-debug
