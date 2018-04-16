@@ -23,7 +23,7 @@ from algorithms.eaOnePlusLambdaCommaLambdaParallel import eaOnePlusLambdaCommaLa
 from algorithms.eaStandardParallel import eaStandardParallel
 from algorithms.eaSteadyStateParallel import eaSteadyStateParallel
 from algorithms.randomParallel import randomParallel
-from algorithms.gen_individual import gen_individual
+from algorithms.gen_individual_with_coverage import gen_individual
 from devices import adb
 from devices import any_device
 from devices.prepare_apk_parallel import prepare_apk
