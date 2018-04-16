@@ -231,15 +231,16 @@ if __name__ == "__main__":
                         help='Directory where subjects are located')
     parser.add_argument('-s', '--strategy', dest='selected_strategy', default='muPlusLambda',
                         choices=possible_strategies.keys(), help='Strategy to be used')
+
     args = parser.parse_args()
+    app_paths = get_subject_paths(args.subjects_directory)[0:1]
+    strategy = possible_strategies[args.selected_strategy]
 
     # run Sapienz exp
     logger.prepare()
     logger.clear_progress()
-    logger.log_progress("Sapienz")
+    logger.log_progress("Sapienz (" + strategy + ")")
 
-    app_paths = get_subject_paths(args.subjects_directory)[0:1]
-    strategy = possible_strategies[args.selected_strategy]
     run_sapienz(strategy, app_paths)
 
     # process results
