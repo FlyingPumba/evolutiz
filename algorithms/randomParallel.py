@@ -1,4 +1,6 @@
 import pickle
+import sys
+
 from deap import tools, creator, base
 
 import logger
@@ -17,11 +19,11 @@ class randomParallel:
 		self.lambda_ = settings.OFFSPRING_SIZE
 
 		self.best_historic_crashes_measure = 0
-		self.best_historic_length_measure = 0
+		self.best_historic_length_measure = sys.maxint
 		self.best_historic_coverage_measure = 0
-		self.best_historic_crashes_individual = 0
-		self.best_historic_length_individual = 0
-		self.best_historic_coverage_individual = 0
+		self.best_historic_crashes_individual = None
+		self.best_historic_length_individual = None
+		self.best_historic_coverage_individual = None
 
 		assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
 									   "probabilities must be smaller or equal to 1.0.")
@@ -95,7 +97,7 @@ class randomParallel:
 			print "Starting generation ", gen
 			logger.log_progress("\nStarting generation " + str(gen))
 
-			# Vary the population
+			# Generate new random population
 			new_population = self.toolbox.population(n=settings.DEVICE_NUM, apk_dir=self.apk_dir,
 													  package_name=self.package_name)
 
@@ -130,17 +132,16 @@ class randomParallel:
 			pickle.dump(logbook, logbook_file)
 			logbook_file.close()
 
-		best_population = self.best_historic_coverage_individual, self.best_historic_crashes_individual, \
-						  self.best_historic_length_individual
+		best_population = [self.best_historic_coverage_individual, self.best_historic_crashes_individual, self.best_historic_length_individual]
 
 		return best_population, logbook
 
 	def update_best_historic_objectives_achieved(self, population):
 		for ind in population:
 			fit = ind.fitness.values
-			crashes = fit[0]
-			coverage = fit[1]
-			length = fit[2]
+			coverage = fit[0]
+			length = fit[1]
+			crashes = fit[2]
 
 			if crashes > self.best_historic_crashes_measure:
 				self.best_historic_crashes_measure = crashes
@@ -156,5 +157,6 @@ class randomParallel:
 
 		logger.log_progress("\n- Best historic crashes: " + str(self.best_historic_crashes_measure))
 		logger.log_progress("\n- Best historic coverage: " + str(self.best_historic_coverage_measure))
-		logger.log_progress("\n- Best historic length: " + str(self.best_historic_length_measure))
+		if self.best_historic_crashes_measure > 0:
+			logger.log_progress("\n- Best historic length: " + str(self.best_historic_length_measure))
 
