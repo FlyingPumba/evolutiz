@@ -239,7 +239,7 @@ if __name__ == "__main__":
     # run Sapienz exp
     logger.prepare()
     logger.clear_progress()
-    logger.log_progress("Sapienz (" + strategy + ")")
+    logger.log_progress("Sapienz (" + args.selected_strategy + ")")
 
     run_sapienz(strategy, app_paths)
 
