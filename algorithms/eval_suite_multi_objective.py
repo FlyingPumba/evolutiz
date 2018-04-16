@@ -25,8 +25,8 @@ def eval_suite(individual, device, result_dir, apk_dir, package_name, gen, pop):
 
 			length = 0
 			for line in seq:
-			  script.write(line + "\n")
-			  length += 1
+				script.write(line + "\n")
+				length += 1
 
 			suite_lengths.append(length)
 		script_path.append(os.path.abspath(filename))
