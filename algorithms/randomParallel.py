@@ -61,11 +61,7 @@ class randomParallel:
 
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-		completed_evaluation = evaluate_in_parallel(self.toolbox,
-													invalid_ind,
-													self.apk_dir,
-													self.package_name,
-													0)
+		completed_evaluation = evaluate_in_parallel(self.toolbox, invalid_ind, 0)
 
 		if not completed_evaluation:
 			logger.log_progress("\nTime budget run out durring parallel evaluation, exiting setup")
@@ -98,18 +94,13 @@ class randomParallel:
 			logger.log_progress("\nStarting generation " + str(gen))
 
 			# Generate new random population
-			new_population = self.toolbox.population(n=settings.DEVICE_NUM, apk_dir=self.apk_dir,
-													  package_name=self.package_name)
+			new_population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(), package_name=self.toolbox.get_package_name())
 
 			# Evaluate the individuals with an invalid fitness
 			invalid_ind = [ind for ind in new_population if not ind.fitness.valid]
 
 			# this function will eval and match each invalid_ind to its fitness
-			completed_evaluation = evaluate_in_parallel(self.toolbox,
-														invalid_ind,
-														self.apk_dir,
-														self.package_name,
-														gen)
+			completed_evaluation = evaluate_in_parallel(self.toolbox, invalid_ind, gen)
 
 			if not completed_evaluation:
 				print "Time budget run out durring parallel evaluation, exiting evolve"
