@@ -33,8 +33,6 @@ class randomParallel:
 		# "individual" to generate individuals
 		# "population" to generate population
 		self.toolbox = toolbox
-		self.apk_dir = toolbox.get_apk_dir()
-		self.package_name = toolbox.get_package_name()
 		self.stats = stats
 		self.verbose = verbose
 
@@ -84,7 +82,7 @@ class randomParallel:
 			logbook.record(gen=gen, nevals=len(invalid_ind), **record)
 
 			# dump logbook in case we are interrupted
-			logbook_file = open(self.apk_dir + "/intermediate/logbook.pickle", 'wb')
+			logbook_file = open(self.toolbox.get_result_dir() + "/intermediate/logbook.pickle", 'wb')
 			pickle.dump(logbook, logbook_file)
 			logbook_file.close()
 
