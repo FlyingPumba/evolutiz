@@ -18,7 +18,7 @@ from bs4 import UnicodeDammit
 class CanNotInitSeqException(Exception):
 	pass
 
-def get_suite_with_coverage(device, result_dir, package_name, gen, pop):
+def get_suite_with_coverage(device, result_dir, apk_dir, package_name, gen, pop):
 	start_time = datetime.datetime.now()
 
 	ret = []
@@ -150,15 +150,15 @@ def get_sequence(device, result_dir, package_name,
 	return ret
 
 
-def gen_individual(device, result_dir, package_name):
+def gen_individual(device, result_dir, apk_dir, package_name, gen, pop):
 	try:
 		if settings.DEBUG:
 			print "Generate Individual on device, ", device
-		suite, coverage = get_suite_with_coverage(device, result_dir, package_name)
+		suite, coverage = get_suite_with_coverage(device, result_dir, apk_dir, package_name, gen, pop)
 		if settings.DEBUG:
 			print "Finished generating individual"
 		ind = creator.Individual(suite)
-		ind.fitness.value = coverage
+		ind.fitness.values = coverage
 
 		return ind, device
 

@@ -59,7 +59,7 @@ def process_results(data):
 	logger.log_progress("\rInit population in parallel: " + str(len(results)) + "/" + str(total_individuals))
 
 
-def initPop(func, n, result_dir, package_name):
+def initPop(func, gen, n, result_dir, apk_dir, package_name):
 	"""Call the function *container* with a generator function corresponding
 	to the calling *n* times the function *func*.
 	"""
@@ -97,7 +97,7 @@ def initPop(func, n, result_dir, package_name):
 			print "### Call apply_async"
 		# pool.apply_async(func, args=(idle_devices.pop(0), toolbox), callback=process_results)
 
-		res = pool.apply(func, args=(idle_devices.pop(0), result_dir, package_name))
+		res = pool.apply(func, args=(idle_devices.pop(0), result_dir, apk_dir, package_name, gen, i))
 		process_results(res)
 
 	# should wait for all processes finish

@@ -53,24 +53,7 @@ class randomParallel:
 
 	def initPopulation(self):
 		print "### Initialising population ...."
-		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(), package_name=self.toolbox.get_package_name())
-		if (len(self.population) < settings.DEVICE_NUM):
-			logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
-			return
-
-		# Evaluate the individuals with an invalid fitness
-		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-		completed_evaluation = evaluate_in_parallel(self.toolbox, invalid_ind, 0)
-
-		if not completed_evaluation:
-			logger.log_progress("\nTime budget run out durring parallel evaluation, exiting setup")
-			return
-
-		# discard invalid population individual
-		for i in range(len(self.population) - 1, -1, -1):
-			if not self.population[i].fitness.valid:
-				del self.population[i]
-
+		self.population = self.toolbox.population(gen=0, n=settings.DEVICE_NUM, result_dir=self.toolbox.get_result_dir(), apk_dir=self.toolbox.get_apk_dir(), package_name=self.toolbox.get_package_name())
 		self.update_best_historic_objectives_achieved(self.population)
 
 	def evolve(self):
@@ -93,24 +76,7 @@ class randomParallel:
 			logger.log_progress("\nStarting generation " + str(gen))
 
 			# Generate new random population
-			new_population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(), package_name=self.toolbox.get_package_name())
-
-			# Evaluate the individuals with an invalid fitness
-			invalid_ind = [ind for ind in new_population if not ind.fitness.valid]
-
-			# this function will eval and match each invalid_ind to its fitness
-			completed_evaluation = evaluate_in_parallel(self.toolbox, invalid_ind, gen)
-
-			if not completed_evaluation:
-				print "Time budget run out durring parallel evaluation, exiting evolve"
-				break
-
-			# discard invalid offspring individual
-			for i in range(len(new_population) - 1, -1, -1):
-				if not new_population[i].fitness.valid:
-					print "### Warning: Invalid Fitness"
-					del new_population[i]
-
+			new_population = self.toolbox.population(gen=gen, n=settings.DEVICE_NUM, result_dir=self.toolbox.get_result_dir(), apk_dir=self.toolbox.get_apk_dir(), package_name=self.toolbox.get_package_name())
 			self.update_best_historic_objectives_achieved(new_population)
 
 			# Update the statistics with the new population

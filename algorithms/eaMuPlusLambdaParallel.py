@@ -50,17 +50,9 @@ class eaMuPlusLambdaParallel:
 
 	def initPopulation(self):
 		print "### Initialising population ...."
-		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(), package_name=self.toolbox.get_package_name())
+		self.population = self.toolbox.population(gen=0, n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(), apk_dir=self.toolbox.get_apk_dir(), package_name=self.toolbox.get_package_name())
 		if (len(self.population) < settings.POPULATION_SIZE):
 			logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
-			return
-
-		# Evaluate the individuals with an invalid fitness
-		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-		completed_evaluation = evaluate_in_parallel(self.toolbox, invalid_ind, 0)
-
-		if not completed_evaluation:
-			logger.log_progress("\nTime budget run out durring parallel evaluation, exiting setup")
 			return
 
 		# discard invalid population individual
