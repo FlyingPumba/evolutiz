@@ -191,9 +191,7 @@ def run_sapienz(strategy_name, strategy, app_paths, use_motifgene=True):
     print "Preparing devices ..."
     any_device.boot_devices()
 
-    if use_motifgene:
-        any_device.prepare_motifcore()
-
+    any_device.prepare_motifcore()
     any_device.clean_sdcard()
 
     devices = any_device.get_devices()
