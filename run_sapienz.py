@@ -36,7 +36,7 @@ start_time = None
 apk_dir = None
 result_dir = None
 package_name = None
-
+motifgene_enabled = True
 
 def instrument_apk(folder_name, result_dir):
     logger.log_progress("\nInstrumenting app: " + folder_name)
@@ -62,9 +62,12 @@ def instrument_apk(folder_name, result_dir):
 
     return apk_path, package_name
 
-def run_sapienz_one_app(strategy, app_path, devices):
+def run_sapienz_one_app(strategy, app_path, devices, use_motifgene=True):
     folder_name = os.path.basename(app_path)
     try:
+        global motifgene_enabled
+        motifgene_enabled = use_motifgene
+
         global result_dir
         result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + folder_name
 
@@ -94,12 +97,13 @@ def run_sapienz_one_app(strategy, app_path, devices):
 
             # register common functions in toolbox
             toolbox = base.Toolbox()
-            toolbox.register("individual", gen_individual)
+            toolbox.register("individual", gen_individual, use_motifgene)
             toolbox.register("population", initRepeatParallel.initPop, toolbox.individual)
             toolbox.register("time_budget_available", time_budget_available)
             toolbox.register("get_apk_dir", get_apk_dir)
             toolbox.register("get_result_dir", get_result_dir)
             toolbox.register("get_package_name", get_package_name)
+            toolbox.register("is_motifgene_enabled", is_motifgene_enabled)
 
             stats = tools.Statistics(lambda ind: ind.fitness.values)
             # axis = 0, the numpy.mean will return an array of results
@@ -172,15 +176,21 @@ def get_package_name():
     global package_name
     return package_name
 
+def is_motifgene_enabled():
+    global motifgene_enabled
+    return motifgene_enabled
+
 def return_as_is(a):
     return a
 
 
-def run_sapienz(strategy, app_paths):
+def run_sapienz(strategy, app_paths, use_motifgene=True):
     print "Preparing devices ..."
     any_device.boot_devices()
 
-    any_device.prepare_motifcore()
+    if use_motifgene:
+        any_device.prepare_motifcore()
+
     any_device.clean_sdcard()
 
     devices = any_device.get_devices()
@@ -192,7 +202,7 @@ def run_sapienz(strategy, app_paths):
         adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
     for i in range(0, len(app_paths)):
-        success = run_sapienz_one_app(strategy, app_paths[i], devices)
+        success = run_sapienz_one_app(strategy, app_paths[i], devices, use_motifgene=use_motifgene)
         if not success:
             break
 
@@ -231,17 +241,21 @@ if __name__ == "__main__":
                         help='Directory where subjects are located')
     parser.add_argument('-s', '--strategy', dest='selected_strategy', default='muPlusLambda',
                         choices=possible_strategies.keys(), help='Strategy to be used')
+    parser.add_argument('-nm', '--no-motifgene', dest='use_motifgene', action='store_false',
+                        default=True, help='Disable motifgenes')
 
     args = parser.parse_args()
     app_paths = get_subject_paths(args.subjects_directory)[0:1]
     strategy = possible_strategies[args.selected_strategy]
+    use_motifgene = args.use_motifgene
 
     # run Sapienz exp
     logger.prepare()
     logger.clear_progress()
     logger.log_progress("Sapienz (" + args.selected_strategy + ")")
+    logger.log_progress("\nUse motifgene: " + str(use_motifgene))
 
-    run_sapienz(strategy, app_paths)
+    run_sapienz(strategy, app_paths, use_motifgene=use_motifgene)
 
     # process results
     # results_per_app = process_results(app_paths)

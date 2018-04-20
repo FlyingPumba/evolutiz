@@ -14,7 +14,7 @@ from devices import adb
 class CanNotInitSeqException(Exception):
 	pass
 
-def get_suite(device, result_dir, package_name):
+def get_suite(use_motifgene, device, result_dir, package_name):
 	start_time = datetime.datetime.now()
 
 	ret = []
@@ -28,7 +28,7 @@ def get_suite(device, result_dir, package_name):
 		seq = []
 		repeated = 0
 		while len(seq) <= 2:
-			seq = get_sequence(device, result_dir, package_name, i, unique_crashes)
+			seq = get_sequence(use_motifgene, device, result_dir, package_name, i, unique_crashes)
 			# print seq
 			repeated += 1
 			if repeated > 20:
@@ -44,7 +44,7 @@ def get_suite(device, result_dir, package_name):
 	return ret
 
 
-def get_sequence(device, result_dir, package_name, index, unique_crashes):
+def get_sequence(use_motifgene, device, result_dir, package_name, index, unique_crashes):
 	start_time = datetime.datetime.now()
 
 	std_out_file = result_dir + "/intermediate/" + "output.stdout"
@@ -61,7 +61,13 @@ def get_sequence(device, result_dir, package_name, index, unique_crashes):
 
 			# start motifcore
 			print "... Start generating a sequence"
-			motifcore_cmd = "motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml -v " + str(
+
+			string_seeding_flag = ""
+
+			if use_motifgene:
+				string_seeding_flag = "--string-seeding /mnt/sdcard/" + package_name + "_strings.xml"
+
+			motifcore_cmd = "motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " + string_seeding_flag + " -v " + str(
 				motifcore_events)
 			adb.shell_command(device, motifcore_cmd, timeout=True)
 
@@ -89,6 +95,11 @@ def get_sequence(device, result_dir, package_name, index, unique_crashes):
 						is_skipped_first = True
 						continue
 					if is_skipped_first:
+
+						# don't append motifgenes to the test case when they are disabled
+						if not use_motifgene and line.find("GUIGen") != -1:
+							continue
+
 						ret.append(line)
 
 			script.close()
@@ -110,11 +121,11 @@ def get_sequence(device, result_dir, package_name, index, unique_crashes):
 	return ret
 
 
-def gen_individual(device, result_dir, package_name):
+def gen_individual(use_motifgene, device, result_dir, package_name):
 	try:
 		if settings.DEBUG:
 			print "Generate Individual on device, ", device
-		suite = get_suite(device, result_dir, package_name)
+		suite = get_suite(use_motifgene, device, result_dir, package_name)
 		if settings.DEBUG:
 			print "Finished generating individual"
 		return (creator.Individual(suite), device)

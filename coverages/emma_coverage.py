@@ -78,7 +78,7 @@ def extract_coverage(path):
 
 
 # return accumulative coverage and average length
-def get_suite_coverage(scripts, device, result_dir, apk_dir, package_name, gen, pop):
+def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_dir, package_name, gen, pop):
 	unique_crashes = set()
 
 	# clean states
@@ -106,14 +106,7 @@ def get_suite_coverage(scripts, device, result_dir, apk_dir, package_name, gen, 
 		adb.push(device, script, "/mnt/sdcard/.")
 		script_name = script.split("/")[-1]
 
-		motifcore_cmd = "motifcore -p " + package_name \
-						+ " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
-						  "--string-seeding /mnt/sdcard/" + package_name + "_strings.xml " \
-						+ "-f /mnt/sdcard/" + script_name + " 1"
-		adb.sudo_shell_command(device, motifcore_cmd, timeout=True)
-
-		# need to manually kill motifcore when timeout
-		adb.pkill(device, "motifcore")
+		run_script_using_motifcore(is_motifgene_enabled, device, package_name, script_name)
 
 		if crash_handler.handle(device, result_dir, script, gen, pop, index, unique_crashes):
 			pass
@@ -147,3 +140,19 @@ def get_suite_coverage(scripts, device, result_dir, apk_dir, package_name, gen, 
 		return int(coverage_str.split("%")[0]), len(unique_crashes)
 	else:
 		return 0, len(unique_crashes)
+
+
+def run_script_using_motifcore(use_motifgene, device, package_name, script_name):
+	string_seeding_flag = ""
+
+	if use_motifgene:
+		string_seeding_flag = "--string-seeding /mnt/sdcard/" + package_name + "_strings.xml"
+
+	motifcore_cmd = "motifcore -p " + package_name \
+					+ " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport "\
+					+ string_seeding_flag + " -f /mnt/sdcard/" + script_name + " 1"
+
+	adb.sudo_shell_command(device, motifcore_cmd, timeout=True)
+
+	# need to manually kill motifcore when timeout
+	adb.pkill(device, "motifcore")
