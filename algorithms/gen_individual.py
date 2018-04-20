@@ -82,6 +82,11 @@ def get_sequence(use_motifgene, device, result_dir, package_name, index, unique_
 			adb.pkill(device, "motifcore")
 
 			adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename)
+
+			# remove motifgenes from test case if they are disabled
+			if not use_motifgene:
+				os.system("sed -i '/GUIGen/d' " + motifcore_script_filename)
+
 			script = open(motifcore_script_filename)
 			is_content = False
 			is_skipped_first = False
@@ -95,11 +100,6 @@ def get_sequence(use_motifgene, device, result_dir, package_name, index, unique_
 						is_skipped_first = True
 						continue
 					if is_skipped_first:
-
-						# don't append motifgenes to the test case when they are disabled
-						if not use_motifgene and line.find("GUIGen") != -1:
-							continue
-
 						ret.append(line)
 
 			script.close()
