@@ -62,14 +62,17 @@ def instrument_apk(folder_name, result_dir):
 
     return apk_path, package_name
 
-def run_sapienz_one_app(strategy, app_path, devices, use_motifgene=True):
+def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgene=True):
     folder_name = os.path.basename(app_path)
     try:
         global motifgene_enabled
         motifgene_enabled = use_motifgene
 
+        if not use_motifgene:
+            strategy_name += "-nm"
+
         global result_dir
-        result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + folder_name
+        result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name
 
         os.chdir(app_path)
         global apk_dir
@@ -184,7 +187,7 @@ def return_as_is(a):
     return a
 
 
-def run_sapienz(strategy, app_paths, use_motifgene=True):
+def run_sapienz(strategy_name, strategy, app_paths, use_motifgene=True):
     print "Preparing devices ..."
     any_device.boot_devices()
 
@@ -202,7 +205,7 @@ def run_sapienz(strategy, app_paths, use_motifgene=True):
         adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
     for i in range(0, len(app_paths)):
-        success = run_sapienz_one_app(strategy, app_paths[i], devices, use_motifgene=use_motifgene)
+        success = run_sapienz_one_app(strategy_name, strategy, app_paths[i], devices, use_motifgene=use_motifgene)
         if not success:
             break
 
@@ -255,7 +258,7 @@ if __name__ == "__main__":
     logger.log_progress("Sapienz (" + args.selected_strategy + ")")
     logger.log_progress("\nUse motifgene: " + str(use_motifgene))
 
-    run_sapienz(strategy, app_paths, use_motifgene=use_motifgene)
+    run_sapienz(args.selected_strategy, strategy, app_paths, use_motifgene=use_motifgene)
 
     # process results
     # results_per_app = process_results(app_paths)
