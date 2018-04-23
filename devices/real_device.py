@@ -37,7 +37,7 @@ import settings
 from devices import adb
 from util import motifcore_installer
 from util import pack_and_deploy
-
+import logger
 
 def get_devices():
 	""" will also get devices ready
@@ -46,10 +46,10 @@ def get_devices():
 	print "### get_devices..."
 
 	print "### killall adb"
-	os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')")
-	os.system("killall adb")
+	os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')" + logger.redirect_string())
+	os.system("killall adb" + logger.redirect_string())
 	print "### adb devices"
-	os.system("$ANDROID_HOME/platform-tools/adb devices")
+	os.system("$ANDROID_HOME/platform-tools/adb devices" + logger.redirect_string())
 
 	ret = []
 	p = sub.Popen('$ANDROID_HOME/platform-tools/adb devices', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
@@ -108,9 +108,9 @@ def pack_and_deploy_aut():
 
 
 def clean_device_app(device, package_name):
-	os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')")
-	os.system("killall adb")
-	os.system("$ANDROID_HOME/platform-tools/adb devices")
+	os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')" + logger.redirect_string())
+	os.system("killall adb" + logger.redirect_string())
+	os.system("$ANDROID_HOME/platform-tools/adb devices" + logger.redirect_string())
 
 	print "### kill motifcore ..."
 	kill_motifcore(device)
