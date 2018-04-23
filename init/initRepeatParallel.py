@@ -95,10 +95,10 @@ def initPop(func, n, result_dir, package_name):
 
 		if settings.DEBUG:
 			print "### Call apply_async"
-		# pool.apply_async(func, args=(idle_devices.pop(0), toolbox), callback=process_results)
+		pool.apply_async(func, args=(idle_devices.pop(0), result_dir, package_name), callback=process_results)
 
-		res = pool.apply(func, args=(idle_devices.pop(0), result_dir, package_name))
-		process_results(res)
+		# res = pool.apply(func, args=(idle_devices.pop(0), result_dir, package_name))
+		# process_results(res)
 
 	# should wait for all processes finish
 	pool.close()
