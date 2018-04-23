@@ -51,3 +51,9 @@ def install(device, package_name, apk_path):
 def pkill(device, string):
     adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
     os.system(adb_cmd + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd + "kill pid " + logger.redirect_string())
+
+def get_battery_level(device):
+    adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
+    cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
+    res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+    return int(res)

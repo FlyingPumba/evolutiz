@@ -62,7 +62,24 @@ def instrument_apk(folder_name, result_dir):
 
     return apk_path, package_name
 
+
+def check_devices_battery(devices):
+    # check that all devices have enough battery
+    battery_threshold = 75
+    while True:
+        all_devices_with_battery = True
+        for device in devices:
+            all_devices_with_battery = all_devices_with_battery and adb.get_battery_level(device) >= battery_threshold
+
+        if all_devices_with_battery:
+            break
+        else:
+            print "Waiting for some devices to reach " + str(battery_threshold) + "% battery level"
+            time.sleep(60)  # sleep 1 minute
+
+
 def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgene=True):
+
     folder_name = os.path.basename(app_path)
     try:
         global motifgene_enabled
@@ -87,6 +104,9 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
             return False
 
         for repetition in range(0, REPETITIONS):
+
+            check_devices_battery(devices)
+
             logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
 
             # start time budget
@@ -196,6 +216,7 @@ def run_sapienz(strategy_name, strategy, app_paths, use_motifgene=True):
 
     devices = any_device.get_devices()
 
+    # make /mnt/sdcard and /system writable
     for device in devices:
         logger.log_progress("\nPreparing device: " + device + " sdcard")
         adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
