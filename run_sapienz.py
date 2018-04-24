@@ -107,7 +107,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
 
         instrument_apk(folder_name, base_result_dir)
         global package_name
-        package_name, installation_successful = prepare_apk(devices, app_path, result_dir)
+        package_name, installation_successful = prepare_apk(devices, app_path, base_result_dir)
         if not installation_successful:
             logger.log_progress("\nUnable to install apk in all devices")
             return False
