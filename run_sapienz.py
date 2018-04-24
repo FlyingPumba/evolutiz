@@ -69,13 +69,23 @@ def check_devices_battery(devices):
     while True:
         all_devices_with_battery = True
         for device in devices:
-            all_devices_with_battery = all_devices_with_battery and adb.get_battery_level(device) >= battery_threshold
+            level = adb.get_battery_level(device)
+            all_devices_with_battery = all_devices_with_battery and level >= battery_threshold
 
         if all_devices_with_battery:
             break
         else:
             print "Waiting for some devices to reach " + str(battery_threshold) + "% battery level"
             time.sleep(60)  # sleep 1 minute
+
+def log_devices_battery(devices, result_dir, gen):
+    log_file = result_dir + "/battery.log"
+    os.system("echo 'Battery levels at gen: " + str(gen) + "' >> " + log_file)
+
+    for device in devices:
+        level = adb.get_battery_level(device)
+        imei = adb.get_imei(device)
+        os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
 
 
 def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgene=True):
@@ -88,15 +98,14 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
         if not use_motifgene:
             strategy_name += "-nm"
 
-        global result_dir
-        result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name
+        base_result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name
 
         os.chdir(app_path)
         global apk_dir
         apk_dir = app_path
-        os.system("rm -r " + result_dir + "/*" + logger.redirect_string())
+        os.system("rm -r " + base_result_dir + "/*" + logger.redirect_string())
 
-        instrument_apk(folder_name, result_dir)
+        instrument_apk(folder_name, base_result_dir)
         global package_name
         package_name, installation_successful = prepare_apk(devices, app_path, result_dir)
         if not installation_successful:
@@ -105,7 +114,12 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
 
         for repetition in range(0, REPETITIONS):
 
+            global result_dir
+            result_dir = base_result_dir + "/" + str(repetition)
+
             check_devices_battery(devices)
+            log_devices_battery(devices, result_dir, "init")
+
 
             logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
 
@@ -127,6 +141,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
             toolbox.register("get_result_dir", get_result_dir)
             toolbox.register("get_package_name", get_package_name)
             toolbox.register("is_motifgene_enabled", is_motifgene_enabled)
+            toolbox.register("log_devices_battery", log_devices_battery, devices, result_dir)
 
             stats = tools.Statistics(lambda ind: ind.fitness.values)
             # axis = 0, the numpy.mean will return an array of results

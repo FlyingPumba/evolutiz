@@ -70,6 +70,8 @@ class eaMuPlusLambdaParallel:
 
 		self.update_best_historic_objectives_achieved(self.population)
 
+		self.toolbox.log_devices_battery(0)
+
 	def evolve(self):
 		# record first population in logbook
 		logbook = tools.Logbook()
@@ -112,6 +114,8 @@ class eaMuPlusLambdaParallel:
 					del offspring[i]
 
 			self.update_best_historic_objectives_achieved(offspring)
+
+			self.toolbox.log_devices_battery(gen)
 
 			# Select the next generation population
 			self.population[:] = self.toolbox.select(self.population + offspring, self.mu)
