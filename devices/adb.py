@@ -5,6 +5,7 @@ import logger
 import settings
 
 adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb"
+devices_imei = {}
 
 def adb_command(device, command, timeout = False):
     adb_cmd = adb_cmd_prefix + " -s " + device + " " + command
@@ -57,3 +58,12 @@ def get_battery_level(device):
     cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
     res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
     return int(res)
+
+def get_imei(device):
+    if device not in devices_imei:
+        adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
+        cmd = adb_cmd + "dumpsys iphonesubinfo | grep 'Device ID' | cut -d ' ' -f 6 "
+        res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+        devices_imei[device] = res
+
+    return devices_imei[device]
