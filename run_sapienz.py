@@ -98,28 +98,25 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
         if not use_motifgene:
             strategy_name += "-nm"
 
-        base_result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name
-
-        os.chdir(app_path)
-        global apk_dir
-        apk_dir = app_path
-        os.system("rm -r " + base_result_dir + "/*" + logger.redirect_string())
-
-        instrument_apk(folder_name, base_result_dir)
-        global package_name
-        package_name, installation_successful = prepare_apk(devices, app_path, base_result_dir)
-        if not installation_successful:
-            logger.log_progress("\nUnable to install apk in all devices")
-            return False
-
         for repetition in range(0, REPETITIONS):
 
             global result_dir
-            result_dir = base_result_dir + "/" + str(repetition)
-            os.system("mkdir -p " + result_dir)
+            result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name + "/" + str(repetition)
+
+            os.chdir(app_path)
+            global apk_dir
+            apk_dir = app_path
+            os.system("rm -r " + result_dir + "/*" + logger.redirect_string())
+
+            instrument_apk(folder_name, result_dir)
+            global package_name
+            package_name, installation_successful = prepare_apk(devices, app_path, result_dir)
+            if not installation_successful:
+                logger.log_progress("\nUnable to install apk in all devices")
+                return False
 
             check_devices_battery(devices)
-            log_devices_battery(devices, base_result_dir, "init")
+            log_devices_battery(devices, result_dir, "init")
 
             logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
 
