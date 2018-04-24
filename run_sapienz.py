@@ -115,6 +115,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
         for repetition in range(0, REPETITIONS):
 
             global result_dir
+            os.system("mkdir -p " + result_dir)
             result_dir = base_result_dir + "/" + str(repetition)
 
             check_devices_battery(devices)
