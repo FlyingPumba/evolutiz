@@ -73,7 +73,7 @@ class randomParallel:
 
 		self.update_best_historic_objectives_achieved(self.population)
 
-		self.toolbox.log_devices_battery(0)
+		self.toolbox.log_devices_battery(0, self.toolbox.get_result_dir())
 
 	def evolve(self):
 		# record first population in logbook
@@ -115,7 +115,7 @@ class randomParallel:
 
 			self.update_best_historic_objectives_achieved(new_population)
 
-			self.toolbox.log_devices_battery(gen)
+			self.toolbox.log_devices_battery(gen, self.toolbox.get_result_dir())
 
 			# Update the statistics with the new population
 			record = self.stats.compile(new_population) if self.stats is not None else {}

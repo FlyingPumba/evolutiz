@@ -119,8 +119,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
             os.system("mkdir -p " + result_dir)
 
             check_devices_battery(devices)
-            log_devices_battery(devices, result_dir, "init")
-
+            log_devices_battery(devices, base_result_dir, "init")
 
             logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
 
@@ -142,7 +141,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
             toolbox.register("get_result_dir", get_result_dir)
             toolbox.register("get_package_name", get_package_name)
             toolbox.register("is_motifgene_enabled", is_motifgene_enabled)
-            toolbox.register("log_devices_battery", log_devices_battery, devices, result_dir)
+            toolbox.register("log_devices_battery", log_devices_battery, devices)
 
             stats = tools.Statistics(lambda ind: ind.fitness.values)
             # axis = 0, the numpy.mean will return an array of results
