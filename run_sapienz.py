@@ -78,7 +78,7 @@ def check_devices_battery(devices):
             print "Waiting for some devices to reach " + str(battery_threshold) + "% battery level"
             time.sleep(60)  # sleep 1 minute
 
-def log_devices_battery(devices, result_dir, gen):
+def log_devices_battery(devices, gen, result_dir):
     log_file = result_dir + "/battery.log"
     os.system("echo 'Battery levels at gen: " + str(gen) + "' >> " + log_file)
 
@@ -116,7 +116,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
                 return False
 
             check_devices_battery(devices)
-            log_devices_battery(devices, result_dir, "init")
+            log_devices_battery(devices, "init", result_dir)
 
             logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
 
