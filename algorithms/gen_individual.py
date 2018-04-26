@@ -69,7 +69,7 @@ def get_sequence(use_motifgene, device, result_dir, package_name, index, unique_
 
 			motifcore_cmd = "motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " + string_seeding_flag + " -v " + str(
 				motifcore_events)
-			adb.shell_command(device, motifcore_cmd, timeout=True)
+			adb.shell_command(device, motifcore_cmd, timeout=True, log_output=False)
 
 			print "... Finish generating a sequence"
 			# access the generated script, should ignore the first launch activity

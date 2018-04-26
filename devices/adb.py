@@ -8,22 +8,30 @@ adb_logs_dir = ""
 adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb"
 devices_imei = {}
 
-def adb_command(device, command, timeout = False):
+def adb_command(device, command, timeout = False, log_output=True):
     adb_cmd = adb_cmd_prefix + " -s " + device + " " + command
 
     if timeout:
         timeout_adb_cmd = settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + adb_cmd
         log_adb_command(device, timeout_adb_cmd)
-        return os.system(timeout_adb_cmd + logger.redirect_string())
+
+        if log_output:
+            return os.system(timeout_adb_cmd + logger.redirect_string())
+        else:
+            return os.system(timeout_adb_cmd + logger.redirect_string(out="/dev/null"))
     else:
         log_adb_command(device, adb_cmd)
-        return os.system(adb_cmd + logger.redirect_string())
 
-def shell_command(device, command, timeout = False):
-    return adb_command(device, "shell " + command, timeout)
+        if log_output:
+            return os.system(adb_cmd + logger.redirect_string())
+        else:
+            return os.system(adb_cmd + logger.redirect_string(out="/dev/null"))
 
-def sudo_shell_command(device, command, timeout = False):
-    return shell_command(device, "\" su -s sh -c '" + command + "'\"", timeout)
+def shell_command(device, command, timeout = False, log_output=True):
+    return adb_command(device, "shell " + command, timeout, log_output)
+
+def sudo_shell_command(device, command, timeout = False, log_output=True):
+    return shell_command(device, "\" su -s sh -c '" + command + "'\"", timeout, log_output)
 
 def push(device, src, dest):
     return adb_command(device, "push " + src + " " + dest)

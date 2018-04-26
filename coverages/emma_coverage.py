@@ -152,7 +152,7 @@ def run_script_using_motifcore(use_motifgene, device, package_name, script_name)
 					+ " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport "\
 					+ string_seeding_flag + " -f /mnt/sdcard/" + script_name + " 1"
 
-	adb.sudo_shell_command(device, motifcore_cmd, timeout=True)
+	adb.sudo_shell_command(device, motifcore_cmd, timeout=True, log_output=False)
 
 	# need to manually kill motifcore when timeout
 	adb.pkill(device, "motifcore")
