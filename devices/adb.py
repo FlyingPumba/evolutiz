@@ -8,11 +8,14 @@ adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb"
 devices_imei = {}
 
 def adb_command(device, command, timeout = False):
+    device_adb_log_file = get_device_name(device) + "-adb.log"
     adb_cmd = adb_cmd_prefix + " -s " + device + " " + command
-    print "executing adb command: ", command
+
     if timeout:
+        os.system("echo '" + settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + adb_cmd + "' >> " + device_adb_log_file)
         os.system(settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + adb_cmd + logger.redirect_string())
     else:
+        os.system("echo '" + adb_cmd + "' >> " + device_adb_log_file)
         os.system(adb_cmd + logger.redirect_string())
 
 def shell_command(device, command, timeout = False):
@@ -67,3 +70,9 @@ def get_imei(device):
         devices_imei[device] = res
 
     return devices_imei[device]
+
+def get_device_name(device):
+    if "emulator" in device:
+        return device
+    else
+        return get_imei(device)
