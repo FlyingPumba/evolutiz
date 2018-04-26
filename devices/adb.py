@@ -94,4 +94,4 @@ def get_device_name(device):
 
 def log_adb_command(device, cmd):
     device_adb_log_file = adb_logs_dir + "/" + get_device_name(device) + "-adb.log"
-    os.system("echo '" + cmd + "' >> " + device_adb_log_file)
+    os.system("echo \"" + cmd + "\" >> " + device_adb_log_file)
