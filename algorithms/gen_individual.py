@@ -62,7 +62,8 @@ def get_sequence(use_motifgene, device, result_dir, package_name, index, unique_
 	# need to kill motifcore when timeout
 	adb.pkill(device, "motifcore")
 
-	adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename)
+	result_code = adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename)
+	if result_code != 0: raise Exception("Failed to retrieve motifcore script from device")
 
 	# remove motifgenes from test case if they are disabled
 	if not use_motifgene:
