@@ -129,34 +129,8 @@ def prepare_motifcore_callback(success):
 	logger.log_progress("\rPreparing motifcore in devices: " + str(installed_devices) + "/" + str(total_devices))
 
 def prepare_motifcore():
-	print "Preparing motifcore"
-	devices = get_devices()
-
-	pool = mp.Pool(processes=len(devices))
-
-	global installed_devices
-	installed_devices = 0
-	global total_devices
-	total_devices = len(devices)
-
-	logger.log_progress("\nPreparing motifcore in devices: " + str(installed_devices) + "/" + str(total_devices))
-
-	for device in devices:
-		#pool.apply_async(motifcore_installer.install,
-		#				 args=(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device),
-		#				 callback=prepare_motifcore_callback)
-		# res = pool.apply(motifcore_installer.install,
-		# 				 args=(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device))
-		# prepare_motifcore_callback(res)
-		success = motifcore_installer.install(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device)
-		if not success:
-			logger.log_progress("\nFailed to prepare motifcore in device: " + device)
-			break
-		installed_devices += 1
-		logger.log_progress("\rPreparing motifcore in devices: " + str(installed_devices) + "/" + str(total_devices))
-
-	pool.close()
-	pool.join()
+	for device in get_devices():
+		motifcore_installer.install(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device)
 
 
 def pack_and_deploy_aut():

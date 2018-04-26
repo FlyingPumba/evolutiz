@@ -115,13 +115,6 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
 
             devices = any_device.get_devices()
 
-            # make /mnt/sdcard and /system writable
-            for device in devices:
-                logger.log_progress("\nPreparing device: " + device + " sdcard")
-                adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
-                adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
-                adb.sudo_shell_command(device, "mount -o rw,remount /system")
-
             instrument_apk(folder_name, result_dir)
             global package_name
             package_name, installation_successful = prepare_apk(devices, app_path, result_dir)
