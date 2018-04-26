@@ -4,6 +4,7 @@ import subprocess
 import logger
 import settings
 
+adb_logs_dir = ""
 adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb"
 devices_imei = {}
 
@@ -87,5 +88,5 @@ def get_device_name(device):
         return get_imei(device)
 
 def log_adb_command(device, cmd):
-    device_adb_log_file = get_device_name(device) + "-adb.log"
+    device_adb_log_file = adb_logs_dir + "/" + get_device_name(device) + "-adb.log"
     os.system("echo '" + cmd + "' >> " + device_adb_log_file)

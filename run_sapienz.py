@@ -103,6 +103,15 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
             global result_dir
             result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name + "/" + str(repetition)
 
+            adb.adb_logs_dir = result_dir
+
+            # make /mnt/sdcard and /system writable
+            for device in devices:
+                logger.log_progress("\nPreparing device: " + device + " sdcard")
+                adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
+                adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
+                adb.sudo_shell_command(device, "mount -o rw,remount /system")
+
             os.chdir(app_path)
             global apk_dir
             apk_dir = app_path
@@ -227,13 +236,6 @@ def run_sapienz(strategy_name, strategy, app_paths, use_motifgene=True):
     any_device.clean_sdcard()
 
     devices = any_device.get_devices()
-
-    # make /mnt/sdcard and /system writable
-    for device in devices:
-        logger.log_progress("\nPreparing device: " + device + " sdcard")
-        adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
-        adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
-        adb.sudo_shell_command(device, "mount -o rw,remount /system")
 
     for i in range(0, len(app_paths)):
         success = run_sapienz_one_app(strategy_name, strategy, app_paths[i], devices, use_motifgene=use_motifgene)
