@@ -102,8 +102,12 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 
 	# run scripts
 	for index, script in enumerate(scripts):
-		adb.shell_command(device, "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation")
-		adb.push(device, script, "/mnt/sdcard/.")
+		result_code = adb.shell_command(device, "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation")
+		if result_code != 0: raise Exception("Unable to instrument " + package_name)
+
+		result_code = adb.push(device, script, "/mnt/sdcard/.")
+		if result_code != 0: raise Exception("Unable to push motifcore script " + script)
+
 		script_name = script.split("/")[-1]
 
 		run_script_using_motifcore(is_motifgene_enabled, device, package_name, script_name)
@@ -112,7 +116,8 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 			pass
 		else:
 			# no crash, can broadcast
-			adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
+			result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
+			if result_code != 0: raise Exception("Unable to broadcast coverage gathering for script " + script)
 
 
 		# save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
@@ -126,7 +131,10 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 	print "### Getting EMMA coverage.ec and report ..."
 	adb.shell_command(device, "pm clear " + package_name)
 	time.sleep(0.5)
-	adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
+
+	result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
+	if result_code != 0: raise Exception("Unable to pull coverage from device")
+
 	os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + apk_dir + "/src " + logger.redirect_string())
 
 	html_file = result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
