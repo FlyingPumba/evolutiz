@@ -41,9 +41,6 @@ motifgene_enabled = True
 def instrument_apk(folder_name, result_dir):
     logger.log_progress("\nInstrumenting app: " + folder_name)
 
-    result_code = os.system("mkdir -p " + result_dir)
-    if result_code != 0: raise Exception("Unable to create result dir")
-
     result_code = os.system("ant clean emma debug 2>&1 >" + result_dir + "/build.log")
     if result_code != 0: raise Exception("Unable run ant clean emma debug")
 
@@ -105,17 +102,20 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
 
             adb.adb_logs_dir = result_dir
 
+            os.chdir(app_path)
+            global apk_dir
+            apk_dir = app_path
+            os.system("rm -r " + result_dir + "/*" + logger.redirect_string())
+
+            result_code = os.system("mkdir -p " + result_dir)
+            if result_code != 0: raise Exception("Unable to create result dir")
+
             # make /mnt/sdcard and /system writable
             for device in devices:
                 logger.log_progress("\nPreparing device: " + device + " sdcard")
                 adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
                 adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
                 adb.sudo_shell_command(device, "mount -o rw,remount /system")
-
-            os.chdir(app_path)
-            global apk_dir
-            apk_dir = app_path
-            os.system("rm -r " + result_dir + "/*" + logger.redirect_string())
 
             instrument_apk(folder_name, result_dir)
             global package_name
