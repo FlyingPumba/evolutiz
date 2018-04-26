@@ -55,5 +55,8 @@ def clear_progress():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def redirect_string(out=output_filename, err=error_filename):
-    return " 1>>" + str(out) + " 2>>" + str(err)
+def redirect_string(log_output = True):
+    if log_output:
+        return " 1>>" + str(output_filename) + " 2>>" + str(error_filename)
+    else:
+        return " 1>>/dev/null 2>>" + str(error_filename)

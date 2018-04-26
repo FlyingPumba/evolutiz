@@ -19,25 +19,10 @@ def get_suite(use_motifgene, device, result_dir, package_name):
 
 	ret = []
 	unique_crashes = set()
-	if settings.DEBUG:
-		print " ... Generating suite of size", settings.SUITE_SIZE
-	for i in range(0, settings.SUITE_SIZE):
-		# get_sequence may return empty sequence
-		if settings.DEBUG:
-			print "Individual ", i
-		seq = []
-		repeated = 0
-		while len(seq) <= 2:
-			seq = get_sequence(use_motifgene, device, result_dir, package_name, i, unique_crashes)
-			# print seq
-			repeated += 1
-			if repeated > 20:
-				print "Cannot get sequence via MotifCore."
-				raise CanNotInitSeqException("Cannot get sequence via MotifCore.")
-		ret.append(seq)
 
-	if settings.DEBUG:
-		print "... Exiting get_suite method"
+	for i in range(0, settings.SUITE_SIZE):
+		seq = get_sequence(use_motifgene, device, result_dir, package_name, i, unique_crashes)
+		ret.append(seq)
 
 	# logger.log_progress("\nget_suite took " + str((datetime.datetime.now() - start_time).seconds))
 
@@ -52,69 +37,56 @@ def get_sequence(use_motifgene, device, result_dir, package_name, index, unique_
 
 	motifcore_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
 
-	while True:
-		try:
-			ret = []
+	ret = []
 
-			# clear data
-			adb.shell_command(device, "pm clear " + package_name)
+	# clear data
+	adb.shell_command(device, "pm clear " + package_name)
 
-			# start motifcore
-			print "... Start generating a sequence"
+	# start motifcore
 
-			string_seeding_flag = ""
+	string_seeding_flag = ""
 
-			if use_motifgene:
-				string_seeding_flag = "--string-seeding /mnt/sdcard/" + package_name + "_strings.xml"
+	if use_motifgene:
+		string_seeding_flag = "--string-seeding /mnt/sdcard/" + package_name + "_strings.xml"
 
-			motifcore_cmd = "motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " + string_seeding_flag + " -v " + str(
-				motifcore_events)
-			adb.shell_command(device, motifcore_cmd, timeout=True, log_output=False)
+	motifcore_cmd = "motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " + string_seeding_flag + " -v " + str(
+		motifcore_events)
+	adb.shell_command(device, motifcore_cmd, timeout=True, log_output=False)
 
-			print "... Finish generating a sequence"
-			# access the generated script, should ignore the first launch activity
-			script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]
-			ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
+	# access the generated script, should ignore the first launch activity
+	script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]
+	ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
 
-			motifcore_script_filename = result_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index)
+	motifcore_script_filename = result_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index)
 
-			# need to kill motifcore when timeout
-			adb.pkill(device, "motifcore")
+	# need to kill motifcore when timeout
+	adb.pkill(device, "motifcore")
 
-			adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename)
+	adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename)
 
-			# remove motifgenes from test case if they are disabled
-			if not use_motifgene:
-				os.system("sed -i '/GUIGen/d' " + motifcore_script_filename)
+	# remove motifgenes from test case if they are disabled
+	if not use_motifgene:
+		os.system("sed -i '/GUIGen/d' " + motifcore_script_filename)
 
-			script = open(motifcore_script_filename)
-			is_content = False
-			is_skipped_first = False
-			for line in script:
-				line = line.strip()
-				if line.find("start data >>") != -1:
-					is_content = True
-					continue
-				if is_content and line != "":
-					if is_skipped_first == False:
-						is_skipped_first = True
-						continue
-					if is_skipped_first:
-						ret.append(line)
-
-			script.close()
-			break
-		except Exception as e:
-			logger.log_progress("There was an error trying to pull motifcore script: " + motifcore_script_filename)
-			# traceback.print_exc(file=logger.orig_stdout)
-			print e
-			time.sleep(1)
+	script = open(motifcore_script_filename)
+	is_content = False
+	is_skipped_first = False
+	for line in script:
+		line = line.strip()
+		if line.find("start data >>") != -1:
+			is_content = True
 			continue
+		if is_content and line != "":
+			if not is_skipped_first:
+				is_skipped_first = True
+				continue
+			if is_skipped_first:
+				ret.append(line)
+
+	script.close()
 
 	# deal with crash
 	crash_handler.handle(device, result_dir, motifcore_script_filename, "init", ts, index, unique_crashes)
-
-	print "... Exiting get_sequence method"
 
 	# logger.log_progress("\nget_sequence took " + str((datetime.datetime.now() - start_time).seconds))
 

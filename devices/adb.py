@@ -14,18 +14,10 @@ def adb_command(device, command, timeout = False, log_output=True):
     if timeout:
         timeout_adb_cmd = settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + adb_cmd
         log_adb_command(device, timeout_adb_cmd)
-
-        if log_output:
-            return os.system(timeout_adb_cmd + logger.redirect_string())
-        else:
-            return os.system(timeout_adb_cmd + logger.redirect_string(out="/dev/null"))
+        return os.system(timeout_adb_cmd + logger.redirect_string(log_output))
     else:
         log_adb_command(device, adb_cmd)
-
-        if log_output:
-            return os.system(adb_cmd + logger.redirect_string())
-        else:
-            return os.system(adb_cmd + logger.redirect_string(out="/dev/null"))
+        return os.system(adb_cmd + logger.redirect_string(log_output))
 
 def shell_command(device, command, timeout = False, log_output=True):
     return adb_command(device, "shell " + command, timeout, log_output)
