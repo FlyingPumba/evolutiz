@@ -85,7 +85,7 @@ def log_devices_battery(devices, gen, result_dir):
         os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
 
 
-def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgene=True):
+def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
 
     folder_name = os.path.basename(app_path)
     try:
@@ -109,6 +109,11 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, devices, use_motifgen
 
             result_code = os.system("mkdir -p " + result_dir)
             if result_code != 0: raise Exception("Unable to create result dir")
+
+            any_device.prepare_motifcore()
+            any_device.clean_sdcard()
+
+            devices = any_device.get_devices()
 
             # make /mnt/sdcard and /system writable
             for device in devices:
@@ -232,13 +237,8 @@ def run_sapienz(strategy_name, strategy, app_paths, use_motifgene=True):
     print "Preparing devices ..."
     any_device.boot_devices()
 
-    any_device.prepare_motifcore()
-    any_device.clean_sdcard()
-
-    devices = any_device.get_devices()
-
     for i in range(0, len(app_paths)):
-        success = run_sapienz_one_app(strategy_name, strategy, app_paths[i], devices, use_motifgene=use_motifgene)
+        success = run_sapienz_one_app(strategy_name, strategy, app_paths[i], use_motifgene=use_motifgene)
         if not success:
             break
 
