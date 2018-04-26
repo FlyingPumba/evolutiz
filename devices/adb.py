@@ -74,5 +74,5 @@ def get_imei(device):
 def get_device_name(device):
     if "emulator" in device:
         return device
-    else
+    else:
         return get_imei(device)
