@@ -79,7 +79,8 @@ def get_imei(device):
     if device not in devices_imei:
         adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
         cmd = adb_cmd + "dumpsys iphonesubinfo | grep 'Device ID' | cut -d ' ' -f 6 "
-        log_adb_command(device, cmd)
+	# leave commented to avoid infinite recursion
+        #log_adb_command(device, cmd)
 
         res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
         devices_imei[device] = res
