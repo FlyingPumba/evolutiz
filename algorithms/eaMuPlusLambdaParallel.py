@@ -1,3 +1,5 @@
+import os
+
 import random
 import pickle
 import sys
@@ -48,6 +50,9 @@ class eaMuPlusLambdaParallel:
 		# self.toolbox.register("select", tools.selTournament, tournsize=5)
 		self.toolbox.register("select", tools.selNSGA2)
 
+		self.targets_historic_log_file = self.toolbox.get_result_dir() + "/targets_historic.log"
+		self.setup_log_best_historic_objectives_achieved()
+
 	def initPopulation(self):
 		print "### Initialising population ...."
 		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(), package_name=self.toolbox.get_package_name())
@@ -68,7 +73,7 @@ class eaMuPlusLambdaParallel:
 			if not self.population[i].fitness.valid:
 				del self.population[i]
 
-		self.update_best_historic_objectives_achieved(self.population)
+		self.update_best_historic_objectives_achieved(self.population, 0)
 
 		self.toolbox.log_devices_battery(0, self.toolbox.get_result_dir())
 
@@ -113,7 +118,7 @@ class eaMuPlusLambdaParallel:
 					print "### Warning: Invalid Fitness"
 					del offspring[i]
 
-			self.update_best_historic_objectives_achieved(offspring)
+			self.update_best_historic_objectives_achieved(offspring, gen)
 
 			self.toolbox.log_devices_battery(gen, self.toolbox.get_result_dir())
 
@@ -152,7 +157,7 @@ class eaMuPlusLambdaParallel:
 
 		return offspring
 
-	def update_best_historic_objectives_achieved(self, population):
+	def update_best_historic_objectives_achieved(self, population, gen):
 		for ind in population:
 			fit = ind.fitness.values
 			coverage = fit[0]
@@ -172,4 +177,25 @@ class eaMuPlusLambdaParallel:
 		logger.log_progress("\n- Best historic coverage: " + str(self.best_historic_coverage))
 		if self.best_historic_crashes > 0:
 			logger.log_progress("\n- Best historic length: " + str(self.best_historic_length))
+
+		self.log_best_historic_objectives_achieved(gen)
+
+	def setup_log_best_historic_objectives_achieved(self):
+		log_file = self.targets_historic_log_file
+		os.system("echo \"#Gen Coverage Crashes Length\" > " + log_file)
+
+	def log_best_historic_objectives_achieved(self, gen):
+		log_file = self.targets_historic_log_file
+		echo_cmd = "echo \"" + \
+				   str(gen) + " " + \
+				   str(self.best_historic_coverage) + " " + \
+				   str(self.best_historic_crashes) + " "
+
+		if self.best_historic_crashes > 0:
+			echo_cmd += str(self.best_historic_length) + " "
+		else:
+			echo_cmd += "-- "
+
+		echo_cmd += "\" >> "
+		os.system(echo_cmd + log_file)
 
