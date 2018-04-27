@@ -50,15 +50,15 @@ def uninstall(device, package_name):
     return adb_command(device, "uninstall " + package_name)
 
 def install(device, package_name, apk_path):
-    result_code = adb_command(device, "install " + apk_path)
-    if result_code != 0: raise Exception("Unable to install apk: " + apk_path)
+    result_code = adb_command(device, "install " + apk_path, timeout=True)
+    if result_code != 0: raise Exception("Unable to install apk: " + apk_path + " on device: " + device)
 
     cmd = adb_cmd_prefix + " -s " + device + " shell pm list packages | grep " + package_name
     log_adb_command(device, cmd)
 
     res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
     if package_name not in res:
-        raise Exception("Unable to install apk: " + apk_path)
+        raise Exception("Unable to install apk: " + apk_path + " on device: " + device)
 
 def pkill(device, string):
     adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
@@ -79,7 +79,7 @@ def get_imei(device):
     if device not in devices_imei:
         adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
         cmd = adb_cmd + "dumpsys iphonesubinfo | grep 'Device ID' | cut -d ' ' -f 6 "
-	# leave commented to avoid infinite recursion
+	    # leave commented to avoid infinite recursion
         #log_adb_command(device, cmd)
 
         res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
