@@ -1,7 +1,5 @@
-import multiprocessing as mp
 import os
 import subprocess
-import traceback
 from datetime import datetime as dt
 
 import logger
@@ -13,21 +11,17 @@ installed_devices = 0
 total_devices = 0
 
 def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
-    try:
-        start_time = dt.now()
-        static_analyser.upload_string_xml(device, decoded_dir, package_name)
+    start_time = dt.now()
+    static_analyser.upload_string_xml(device, decoded_dir, package_name)
 
-        print "### Installing apk:", apk_path
-        adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
-        adb.uninstall(device, package_name)
-        adb.install(device, package_name, apk_path)
+    print "### Installing apk:", apk_path
+    adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+    adb.uninstall(device, package_name)
+    adb.install(device, package_name, apk_path)
 
-        # logger.log_progress("\npush_apk_and_string_xml on device " + device + " took " + str((dt.now() - start_time).seconds))
-        return (True, apk_path, device)
-    except Exception as e:
-        traceback.print_exc(file=logger.orig_stdout)
-        print e
-        return (False, apk_path, device)
+    # logger.log_progress("\npush_apk_and_string_xml on device " + device + " took " + str((dt.now() - start_time).seconds))
+
+    return True, apk_path, device
 
 def process_results(result):
     if not result[0]:
@@ -67,15 +61,9 @@ def prepare_apk(devices, instrumented_app_dir, result_dir):
     total_devices = len(devices)
     logger.log_progress("\nInstalling apk on devices: " + str(installed_devices) + "/" + str(total_devices))
 
-    pool = mp.Pool(processes=len(devices))
-
     for device in devices:
-        pool.apply_async(push_apk_and_string_xml,
-                         args=(device, decoded_dir, package_name, apk_path),
-                         callback=process_results)
-
-    pool.close()
-    pool.join()
+        result = push_apk_and_string_xml(device, decoded_dir, package_name, apk_path)
+        process_results(result)
 
     os.system("rm -rf " + result_dir + "/intermediate")
     os.system("mkdir -p " + result_dir + "/intermediate")
