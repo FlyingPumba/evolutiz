@@ -36,10 +36,12 @@ def eval_suite_parallel_wrapper(motifgene_enabled, eval_suite_parallel, individu
         # logger.log_progress("\nElapsed seconds to evaluate individual was " + str(elapsed_time))
         return result
     except Exception as e:
-        print "There was an error evaluating individual in parallel"
+        logger.log_progress("There was an error evaluating individual in parallel on device:" + device)
         # print e
         traceback.print_exc()
-        return pop, (0, 0, 0), device
+
+        # return malformed response (not 3-tuple), so it will crash the process_results callback
+        return False
 
 
 def evaluate_in_parallel(toolbox, individuals, gen):
