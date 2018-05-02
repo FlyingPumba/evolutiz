@@ -133,7 +133,7 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 	time.sleep(0.5)
 
 	result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
-	if result_code != 0: raise Exception("Unable to pull coverage from device")
+	# if result_code != 0: raise Exception("Unable to pull coverage from device")
 
 	os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + apk_dir + "/src " + logger.redirect_string())
 
