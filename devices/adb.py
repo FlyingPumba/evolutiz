@@ -54,7 +54,7 @@ def install(device, package_name, apk_path):
     if result_code != 0:
         # we were unable to install the apk in device.
         # Reboot and raise exception
-        adb_command(device, "reboot")
+        reboot(device)
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device)
 
     cmd = adb_cmd_prefix + " -s " + device + " shell pm list packages | grep " + package_name
@@ -64,7 +64,7 @@ def install(device, package_name, apk_path):
     if package_name not in res:
         # we were unable to install
         # Reboot and raise exception
-        adb_command(device, "reboot")
+        reboot(device)
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device)
 
 def pkill(device, string):
@@ -73,6 +73,9 @@ def pkill(device, string):
     log_adb_command(device, pkill_cmd)
 
     return os.system(pkill_cmd + logger.redirect_string())
+
+def reboot(device):
+    adb_command(device, "reboot")
 
 def get_battery_level(device):
     adb_cmd = adb_cmd_prefix + " -s " + device + " shell "

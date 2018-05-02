@@ -35,23 +35,32 @@ from devices import adb
 def install(motifcore_path, motifcore_script_path, device):
 	# make /mnt/sdcard and /system writable
 	result_code = adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
-	if result_code != 0: raise Exception("Unable to install motifcore on device: " + adb.get_device_name(device))
+	if result_code != 0:
+		adb.reboot(device)
+		raise Exception("Unable to install motifcore on device: " + device)
 
 	result_code = adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
-	if result_code != 0: raise Exception("Unable to install motifcore on device: " + adb.get_device_name(device))
+	if result_code != 0:
+		adb.reboot(device)
+		raise Exception("Unable to install motifcore on device: " + device)
 
 	result_code = adb.sudo_shell_command(device, "mount -o rw,remount /system")
-	if result_code != 0: raise Exception("Unable to install motifcore on device: " + adb.get_device_name(device))
-
+	if result_code != 0:
+		adb.reboot(device)
+		raise Exception("Unable to install motifcore on device: " + device)
 
 	# push
 	filename = adb.sudo_push(device, motifcore_path, "/system/framework/motifcore.jar")
 	result_code = adb.sudo_shell_command(device, "chmod 777 /system/framework/" + filename)
-	if result_code != 0: raise Exception("Unable to install motifcore on device: " + adb.get_device_name(device))
+	if result_code != 0:
+		adb.reboot(device)
+		raise Exception("Unable to install motifcore on device: " + device)
 
 	filename = adb.sudo_push(device, motifcore_script_path, "/system/bin/motifcore")
 	result_code = adb.sudo_shell_command(device, "chmod 777 /system/bin/" + filename)
-	if result_code != 0: raise Exception("Unable to install motifcore on device: " + adb.get_device_name(device))
+	if result_code != 0:
+		adb.reboot(device)
+		raise Exception("Unable to install motifcore on device: " + device)
 
 	# recover permission
 	adb.sudo_shell_command(device, "mount -o ro,remount /system")
