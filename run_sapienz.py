@@ -62,7 +62,7 @@ def instrument_apk(folder_name, result_dir):
 
 def check_devices_battery(devices):
     # check that all devices have enough battery
-    battery_threshold = 75
+    battery_threshold = 20
     while True:
         all_devices_with_battery = True
         for device in devices:
@@ -72,7 +72,7 @@ def check_devices_battery(devices):
         if all_devices_with_battery:
             break
         else:
-            print "Waiting for some devices to reach " + str(battery_threshold) + "% battery level"
+            logger.log_progress("\nWaiting for some devices to reach " + str(battery_threshold) + "% battery level")
             time.sleep(60)  # sleep 1 minute
 
 def log_devices_battery(devices, gen, result_dir):

@@ -65,12 +65,7 @@ def prepare_apk(devices, instrumented_app_dir, result_dir):
         result = push_apk_and_string_xml(device, decoded_dir, package_name, apk_path)
         process_results(result)
 
-    os.system("rm -rf " + result_dir + "/intermediate")
-    os.system("mkdir -p " + result_dir + "/intermediate")
-    os.system("rm -rf " + result_dir + "/crashes")
-    os.system("mkdir -p " + result_dir + "/crashes")
-    os.system("rm -rf " + result_dir + "/coverages")
-    os.system("mkdir -p " + result_dir + "/coverages")
+    logger.log_progress("\nFinished installing APK on devices")
     return package_name, (installed_devices == total_devices)
 
 
