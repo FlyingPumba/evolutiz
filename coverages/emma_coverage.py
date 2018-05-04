@@ -127,8 +127,18 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 				raise Exception("Unable to broadcast coverage gathering for script " + script + " in device: " + adb.get_device_name(device))
 			there_is_coverage = True
 
-			time.sleep(5)
-			if not adb.exists_file(device, coverage_path_in_device):
+			tries = 0
+			max_tries = 20
+			found_coverage_file = False
+			while tries < max_tries:
+				if not adb.exists_file(device, coverage_path_in_device):
+					time.sleep(15)
+					tries += 1
+				else:
+					found_coverage_file = True
+					break
+
+			if not found_coverage_file:
 				raise Exception("Coverage broadcast was sent to device: " + adb.get_device_name(device) + " but there is not file: " + coverage_path_in_device)
 
 			# save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
