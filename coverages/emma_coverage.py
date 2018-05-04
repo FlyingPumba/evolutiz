@@ -100,6 +100,9 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 	os.system("cp coverage.em coverages/" + coverage_folder + logger.redirect_string())
 	os.chdir("coverages/" + coverage_folder)
 
+
+	there_is_coverage = False
+
 	# run scripts
 	for index, script in enumerate(scripts):
 		result_code = adb.shell_command(device, "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation")
@@ -118,30 +121,35 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 			# no crash, can broadcast
 			result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
 			if result_code != 0: raise Exception("Unable to broadcast coverage gathering for script " + script)
+			there_is_coverage = True
 
+			# save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
+			adb.sudo_shell_command(device, "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear)
 
-		# save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
-		adb.sudo_shell_command(device, "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear)
 		# close app
 		adb.shell_command(device, "pm clear " + package_name)
 		# restore the coverage.ec file from /mnt/sdcard to app files
 		adb.sudo_shell_command(device, "mkdir " + application_files)
-		adb.sudo_shell_command(device, "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device)
+		if there_is_coverage:
+			adb.sudo_shell_command(device, "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device)
 
 	print "### Getting EMMA coverage.ec and report ..."
 	adb.shell_command(device, "pm clear " + package_name)
 	time.sleep(0.5)
 
-	result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
-	if result_code != 0: raise Exception("Unable to pull coverage from device: " + adb.get_device_name(device))
+	if there_is_coverage:
+		result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
+		if result_code != 0: raise Exception("Unable to pull coverage from device: " + adb.get_device_name(device))
 
-	os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + apk_dir + "/src " + logger.redirect_string())
+		os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + apk_dir + "/src " + logger.redirect_string())
 
-	html_file = result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
-	coverage_str = extract_coverage(html_file)
+		html_file = result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
+		coverage_str = extract_coverage(html_file)
 
-	if coverage_str.find("%") != -1:
-		return int(coverage_str.split("%")[0]), len(unique_crashes)
+		if coverage_str.find("%") != -1:
+			return int(coverage_str.split("%")[0]), len(unique_crashes)
+		else:
+			return 0, len(unique_crashes)
 	else:
 		return 0, len(unique_crashes)
 
