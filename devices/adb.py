@@ -57,7 +57,7 @@ def install(device, package_name, apk_path):
         reboot(device)
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device)
 
-    cmd = adb_cmd_prefix + " -s " + device + " shell pm list packages | grep " + package_name
+    cmd = settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + adb_cmd_prefix + " -s " + device + " shell pm list packages | grep " + package_name
     log_adb_command(device, cmd)
 
     res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
