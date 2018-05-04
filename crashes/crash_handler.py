@@ -36,55 +36,50 @@ from devices import adb
 
 
 def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
-	"""
-	:param device:
-	:param apk_dir:
-	:param script_path:
-	:param gen_str: string, "init" is caused when init,
-		"0" is caused when evaluate the init population
-	:return: True if it is a real crash
-	"""
+    """
+    :param device:
+    :param apk_dir:
+    :param script_path:
+    :param gen_str: string, "init" is caused when init,
+        "0" is caused when evaluate the init population
+    :return: True if it is a real crash
+    """
 
-	p = subprocess.Popen("$ANDROID_HOME/platform-tools/adb -s " + device +
-						 " shell ls /mnt/sdcard/bugreport.crash",
-						 stdout=subprocess.PIPE,
-						 stderr=subprocess.PIPE, shell=True)
-	output, errors = p.communicate()
-	if output.find("No such file or directory") != -1:
-		# no crash
-		pass
-	else:
-		# save the crash report
-		result_code = adb.pull(device, "/mnt/sdcard/bugreport.crash", result_dir)
-                if result_code != 0: raise Exception("Failed to retrieve bugreport.crash file from device: " + device)
+    if not adb.exists_file(device, "/mnt/sdcard/bugreport.crash"):
+        # no crash
+        pass
+    else:
+        # save the crash report
+        result_code = adb.pull(device, "/mnt/sdcard/bugreport.crash", result_dir)
+        if result_code != 0: raise Exception("Failed to retrieve bugreport.crash file from device: " + device)
 
-		# filter duplicate crashes
-		with open(result_dir + "/bugreport.crash") as bug_report_file:
-			content = ""
-			for line_no, line in enumerate(bug_report_file):
-				if line_no == 0:
-					# should not caused by android itself
-					if line.startswith("// CRASH: com.android."):
-						adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
-						return False
-					continue
-				content += line
-			if content in unique_crashes:
-				adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
-				return False
-			else:
-				unique_crashes.add(content)
+        # filter duplicate crashes
+        with open(result_dir + "/bugreport.crash") as bug_report_file:
+            content = ""
+            for line_no, line in enumerate(bug_report_file):
+                if line_no == 0:
+                    # should not caused by android itself
+                    if line.startswith("// CRASH: com.android."):
+                        adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+                        return False
+                    continue
+                content += line
+            if content in unique_crashes:
+                adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+                return False
+            else:
+                unique_crashes.add(content)
 
-		individual_suffix = str(gen) + "." + str(pop) + "." + str(index)
-		os.system("mv " + result_dir + "/bugreport.crash "
-				  + result_dir + "/crashes/" + "bugreport." + individual_suffix)
+        individual_suffix = str(gen) + "." + str(pop) + "." + str(index)
+        os.system("mv " + result_dir + "/bugreport.crash "
+                  + result_dir + "/crashes/" + "bugreport." + individual_suffix)
 
-		# save the script, indicate its ith gen
-		os.system("cp " + script_path + " "
-				  + result_dir + "/crashes/" + "script." + individual_suffix)
+        # save the script, indicate its ith gen
+        os.system("cp " + script_path + " "
+                  + result_dir + "/crashes/" + "script." + individual_suffix)
 
-		print "### Caught a crash."
-		adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
-		return True
+        print "### Caught a crash."
+        adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+        return True
 
-	return False
+    return False
