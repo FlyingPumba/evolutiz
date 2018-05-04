@@ -121,12 +121,12 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 
 
 		# save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
-		adb.shell_command(device, "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear)
+		adb.sudo_shell_command(device, "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear)
 		# close app
 		adb.shell_command(device, "pm clear " + package_name)
 		# restore the coverage.ec file from /mnt/sdcard to app files
-		adb.shell_command(device, "mkdir " + application_files)
-		adb.shell_command(device, "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device)
+		adb.sudo_shell_command(device, "mkdir " + application_files)
+		adb.sudo_shell_command(device, "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device)
 
 	print "### Getting EMMA coverage.ec and report ..."
 	adb.shell_command(device, "pm clear " + package_name)
