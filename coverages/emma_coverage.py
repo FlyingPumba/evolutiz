@@ -89,8 +89,8 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 	coverage_path_in_device = application_files + "/coverage.ec"
 	coverage_backup_path_before_clear = "/mnt/sdcard/coverage.ec"
 
-	adb.shell_command(device, "rm " + coverage_path_in_device)
-	adb.shell_command(device, "rm " + coverage_backup_path_before_clear)
+	adb.shell_command(device, "rm -f" + coverage_path_in_device)
+	adb.shell_command(device, "rm -f" + coverage_backup_path_before_clear)
 
 	ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
 	coverage_folder = str(gen) + "." + str(pop) + "." + ts
@@ -109,7 +109,9 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 		if result_code != 0: raise Exception("Unable to instrument " + package_name)
 
 		result_code = adb.push(device, script, "/mnt/sdcard/.")
-		if result_code != 0: raise Exception("Unable to push motifcore script " + script)
+		if result_code != 0:
+			#adb.reboot(device)
+			raise Exception("Unable to push motifcore script " + script + " to device: " + adb.get_device_name(device))
 
 		script_name = script.split("/")[-1]
 
@@ -120,18 +122,26 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 		else:
 			# no crash, can broadcast
 			result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
-			if result_code != 0: raise Exception("Unable to broadcast coverage gathering for script " + script)
+			if result_code != 0:
+				#adb.reboot(device)
+				raise Exception("Unable to broadcast coverage gathering for script " + script + " in device: " + adb.get_device_name(device))
 			there_is_coverage = True
 
 			# save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
-			adb.sudo_shell_command(device, "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear)
+			result_code = adb.sudo_shell_command(device, "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear)
+			if result_code != 0:
+				#adb.reboot(device)
+				raise Exception("Unable to retrieve coverage.ec file after coverage broadcast from device: " + adb.get_device_name(device))
 
 		# close app
 		adb.shell_command(device, "pm clear " + package_name)
 		# restore the coverage.ec file from /mnt/sdcard to app files
 		adb.sudo_shell_command(device, "mkdir " + application_files)
 		if there_is_coverage:
-			adb.sudo_shell_command(device, "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device)
+			result_code = adb.sudo_shell_command(device, "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device)
+			if result_code != 0:
+				#adb.reboot(device)
+				raise Exception("Unable to copy backup coverage.ec file in sdcard for device: " + adb.get_device_name(device))
 
 	print "### Getting EMMA coverage.ec and report ..."
 	adb.shell_command(device, "pm clear " + package_name)
@@ -140,7 +150,7 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 	if there_is_coverage:
 		result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
 		if result_code != 0:
-			adb.reboot(device)
+			#adb.reboot(device)
 			raise Exception("Unable to pull coverage from device: " + adb.get_device_name(device))
 
 		os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + apk_dir + "/src " + logger.redirect_string())
