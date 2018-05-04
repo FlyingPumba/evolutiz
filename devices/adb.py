@@ -108,7 +108,7 @@ def log_adb_command(device, cmd):
     os.system("echo \"" + cmd + "\" >> " + device_adb_log_file)
 
 def exists_file(device, file_path):
-    adb_cmd = adb_cmd_prefix + " -s " + device + "shell ls " + file_path
+    adb_cmd = adb_cmd_prefix + " -s " + device + " shell ls " + file_path
     log_adb_command(device, adb_cmd)
 
     p = subprocess.Popen(adb_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
