@@ -55,7 +55,9 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
 		pass
 	else:
 		# save the crash report
-		adb.pull(device, "/mnt/sdcard/bugreport.crash", result_dir)
+		result_code = adb.pull(device, "/mnt/sdcard/bugreport.crash", result_dir)
+                if result_code != 0: raise Exception("Failed to retrieve bugreport.crash file from device: " + device)
+
 		# filter duplicate crashes
 		with open(result_dir + "/bugreport.crash") as bug_report_file:
 			content = ""
