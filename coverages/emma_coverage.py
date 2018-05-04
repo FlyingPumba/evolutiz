@@ -89,8 +89,8 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 	coverage_path_in_device = application_files + "/coverage.ec"
 	coverage_backup_path_before_clear = "/mnt/sdcard/coverage.ec"
 
-	adb.shell_command(device, "rm -f" + coverage_path_in_device)
-	adb.shell_command(device, "rm -f" + coverage_backup_path_before_clear)
+	adb.shell_command(device, "rm -f " + coverage_path_in_device)
+	adb.shell_command(device, "rm -f " + coverage_backup_path_before_clear)
 
 	ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
 	coverage_folder = str(gen) + "." + str(pop) + "." + ts
