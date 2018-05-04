@@ -110,8 +110,8 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
             result_code = os.system("mkdir -p " + result_dir)
             if result_code != 0: raise Exception("Unable to create result dir")
             os.system("mkdir -p " + result_dir + "/intermediate")
-            os.system("mkdir -p " + result_dir + "/coverage"))
-            os.system("mkdir -p " + result_dir + "/crashes"))
+            os.system("mkdir -p " + result_dir + "/coverage")
+            os.system("mkdir -p " + result_dir + "/crashes")
 
             any_device.prepare_motifcore()
             any_device.clean_sdcard()
