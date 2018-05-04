@@ -30,7 +30,7 @@ def process_results(result):
     global installed_devices
     installed_devices += 1
     global total_devices
-    logger.log_progress("\rInstalling apk on devices: " + str(installed_devices) + "/" + str(total_devices))
+    #logger.log_progress("\rInstalling apk on devices: " + str(installed_devices) + "/" + str(total_devices))
 
 def prepare_apk(devices, instrumented_app_dir, result_dir):
     package_name, apk_path = get_package_name(instrumented_app_dir)
@@ -59,9 +59,9 @@ def prepare_apk(devices, instrumented_app_dir, result_dir):
     installed_devices = 0
     global total_devices
     total_devices = len(devices)
-    logger.log_progress("\nInstalling apk on devices: " + str(installed_devices) + "/" + str(total_devices))
 
     for device in devices:
+    	logger.log_progress("\nInstalling apk on device: " + adb.get_device_name(device))
         result = push_apk_and_string_xml(device, decoded_dir, package_name, apk_path)
         process_results(result)
 
