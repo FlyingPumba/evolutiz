@@ -82,6 +82,8 @@ def reboot_all_devices():
 	for device in get_devices():
 		adb.sudo_shell_command(device, "reboot")
 	time.sleep(settings.AVD_BOOT_DELAY)
+	time.sleep(settings.AVD_BOOT_DELAY)
+	time.sleep(settings.AVD_BOOT_DELAY)
 
 
 def disable_systemui():
