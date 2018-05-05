@@ -14,6 +14,10 @@ def boot_devices():
     if settings.USE_EMULATORS:
         emulator.boot_devices()
 
+def reboot_devices():
+    if settings.USE_REAL_DEVICES:
+        real_device.reboot_all_devices()
+
 def clean_sdcard():
     if settings.USE_EMULATORS:
         emulator.clean_sdcard()

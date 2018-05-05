@@ -128,6 +128,12 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
             check_devices_battery(devices)
             log_devices_battery(devices, "init", result_dir)
 
+            # reboot all devices before starting a repetition
+            number_of_devices = len(devices)
+            any_device.reboot_devices()
+            while len(any_device.get_devices()) != number_of_devices:
+                time.sleep(10)
+
             logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
 
             # start time budget
