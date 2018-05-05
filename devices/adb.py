@@ -77,6 +77,18 @@ def pkill(device, string):
 def reboot(device):
     adb_command(device, "reboot")
 
+def set_bluetooth_state(device, enabled):
+    if enabled:
+        return sudo_shell_command(device, "service call bluetooth_manager 6")
+    else:
+        return sudo_shell_command(device, "service call bluetooth_manager 8")
+
+def set_wifi_state(device, enabled):
+    if enabled:
+        return sudo_shell_command(device, "svc wifi enable")
+    else:
+        return sudo_shell_command(device, "svc wifi disable")
+
 def get_battery_level(device):
     adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
     cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "

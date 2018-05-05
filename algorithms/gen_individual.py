@@ -42,8 +42,10 @@ def get_sequence(use_motifgene, device, result_dir, package_name, index, unique_
 	# clear data
 	adb.shell_command(device, "pm clear " + package_name)
 
-	# start motifcore
+	adb.set_bluetooth_state(device, True)
+	adb.set_wifi_state(device, True)
 
+	# start motifcore
 	string_seeding_flag = ""
 
 	if use_motifgene:
