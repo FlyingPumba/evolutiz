@@ -1,3 +1,5 @@
+import time
+
 import os
 import subprocess
 from datetime import datetime as dt
@@ -17,7 +19,11 @@ def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
     print "### Installing apk:", apk_path
     adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
     adb.uninstall(device, package_name)
-    adb.install(device, package_name, apk_path)
+    try:
+        adb.install(device, package_name, apk_path)
+    except Exception as e:
+        logger.log_progress("\nInstalling apk on devices: Failed to install apk " + apk_path + " on device: " + device)
+        return False, apk_path, device
 
     # logger.log_progress("\npush_apk_and_string_xml on device " + device + " took " + str((dt.now() - start_time).seconds))
 
@@ -61,8 +67,18 @@ def prepare_apk(devices, instrumented_app_dir, result_dir):
     total_devices = len(devices)
 
     for device in devices:
-    	logger.log_progress("\nInstalling apk on device: " + adb.get_device_name(device))
-        result = push_apk_and_string_xml(device, decoded_dir, package_name, apk_path)
+        logger.log_progress("\nInstalling apk on device: " + adb.get_device_name(device))
+
+        result = False, apk_path, device
+        while not result[0]:
+            result = push_apk_and_string_xml(device, decoded_dir, package_name, apk_path)
+            if not result[0]:
+                # we were unable to install apk in device, an thus it was rebooted
+                # wait till device is back and retry
+                time.sleep(settings.AVD_BOOT_DELAY)
+                time.sleep(settings.AVD_BOOT_DELAY)
+                time.sleep(settings.AVD_BOOT_DELAY)
+
         process_results(result)
 
     logger.log_progress("\nFinished installing APK on devices")
