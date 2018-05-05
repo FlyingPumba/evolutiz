@@ -128,7 +128,7 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 			there_is_coverage = True
 
 			tries = 0
-			max_tries = 20
+			max_tries = 10
 			found_coverage_file = False
 			while tries < max_tries:
 				if not adb.exists_file(device, coverage_path_in_device):
