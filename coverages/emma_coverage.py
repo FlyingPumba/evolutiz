@@ -108,7 +108,7 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 		result_code = adb.shell_command(device, "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation")
 		if result_code != 0: raise Exception("Unable to instrument " + package_name)
 
-		result_code = adb.push(device, script, "/mnt/sdcard/.")
+		result_code = adb.push(device, script, "/mnt/sdcard/")
 		if result_code != 0:
 			adb.reboot(device)
 			raise Exception("Unable to push motifcore script " + script + " to device: " + adb.get_device_name(device))
