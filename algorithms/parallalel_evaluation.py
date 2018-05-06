@@ -101,8 +101,13 @@ def evaluate_in_parallel(toolbox, individuals, gen):
             for device in current_devices:
                 if device in rebooting_devices:
                     # a device finished rebooting
-                    rebooting_devices.remove(device)
-                    idle_devices.append(device)
+                    # wait a bit so it gets stabilized
+                    time.sleep(settings.AVD_BOOT_DELAY)
+
+                    if device in any_device.get_devices():
+                        # lets hope that it really finished rebooting and its ready to be used
+                        rebooting_devices.remove(device)
+                        idle_devices.append(device)
 
             time.sleep(1)
 

@@ -78,6 +78,7 @@ def prepare_apk(devices, instrumented_app_dir, result_dir):
                 time.sleep(settings.AVD_BOOT_DELAY)
                 time.sleep(settings.AVD_BOOT_DELAY)
                 time.sleep(settings.AVD_BOOT_DELAY)
+                time.sleep(settings.AVD_BOOT_DELAY)
 
         process_results(result)
 

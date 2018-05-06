@@ -80,7 +80,8 @@ def reboot_all_devices():
 	:return:
 	"""
 	for device in get_devices():
-		adb.sudo_shell_command(device, "reboot")
+		adb.adb_command(device, "reboot")
+	time.sleep(settings.AVD_BOOT_DELAY)
 	time.sleep(settings.AVD_BOOT_DELAY)
 	time.sleep(settings.AVD_BOOT_DELAY)
 	time.sleep(settings.AVD_BOOT_DELAY)
