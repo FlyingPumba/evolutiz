@@ -43,30 +43,6 @@ import settings
 from crashes import crash_handler
 from devices import adb
 
-
-class Command(object):
-	def __init__(self, cmd):
-		self.cmd = cmd
-		self.process = None
-
-	def run(self, timeout):
-		def target():
-			print '... Evaluate Script Thread started'
-			self.process = subprocess.Popen(self.cmd, shell=True)
-			self.process.communicate()
-			print '... Evaluate Script Thread finished'
-
-		thread = threading.Thread(target=target)
-		thread.start()
-
-		thread.join(timeout)
-		if thread.is_alive():
-			print 'Terminating process'
-			self.process.terminate()
-			thread.join()
-		print self.process.returncode
-
-
 def extract_coverage(path):
 	with open(path, 'rb') as file:
 		content = file.read()
