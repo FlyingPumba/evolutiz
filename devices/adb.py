@@ -89,6 +89,12 @@ def set_wifi_state(device, enabled):
     else:
         return sudo_shell_command(device, "svc wifi disable")
 
+def set_location_state(device, enabled):
+    if enabled:
+        return shell_command(device, "settings put secure location_providers_allowed gps,wifi,network")
+    else:
+        return shell_command(device, "settings put secure location_providers_allowed ' '")
+
 def get_battery_level(device):
     adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
     cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "

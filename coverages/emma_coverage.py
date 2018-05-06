@@ -184,6 +184,7 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 def run_script_using_motifcore(use_motifgene, device, package_name, script_name):
 	adb.set_bluetooth_state(device, True)
 	adb.set_wifi_state(device, True)
+	adb.set_location_state(device, True)
 
 	string_seeding_flag = ""
 
