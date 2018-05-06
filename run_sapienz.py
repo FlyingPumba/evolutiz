@@ -129,7 +129,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
             log_devices_battery("init", result_dir)
 
             # reboot all devices before starting a repetition
-            number_of_devices = len(devices)
+            number_of_devices = len(any_device.get_devices())
             any_device.reboot_devices()
             while len(any_device.get_devices()) != number_of_devices:
                 time.sleep(10)
