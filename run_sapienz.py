@@ -97,6 +97,16 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
 
         for repetition in range(0, REPETITIONS):
 
+            # reboot all devices before starting a repetition
+            number_of_devices = len(any_device.get_devices())
+            any_device.reboot_devices()
+            new_number = len(any_device.get_devices())
+            while new_number != number_of_devices:
+                print "Waiting for devices to finish reboot. Expected number: " + str(
+                    number_of_devices) + ". Current number: " + str(new_number)
+                time.sleep(10)
+                new_number = len(any_device.get_devices())
+
             logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + folder_name)
 
             global result_dir
@@ -129,12 +139,6 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
 
             check_devices_battery(devices)
             log_devices_battery("init", result_dir)
-
-            # reboot all devices before starting a repetition
-            number_of_devices = len(any_device.get_devices())
-            any_device.reboot_devices()
-            while len(any_device.get_devices()) != number_of_devices:
-                time.sleep(10)
 
             # start time budget
             global start_time
