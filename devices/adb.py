@@ -6,7 +6,16 @@ import settings
 
 adb_logs_dir = ""
 adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb"
-devices_imei = {}
+devices_imei = {
+    '4df7b14770c52129': '047',
+    '4df7b1b874be21a3': '528',
+    '4df7009864632199': '494',
+    '4df7eff63a752139': '239',
+    '4df7c75211d5118f': '697',
+    '4df7ff8e527521e9': '532',
+    '4df7c21734af2119': '863',
+    '4df7ec8e6a72219b': '640'
+}
 
 def adb_command(device, command, timeout = False, log_output=True):
     adb_cmd = adb_cmd_prefix + " -s " + device + " " + command

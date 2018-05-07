@@ -102,15 +102,17 @@ def evaluate_in_parallel(toolbox, individuals, gen):
                 if device in rebooting_devices:
                     # a device finished rebooting
                     # wait a bit so it gets stabilized
-                    print "Found that device " + device + " just finished rebooting"
+                    print "Found that device " + adb.get_device_name(device) + " just finished rebooting"
                     time.sleep(settings.AVD_BOOT_DELAY)
                     time.sleep(settings.AVD_BOOT_DELAY)
 
                     if device in any_device.get_devices():
                         # lets hope that it really finished rebooting and its ready to be used
-                        print "Device " + device + " looks like really finished rebooting"
+                        print "Device " + adb.get_device_name(device) + " looks like really finished rebooting"
                         rebooting_devices.remove(device)
                         idle_devices.append(device)
+                else:
+                    print "Device " + adb.get_device_name(device) + " still rebooting"
 
             time.sleep(1)
 
