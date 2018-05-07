@@ -97,6 +97,8 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
 
         for repetition in range(0, REPETITIONS):
 
+            logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + folder_name)
+
             global result_dir
             result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name + "/" + str(repetition)
 
@@ -127,8 +129,6 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
 
             check_devices_battery(devices)
             log_devices_battery(devices, "init", result_dir)
-
-            logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
 
             # start time budget
             global start_time

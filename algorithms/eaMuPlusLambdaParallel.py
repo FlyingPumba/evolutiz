@@ -97,7 +97,7 @@ class eaMuPlusLambdaParallel:
 				break
 
 			print "Starting generation ", gen
-			logger.log_progress("\nStarting generation " + str(gen))
+			logger.log_progress("\n---> Starting generation " + str(gen))
 
 			# Vary the population
 			offspring = self.varOr(self.population)
