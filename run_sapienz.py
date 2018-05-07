@@ -30,7 +30,7 @@ from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
 from plot import two_d_line
 
-REPETITIONS = 1
+REPETITIONS = 4
 
 start_time = None
 apk_dir = None
@@ -97,6 +97,10 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
 
         for repetition in range(0, REPETITIONS):
 
+            global result_dir
+            result_dir = os.path.dirname(
+                os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name + "/" + str(repetition)
+
             # reboot all devices before starting a repetition
             number_of_devices = len(any_device.get_devices())
             any_device.reboot_devices()
@@ -108,9 +112,6 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
                 new_number = len(any_device.get_devices())
 
             logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + folder_name)
-
-            global result_dir
-            result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name + "/" + str(repetition)
 
             adb.adb_logs_dir = result_dir
 
