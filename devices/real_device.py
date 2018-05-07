@@ -81,7 +81,7 @@ def reboot_all_devices():
 	"""
 	for device in get_devices():
 		adb.adb_command(device, "reboot")
-	time.sleep(settings.AVD_BOOT_DELAY)
+	# it takes 2 minutes for all devices to stabilize after reboot
 	time.sleep(settings.AVD_BOOT_DELAY)
 	time.sleep(settings.AVD_BOOT_DELAY)
 	time.sleep(settings.AVD_BOOT_DELAY)
