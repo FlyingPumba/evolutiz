@@ -107,7 +107,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
             os.chdir(app_path)
             global apk_dir
             apk_dir = app_path
-            os.system("rm -r " + result_dir + "/*" + logger.redirect_string())
+            os.system("rm -rf " + result_dir + "/*" + logger.redirect_string())
 
             result_code = os.system("mkdir -p " + result_dir)
             if result_code != 0: raise Exception("Unable to create result dir")
