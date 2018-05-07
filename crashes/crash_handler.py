@@ -27,8 +27,8 @@
 # THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-
+import random
+import string
 import subprocess
 import os
 
@@ -45,33 +45,38 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
     :return: True if it is a real crash
     """
 
-    if not adb.exists_file(device, "/mnt/sdcard/bugreport.crash"):
+    bugreport_suffix = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(10))
+    local_bugreport_path = result_dir + "/bugreport." + bugreport_suffix + ".crash"
+
+    device_bugreport_path = "/mnt/sdcard/bugreport.crash"
+
+    if not adb.exists_file(device, device_bugreport_path):
         # no crash
         pass
     else:
         # save the crash report
-        result_code = adb.pull(device, "/mnt/sdcard/bugreport.crash", result_dir)
+        result_code = adb.pull(device, device_bugreport_path, local_bugreport_path)
         if result_code != 0: raise Exception("Failed to retrieve bugreport.crash file from device: " + device)
 
         # filter duplicate crashes
-        with open(result_dir + "/bugreport.crash") as bug_report_file:
+        with open(local_bugreport_path) as bug_report_file:
             content = ""
             for line_no, line in enumerate(bug_report_file):
                 if line_no == 0:
                     # should not caused by android itself
                     if line.startswith("// CRASH: com.android."):
-                        adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+                        adb.shell_command(device, "rm " + device_bugreport_path)
                         return False
                     continue
                 content += line
             if content in unique_crashes:
-                adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+                adb.shell_command(device, "rm " + device_bugreport_path)
                 return False
             else:
                 unique_crashes.add(content)
 
         individual_suffix = str(gen) + "." + str(pop) + "." + str(index)
-        os.system("mv " + result_dir + "/bugreport.crash "
+        os.system("mv " + local_bugreport_path + " "
                   + result_dir + "/crashes/" + "bugreport." + individual_suffix)
 
         # save the script, indicate its ith gen
@@ -79,7 +84,7 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
                   + result_dir + "/crashes/" + "script." + individual_suffix)
 
         print "### Caught a crash."
-        adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+        adb.shell_command(device, "rm " + device_bugreport_path)
         return True
 
     return False

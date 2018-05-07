@@ -4,25 +4,35 @@ import traceback
 
 import logger
 import settings
-from devices import any_device
+from devices import any_device, adb
 
 # global results for mp callback
 results = []
+remaining_index_to_evaluate = []
 idle_devices = []
+rebooting_devices = []
 total_individuals = 0
 
 def process_results(data):
     indi_index, fitness, device = data
     print "Finished evaluating an individual: ", indi_index, " ", fitness, " ", device
 
-    global results
-    results.append((indi_index, fitness))
+    if not fitness:
+        # device was unable to complete the evaluation of individual, an thus was rebooted
+        global rebooting_devices
+        rebooting_devices.append(device)
 
-    global idle_devices
-    idle_devices.append(device)
+        global remaining_index_to_evaluate
+        remaining_index_to_evaluate.append(indi_index)
+    else:
+        global results
+        results.append((indi_index, fitness))
 
-    global total_individuals
-    logger.log_progress("\rEvaluating in parallel: " + str(len(results)) + "/" + str(total_individuals))
+        global idle_devices
+        idle_devices.append(device)
+
+        global total_individuals
+        logger.log_progress("\rEvaluating in parallel: " + str(len(results)) + "/" + str(total_individuals))
 
 
 # 0. prepare wrapper for eval function
@@ -36,12 +46,11 @@ def eval_suite_parallel_wrapper(motifgene_enabled, eval_suite_parallel, individu
         # logger.log_progress("\nElapsed seconds to evaluate individual was " + str(elapsed_time))
         return result
     except Exception as e:
-        logger.log_progress("There was an error evaluating individual in parallel on device:" + device)
+        logger.log_progress("\nThere was an error evaluating individual in parallel on device:" + adb.get_device_name(device) + "\n")
         # print e
         traceback.print_exc()
 
-        # return malformed response (not 3-tuple), so it will crash the process_results callback
-        return False
+        return pop, False, device
 
 
 def evaluate_in_parallel(toolbox, individuals, gen):
@@ -52,36 +61,54 @@ def evaluate_in_parallel(toolbox, individuals, gen):
     :return: When all individuals have been evaluated
     """
 
-    global idle_devices
-    if settings.DEBUG:
-        print "### Starting evaluation in parallel"
-        print "idle devices=", idle_devices
-
-    global total_individuals
-    global results
-    total_individuals = len(individuals)
-    logger.log_progress("\nEvaluating in parallel: " + str(len(results)) + "/" + str(total_individuals))
-
     # init global states
+    global results
     while len(results) > 0:
         results.pop()
+
+    global idle_devices
     while len(idle_devices) > 0:
         idle_devices.pop()
 
-    # 1. get idle devices
+    global rebooting_devices
+    while len(rebooting_devices) > 0:
+        rebooting_devices.pop()
+
+    global total_individuals
+    total_individuals = len(individuals)
+
+    logger.log_progress("\nEvaluating in parallel: " + str(len(results)) + "/" + str(total_individuals))
+
+    # get idle devices
     idle_devices.extend(any_device.get_devices())
 
     if settings.DEBUG:
         print "idle devices after extending from any_device.get_devices()=", idle_devices
         print "number of devices", len(idle_devices)
 
+
+    global remaining_index_to_evaluate
+    remaining_index_to_evaluate = [ i for i in range(0, total_individuals)]
+
     # 2. aissign tasks to devices
     pool = mp.Pool(processes=len(idle_devices))
     time_out = False
-    for i in range(0, len(individuals)):
+    while len(remaining_index_to_evaluate) != 0:
         while len(idle_devices) == 0 and toolbox.time_budget_available():
             # print "Waiting for idle_devices"
-            # print idle_devices
+
+            current_devices = any_device.get_devices()
+            for device in current_devices:
+                if device in rebooting_devices:
+                    # a device finished rebooting
+                    # wait a bit so it gets stabilized
+                    time.sleep(settings.AVD_BOOT_DELAY)
+
+                    if device in any_device.get_devices():
+                        # lets hope that it really finished rebooting and its ready to be used
+                        rebooting_devices.remove(device)
+                        idle_devices.append(device)
+
             time.sleep(1)
 
         if not toolbox.time_budget_available():
@@ -90,17 +117,12 @@ def evaluate_in_parallel(toolbox, individuals, gen):
             break
 
         device = idle_devices.pop(0)
-        if settings.DEBUG:
-            print "assigning task to device ", device
-            print "individual is ", i
+        index = remaining_index_to_evaluate.pop(0)
 
         pool.apply_async(eval_suite_parallel_wrapper,
-                         args=(toolbox.is_motifgene_enabled(), toolbox.evaluate, individuals[i], device, toolbox.get_result_dir(),
-                               toolbox.get_apk_dir(), toolbox.get_package_name(), gen, i),
+                         args=(toolbox.is_motifgene_enabled(), toolbox.evaluate, individuals[index], device, toolbox.get_result_dir(),
+                               toolbox.get_apk_dir(), toolbox.get_package_name(), gen, index),
                          callback=process_results)
-    # res = pool.apply(eval_suite_parallel_wrapper,
-    #				 args=(eval_suite_parallel, individuals[i], device, toolbox, gen, i))
-    # process_results(res)
 
     pool.close()
 

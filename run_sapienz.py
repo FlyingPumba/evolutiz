@@ -75,11 +75,11 @@ def check_devices_battery(devices):
             logger.log_progress("\nWaiting for some devices to reach " + str(battery_threshold) + "% battery level")
             time.sleep(60)  # sleep 1 minute
 
-def log_devices_battery(devices, gen, result_dir):
+def log_devices_battery(gen, result_dir):
     log_file = result_dir + "/battery.log"
     os.system("echo 'Battery levels at gen: " + str(gen) + "' >> " + log_file)
 
-    for device in devices:
+    for device in any_device.get_devices():
         level = adb.get_battery_level(device)
         imei = adb.get_imei(device)
         os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
@@ -128,7 +128,13 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
                 return False
 
             check_devices_battery(devices)
-            log_devices_battery(devices, "init", result_dir)
+            log_devices_battery("init", result_dir)
+
+            # reboot all devices before starting a repetition
+            number_of_devices = len(any_device.get_devices())
+            any_device.reboot_devices()
+            while len(any_device.get_devices()) != number_of_devices:
+                time.sleep(10)
 
             # start time budget
             global start_time
@@ -148,7 +154,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
             toolbox.register("get_result_dir", get_result_dir)
             toolbox.register("get_package_name", get_package_name)
             toolbox.register("is_motifgene_enabled", is_motifgene_enabled)
-            toolbox.register("log_devices_battery", log_devices_battery, devices)
+            toolbox.register("log_devices_battery", log_devices_battery)
 
             stats = tools.Statistics(lambda ind: ind.fitness.values)
             # axis = 0, the numpy.mean will return an array of results
