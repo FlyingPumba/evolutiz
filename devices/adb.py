@@ -88,21 +88,35 @@ def reboot(device):
 
 def set_bluetooth_state(device, enabled):
     if enabled:
+        # sometimes might not work
         return sudo_shell_command(device, "service call bluetooth_manager 6")
     else:
+        # the following command is not working. Also tried with number 9.
         return sudo_shell_command(device, "service call bluetooth_manager 8")
 
 def set_wifi_state(device, enabled):
     if enabled:
         return sudo_shell_command(device, "svc wifi enable")
     else:
+        # the following command is not working.
         return sudo_shell_command(device, "svc wifi disable")
+
+def set_stay_awake_state(device, enabled):
+    if enabled:
+        return sudo_shell_command(device, "svc power stayon true")
+    else:
+        return sudo_shell_command(device, "svc power stayon false")
 
 def set_location_state(device, enabled):
     if enabled:
         return shell_command(device, "settings put secure location_providers_allowed gps,wifi,network")
     else:
         return shell_command(device, "settings put secure location_providers_allowed ' '")
+
+def set_brightness(device, value):
+    # value should be between 0 and 250
+    return shell_command(device, "settings put system screen_brightness " + value)
+
 
 def get_battery_level(device):
     adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
