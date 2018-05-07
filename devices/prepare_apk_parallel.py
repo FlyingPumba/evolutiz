@@ -22,7 +22,7 @@ def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
     try:
         adb.install(device, package_name, apk_path)
     except Exception as e:
-        logger.log_progress("\nInstalling apk on devices: Failed to install apk " + apk_path + " on device: " + device)
+        logger.log_progress("\nInstalling apk on devices: Failed to install apk " + apk_path + " on device: " + adb.get_device_name(device) + "\n")
         return False, apk_path, device
 
     # logger.log_progress("\npush_apk_and_string_xml on device " + device + " took " + str((dt.now() - start_time).seconds))
@@ -31,7 +31,7 @@ def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
 
 def process_results(result):
     if not result[0]:
-        logger.log_progress("\nInstalling apk on devices: Failed to install apk " + result[1] + " on device: " + result[2])
+        logger.log_progress("\nInstalling apk on devices: Failed to install apk " + result[1] + " on device: " + adb.get_device_name(result[2]) + "\n")
         return
     global installed_devices
     installed_devices += 1
