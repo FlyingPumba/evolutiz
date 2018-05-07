@@ -100,6 +100,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
             global result_dir
             result_dir = os.path.dirname(
                 os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name + "/" + str(repetition)
+            adb.adb_logs_dir = result_dir
 
             # reboot all devices before starting a repetition
             number_of_devices = len(any_device.get_devices())
@@ -112,8 +113,6 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
                 new_number = len(any_device.get_devices())
 
             logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + folder_name)
-
-            adb.adb_logs_dir = result_dir
 
             os.chdir(app_path)
             global apk_dir
