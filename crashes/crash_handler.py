@@ -66,18 +66,20 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
                     # should not caused by android itself
                     if line.startswith("// CRASH: com.android."):
                         adb.shell_command(device, "rm " + device_bugreport_path)
+                        os.system("rm " + local_bugreport_path)
                         return False
                     continue
                 content += line
             if content in unique_crashes:
                 adb.shell_command(device, "rm " + device_bugreport_path)
+                os.system("rm " + local_bugreport_path)
                 return False
             else:
                 unique_crashes.add(content)
 
         individual_suffix = str(gen) + "." + str(pop) + "." + str(index)
         os.system("mv " + local_bugreport_path + " "
-                  + result_dir + "/crashes/" + "bugreport." + individual_suffix)
+                  + result_dir + "/crashes/bugreport." + individual_suffix)
 
         # save the script, indicate its ith gen
         os.system("cp " + script_path + " "
