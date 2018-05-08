@@ -52,7 +52,7 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
 
     if not adb.exists_file(device, device_bugreport_path):
         # no crash
-        pass
+        return False
     else:
         # save the crash report
         result_code = adb.pull(device, device_bugreport_path, local_bugreport_path)
@@ -67,13 +67,18 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
                     if line.startswith("// CRASH: com.android."):
                         adb.shell_command(device, "rm " + device_bugreport_path)
                         os.system("rm " + local_bugreport_path)
-                        return False
+
+                        # caught a crash, but it was Android related
+                        return True
+
                     continue
                 content += line
             if content in unique_crashes:
                 adb.shell_command(device, "rm " + device_bugreport_path)
                 os.system("rm " + local_bugreport_path)
-                return False
+
+                # caught a crash, but it wasn't a new one
+                return True
             else:
                 unique_crashes.add(content)
 
@@ -88,5 +93,3 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
         print "### Caught a crash."
         adb.shell_command(device, "rm " + device_bugreport_path)
         return True
-
-    return False
