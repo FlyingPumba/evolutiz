@@ -96,7 +96,7 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 			pass
 		else:
 			# no crash, can broadcast
-			result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
+			result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE", timeout=True)
 			if result_code != 0:
 				log_evaluation_result(device, result_dir, script, False)
 				adb.reboot(device)
