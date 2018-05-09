@@ -119,8 +119,8 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
             any_device.reboot_devices()
             new_number = len(any_device.get_devices())
             while new_number != number_of_devices:
-                print "Waiting for devices to finish reboot. Expected number: " + str(
-                    number_of_devices) + ". Current number: " + str(new_number)
+                logger.log_progress("\nWaiting for devices to finish reboot. Expected number: " + str(
+                    number_of_devices) + ". Current number: " + str(new_number))
                 time.sleep(10)
                 new_number = len(any_device.get_devices())
 
