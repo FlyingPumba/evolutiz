@@ -83,12 +83,13 @@ def initPop(func, n, result_dir, package_name):
 
 	# get idle devices
 	idle_devices.extend(any_device.get_devices())
+	total_devices = len(idle_devices)
 
 	# 2. aissign tasks to devices
 	logger.log_progress("\nInit population in parallel: " + str(len(results)) + "/" + str(total_individuals))
 
 	pool = mp.Pool(processes=len(idle_devices))
-	while (len(results)) < total_individuals:
+	while (len(results)) + (total_devices - len(idle_devices)) < total_individuals:
 		while len(idle_devices) == 0:
 
 			# check if a device finished rebooting
