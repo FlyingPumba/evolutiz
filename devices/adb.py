@@ -34,8 +34,8 @@ def shell_command(device, command, timeout = False, log_output=True):
 def sudo_shell_command(device, command, timeout = False, log_output=True):
     return shell_command(device, "\" su -s sh -c '" + command + "'\"", timeout, log_output)
 
-def push(device, src, dest):
-    return adb_command(device, "push " + src + " " + dest)
+def push(device, src, dest, timeout = False):
+    return adb_command(device, "push " + src + " " + dest, timeout=timeout)
 
 def sudo_push(device, src, dest):
     filename = os.path.basename(src)
@@ -52,8 +52,8 @@ def sudo_push(device, src, dest):
 
     return filename
 
-def pull(device, src, dest):
-    return adb_command(device, "pull " + src + " " + dest)
+def pull(device, src, dest, timeout = False):
+    return adb_command(device, "pull " + src + " " + dest, timeout=timeout)
 
 def uninstall(device, package_name):
     return adb_command(device, "uninstall " + package_name)
@@ -148,8 +148,11 @@ def log_adb_command(device, cmd):
     device_adb_log_file = adb_logs_dir + "/" + get_device_name(device) + "-adb.log"
     os.system("echo \"" + cmd + "\" >> " + device_adb_log_file)
 
-def exists_file(device, file_path):
+def exists_file(device, file_path, timeout = False):
     adb_cmd = adb_cmd_prefix + " -s " + device + " shell ls " + file_path
+    if timeout:
+        adb_cmd = settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + adb_cmd
+
     log_adb_command(device, adb_cmd)
 
     p = subprocess.Popen(adb_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)

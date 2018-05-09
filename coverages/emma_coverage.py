@@ -79,10 +79,13 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 
 	# run scripts
 	for index, script in enumerate(scripts):
-		result_code = adb.shell_command(device, "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation")
-		if result_code != 0: raise Exception("Unable to instrument " + package_name)
+		result_code = adb.shell_command(device, "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation", timeout=True)
+		if result_code != 0:
+			log_evaluation_result(device, result_dir, script, False)
+			adb.reboot(device)
+			raise Exception("Unable to instrument " + package_name)
 
-		result_code = adb.push(device, script, "/mnt/sdcard/")
+		result_code = adb.push(device, script, "/mnt/sdcard/", timeout=True)
 		if result_code != 0:
 			log_evaluation_result(device, result_dir, script, False)
 			adb.reboot(device)
@@ -107,7 +110,7 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 			max_tries = 10
 			found_coverage_file = False
 			while tries < max_tries:
-				if not adb.exists_file(device, coverage_path_in_device):
+				if not adb.exists_file(device, coverage_path_in_device, timeout=True):
 					time.sleep(15)
 					tries += 1
 				else:
@@ -120,18 +123,29 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 				raise Exception("Coverage broadcast was sent for script " + script + " in device: " + adb.get_device_name(device) + " but there is not file: " + coverage_path_in_device)
 
 			# save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
-			result_code = adb.sudo_shell_command(device, "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear)
+			result_code = adb.sudo_shell_command(device, "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear, timeout=True)
 			if result_code != 0:
 				log_evaluation_result(device, result_dir, script, False)
 				adb.reboot(device)
 				raise Exception("Unable to retrieve coverage.ec file after coverage broadcast for script " + script + " in  device: " + adb.get_device_name(device))
 
 		# close app
-		adb.shell_command(device, "pm clear " + package_name)
+		result_code = adb.shell_command(device, "pm clear " + package_name, timeout=True)
+		if result_code != 0:
+			log_evaluation_result(device, result_dir, script, False)
+			adb.reboot(device)
+			raise Exception("Unable to clear package for script " + script + " in device: " + adb.get_device_name(device))
+
+
 		# restore the coverage.ec file from /mnt/sdcard to app files
-		adb.sudo_shell_command(device, "mkdir " + application_files)
+		result_code = adb.sudo_shell_command(device, "mkdir " + application_files, timeout=True)
+		if result_code != 0:
+			log_evaluation_result(device, result_dir, script, False)
+			adb.reboot(device)
+			raise Exception("Unable to create application files directory for script " + script + " in device: " + adb.get_device_name(device))
+
 		if there_is_coverage:
-			result_code = adb.sudo_shell_command(device, "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device)
+			result_code = adb.sudo_shell_command(device, "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device, timeout=True)
 			if result_code != 0:
 				log_evaluation_result(device, result_dir, script, False)
 				adb.reboot(device)
@@ -141,11 +155,14 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 		log_evaluation_result(device, result_dir, script, True)
 
 	print "### Getting EMMA coverage.ec and report ..."
-	adb.shell_command(device, "pm clear " + package_name)
-	time.sleep(0.5)
+	result_code = adb.shell_command(device, "pm clear " + package_name, timeout=True)
+	if result_code != 0:
+		log_evaluation_result(device, result_dir, "clear-package", False)
+		adb.reboot(device)
+		raise Exception("Unable to clear package " + package_name + " in device: " + adb.get_device_name(device))
 
 	if there_is_coverage:
-		result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
+		result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec", timeout=True)
 		if result_code != 0:
 			log_evaluation_result(device, result_dir, "pull-coverage", False)
 			adb.reboot(device)
