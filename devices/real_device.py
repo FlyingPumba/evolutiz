@@ -81,7 +81,11 @@ def reboot_all_devices():
 	"""
 	logger.log_progress("\nRebooting all devices")
 	for device in get_devices():
-		adb.adb_command(device, "reboot", timeout=True)
+		result_code = adb.adb_command(device, "reboot", timeout=True)
+		if result_code != 0:
+			logger.log_progress("\nUnable to reboot device: " + adb.get_device_name(device))
+			logger.log_progress("\nPlease, turn it off and on manually.")
+			raise Exception("Unable to reboot device: " + adb.get_device_name(device))
 	# it takes 2 minutes for all devices to stabilize after reboot
 	logger.log_progress("\nWaiting 2 minutes for all devices to stabilize")
 	time.sleep(settings.AVD_BOOT_DELAY)
