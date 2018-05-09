@@ -34,35 +34,35 @@ from devices import adb
 
 def install(motifcore_path, motifcore_script_path, device):
 	# make /mnt/sdcard and /system writable
-	result_code = adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
+	result_code = adb.sudo_shell_command(device, "mount -o rw,remount rootfs /", timeout=True)
 	if result_code != 0:
 		adb.reboot(device)
 		raise Exception("Unable to install motifcore on device: " + device)
 
-	result_code = adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
+	result_code = adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard", timeout=True)
 	if result_code != 0:
 		adb.reboot(device)
 		raise Exception("Unable to install motifcore on device: " + device)
 
-	result_code = adb.sudo_shell_command(device, "mount -o rw,remount /system")
+	result_code = adb.sudo_shell_command(device, "mount -o rw,remount /system", timeout=True)
 	if result_code != 0:
 		adb.reboot(device)
 		raise Exception("Unable to install motifcore on device: " + device)
 
 	# push
-	filename = adb.sudo_push(device, motifcore_path, "/system/framework/motifcore.jar")
-	result_code = adb.sudo_shell_command(device, "chmod 777 /system/framework/" + filename)
+	filename = adb.sudo_push(device, motifcore_path, "/system/framework/motifcore.jar", timeout=True)
+	result_code = adb.sudo_shell_command(device, "chmod 777 /system/framework/" + filename, timeout=True)
 	if result_code != 0:
 		adb.reboot(device)
 		raise Exception("Unable to install motifcore on device: " + device)
 
 	filename = adb.sudo_push(device, motifcore_script_path, "/system/bin/motifcore")
-	result_code = adb.sudo_shell_command(device, "chmod 777 /system/bin/" + filename)
+	result_code = adb.sudo_shell_command(device, "chmod 777 /system/bin/" + filename, timeout=True)
 	if result_code != 0:
 		adb.reboot(device)
 		raise Exception("Unable to install motifcore on device: " + device)
 
 	# recover permission
-	adb.sudo_shell_command(device, "mount -o ro,remount /system")
+	adb.sudo_shell_command(device, "mount -o ro,remount /system", timeout=True)
 
 	return True

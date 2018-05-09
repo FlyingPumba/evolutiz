@@ -37,17 +37,17 @@ def sudo_shell_command(device, command, timeout = False, log_output=True):
 def push(device, src, dest, timeout = False):
     return adb_command(device, "push " + src + " " + dest, timeout=timeout)
 
-def sudo_push(device, src, dest):
+def sudo_push(device, src, dest, timeout = False):
     filename = os.path.basename(src)
     aux_file = "/sdcard/" + filename
 
-    result_code = push(device, src, aux_file)
+    result_code = push(device, src, aux_file, timeout=timeout)
     if result_code != 0: raise Exception("Unable to sudo_push file: " + src)
 
-    result_code = sudo_shell_command(device, "cat " + aux_file + " > " + dest)
+    result_code = sudo_shell_command(device, "cat " + aux_file + " > " + dest, timeout=timeout)
     if result_code != 0: raise Exception("Unable to sudo_push file: " + src)
 
-    result_code = sudo_shell_command(device, "rm " + aux_file)
+    result_code = sudo_shell_command(device, "rm " + aux_file, timeout=timeout)
     if result_code != 0: raise Exception("Unable to sudo_push file: " + src)
 
     return filename
