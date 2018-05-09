@@ -79,9 +79,11 @@ def reboot_all_devices():
 	prepare the env of the device
 	:return:
 	"""
+	logger.log_progress("\nRebooting all devices")
 	for device in get_devices():
 		adb.adb_command(device, "reboot")
 	# it takes 2 minutes for all devices to stabilize after reboot
+	logger.log_progress("\nWaiting 2 minutes for all devices to stabilize")
 	time.sleep(settings.AVD_BOOT_DELAY)
 	time.sleep(settings.AVD_BOOT_DELAY)
 	time.sleep(settings.AVD_BOOT_DELAY)
