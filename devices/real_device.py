@@ -98,6 +98,7 @@ def prepare_motifcore():
 	for device in get_devices():
 		logger.log_progress("\nInstalling motifcore in device: " + adb.get_device_name(device))
 		motifcore_installer.install(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device)
+		logger.log_progress(" -> Done")
 
 
 def kill_motifcore(device):
