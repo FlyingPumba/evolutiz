@@ -8,7 +8,7 @@ def get_devices():
         devices.extend(real_device.get_devices())
     if settings.USE_EMULATORS:
         devices.extend(emulator.get_devices())
-    return devices;
+    return devices
 
 def boot_devices():
     if settings.USE_EMULATORS:

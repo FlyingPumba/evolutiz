@@ -97,10 +97,22 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
 
         for repetition in range(0, REPETITIONS):
 
+            # choose result_dir and create related directories
             global result_dir
             result_dir = os.path.dirname(
                 os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name + "/" + str(repetition)
             adb.adb_logs_dir = result_dir
+
+            os.chdir(app_path)
+            global apk_dir
+            apk_dir = app_path
+            os.system("rm -rf " + result_dir + "/*" + logger.redirect_string())
+
+            result_code = os.system("mkdir -p " + result_dir)
+            if result_code != 0: raise Exception("Unable to create result dir")
+            os.system("mkdir -p " + result_dir + "/intermediate")
+            os.system("mkdir -p " + result_dir + "/coverage")
+            os.system("mkdir -p " + result_dir + "/crashes")
 
             # reboot all devices before starting a repetition
             number_of_devices = len(any_device.get_devices())
@@ -113,17 +125,6 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
                 new_number = len(any_device.get_devices())
 
             logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + folder_name)
-
-            os.chdir(app_path)
-            global apk_dir
-            apk_dir = app_path
-            os.system("rm -rf " + result_dir + "/*" + logger.redirect_string())
-
-            result_code = os.system("mkdir -p " + result_dir)
-            if result_code != 0: raise Exception("Unable to create result dir")
-            os.system("mkdir -p " + result_dir + "/intermediate")
-            os.system("mkdir -p " + result_dir + "/coverage")
-            os.system("mkdir -p " + result_dir + "/crashes")
 
             any_device.prepare_motifcore()
             any_device.clean_sdcard()
