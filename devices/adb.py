@@ -86,36 +86,36 @@ def pkill(device, string):
 def reboot(device):
     adb_command(device, "reboot")
 
-def set_bluetooth_state(device, enabled):
+def set_bluetooth_state(device, enabled, timeout = False):
     if enabled:
         # sometimes might not work
-        return sudo_shell_command(device, "service call bluetooth_manager 6")
+        return sudo_shell_command(device, "service call bluetooth_manager 6", timeout=timeout)
     else:
         # the following command is not working. Also tried with number 9.
-        return sudo_shell_command(device, "service call bluetooth_manager 8")
+        return sudo_shell_command(device, "service call bluetooth_manager 8", timeout=timeout)
 
-def set_wifi_state(device, enabled):
+def set_wifi_state(device, enabled, timeout = False):
     if enabled:
-        return sudo_shell_command(device, "svc wifi enable")
+        return sudo_shell_command(device, "svc wifi enable", timeout=timeout)
     else:
         # the following command is not working.
-        return sudo_shell_command(device, "svc wifi disable")
+        return sudo_shell_command(device, "svc wifi disable", timeout=timeout)
 
-def set_stay_awake_state(device, enabled):
+def set_stay_awake_state(device, enabled, timeout = False):
     if enabled:
-        return sudo_shell_command(device, "svc power stayon true")
+        return sudo_shell_command(device, "svc power stayon true", timeout=timeout)
     else:
-        return sudo_shell_command(device, "svc power stayon false")
+        return sudo_shell_command(device, "svc power stayon false", timeout=timeout)
 
-def set_location_state(device, enabled):
+def set_location_state(device, enabled, timeout = False):
     if enabled:
-        return shell_command(device, "settings put secure location_providers_allowed gps,wifi,network")
+        return shell_command(device, "settings put secure location_providers_allowed gps,wifi,network", timeout=timeout)
     else:
-        return shell_command(device, "settings put secure location_providers_allowed ' '")
+        return shell_command(device, "settings put secure location_providers_allowed ' '", timeout=timeout)
 
-def set_brightness(device, value):
+def set_brightness(device, value, timeout = False):
     # value should be between 0 and 250
-    return shell_command(device, "settings put system screen_brightness " + value)
+    return shell_command(device, "settings put system screen_brightness " + value, timeout=timeout)
 
 
 def get_battery_level(device):

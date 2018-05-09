@@ -33,30 +33,33 @@ import multiprocessing as mp
 import time
 
 import logger
-from devices import any_device
+from devices import any_device, adb
 import settings
 
 
 # global results for mp callback
 results = []
 idle_devices = []
+rebooting_devices = {}
 total_individuals = 0
 
 def process_results(data):
-	if data == False:
-		logger.log_progress("\nInit population in parallel: failed to generate_individual")
-		return
-
 	individual, device = data
+	if individual == False:
+		logger.log_progress("\nInit population in parallel: failed to generate_individual on device: " + adb.get_device_name(device))
+		# device was unable to complete the generation of individual, an thus was rebooted
+		# store time of rebooting, so we can calculate when the device is going to be back online
+		global rebooting_devices
+		rebooting_devices[device] = time.time()
+	else:
+		global results
+		results.append(individual)
 
-	global results
-	results.append(individual)
+		global idle_devices
+		idle_devices.append(device)
 
-	global idle_devices
-	idle_devices.append(device)
-
-	global total_individuals
-	logger.log_progress("\rInit population in parallel: " + str(len(results)) + "/" + str(total_individuals))
+		global total_individuals
+		logger.log_progress("\rInit population in parallel: " + str(len(results)) + "/" + str(total_individuals))
 
 
 def initPop(func, n, result_dir, package_name):
@@ -64,45 +67,53 @@ def initPop(func, n, result_dir, package_name):
 	to the calling *n* times the function *func*.
 	"""
 	# init global states
-
-	if settings.DEBUG:
-		print "### Init population in parallel"
-		print "n=", n
-		print "idle devices=", idle_devices
-
 	global total_individuals
-	global results
 	total_individuals = n
-	logger.log_progress("\nInit population in parallel: " + str(len(results)) + "/" + str(total_individuals))
 
-	ret = []
+	global results
 	while len(results) > 0:
 		results.pop()
+
+	global idle_devices
 	while len(idle_devices) > 0:
 		idle_devices.pop()
 
-	# 1. get idle devices
+	global rebooting_devices
+	rebooting_devices.clear()
+
+	# get idle devices
 	idle_devices.extend(any_device.get_devices())
 
-	if settings.DEBUG:
-		print "idle devices after extending from any_device.get_devices()=", idle_devices
-
 	# 2. aissign tasks to devices
+	logger.log_progress("\nInit population in parallel: " + str(len(results)) + "/" + str(total_individuals))
+
 	pool = mp.Pool(processes=len(idle_devices))
-	for i in range(0, n):
+	while (len(results)) < total_individuals:
 		while len(idle_devices) == 0:
-			time.sleep(0.1)
 
-		if settings.DEBUG:
-			print "### Call apply_async"
+			# check if a device finished rebooting
+			current_devices = any_device.get_devices()
+			for device in current_devices:
+				if device in rebooting_devices:
+					current_time = time.time()
+					reboot_time = rebooting_devices[device]
+
+					# check if device was rebooted more than 2 minutes ago
+					if current_time - reboot_time >= 60 * 2:
+						print "Found that device " + adb.get_device_name(device) + " just finished rebooting"
+						rebooting_devices.pop(device)
+						idle_devices.append(device)
+
+			time.sleep(2)
+
+
 		pool.apply_async(func, args=(idle_devices.pop(0), result_dir, package_name), callback=process_results)
-
-		# res = pool.apply(func, args=(idle_devices.pop(0), result_dir, package_name))
-		# process_results(res)
 
 	# should wait for all processes finish
 	pool.close()
 	pool.join()
+
+	ret = []
 	ret.extend(results)
 
 	return ret

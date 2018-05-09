@@ -72,8 +72,7 @@ def evaluate_in_parallel(toolbox, individuals, gen):
         idle_devices.pop()
 
     global rebooting_devices
-    while len(rebooting_devices) > 0:
-        rebooting_devices.clear()
+    rebooting_devices.clear()
 
     global total_individuals
     total_individuals = len(individuals)
@@ -111,7 +110,7 @@ def evaluate_in_parallel(toolbox, individuals, gen):
                         rebooting_devices.pop(device)
                         idle_devices.append(device)
 
-            time.sleep(1)
+            time.sleep(2)
 
         if not toolbox.time_budget_available():
             print "Time budget run out, exiting parallel evaluation"
