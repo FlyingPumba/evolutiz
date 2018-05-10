@@ -115,12 +115,11 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
             os.system("mkdir -p " + result_dir + "/crashes")
 
             # reboot all devices before starting a repetition
-            number_of_devices = len(any_device.get_devices())
             any_device.reboot_devices()
             new_number = len(any_device.get_devices())
-            while new_number != number_of_devices:
+            while new_number < settings.REAL_DEVICE_NUM:
                 logger.log_progress("\nWaiting for devices to finish reboot. Expected number: " + str(
-                    number_of_devices) + ". Current number: " + str(new_number))
+                    settings.REAL_DEVICE_NUM) + ". Current number: " + str(new_number))
                 time.sleep(10)
                 new_number = len(any_device.get_devices())
 

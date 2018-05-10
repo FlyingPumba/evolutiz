@@ -9,6 +9,8 @@ ORIGINAL_PATH = "subjects/" # folder for origignal sources
 USE_REAL_DEVICES = False
 USE_EMULATORS = True
 
+REAL_DEVICE_NUM = 7
+
 # === Emulator ===
 DEVICE_NUM = 8
 AVD_BOOT_DELAY = 40 # 40
