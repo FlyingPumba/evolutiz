@@ -185,7 +185,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
             strategy.initPopulation()
             population, logbook = strategy.evolve()
 
-            logger.log_progress("\nSapienz finished for app: " + folder_name)
+            logger.log_progress("\nSapienz finished for app: " + folder_name + "\n")
 
             # write stats
             logbook_file = open(result_dir + "/intermediate/logbook.pickle", 'wb')
@@ -240,17 +240,12 @@ def return_as_is(a):
 
 
 def run_sapienz(strategy_name, strategy, app_paths, use_motifgene=True):
-    print "Preparing devices ..."
     any_device.boot_devices()
 
     for i in range(0, len(app_paths)):
         success = run_sapienz_one_app(strategy_name, strategy, app_paths[i], use_motifgene=use_motifgene)
         if not success:
             break
-
-
-    print "### Finished run_sapienz"
-
 
 def get_subject_paths(subjects_directory):
     p = sub.Popen("ls -d " + subjects_directory + "*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
