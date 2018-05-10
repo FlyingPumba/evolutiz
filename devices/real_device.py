@@ -81,7 +81,7 @@ def reboot_all_devices():
 	"""
 	logger.log_progress("\nRebooting all devices")
 	for device in get_devices():
-		result_code = adb.adb_command(device, "reboot", timeout=True)
+		result_code = adb.adb_command(device, "reboot", timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
 		if result_code != 0:
 			logger.log_progress("\nUnable to reboot device: " + adb.get_device_name(device))
 			logger.log_progress("\nPlease, turn it off and on manually.")

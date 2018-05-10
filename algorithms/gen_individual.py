@@ -40,14 +40,14 @@ def get_sequence(use_motifgene, device, result_dir, package_name, index, unique_
 	ret = []
 
 	# clear data
-	result_code = adb.shell_command(device, "pm clear " + package_name, timeout=True)
+	result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
 	if result_code != 0:
 		adb.reboot(device)
 		raise Exception("Failed to clear package " + package_name + " in device: " + adb.get_device_name(device))
 
-	adb.set_bluetooth_state(device, True, timeout=True)
-	adb.set_wifi_state(device, True, timeout=True)
-	adb.set_location_state(device, True, timeout=True)
+	adb.set_bluetooth_state(device, True, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+	adb.set_wifi_state(device, True, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+	adb.set_location_state(device, True, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
 
 	# start motifcore
 	string_seeding_flag = ""
@@ -57,7 +57,7 @@ def get_sequence(use_motifgene, device, result_dir, package_name, index, unique_
 
 	motifcore_cmd = "motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " + string_seeding_flag + " -v " + str(
 		motifcore_events)
-	adb.shell_command(device, motifcore_cmd, timeout=True, log_output=False)
+	adb.shell_command(device, motifcore_cmd, timeout=settings.MOTIFCORE_EVAL_TIMEOUT, log_output=False)
 
 	# access the generated script, should ignore the first launch activity
 	script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]
@@ -68,7 +68,7 @@ def get_sequence(use_motifgene, device, result_dir, package_name, index, unique_
 	# need to kill motifcore when timeout
 	adb.pkill(device, "motifcore")
 
-	result_code = adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename, timeout=True)
+	result_code = adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
 	if result_code != 0:
 		adb.reboot(device)
 		raise Exception("Failed to retrieve motifcore script from device: " + adb.get_device_name(device))
