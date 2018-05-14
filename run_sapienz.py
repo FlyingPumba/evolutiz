@@ -30,7 +30,7 @@ from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
 from plot import two_d_line
 
-REPETITIONS = 4
+REPETITIONS = 3
 
 start_time = None
 apk_dir = None
@@ -85,7 +85,7 @@ def log_devices_battery(gen, result_dir):
         os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
 
 
-def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
+def run_sapienz_one_app(strategy_name, strategy_class, app_path, use_motifgene=True):
 
     folder_name = os.path.basename(app_path)
     try:
@@ -173,6 +173,7 @@ def run_sapienz_one_app(strategy_name, strategy, app_path, use_motifgene=True):
             hof = tools.ParetoFront()
 
             # setup toolbox specific stuff by strategy
+            strategy = strategy_class()
             strategy.setup(toolbox, stats=stats)
 
             # log the history
@@ -262,14 +263,14 @@ if __name__ == "__main__":
     # python run_sapienz
 
     possible_strategies = {
-        "standard": eaStandardParallel(),
-        "monotonic": eaMonotonicParallel(),
-        "steady": eaSteadyStateParallel(),
-        "muPlusLambda": eaMuPlusLambdaParallel(),
-        "onePlusLambdaCommaLambda": eaOnePlusLambdaCommaLambdaParallel(),
-        "mosa": eaMosaParallel(),
-        "dynaMosa": eaDynaMosaParallel(),
-        "random": randomParallel()
+        "standard": eaStandardParallel,
+        "monotonic": eaMonotonicParallel,
+        "steady": eaSteadyStateParallel,
+        "muPlusLambda": eaMuPlusLambdaParallel,
+        "onePlusLambdaCommaLambda": eaOnePlusLambdaCommaLambdaParallel,
+        "mosa": eaMosaParallel,
+        "dynaMosa": eaDynaMosaParallel,
+        "random": randomParallel
     }
 
     # parse args
@@ -283,7 +284,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     app_paths = get_subject_paths(args.subjects_directory)[0:1]
-    strategy = possible_strategies[args.selected_strategy]
+    strategy_class = possible_strategies[args.selected_strategy]
     use_motifgene = args.use_motifgene
 
     # run Sapienz exp
@@ -292,7 +293,7 @@ if __name__ == "__main__":
     logger.log_progress("Sapienz (" + args.selected_strategy + ")")
     logger.log_progress("\nUse motifgene: " + str(use_motifgene))
 
-    run_sapienz(args.selected_strategy, strategy, app_paths, use_motifgene=use_motifgene)
+    run_sapienz(args.selected_strategy, strategy_class, app_paths, use_motifgene=use_motifgene)
 
     # process results
     # results_per_app = process_results(app_paths)
