@@ -59,14 +59,14 @@ def uninstall(device, package_name):
     return adb_command(device, "uninstall " + package_name)
 
 def install(device, package_name, apk_path):
-    result_code = adb_command(device, "install " + apk_path, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+    result_code = adb_command(device, "install " + apk_path, timeout=settings.APK_INSTALL_TIMEOUT)
     if result_code != 0:
         # we were unable to install the apk in device.
         # Reboot and raise exception
         reboot(device)
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device)
 
-    cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_FAST_COMMAND_TIMEOUT) + " " + adb_cmd_prefix + " -s " + device + " shell pm list packages | grep " + package_name
+    cmd = settings.TIMEOUT_CMD + " " + str(settings.APK_INSTALL_TIMEOUT) + " " + adb_cmd_prefix + " -s " + device + " shell pm list packages | grep " + package_name
     log_adb_command(device, cmd)
 
     res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
