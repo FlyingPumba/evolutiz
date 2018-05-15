@@ -40,7 +40,7 @@ def get_sequence(use_motifgene, device, result_dir, package_name, index, unique_
 	ret = []
 
 	# clear data
-	result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+	result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_PM_CLEAR_COMMAND_TIMEOUT)
 	if result_code != 0:
 		adb.reboot(device)
 		raise Exception("Failed to clear package " + package_name + " in device: " + adb.get_device_name(device))
