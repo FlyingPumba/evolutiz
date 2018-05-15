@@ -108,6 +108,6 @@ def gen_individual(use_motifgene, device, result_dir, package_name):
 		return creator.Individual(suite), device
 
 	except Exception as e:
-		traceback.print_exc(file=logger.orig_stdout)
 		print e
+		traceback.print_exc()
 		return False, device
