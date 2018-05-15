@@ -81,19 +81,20 @@ def evaluate_in_parallel(toolbox, individuals, gen):
 
     # get idle devices
     idle_devices.extend(any_device.get_devices())
+    total_devices = len(idle_devices)
 
     if settings.DEBUG:
         print "idle devices after extending from any_device.get_devices()=", idle_devices
-        print "number of devices", len(idle_devices)
+        print "number of devices", total_devices
 
 
     global remaining_index_to_evaluate
     remaining_index_to_evaluate = [ i for i in range(0, total_individuals)]
 
     # 2. aissign tasks to devices
-    pool = mp.Pool(processes=len(idle_devices))
+    pool = mp.Pool(processes=total_devices)
     time_out = False
-    while len(remaining_index_to_evaluate) != 0:
+    while not (len(remaining_index_to_evaluate) == 0 and len(idle_devices) == total_devices):
         while len(idle_devices) == 0 and toolbox.time_budget_available():
             # print "Waiting for idle_devices"
 
@@ -117,13 +118,16 @@ def evaluate_in_parallel(toolbox, individuals, gen):
             time_out = True
             break
 
-        device = idle_devices.pop(0)
-        index = remaining_index_to_evaluate.pop(0)
+        if len(remaining_index_to_evaluate) > 0:
+            device = idle_devices.pop(0)
+            index = remaining_index_to_evaluate.pop(0)
 
-        pool.apply_async(eval_suite_parallel_wrapper,
-                         args=(toolbox.is_motifgene_enabled(), toolbox.evaluate, individuals[index], device, toolbox.get_result_dir(),
-                               toolbox.get_apk_dir(), toolbox.get_package_name(), gen, index),
-                         callback=process_results)
+            pool.apply_async(eval_suite_parallel_wrapper,
+                             args=(toolbox.is_motifgene_enabled(), toolbox.evaluate, individuals[index], device, toolbox.get_result_dir(),
+                                   toolbox.get_apk_dir(), toolbox.get_package_name(), gen, index),
+                             callback=process_results)
+        else:
+            time.sleep(2)
 
     pool.close()
 

@@ -42,6 +42,7 @@ results = []
 idle_devices = []
 rebooting_devices = {}
 total_individuals = 0
+remaining_individuals_to_evaluate = 0
 
 def process_results(data):
 	individual, device = data
@@ -51,6 +52,9 @@ def process_results(data):
 		# store time of rebooting, so we can calculate when the device is going to be back online
 		global rebooting_devices
 		rebooting_devices[device] = time.time()
+
+		global remaining_individuals_to_evaluate
+		remaining_individuals_to_evaluate += 1
 	else:
 		global results
 		results.append(individual)
@@ -81,6 +85,9 @@ def initPop(func, n, result_dir, package_name):
 	global rebooting_devices
 	rebooting_devices.clear()
 
+	global remaining_individuals_to_evaluate
+	remaining_individuals_to_evaluate = total_individuals
+
 	# get idle devices
 	idle_devices.extend(any_device.get_devices())
 	total_devices = len(idle_devices)
@@ -88,8 +95,8 @@ def initPop(func, n, result_dir, package_name):
 	# 2. aissign tasks to devices
 	logger.log_progress("\nInit population in parallel: " + str(len(results)) + "/" + str(total_individuals))
 
-	pool = mp.Pool(processes=len(idle_devices))
-	while (len(results)) + (total_devices - len(idle_devices)) < total_individuals:
+	pool = mp.Pool(processes=total_devices)
+	while not (remaining_individuals_to_evaluate == 0 and len(idle_devices) == total_devices):
 		while len(idle_devices) == 0:
 
 			# check if a device finished rebooting
@@ -107,8 +114,12 @@ def initPop(func, n, result_dir, package_name):
 
 			time.sleep(2)
 
-
-		pool.apply_async(func, args=(idle_devices.pop(0), result_dir, package_name), callback=process_results)
+		if remaining_individuals_to_evaluate > 0:
+			remaining_individuals_to_evaluate -= 1
+			device = idle_devices.pop(0)
+			pool.apply_async(func, args=(device, result_dir, package_name), callback=process_results)
+		else:
+			time.sleep(2)
 
 	# should wait for all processes finish
 	pool.close()
