@@ -53,7 +53,6 @@ def eval_suite_parallel_wrapper(motifgene_enabled, eval_suite_parallel, individu
 
         return pop, False, device
 
-
 def evaluate_in_parallel(toolbox, individuals, gen):
     """ Evaluate the individuals fitnesses and assign them to each individual
     :param eval_fitness: The fitness evaluation fucntion
@@ -95,22 +94,10 @@ def evaluate_in_parallel(toolbox, individuals, gen):
     pool = mp.Pool(processes=total_devices)
     time_out = False
     while not (len(remaining_index_to_evaluate) == 0 and len(idle_devices) == total_devices):
+        check_devices_that_finished_rebooting()
+
         while len(idle_devices) == 0 and toolbox.time_budget_available():
-            # print "Waiting for idle_devices"
-
-            # check if a device finished rebooting
-            current_devices = any_device.get_devices()
-            for device in current_devices:
-                if device in rebooting_devices:
-                    current_time = time.time()
-                    reboot_time = rebooting_devices[device]
-
-                    # check if device was rebooted more than 2 minutes ago
-                    if current_time - reboot_time >= 60 * 2:
-                        print "Found that device " + adb.get_device_name(device) + " just finished rebooting"
-                        rebooting_devices.pop(device)
-                        idle_devices.append(device)
-
+            check_devices_that_finished_rebooting()
             time.sleep(2)
 
         if not toolbox.time_budget_available():
@@ -144,3 +131,19 @@ def evaluate_in_parallel(toolbox, individuals, gen):
         pool.terminate()
 
     return not time_out
+
+def check_devices_that_finished_rebooting():
+    global idle_devices
+    global rebooting_devices
+
+    current_devices = any_device.get_devices()
+    for device in current_devices:
+        if device in rebooting_devices:
+            current_time = time.time()
+            reboot_time = rebooting_devices[device]
+
+            # check if device was rebooted more than 2 minutes ago
+            if current_time - reboot_time >= 60 * 2:
+                print "Found that device " + adb.get_device_name(device) + " just finished rebooting"
+                rebooting_devices.pop(device)
+                idle_devices.append(device)

@@ -97,21 +97,10 @@ def initPop(func, n, result_dir, package_name):
 
 	pool = mp.Pool(processes=total_devices)
 	while not (remaining_individuals_to_evaluate == 0 and len(idle_devices) == total_devices):
+		check_devices_that_finished_rebooting()
+
 		while len(idle_devices) == 0:
-
-			# check if a device finished rebooting
-			current_devices = any_device.get_devices()
-			for device in current_devices:
-				if device in rebooting_devices:
-					current_time = time.time()
-					reboot_time = rebooting_devices[device]
-
-					# check if device was rebooted more than 2 minutes ago
-					if current_time - reboot_time >= 60 * 2:
-						print "Found that device " + adb.get_device_name(device) + " just finished rebooting"
-						rebooting_devices.pop(device)
-						idle_devices.append(device)
-
+			check_devices_that_finished_rebooting()
 			time.sleep(2)
 
 		if remaining_individuals_to_evaluate > 0:
@@ -129,3 +118,20 @@ def initPop(func, n, result_dir, package_name):
 	ret.extend(results)
 
 	return ret
+
+
+def check_devices_that_finished_rebooting():
+	global idle_devices
+	global rebooting_devices
+
+	current_devices = any_device.get_devices()
+	for device in current_devices:
+		if device in rebooting_devices:
+			current_time = time.time()
+			reboot_time = rebooting_devices[device]
+
+			# check if device was rebooted more than 2 minutes ago
+			if current_time - reboot_time >= 60 * 2:
+				print "Found that device " + adb.get_device_name(device) + " just finished rebooting"
+				rebooting_devices.pop(device)
+				idle_devices.append(device)
