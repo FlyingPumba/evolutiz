@@ -79,7 +79,7 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 
 	# run scripts
 	for index, script in enumerate(scripts):
-		result_code = adb.shell_command(device, "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation", timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+		result_code = adb.shell_command(device, "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation", timeout=settings.ADB_INSTRUMENT_COMMAND_TIMEOUT)
 		if result_code != 0:
 			log_evaluation_result(device, result_dir, script, False)
 			adb.reboot(device)
