@@ -48,7 +48,7 @@ def eval_suite_parallel_wrapper(motifgene_enabled, eval_suite_parallel, individu
         return result
     except Exception as e:
         logger.log_progress("\nThere was an error evaluating individual in parallel on device:" + adb.get_device_name(device) + "\n")
-        # print e
+        print e
         traceback.print_exc()
 
         return pop, False, device
