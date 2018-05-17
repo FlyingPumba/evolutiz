@@ -130,7 +130,7 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 				raise Exception("Unable to retrieve coverage.ec file after coverage broadcast for script " + script + " in  device: " + adb.get_device_name(device))
 
 		# close app
-		result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+		result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_PM_CLEAR_COMMAND_TIMEOUT)
 		if result_code != 0:
 			log_evaluation_result(device, result_dir, script, False)
 			adb.reboot(device)
@@ -155,7 +155,7 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 		log_evaluation_result(device, result_dir, script, True)
 
 	print "### Getting EMMA coverage.ec and report ..."
-	result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+	result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_PM_CLEAR_COMMAND_TIMEOUT)
 	if result_code != 0:
 		log_evaluation_result(device, result_dir, "clear-package", False)
 		adb.reboot(device)
