@@ -54,6 +54,7 @@ def extract_coverage(path):
 # return accumulative coverage and average length
 def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_dir, package_name, gen, pop):
 	unique_crashes = set()
+	scripts_crash_status = {}
 
 	# clean states
 	adb.shell_command(device, "am force-stop " + package_name)
@@ -96,8 +97,10 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 		run_script_using_motifcore(is_motifgene_enabled, device, package_name, script_name)
 
 		if crash_handler.handle(device, result_dir, script, gen, pop, index, unique_crashes):
+			scripts_crash_status[script] = True
 			pass
 		else:
+			scripts_crash_status[script] = False
 			# no crash, can broadcast
 			result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE", timeout=settings.COVERAGE_BROADCAST_TIMEOUT)
 			if result_code != 0:
@@ -174,12 +177,12 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 		coverage_str = extract_coverage(html_file)
 
 		if coverage_str.find("%") != -1:
-			return int(coverage_str.split("%")[0]), len(unique_crashes)
+			return int(coverage_str.split("%")[0]), len(unique_crashes), scripts_crash_status
 		else:
 			log_evaluation_result(device, result_dir, "html-extract-coverage", False)
-			return 0, len(unique_crashes)
+			return 0, len(unique_crashes), scripts_crash_status
 	else:
-		return 0, len(unique_crashes)
+		return 0, len(unique_crashes), scripts_crash_status
 
 
 def run_script_using_motifcore(use_motifgene, device, package_name, script_name):

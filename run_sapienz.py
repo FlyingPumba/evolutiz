@@ -30,7 +30,7 @@ from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
 from plot import two_d_line
 
-REPETITIONS = 2
+REPETITIONS = 8
 
 start_time = None
 apk_dir = None
@@ -114,8 +114,10 @@ def run_sapienz_one_app(strategy_name, strategy_class, app_path, use_motifgene=T
             os.system("mkdir -p " + result_dir + "/coverage")
             os.system("mkdir -p " + result_dir + "/crashes")
 
-            # reboot all devices before starting a repetition
+            # reboot all devices and restart adb server before starting a repetition
             any_device.reboot_devices()
+            adb.restart_server()
+
             new_number = len(any_device.get_devices())
             while new_number < settings.REAL_DEVICE_NUM:
                 logger.log_progress("\nWaiting for devices to finish reboot. Expected number: " + str(

@@ -1,4 +1,5 @@
 import os
+import sys
 
 import numpy
 
@@ -12,7 +13,7 @@ def eval_suite(is_motifgene_enabled, individual, device, result_dir, apk_dir, pa
 	# for length objective
 	if settings.DEBUG:
 		print "Generating motifcore scripts to evaluate individual"
-	suite_lengths = []
+	suite_lengths = {}
 	for index, seq in enumerate(individual):
 		# generate script file list
 		filename = result_dir + "/intermediate/motifcore.evo.script." + str(gen) + "." + str(pop) + "." + str(index)
@@ -28,19 +29,29 @@ def eval_suite(is_motifgene_enabled, individual, device, result_dir, apk_dir, pa
 				script.write(line + "\n")
 				length += 1
 
-			suite_lengths.append(length)
-		script_path.append(os.path.abspath(filename))
+		script = os.path.abspath(filename)
+		suite_lengths[script] = length
+		script_path.append(script)
+
+	scripts_crash_status = {}
 	# give a script and package, return the coverage by running all seqs
-	if settings.DEBUG:
-		print "Sending motifcore scripts to evaluate individual"
 	if apk_dir.endswith(".apk_output"):
 		coverage, num_crashes = act_coverage.get_suite_coverage(script_path, device, apk_dir, package_name, gen, pop)
 	else:
-		coverage, num_crashes = emma_coverage.get_suite_coverage(is_motifgene_enabled, script_path, device,
+		coverage, num_crashes, scripts_crash_status = emma_coverage.get_suite_coverage(is_motifgene_enabled, script_path, device,
 																 result_dir, apk_dir, package_name, gen, pop)
+
+	# remove from suite lengths the scripts that did NOT cause a crash
+	for script, had_crash in scripts_crash_status.iteritems():
+		if not had_crash:
+			suite_lengths.pop(script, None)
+
 	print "### Coverage = ", coverage
 	print "### Lengths = ", suite_lengths
 	print "### #Crashes = ", num_crashes
 
 	# 1st obj: coverage, 2nd: average seq length of the suite, 3nd: #crashes
-	return pop, (coverage, numpy.mean(suite_lengths), num_crashes), device
+	if suite_lengths.length == 0:
+		return pop, (coverage, sys.maxint, num_crashes), device
+	else:
+		return pop, (coverage, numpy.mean(suite_lengths), num_crashes), device

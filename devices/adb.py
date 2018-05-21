@@ -145,6 +145,13 @@ def get_device_name(device):
     else:
         return get_imei(device)
 
+def restart_server():
+    # print "### killall adb"
+    # os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')" + logger.redirect_string())
+    # os.system("killall adb" + logger.redirect_string())
+    os.system(adb_cmd_prefix + " kill-server" + logger.redirect_string())
+    os.system(adb_cmd_prefix + " devices" + logger.redirect_string())
+
 def log_adb_command(device, cmd):
     device_adb_log_file = adb_logs_dir + "/" + get_device_name(device) + "-adb.log"
     os.system("echo \"" + cmd + "\" >> " + device_adb_log_file)

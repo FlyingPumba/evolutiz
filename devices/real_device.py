@@ -43,13 +43,6 @@ def get_devices():
 	""" will also get devices ready
 	:return: a list of avaiable devices names, e.g., emulator-5556
 	"""
-
-	# print "### killall adb"
-	#os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')" + logger.redirect_string())
-	#os.system("killall adb" + logger.redirect_string())
-	os.system("$ANDROID_HOME/platform-tools/adb kill-server" + logger.redirect_string())
-	os.system("$ANDROID_HOME/platform-tools/adb devices" + logger.redirect_string())
-
 	ret = []
 	p = sub.Popen('$ANDROID_HOME/platform-tools/adb devices', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 	output, errors = p.communicate()
