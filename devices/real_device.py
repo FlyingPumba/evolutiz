@@ -45,9 +45,9 @@ def get_devices():
 	"""
 
 	# print "### killall adb"
-	# os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')" + logger.redirect_string())
-	# os.system("killall adb" + logger.redirect_string())
-
+	#os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')" + logger.redirect_string())
+	#os.system("killall adb" + logger.redirect_string())
+	os.system("$ANDROID_HOME/platform-tools/adb kill-server" + logger.redirect_string())
 	os.system("$ANDROID_HOME/platform-tools/adb devices" + logger.redirect_string())
 
 	ret = []
