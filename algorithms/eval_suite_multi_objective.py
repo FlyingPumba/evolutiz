@@ -51,7 +51,7 @@ def eval_suite(is_motifgene_enabled, individual, device, result_dir, apk_dir, pa
 	print "### #Crashes = ", num_crashes
 
 	# 1st obj: coverage, 2nd: average seq length of the suite, 3nd: #crashes
-	if suite_lengths.length == 0:
-		return pop, (coverage, sys.maxint, num_crashes), device
+	if suite_lengths:
+		return pop, (coverage, numpy.mean(suite_lengths.values()), num_crashes), device
 	else:
-		return pop, (coverage, numpy.mean(suite_lengths), num_crashes), device
+		return pop, (coverage, sys.maxint, num_crashes), device
