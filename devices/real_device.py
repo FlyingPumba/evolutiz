@@ -90,7 +90,27 @@ def disable_systemui():
 def prepare_motifcore():
 	for device in get_devices():
 		logger.log_progress("\nInstalling motifcore in device: " + adb.get_device_name(device))
-		motifcore_installer.install(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device)
+
+		result = False
+		while not result:
+			try:
+				result = motifcore_installer.install(settings.WORKING_DIR + "lib/motifcore.jar", settings.WORKING_DIR + "resources/motifcore", device)
+				if not result:
+					logger.log_progress(" -> Failed")
+					# we were unable to install apk in device, an thus it was rebooted
+					# wait till device is back and retry
+					time.sleep(settings.AVD_BOOT_DELAY)
+					time.sleep(settings.AVD_BOOT_DELAY)
+					time.sleep(settings.AVD_BOOT_DELAY)
+			except Exception:
+				logger.log_progress(" -> Failed")
+				# we were unable to install apk in device, an thus it was rebooted
+				# wait till device is back and retry
+				time.sleep(settings.AVD_BOOT_DELAY)
+				time.sleep(settings.AVD_BOOT_DELAY)
+				time.sleep(settings.AVD_BOOT_DELAY)
+				result = False
+
 		logger.log_progress(" -> Done")
 
 
