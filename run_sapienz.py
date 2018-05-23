@@ -115,6 +115,7 @@ def run_sapienz_one_app(strategy_name, strategy_class, app_path, use_motifgene=T
             os.system("mkdir -p " + result_dir + "/crashes")
 
             # reboot all devices and restart adb server before starting a repetition
+            adb.restart_server()
             any_device.reboot_devices()
             adb.restart_server()
 
