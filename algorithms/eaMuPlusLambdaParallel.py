@@ -50,7 +50,7 @@ class eaMuPlusLambdaParallel:
 		# self.toolbox.register("select", tools.selTournament, tournsize=5)
 		self.toolbox.register("select", tools.selNSGA2)
 
-		self.targets_historic_log_file = self.toolbox.get_result_dir() + "/targets_historic.log"
+		self.targets_historic_log_file = self.toolbox.get_result_dir() + "/targets-historic.log"
 		self.setup_log_best_historic_objectives_achieved()
 
 	def initPopulation(self):
@@ -182,14 +182,14 @@ class eaMuPlusLambdaParallel:
 
 	def setup_log_best_historic_objectives_achieved(self):
 		log_file = self.targets_historic_log_file
-		os.system("echo \"#Gen Coverage Crashes Length\" > " + log_file)
+		os.system("echo \"gen,coverage,crashes,length\" > " + log_file)
 
 	def log_best_historic_objectives_achieved(self, gen):
 		log_file = self.targets_historic_log_file
 		echo_cmd = "echo \"" + \
-				   str(gen) + " " + \
-				   str(self.best_historic_coverage) + " " + \
-				   str(self.best_historic_crashes) + " "
+				   str(gen) + "," + \
+				   str(self.best_historic_coverage) + "," + \
+				   str(self.best_historic_crashes) + ","
 
 		if self.best_historic_crashes > 0:
 			echo_cmd += str(self.best_historic_length) + " "
