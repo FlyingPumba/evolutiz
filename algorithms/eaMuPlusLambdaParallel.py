@@ -58,7 +58,7 @@ class eaMuPlusLambdaParallel:
 		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(), package_name=self.toolbox.get_package_name())
 		if (len(self.population) < settings.POPULATION_SIZE):
 			logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
-			return
+			return False
 
 		# Evaluate the individuals with an invalid fitness
 		invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
@@ -66,7 +66,7 @@ class eaMuPlusLambdaParallel:
 
 		if not completed_evaluation:
 			logger.log_progress("\nTime budget run out durring parallel evaluation, exiting setup")
-			return
+			return False
 
 		# discard invalid population individual
 		for i in range(len(self.population) - 1, -1, -1):
@@ -76,6 +76,7 @@ class eaMuPlusLambdaParallel:
 		self.update_best_historic_objectives_achieved(self.population, 0)
 
 		self.toolbox.log_devices_battery(0, self.toolbox.get_result_dir())
+		return True
 
 	def evolve(self):
 		# record first population in logbook

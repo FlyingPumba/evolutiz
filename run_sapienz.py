@@ -186,7 +186,11 @@ def run_sapienz_one_app(strategy_name, strategy_class, app_path, use_motifgene=T
             toolbox.decorate("mutate", history.decorator)
 
             # run the strategy
-            strategy.initPopulation()
+            success = strategy.initPopulation()
+            if not success:
+                logger.log_progress("\nThere was an error initializing pupulation for app: " + folder_name)
+                continue
+
             population, logbook = strategy.evolve()
 
             logger.log_progress("\nSapienz finished for app: " + folder_name + "\n")
