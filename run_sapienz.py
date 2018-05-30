@@ -30,7 +30,7 @@ from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
 from plot import two_d_line
 
-REPETITIONS = 8
+REPETITIONS = 20
 
 start_time = None
 apk_dir = None
