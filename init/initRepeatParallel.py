@@ -102,8 +102,8 @@ def initPop(func, n, result_dir, package_name):
 		while len(idle_devices) == 0:
 			check_devices_that_finished_rebooting()
 			print "Waiting for a device to become idle"
-			print str(idle_devices)
-			print str(rebooting_devices)
+			print "idle_devices: " + str(idle_devices)
+			print "rebooting_devices: " + str(rebooting_devices)
 			time.sleep(2)
 
 		if remaining_individuals_to_evaluate > 0:
@@ -112,6 +112,8 @@ def initPop(func, n, result_dir, package_name):
 			pool.apply_async(func, args=(device, result_dir, package_name), callback=process_results)
 		else:
 			print "There are not individuals remaining to evaluate"
+			print "idle_devices: " + str(idle_devices)
+			print "rebooting_devices: " + str(rebooting_devices)
 			time.sleep(2)
 
 	# should wait for all processes finish
