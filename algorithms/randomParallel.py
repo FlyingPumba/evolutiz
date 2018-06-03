@@ -44,7 +44,7 @@ class randomParallel:
 		creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
 		creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
-		self.toolbox.register("evaluate", eval_suite, self.toolbox.is_motifgene_enabled())
+		self.toolbox.register("evaluate", eval_suite)
 		# mate crossover two suites
 		self.toolbox.register("mate", tools.cxUniform, indpb=0.5)
 		# mutate should change seq order in the suite as well
