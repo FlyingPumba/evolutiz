@@ -128,7 +128,7 @@ class randomParallel:
 			logbook.record(gen=gen, nevals=len(invalid_ind), **record)
 
 			# dump logbook in case we are interrupted
-			logbook_file = open(self.apk_dir + "/intermediate/logbook.pickle", 'wb')
+			logbook_file = open(self.toolbox.get_result_dir() + "/intermediate/logbook.pickle", 'wb')
 			pickle.dump(logbook, logbook_file)
 			logbook_file.close()
 
