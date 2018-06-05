@@ -1,6 +1,5 @@
 import matplotlib
 # Force matplotlib to not use any Xwindows backend.
-from algorithms import gen_individual_with_coverage
 
 matplotlib.use('Agg')
 
@@ -26,6 +25,7 @@ from algorithms.eaStandardParallel import eaStandardParallel
 from algorithms.eaSteadyStateParallel import eaSteadyStateParallel
 from algorithms.randomParallel import randomParallel
 from algorithms.gen_individual import gen_individual
+from algorithms.gen_individual_with_coverage import gen_individual_with_coverage
 from devices import adb
 from devices import any_device
 from devices.prepare_apk_parallel import prepare_apk
