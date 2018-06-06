@@ -120,12 +120,17 @@ def set_brightness(device, value, timeout = None):
 
 
 def get_battery_level(device):
-    adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
-    cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
-    log_adb_command(device, cmd)
+    while True:
+        try:
+            adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
+            cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
+            log_adb_command(device, cmd)
 
-    res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
-    return int(res)
+            res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+            return int(res)
+        except Exception:
+            print "\nThere was an error fetching battery level for device: " + device
+            continue
 
 def get_imei(device):
     if device not in devices_imei:
