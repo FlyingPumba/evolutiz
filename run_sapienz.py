@@ -30,6 +30,7 @@ from devices import adb
 from devices import any_device
 from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
+from init import initRepeatParallelWithCoverage
 from plot import two_d_line
 
 REPETITIONS = 20
@@ -159,7 +160,7 @@ def run_sapienz_one_app(strategy_name, strategy_class, app_path, use_motifgene=T
             toolbox.register("individual", gen_individual, use_motifgene)
             toolbox.register("population", initRepeatParallel.initPop, toolbox.individual)
             toolbox.register("individual_with_coverage", gen_individual_with_coverage, use_motifgene)
-            toolbox.register("population_with_coverage", initRepeatParallel.initPop, toolbox.individual_with_coverage)
+            toolbox.register("population_with_coverage", initRepeatParallelWithCoverage.initPop, toolbox.individual_with_coverage)
             toolbox.register("time_budget_available", time_budget_available)
             toolbox.register("get_apk_dir", get_apk_dir)
             toolbox.register("get_result_dir", get_result_dir)

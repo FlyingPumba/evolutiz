@@ -101,7 +101,11 @@ class randomParallel:
 			logger.log_progress("\nStarting generation " + str(gen))
 
 			# Generate new random population
-			new_population = self.toolbox.population_with_coverage(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(), package_name=self.toolbox.get_package_name())
+			new_population = self.toolbox.population_with_coverage(n=settings.POPULATION_SIZE,
+																   result_dir=self.toolbox.get_result_dir(),
+																   package_name=self.toolbox.get_package_name(),
+																   apk_dir=self.toolbox.get_apk_dir(),
+																   gen=gen)
 
 			self.update_best_historic_objectives_achieved(new_population, gen)
 
