@@ -1,5 +1,6 @@
 import datetime
 import os
+import sys
 import time
 import random
 import traceback
@@ -133,7 +134,9 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
         raise Exception("Unable to clear package " + package_name + " in device: " + adb.get_device_name(device))
 
     crashes = len(unique_crashes)
-    length = numpy.mean(lengths)
+    length = sys.maxint
+    if len(lengths) > 0:
+        length = numpy.mean(lengths)
     coverage = 0
 
     if there_is_coverage_in_suite:
