@@ -33,7 +33,7 @@ from init import initRepeatParallel
 from init import initRepeatParallelWithCoverage
 from plot import two_d_line
 
-REPETITIONS = 20
+REPETITIONS = 1
 
 start_time = None
 apk_dir = None
