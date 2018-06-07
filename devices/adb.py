@@ -137,7 +137,8 @@ def get_battery_level(device):
 def get_imei(device):
     if device not in devices_imei:
         adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
-        cmd = adb_cmd + "dumpsys iphonesubinfo | grep 'Device ID' | cut -d ' ' -f 6 "
+        imei_cmd = adb_cmd + "dumpsys iphonesubinfo | grep 'Device ID' | cut -d ' ' -f 6 "
+        cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + imei_cmd
 	    # leave commented to avoid infinite recursion
         #log_adb_command(device, cmd)
 
