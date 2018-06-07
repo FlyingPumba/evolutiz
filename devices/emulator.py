@@ -118,9 +118,9 @@ def boot_devices():
 def clean_sdcard():
 	print "Cleaning SD card"
 	for device in get_devices():
-		adb.sudo_shell_command(device, "mount -o rw,remount rootfs")
-		adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
-		adb.sudo_shell_command(device, "rm -rf /mnt/sdcard/*")
+		adb.sudo_shell_command(device, "mount -o rw,remount rootfs", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+		adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+		adb.sudo_shell_command(device, "rm -rf /mnt/sdcard/*", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
 def prepare_motifcore_callback(success):
 	global installed_devices

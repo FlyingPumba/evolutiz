@@ -153,7 +153,7 @@ def run_sapienz_one_app(strategy_name, strategy_class, app_path, use_motifgene=T
 
             for device in devices:
                 # clear package data from previous runs
-                adb.shell_command(device, "pm clear " + package_name)
+                adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
             # register common functions in toolbox
             toolbox = base.Toolbox()

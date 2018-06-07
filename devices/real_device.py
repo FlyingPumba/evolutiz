@@ -70,7 +70,7 @@ def reboot_all_devices():
 	"""
 	logger.log_progress("\nRebooting all devices")
 	for device in get_devices():
-		result_code = adb.adb_command(device, "reboot", timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+		result_code = adb.adb_command(device, "reboot", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 		if result_code != 0:
 			logger.log_progress("\nUnable to reboot device: " + adb.get_device_name(device))
 			logger.log_progress("\nPlease, turn it off and on manually.")
@@ -84,7 +84,7 @@ def reboot_all_devices():
 
 def disable_systemui():
 	for device in get_devices():
-		adb.shell_command(device, "service call activity 42 s16 com.android.systemui")
+		adb.shell_command(device, "service call activity 42 s16 com.android.systemui", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
 
 def prepare_motifcore():
@@ -135,10 +135,10 @@ def clean_device_app(device, package_name):
 
 	print "### kill motifcore ..."
 	kill_motifcore(device)
-	adb.shell_command(device, "pm clear " + package_name)
-	adb.shell_command(device, "am force-stop " + package_name)
-	adb.shell_command(device, "uninstall " + package_name)
-	adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+	adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+	adb.shell_command(device, "am force-stop " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+	adb.shell_command(device, "uninstall " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+	adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 	print "### clean device app finished"
 
 

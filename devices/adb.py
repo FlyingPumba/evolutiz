@@ -57,17 +57,17 @@ def pull(device, src, dest, timeout = None):
     return adb_command(device, "pull " + src + " " + dest, timeout=timeout)
 
 def uninstall(device, package_name):
-    return adb_command(device, "uninstall " + package_name)
+    return adb_command(device, "uninstall " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
 def install(device, package_name, apk_path):
-    result_code = adb_command(device, "install " + apk_path, timeout=settings.APK_INSTALL_TIMEOUT)
+    result_code = adb_command(device, "install " + apk_path, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
         # we were unable to install the apk in device.
         # Reboot and raise exception
         reboot(device)
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device)
 
-    cmd = settings.TIMEOUT_CMD + " " + str(settings.APK_INSTALL_TIMEOUT) + " " + adb_cmd_prefix + " -s " + device + " shell pm list packages | grep " + package_name
+    cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + adb_cmd_prefix + " -s " + device + " shell pm list packages | grep " + package_name
     log_adb_command(device, cmd)
 
     res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
@@ -80,12 +80,13 @@ def install(device, package_name, apk_path):
 def pkill(device, string):
     adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
     pkill_cmd = adb_cmd + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd + "kill pid "
-    log_adb_command(device, pkill_cmd)
+    cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + pkill_cmd
+    log_adb_command(device, cmd)
 
-    return os.system(pkill_cmd + logger.redirect_string())
+    return os.system(cmd + logger.redirect_string())
 
 def reboot(device):
-    adb_command(device, "reboot")
+    adb_command(device, "reboot", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
 def set_bluetooth_state(device, enabled, timeout = None):
     if enabled:
@@ -123,7 +124,8 @@ def get_battery_level(device):
     while True:
         try:
             adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
-            cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
+            battery_cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
+            cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + battery_cmd
             log_adb_command(device, cmd)
 
             res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
@@ -154,8 +156,8 @@ def restart_server():
     # print "### killall adb"
     # os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')" + logger.redirect_string())
     # os.system("killall adb" + logger.redirect_string())
-    os.system(adb_cmd_prefix + " kill-server" + logger.redirect_string())
-    os.system(adb_cmd_prefix + " devices" + logger.redirect_string())
+    os.system(settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + adb_cmd_prefix + " kill-server" + logger.redirect_string())
+    os.system(settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + adb_cmd_prefix + " devices" + logger.redirect_string())
 
 def log_adb_command(device, cmd):
     device_adb_log_file = adb_logs_dir + "/" + get_device_name(device) + "-adb.log"
@@ -164,7 +166,7 @@ def log_adb_command(device, cmd):
 def exists_file(device, file_path, timeout = None):
     adb_cmd = adb_cmd_prefix + " -s " + device + " shell ls " + file_path
     if timeout:
-        adb_cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_FAST_COMMAND_TIMEOUT) + " " + adb_cmd
+        adb_cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + adb_cmd
 
     log_adb_command(device, adb_cmd)
 
