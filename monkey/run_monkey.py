@@ -104,16 +104,16 @@ def run_monkey_one_app(app_path, device):
         os.system(adb.adb_cmd_prefix + " -s " + device + " install " + apk_path + " 2>&1 >"  + result_dir  +"/install.log")
 
         logger.log_progress("\nPreparing device: " + device + " sdcard")
-        adb.sudo_shell_command(device, "mount -o rw,remount rootfs /")
-        adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
-        adb.sudo_shell_command(device, "mount -o rw,remount /system")
+        adb.sudo_shell_command(device, "mount -o rw,remount rootfs /", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.sudo_shell_command(device, "mount -o rw,remount /system", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
         for repetition in range(0, REPETITIONS):
             logger.log_progress("\nStarting repetition: " + str(repetition) + " for app: " + folder_name)
             files_repetition_suffix = "." + str(repetition)
 
             # clear package data from previous runs
-            adb.shell_command(device, "pm clear " + package_name)
+            adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
             # clear logcat
             os.system(adb.adb_cmd_prefix  +" -s " + device + " logcat -c")

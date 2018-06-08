@@ -33,7 +33,7 @@ from init import initRepeatParallel
 from init import initRepeatParallelWithCoverage
 from plot import two_d_line
 
-REPETITIONS = 20
+REPETITIONS = 1
 
 start_time = None
 apk_dir = None
@@ -153,7 +153,7 @@ def run_sapienz_one_app(strategy_name, strategy_class, app_path, use_motifgene=T
 
             for device in devices:
                 # clear package data from previous runs
-                adb.shell_command(device, "pm clear " + package_name)
+                adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
             # register common functions in toolbox
             toolbox = base.Toolbox()

@@ -16,7 +16,7 @@ def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
     start_time = dt.now()
     static_analyser.upload_string_xml(device, decoded_dir, package_name)
 
-    adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+    adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     adb.uninstall(device, package_name)
     try:
         adb.install(device, package_name, apk_path)

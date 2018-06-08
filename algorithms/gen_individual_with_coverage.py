@@ -1,5 +1,6 @@
 import datetime
 import os
+import sys
 import time
 import random
 import traceback
@@ -23,16 +24,16 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
     unique_crashes = set()
 
     # clean states
-    adb.shell_command(device, "am force-stop " + package_name)
-    adb.shell_command(device, "pm clear " + package_name)
+    adb.shell_command(device, "am force-stop " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+    adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
     # delete previous coverage files
     application_files = "/data/data/" + package_name + "/files"
     coverage_path_in_device = application_files + "/coverage.ec"
     coverage_backup_path_before_clear = "/mnt/sdcard/coverage.ec"
 
-    adb.shell_command(device, "rm " + coverage_path_in_device)
-    adb.shell_command(device, "rm " + coverage_backup_path_before_clear)
+    adb.shell_command(device, "rm " + coverage_path_in_device, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+    adb.shell_command(device, "rm " + coverage_backup_path_before_clear, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
     # create folder to store coverage of suite
     ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
@@ -50,7 +51,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
 
         result_code = adb.shell_command(device,
                                         "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation",
-                                        timeout=settings.ADB_INSTRUMENT_COMMAND_TIMEOUT)
+                                        timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             log_evaluation_result(device, result_dir, "am instrument", False)
             adb.reboot(device)
@@ -68,7 +69,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
             max_tries = 10
             found_coverage_file = False
             while tries < max_tries:
-                if not adb.exists_file(device, coverage_path_in_device, timeout=settings.ADB_FAST_COMMAND_TIMEOUT):
+                if not adb.exists_file(device, coverage_path_in_device, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT):
                     time.sleep(15)
                     tries += 1
                 else:
@@ -85,7 +86,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
             # save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
             result_code = adb.sudo_shell_command(device,
                                                  "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear,
-                                                 timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+                                                 timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
                 log_evaluation_result(device, result_dir, "cp coverage to sdcard", False)
                 adb.reboot(device)
@@ -95,7 +96,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
 
         # close app
         result_code = adb.shell_command(device, "pm clear " + package_name,
-                                        timeout=settings.ADB_PM_CLEAR_COMMAND_TIMEOUT)
+                                        timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             log_evaluation_result(device, result_dir, "pm clear", False)
             adb.reboot(device)
@@ -104,7 +105,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
 
         # restore the coverage.ec file from /mnt/sdcard to app files
         result_code = adb.sudo_shell_command(device, "mkdir " + application_files,
-                                             timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+                                             timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             log_evaluation_result(device, result_dir, "mkdir application_files", False)
             adb.reboot(device)
@@ -115,7 +116,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
         if there_is_coverage_in_suite:
             result_code = adb.sudo_shell_command(device,
                                                  "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device,
-                                                 timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+                                                 timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
                 log_evaluation_result(device, result_dir, "cp coverage from sdcard", False)
                 adb.reboot(device)
@@ -126,19 +127,21 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
         log_evaluation_result(device, result_dir, "success", True)
 
     print "### Getting EMMA coverage.ec and report ..."
-    result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_PM_CLEAR_COMMAND_TIMEOUT)
+    result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
         log_evaluation_result(device, result_dir, "clear-package", False)
         adb.reboot(device)
         raise Exception("Unable to clear package " + package_name + " in device: " + adb.get_device_name(device))
 
     crashes = len(unique_crashes)
-    length = numpy.mean(lengths)
+    length = sys.maxint
+    if len(lengths) > 0:
+        length = numpy.mean(lengths)
     coverage = 0
 
     if there_is_coverage_in_suite:
         result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec",
-                               timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+                               timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             log_evaluation_result(device, result_dir, "pull-coverage", False)
             adb.reboot(device)
@@ -168,9 +171,9 @@ def get_sequence(use_motifgene, device, result_dir, package_name, gen, pop, inde
 
     ret = []
 
-    adb.set_bluetooth_state(device, True, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
-    adb.set_wifi_state(device, True, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
-    adb.set_location_state(device, True, timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+    adb.set_bluetooth_state(device, True, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+    adb.set_wifi_state(device, True, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+    adb.set_location_state(device, True, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
     # start motifcore
     string_seeding_flag = ""
@@ -192,7 +195,7 @@ def get_sequence(use_motifgene, device, result_dir, package_name, gen, pop, inde
     adb.pkill(device, "motifcore")
 
     result_code = adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename,
-                           timeout=settings.ADB_FAST_COMMAND_TIMEOUT)
+                           timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
         log_evaluation_result(device, result_dir, motifcore_script_filename, False)
         adb.reboot(device)
@@ -226,7 +229,7 @@ def get_sequence(use_motifgene, device, result_dir, package_name, gen, pop, inde
     else:
         # no crash, can broadcast
         result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE",
-                                        timeout=settings.COVERAGE_BROADCAST_TIMEOUT)
+                                        timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             log_evaluation_result(device, result_dir, motifcore_script_filename, False)
             adb.reboot(device)
