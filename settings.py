@@ -24,6 +24,7 @@ TIMEOUT_CMD = "timeout"
 # === Env. Paths ===
 # path should end with a '/'
 ANDROID_HOME = '/usr/local/android-sdk/'
+AAPT = '/usr/local/android-sdk/build-tools/28.0.0/aapt'
 # the path of sapienz folder
 WORKING_DIR = '/home/ivan/src/sapienz/'
 

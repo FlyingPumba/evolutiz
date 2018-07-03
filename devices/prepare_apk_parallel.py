@@ -105,7 +105,7 @@ def get_package_name(path):
 
     assert apk_path is not None
 
-    get_package_cmd = "$ANDROID_HOME/build-tools/27.0.3/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package= | awk 'BEGIN {FS=\"\\\"\"}{print $2}'"
+    get_package_cmd = settings.AAPT + " d xmltree " + apk_path + " AndroidManifest.xml | grep package= | awk 'BEGIN {FS=\"\\\"\"}{print $2}'"
     package_name = subprocess.Popen(get_package_cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
 
     # logger.log_progress("\nget_package_name took " + str((dt.now() - start_time).seconds))

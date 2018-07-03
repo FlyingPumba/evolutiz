@@ -55,7 +55,7 @@ def instrument_apk(folder_name, app_path, result_dir):
     apk_path = apk_path.rstrip('\n')
 
     p = sub.Popen(
-        "../../android-sdk-linux/build-tools/20.0.0/aapt d xmltree " + apk_path + " AndroidManifest.xml | grep package | awk 'BEGIN {FS=\"\\\"\"}{print $2}'",
+        settings.AAPT + " d xmltree " + apk_path + " AndroidManifest.xml | grep package | awk 'BEGIN {FS=\"\\\"\"}{print $2}'",
         stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     package_name, errors = p.communicate()
     package_name = package_name.rstrip('\n')
