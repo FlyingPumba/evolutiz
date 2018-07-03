@@ -59,7 +59,7 @@ class randomParallel:
 	def initPopulation(self):
 		print "### Initialising population ...."
 		self.population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(), package_name=self.toolbox.get_package_name())
-		if (len(self.population) < settings.DEVICE_NUM):
+		if (len(self.population) < settings.EMULATOR_DEVICE_NUM):
 			logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
 			return False
 

@@ -123,7 +123,7 @@ def run_sapienz_one_app(strategy_name, strategy_class, app_path, use_motifgene=T
             adb.restart_server()
 
             new_number = len(any_device.get_devices())
-            while new_number < settings.REAL_DEVICE_NUM:
+            while new_number < settings.REAL_DEVICE_NUM + settings.EMULATOR_DEVICE_NUM:
                 logger.log_progress("\nWaiting for devices to finish reboot. Expected number: " + str(
                     settings.REAL_DEVICE_NUM) + ". Current number: " + str(new_number))
                 time.sleep(10)

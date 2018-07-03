@@ -82,12 +82,12 @@ def boot_devices():
 
 	current_devices = get_devices()
 
-	logger.log_progress("\nBooting devices: " + str(0) + "/" + str(settings.DEVICE_NUM))
+	logger.log_progress("\nBooting devices: " + str(0) + "/" + str(settings.EMULATOR_DEVICE_NUM))
 
-	for i in range(len(current_devices), settings.DEVICE_NUM):
+	for i in range(len(current_devices), settings.EMULATOR_DEVICE_NUM):
 		device_name = settings.AVD_SERIES + "_" + str(i)
 		print "Booting Device:", device_name
-		logger.log_progress("\rBooting devices: " + str(i + 1) + "/" + str(settings.DEVICE_NUM))
+		logger.log_progress("\rBooting devices: " + str(i + 1) + "/" + str(settings.EMULATOR_DEVICE_NUM))
 
 		emulator = "export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator"
 
@@ -106,13 +106,13 @@ def boot_devices():
 		time.sleep(settings.AVD_BOOT_DELAY)
 
 	logger.log_progress(
-		"\nWaiting for devices to be ready: " + str(len(get_devices())) + "/" + str(settings.DEVICE_NUM))
-	while len(get_devices()) < settings.DEVICE_NUM:
-		logger.log_progress("\rWaiting for devices to be ready: " + str(len(get_devices())) + "/" + str(settings.DEVICE_NUM))
+		"\nWaiting for devices to be ready: " + str(len(get_devices())) + "/" + str(settings.EMULATOR_DEVICE_NUM))
+	while len(get_devices()) < settings.EMULATOR_DEVICE_NUM:
+		logger.log_progress("\rWaiting for devices to be ready: " + str(len(get_devices())) + "/" + str(settings.EMULATOR_DEVICE_NUM))
 		time.sleep(15)
 
 	logger.log_progress(
-		"\rWaiting for devices to be ready: " + str(len(get_devices())) + "/" + str(settings.DEVICE_NUM))
+		"\rWaiting for devices to be ready: " + str(len(get_devices())) + "/" + str(settings.EMULATOR_DEVICE_NUM))
 
 
 def clean_sdcard():

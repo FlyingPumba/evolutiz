@@ -6,15 +6,15 @@ HEADLESS = True
 EMMA_ED = "emma/" # folder for instrumented builds with emma
 ORIGINAL_PATH = "subjects/" # folder for origignal sources
 
-USE_REAL_DEVICES = True
-USE_EMULATORS = False
+USE_REAL_DEVICES = False
+USE_EMULATORS = True
 
-REAL_DEVICE_NUM = 9
+REAL_DEVICE_NUM = 0
 MOTIFCORE_EVAL_TIMEOUT = 120
 ADB_REGULAR_COMMAND_TIMEOUT = 30
 
 # === Emulator ===
-DEVICE_NUM = 8
+EMULATOR_DEVICE_NUM = 8
 AVD_BOOT_DELAY = 40 # 40
 AVD_SERIES = "Nexus_4_API_19"
 # if run on Mac OS, use "gtimeout"
