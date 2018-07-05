@@ -34,7 +34,7 @@ def process_results(data):
 
         global total_individuals
         logger.log_progress("\rEvaluating in parallel: " + str(len(results)) + "/" + str(total_individuals))
-
+        logger.log_fitness_result(fitness)
 
 # 0. prepare wrapper for eval function
 def eval_suite_parallel_wrapper(motifgene_enabled, eval_suite_parallel, individual, device, result_dir, apk_dir, package_name, gen, pop):

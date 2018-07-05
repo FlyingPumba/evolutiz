@@ -19,7 +19,7 @@ from bs4 import UnicodeDammit
 class CanNotInitSeqException(Exception):
     pass
 
-def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_name, gen, pop):
+def get_suite_with_fitness(use_motifgene, device, result_dir, apk_dir, package_name, gen, pop):
     ret = []
     unique_crashes = set()
 
@@ -53,7 +53,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
                                         "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation",
                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            log_evaluation_result(device, result_dir, "am instrument", False)
+            logger.log_evaluation_result(device, result_dir, "am instrument", False)
             adb.reboot(device)
             raise Exception("Unable to instrument " + package_name)
 
@@ -77,7 +77,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
                     break
 
             if not found_coverage_file:
-                log_evaluation_result(device, result_dir, "file doesnt exist", False)
+                logger.log_evaluation_result(device, result_dir, "file doesnt exist", False)
                 adb.reboot(device)
                 raise Exception(
                     "Coverage broadcast was sent in device: " + adb.get_device_name(
@@ -88,7 +88,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
                                                  "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear,
                                                  timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
-                log_evaluation_result(device, result_dir, "cp coverage to sdcard", False)
+                logger.log_evaluation_result(device, result_dir, "cp coverage to sdcard", False)
                 adb.reboot(device)
                 raise Exception(
                     "Unable to retrieve coverage.ec file after coverage broadcast in  device: " + adb.get_device_name(
@@ -98,7 +98,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
         result_code = adb.shell_command(device, "pm clear " + package_name,
                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            log_evaluation_result(device, result_dir, "pm clear", False)
+            logger.log_evaluation_result(device, result_dir, "pm clear", False)
             adb.reboot(device)
             raise Exception(
                 "Unable to clear package in device: " + adb.get_device_name(device))
@@ -107,7 +107,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
         result_code = adb.sudo_shell_command(device, "mkdir " + application_files,
                                              timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            log_evaluation_result(device, result_dir, "mkdir application_files", False)
+            logger.log_evaluation_result(device, result_dir, "mkdir application_files", False)
             adb.reboot(device)
             raise Exception(
                 "Unable to create application files directory in device: " + adb.get_device_name(
@@ -118,18 +118,18 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
                                                  "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device,
                                                  timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
-                log_evaluation_result(device, result_dir, "cp coverage from sdcard", False)
+                logger.log_evaluation_result(device, result_dir, "cp coverage from sdcard", False)
                 adb.reboot(device)
                 raise Exception(
                     "Unable to copy backup coverage.ec file in sdcard in device: " + adb.get_device_name(
                         device))
 
-        log_evaluation_result(device, result_dir, "success", True)
+        logger.log_evaluation_result(device, result_dir, "success", True)
 
     print "### Getting EMMA coverage.ec and report ..."
     result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
-        log_evaluation_result(device, result_dir, "clear-package", False)
+        logger.log_evaluation_result(device, result_dir, "clear-package", False)
         adb.reboot(device)
         raise Exception("Unable to clear package " + package_name + " in device: " + adb.get_device_name(device))
 
@@ -143,7 +143,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
         result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec",
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            log_evaluation_result(device, result_dir, "pull-coverage", False)
+            logger.log_evaluation_result(device, result_dir, "pull-coverage", False)
             adb.reboot(device)
             raise Exception("Unable to pull coverage for device: " + adb.get_device_name(device))
 
@@ -155,7 +155,7 @@ def get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_
         if coverage_str.find("%") != -1:
             coverage = int(coverage_str.split("%")[0])
         else:
-            log_evaluation_result(device, result_dir, "html-extract-coverage", False)
+            logger.log_evaluation_result(device, result_dir, "html-extract-coverage", False)
 
         return ret, (coverage, length, crashes)
     else:
@@ -197,7 +197,7 @@ def get_sequence(use_motifgene, device, result_dir, package_name, gen, pop, inde
     result_code = adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, motifcore_script_filename,
                            timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
-        log_evaluation_result(device, result_dir, motifcore_script_filename, False)
+        logger.log_evaluation_result(device, result_dir, motifcore_script_filename, False)
         adb.reboot(device)
         raise Exception("Failed to retrieve motifcore script from device: " + adb.get_device_name(device))
 
@@ -231,7 +231,7 @@ def get_sequence(use_motifgene, device, result_dir, package_name, gen, pop, inde
         result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE",
                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            log_evaluation_result(device, result_dir, motifcore_script_filename, False)
+            logger.log_evaluation_result(device, result_dir, motifcore_script_filename, False)
             adb.reboot(device)
             raise Exception(
                 "Unable to broadcast coverage gathering for script " + motifcore_script_filename + " in device: " + adb.get_device_name(
@@ -240,16 +240,17 @@ def get_sequence(use_motifgene, device, result_dir, package_name, gen, pop, inde
 
     # logger.log_progress("\nget_sequence took " + str((datetime.datetime.now() - start_time).seconds))
 
-    log_evaluation_result(device, result_dir, motifcore_script_filename, True)
+    logger.log_evaluation_result(device, result_dir, motifcore_script_filename, True)
 
     return ret, there_is_coverage
 
 
 def gen_individual_with_coverage(use_motifgene, device, result_dir, apk_dir, package_name, gen, pop):
     try:
-        suite, coverage = get_suite_with_coverage(use_motifgene, device, result_dir, apk_dir, package_name, gen, pop)
+        suite, fitness = get_suite_with_fitness(use_motifgene, device, result_dir, apk_dir, package_name, gen, pop)
         ind = creator.Individual(suite)
-        ind.fitness.values = coverage
+        ind.fitness.values = fitness
+        logger.log_fitness_result(fitness)
 
         return ind, device
 
@@ -266,7 +267,3 @@ def extract_coverage(path):
     parser = html.HTMLParser(encoding=doc.original_encoding)
     root = html.document_fromstring(content, parser=parser)
     return root.xpath('/html/body/table[2]/tr[2]/td[5]/text()')[0].strip()
-
-def log_evaluation_result(device, result_dir, script, success):
-	device_adb_log_file = result_dir + "/" + adb.get_device_name(device) + "-evaluations.log"
-	os.system("echo \"" + str(success) + " -> " + script + "\" >> " + device_adb_log_file)

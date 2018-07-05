@@ -1,10 +1,12 @@
 import multiprocessing
 import sys
 from datetime import datetime
+import time
 
 import os
 
 import settings
+from devices import adb
 
 orig_stdout = sys.stdout
 orig_stderr = sys.stderr
@@ -30,6 +32,8 @@ def prepare():
     global error_file
     error_file = open(error_filename, 'w')
     sys.stderr = error_file
+
+    prepare_fitness_log()
 
     print starting_datetime
 
@@ -60,3 +64,19 @@ def redirect_string(log_output = True):
         return " 1>>" + str(output_filename) + " 2>>" + str(error_filename)
     else:
         return " 1>>/dev/null 2>>" + str(error_filename)
+
+def log_evaluation_result(device, result_dir, script, success):
+	device_adb_log_file = result_dir + "/" + adb.get_device_name(device) + "-evaluations.log"
+	os.system("echo \"" + str(success) + " -> " + script + "\" >> " + device_adb_log_file)
+
+def prepare_fitness_log():
+    fitness_log_file = settings.WORKING_DIR + "/fitness-historic.log"
+    os.system("echo \"timestamp,coverage,crashes,length\" > " + fitness_log_file)
+
+def log_fitness_result(fitness):
+    fitness_log_file = settings.WORKING_DIR + "fitness-historic.log"
+    coverage = str(fitness[0])
+    length = str(fitness[1])
+    crashes = str(fitness[2])
+    timestamp = str(time.time())
+    os.system("echo \"" + timestamp + "," + coverage + "," + crashes + "," + length + "\" >> " + fitness_log_file)
