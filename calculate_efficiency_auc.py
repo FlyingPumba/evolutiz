@@ -17,11 +17,19 @@ with open('./fitness-historic.log', 'r') as historic_file:
   lines.pop(0) # discard header of file
 
   for line in lines:
-      timestamp, coverage, crashes, length = line.split(',')
-      timestamp_data.append(float(timestamp))
-      coverage_data.append(float(coverage))
-      crashes_data.append(float(crashes))
-      length_data.append(float(length))
+    timestamp, coverage, crashes, length = line.split(',')
+    timestamp_data.append(float(timestamp))
+    coverage_data.append(float(coverage))
+    crashes_data.append(float(crashes))
+    length_data.append(float(length))
+
+#normalize coverage
+coverage_data = list(map(lambda c: c/100, coverage_data))
+
+# normalize number of crashes found
+max_crashes = max(crashes_data)
+if max_crashes > 0:
+  crashes_data = list(map(lambda c: c/max_crashes, crashes_data))
 
 # accumulate data
 coverage_accumulated_data = []
@@ -94,4 +102,4 @@ length_auc = (length_auc * delta_time) / (2 * total_time)
 
 print "Coverage AUC: " + str(coverage_auc)
 print "Crashes AUC: " + str(crashes_auc)
-print "Length AUC: " + str(length_auc)
+#print "Length AUC: " + str(length_auc)
