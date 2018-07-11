@@ -22,8 +22,6 @@ class eaStandardParallel:
 		self.lambda_ = settings.OFFSPRING_SIZE
 		self.population = None
 
-		self.best_historic_crashes = 0
-		self.best_historic_length = sys.maxint
 		self.best_historic_coverage = 0
 
 		assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
@@ -151,42 +149,24 @@ class eaStandardParallel:
 
 	def update_best_historic_objectives_achieved(self, population, gen):
 		for ind in population:
-			fit = ind.fitness.values
-			coverage = fit[0]
-			length = fit[1]
-			crashes = fit[2]
-
-			if crashes > self.best_historic_crashes:
-				self.best_historic_crashes = crashes
+			coverage = ind.fitness.values
 
 			if coverage > self.best_historic_coverage:
 				self.best_historic_coverage = coverage
 
-			if crashes > 0 and length < self.best_historic_length:
-				self.best_historic_length = length
-
-		logger.log_progress("\n- Best historic crashes: " + str(self.best_historic_crashes))
 		logger.log_progress("\n- Best historic coverage: " + str(self.best_historic_coverage))
-		if self.best_historic_crashes > 0:
-			logger.log_progress("\n- Best historic length: " + str(self.best_historic_length))
 
 		self.log_best_historic_objectives_achieved(gen)
 
 	def setup_log_best_historic_objectives_achieved(self):
 		log_file = self.targets_historic_log_file
-		os.system("echo \"gen,coverage,crashes,length\" > " + log_file)
+		os.system("echo \"gen,coverage\" > " + log_file)
 
 	def log_best_historic_objectives_achieved(self, gen):
 		log_file = self.targets_historic_log_file
 		echo_cmd = "echo \"" + \
 				   str(gen) + "," + \
-				   str(self.best_historic_coverage) + "," + \
-				   str(self.best_historic_crashes) + ","
-
-		if self.best_historic_crashes > 0:
-			echo_cmd += str(self.best_historic_length) + " "
-		else:
-			echo_cmd += "-- "
+				   str(self.best_historic_coverage)
 
 		echo_cmd += "\" >> "
 		os.system(echo_cmd + log_file)
