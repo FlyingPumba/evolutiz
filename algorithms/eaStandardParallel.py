@@ -9,7 +9,7 @@ from deap import tools, creator, base
 import logger
 import settings
 from algorithms.eval_suite_single_objective import eval_suite
-from algorithms.mut_suite import mut_suite
+from algorithms.mut_suite import standard_mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
 
 class eaStandardParallel:
@@ -17,11 +17,15 @@ class eaStandardParallel:
 	def __init__(self):
 		self.cxpb = settings.CXPB
 		self.mutpb = settings.MUTPB
+		self.mut_add_pb = 1/float(3)
+		self.mut_modify_pb = 1/float(3)
+		self.mut_delete_pb = 1/float(3)
+
 		self.ngen = settings.GENERATION
 		self.mu = settings.POPULATION_SIZE
 		self.lambda_ = settings.OFFSPRING_SIZE
-		self.population = None
 
+		self.population = None
 		self.best_historic_coverage = 0
 
 		assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
@@ -36,14 +40,15 @@ class eaStandardParallel:
 		self.verbose = verbose
 
 		### deap framework setup
-		creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
-		creator.create("Individual", list, fitness=creator.FitnessCovLen)
+		creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
+		creator.create("Individual", list, fitness=creator.FitnessMin)
 
 		self.toolbox.register("evaluate", eval_suite)
-		# mate crossover two suites
 		self.toolbox.register("mate", tools.cxOnePoint, indpb=0.5)
-		# mutate should change seq order in the suite as well
-		self.toolbox.register("mutate", mut_suite, indpb=0.5)
+		self.toolbox.register("mutate", standard_mut_suite,
+							  mut_add_pb=self.mut_add_pb,
+							  mut_modify_pb=self.mut_modify_pb,
+							  mut_delete_pb=self.mut_delete_pb)
 
 		self.toolbox.register("select", tools.selTournament, tournsize=5)
 
@@ -111,9 +116,11 @@ class eaStandardParallel:
 					# Apply crossover (in-place)
 					self.toolbox.mate(o1, o2)
 
-				# mutate each child
-				self.toolbox.mutate(o1) # TODO: check mutation function (and fix if needed), I think it's not using what a standard GA would use.
-				self.toolbox.mutate(o2)
+				op_choice = random.random()
+				if op_choice < self.mutpb:
+					# mutate each child
+					self.toolbox.mutate(o1)
+					self.toolbox.mutate(o2)
 
 				# add children to new population
 				offspring.append(o1)

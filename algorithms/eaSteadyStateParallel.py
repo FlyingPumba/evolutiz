@@ -6,7 +6,7 @@ from deap import tools, creator, base
 
 import settings
 from algorithms.eval_suite_single_objective import eval_suite
-from algorithms.mut_suite import mut_suite
+from algorithms.mut_suite import sapienz_mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
 
 class eaSteadyStateParallel:
@@ -32,7 +32,7 @@ class eaSteadyStateParallel:
 		# mate crossover two suites
 		self.toolbox.register("mate", tools.cxUniform, indpb=0.5)
 		# mutate should change seq order in the suite as well
-		self.toolbox.register("mutate", mut_suite, indpb=0.5)
+		self.toolbox.register("mutate", sapienz_mut_suite, indpb=0.5)
 
 		# self.toolbox.register("select", tools.selTournament, tournsize=5)
 		self.toolbox.register("select", tools.selNSGA2)
