@@ -43,7 +43,7 @@ class eaStandardParallel:
 
 		self.toolbox.register("evaluate", eval_suite)
 		# mate crossover two suites
-		self.toolbox.register("mate", tools.cxUniform, indpb=0.5)
+		self.toolbox.register("mate", tools.cxOnePoint, indpb=0.5)
 		# mutate should change seq order in the suite as well
 		self.toolbox.register("mutate", mut_suite, indpb=0.5)
 
@@ -99,23 +99,27 @@ class eaStandardParallel:
 			print "Starting generation ", gen
 			logger.log_progress("\n---> Starting generation " + str(gen))
 
-			new_population = []
+			offspring = []
 
-			while len(new_population) < self.lambda_:
+			while len(offspring) < self.lambda_:
 				# select parents
 				p1, p2 = self.toolbox.select(self.population, 2)
 
 				# clone parents to create children
 				o1, o2 = map(self.toolbox.clone, [p1, p2])
-				# apply crossover (in-place)
-				self.toolbox.mate(o1, o2)
+
+				op_choice = random.random()
+				if op_choice < self.cxpb:
+					# Apply crossover (in-place)
+					self.toolbox.mate(o1, o2)
+
 				# mutate each child
-				self.toolbox.mutate(o1)
+				self.toolbox.mutate(o1) # TODO: check mutation function (and fix if needed), I think it's not using what a standard GA would use.
 				self.toolbox.mutate(o2)
 
-
-			# Vary the population
-			offspring = self.varOr(self.population)
+				# add children to new population
+				offspring.append(o1)
+				offspring.append(o2)
 
 			# Evaluate the individuals with an invalid fitness
 			invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
@@ -127,18 +131,12 @@ class eaStandardParallel:
 				print "Time budget run out durring parallel evaluation, exiting evolve"
 				break
 
-			# discard invalid offspring individual
-			for i in range(len(offspring) - 1, -1, -1):
-				if not offspring[i].fitness.valid:
-					print "### Warning: Invalid Fitness"
-					del offspring[i]
-
 			self.update_best_historic_objectives_achieved(offspring, gen)
 
 			self.toolbox.log_devices_battery(gen, self.toolbox.get_result_dir())
 
 			# Select the next generation population
-			self.population[:] = self.toolbox.select(self.population + offspring, self.mu)
+			self.population = offspring
 
 			# Update the statistics with the new population
 			record = self.stats.compile(self.population) if self.stats is not None else {}
@@ -150,27 +148,6 @@ class eaStandardParallel:
 			logbook_file.close()
 
 		return self.population, logbook
-
-
-	def varOr(self, population):
-
-		offspring = []
-		for _ in xrange(self.lambda_):
-			op_choice = random.random()
-			if op_choice < self.cxpb:  # Apply crossover
-				ind1, ind2 = map(self.toolbox.clone, random.sample(population, 2))
-				ind1, ind2 = self.toolbox.mate(ind1, ind2)
-				del ind1.fitness.values
-				offspring.append(ind1)
-			elif op_choice < self.cxpb + self.mutpb:  # Apply mutation
-				ind = self.toolbox.clone(random.choice(population))
-				ind, = self.toolbox.mutate(ind)
-				del ind.fitness.values
-				offspring.append(ind)
-			else:  # Apply reproduction
-				offspring.append(random.choice(population))
-
-		return offspring
 
 	def update_best_historic_objectives_achieved(self, population, gen):
 		for ind in population:
