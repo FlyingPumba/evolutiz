@@ -8,7 +8,7 @@ from deap import tools, creator, base
 
 import logger
 import settings
-from algorithms.eval_suite_multi_objective import eval_suite
+from algorithms.eval_suite_single_objective import eval_suite
 from algorithms.mut_suite import mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
 
@@ -47,8 +47,7 @@ class eaStandardParallel:
 		# mutate should change seq order in the suite as well
 		self.toolbox.register("mutate", mut_suite, indpb=0.5)
 
-		# self.toolbox.register("select", tools.selTournament, tournsize=5)
-		self.toolbox.register("select", tools.selNSGA2)
+		self.toolbox.register("select", tools.selTournament, tournsize=5)
 
 		self.targets_historic_log_file = self.toolbox.get_result_dir() + "/targets-historic.log"
 		self.setup_log_best_historic_objectives_achieved()
@@ -99,6 +98,21 @@ class eaStandardParallel:
 
 			print "Starting generation ", gen
 			logger.log_progress("\n---> Starting generation " + str(gen))
+
+			new_population = []
+
+			while len(new_population) < self.lambda_:
+				# select parents
+				p1, p2 = self.toolbox.select(self.population, 2)
+
+				# clone parents to create children
+				o1, o2 = map(self.toolbox.clone, [p1, p2])
+				# apply crossover (in-place)
+				self.toolbox.mate(o1, o2)
+				# mutate each child
+				self.toolbox.mutate(o1)
+				self.toolbox.mutate(o2)
+
 
 			# Vary the population
 			offspring = self.varOr(self.population)
