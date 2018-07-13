@@ -36,7 +36,7 @@ def run_benchmark(app_path):
     # kill all emulators running
     os.system(adb.adb_cmd_prefix + " devices | grep emulator | cut -f1 | while read line; do " + adb.adb_cmd_prefix + " -s $line emu kill; done")
     time.sleep(5)
-    assert len(any_device.get_devices()) == 0
+    assert len(emulator.get_devices()) == 0
 
     # we will store times in a dictionary
     times = []
@@ -53,19 +53,27 @@ def run_benchmark(app_path):
     times.append(("Reinicar ADB server", time.time() - start_time))
 
     # - Bootear emulador
-    start_time = time.time()
-    boot_emulator()
-    times.append(("Bootear emulador", time.time() - start_time))
+    if settings.USE_EMULATORS:
+        start_time = time.time()
+        boot_emulator()
+        times.append(("Bootear emulador", time.time() - start_time))
 
     # - Get devices
     start_time = time.time()
-    device = emulator.get_devices()[0]
-    times.append(("Obtener emuladores disponibles", time.time() - start_time))
+    device = any_device.get_devices()[0]
+    times.append(("Obtener emuladores/dispositivos disponibles", time.time() - start_time))
 
     # - Reinicar un emulador
-    start_time = time.time()
-    reboot_emulator(device)
-    times.append(("Reiniciar emulador", time.time() - start_time))
+    if settings.USE_EMULATORS:
+        start_time = time.time()
+        reboot_device(device)
+        times.append(("Reiniciar emulador", time.time() - start_time))
+
+    # - Reinicar un emulador
+    if settings.USE_REAL_DEVICES:
+        start_time = time.time()
+        reboot_device(device)
+        times.append(("Reiniciar dispositivo", time.time() - start_time))
 
     # - Instalar Motifcore
     start_time = time.time()
@@ -164,7 +172,7 @@ def boot_emulator():
     while len(emulator.get_devices()) < 1:
         time.sleep(3)
 
-def reboot_emulator(device):
+def reboot_device(device):
     result_code = adb.adb_command(device, "reboot")
     if result_code != 0:
         logger.log_progress("\nUnable to reboot device: " + adb.get_device_name(device))
