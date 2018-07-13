@@ -1,0 +1,20 @@
+class ProfileWaitEvent:
+
+    name = "ProfileWait"
+
+    def __init__(self):
+        pass
+
+    def mutate(self):
+        pass
+
+    @staticmethod
+    def parse(command):
+        if command.startswith(ProfileWaitEvent.name):
+            return ProfileWaitEvent()
+        else:
+            return None
+
+    @staticmethod
+    def generate():
+        return ProfileWaitEvent()
