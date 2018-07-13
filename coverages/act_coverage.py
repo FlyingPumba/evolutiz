@@ -34,7 +34,6 @@ from lxml import html
 from bs4 import UnicodeDammit
 import settings
 import subprocess, threading
-from crashes import crash_handler
 
 
 class Command(object):
