@@ -267,14 +267,23 @@ if __name__ == "__main__":
     # run Sapienz exp
     logger.prepare()
     logger.clear_progress()
-    logger.log_progress("Running benchmark\n")
+    benchmark_repetitions = 5
+    logger.log_progress("Running benchmark: ")
 
-    times = run_benchmark(app_path)
+    times_by_repetition = []
+    all_times = []
+    for i in range(0, benchmark_repetitions):
+        logger.log_progress("\rRunning benchmark: " + str(i+1) + "/" + str(benchmark_repetitions))
+        benchmark = run_benchmark(app_path)
+        times_by_repetition.append(benchmark)
+        all_times.extend(benchmark)
 
     logger.clear_progress()
-    logger.log_progress("Benchmark results\n")
-    for item in times:
-        concept, time = item
-        logger.log_progress(concept + " -> " + str(time) + "\n")
+    logger.log_progress("\nBenchmark results\n")
+    for item in times_by_repetition[0]:
+        concept, _ = item
+        times_for_concept = [item[1] for item in all_times if item[0] == concept]
+        avg_time = sum(times_for_concept) / float(benchmark_repetitions)
+        logger.log_progress(concept + " -> " + str(avg_time) + "\n")
 
     logger.restore()
