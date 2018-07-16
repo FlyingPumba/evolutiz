@@ -101,6 +101,11 @@ def run_benchmark(app_path):
     log_devices_battery("init", result_dir)
     times.append(("Comprobar y loggear estado bateria emuladores", time.time() - start_time))
 
+    # - Correr monkey
+    start_time = time.time()
+    run_monkey(device, package_name)
+    times.append(("Correr monkey", time.time() - start_time))
+
     # - pm clear
     start_time = time.time()
     adb.shell_command(device, "pm clear " + package_name)
@@ -109,7 +114,7 @@ def run_benchmark(app_path):
     # - Crear un caso de test sin fitness
     start_time = time.time()
     _ = get_sequence(True, device, result_dir, package_name, 0, set())
-    times.append(("Generar caso de test (sin fitness", time.time() - start_time))
+    times.append(("Generar caso de test (sin fitness)", time.time() - start_time))
 
     # - Crear un test suite sin fitness
     start_time = time.time()
@@ -242,6 +247,13 @@ def log_devices_battery(gen, result_dir):
         level = adb.get_battery_level(device)
         imei = adb.get_imei(device)
         os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
+
+def run_monkey(device, package_name):
+    monkey_cmd = adb.adb_cmd_prefix + " -s " + device +\
+                 " shell monkey -p " + package_name +\
+                 " -v --throttle 200 --ignore-crashes --ignore-security-exceptions --ignore-timeouts " +\
+                 str(settings.SEQUENCE_LENGTH_MAX) + " 2>&1 >/dev/null"
+    os.system(monkey_cmd)
 
 def get_subject_paths(subjects_directory):
     p = sub.Popen("ls -d " + subjects_directory + "*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
