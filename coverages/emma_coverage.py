@@ -52,7 +52,7 @@ def extract_coverage(path):
 
 
 # return accumulative coverage and average length
-def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_dir, package_name, gen, pop):
+def get_suite_coverage(test_runner, scripts, device, result_dir, apk_dir, package_name, gen, pop):
 	unique_crashes = set()
 	scripts_crash_status = {}
 
@@ -94,7 +94,7 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 
 		script_name = script.split("/")[-1]
 
-		run_script_using_motifcore(is_motifgene_enabled, device, package_name, script_name)
+		test_runner.run(device, package_name, script_name)
 
 		if crash_handler.handle(device, result_dir, script, gen, pop, index, unique_crashes):
 			scripts_crash_status[script] = True
@@ -183,23 +183,3 @@ def get_suite_coverage(is_motifgene_enabled, scripts, device, result_dir, apk_di
 			return 0, len(unique_crashes), scripts_crash_status
 	else:
 		return 0, len(unique_crashes), scripts_crash_status
-
-
-def run_script_using_motifcore(use_motifgene, device, package_name, script_name):
-	adb.set_bluetooth_state(device, True, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-	adb.set_wifi_state(device, True, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-	adb.set_location_state(device, True, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-
-	string_seeding_flag = ""
-
-	if use_motifgene:
-		string_seeding_flag = "--string-seeding /mnt/sdcard/" + package_name + "_strings.xml"
-
-	motifcore_cmd = "motifcore -p " + package_name \
-					+ " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport "\
-					+ string_seeding_flag + " -f /mnt/sdcard/" + script_name + " 1"
-
-	adb.sudo_shell_command(device, motifcore_cmd, timeout=settings.MOTIFCORE_EVAL_TIMEOUT, log_output=False)
-
-	# need to manually kill motifcore when timeout
-	adb.pkill(device, "motifcore")

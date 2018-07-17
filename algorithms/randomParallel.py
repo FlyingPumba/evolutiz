@@ -30,7 +30,7 @@ class randomParallel:
 		assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
 									   "probabilities must be smaller or equal to 1.0.")
 
-	def setup(self, toolbox, stats = None, verbose=False):
+	def setup(self, toolbox, test_runner, stats = None, verbose=False):
 		# assumes toolbox has registered:
 		# "individual" to generate individuals
 		# "population" to generate population
@@ -44,7 +44,7 @@ class randomParallel:
 		creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
 		creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
-		self.toolbox.register("evaluate", eval_suite)
+		self.toolbox.register("evaluate", eval_suite, test_runner)
 		# mate crossover two suites
 		self.toolbox.register("mate", tools.cxUniform, indpb=0.5)
 		# mutate should change seq order in the suite as well

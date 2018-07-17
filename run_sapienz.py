@@ -1,5 +1,7 @@
 import matplotlib
 # Force matplotlib to not use any Xwindows backend.
+from test_runner.evolutiz_runner import EvolutizRunner
+from test_runner.motifcore_runner import MotifcoreRunner
 
 matplotlib.use('Agg')
 
@@ -39,7 +41,6 @@ start_time = None
 apk_dir = None
 result_dir = None
 package_name = None
-motifgene_enabled = True
 
 def instrument_apk(folder_name, result_dir):
     logger.log_progress("\nInstrumenting app: " + folder_name)
@@ -88,22 +89,16 @@ def log_devices_battery(gen, result_dir):
         os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
 
 
-def run_sapienz_one_app(strategy_name, strategy_class, app_path, use_motifgene=True):
+def run_sapienz_one_app(strategy_with_runner_name, strategy_class, test_runner, app_path):
 
     folder_name = os.path.basename(app_path)
     try:
-        global motifgene_enabled
-        motifgene_enabled = use_motifgene
-
-        if not use_motifgene:
-            strategy_name += "-nm"
-
         for repetition in range(0, REPETITIONS):
 
             # choose result_dir and create related directories
             global result_dir
             result_dir = os.path.dirname(
-                os.path.dirname(app_path)) + "/results/" + strategy_name + "/" + folder_name + "/" + str(repetition)
+                os.path.dirname(app_path)) + "/results/" + strategy_with_runner_name + "/" + folder_name + "/" + str(repetition)
             adb.adb_logs_dir = result_dir
 
             os.chdir(app_path)
@@ -157,15 +152,14 @@ def run_sapienz_one_app(strategy_name, strategy_class, app_path, use_motifgene=T
 
             # register common functions in toolbox
             toolbox = base.Toolbox()
-            toolbox.register("individual", gen_individual, use_motifgene)
+            toolbox.register("individual", gen_individual, test_runner)
             toolbox.register("population", initRepeatParallel.initPop, toolbox.individual)
-            toolbox.register("individual_with_coverage", gen_individual_with_coverage, use_motifgene)
+            toolbox.register("individual_with_coverage", gen_individual_with_coverage, test_runner)
             toolbox.register("population_with_coverage", initRepeatParallelWithCoverage.initPop, toolbox.individual_with_coverage)
             toolbox.register("time_budget_available", time_budget_available)
             toolbox.register("get_apk_dir", get_apk_dir)
             toolbox.register("get_result_dir", get_result_dir)
             toolbox.register("get_package_name", get_package_name)
-            toolbox.register("is_motifgene_enabled", is_motifgene_enabled)
             toolbox.register("log_devices_battery", log_devices_battery)
 
             stats = tools.Statistics(lambda ind: ind.fitness.values)
@@ -182,7 +176,7 @@ def run_sapienz_one_app(strategy_name, strategy_class, app_path, use_motifgene=T
 
             # setup toolbox specific stuff by strategy
             strategy = strategy_class()
-            strategy.setup(toolbox, stats=stats)
+            strategy.setup(toolbox, test_runner, stats=stats)
 
             # log the history
             history = tools.History()
@@ -244,19 +238,15 @@ def get_package_name():
     global package_name
     return package_name
 
-def is_motifgene_enabled():
-    global motifgene_enabled
-    return motifgene_enabled
-
 def return_as_is(a):
     return a
 
 
-def run_sapienz(strategy_name, strategy, app_paths, use_motifgene=True):
+def run_sapienz(strategy_name, strategy, test_runner, app_paths):
     any_device.boot_devices()
 
     for i in range(0, len(app_paths)):
-        success = run_sapienz_one_app(strategy_name, strategy, app_paths[i], use_motifgene=use_motifgene)
+        success = run_sapienz_one_app(strategy_name, strategy, test_runner, app_paths[i])
         if not success:
             break
 
@@ -285,27 +275,36 @@ if __name__ == "__main__":
         "random": randomParallel
     }
 
+    possible_test_runners = {
+        "motifcore": MotifcoreRunner(),
+        "motifcore-nm": MotifcoreRunner(use_motifgene=True),
+        "evolutiz": EvolutizRunner()
+    }
+
     # parse args
     parser = argparse.ArgumentParser(description='Run Sapienz experiment with different strategies.')
     parser.add_argument('-d', '--subjects', dest='subjects_directory', default='$PWD/monkey/subjects/',
                         help='Directory where subjects are located')
     parser.add_argument('-s', '--strategy', dest='selected_strategy', default='muPlusLambda',
                         choices=possible_strategies.keys(), help='Strategy to be used')
-    parser.add_argument('-nm', '--no-motifgene', dest='use_motifgene', action='store_false',
-                        default=True, help='Disable motifgenes')
+    parser.add_argument('-t', '--test-runner', dest='selected_test_runner', default='motifcore',
+                        choices=possible_test_runners.keys(), help='Test runner to be used')
+    # parser.add_argument('-nm', '--no-motifgene', dest='use_motifgene', action='store_false',
+    #                     default=True, help='Disable motifgenes')
 
     args = parser.parse_args()
     app_paths = get_subject_paths(args.subjects_directory)[0:1]
+
+    strategy_with_runner_name = args.selected_strategy + "-" + args.selected_test_runner
     strategy_class = possible_strategies[args.selected_strategy]
-    use_motifgene = args.use_motifgene
+    test_runner = possible_test_runners[args.selected_test_runner]
 
     # run Sapienz exp
     logger.prepare()
     logger.clear_progress()
-    logger.log_progress("Sapienz (" + args.selected_strategy + ")")
-    logger.log_progress("\nUse motifgene: " + str(use_motifgene))
+    logger.log_progress("Sapienz (" + args.selected_strategy + ", " + args.selected_test_runner + ")")
 
-    run_sapienz(args.selected_strategy, strategy_class, app_paths, use_motifgene=use_motifgene)
+    run_sapienz(strategy_with_runner_name, strategy_class, test_runner, app_paths)
 
     # process results
     # results_per_app = process_results(app_paths)

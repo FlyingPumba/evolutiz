@@ -3,7 +3,7 @@ import os
 import settings
 from coverages import act_coverage, emma_coverage
 
-def eval_suite(is_motifgene_enabled, individual, device, result_dir, apk_dir, package_name, gen, pop):
+def eval_suite(test_runner, individual, device, result_dir, apk_dir, package_name, gen, pop):
 	script_path = []
 
 	for index, seq in enumerate(individual):
@@ -24,7 +24,7 @@ def eval_suite(is_motifgene_enabled, individual, device, result_dir, apk_dir, pa
 	if apk_dir.endswith(".apk_output"):
 		coverage, num_crashes = act_coverage.get_suite_coverage(script_path, device, apk_dir, package_name, gen, pop)
 	else:
-		coverage, num_crashes, scripts_crash_status = emma_coverage.get_suite_coverage(is_motifgene_enabled,
+		coverage, num_crashes, scripts_crash_status = emma_coverage.get_suite_coverage(test_runner,
 																					   script_path, device,
 																					   result_dir, apk_dir,
 																					   package_name, gen, pop)
