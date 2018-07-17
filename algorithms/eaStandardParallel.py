@@ -167,28 +167,56 @@ class eaStandardParallel:
 	def generate_offspring(self, device, p1, p2):
 		ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
 
-		parentFilename1 = self.toolbox.get_result_dir() + "/intermediate/evolutiz.parent.1." + ts
-		parentFilename2 = self.toolbox.get_result_dir() + "/intermediate/evolutiz.parent.2." + ts
-		offspringFilename1 = self.toolbox.get_result_dir() + "/intermediate/evolutiz.offspring.1." + ts
-		offspringFilename2 = self.toolbox.get_result_dir() + "/intermediate/evolutiz.offspring.2." + ts
+		parentFilename1 = "evolutiz.parent.1." + ts
+		parentFilename2 = "evolutiz.parent.2." + ts
+		offspringFilename1 = "evolutiz.offspring.1." + ts
+		offspringFilename2 = "evolutiz.offspring.2." + ts
 
-		self.write_test_case_to_file(p1, parentFilename1)
-		self.write_test_case_to_file(p1, parentFilename2)
+		parentLocalPath1 = self.toolbox.get_result_dir() + "/intermediate/" + parentFilename1
+		parentLocalPath2 = self.toolbox.get_result_dir() + "/intermediate/" + parentFilename2
+		offspringLocalPath1 = self.toolbox.get_result_dir() + "/intermediate/" + offspringFilename1
+		offspringLocalPath2 = self.toolbox.get_result_dir() + "/intermediate/" + offspringFilename2
 
-		result_code = adb.push(device, parentFilename1, "/mnt/sdcard/", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+		parentRemotePath1 = "/mnt/sdcard/" + parentFilename1
+		parentRemotePath2 = "/mnt/sdcard/" + parentFilename2
+		offspringRemotePath1 = "/mnt/sdcard/" + offspringFilename1
+		offspringRemotePath2 = "/mnt/sdcard/" + offspringFilename2
+
+		# write parent tests to local files
+		self.write_test_case_to_file(p1, parentLocalPath1)
+		self.write_test_case_to_file(p2, parentLocalPath2)
+
+		# push parent scripts
+		result_code = adb.push(device, parentLocalPath1, parentRemotePath1, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 		if result_code != 0:
 			adb.reboot(device)
-			raise Exception("Unable to push motifcore script " + parentFilename1 + " to device: " + adb.get_device_name(device))
+			raise Exception("Unable to push motifcore script " + parentLocalPath1 + " to device: " + adb.get_device_name(device))
 
-		result_code = adb.push(device, parentFilename2, "/mnt/sdcard/", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+		result_code = adb.push(device, parentLocalPath2, parentRemotePath2, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 		if result_code != 0:
 			adb.reboot(device)
-			raise Exception("Unable to push motifcore script " + parentFilename2 + " to device: " + adb.get_device_name(device))
+			raise Exception("Unable to push motifcore script " + parentLocalPath2 + " to device: " + adb.get_device_name(device))
 
-		self.test_runner.generate_ga_offspring(parentFilename1, parentFilename2, offspringFilename1, offspringFilename2)
+		# generate offspring
+		self.test_runner.generate_ga_offspring(device, self.toolbox.get_package_name(),
+											   parentFilename1, parentFilename2,
+											   offspringFilename1, offspringFilename2)
 
-		o1 = self.get_test_case_from_file(offspringFilename1)
-		o2 = self.get_test_case_from_file(offspringFilename2)
+		# fetch offspring remote files
+		result_code = adb.pull(device, offspringRemotePath1, offspringLocalPath1, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+		if result_code != 0:
+			adb.reboot(device)
+			raise Exception(
+				"Unable to pull motifcore script " + offspringRemotePath1 + " to device: " + adb.get_device_name(device))
+
+		result_code = adb.pull(device, offspringRemotePath2, offspringLocalPath2, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+		if result_code != 0:
+			adb.reboot(device)
+			raise Exception(
+				"Unable to pull motifcore script " + offspringLocalPath2 + " to device: " + adb.get_device_name(device))
+
+		o1 = self.get_test_case_from_file(offspringLocalPath1)
+		o2 = self.get_test_case_from_file(offspringLocalPath2)
 
 		return o1, o2
 

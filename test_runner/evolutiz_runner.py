@@ -66,6 +66,16 @@ class EvolutizRunner(TestRunner):
         script.close()
         return test_content
 
-    def generate_ga_offspring(self, parentFilename1, parentFilename2, offspringFilename1, offspringFilename2):
-        # TODO
+    def generate_ga_offspring(self, device, package_name, parentFilename1, parentFilename2, offspringFilename1, offspringFilename2):
+        evolutiz_cmd = "evolutiz-test-runner -p " + package_name \
+                       + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
+                       + " -f /mnt/sdcard/" + parentFilename1 \
+                       + " -f /mnt/sdcard/" + parentFilename2 \
+                       + " -o /mnt/sdcard/" + offspringFilename1 \
+                       + " -o /mnt/sdcard/" + offspringFilename2 + " 1"
+
+        adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.MOTIFCORE_EVAL_TIMEOUT, log_output=False)
+
+        # need to manually kill evolutiz when timeout
+        adb.pkill(device, "evolutiz")
         pass
