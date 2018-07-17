@@ -1,3 +1,4 @@
+import datetime
 import os
 
 import random
@@ -9,8 +10,9 @@ from deap import tools, creator, base
 import logger
 import settings
 from algorithms.eval_suite_single_objective import eval_suite
-from algorithms.mut_suite import standard_mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
+from devices import adb
+
 
 class eaStandardParallel:
 
@@ -31,11 +33,12 @@ class eaStandardParallel:
 		assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
 									   "probabilities must be smaller or equal to 1.0.")
 
-	def setup(self, toolbox, stats = None, verbose=False):
+	def setup(self, toolbox, test_runner, stats = None, verbose=False):
 		# assumes toolbox has registered:
 		# "individual" to generate individuals
 		# "population" to generate population
 		self.toolbox = toolbox
+		self.test_runner = test_runner
 		self.stats = stats
 		self.verbose = verbose
 
@@ -43,13 +46,7 @@ class eaStandardParallel:
 		creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
 		creator.create("Individual", list, fitness=creator.FitnessMin)
 
-		self.toolbox.register("evaluate", eval_suite)
-		self.toolbox.register("mate", tools.cxOnePoint, indpb=0.5)
-		self.toolbox.register("mutate", standard_mut_suite,
-							  mut_add_pb=self.mut_add_pb,
-							  mut_modify_pb=self.mut_modify_pb,
-							  mut_delete_pb=self.mut_delete_pb)
-
+		self.toolbox.register("evaluate", eval_suite, test_runner)
 		self.toolbox.register("select", tools.selTournament, tournsize=5)
 
 		self.targets_historic_log_file = self.toolbox.get_result_dir() + "/targets-historic.log"
@@ -108,19 +105,7 @@ class eaStandardParallel:
 				# select parents
 				p1, p2 = self.toolbox.select(self.population, 2)
 
-				# clone parents to create children
-				o1, o2 = map(self.toolbox.clone, [p1, p2])
-
-				op_choice = random.random()
-				if op_choice < self.cxpb:
-					# Apply crossover (in-place)
-					self.toolbox.mate(o1, o2)
-
-				op_choice = random.random()
-				if op_choice < self.mutpb:
-					# mutate each child
-					self.toolbox.mutate(o1)
-					self.toolbox.mutate(o2)
+				o1, o2 = self.generate_offspring(p1, p2)
 
 				# add children to new population
 				offspring.append(o1)
@@ -178,3 +163,62 @@ class eaStandardParallel:
 		echo_cmd += "\" >> "
 		os.system(echo_cmd + log_file)
 
+
+	def generate_offspring(self, device, p1, p2):
+		ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
+
+		parentFilename1 = self.toolbox.get_result_dir() + "/intermediate/evolutiz.parent.1." + ts
+		parentFilename2 = self.toolbox.get_result_dir() + "/intermediate/evolutiz.parent.2." + ts
+		offspringFilename1 = self.toolbox.get_result_dir() + "/intermediate/evolutiz.offspring.1." + ts
+		offspringFilename2 = self.toolbox.get_result_dir() + "/intermediate/evolutiz.offspring.2." + ts
+
+		self.write_test_case_to_file(p1, parentFilename1)
+		self.write_test_case_to_file(p1, parentFilename2)
+
+		result_code = adb.push(device, parentFilename1, "/mnt/sdcard/", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+		if result_code != 0:
+			adb.reboot(device)
+			raise Exception("Unable to push motifcore script " + parentFilename1 + " to device: " + adb.get_device_name(device))
+
+		result_code = adb.push(device, parentFilename2, "/mnt/sdcard/", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+		if result_code != 0:
+			adb.reboot(device)
+			raise Exception("Unable to push motifcore script " + parentFilename2 + " to device: " + adb.get_device_name(device))
+
+		self.test_runner.generate_ga_offspring(parentFilename1, parentFilename2, offspringFilename1, offspringFilename2)
+
+		o1 = self.get_test_case_from_file(offspringFilename1)
+		o2 = self.get_test_case_from_file(offspringFilename2)
+
+		return o1, o2
+
+	def write_test_case_to_file(self, content, filename):
+		# check that directory exists before creating file
+		dirname = os.path.dirname(filename)
+		if not os.path.exists(dirname):
+			os.makedirs(dirname)
+		with open(filename, "w") as script:
+			script.write(settings.MOTIFCORE_SCRIPT_HEADER)
+			for line in content:
+				script.write(line + "\n")
+
+	def get_test_case_from_file(self, filename):
+		test_content = []
+
+		script = open(filename)
+		is_content = False
+		is_skipped_first = False
+		for line in script:
+			line = line.strip()
+			if line.find("start data >>") != -1:
+				is_content = True
+				continue
+			if is_content and line != "":
+				if not is_skipped_first:
+					is_skipped_first = True
+					continue
+				if is_skipped_first:
+					test_content.append(line)
+
+		script.close()
+		return test_content

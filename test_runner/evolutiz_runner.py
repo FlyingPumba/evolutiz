@@ -65,3 +65,7 @@ class EvolutizRunner(TestRunner):
 
         script.close()
         return test_content
+
+    def generate_ga_offspring(self, parentFilename1, parentFilename2, offspringFilename1, offspringFilename2):
+        # TODO
+        pass
