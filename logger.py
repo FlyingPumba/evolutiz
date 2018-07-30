@@ -6,7 +6,6 @@ import time
 import os
 
 import settings
-from devices import adb
 
 orig_stdout = sys.stdout
 orig_stderr = sys.stderr
@@ -64,10 +63,6 @@ def redirect_string(log_output = True):
         return " 1>>" + str(output_filename) + " 2>>" + str(error_filename)
     else:
         return " 1>>/dev/null 2>>" + str(error_filename)
-
-def log_evaluation_result(device, result_dir, script, success):
-	device_adb_log_file = result_dir + "/" + adb.get_device_name(device) + "-evaluations.log"
-	os.system("echo \"" + str(success) + " -> " + script + "\" >> " + device_adb_log_file)
 
 def prepare_fitness_log():
     fitness_log_file = settings.WORKING_DIR + "/fitness-historic.log"

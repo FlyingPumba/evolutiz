@@ -180,3 +180,7 @@ def exists_file(device, file_path, timeout = None):
     else:
         # file exist
         return True
+
+def log_evaluation_result(device, result_dir, script, success):
+	device_adb_log_file = result_dir + "/" + get_device_name(device) + "-evaluations.log"
+	os.system("echo \"" + str(success) + " -> " + script + "\" >> " + device_adb_log_file)

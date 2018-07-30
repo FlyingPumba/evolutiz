@@ -53,7 +53,7 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
                                         "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation",
                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            logger.log_evaluation_result(device, result_dir, "am instrument", False)
+            adb.log_evaluation_result(device, result_dir, "am instrument", False)
             adb.reboot(device)
             raise Exception("Unable to instrument " + package_name)
 
@@ -77,7 +77,7 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
                     break
 
             if not found_coverage_file:
-                logger.log_evaluation_result(device, result_dir, "file doesnt exist", False)
+                adb.log_evaluation_result(device, result_dir, "file doesnt exist", False)
                 adb.reboot(device)
                 raise Exception(
                     "Coverage broadcast was sent in device: " + adb.get_device_name(
@@ -88,7 +88,7 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
                                                  "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear,
                                                  timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
-                logger.log_evaluation_result(device, result_dir, "cp coverage to sdcard", False)
+                adb.log_evaluation_result(device, result_dir, "cp coverage to sdcard", False)
                 adb.reboot(device)
                 raise Exception(
                     "Unable to retrieve coverage.ec file after coverage broadcast in  device: " + adb.get_device_name(
@@ -98,7 +98,7 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
         result_code = adb.shell_command(device, "pm clear " + package_name,
                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            logger.log_evaluation_result(device, result_dir, "pm clear", False)
+            adb.log_evaluation_result(device, result_dir, "pm clear", False)
             adb.reboot(device)
             raise Exception(
                 "Unable to clear package in device: " + adb.get_device_name(device))
@@ -107,7 +107,7 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
         result_code = adb.sudo_shell_command(device, "mkdir " + application_files,
                                              timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            logger.log_evaluation_result(device, result_dir, "mkdir application_files", False)
+            adb.log_evaluation_result(device, result_dir, "mkdir application_files", False)
             adb.reboot(device)
             raise Exception(
                 "Unable to create application files directory in device: " + adb.get_device_name(
@@ -118,18 +118,18 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
                                                  "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device,
                                                  timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
-                logger.log_evaluation_result(device, result_dir, "cp coverage from sdcard", False)
+                adb.log_evaluation_result(device, result_dir, "cp coverage from sdcard", False)
                 adb.reboot(device)
                 raise Exception(
                     "Unable to copy backup coverage.ec file in sdcard in device: " + adb.get_device_name(
                         device))
 
-        logger.log_evaluation_result(device, result_dir, "success", True)
+        adb.log_evaluation_result(device, result_dir, "success", True)
 
     print "### Getting EMMA coverage.ec and report ..."
     result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
-        logger.log_evaluation_result(device, result_dir, "clear-package", False)
+        adb.log_evaluation_result(device, result_dir, "clear-package", False)
         adb.reboot(device)
         raise Exception("Unable to clear package " + package_name + " in device: " + adb.get_device_name(device))
 
@@ -143,7 +143,7 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
         result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec",
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            logger.log_evaluation_result(device, result_dir, "pull-coverage", False)
+            adb.log_evaluation_result(device, result_dir, "pull-coverage", False)
             adb.reboot(device)
             raise Exception("Unable to pull coverage for device: " + adb.get_device_name(device))
 
@@ -155,7 +155,7 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
         if coverage_str.find("%") != -1:
             coverage = int(coverage_str.split("%")[0])
         else:
-            logger.log_evaluation_result(device, result_dir, "html-extract-coverage", False)
+            adb.log_evaluation_result(device, result_dir, "html-extract-coverage", False)
 
         return ret, (coverage, length, crashes)
     else:
@@ -183,7 +183,7 @@ def get_sequence_with_fitness(test_runner, device, result_dir, package_name, gen
         result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE",
                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            logger.log_evaluation_result(device, result_dir, motifcore_script_filename, False)
+            adb.log_evaluation_result(device, result_dir, motifcore_script_filename, False)
             adb.reboot(device)
             raise Exception(
                 "Unable to broadcast coverage gathering for script " + motifcore_script_filename + " in device: " + adb.get_device_name(
@@ -192,7 +192,7 @@ def get_sequence_with_fitness(test_runner, device, result_dir, package_name, gen
 
     # logger.log_progress("\nget_sequence took " + str((datetime.datetime.now() - start_time).seconds))
 
-    logger.log_evaluation_result(device, result_dir, motifcore_script_filename, True)
+    adb.log_evaluation_result(device, result_dir, motifcore_script_filename, True)
 
     return ret, there_is_coverage
 
