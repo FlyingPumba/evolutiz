@@ -28,9 +28,38 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+import multiprocessing as mp
+
 import logger
 import settings
 from devices import adb
+
+def kill_motifcore(device):
+	adb.pkill(device, "motifcore")
+
+def kill_all_motifcore(device_manager):
+	for device in device_manager.get_devices():
+		kill_motifcore(device)
+
+def install_in_all_devices(device_manager):
+	logger.log_progress("\nPreparing motifcore in devices.")
+
+	pool = mp.Pool(processes=len(device_manager.get_devices))
+	for device in device_manager.get_devices():
+		pool.apply_async(install_wrapper,
+						 args=(settings.WORKING_DIR + "lib/motifcore.jar",
+							   settings.WORKING_DIR + "resources/motifcore",
+							   device))
+
+	# wait for all processes to finish
+	pool.close()
+	pool.join()
+
+def install_wrapper(motifcore_path, motifcore_script_path, device):
+	try:
+		install(motifcore_path, motifcore_script_path, device)
+	except Exception as e:
+		raise Exception("Unable to complete motifcore installation in all devices")
 
 def install(motifcore_path, motifcore_script_path, device):
 	# make /mnt/sdcard and /system writable

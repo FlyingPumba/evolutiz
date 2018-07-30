@@ -1,13 +1,14 @@
 import os
 import random
 
+import logger
 import settings
 from devices import adb
 from test_runner import TestRunner
 
 class MotifcoreRunner(TestRunner):
 
-    def __init__(self, use_motifgene=False):
+    def __init__(self, device_manager, use_motifgene=False):
         self.use_motifgene = use_motifgene
 
     def run(self, device, package_name, script_name):

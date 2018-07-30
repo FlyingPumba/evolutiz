@@ -150,7 +150,7 @@ def run_monkey_one_app(app_path, device):
 
 def run_monkey(app_paths):
     print "Preparing devices ..."
-    any_device.boot_devices()
+    any_device.boot_emulators()
 
     # start time budget
     global start_time

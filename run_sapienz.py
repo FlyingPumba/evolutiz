@@ -243,7 +243,7 @@ def return_as_is(a):
 
 
 def run_sapienz(strategy_name, strategy, test_runner, app_paths):
-    any_device.boot_devices()
+    any_device.boot_emulators()
 
     for i in range(0, len(app_paths)):
         success = run_sapienz_one_app(strategy_name, strategy, test_runner, app_paths[i])
