@@ -68,7 +68,7 @@ class EvolutizRunner(TestRunner):
 
     def generate_ga_offspring(self, device, package_name, parentFilename1, parentFilename2, offspringFilename1, offspringFilename2):
         evolutiz_cmd = "evolutiz -p " + package_name \
-                       + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
+                       + " --dry --generate-ga-offspring " \
                        + " -f /mnt/sdcard/" + parentFilename1 \
                        + " -f /mnt/sdcard/" + parentFilename2 \
                        + " -o /mnt/sdcard/" + offspringFilename1 \
