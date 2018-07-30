@@ -1,7 +1,9 @@
 import settings
 from devices import adb
 
-class TestRunner():
+class TestRunner:
+    def __init__(self):
+        pass
 
     def prepare_device_for_run(self, device):
         adb.set_bluetooth_state(device, True, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)

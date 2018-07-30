@@ -2,7 +2,8 @@ import random
 
 import settings
 from devices import adb
-from test_runner.test_runner import TestRunner
+from test_runner import TestRunner
+
 
 class EvolutizRunner(TestRunner):
 
