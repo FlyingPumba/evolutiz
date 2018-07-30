@@ -21,7 +21,7 @@ def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
     while True:
         try:
             adb.install(device, package_name, apk_path)
-            return True, apk_path, device
+            return True
         except Exception as e:
             print "There was a problem installing apk on device " + device
             print e
@@ -31,7 +31,7 @@ def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
             time.sleep(settings.AVD_BOOT_DELAY)
             time.sleep(settings.AVD_BOOT_DELAY)
 
-def process_results():
+def process_results(result):
     global installed_devices
     installed_devices += 1
     global total_devices
