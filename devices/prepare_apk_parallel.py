@@ -2,6 +2,7 @@ import time
 
 import os
 import subprocess
+import multiprocessing as mp
 from datetime import datetime as dt
 
 import logger
@@ -13,28 +14,28 @@ installed_devices = 0
 total_devices = 0
 
 def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
-    start_time = dt.now()
     static_analyser.upload_string_xml(device, decoded_dir, package_name)
-
     adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     adb.uninstall(device, package_name)
-    try:
-        adb.install(device, package_name, apk_path)
-    except Exception as e:
-        return False, apk_path, device
 
-    # logger.log_progress("\npush_apk_and_string_xml on device " + device + " took " + str((dt.now() - start_time).seconds))
+    while True:
+        try:
+            adb.install(device, package_name, apk_path)
+            return True, apk_path, device
+        except Exception as e:
+            print "There was a problem installing apk on device " + device
+            print e
+            # we were unable to install apk in device, an thus it was rebooted
+            # wait till device is back and retry
+            time.sleep(settings.AVD_BOOT_DELAY)
+            time.sleep(settings.AVD_BOOT_DELAY)
+            time.sleep(settings.AVD_BOOT_DELAY)
 
-    return True, apk_path, device
-
-def process_results(result):
-    if not result[0]:
-        logger.log_progress("\nInstalling apk on devices: Failed to install apk " + result[1] + " on device: " + adb.get_device_name(result[2]) + "\n")
-        return
+def process_results():
     global installed_devices
     installed_devices += 1
     global total_devices
-    #logger.log_progress("\rInstalling apk on devices: " + str(installed_devices) + "/" + str(total_devices))
+    logger.log_progress("\rInstalling apk on devices: " + str(installed_devices) + "/" + str(total_devices))
 
 def prepare_apk(devices, instrumented_app_dir, result_dir):
     package_name, apk_path = get_package_name(instrumented_app_dir)
@@ -64,26 +65,19 @@ def prepare_apk(devices, instrumented_app_dir, result_dir):
     global total_devices
     total_devices = len(devices)
 
+    logger.log_progress("\nInstalling apk on devices: " + str(installed_devices) + "/" + str(total_devices))
+    pool = mp.Pool(processes=total_devices)
     for device in devices:
-        logger.log_progress("\nInstalling apk on device: " + adb.get_device_name(device))
+        pool.apply_async(push_apk_and_string_xml,
+                         args=(device, decoded_dir, package_name, apk_path),
+                         callback=process_results)
 
-        result = False, apk_path, device
-        while not result[0]:
-            result = push_apk_and_string_xml(device, decoded_dir, package_name, apk_path)
-            if not result[0]:
-                logger.log_progress(" -> Failed")
-                # we were unable to install apk in device, an thus it was rebooted
-                # wait till device is back and retry
-                time.sleep(settings.AVD_BOOT_DELAY)
-                time.sleep(settings.AVD_BOOT_DELAY)
-                time.sleep(settings.AVD_BOOT_DELAY)
-
-        logger.log_progress(" -> Done")
-        process_results(result)
+    # should wait for all processes finish
+    pool.close()
+    pool.join()
 
     logger.log_progress("\nFinished installing APK on devices")
     return package_name, (installed_devices == total_devices)
-
 
 def get_package_name(path):
     start_time = dt.now()
