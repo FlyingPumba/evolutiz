@@ -1,22 +1,4 @@
-## Sapienz (ISSTA'16 Artefact)
-Sapienz: Multi-objective Automated Testing for Android Applications  
-
-This is a research prototype of the Sapienz approach for multi-objective automated testing for Android applications.  
-
-Publication:
-```
-@InProceedings{mao:sapienz:16,
-    author = "Ke Mao and Mark Harman and Yue Jia",
-    title = "Sapienz: Multi-objective Automated Testing for {Android} Applications",
-    booktitle = "Proc. of ISSTA'16",
-    year = "2016", 
-    pages = {94--105}
-} 
-```
-
-## Installation
-
-Simply download the artefact [here] (http://www0.cs.ucl.ac.uk/staff/K.Mao/archive/issta16_artefact.zip) and apply the following environment configuration: 
+## Evolutiz
 
 ### Environment Configration
 * Python: 2.7
@@ -46,7 +28,7 @@ or you can specify source\_folder\_path for the subject app with source code
 * closed-source/non-instrumented apk name should end with ".apk" 
 
 ### Settings
-* ANDROID\_HOME and WORKING\_DIR in [settings.py](https://github.com/Rhapsod/sapienz/blob/master/settings.py) should be set before starting Sapeinz.
+* ANDROID\_HOME and WORKING\_DIR in [settings.py](https://github.com/FlyingPumba/sapienz/blob/master/settings.py) should be set before starting Evolutiz.
 
 ### Output
 * for open-sourced apps, outputs are stored under the given source folder
@@ -73,4 +55,4 @@ It also supports real devices, you may need to adapt related code for your speci
 
 
 ## Contact
-<dreamict@gmail.com>
+iarcuschin at dc.uba.ar
