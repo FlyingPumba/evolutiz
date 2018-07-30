@@ -57,7 +57,7 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
             adb.reboot(device)
             raise Exception("Unable to instrument " + package_name)
 
-        seq, there_is_coverage = get_sequence(test_runner, device, result_dir, package_name, gen, pop, i, unique_crashes)
+        seq, there_is_coverage = get_sequence_with_fitness(test_runner, device, result_dir, package_name, gen, pop, i, unique_crashes)
         there_is_coverage_in_suite = there_is_coverage or there_is_coverage_in_suite
 
         ret.append(seq)
@@ -162,7 +162,8 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
         return ret, (0, length, crashes)
 
 
-def get_sequence(test_runner, device, result_dir, package_name, gen, pop, index, unique_crashes):
+def get_sequence_with_fitness(test_runner, device, result_dir, package_name, gen, pop, index, unique_crashes):
+    start_time = datetime.datetime.now()
     random.seed()
 
     # access the generated script, should ignore the first launch activity
