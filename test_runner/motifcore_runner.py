@@ -5,11 +5,15 @@ import logger
 import settings
 from devices import adb
 from test_runner import TestRunner
+import motifcore_installer
 
 class MotifcoreRunner(TestRunner):
 
     def __init__(self, device_manager, use_motifgene=False):
         self.use_motifgene = use_motifgene
+
+    def install_on_devices(self, device_manager):
+        motifcore_installer.install_in_all_devices(device_manager)
 
     def run(self, device, package_name, script_name):
         self.prepare_device_for_run(device)

@@ -4,7 +4,7 @@ import traceback
 
 import logger
 import settings
-from devices import any_device, adb
+from devices import adb
 
 # global results for mp callback
 results = []

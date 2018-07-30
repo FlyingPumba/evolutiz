@@ -87,7 +87,7 @@ def get_package_name(path):
     else:
         # build the apk
         # settings.PROJECT_FOLDER = path
-        # any_device.pack_and_deploy_aut()
+        # device_manager.pack_and_deploy_aut()
 
         # now find its name
         for file_name in os.listdir(path + "/bin"):

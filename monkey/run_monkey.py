@@ -10,10 +10,11 @@ import numpy
 import logger
 import settings
 from coverages import emma_coverage
-from devices import any_device, adb
+from devices import adb
 from datetime import datetime
 
 # global results for mp callback
+from devices.device_manager import DeviceManager
 from devices.prepare_apk_parallel import prepare_apk
 
 EXPERIMENT_TIME = 5
@@ -150,16 +151,17 @@ def run_monkey_one_app(app_path, device):
 
 def run_monkey(app_paths):
     print "Preparing devices ..."
-    any_device.boot_emulators()
+    device_manager = DeviceManager()
+    device_manager.boot_emulators()
 
     # start time budget
     global start_time
     start_time = time.time()
     print "Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M")
 
-    any_device.clean_sdcard()
+    device_manager.clean_sdcard()
 
-    idle_devices.extend(any_device.get_devices())
+    idle_devices.extend(device_manager.get_devices())
 
     # 2. aissign tasks to devices
     pool = NoDaemonPool(processes=len(idle_devices))

@@ -1,5 +1,6 @@
 import matplotlib
 # Force matplotlib to not use any Xwindows backend.
+from devices.device_manager import DeviceManager
 from test_runner.evolutiz_runner import EvolutizRunner
 from test_runner.motifcore_runner import MotifcoreRunner
 
@@ -29,7 +30,6 @@ from algorithms.randomParallel import randomParallel
 from algorithms.gen_individual import gen_individual
 from algorithms.gen_individual_with_coverage import gen_individual_with_coverage
 from devices import adb
-from devices import any_device
 from devices.prepare_apk_parallel import prepare_apk
 from init import initRepeatParallel
 from init import initRepeatParallelWithCoverage
@@ -79,17 +79,18 @@ def check_devices_battery(devices):
             logger.log_progress("\nWaiting for some devices to reach " + str(battery_threshold) + "% battery level")
             time.sleep(60)  # sleep 1 minute
 
-def log_devices_battery(gen, result_dir):
+def log_devices_battery(device_manager, gen, result_dir):
     log_file = result_dir + "/battery.log"
     os.system("echo 'Battery levels at gen: " + str(gen) + "' >> " + log_file)
 
-    for device in any_device.get_devices():
+    for device in device_manager.get_devices():
         level = adb.get_battery_level(device)
         imei = adb.get_imei(device)
         os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
 
 
 def run_sapienz_one_app(strategy_with_runner_name, strategy_class, test_runner, app_path):
+    device_manager = DeviceManager()
 
     folder_name = os.path.basename(app_path)
     try:
@@ -112,24 +113,18 @@ def run_sapienz_one_app(strategy_with_runner_name, strategy_class, test_runner, 
             os.system("mkdir -p " + result_dir + "/coverage")
             os.system("mkdir -p " + result_dir + "/crashes")
 
-            # reboot all devices and restart adb server before starting a repetition
+            #  reboot all devices and restart adb server before starting a repetition
             adb.restart_server()
-            any_device.reboot_devices()
-            adb.restart_server()
-
-            new_number = len(any_device.get_devices())
-            while new_number < settings.REAL_DEVICE_NUM + settings.EMULATOR_DEVICE_NUM:
-                logger.log_progress("\nWaiting for devices to finish reboot. Expected number: " + str(
-                    settings.REAL_DEVICE_NUM) + ". Current number: " + str(new_number))
-                time.sleep(10)
-                new_number = len(any_device.get_devices())
+            device_manager.reboot_devices()
 
             logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + folder_name)
 
-            any_device.prepare_motifcore()
-            any_device.clean_sdcard()
+            device_manager.clean_sdcard()
 
-            devices = any_device.get_devices()
+            # give test runner opportunity to install on devices
+            test_runner.install_on_devices()
+
+            devices = device_manager.get_devices()
 
             instrument_apk(folder_name, result_dir)
             global package_name
@@ -139,7 +134,7 @@ def run_sapienz_one_app(strategy_with_runner_name, strategy_class, test_runner, 
                 return False
 
             check_devices_battery(devices)
-            log_devices_battery("init", result_dir)
+            log_devices_battery(device_manager, "init", result_dir)
 
             # start time budget
             global start_time
@@ -243,8 +238,6 @@ def return_as_is(a):
 
 
 def run_sapienz(strategy_name, strategy, test_runner, app_paths):
-    any_device.boot_emulators()
-
     for i in range(0, len(app_paths)):
         success = run_sapienz_one_app(strategy_name, strategy, test_runner, app_paths[i])
         if not success:

@@ -1,4 +1,4 @@
-DEBUG = True # or False
+DEBUG = False # or False
 # if False, "0" will be used
 ENABLE_STRING_SEEDING = True
 # use headless evaluator
@@ -14,7 +14,7 @@ MOTIFCORE_EVAL_TIMEOUT = 120
 ADB_REGULAR_COMMAND_TIMEOUT = 30
 
 # === Emulator ===
-EMULATOR_DEVICE_NUM = 8
+EMULATOR_DEVICE_NUM = 2
 AVD_BOOT_DELAY = 40 # 40
 AVD_SERIES = "Nexus_4_API_19"
 # if run on Mac OS, use "gtimeout"

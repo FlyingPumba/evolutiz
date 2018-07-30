@@ -117,22 +117,12 @@ class DeviceManager:
             sub.Popen(emulator_cmd + ' -avd ' + device_name + flags + logs,
                       stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 
-        logger.log_progress("\nWaiting for devices to be ready: " + str(0) + "/" + str(self.total_emulators))
-        devices = self.get_ready_to_install_devices(refresh=True)
-        while len(devices) < self.total_emulators:
-            logger.log_progress(
-                "\rWaiting for devices to be ready: " + str(len(devices)) + "/" + str(self.total_emulators))
-            time.sleep(10)
-            devices = self.get_ready_to_install_devices(refresh=True)
-
-        logger.log_progress("\rWaiting for devices to be ready: " + str(len(devices)) + "/" + str(self.total_emulators))
-
     def shutdown_emulators(self):
-        # kill them all
         for device in self.emulators:
             adb.adb_command(device, "emu kill")
+        time.sleep(2)
 
-    def reboot_devices(self):
+    def reboot_devices(self, wait_to_be_ready=True):
         if settings.USE_REAL_DEVICES:
             for device in self.real_devices:
                 result_code = adb.adb_command(device, "reboot", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
@@ -147,6 +137,18 @@ class DeviceManager:
         if settings.USE_EMULATORS:
             self.shutdown_emulators()
             self.boot_emulators()
+
+        if wait_to_be_ready:
+            total = len(self.available_devices)
+            logger.log_progress("\nWaiting for devices to be ready: " + str(0) + "/" + str(total))
+
+            devices = self.get_ready_to_install_devices(refresh=True)
+            while len(devices) < total:
+                logger.log_progress("\rWaiting for devices to be ready: " + str(len(devices)) + "/" + str(total))
+                time.sleep(10)
+                devices = self.get_ready_to_install_devices(refresh=True)
+
+            logger.log_progress("\rWaiting for devices to be ready: " + str(len(devices)) + "/" + str(total))
 
     def clean_sdcard(self):
         if not settings.USE_EMULATORS:

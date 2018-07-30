@@ -6,6 +6,7 @@ from algorithms.eval_suite_multi_objective import eval_suite
 from algorithms.gen_individual import gen_individual, get_sequence
 from algorithms.gen_individual_with_coverage import get_sequence_with_fitness, gen_individual_with_coverage
 from analysers import static_analyser
+from devices.device_manager import DeviceManager
 from devices.prepare_apk_parallel import get_package_name, push_apk_and_string_xml
 
 matplotlib.use('Agg')
@@ -17,8 +18,7 @@ import time
 
 import logger
 import settings
-from devices import adb, emulator
-from devices import any_device
+from devices import adb
 
 def run_benchmark(app_path):
     folder_name = os.path.basename(app_path)
@@ -34,9 +34,9 @@ def run_benchmark(app_path):
     os.system("mkdir -p " + result_dir + "/crashes")
 
     # kill all emulators running
-    os.system(adb.adb_cmd_prefix + " devices | grep emulator | cut -f1 | while read line; do " + adb.adb_cmd_prefix + " -s $line emu kill; done")
-    time.sleep(5)
-    assert len(emulator.get_devices()) == 0
+    device_manager = DeviceManager()
+    device_manager.shutdown_emulators()
+    assert len(device_manager.get_devices()) == 0
 
     # we will store times in a dictionary
     times = []
@@ -55,34 +55,34 @@ def run_benchmark(app_path):
     # - Bootear emulador
     if settings.USE_EMULATORS:
         start_time = time.time()
-        boot_emulator()
+        boot_emulator(device_manager)
         times.append(("Bootear emulador", time.time() - start_time))
 
     # - Get devices
     start_time = time.time()
-    device = any_device.get_devices()[0]
+    device = device_manager.get_devices()[0]
     times.append(("Obtener emuladores/dispositivos disponibles", time.time() - start_time))
 
     # - Reinicar un emulador
     if settings.USE_EMULATORS:
         start_time = time.time()
-        reboot_device(device)
+        reboot_device(device_manager, device)
         times.append(("Reiniciar emulador", time.time() - start_time))
 
     # - Reinicar un emulador
     if settings.USE_REAL_DEVICES:
         start_time = time.time()
-        reboot_device(device)
+        reboot_device(device_manager, device)
         times.append(("Reiniciar dispositivo", time.time() - start_time))
 
     # - Instalar Motifcore
     start_time = time.time()
-    any_device.prepare_motifcore()
+    device_manager.prepare_motifcore()
     times.append(("Instalar Motifcore", time.time() - start_time))
 
     # - Borrar archivos SD card
     start_time = time.time()
-    any_device.clean_sdcard()
+    device_manager.clean_sdcard()
     times.append(("Limpiar SD card", time.time() - start_time))
 
     # - Instrumentar la app
@@ -98,7 +98,7 @@ def run_benchmark(app_path):
     # - Check battery
     start_time = time.time()
     check_devices_battery([device])
-    log_devices_battery("init", result_dir)
+    log_devices_battery(device_manager, "init", result_dir)
     times.append(("Comprobar y loggear estado bateria emuladores", time.time() - start_time))
 
     # - Correr monkey
@@ -164,7 +164,7 @@ def restart_adb_server():
     os.system(adb.adb_cmd_prefix + " kill-server" + logger.redirect_string())
     os.system(adb.adb_cmd_prefix + " devices" + logger.redirect_string())
 
-def boot_emulator():
+def boot_emulator(device_manager):
     device_name = settings.AVD_SERIES + "_0"
 
     emulator_cmd = "export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator"
@@ -174,10 +174,10 @@ def boot_emulator():
     flags = " -wipe-data -no-window -no-boot-anim -writable-system -verbose -debug all"
     sub.Popen(emulator_cmd + ' -avd ' + device_name + flags + logs, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 
-    while len(emulator.get_devices()) < 1:
+    while len(device_manager.get_devices(refresh=True)) < 1:
         time.sleep(3)
 
-def reboot_device(device):
+def reboot_device(device_manager, device):
     result_code = adb.adb_command(device, "reboot")
     if result_code != 0:
         logger.log_progress("\nUnable to reboot device: " + adb.get_device_name(device))
@@ -185,7 +185,7 @@ def reboot_device(device):
         raise Exception("Unable to reboot device: " + adb.get_device_name(device))
 
     time.sleep(5)
-    while len(emulator.get_devices()) < 1:
+    while len(device_manager.get_devices(refresh=True)) < 1:
         time.sleep(3)
 
 def instrument_apk(folder_name, result_dir):
@@ -239,11 +239,11 @@ def check_devices_battery(devices):
             logger.log_progress("\nWaiting for some devices to reach " + str(battery_threshold) + "% battery level")
             time.sleep(60)  # sleep 1 minute
 
-def log_devices_battery(gen, result_dir):
+def log_devices_battery(device_manager, gen, result_dir):
     log_file = result_dir + "/battery.log"
     os.system("echo 'Battery levels at gen: " + str(gen) + "' >> " + log_file)
 
-    for device in any_device.get_devices():
+    for device in device_manager.get_devices():
         level = adb.get_battery_level(device)
         imei = adb.get_imei(device)
         os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
