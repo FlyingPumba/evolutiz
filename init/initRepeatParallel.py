@@ -130,6 +130,10 @@ def check_devices_that_finished_rebooting():
 	global idle_devices
 	global rebooting_devices
 
+	if len(rebooting_devices.keys()) == 0:
+		# there are no rebooting devices, don't bother checking
+		return
+
 	current_devices = any_device.get_devices()
 	for device in current_devices:
 		if device in rebooting_devices:
