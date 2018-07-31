@@ -82,9 +82,6 @@ def get_subject_paths(subjects_directory):
 
 
 if __name__ == "__main__":
-    # run this script from the root folder as:
-    # python run
-
     possible_strategies = {
         "standard": eaStandardParallel,
         "monotonic": eaMonotonicParallel,
