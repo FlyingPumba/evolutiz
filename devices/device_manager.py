@@ -40,6 +40,9 @@ class DeviceManager:
         output, errors = p.communicate()
         lines = output.split("\n")
         for line in lines:
+            if "List of devices attached" in line:
+                continue
+
             if "offline" not in line:
                 device = line.split("\t")[0].strip()
                 if "emulator" in line:
