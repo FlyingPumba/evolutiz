@@ -9,7 +9,7 @@ import motifcore_installer
 
 class MotifcoreTestRunner(TestRunner):
 
-    def __init__(self, device_manager, use_motifgene=False):
+    def __init__(self, use_motifgene=False):
         self.use_motifgene = use_motifgene
 
     def install_on_devices(self, device_manager):

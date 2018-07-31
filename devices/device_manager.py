@@ -6,7 +6,7 @@ import time
 import adb
 import logger
 import settings
-from devices.do_parallel_fail_one_fail_all import do_parallel
+from devices.do_parallel_fail_one_fail_all import DoParallelFailOneFailAll
 
 
 class DeviceManager:
@@ -202,7 +202,8 @@ class DeviceManager:
             adb.sudo_shell_command(device, "rm -rf /mnt/sdcard/*", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
     def do_parallel_fail_one_fail_all(self, motive, function_to_apply, arguments):
-        do_parallel(motive, function_to_apply, arguments)
+        do_parallel = DoParallelFailOneFailAll(self, motive, function_to_apply, arguments)
+        do_parallel.run()
 
     def wait_for_battery_threshold(self, battery_threshold = 20):
         # check that all devices have enough battery

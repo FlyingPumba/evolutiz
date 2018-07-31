@@ -1,9 +1,9 @@
 import matplotlib
 # Force matplotlib to not use any Xwindows backend.
+matplotlib.use('Agg')
+
 import settings
 from test_generator.evolutiz import Evolutiz
-
-matplotlib.use('Agg')
 
 from devices.device_manager import DeviceManager
 from test_runner.evolutiz_runner import EvolutizTestRunner

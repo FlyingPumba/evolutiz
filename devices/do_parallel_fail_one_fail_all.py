@@ -16,12 +16,15 @@ total_devices = 0
 
 class DoParallelFailOneFailAll:
 
-    def __init__(self, device_manager, motive, function_to_apply, arguments, callback=process_results):
+    def __init__(self, device_manager, motive, function_to_apply, arguments, callback=None):
         self.device_manager = device_manager
         self.motive = motive
         self.function_to_apply = function_to_apply
         self.arguments = arguments
-        self.callback = callback
+        if callback is None:
+            self.callback = self.process_results
+        else:
+            self.callback = callback
 
     def function_wrapper(self, device, function_to_apply, arguments):
         try:
@@ -41,7 +44,7 @@ class DoParallelFailOneFailAll:
         logger.log_progress("\rPerforming " + self.motive + " on devices: " +
                             str(successful_devices) + "/" + str(total_devices))
 
-    def do_parallel(self):
+    def run(self):
         global successful_devices
         successful_devices = 0
 
