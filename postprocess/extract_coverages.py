@@ -53,9 +53,9 @@ if __name__ == "__main__":
 
 	coverages = []
 
-	for coverage_folder in os.listdir(settings.EMMA_ED + PROJECT_FOLDER + "/coverages/"):
+	for coverage_folder in os.listdir(settings.INSTRUMENTED_SUBJECTS_PATH + PROJECT_FOLDER + "/coverages/"):
 		try:
-			html_file = settings.EMMA_ED + settings.PROJECT_FOLDER + "/coverages/" + coverage_folder + "/coverage/index.html"
+			html_file = settings.INSTRUMENTED_SUBJECTS_PATH + settings.PROJECT_FOLDER + "/coverages/" + coverage_folder + "/coverage/index.html"
 			coverage_str = extract_coverage(html_file)
 			coverages.append(int(coverage_str.split("%")[0]))
 		except:

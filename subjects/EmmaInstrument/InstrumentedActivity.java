@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
-public class InstrumentedActivity extends arity.calculator.Calculator {
+public class InstrumentedActivity extends pkg.name.MainActivity {
 public static String TAG = "IntrumentedPlayer";
 
 	private FinishListener mListener;

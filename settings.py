@@ -3,8 +3,8 @@ DEBUG = False # or False
 ENABLE_STRING_SEEDING = True
 # use headless evaluator
 HEADLESS = True
-EMMA_ED = "emma/" # folder for instrumented builds with emma
-ORIGINAL_PATH = "subjects/" # folder for origignal sources
+INSTRUMENTED_SUBJECTS_PATH = "instrumented-subjects/" # folder for instrumented builds with emma
+SUBJECTS_PATH = "subjects/" # folder for origignal sources
 
 USE_REAL_DEVICES = False
 USE_EMULATORS = True

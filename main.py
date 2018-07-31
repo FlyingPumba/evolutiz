@@ -33,7 +33,7 @@ def run_one_app(strategy_with_runner_name, strategy_class, test_runner, app_path
         for repetition in range(0, settings.REPETITIONS):
 
             # prepare result_dir folder
-            result_dir = os.path.dirname(os.path.dirname(app_path)) + "/results/" + \
+            result_dir = settings.WORKING_DIR + "results/" + \
                          strategy_with_runner_name + "/" + folder_name + "/" + str(repetition)
 
             os.system("rm -rf " + result_dir + "/*" + logger.redirect_string())
@@ -44,9 +44,7 @@ def run_one_app(strategy_with_runner_name, strategy_class, test_runner, app_path
             os.system("mkdir -p " + result_dir + "/coverage")
             os.system("mkdir -p " + result_dir + "/crashes")
 
-
             adb.adb_logs_dir = result_dir
-            os.chdir(app_path)
 
             #  reboot all devices and restart adb server before starting a repetition
             adb.restart_server()
@@ -101,7 +99,7 @@ if __name__ == "__main__":
 
     # parse args
     parser = argparse.ArgumentParser(description='Run Evolutiz with different strategies.')
-    parser.add_argument('-d', '--subjects', dest='subjects_directory', default='$PWD/monkey/subjects/',
+    parser.add_argument('-d', '--subjects', dest='subjects_directory', default=settings.SUBJECTS_PATH + 'are-we-there-yet/',
                         help='Directory where subjects are located')
     parser.add_argument('-s', '--strategy', dest='selected_strategy', default='muPlusLambda',
                         choices=possible_strategies.keys(), help='Strategy to be used')
