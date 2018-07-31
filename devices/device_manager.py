@@ -126,7 +126,7 @@ class DeviceManager:
 
         emulator_cmd = "export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator"
 
-        flags = " -wipe-data -no-boot-anim -writable-system --port " + str(port)
+        flags = " -wipe-data -no-boot-anim -writable-system -port " + str(port)
 
         if settings.HEADLESS:
             # -no-window flag can't be at the end
@@ -138,8 +138,8 @@ class DeviceManager:
             logs = " > " + avd_name + ".log 2>" + avd_name + ".err"
             flags = flags + " -verbose -debug all"
 
-        sub.Popen(emulator_cmd + ' -avd ' + avd_name + flags + logs,
-                  stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+        cmd = emulator_cmd + ' -avd ' + avd_name + flags + logs
+        sub.Popen(cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 
         emulator_name = "emulator-" + str(port)
         self.booting_devices[emulator_name] = time.time()
