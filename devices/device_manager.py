@@ -70,7 +70,7 @@ class DeviceManager:
             current_time = time.time()
             devices_to_check = []
             for device, boot_time in self.booting_devices.iteritems():
-                if boot_time - current_time >= settings.AVD_BOOT_DELAY:
+                if current_time - boot_time >= settings.AVD_BOOT_DELAY:
                     devices_to_check.append(device)
 
             if len(devices_to_check) > 0:
