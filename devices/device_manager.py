@@ -178,8 +178,11 @@ class DeviceManager:
             self.boot_emulator(port=port)
 
     def reboot_devices(self, wait_to_be_ready=True):
-        for device in self.available_devices:
-            self.reboot_device(device)
+        for device in self.real_devices:
+            self.reboot_real_device(device)
+
+        self.shutdown_emulators()
+        self.boot_emulators()
 
         if wait_to_be_ready:
             logger.log_progress("\nWaiting for devices to be ready: " + str(0) + "/" + str(len(self.available_devices)))
