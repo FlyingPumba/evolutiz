@@ -181,22 +181,27 @@ class DeviceManager:
             self.boot_emulator(port=port)
 
     def reboot_devices(self, wait_to_be_ready=True):
+        devices_to_wait = 0
+        if settings.USE_REAL_DEVICES:
+            devices_to_wait += len(self.real_devices)
+        if settings.USE_EMULATORS:
+            devices_to_wait += self.total_emulators
+
         for device in self.real_devices:
             self.reboot_real_device(device)
 
         self.shutdown_emulators()
         self.boot_emulators()
-
         if wait_to_be_ready:
-            logger.log_progress("\nWaiting for devices to be ready: " + str(0) + "/" + str(self.total_emulators))
+            logger.log_progress("\nWaiting for devices to be ready: " + str(0) + "/" + str(devices_to_wait))
 
             ready_devices = self.get_ready_to_install_devices(refresh=True)
-            while len(self.booting_devices.keys()) > 0 or len(ready_devices) != self.total_emulators:
-                logger.log_progress("\rWaiting for devices to be ready: " + str(len(ready_devices)) + "/" + str(self.total_emulators))
+            while len(self.booting_devices.keys()) > 0 or len(ready_devices) < devices_to_wait:
+                logger.log_progress("\rWaiting for devices to be ready: " + str(len(ready_devices)) + "/" + str(devices_to_wait))
                 time.sleep(10)
                 ready_devices = self.get_ready_to_install_devices(refresh=True)
 
-            logger.log_progress("\rWaiting for devices to be ready: " + str(len(ready_devices)) + "/" + str(self.total_emulators))
+            logger.log_progress("\rWaiting for devices to be ready: " + str(len(ready_devices)) + "/" + str(devices_to_wait))
 
     def clean_sdcard(self):
         if not settings.USE_EMULATORS:
