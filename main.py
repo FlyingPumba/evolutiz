@@ -25,7 +25,7 @@ from algorithms.eaSteadyStateParallel import eaSteadyStateParallel
 from algorithms.randomParallel import randomParallel
 from devices import adb
 
-def run_sapienz_one_app(strategy_with_runner_name, strategy_class, test_runner, app_path):
+def run_one_app(strategy_with_runner_name, strategy_class, test_runner, app_path):
     device_manager = DeviceManager()
 
     folder_name = os.path.basename(app_path)
@@ -61,13 +61,13 @@ def run_sapienz_one_app(strategy_with_runner_name, strategy_class, test_runner, 
 
         return True
     except Exception as e:
-        logger.log_progress("\nThere was an error running sapienz on app: " + folder_name)
+        logger.log_progress("\nThere was an error running evolutiz on app: " + folder_name)
         traceback.print_exc()
         return False
 
-def run_sapienz(strategy_name, strategy, test_runner, app_paths):
+def run(strategy_name, strategy, test_runner, app_paths):
     for i in range(0, len(app_paths)):
-        success = run_sapienz_one_app(strategy_name, strategy, test_runner, app_paths[i])
+        success = run_one_app(strategy_name, strategy, test_runner, app_paths[i])
         if not success:
             break
 
@@ -83,7 +83,7 @@ def get_subject_paths(subjects_directory):
 
 if __name__ == "__main__":
     # run this script from the root folder as:
-    # python run_sapienz
+    # python run
 
     possible_strategies = {
         "standard": eaStandardParallel,
@@ -103,7 +103,7 @@ if __name__ == "__main__":
     }
 
     # parse args
-    parser = argparse.ArgumentParser(description='Run Sapienz experiment with different strategies.')
+    parser = argparse.ArgumentParser(description='Run Evolutiz with different strategies.')
     parser.add_argument('-d', '--subjects', dest='subjects_directory', default='$PWD/monkey/subjects/',
                         help='Directory where subjects are located')
     parser.add_argument('-s', '--strategy', dest='selected_strategy', default='muPlusLambda',
@@ -120,12 +120,12 @@ if __name__ == "__main__":
     strategy_class = possible_strategies[args.selected_strategy]
     test_runner = possible_test_runners[args.selected_test_runner]
 
-    # run Sapienz exp
+    # run Evolutiz exp
     logger.prepare()
     logger.clear_progress()
-    logger.log_progress("Sapienz (" + args.selected_strategy + ", " + args.selected_test_runner + ")")
+    logger.log_progress("Evolutiz (" + args.selected_strategy + ", " + args.selected_test_runner + ")")
 
-    run_sapienz(strategy_with_runner_name, strategy_class, test_runner, app_paths)
+    run(strategy_with_runner_name, strategy_class, test_runner, app_paths)
 
     # process results
     # results_per_app = process_results(app_paths)

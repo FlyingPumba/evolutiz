@@ -90,7 +90,7 @@ class Evolutiz():
 
         population, logbook = self.strategy.evolve()
 
-        logger.log_progress("\nSapienz finished for app: " + app_name + "\n")
+        logger.log_progress("\nEvolutiz finished for app: " + app_name + "\n")
 
         # write stats
         logbook_file = open(self.result_dir + "/intermediate/logbook.pickle", 'wb')

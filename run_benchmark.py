@@ -269,14 +269,14 @@ if __name__ == "__main__":
     # python run_benchmark.py
 
     # parse args
-    parser = argparse.ArgumentParser(description='Run Sapienz experiment with different strategies.')
+    parser = argparse.ArgumentParser(description='Run Evolutiz experiment with different strategies.')
     parser.add_argument('-d', '--subjects', dest='subjects_directory', default='$PWD/monkey/subjects/',
                         help='Directory where subjects are located')
 
     args = parser.parse_args()
     app_path = get_subject_paths(args.subjects_directory)[0]
 
-    # run Sapienz exp
+    # run Evolutiz exp
     logger.prepare()
     logger.clear_progress()
     benchmark_repetitions = 5
