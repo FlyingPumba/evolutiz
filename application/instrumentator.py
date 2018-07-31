@@ -67,7 +67,8 @@ def prepare_app_for_instrumentation(app_path, result_dir):
 
     # update project
     os.chdir(instrumented_source_path)
-    os.system(settings.ANDROID_HOME + "tools/android update project --path . --target " + settings.ANDROID_TARGET + " --subprojects")
+    # TODO: replace for a command that doesn't depend on old android-sdk-linux
+    os.system(settings.WORKING_DIR + "monkey/android-sdk-linux/tools/android update project --path . --target " + settings.ANDROID_TARGET + " --subprojects")
 
     return instrumented_source_path, package_name
 
