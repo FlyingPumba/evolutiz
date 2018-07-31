@@ -51,7 +51,7 @@ class Evolutiz():
         # register common functions in toolbox
         toolbox = base.Toolbox()
         toolbox.register("individual", gen_individual, self.test_runner)
-        toolbox.register("population", initRepeatParallel.initPop, toolbox.individual)
+        toolbox.register("population", initRepeatParallel.initPop, self.device_manager, toolbox.individual)
         toolbox.register("individual_with_coverage", gen_individual_with_coverage, self.test_runner)
         toolbox.register("population_with_coverage", initRepeatParallelWithCoverage.initPop,
                          toolbox.individual_with_coverage)
@@ -59,6 +59,7 @@ class Evolutiz():
         toolbox.register("get_apk_dir", lambda: app_path)
         toolbox.register("get_result_dir", lambda: self.result_dir)
         toolbox.register("get_package_name", lambda: self.package_name)
+        toolbox.register("get_device_manager", lambda: self.device_manager)
         toolbox.register("log_devices_battery", self.device_manager.log_devices_battery)
 
         stats = tools.Statistics(lambda ind: ind.fitness.values)

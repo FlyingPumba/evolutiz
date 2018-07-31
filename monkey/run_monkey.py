@@ -21,7 +21,7 @@ COVERAGE_INTERVAL = 10
 REPETITIONS=1
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
 
-results = []
+individuals_generated = []
 idle_devices = []
 total_individuals = 0
 

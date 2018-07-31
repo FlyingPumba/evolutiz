@@ -15,6 +15,7 @@ class DeviceManager:
 
         # emulators detected in last get_devices() call
         self.emulators = []
+        self.next_available_emulator_port = 5554
 
         # real devices detected in last get_devices() call
         self.real_devices = []
@@ -24,7 +25,7 @@ class DeviceManager:
         self.available_devices = []
 
         # devices in process of being booted
-        self.booting_real_devices = {}
+        self.booting_devices = {}
 
         # init available devices
         self.refresh_available_devices()
@@ -60,15 +61,34 @@ class DeviceManager:
         if refresh:
             self.refresh_available_devices()
 
+        if len(self.booting_devices.keys()) > 0:
+            # check if any rebooting device is back
+            # (only check if the device was rebooted more than 2 minutes ago)
+            current_time = time.time()
+            devices_to_check = []
+            for device, boot_time in self.booting_devices.iteritems():
+                if boot_time - current_time >= settings.AVD_BOOT_DELAY:
+                    devices_to_check.append(device)
+
+            if len(devices_to_check) > 0:
+                # refresh availale devices
+                self.refresh_available_devices()
+
+                for device in devices_to_check:
+                    if device in self.available_devices:
+                        # device is back
+                        self.booting_devices.pop(device)
+                    else:
+                        # device is still booting
+                        # update booting time with current one to wait another AVD_BOOT_DELAY seconds
+                        self.booting_devices[device] = current_time
+
         return self.available_devices
 
     def get_booted_devices(self, refresh=False):
-        if refresh:
-            self.refresh_available_devices()
-
         # check if boot animation is over for each device
         devices = []
-        for device in self.available_devices:
+        for device in self.get_devices(refresh=refresh):
             p = sub.Popen(adb.adb_cmd_prefix + ' -s ' + device + ' shell getprop init.svc.bootanim',
                           stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
             output, errors = p.communicate()
@@ -78,12 +98,9 @@ class DeviceManager:
         return devices
 
     def get_ready_to_install_devices(self, refresh=False):
-        if refresh:
-            self.refresh_available_devices()
-
         # check if package manager is ready for each device
         devices = []
-        for device in self.available_devices:
+        for device in self.get_devices(refresh=refresh):
             p = sub.Popen(adb.adb_cmd_prefix  + ' -s ' + device + ' shell pm list packages',
                           stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
             output, errors = p.communicate()
@@ -92,66 +109,88 @@ class DeviceManager:
 
         return devices
 
-    def boot_emulators(self):
-        if not settings.USE_EMULATORS:
-            return
+    def flag_device_as_malfunctioning(self, device):
+        # remove device from available devices and reboot
+        self.available_devices.pop(device)
+        self.reboot_device(device)
 
-        self.booting_emulators = 0
+    def boot_emulator(self, port=None):
+        if port is None:
+            port = self.next_available_emulator_port
+            self.next_available_emulator_port += 2
+
+        avd_name = self.get_avd_name_for_emulator_port(port)
+
+        emulator_cmd = "export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator"
+
+        flags = " -wipe-data -no-boot-anim -writable-system --port " + str(port)
+
+        if settings.HEADLESS:
+            # -no-window flag can't be at the end
+            flags = " -no-window" + flags
+
+        logs = " >/dev/null 2>/dev/null"
+
+        if settings.DEBUG:
+            logs = " > " + avd_name + ".log 2>" + avd_name + ".err"
+            flags = flags + " -verbose -debug all"
+
+        sub.Popen(emulator_cmd + ' -avd ' + avd_name + flags + logs,
+                  stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+
+        emulator_name = "emulator-" + str(port)
+        self.booting_devices[emulator_name] = time.time()
+
+    def boot_emulators(self):
         logger.log_progress("\nBooting devices: " + str(0) + "/" + str(self.total_emulators))
 
         for i in range(0, self.total_emulators):
-            device_name = settings.AVD_SERIES + "_" + str(i)
             logger.log_progress("\rBooting devices: " + str(i + 1) + "/" + str(self.total_emulators))
+            self.boot_emulator()
 
-            emulator_cmd = "export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator"
-
-            flags = " -wipe-data -no-boot-anim -writable-system"
-
-            if settings.HEADLESS:
-                # -no-window flag can't be at the end
-                flags = " -no-window" + flags
-
-            logs = " >/dev/null 2>/dev/null"
-
-            if settings.DEBUG:
-                logs = " > " + device_name + ".log 2>" + device_name + ".err"
-                flags = flags + " -verbose -debug all"
-
-            sub.Popen(emulator_cmd + ' -avd ' + device_name + flags + logs,
-                      stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+    def shutdown_emulator(self, device):
+        adb.adb_command(device, "emu kill")
+        self.emulators.remove(device)
 
     def shutdown_emulators(self):
         for device in self.emulators:
-            adb.adb_command(device, "emu kill")
+            self.shutdown_emulator(device)
         time.sleep(2)
 
-    def reboot_devices(self, wait_to_be_ready=True):
-        if settings.USE_REAL_DEVICES:
-            for device in self.real_devices:
-                result_code = adb.adb_command(device, "reboot", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-                if result_code != 0:
-                    logger.log_progress("\nUnable to reboot device: " + adb.get_device_name(device))
-                    logger.log_progress("\nPlease, turn it off and on manually.")
-                    raise Exception("Unable to reboot device: " + adb.get_device_name(device))
-                else:
-                    # successfully rebooted, save booting time
-                    self.booting_real_devices[device] = time.time()
+    def reboot_real_device(self, device):
+        result_code = adb.adb_command(device, "reboot", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        if result_code != 0:
+            logger.log_progress("\nUnable to reboot device: " + adb.get_device_name(device))
+            logger.log_progress("\nPlease, turn it off and on manually.")
+            raise Exception("Unable to reboot device: " + adb.get_device_name(device))
+        else:
+            # successfully rebooted, save booting time
+            self.booting_devices[device] = time.time()
 
-        if settings.USE_EMULATORS:
-            self.shutdown_emulators()
-            self.boot_emulators()
+    def reboot_device(self, device):
+        if device in self.real_devices:
+            self.reboot_real_device(device)
+
+        if device in self.emulators:
+            self.shutdown_emulator(device)
+            time.sleep(2)
+            port = int(device.split('-')[1])
+            self.boot_emulator(port=port)
+
+    def reboot_devices(self, wait_to_be_ready=True):
+        for device in self.available_devices:
+            self.reboot_device(device)
 
         if wait_to_be_ready:
-            total = len(self.available_devices)
-            logger.log_progress("\nWaiting for devices to be ready: " + str(0) + "/" + str(total))
+            logger.log_progress("\nWaiting for devices to be ready: " + str(0) + "/" + str(len(self.available_devices)))
 
-            devices = self.get_ready_to_install_devices(refresh=True)
-            while len(devices) < total:
-                logger.log_progress("\rWaiting for devices to be ready: " + str(len(devices)) + "/" + str(total))
+            ready_devices = self.get_ready_to_install_devices(refresh=True)
+            while len(self.booting_devices.keys()) > 0 or len(ready_devices) != len(self.available_devices):
+                logger.log_progress("\rWaiting for devices to be ready: " + str(len(ready_devices)) + "/" + str(len(self.available_devices)))
                 time.sleep(10)
-                devices = self.get_ready_to_install_devices(refresh=True)
+                ready_devices = self.get_ready_to_install_devices(refresh=True)
 
-            logger.log_progress("\rWaiting for devices to be ready: " + str(len(devices)) + "/" + str(total))
+            logger.log_progress("\rWaiting for devices to be ready: " + str(len(ready_devices)) + "/" + str(len(self.available_devices)))
 
     def clean_sdcard(self):
         if not settings.USE_EMULATORS:
@@ -187,3 +226,7 @@ class DeviceManager:
             level = adb.get_battery_level(device)
             imei = adb.get_imei(device)
             os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
+
+    def get_avd_name_for_emulator_port(self, port):
+        avd_index = (port - 5554) / 2
+        return settings.AVD_SERIES + "_" + str(avd_index)
