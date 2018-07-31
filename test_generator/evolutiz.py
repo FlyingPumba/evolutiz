@@ -30,7 +30,7 @@ class Evolutiz():
         app_name = os.path.basename(app_path)
 
         # give test runner opportunity to install on devices
-        self.test_runner.install_on_devices()
+        self.test_runner.install_on_devices(self.device_manager)
 
         devices = self.device_manager.get_devices()
 
