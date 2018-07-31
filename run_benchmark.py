@@ -5,9 +5,9 @@ from deap import creator, base
 from algorithms.eval_suite_multi_objective import eval_suite
 from algorithms.gen_individual import gen_individual, get_sequence
 from algorithms.gen_individual_with_coverage import get_sequence_with_fitness, gen_individual_with_coverage
-from analysers import static_analyser
+from application import static_analyser
 from devices.device_manager import DeviceManager
-from devices.prepare_apk_parallel import get_package_name, push_apk_and_string_xml
+from application.prepare_apk_parallel import get_package_name, push_apk_and_string_xml
 
 matplotlib.use('Agg')
 

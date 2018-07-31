@@ -5,7 +5,7 @@ from devices import adb
 from test_runner import TestRunner
 
 
-class EvolutizRunner(TestRunner):
+class EvolutizTestRunner(TestRunner):
 
     def __init__(self):
         self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE = "/mnt/sdcard/evolutiz.script"

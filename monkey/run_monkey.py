@@ -15,7 +15,6 @@ from datetime import datetime
 
 # global results for mp callback
 from devices.device_manager import DeviceManager
-from devices.prepare_apk_parallel import prepare_apk
 
 EXPERIMENT_TIME = 5
 COVERAGE_INTERVAL = 10

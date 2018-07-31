@@ -1,0 +1,64 @@
+import time
+
+import os
+import subprocess
+import multiprocessing as mp
+from datetime import datetime as dt
+
+import logger
+import settings
+from application import static_analyser
+from devices import adb
+
+successful_devices = 0
+total_devices = 0
+
+
+class DoParallelFailOneFailAll:
+
+    def __init__(self, device_manager, motive, function_to_apply, arguments, callback=process_results):
+        self.device_manager = device_manager
+        self.motive = motive
+        self.function_to_apply = function_to_apply
+        self.arguments = arguments
+        self.callback = callback
+
+    def function_wrapper(self, device, function_to_apply, arguments):
+        try:
+            function_to_apply(device, *arguments)
+            return True
+        except Exception as e:
+            print e
+            return False
+
+    def process_results(self, success):
+        if not success:
+            raise Exception("Unable to perform " + self.motive + " on all devices")
+
+        global successful_devices
+        successful_devices += 1
+        global total_devices
+        logger.log_progress("\rPerforming " + self.motive + " on devices: " +
+                            str(successful_devices) + "/" + str(total_devices))
+
+    def do_parallel(self):
+        global successful_devices
+        successful_devices = 0
+
+        global total_devices
+        total_devices = len(self.device_manager.get_devices())
+
+        logger.log_progress("\nPerforming " + self.motive + " on devices: " +
+                            str(successful_devices) + "/" + str(total_devices))
+        pool = mp.Pool(processes=total_devices)
+        for device in self.device_manager.get_devices():
+            pool.apply_async(self.function_wrapper,
+                             args=(device, self.function_to_apply, self.arguments),
+                             callback=self.callback)
+
+        # should wait for all processes finish
+        pool.close()
+        pool.join()
+
+        logger.log_progress("\nFinished " + self.motive)
+        return (successful_devices == total_devices)

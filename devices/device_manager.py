@@ -1,9 +1,12 @@
+import os
+
 import subprocess as sub
 import time
 
 import adb
 import logger
 import settings
+from devices.do_parallel_fail_one_fail_all import do_parallel
 
 
 class DeviceManager:
@@ -158,3 +161,29 @@ class DeviceManager:
             adb.sudo_shell_command(device, "mount -o rw,remount rootfs", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             adb.sudo_shell_command(device, "rm -rf /mnt/sdcard/*", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+
+    def do_parallel_fail_one_fail_all(self, motive, function_to_apply, arguments):
+        do_parallel(motive, function_to_apply, arguments)
+
+    def wait_for_battery_threshold(self, battery_threshold = 20):
+        # check that all devices have enough battery
+        while True:
+            all_devices_with_battery = True
+            for device in self.get_devices():
+                level = adb.get_battery_level(device)
+                all_devices_with_battery = all_devices_with_battery and level >= battery_threshold
+
+            if all_devices_with_battery:
+                break
+            else:
+                logger.log_progress("\nWaiting for some devices to reach " + str(battery_threshold) + "% battery level")
+                time.sleep(60)  # sleep 1 minute
+
+    def log_devices_battery(self, gen, result_dir):
+        log_file = result_dir + "/battery.log"
+        os.system("echo 'Battery levels at gen: " + str(gen) + "' >> " + log_file)
+
+        for device in self.get_devices():
+            level = adb.get_battery_level(device)
+            imei = adb.get_imei(device)
+            os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)

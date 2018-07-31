@@ -7,7 +7,7 @@ from devices import adb
 from test_runner import TestRunner
 import motifcore_installer
 
-class MotifcoreRunner(TestRunner):
+class MotifcoreTestRunner(TestRunner):
 
     def __init__(self, device_manager, use_motifgene=False):
         self.use_motifgene = use_motifgene
