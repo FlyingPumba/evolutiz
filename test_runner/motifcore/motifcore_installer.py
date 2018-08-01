@@ -17,8 +17,8 @@ def install_in_all_devices(device_manager):
 	pool = mp.Pool(processes=len(device_manager.get_devices()))
 	for device in device_manager.get_devices():
 		pool.apply_async(install_wrapper,
-						 args=(settings.WORKING_DIR + "lib/motifcore.jar",
-							   settings.WORKING_DIR + "resources/motifcore",
+						 args=(settings.WORKING_DIR + "test_runner/motifcore/motifcore.jar",
+							   settings.WORKING_DIR + "test_runner/motifcore/motifcore",
 							   device))
 
 	# wait for all processes to finish
