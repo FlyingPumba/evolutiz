@@ -3,7 +3,7 @@ from algorithms.monotonic import Monotonic
 from algorithms.mosa import Mosa
 from algorithms.mu_plus_lambda import MuPlusLambda
 from algorithms.one_plus_lambda_comma_lambda import OnePlusLambdaCommaLambda
-from algorithms.random import Random
+from algorithms.pure_random import Random
 from algorithms.standard import Standard
 from algorithms.steady_state import SteadyState
 
