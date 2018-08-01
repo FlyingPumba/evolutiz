@@ -91,12 +91,7 @@ class Evolutiz(object):
         toolbox.decorate("mutate", history.decorator)
 
         # run the strategy
-        success = self.strategy.initPopulation()
-        if not success:
-            logger.log_progress("\nThere was an error initializing pupulation for app: " + app_name)
-            return False
-
-        population, logbook = self.strategy.evolve()
+        population, logbook = self.strategy.run()
 
         logger.log_progress("\nEvolutiz finished for app: " + app_name + "\n")
 

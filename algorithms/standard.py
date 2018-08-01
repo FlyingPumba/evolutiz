@@ -49,6 +49,14 @@ class Standard(object):
         self.targets_historic_log_file = self.toolbox.get_result_dir() + "/targets-historic.log"
         self.setup_log_best_historic_objectives_achieved()
 
+    def run(self):
+        success = self.initPopulation()
+        if not success:
+            logger.log_progress("\nThere was an error initializing pupulation for app: " + app_name)
+            return False
+
+        return self.evolve()
+
     def initPopulation(self):
         print "### Initialising population ...."
         self.population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(),

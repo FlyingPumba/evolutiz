@@ -6,6 +6,9 @@ class Monotonic(object):
     def setup(self, toolbox, test_runner, stats=None, verbose=False):
         pass
 
+    def run(self):
+        pass
+
     def initPopulation(self):
         pass
 

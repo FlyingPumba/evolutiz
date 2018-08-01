@@ -31,6 +31,14 @@ class MuPlusLambda(object):
         assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
                                                  "probabilities must be smaller or equal to 1.0.")
 
+    def run(self):
+        success = self.initPopulation()
+        if not success:
+            logger.log_progress("\nThere was an error initializing pupulation for app: " + app_name)
+            return False
+
+        return self.evolve()
+
     def setup(self, stats=None, verbose=False):
         self.stats = stats
         self.verbose = verbose
