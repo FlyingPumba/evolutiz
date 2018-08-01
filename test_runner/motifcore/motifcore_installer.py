@@ -41,19 +41,19 @@ def install(motifcore_path, motifcore_script_path, device):
     result_code = adb.sudo_shell_command(device, "mount -o rw,remount rootfs /",
                                          timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
-        adb.reboot(device)
-        raise Exception("Unable to install motifcore on device: " + adb.get_device_name(device))
+        device.flag_as_malfunctioning()
+        raise Exception("Unable to install motifcore on device: " + device.name)
 
     result_code = adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
-        adb.reboot(device)
-        raise Exception("Unable to install motifcore on device: " + adb.get_device_name(device))
+        device.flag_as_malfunctioning()
+        raise Exception("Unable to install motifcore on device: " + device.name)
 
     result_code = adb.sudo_shell_command(device, "mount -o rw,remount /system",
                                          timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
-        adb.reboot(device)
-        raise Exception("Unable to install motifcore on device: " + adb.get_device_name(device))
+        device.flag_as_malfunctioning()
+        raise Exception("Unable to install motifcore on device: " + device.name)
 
     # push
     filename = adb.sudo_push(device, motifcore_path, "/system/framework/motifcore.jar",
@@ -61,16 +61,16 @@ def install(motifcore_path, motifcore_script_path, device):
     result_code = adb.sudo_shell_command(device, "chmod 777 /system/framework/" + filename,
                                          timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
-        adb.reboot(device)
-        raise Exception("Unable to install motifcore on device: " + adb.get_device_name(device))
+        device.flag_as_malfunctioning()
+        raise Exception("Unable to install motifcore on device: " + device.name)
 
     filename = adb.sudo_push(device, motifcore_script_path, "/system/bin/motifcore",
                              timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     result_code = adb.sudo_shell_command(device, "chmod 777 /system/bin/" + filename,
                                          timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
-        adb.reboot(device)
-        raise Exception("Unable to install motifcore on device: " + adb.get_device_name(device))
+        device.flag_as_malfunctioning()
+        raise Exception("Unable to install motifcore on device: " + device.name)
 
     # recover permission
     adb.sudo_shell_command(device, "mount -o ro,remount /system", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)

@@ -37,7 +37,7 @@ class Evolutiz():
         instrument_apk(app_path, self.result_dir)
         self.package_name = prepare_apk(devices, app_path, self.result_dir)
 
-        self.device_manager.check_devices_battery(devices)
+        self.device_manager.wait_for_battery_threshold()
         self.device_manager.log_devices_battery("init", self.result_dir)
 
         # start time budget

@@ -16,7 +16,7 @@ def process_results(data):
     individual, device = data
     if individual == False:
         logger.log_progress(
-            "\nInit population in parallel: failed to generate_individual on device: " + adb.get_device_name(device))
+            "\nInit population in parallel: failed to generate_individual on device: " + device.name)
         # device was unable to complete the generation of individual
         global remaining_individuals_to_generate
         remaining_individuals_to_generate += 1

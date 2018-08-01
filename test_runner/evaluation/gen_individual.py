@@ -30,8 +30,8 @@ def get_sequence(test_runner, device, result_dir, package_name, index, unique_cr
     # clear data
     result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
-        adb.reboot(device)
-        raise Exception("Failed to clear package " + package_name + " in device: " + adb.get_device_name(device))
+        device.flag_as_malfunctioning()
+        raise Exception("Failed to clear package " + package_name + " in device: " + device.name)
 
     # access the generated script, should ignore the first launch activity
     script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]

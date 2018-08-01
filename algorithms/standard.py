@@ -187,16 +187,16 @@ class Standard:
         result_code = adb.push(device, parentLocalPath1, parentRemotePath1,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            adb.reboot(device)
+            device.flag_as_malfunctioning()
             raise Exception(
-                "Unable to push motifcore script " + parentLocalPath1 + " to device: " + adb.get_device_name(device))
+                "Unable to push motifcore script " + parentLocalPath1 + " to device: " + device.name)
 
         result_code = adb.push(device, parentLocalPath2, parentRemotePath2,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            adb.reboot(device)
+            device.flag_as_malfunctioning()
             raise Exception(
-                "Unable to push motifcore script " + parentLocalPath2 + " to device: " + adb.get_device_name(device))
+                "Unable to push motifcore script " + parentLocalPath2 + " to device: " + device.name)
 
         # generate offspring
         self.test_runner.generate_ga_offspring(device, self.toolbox.get_package_name(),
@@ -207,17 +207,16 @@ class Standard:
         result_code = adb.pull(device, offspringRemotePath1, offspringLocalPath1,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            adb.reboot(device)
+            device.flag_as_malfunctioning()
             raise Exception(
-                "Unable to pull motifcore script " + offspringRemotePath1 + " to device: " + adb.get_device_name(
-                    device))
+                "Unable to pull motifcore script " + offspringRemotePath1 + " to device: " + device.name)
 
         result_code = adb.pull(device, offspringRemotePath2, offspringLocalPath2,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            adb.reboot(device)
+            device.flag_as_malfunctioning()
             raise Exception(
-                "Unable to pull motifcore script " + offspringLocalPath2 + " to device: " + adb.get_device_name(device))
+                "Unable to pull motifcore script " + offspringLocalPath2 + " to device: " + device.name)
 
         o1 = self.get_test_case_from_file(offspringLocalPath1)
         o2 = self.get_test_case_from_file(offspringLocalPath2)

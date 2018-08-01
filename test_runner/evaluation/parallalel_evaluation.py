@@ -41,7 +41,7 @@ def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, result_
         return result
     except Exception as e:
         logger.log_progress(
-            "\nThere was an error evaluating individual in parallel on device:" + adb.get_device_name(device) + "\n")
+            "\nThere was an error evaluating individual in parallel on device:" + device.name + "\n")
         print e
 
         return pop, False, device

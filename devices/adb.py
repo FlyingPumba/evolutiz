@@ -20,7 +20,7 @@ devices_imei = {
 
 
 def adb_command(device, command, timeout=None, log_output=True):
-    adb_cmd = adb_cmd_prefix + " -s " + device + " " + command
+    adb_cmd = adb_cmd_prefix + " -s " + device.name + " " + command
 
     if timeout is not None:
         timeout_adb_cmd = settings.TIMEOUT_CMD + " " + str(timeout) + " " + adb_cmd
@@ -72,33 +72,28 @@ def install(device, package_name, apk_path):
     if result_code != 0:
         # we were unable to install the apk in device.
         # Reboot and raise exception
-        reboot(device)
-        raise Exception("Unable to install apk: " + apk_path + " on device: " + device)
+        device.flag_as_malfunctioning()
+        raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
 
-    cmd = settings.TIMEOUT_CMD + " " + str(
-        settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + adb_cmd_prefix + " -s " + device + " shell pm list packages | grep " + package_name
+    cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + \
+          adb_cmd_prefix + " -s " + device.name + " shell pm list packages | grep " + package_name
     log_adb_command(device, cmd)
 
     res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
     if package_name not in res:
         # we were unable to install
         # Reboot and raise exception
-        reboot(device)
-        raise Exception("Unable to install apk: " + apk_path + " on device: " + device)
+        device.flag_as_malfunctioning()
+        raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
 
 
 def pkill(device, string):
-    adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
+    adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
     pkill_cmd = adb_cmd + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd + "kill pid "
     cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + pkill_cmd
     log_adb_command(device, cmd)
 
     return os.system(cmd + logger.redirect_string())
-
-
-def reboot(device):
-    adb_command(device, "reboot", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-
 
 def set_bluetooth_state(device, enabled, timeout=None):
     if enabled:
@@ -137,39 +132,31 @@ def set_brightness(device, value, timeout=None):
 
 
 def get_battery_level(device):
-    while True:
-        try:
-            adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
-            battery_cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
-            cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + battery_cmd
-            log_adb_command(device, cmd)
+    try:
+        adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
+        battery_cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
+        cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + battery_cmd
+        log_adb_command(device, cmd)
 
-            res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
-            return int(res)
-        except Exception:
-            print "\nThere was an error fetching battery level for device: " + device
-            continue
+        res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+        return int(res)
+    except Exception as e:
+        device.flag_as_malfunctioning()
+        raise Exception("There was an error fetching battery level for device: " + device.name)
 
 
 def get_imei(device):
-    if device not in devices_imei:
-        adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
+    if device.name not in devices_imei:
+        adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
         imei_cmd = adb_cmd + "dumpsys iphonesubinfo | grep 'Device ID' | cut -d ' ' -f 6 "
         cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + imei_cmd
         # leave commented to avoid infinite recursion
         # log_adb_command(device, cmd)
 
         res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
-        devices_imei[device] = res
+        devices_imei[device.name] = res
 
-    return devices_imei[device]
-
-
-def get_device_name(device):
-    if "emulator" in device:
-        return device
-    else:
-        return get_imei(device)
+    return devices_imei[device.name]
 
 
 def restart_server():
@@ -183,12 +170,12 @@ def restart_server():
 
 
 def log_adb_command(device, cmd):
-    device_adb_log_file = adb_logs_dir + "/" + get_device_name(device) + "-adb.log"
+    device_adb_log_file = adb_logs_dir + "/" + device.name + "-adb.log"
     os.system("echo \"" + cmd + "\" >> " + device_adb_log_file)
 
 
 def exists_file(device, file_path, timeout=None):
-    adb_cmd = adb_cmd_prefix + " -s " + device + " shell ls " + file_path
+    adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell ls " + file_path
     if timeout:
         adb_cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + adb_cmd
 
@@ -206,5 +193,5 @@ def exists_file(device, file_path, timeout=None):
 
 
 def log_evaluation_result(device, result_dir, script, success):
-    device_adb_log_file = result_dir + "/" + get_device_name(device) + "-evaluations.log"
+    device_adb_log_file = result_dir + "/" + device.name + "-evaluations.log"
     os.system("echo \"" + str(success) + " -> " + script + "\" >> " + device_adb_log_file)

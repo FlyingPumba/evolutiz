@@ -98,8 +98,7 @@ def run_benchmark(app_path):
 
     # - Check battery
     start_time = time.time()
-    check_devices_battery([device])
-    log_devices_battery(device_manager, "init", result_dir)
+    device_manager.log_devices_battery("init", result_dir)
     times.append(("Comprobar y loggear estado bateria emuladores", time.time() - start_time))
 
     # - Correr monkey
@@ -134,17 +133,17 @@ def run_benchmark(app_path):
 
     # - Intentar prender bluetooth
     start_time = time.time()
-    adb.set_bluetooth_state(device, True)
+    device.set_bluetooth_state(True)
     times.append(("Intentar prender bluetooth", time.time() - start_time))
 
     # - Intentar prender WiFi
     start_time = time.time()
-    adb.set_wifi_state(device, True)
+    device.set_wifi_state(True)
     times.append(("Intentar prender WiFi", time.time() - start_time))
 
     # - Intentar prender location services
     start_time = time.time()
-    adb.set_location_state(device, True)
+    device.set_location_state(True)
     times.append(("Intentar prender location services", time.time() - start_time))
 
     # - Ejecutar un caso de test
@@ -184,9 +183,9 @@ def boot_emulator(device_manager):
 def reboot_device(device_manager, device):
     result_code = adb.adb_command(device, "reboot")
     if result_code != 0:
-        logger.log_progress("\nUnable to reboot device: " + adb.get_device_name(device))
+        logger.log_progress("\nUnable to reboot device: " + device.name)
         logger.log_progress("\nPlease, turn it off and on manually.")
-        raise Exception("Unable to reboot device: " + adb.get_device_name(device))
+        raise Exception("Unable to reboot device: " + device.name)
 
     time.sleep(5)
     while len(device_manager.get_devices(refresh=True)) < 1:
@@ -229,35 +228,8 @@ def prepare_apk(device, instrumented_app_dir, result_dir):
     else:
         return package_name
 
-
-def check_devices_battery(devices):
-    # check that all devices have enough battery
-    battery_threshold = 20
-    while True:
-        all_devices_with_battery = True
-        for device in devices:
-            level = adb.get_battery_level(device)
-            all_devices_with_battery = all_devices_with_battery and level >= battery_threshold
-
-        if all_devices_with_battery:
-            break
-        else:
-            logger.log_progress("\nWaiting for some devices to reach " + str(battery_threshold) + "% battery level")
-            time.sleep(60)  # sleep 1 minute
-
-
-def log_devices_battery(device_manager, gen, result_dir):
-    log_file = result_dir + "/battery.log"
-    os.system("echo 'Battery levels at gen: " + str(gen) + "' >> " + log_file)
-
-    for device in device_manager.get_devices():
-        level = adb.get_battery_level(device)
-        imei = adb.get_imei(device)
-        os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
-
-
 def run_monkey(device, package_name):
-    monkey_cmd = adb.adb_cmd_prefix + " -s " + device + \
+    monkey_cmd = adb.adb_cmd_prefix + " -s " + device.name + \
                  " shell monkey -p " + package_name + \
                  " -v --throttle 200 --ignore-crashes --ignore-security-exceptions --ignore-timeouts " + \
                  str(settings.SEQUENCE_LENGTH_MAX) + " 2>&1 >/dev/null"
