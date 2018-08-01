@@ -1,8 +1,8 @@
 from deap import tools, base, creator
 
 import settings
-from evaluation.eval_suite_multi_objective import eval_suite
-from evaluation.mut_suite import sapienz_mut_suite
+from test_runner.evaluation.eval_suite_multi_objective import eval_suite
+from test_runner.evaluation import sapienz_mut_suite
 
 
 class DynaMosa:
