@@ -1,7 +1,7 @@
 import os
 from datetime import datetime as dt
 
-import logger
+from util import logger
 import settings
 
 

@@ -7,7 +7,7 @@ import pickle
 from deap import base
 from deap.benchmarks import tools
 
-import logger
+from util import logger
 import settings
 from algorithms.gen_individual import gen_individual
 from algorithms.gen_individual_with_coverage import gen_individual_with_coverage

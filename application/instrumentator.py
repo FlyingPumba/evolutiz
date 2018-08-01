@@ -4,7 +4,7 @@ import xml.etree.cElementTree as ET
 
 from lxml import etree
 
-import logger
+from util import logger
 import settings
 
 

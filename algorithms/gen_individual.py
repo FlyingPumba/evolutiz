@@ -1,12 +1,9 @@
 import datetime
-import os
-import time
 import random
 import traceback
 
 from deap import creator
 
-import logger
 import settings
 from crashes import crash_handler
 from devices import adb

@@ -1,11 +1,9 @@
-import time
-
 import os
 import subprocess
 import multiprocessing as mp
 from datetime import datetime as dt
 
-import logger
+from util import logger
 import settings
 from application import static_analyser
 from devices import adb

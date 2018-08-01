@@ -1,7 +1,7 @@
 import multiprocessing as mp
 import time
 
-import logger
+from util import logger
 from devices import adb
 
 # global results for mp callback

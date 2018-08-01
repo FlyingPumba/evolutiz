@@ -8,7 +8,7 @@ import traceback
 import numpy
 from deap import creator
 
-import logger
+from util import logger
 import settings
 from crashes import crash_handler
 from devices import adb

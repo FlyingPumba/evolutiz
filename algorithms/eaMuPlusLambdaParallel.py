@@ -6,7 +6,7 @@ import sys
 
 from deap import tools, creator, base
 
-import logger
+from util import logger
 import settings
 from algorithms.eval_suite_multi_objective import eval_suite
 from algorithms.mut_suite import sapienz_mut_suite

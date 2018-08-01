@@ -4,7 +4,7 @@ import subprocess as sub
 import time
 
 import adb
-import logger
+from util import logger
 import settings
 from devices.do_parallel_fail_one_fail_all import DoParallelFailOneFailAll
 

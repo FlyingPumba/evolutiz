@@ -5,7 +5,7 @@ import time
 from lxml import html
 from bs4 import UnicodeDammit
 
-import logger
+from util import logger
 import settings
 from crashes import crash_handler
 from devices import adb

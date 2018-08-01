@@ -1,13 +1,11 @@
 import datetime
 import os
 
-import random
 import pickle
-import sys
 
 from deap import tools, creator, base
 
-import logger
+from util import logger
 import settings
 from algorithms.eval_suite_single_objective import eval_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel

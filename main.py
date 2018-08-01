@@ -14,7 +14,7 @@ import os
 import subprocess as sub
 import traceback
 
-import logger
+from util import logger
 from algorithms.eaDynaMosaParallel import eaDynaMosaParallel
 from algorithms.eaMonotonicParallel import eaMonotonicParallel
 from algorithms.eaMosaParallel import eaMosaParallel

@@ -7,7 +7,7 @@ import os
 
 import numpy
 
-import logger
+from util import logger
 import settings
 from coverages import emma_coverage
 from devices import adb
@@ -257,7 +257,7 @@ if __name__ == "__main__":
     # run_monkey(app_paths)
     results_per_app = process_results(app_paths)
 
-    logger.log_progress("\n"+str(results_per_app))
+    logger.log_progress("\n" + str(results_per_app))
     print str(results_per_app)
 
     # recover stdout and stderr

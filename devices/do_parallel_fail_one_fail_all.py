@@ -1,14 +1,6 @@
-import time
-
-import os
-import subprocess
 import multiprocessing as mp
-from datetime import datetime as dt
 
-import logger
-import settings
-from application import static_analyser
-from devices import adb
+from util import logger
 
 successful_devices = 0
 total_devices = 0

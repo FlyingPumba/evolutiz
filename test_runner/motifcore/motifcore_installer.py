@@ -1,6 +1,6 @@
 import multiprocessing as mp
 
-import logger
+from util import logger
 import settings
 from devices import adb
 

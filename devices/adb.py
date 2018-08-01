@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-import logger
+from util import logger
 import settings
 
 adb_logs_dir = ""
