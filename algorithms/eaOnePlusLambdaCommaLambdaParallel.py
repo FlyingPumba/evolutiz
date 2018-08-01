@@ -1,10 +1,9 @@
-import random
-import pickle
 from deap import tools, base, creator
 
 import settings
 from algorithms.mut_suite import sapienz_mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
+
 
 class eaOnePlusLambdaCommaLambdaParallel:
 

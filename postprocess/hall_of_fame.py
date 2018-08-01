@@ -1,5 +1,4 @@
 import pickle
-
 from deap import creator, base
 
 import settings

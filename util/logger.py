@@ -1,8 +1,8 @@
-import multiprocessing
 import sys
-from datetime import datetime
 import time
+from datetime import datetime
 
+import multiprocessing
 import os
 
 import settings

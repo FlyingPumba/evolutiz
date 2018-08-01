@@ -1,8 +1,8 @@
 import os
 import subprocess
 
-from util import logger
 import settings
+from util import logger
 
 adb_logs_dir = ""
 adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb"

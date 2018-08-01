@@ -1,20 +1,18 @@
-import multiprocessing.pool
 import time
-import traceback
-import subprocess as sub
+from datetime import datetime
 
-import os
-
+import multiprocessing.pool
 import numpy
+import os
+import subprocess as sub
+import traceback
 
-from util import logger
 import settings
 from coverages import emma_coverage
 from devices import adb
-from datetime import datetime
-
 # global results for mp callback
 from devices.device_manager import DeviceManager
+from util import logger
 
 EXPERIMENT_TIME = 5
 COVERAGE_INTERVAL = 10

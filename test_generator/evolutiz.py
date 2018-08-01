@@ -1,13 +1,12 @@
-import os
 import time
 from datetime import datetime
 
 import numpy
+import os
 import pickle
 from deap import base
 from deap.benchmarks import tools
 
-from util import logger
 import settings
 from algorithms.gen_individual import gen_individual
 from algorithms.gen_individual_with_coverage import gen_individual_with_coverage
@@ -16,6 +15,7 @@ from application.prepare_apk_parallel import prepare_apk
 from devices import adb
 from init import initRepeatParallel, initRepeatParallelWithCoverage
 from plot import two_d_line
+from util import logger
 
 
 class Evolutiz():

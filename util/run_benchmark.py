@@ -6,8 +6,8 @@ from algorithms.eval_suite_multi_objective import eval_suite
 from algorithms.gen_individual import gen_individual, get_sequence
 from algorithms.gen_individual_with_coverage import get_sequence_with_fitness, gen_individual_with_coverage
 from application import static_analyser
-from devices.device_manager import DeviceManager
 from application.prepare_apk_parallel import get_package_name, push_apk_and_string_xml
+from devices.device_manager import DeviceManager
 
 matplotlib.use('Agg')
 

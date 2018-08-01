@@ -1,12 +1,13 @@
 import datetime
+
 import random
 import traceback
-
 from deap import creator
 
 import settings
 from crashes import crash_handler
 from devices import adb
+
 
 class CanNotInitSeqException(Exception):
 	pass

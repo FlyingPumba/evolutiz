@@ -1,13 +1,13 @@
-import pickle
-import random
 from operator import attrgetter
 
+import random
 from deap import tools, creator, base
 
 import settings
 from algorithms.eval_suite_single_objective import eval_suite
 from algorithms.mut_suite import sapienz_mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
+
 
 class eaSteadyStateParallel:
 	def __init__(self):

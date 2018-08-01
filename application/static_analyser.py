@@ -1,8 +1,9 @@
-import os
 from datetime import datetime as dt
 
-from util import logger
+import os
+
 import settings
+from util import logger
 
 
 def decode_apk(input_apk, output_dir):

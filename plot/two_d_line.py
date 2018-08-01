@@ -1,6 +1,5 @@
-import pickle
-
 import matplotlib.pyplot as plt
+import pickle
 
 import settings
 

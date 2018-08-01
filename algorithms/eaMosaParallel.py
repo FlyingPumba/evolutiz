@@ -1,10 +1,9 @@
-import random
-import pickle
 from deap import tools, base, creator
 
 import settings
 from algorithms.eval_suite_multi_objective import eval_suite
 from algorithms.mut_suite import sapienz_mut_suite
+
 
 class eaMosaParallel:
 

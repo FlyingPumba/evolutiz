@@ -1,11 +1,10 @@
 import os
 import subprocess as sub
 import xml.etree.cElementTree as ET
-
 from lxml import etree
 
-from util import logger
 import settings
+from util import logger
 
 
 def instrument_apk(app_path, result_dir):

@@ -1,7 +1,6 @@
+import os
 import random
 import string
-import subprocess
-import os
 
 import settings
 from devices import adb

@@ -2,6 +2,7 @@ import multiprocessing as mp
 
 from devices import adb
 
+
 def push_callback(result_code):
     if result_code != 0: raise Exception("Unable to complete push_to_all operation")
 

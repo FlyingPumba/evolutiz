@@ -1,15 +1,15 @@
-import os
-
-import pickle
 import sys
 
+import os
+import pickle
 from deap import tools, creator, base
 
-from util import logger
 import settings
 from algorithms.eval_suite_multi_objective import eval_suite
 from algorithms.mut_suite import sapienz_mut_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
+from util import logger
+
 
 class randomParallel:
 

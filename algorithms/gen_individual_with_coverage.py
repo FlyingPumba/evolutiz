@@ -1,20 +1,20 @@
 import datetime
-import os
 import sys
 import time
-import random
-import traceback
 
 import numpy
+import os
+import random
+import traceback
+from bs4 import UnicodeDammit
 from deap import creator
+from lxml import html
 
-from util import logger
 import settings
 from crashes import crash_handler
 from devices import adb
+from util import logger
 
-from lxml import html
-from bs4 import UnicodeDammit
 
 class CanNotInitSeqException(Exception):
     pass

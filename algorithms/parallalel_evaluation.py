@@ -1,8 +1,9 @@
-import multiprocessing as mp
 import time
 
-from util import logger
+import multiprocessing as mp
+
 from devices import adb
+from util import logger
 
 # global results for mp callback
 idle_devices = []

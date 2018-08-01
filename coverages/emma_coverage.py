@@ -1,14 +1,15 @@
-import os
 import datetime
 import time
 
-from lxml import html
+import os
 from bs4 import UnicodeDammit
+from lxml import html
 
-from util import logger
 import settings
 from crashes import crash_handler
 from devices import adb
+from util import logger
+
 
 def extract_coverage(path):
 	with open(path, 'rb') as file:

@@ -1,10 +1,11 @@
-import os
 import sys
 
 import numpy
+import os
 
 import settings
 from coverages import act_coverage, emma_coverage
+
 
 def eval_suite(test_runner, individual, device, result_dir, apk_dir, package_name, gen, pop):
 	# for get_motifcore_suite_coverage

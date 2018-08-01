@@ -1,8 +1,8 @@
 import random
-
 from deap import tools
 
 import settings
+
 
 def sapienz_mut_suite(individual, indpb):
     # shuffle seq

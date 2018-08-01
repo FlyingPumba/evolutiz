@@ -1,8 +1,8 @@
-import os, sys, shutil, datetime, time
-from lxml import html
-from bs4 import UnicodeDammit
+import os
+import subprocess
+import threading
+
 import settings
-import subprocess, threading
 
 
 class Command(object):

@@ -3,6 +3,7 @@ import os
 import settings
 from coverages import act_coverage, emma_coverage
 
+
 def eval_suite(test_runner, individual, device, result_dir, apk_dir, package_name, gen, pop):
 	script_path = []
 

@@ -1,15 +1,14 @@
 import datetime
+
 import os
-
 import pickle
-
 from deap import tools, creator, base
 
-from util import logger
 import settings
 from algorithms.eval_suite_single_objective import eval_suite
 from algorithms.parallalel_evaluation import evaluate_in_parallel
 from devices import adb
+from util import logger
 
 
 class eaStandardParallel:

@@ -1,8 +1,9 @@
 import multiprocessing as mp
 
-from util import logger
 import settings
 from devices import adb
+from util import logger
+
 
 def kill_motifcore(device):
 	adb.pkill(device, "motifcore")
