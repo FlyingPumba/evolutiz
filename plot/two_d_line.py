@@ -1,8 +1,12 @@
+import matplotlib
+
 import matplotlib.pyplot as plt
 import pickle
 
 import settings
 
+# Force matplotlib to not use any Xwindows backend.
+matplotlib.use('Agg')
 
 def extract_axis(array, axis):
     ret = []
