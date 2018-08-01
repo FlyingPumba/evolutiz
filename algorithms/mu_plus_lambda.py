@@ -37,11 +37,6 @@ class MuPlusLambda(object):
         self.stats = stats
         self.verbose = verbose
 
-        # mate crossover two suites
-        self.toolbox.register("mate", tools.cxUniform, indpb=0.5)
-        # mutate should change seq order in the suite as well
-        self.toolbox.register("mutate", sapienz_mut_suite, indpb=0.5)
-
         # self.toolbox.register("select", tools.selTournament, tournsize=5)
         self.toolbox.register("select", tools.selNSGA2)
 

@@ -7,9 +7,12 @@ from test_runner.test_runner import TestRunner
 
 class EvolutizTestRunner(TestRunner):
 
-    def __init__(self):
+    def __init__(self, toolbox):
         self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE = "/mnt/sdcard/evolutiz.script"
-        pass
+
+        # register specific operators for evolutiz tests
+        #toolbox.register("mate", tools.cxUniform, indpb=0.5)
+        #toolbox.register("mutate", evolutiz_mut_suite, indpb=0.5)
 
     def run(self, device, package_name, script_name):
         self.prepare_device_for_run(device)

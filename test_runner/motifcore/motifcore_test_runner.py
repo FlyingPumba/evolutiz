@@ -1,16 +1,23 @@
 import os
 import random
 
+from deap.benchmarks import tools
+
 import motifcore_installer
 import settings
 from devices import adb
+from test_runner.motifcore.mut_suite import sapienz_mut_suite
 from test_runner.test_runner import TestRunner
 
 
 class MotifcoreTestRunner(TestRunner):
 
-    def __init__(self, use_motifgene=False):
+    def __init__(self, toolbox, use_motifgene=False):
         self.use_motifgene = use_motifgene
+
+        # register specific operators for motifcore tests
+        toolbox.register("mate", tools.cxUniform, indpb=0.5)
+        toolbox.register("mutate", sapienz_mut_suite, indpb=0.5)
 
     def install_on_devices(self, device_manager):
         motifcore_installer.install_in_all_devices(device_manager)
