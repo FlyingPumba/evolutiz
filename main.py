@@ -6,8 +6,8 @@ import settings
 from test_generator.evolutiz import Evolutiz
 
 from devices.device_manager import DeviceManager
-from test_runner.evolutiz_runner import EvolutizTestRunner
-from test_runner.motifcore_runner import MotifcoreTestRunner
+from test_runner.evolutiz.evolutiz_test_runner import EvolutizTestRunner
+from test_runner.motifcore.motifcore_test_runner import MotifcoreTestRunner
 
 import argparse
 import os

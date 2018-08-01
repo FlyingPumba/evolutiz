@@ -1,10 +1,9 @@
 import os
 import random
 
-import logger
 import settings
 from devices import adb
-from test_runner import TestRunner
+from test_runner.test_runner import TestRunner
 import motifcore_installer
 
 class MotifcoreTestRunner(TestRunner):
