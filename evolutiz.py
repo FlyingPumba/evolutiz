@@ -41,7 +41,8 @@ class Evolutiz(object):
         self.device_manager.log_devices_battery("init", self.result_dir)
 
         # TODO: allow to use other coverage fetcher than EMMA, based on whether we are generating tests with source code or not
-        self.self.test_suite_evaluator = self.test_suite_evaluator_class(self.test_runner, EmmaCoverage(),
+        coverage_fetcher = EmmaCoverage(self.test_runner, self.result_dir, self.apk_dir, self.package_name)
+        self.self.test_suite_evaluator = self.test_suite_evaluator_class(self.test_runner, coverage_fetcher,
                                                                          self.result_dir, self.app_path,
                                                                          self.package_name)
 
