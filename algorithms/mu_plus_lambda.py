@@ -6,9 +6,9 @@ import random
 from deap import tools, creator, base
 
 import settings
-from test_runner.evaluation.eval_suite_multi_objective import eval_suite
-from test_runner.evaluation import sapienz_mut_suite
-from test_runner.evaluation import evaluate_in_parallel
+from evaluation import eval_suite
+from evaluation import sapienz_mut_suite
+from evaluation import evaluate_in_parallel
 from util import logger
 
 

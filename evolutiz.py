@@ -8,8 +8,7 @@ from deap import base
 from deap.benchmarks import tools
 
 import settings
-from test_runner.evaluation import gen_individual
-from test_runner.evaluation import gen_individual_with_coverage
+from evaluation import gen_individual_with_coverage, gen_individual
 from application.instrumentator import instrument_apk
 from application.prepare_apk_parallel import prepare_apk
 from devices import adb

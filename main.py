@@ -13,7 +13,7 @@ from algorithms.steady_state import SteadyState
 
 
 import settings
-from test_generator.evolutiz import Evolutiz
+from evolutiz import Evolutiz
 
 from devices.device_manager import DeviceManager
 from test_runner.evolutiz.evolutiz_test_runner import EvolutizTestRunner

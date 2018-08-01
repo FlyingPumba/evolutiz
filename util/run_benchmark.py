@@ -2,9 +2,10 @@ import matplotlib
 # Force matplotlib to not use any Xwindows backend.
 from deap import creator, base
 
-from test_runner.evaluation.eval_suite_multi_objective import eval_suite
-from test_runner.evaluation import gen_individual, get_sequence
-from test_runner.evaluation import get_sequence_with_fitness, gen_individual_with_coverage
+from evaluation import eval_suite
+from evaluation import get_sequence
+from evaluation import get_sequence_with_fitness
+from evaluation import gen_individual_with_coverage, gen_individual
 from application import static_analyser
 from application.prepare_apk_parallel import get_package_name, push_apk_and_string_xml
 from devices.device_manager import DeviceManager
