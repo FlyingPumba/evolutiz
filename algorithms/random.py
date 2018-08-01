@@ -11,7 +11,7 @@ from test_runner.evaluation import evaluate_in_parallel
 from util import logger
 
 
-class Random:
+class Random(object):
 
     def __init__(self):
         self.cxpb = settings.CXPB

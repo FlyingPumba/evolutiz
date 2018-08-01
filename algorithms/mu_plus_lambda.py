@@ -12,7 +12,7 @@ from test_runner.evaluation import evaluate_in_parallel
 from util import logger
 
 
-class MuPlusLambda:
+class MuPlusLambda(object):
 
     def __init__(self):
         self.cxpb = settings.CXPB

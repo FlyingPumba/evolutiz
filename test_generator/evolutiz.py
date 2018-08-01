@@ -18,7 +18,7 @@ from plot import two_d_line
 from util import logger
 
 
-class Evolutiz():
+class Evolutiz(object):
 
     def __init__(self, device_manager, test_runner, strategy_class, result_dir):
         self.device_manager = device_manager

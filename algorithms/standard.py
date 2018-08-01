@@ -11,7 +11,7 @@ from devices import adb
 from util import logger
 
 
-class Standard:
+class Standard(object):
 
     def __init__(self):
         self.cxpb = settings.CXPB

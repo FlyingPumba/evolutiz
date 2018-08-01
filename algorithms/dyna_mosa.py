@@ -5,7 +5,7 @@ from test_runner.evaluation.eval_suite_multi_objective import eval_suite
 from test_runner.evaluation import sapienz_mut_suite
 
 
-class DynaMosa:
+class DynaMosa(object):
 
     def __init__(self):
         self.cxpb = settings.CXPB

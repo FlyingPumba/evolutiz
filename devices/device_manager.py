@@ -10,7 +10,7 @@ from devices.emulator import Emulator
 from util import logger
 
 
-class DeviceManager:
+class DeviceManager(object):
     def __init__(self):
         self.total_emulators = settings.EMULATOR_DEVICE_NUM
         self.next_available_emulator_port = 5554

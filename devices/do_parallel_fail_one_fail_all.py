@@ -6,7 +6,7 @@ successful_devices = 0
 total_devices = 0
 
 
-class DoParallelFailOneFailAll:
+class DoParallelFailOneFailAll(object):
 
     def __init__(self, device_manager, motive, function_to_apply, arguments, callback=None):
         self.device_manager = device_manager

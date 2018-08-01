@@ -9,7 +9,7 @@ from test_runner.evaluation import sapienz_mut_suite
 from test_runner.evaluation import evaluate_in_parallel
 
 
-class Monotonic:
+class Monotonic(object):
     def __init__(self):
         self.cxpb = settings.CXPB
         self.mutpb = settings.MUTPB
