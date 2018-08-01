@@ -24,6 +24,8 @@ class MuPlusLambda(object):
         # "population" to generate population
         self.toolbox = toolbox
 
+        self.test_evaluator = test_evaluator
+
         self.best_historic_crashes = 0
         self.best_historic_length = sys.maxint
         self.best_historic_coverage = 0
@@ -31,23 +33,10 @@ class MuPlusLambda(object):
         assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
                                                  "probabilities must be smaller or equal to 1.0.")
 
-    def run(self):
-        success = self.initPopulation()
-        if not success:
-            logger.log_progress("\nThere was an error initializing pupulation for app: " + app_name)
-            return False
-
-        return self.evolve()
-
     def setup(self, stats=None, verbose=False):
         self.stats = stats
         self.verbose = verbose
 
-        ### deap framework setup
-        creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
-        creator.create("Individual", list, fitness=creator.FitnessCovLen)
-
-        self.toolbox.register("evaluate", eval_suite, test_runner)
         # mate crossover two suites
         self.toolbox.register("mate", tools.cxUniform, indpb=0.5)
         # mutate should change seq order in the suite as well
@@ -58,6 +47,14 @@ class MuPlusLambda(object):
 
         self.targets_historic_log_file = self.toolbox.get_result_dir() + "/targets-historic.log"
         self.setup_log_best_historic_objectives_achieved()
+
+    def run(self):
+        success = self.initPopulation()
+        if not success:
+            logger.log_progress("\nThere was an error initializing pupulation for app: " + app_name)
+            return False
+
+        return self.evolve()
 
     def initPopulation(self):
         print "### Initialising population ...."

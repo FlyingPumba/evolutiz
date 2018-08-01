@@ -2,6 +2,7 @@ import os
 import sys
 
 import numpy
+from deap import creator, base
 
 import settings
 
@@ -14,6 +15,10 @@ class MultiObjectiveTestSuiteEvaluator(object):
         self.result_dir = result_dir
         self.apk_dir = apk_dir
         self.package_name = package_name
+
+        # deap framework setup for multi objective
+        creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
+        creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
     def evaluate(self, individual, device, gen="", pop=""):
         script_path = []

@@ -39,10 +39,6 @@ class Standard(object):
         self.stats = stats
         self.verbose = verbose
 
-        ### deap framework setup
-        creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
-        creator.create("Individual", list, fitness=creator.FitnessMin)
-
         self.toolbox.register("evaluate", eval_suite, test_runner)
         self.toolbox.register("select", tools.selTournament, tournsize=5)
 

@@ -1,5 +1,7 @@
 import os
 
+from deap import base, creator
+
 import settings
 
 
@@ -11,6 +13,10 @@ class SingleObjectiveTestSuiteEvaluator(object):
         self.result_dir = result_dir
         self.apk_dir = apk_dir
         self.package_name = package_name
+
+        # deap framework setup for single objective
+        creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
+        creator.create("Individual", list, fitness=creator.FitnessMin)
 
     def evaluate(self, individual, device, gen="", pop=""):
         script_path = []
