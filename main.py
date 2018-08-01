@@ -1,7 +1,16 @@
 import matplotlib
-
 # Force matplotlib to not use any Xwindows backend.
 matplotlib.use('Agg')
+
+from algorithms.dyna_mosa import DynaMosa
+from algorithms.monotonic import Monotonic
+from algorithms.mosa import Mosa
+from algorithms.mu_plus_lambda import MuPlusLambda
+from algorithms.one_plus_lambda_comma_lambda import OnePlusLambdaCommaLambda
+from algorithms.random import Random
+from algorithms.standard import Standard
+from algorithms.steady_state import SteadyState
+
 
 import settings
 from test_generator.evolutiz import Evolutiz
@@ -16,14 +25,6 @@ import subprocess as sub
 import traceback
 
 from util import logger
-from algorithms.eaDynaMosaParallel import DynaMosa
-from algorithms.eaMonotonicParallel import Monotonic
-from algorithms.eaMosaParallel import Mosa
-from algorithms.eaMuPlusLambdaParallel import MuPlusLambda
-from algorithms.eaOnePlusLambdaCommaLambdaParallel import OnePlusLambdaCommaLambda
-from algorithms.eaStandardParallel import Standard
-from algorithms.eaSteadyStateParallel import SteadyState
-from algorithms.randomParallel import Random
 from devices import adb
 
 
