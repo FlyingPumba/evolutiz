@@ -15,8 +15,8 @@ class EvolutizTestRunner(TestRunner):
         self.prepare_device_for_run(device)
 
         evolutiz_cmd = "evolutiz -p " + package_name \
-                        + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
-                        + " -f /mnt/sdcard/" + script_name + " 1"
+                       + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
+                       + " -f /mnt/sdcard/" + script_name + " 1"
 
         adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.MOTIFCORE_EVAL_TIMEOUT, log_output=False)
 
@@ -29,9 +29,9 @@ class EvolutizTestRunner(TestRunner):
         evolutiz_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
 
         evolutiz_cmd = "evolutiz -p " + package_name \
-                        + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
-                        + " -o " + self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE \
-                        + " -v " + str(evolutiz_events)
+                       + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
+                       + " -o " + self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE \
+                       + " -v " + str(evolutiz_events)
 
         adb.shell_command(device, evolutiz_cmd, timeout=settings.MOTIFCORE_EVAL_TIMEOUT, log_output=False)
 
@@ -67,7 +67,8 @@ class EvolutizTestRunner(TestRunner):
         script.close()
         return test_content
 
-    def generate_ga_offspring(self, device, package_name, parentFilename1, parentFilename2, offspringFilename1, offspringFilename2):
+    def generate_ga_offspring(self, device, package_name, parentFilename1, parentFilename2, offspringFilename1,
+                              offspringFilename2):
         evolutiz_cmd = "evolutiz -p " + package_name \
                        + " --dry --generate-ga-offspring " \
                        + " -f /mnt/sdcard/" + parentFilename1 \

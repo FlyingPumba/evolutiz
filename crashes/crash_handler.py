@@ -26,7 +26,8 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
         return False
     else:
         # save the crash report
-        result_code = adb.pull(device, device_bugreport_path, local_bugreport_path, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        result_code = adb.pull(device, device_bugreport_path, local_bugreport_path,
+                               timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             adb.reboot(device)
             raise Exception("Failed to retrieve bugreport.crash file from device: " + device)
@@ -38,7 +39,8 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
                 if line_no == 0:
                     # should not caused by android itself
                     if line.startswith("// CRASH: com.android."):
-                        adb.shell_command(device, "rm " + device_bugreport_path, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+                        adb.shell_command(device, "rm " + device_bugreport_path,
+                                          timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
                         os.system("rm " + local_bugreport_path)
 
                         # caught a crash, but it was Android related

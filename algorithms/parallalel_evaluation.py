@@ -11,6 +11,7 @@ total_individuals = 0
 remaining_index_to_evaluate = []
 individuals_evaluated = []
 
+
 def process_results(data):
     indi_index, fitness, device = data
     if not fitness:
@@ -24,8 +25,10 @@ def process_results(data):
         idle_devices.append(device)
 
         global total_individuals
-        logger.log_progress("\rEvaluating in parallel: " + str(len(individuals_evaluated)) + "/" + str(total_individuals))
+        logger.log_progress(
+            "\rEvaluating in parallel: " + str(len(individuals_evaluated)) + "/" + str(total_individuals))
         logger.log_fitness_result(fitness)
+
 
 # 0. prepare wrapper for eval function
 def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, result_dir, apk_dir, package_name, gen, pop):
@@ -37,10 +40,12 @@ def eval_suite_parallel_wrapper(eval_suite_parallel, individual, device, result_
         print "Elapsed seconds to evaluate individual was ", elapsed_time
         return result
     except Exception as e:
-        logger.log_progress("\nThere was an error evaluating individual in parallel on device:" + adb.get_device_name(device) + "\n")
+        logger.log_progress(
+            "\nThere was an error evaluating individual in parallel on device:" + adb.get_device_name(device) + "\n")
         print e
 
         return pop, False, device
+
 
 def evaluate_in_parallel(toolbox, individuals, gen):
     """ Evaluate the individuals fitnesses and assign them to each individual

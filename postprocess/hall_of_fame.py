@@ -8,16 +8,16 @@ creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
 
 def show_hof():
-	hof_file = open(settings.WORKING_DIR + "intermediate/hof.pickle")
+    hof_file = open(settings.WORKING_DIR + "intermediate/hof.pickle")
 
-	hof = pickle.load(hof_file)
+    hof = pickle.load(hof_file)
 
-	print len(hof)
+    print len(hof)
 
-	for individual in hof:
-		print type(individual)
-		print individual.fitness.values
+    for individual in hof:
+        print type(individual)
+        print individual.fitness.values
 
 
 if __name__ == "__main__":
-	show_hof()
+    show_hof()

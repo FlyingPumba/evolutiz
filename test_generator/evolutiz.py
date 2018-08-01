@@ -55,7 +55,8 @@ class Evolutiz():
         toolbox.register("individual_with_coverage", gen_individual_with_coverage, self.test_runner)
         toolbox.register("population_with_coverage", initRepeatParallelWithCoverage.initPop,
                          toolbox.individual_with_coverage)
-        toolbox.register("time_budget_available", lambda: time.time() - self.start_time < settings.SEARCH_BUDGET_IN_SECONDS)
+        toolbox.register("time_budget_available",
+                         lambda: time.time() - self.start_time < settings.SEARCH_BUDGET_IN_SECONDS)
         toolbox.register("get_apk_dir", lambda: app_path)
         toolbox.register("get_result_dir", lambda: self.result_dir)
         toolbox.register("get_package_name", lambda: self.package_name)

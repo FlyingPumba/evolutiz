@@ -1,11 +1,11 @@
-DEBUG = False # or False
+DEBUG = False  # or False
 # if False, "0" will be used
 ENABLE_STRING_SEEDING = True
 # use headless evaluator
 HEADLESS = True
-INSTRUMENTED_SUBJECTS_PATH = "instrumented-subjects/" # folder for instrumented builds with emma
-SUBJECTS_PATH = "subjects/" # folder for origignal sources
-ANDROID_TARGET = "android-10" # TODO: this should depend on a configuration file in the subject itself
+INSTRUMENTED_SUBJECTS_PATH = "instrumented-subjects/"  # folder for instrumented builds with emma
+SUBJECTS_PATH = "subjects/"  # folder for origignal sources
+ANDROID_TARGET = "android-10"  # TODO: this should depend on a configuration file in the subject itself
 
 USE_REAL_DEVICES = False
 USE_EMULATORS = True
@@ -16,11 +16,10 @@ ADB_REGULAR_COMMAND_TIMEOUT = 30
 
 # === Emulator ===
 EMULATOR_DEVICE_NUM = 1
-AVD_BOOT_DELAY = 40 # 40
+AVD_BOOT_DELAY = 40  # 40
 AVD_SERIES = "Nexus_4_API_19"
 # if run on Mac OS, use "gtimeout"
 TIMEOUT_CMD = "timeout"
-
 
 # === Env. Paths ===
 # path should end with a '/'
@@ -29,20 +28,18 @@ AAPT = '/usr/local/android-sdk/build-tools/28.0.0/aapt'
 # the path of evolutiz folder
 WORKING_DIR = '/home/ivan/src/evolutiz/'
 
-
 # === GA parameters ===
 SEQUENCE_LENGTH_MIN = 20
 SEQUENCE_LENGTH_MAX = 500
-SUITE_SIZE = 5 # 5
-POPULATION_SIZE = 50 # 50
-OFFSPRING_SIZE = 50 # 50
-GENERATION = 100 # 100
+SUITE_SIZE = 5  # 5
+POPULATION_SIZE = 50  # 50
+OFFSPRING_SIZE = 50  # 50
+GENERATION = 100  # 100
 # Crossover probability
 CXPB = 0.7
 # Mutation probability
 MUTPB = 0.3
-SEARCH_BUDGET_IN_SECONDS = 60 * 60 # 60 * 60 # = 1 hour
-
+SEARCH_BUDGET_IN_SECONDS = 60 * 60  # 60 * 60 # = 1 hour
 
 # === Only for main_multi ===
 # start from the ith apk
@@ -50,7 +47,6 @@ APK_OFFSET = 0
 APK_DIR = ""
 REPEATED_RESULTS_DIR = ""
 REPETITIONS = 1
-
 
 # === MOTIFCORE script ===
 # for initial population

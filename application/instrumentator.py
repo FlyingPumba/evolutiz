@@ -28,6 +28,7 @@ def instrument_apk(app_path, result_dir):
 
     return apk_path, package_name
 
+
 def prepare_app_for_instrumentation(app_path, result_dir):
     # copy sources to instrumented subjects folder
     app_name = os.path.basename(app_path)
@@ -67,9 +68,11 @@ def prepare_app_for_instrumentation(app_path, result_dir):
     # update project
     os.chdir(instrumented_source_path)
     # TODO: replace for a command that doesn't depend on old android-sdk-linux
-    os.system(settings.WORKING_DIR + "monkey/android-sdk-linux/tools/android update project --path . --target " + settings.ANDROID_TARGET + " --subprojects")
+    os.system(
+        settings.WORKING_DIR + "monkey/android-sdk-linux/tools/android update project --path . --target " + settings.ANDROID_TARGET + " --subprojects")
 
     return instrumented_source_path, package_name
+
 
 def get_main_activity(root_path):
     manifest = root_path + "AndroidManifest.xml"

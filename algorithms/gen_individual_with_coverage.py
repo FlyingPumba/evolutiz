@@ -19,6 +19,7 @@ from util import logger
 class CanNotInitSeqException(Exception):
     pass
 
+
 def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_name, gen, pop):
     ret = []
     unique_crashes = set()
@@ -57,7 +58,8 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
             adb.reboot(device)
             raise Exception("Unable to instrument " + package_name)
 
-        seq, there_is_coverage = get_sequence_with_fitness(test_runner, device, result_dir, package_name, gen, pop, i, unique_crashes)
+        seq, there_is_coverage = get_sequence_with_fitness(test_runner, device, result_dir, package_name, gen, pop, i,
+                                                           unique_crashes)
         there_is_coverage_in_suite = there_is_coverage or there_is_coverage_in_suite
 
         ret.append(seq)
@@ -147,7 +149,8 @@ def get_suite_with_fitness(test_runner, device, result_dir, apk_dir, package_nam
             adb.reboot(device)
             raise Exception("Unable to pull coverage for device: " + adb.get_device_name(device))
 
-        os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + apk_dir + "/src " + logger.redirect_string())
+        os.system(
+            "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + apk_dir + "/src " + logger.redirect_string())
 
         html_file = result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
         coverage_str = extract_coverage(html_file)
@@ -170,7 +173,8 @@ def get_sequence_with_fitness(test_runner, device, result_dir, package_name, gen
     script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]
     ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
 
-    motifcore_script_filename = result_dir + "/intermediate/" + script_name + ".init." + str(gen) + "." + str(pop) + "." + ts
+    motifcore_script_filename = result_dir + "/intermediate/" + script_name + ".init." + str(gen) + "." + str(
+        pop) + "." + ts
 
     ret = test_runner.generate(device, package_name, motifcore_script_filename)
 
@@ -210,6 +214,7 @@ def gen_individual_with_coverage(test_runner, device, result_dir, apk_dir, packa
         print e
         traceback.print_exc()
         return False, device
+
 
 def extract_coverage(path):
     with open(path, 'rb') as file:

@@ -104,7 +104,7 @@ class DeviceManager:
         # check if package manager is ready for each device
         devices = []
         for device in self.get_devices(refresh=refresh):
-            p = sub.Popen(adb.adb_cmd_prefix  + ' -s ' + device + ' shell pm list packages',
+            p = sub.Popen(adb.adb_cmd_prefix + ' -s ' + device + ' shell pm list packages',
                           stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
             output, errors = p.communicate()
             if "Error: Could not access the Package Manager" not in output.strip():
@@ -197,11 +197,13 @@ class DeviceManager:
 
             ready_devices = self.get_ready_to_install_devices(refresh=True)
             while len(self.booting_devices.keys()) > 0 or len(ready_devices) < devices_to_wait:
-                logger.log_progress("\rWaiting for devices to be ready: " + str(len(ready_devices)) + "/" + str(devices_to_wait))
+                logger.log_progress(
+                    "\rWaiting for devices to be ready: " + str(len(ready_devices)) + "/" + str(devices_to_wait))
                 time.sleep(10)
                 ready_devices = self.get_ready_to_install_devices(refresh=True)
 
-            logger.log_progress("\rWaiting for devices to be ready: " + str(len(ready_devices)) + "/" + str(devices_to_wait))
+            logger.log_progress(
+                "\rWaiting for devices to be ready: " + str(len(ready_devices)) + "/" + str(devices_to_wait))
 
     def clean_sdcard(self):
         if not settings.USE_EMULATORS:
@@ -216,7 +218,7 @@ class DeviceManager:
         do_parallel = DoParallelFailOneFailAll(self, motive, function_to_apply, arguments)
         do_parallel.run()
 
-    def wait_for_battery_threshold(self, battery_threshold = 20):
+    def wait_for_battery_threshold(self, battery_threshold=20):
         # check that all devices have enough battery
         while True:
             all_devices_with_battery = True

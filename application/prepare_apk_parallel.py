@@ -12,6 +12,7 @@ from util import logger
 successful_devices = 0
 total_devices = 0
 
+
 def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
     static_analyser.upload_string_xml(device, decoded_dir, package_name)
     adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
@@ -32,6 +33,7 @@ def process_results(success):
     installed_devices += 1
     global total_devices
     logger.log_progress("\rInstalling apk on devices: " + str(installed_devices) + "/" + str(total_devices))
+
 
 def prepare_apk(devices, instrumented_app_dir, result_dir):
     package_name, apk_path = get_package_name(instrumented_app_dir)
@@ -74,6 +76,7 @@ def prepare_apk(devices, instrumented_app_dir, result_dir):
 
     logger.log_progress("\nFinished installing APK on devices")
     return package_name, (installed_devices == total_devices)
+
 
 def get_package_name(path):
     start_time = dt.now()

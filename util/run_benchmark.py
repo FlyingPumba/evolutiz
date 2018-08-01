@@ -20,6 +20,7 @@ import logger
 import settings
 from devices import adb
 
+
 def run_benchmark(app_path):
     folder_name = os.path.basename(app_path)
     result_dir = settings.WORKING_DIR + "benchmark-dir"
@@ -160,15 +161,17 @@ def run_benchmark(app_path):
 
     return times
 
+
 def restart_adb_server():
     os.system(adb.adb_cmd_prefix + " kill-server" + logger.redirect_string())
     os.system(adb.adb_cmd_prefix + " devices" + logger.redirect_string())
+
 
 def boot_emulator(device_manager):
     device_name = settings.AVD_SERIES + "_0"
 
     emulator_cmd = "export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator"
-    #logs = " > " + device_name + ".log 2>" + device_name + ".err"
+    # logs = " > " + device_name + ".log 2>" + device_name + ".err"
     logs = " >/dev/null 2>/dev/null"
 
     flags = " -wipe-data -no-window -no-boot-anim -writable-system -verbose -debug all"
@@ -176,6 +179,7 @@ def boot_emulator(device_manager):
 
     while len(device_manager.get_devices(refresh=True)) < 1:
         time.sleep(3)
+
 
 def reboot_device(device_manager, device):
     result_code = adb.adb_command(device, "reboot")
@@ -188,8 +192,8 @@ def reboot_device(device_manager, device):
     while len(device_manager.get_devices(refresh=True)) < 1:
         time.sleep(3)
 
-def instrument_apk(folder_name, result_dir):
 
+def instrument_apk(folder_name, result_dir):
     result_code = os.system("ant clean emma debug 2>&1 >" + result_dir + "/build.log")
     if result_code != 0: raise Exception("Unable run ant clean emma debug")
 
@@ -208,6 +212,7 @@ def instrument_apk(folder_name, result_dir):
 
     return apk_path, package_name
 
+
 def prepare_apk(device, instrumented_app_dir, result_dir):
     package_name, apk_path = get_package_name(instrumented_app_dir)
 
@@ -224,6 +229,7 @@ def prepare_apk(device, instrumented_app_dir, result_dir):
     else:
         return package_name
 
+
 def check_devices_battery(devices):
     # check that all devices have enough battery
     battery_threshold = 20
@@ -239,6 +245,7 @@ def check_devices_battery(devices):
             logger.log_progress("\nWaiting for some devices to reach " + str(battery_threshold) + "% battery level")
             time.sleep(60)  # sleep 1 minute
 
+
 def log_devices_battery(device_manager, gen, result_dir):
     log_file = result_dir + "/battery.log"
     os.system("echo 'Battery levels at gen: " + str(gen) + "' >> " + log_file)
@@ -248,12 +255,14 @@ def log_devices_battery(device_manager, gen, result_dir):
         imei = adb.get_imei(device)
         os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
 
+
 def run_monkey(device, package_name):
-    monkey_cmd = adb.adb_cmd_prefix + " -s " + device +\
-                 " shell monkey -p " + package_name +\
-                 " -v --throttle 200 --ignore-crashes --ignore-security-exceptions --ignore-timeouts " +\
+    monkey_cmd = adb.adb_cmd_prefix + " -s " + device + \
+                 " shell monkey -p " + package_name + \
+                 " -v --throttle 200 --ignore-crashes --ignore-security-exceptions --ignore-timeouts " + \
                  str(settings.SEQUENCE_LENGTH_MAX) + " 2>&1 >/dev/null"
     os.system(monkey_cmd)
+
 
 def get_subject_paths(subjects_directory):
     p = sub.Popen("ls -d " + subjects_directory + "*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
@@ -263,6 +272,7 @@ def get_subject_paths(subjects_directory):
         if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
             app_paths.append(line.rstrip('/'))  # remove trailing forward slash
     return app_paths
+
 
 if __name__ == "__main__":
     # run this script from the root folder as:

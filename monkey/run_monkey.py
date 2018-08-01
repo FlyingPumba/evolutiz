@@ -16,25 +16,30 @@ from util import logger
 
 EXPERIMENT_TIME = 5
 COVERAGE_INTERVAL = 10
-REPETITIONS=1
+REPETITIONS = 1
 timeout_cmd = "timeout " + str(EXPERIMENT_TIME) + "m "
 
 individuals_generated = []
 idle_devices = []
 total_individuals = 0
 
+
 class NoDaemonProcess(multiprocessing.Process):
     # make 'daemon' attribute always return False
     def _get_daemon(self):
         return False
+
     def _set_daemon(self, value):
         pass
+
     daemon = property(_get_daemon, _set_daemon)
+
 
 # We sub-class multiprocessing.pool.Pool instead of multiprocessing.Pool
 # because the latter is only a wrapper function, not a proper class.
 class NoDaemonPool(multiprocessing.pool.Pool):
     Process = NoDaemonProcess
+
 
 def instrument_apk(folder_name, app_path, result_dir):
     logger.log_progress("\nInstrumenting app: " + folder_name)
@@ -60,9 +65,11 @@ def instrument_apk(folder_name, app_path, result_dir):
 
     return apk_path, package_name
 
+
 def process_app_result(success):
     idle_devices.append(success[1])
     return True
+
 
 # def startIntermediateCoverage(device, package_name, result_dir, monkey_finished_event):
 #     iterations = EXPERIMENT_TIME / COVERAGE_INTERVAL
@@ -80,14 +87,18 @@ def process_app_result(success):
 #     return True
 
 def collectCoverage(device, package_name, result_dir, suffix=""):
-    logger.log_progress("\nSending coverage broadcast in device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
-    os.system(adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE" + logger.redirect_string())
+    logger.log_progress(
+        "\nSending coverage broadcast in device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
+    os.system(
+        adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE" + logger.redirect_string())
 
     logger.log_progress("\nPulling coverage from device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
     coverageFilePath = "/data/data/" + package_name + "/files/coverage.ec"
-    os.system(adb.adb_cmd_prefix + " -s " + device + " pull " + coverageFilePath + " " + result_dir + "/coverage.ec" + suffix + logger.redirect_string())
+    os.system(
+        adb.adb_cmd_prefix + " -s " + device + " pull " + coverageFilePath + " " + result_dir + "/coverage.ec" + suffix + logger.redirect_string())
 
     return True
+
 
 def run_monkey_one_app(app_path, device):
     folder_name = os.path.basename(app_path)
@@ -99,7 +110,8 @@ def run_monkey_one_app(app_path, device):
 
         apk_path, package_name = instrument_apk(folder_name, app_path, result_dir)
 
-        os.system(adb.adb_cmd_prefix + " -s " + device + " install " + apk_path + " 2>&1 >"  + result_dir  +"/install.log")
+        os.system(
+            adb.adb_cmd_prefix + " -s " + device + " install " + apk_path + " 2>&1 >" + result_dir + "/install.log")
 
         logger.log_progress("\nPreparing device: " + device + " sdcard")
         adb.sudo_shell_command(device, "mount -o rw,remount rootfs /", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
@@ -114,26 +126,29 @@ def run_monkey_one_app(app_path, device):
             adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
             # clear logcat
-            os.system(adb.adb_cmd_prefix  +" -s " + device + " logcat -c")
+            os.system(adb.adb_cmd_prefix + " -s " + device + " logcat -c")
 
             # run logcat
             logcat_file = open(result_dir + "/monkey.logcat" + files_repetition_suffix, 'w')
-            sub.Popen(adb.adb_cmd_prefix  +" -s " + device + " logcat", stdout=logcat_file, stderr=logcat_file, shell=True)
+            sub.Popen(adb.adb_cmd_prefix + " -s " + device + " logcat", stdout=logcat_file, stderr=logcat_file,
+                      shell=True)
 
             # start dumping intermediate coverage
-            #monkey_finished_event = multiprocessing.Event()
+            # monkey_finished_event = multiprocessing.Event()
             # p = multiprocessing.Process(target=startIntermediateCoverage, args=(device, result_dir, monkey_finished_event))
             # p.start()
 
             # start running monkey with timeout EXPERIMENT_TIME
-            logger.log_progress("\nStarting monkey for app: " + folder_name + " in device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
+            logger.log_progress(
+                "\nStarting monkey for app: " + folder_name + " in device: " + device + " at: " + datetime.today().strftime(
+                    "%H:%M:%S"))
             monkey_cmd = timeout_cmd + adb.adb_cmd_prefix + " -s " + device + " shell monkey -p " + package_name + " -v --throttle 200 --ignore-crashes --ignore-native-crashes --ignore-timeouts --ignore-security-exceptions 1000000 2>&1 >" + result_dir + "/monkey.log" + files_repetition_suffix
             os.system(monkey_cmd)
 
             adb.pkill(device, "monkey")
 
             logger.log_progress("\nMonkey finished for app: " + folder_name)
-            #monkey_finished_event.set()
+            # monkey_finished_event.set()
 
             # p.join()
 
@@ -145,6 +160,7 @@ def run_monkey_one_app(app_path, device):
         logger.log_progress("\nThere was an error running monkey on app: " + folder_name)
         traceback.print_exc()
         return (False, device)
+
 
 def run_monkey(app_paths):
     print "Preparing devices ..."
@@ -179,6 +195,7 @@ def run_monkey(app_paths):
 
     print "### Finished run_monkey"
 
+
 def process_results(app_paths):
     results_per_app = {}
     for app_path in app_paths:
@@ -196,7 +213,7 @@ def process_results(app_paths):
             events_count = 0
             current_test_content = ""
 
-            with open("monkey.log."+str(repetition), "r") as monkey_log_file:
+            with open("monkey.log." + str(repetition), "r") as monkey_log_file:
                 for line_no, line in enumerate(monkey_log_file):
                     if line.startswith(":Sending"):
                         events_count += 1
@@ -210,7 +227,8 @@ def process_results(app_paths):
 
             coverage_filename = "coverage.ec." + str(repetition)
 
-            os.system("java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em," + coverage_filename + " -sp " + app_path + "/src " + logger.redirect_string())
+            os.system(
+                "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em," + coverage_filename + " -sp " + app_path + "/src " + logger.redirect_string())
 
             html_file = settings.WORKING_DIR + current_relative_dir + "/coverage/index.html"
 
@@ -239,9 +257,10 @@ def get_subject_paths():
     output, errors = p.communicate()
     app_paths = []
     for line in output.strip().split('\n'):
-        if "hydrate" not in line and "a2dp" not in line: # hydrate app doesn't compile yet, so don't bother
-            app_paths.append(line.rstrip('/')) # remove trailing forward slash
+        if "hydrate" not in line and "a2dp" not in line:  # hydrate app doesn't compile yet, so don't bother
+            app_paths.append(line.rstrip('/'))  # remove trailing forward slash
     return app_paths
+
 
 if __name__ == "__main__":
     # run this script from the root folder as:

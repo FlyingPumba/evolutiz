@@ -1,4 +1,5 @@
 from urllib2 import urlopen, HTTPError
+
 try:
     import json
 except:
@@ -17,9 +18,9 @@ for k in sitematrix['sitematrix']:
         for site in lang['site']:
             if site['code'] == 'wiki' and 'closed' not in site:
                 curWiki = {
-                        'name': lang['name'],
-                        'localName': lang['localname'],
-                        }
+                    'name': lang['name'],
+                    'localName': lang['localname'],
+                }
                 wikis[lang['code']] = curWiki
 
 print "Obtained wiki list"

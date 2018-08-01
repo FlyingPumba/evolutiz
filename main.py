@@ -1,4 +1,5 @@
 import matplotlib
+
 # Force matplotlib to not use any Xwindows backend.
 matplotlib.use('Agg')
 
@@ -24,6 +25,7 @@ from algorithms.eaStandardParallel import eaStandardParallel
 from algorithms.eaSteadyStateParallel import eaSteadyStateParallel
 from algorithms.randomParallel import randomParallel
 from devices import adb
+
 
 def run_one_app(strategy_with_runner_name, strategy_class, test_runner, app_path):
     device_manager = DeviceManager()
@@ -63,11 +65,13 @@ def run_one_app(strategy_with_runner_name, strategy_class, test_runner, app_path
         traceback.print_exc()
         return False
 
+
 def run(strategy_name, strategy, test_runner, app_paths):
     for i in range(0, len(app_paths)):
         success = run_one_app(strategy_name, strategy, test_runner, app_paths[i])
         if not success:
             break
+
 
 def get_subject_paths(subjects_directory):
     p = sub.Popen("ls -d " + subjects_directory + "*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
@@ -99,7 +103,8 @@ if __name__ == "__main__":
 
     # parse args
     parser = argparse.ArgumentParser(description='Run Evolutiz with different strategies.')
-    parser.add_argument('-d', '--subjects', dest='subjects_directory', default=settings.SUBJECTS_PATH + 'are-we-there-yet/',
+    parser.add_argument('-d', '--subjects', dest='subjects_directory',
+                        default=settings.SUBJECTS_PATH + 'are-we-there-yet/',
                         help='Directory where subjects are located')
     parser.add_argument('-s', '--strategy', dest='selected_strategy', default='muPlusLambda',
                         choices=possible_strategies.keys(), help='Strategy to be used')

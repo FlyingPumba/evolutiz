@@ -16,6 +16,7 @@ error_filename = None
 
 lock = multiprocessing.Lock()
 
+
 def prepare():
     # redirect stdout and stderr
     starting_datetime = datetime.today().strftime("%Y-%m-%d_%H-%M")
@@ -58,15 +59,17 @@ def clear_progress():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def redirect_string(log_output = True):
+def redirect_string(log_output=True):
     if log_output:
         return " 1>>" + str(output_filename) + " 2>>" + str(error_filename)
     else:
         return " 1>>/dev/null 2>>" + str(error_filename)
 
+
 def prepare_fitness_log():
     fitness_log_file = settings.WORKING_DIR + "/fitness-historic.log"
     os.system("echo \"timestamp,coverage,crashes,length\" > " + fitness_log_file)
+
 
 def log_fitness_result(fitness):
     fitness_log_file = settings.WORKING_DIR + "fitness-historic.log"
