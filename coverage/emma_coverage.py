@@ -10,97 +10,101 @@ from crashes import crash_handler
 from devices import adb
 from util import logger
 
+class EmmaCoverage(object):
 
-def extract_coverage(path):
-    with open(path, 'rb') as file:
-        content = file.read()
-        doc = UnicodeDammit(content, is_html=True)
+    def __init__(self):
+        pass
 
-    parser = html.HTMLParser(encoding=doc.original_encoding)
-    root = html.document_fromstring(content, parser=parser)
-    return root.xpath('/html/body/table[2]/tr[2]/td[5]/text()')[0].strip()
+    def extract_coverage(path):
+        with open(path, 'rb') as file:
+            content = file.read()
+            doc = UnicodeDammit(content, is_html=True)
+
+        parser = html.HTMLParser(encoding=doc.original_encoding)
+        root = html.document_fromstring(content, parser=parser)
+        return root.xpath('/html/body/table[2]/tr[2]/td[5]/text()')[0].strip()
 
 
-# return accumulative coverage and average length
-def get_suite_coverage(test_runner, scripts, device, result_dir, apk_dir, package_name, gen, pop):
-    unique_crashes = set()
-    scripts_crash_status = {}
+    # return accumulative coverage and average length
+    def get_suite_coverage(test_runner, scripts, device, result_dir, apk_dir, package_name, gen, pop):
+        unique_crashes = set()
+        scripts_crash_status = {}
 
-    # clean states
-    adb.shell_command(device, "am force-stop " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-    adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        # clean states
+        adb.shell_command(device, "am force-stop " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
-    application_files = "/data/data/" + package_name + "/files"
-    coverage_path_in_device = application_files + "/coverage.ec"
-    coverage_backup_path_before_clear = "/mnt/sdcard/coverage.ec"
+        application_files = "/data/data/" + package_name + "/files"
+        coverage_path_in_device = application_files + "/coverage.ec"
+        coverage_backup_path_before_clear = "/mnt/sdcard/coverage.ec"
 
-    adb.shell_command(device, "rm -f " + coverage_path_in_device, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-    adb.shell_command(device, "rm -f " + coverage_backup_path_before_clear,
-                      timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.shell_command(device, "rm -f " + coverage_path_in_device, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.shell_command(device, "rm -f " + coverage_backup_path_before_clear,
+                          timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
-    ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-    coverage_folder = str(gen) + "." + str(pop) + "." + ts
+        ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
+        coverage_folder = str(gen) + "." + str(pop) + "." + ts
 
-    os.chdir(result_dir)
-    os.system("mkdir -p coverages/" + coverage_folder)
-    os.system("cp coverage.em coverages/" + coverage_folder + logger.redirect_string())
-    os.chdir("coverages/" + coverage_folder)
+        os.chdir(result_dir)
+        os.system("mkdir -p coverages/" + coverage_folder)
+        os.system("cp coverage.em coverages/" + coverage_folder + logger.redirect_string())
+        os.chdir("coverages/" + coverage_folder)
 
-    there_is_coverage = False
+        there_is_coverage = False
 
-    # run scripts
-    for index, script in enumerate(scripts):
-        result_code = adb.shell_command(device,
-                                        "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation",
-                                        timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        if result_code != 0:
-            adb.log_evaluation_result(device, result_dir, script, False)
-            device.flag_as_malfunctioning()
-            raise Exception("Unable to instrument " + package_name)
-
-        result_code = adb.push(device, script, "/mnt/sdcard/", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        if result_code != 0:
-            adb.log_evaluation_result(device, result_dir, script, False)
-            device.flag_as_malfunctioning()
-            raise Exception("Unable to push motifcore script " + script + " to device: " + device.name)
-
-        script_name = script.split("/")[-1]
-
-        test_runner.run(device, package_name, script_name)
-
-        if crash_handler.handle(device, result_dir, script, gen, pop, index, unique_crashes):
-            scripts_crash_status[script] = True
-            pass
-        else:
-            scripts_crash_status[script] = False
-            # no crash, can broadcast
-            result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE",
+        # run scripts
+        for index, script in enumerate(scripts):
+            result_code = adb.shell_command(device,
+                                            "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation",
                                             timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
                 adb.log_evaluation_result(device, result_dir, script, False)
                 device.flag_as_malfunctioning()
-                raise Exception(
-                    "Unable to broadcast coverage gathering for script " + script + " in device: " + device.name)
-            there_is_coverage = True
+                raise Exception("Unable to instrument " + package_name)
 
-            tries = 0
-            max_tries = 10
-            found_coverage_file = False
-            while tries < max_tries:
-                if not adb.exists_file(device, coverage_path_in_device, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT):
-                    time.sleep(15)
-                    tries += 1
-                else:
-                    found_coverage_file = True
-                    break
-
-            if not found_coverage_file:
+            result_code = adb.push(device, script, "/mnt/sdcard/", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+            if result_code != 0:
                 adb.log_evaluation_result(device, result_dir, script, False)
                 device.flag_as_malfunctioning()
-                raise Exception(
-                    "Coverage broadcast was sent for script " + script + " in device: " + device.name + " but there is not file: " + coverage_path_in_device)
+                raise Exception("Unable to push motifcore script " + script + " to device: " + device.name)
 
-            # save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
+            script_name = script.split("/")[-1]
+
+            test_runner.run(device, package_name, script_name)
+
+            if crash_handler.handle(device, result_dir, script, gen, pop, index, unique_crashes):
+                scripts_crash_status[script] = True
+                pass
+            else:
+                scripts_crash_status[script] = False
+                # no crash, can broadcast
+                result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE",
+                                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+                if result_code != 0:
+                    adb.log_evaluation_result(device, result_dir, script, False)
+                    device.flag_as_malfunctioning()
+                    raise Exception(
+                        "Unable to broadcast coverage gathering for script " + script + " in device: " + device.name)
+                there_is_coverage = True
+
+                tries = 0
+                max_tries = 10
+                found_coverage_file = False
+                while tries < max_tries:
+                    if not adb.exists_file(device, coverage_path_in_device, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT):
+                        time.sleep(15)
+                        tries += 1
+                    else:
+                        found_coverage_file = True
+                        break
+
+                if not found_coverage_file:
+                    adb.log_evaluation_result(device, result_dir, script, False)
+                    device.flag_as_malfunctioning()
+                    raise Exception(
+                        "Coverage broadcast was sent for script " + script + " in device: " + device.name + " but there is not file: " + coverage_path_in_device)
+
+                # save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
             result_code = adb.sudo_shell_command(device,
                                                  "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear,
                                                  timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)

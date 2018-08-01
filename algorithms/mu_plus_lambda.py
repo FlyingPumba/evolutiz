@@ -1,26 +1,28 @@
+import random
 import sys
 
 import os
 import pickle
-import random
 from deap import tools, creator, base
 
 import settings
-from evaluation import eval_suite
-from evaluation import sapienz_mut_suite
-from evaluation import evaluate_in_parallel
 from util import logger
 
 
 class MuPlusLambda(object):
 
-    def __init__(self):
+    def __init__(self, test_evaluator, toolbox):
         self.cxpb = settings.CXPB
         self.mutpb = settings.MUTPB
         self.ngen = settings.GENERATION
         self.mu = settings.POPULATION_SIZE
-        self.lambda_ = settings.OFFSPRING_SIZE
+        self._lambda = settings.OFFSPRING_SIZE
         self.population = None
+
+        # assumes toolbox has registered:
+        # "individual" to generate individuals
+        # "population" to generate population
+        self.toolbox = toolbox
 
         self.best_historic_crashes = 0
         self.best_historic_length = sys.maxint
@@ -29,11 +31,7 @@ class MuPlusLambda(object):
         assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
                                                  "probabilities must be smaller or equal to 1.0.")
 
-    def setup(self, toolbox, test_runner, stats=None, verbose=False):
-        # assumes toolbox has registered:
-        # "individual" to generate individuals
-        # "population" to generate population
-        self.toolbox = toolbox
+    def setup(self, stats=None, verbose=False):
         self.stats = stats
         self.verbose = verbose
 
@@ -141,7 +139,7 @@ class MuPlusLambda(object):
     def varOr(self, population):
 
         offspring = []
-        for _ in xrange(self.lambda_):
+        for _ in xrange(self._lambda):
             op_choice = random.random()
             if op_choice < self.cxpb:  # Apply crossover
                 ind1, ind2 = map(self.toolbox.clone, random.sample(population, 2))

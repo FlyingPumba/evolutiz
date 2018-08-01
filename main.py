@@ -20,11 +20,13 @@ import os
 import subprocess as sub
 import traceback
 
+from test_suite_evaluation.multi_objective import MultiObjectiveTestSuiteEvaluator
+from test_suite_evaluation.single_objective import SingleObjectiveTestSuiteEvaluator
 from util import logger
 from devices import adb
 
 
-def run_one_app(strategy_with_runner_name, strategy_class, test_runner, app_path):
+def run_one_app(strategy_with_runner_name, strategy_class, test_suite_evaluator_class, test_runner, app_path):
     device_manager = DeviceManager()
 
     folder_name = os.path.basename(app_path)
@@ -53,7 +55,7 @@ def run_one_app(strategy_with_runner_name, strategy_class, test_runner, app_path
 
             device_manager.clean_sdcard()
 
-            test_generator = Evolutiz(device_manager, test_runner, strategy_class, result_dir)
+            test_generator = Evolutiz(device_manager, strategy_class, test_suite_evaluator_class, test_runner, result_dir)
             test_generator.run(app_path)
 
         return True
@@ -63,9 +65,9 @@ def run_one_app(strategy_with_runner_name, strategy_class, test_runner, app_path
         return False
 
 
-def run(strategy_name, strategy, test_runner, app_paths):
+def run(strategy_name, strategy, test_suite_evaluator_class, test_runner, app_paths):
     for i in range(0, len(app_paths)):
-        success = run_one_app(strategy_name, strategy, test_runner, app_paths[i])
+        success = run_one_app(strategy_name, strategy, test_suite_evaluator_class, test_runner, app_paths[i])
         if not success:
             break
 
@@ -92,6 +94,11 @@ if __name__ == "__main__":
         "random": Random
     }
 
+    possible_test_suite_evaluators = {
+        "single-objective": MultiObjectiveTestSuiteEvaluator,
+        "multi-objective": SingleObjectiveTestSuiteEvaluator
+    }
+
     possible_test_runners = {
         "motifcore": MotifcoreTestRunner(),
         "motifcore-nm": MotifcoreTestRunner(use_motifgene=True),
@@ -105,6 +112,8 @@ if __name__ == "__main__":
                         help='Directory where subjects are located')
     parser.add_argument('-s', '--strategy', dest='selected_strategy', default='muPlusLambda',
                         choices=possible_strategies.keys(), help='Strategy to be used')
+    parser.add_argument('-e', '--evaluator', dest='selected_evaluator', default='multi-objective',
+                        choices=possible_test_suite_evaluators.keys(), help='Test suite evaluator to be used')
     parser.add_argument('-t', '--test-runner', dest='selected_test_runner', default='motifcore',
                         choices=possible_test_runners.keys(), help='Test runner to be used')
     # parser.add_argument('-nm', '--no-motifgene', dest='use_motifgene', action='store_false',
@@ -115,14 +124,18 @@ if __name__ == "__main__":
 
     strategy_with_runner_name = args.selected_strategy + "-" + args.selected_test_runner
     strategy_class = possible_strategies[args.selected_strategy]
+    test_suite_evaluator_class = possible_strategies[args.selected_evaluator]
     test_runner = possible_test_runners[args.selected_test_runner]
 
-    # run Evolutiz exp
+    # run Evolutiz
     logger.prepare()
     logger.clear_progress()
-    logger.log_progress("Evolutiz (" + args.selected_strategy + ", " + args.selected_test_runner + ")")
+    logger.log_progress("Evolutiz (" +
+                        args.selected_strategy + ", " +
+                        args.selected_evaluator + ", " +
+                        args.selected_test_runner + ")")
 
-    run(strategy_with_runner_name, strategy_class, test_runner, app_paths)
+    run(strategy_with_runner_name, strategy_class, test_suite_evaluator_class, test_runner, app_paths)
 
     # process results
     # results_per_app = process_results(app_paths)

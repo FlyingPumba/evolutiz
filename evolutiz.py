@@ -1,16 +1,16 @@
+import os
+import pickle
 import time
 from datetime import datetime
 
 import numpy
-import os
-import pickle
 from deap import base
 from deap.benchmarks import tools
 
 import settings
-from evaluation import gen_individual_with_coverage, gen_individual
 from application.instrumentator import instrument_apk
 from application.prepare_apk_parallel import prepare_apk
+from coverage.emma_coverage import EmmaCoverage
 from devices import adb
 from init import initRepeatParallel, initRepeatParallelWithCoverage
 from plot import two_d_line
@@ -19,10 +19,11 @@ from util import logger
 
 class Evolutiz(object):
 
-    def __init__(self, device_manager, test_runner, strategy_class, result_dir):
+    def __init__(self, device_manager, strategy_class, test_suite_evaluator_class, test_runner, result_dir):
         self.device_manager = device_manager
-        self.test_runner = test_runner
         self.strategy = strategy_class()
+        self.test_suite_evaluator_class = test_suite_evaluator_class
+        self.test_runner = test_runner
         self.result_dir = result_dir
 
     def run(self, app_path):
@@ -38,6 +39,11 @@ class Evolutiz(object):
 
         self.device_manager.wait_for_battery_threshold()
         self.device_manager.log_devices_battery("init", self.result_dir)
+
+        # TODO: allow to use other coverage fetcher than EMMA, based on whether we are generating tests with source code or not
+        self.self.test_suite_evaluator = self.test_suite_evaluator_class(self.test_runner, EmmaCoverage(),
+                                                                         self.result_dir, self.app_path,
+                                                                         self.package_name)
 
         # start time budget
         self.start_time = time.time()
