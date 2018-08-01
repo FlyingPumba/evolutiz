@@ -16,14 +16,14 @@ import subprocess as sub
 import traceback
 
 from util import logger
-from algorithms.eaDynaMosaParallel import eaDynaMosaParallel
-from algorithms.eaMonotonicParallel import eaMonotonicParallel
-from algorithms.eaMosaParallel import eaMosaParallel
-from algorithms.eaMuPlusLambdaParallel import eaMuPlusLambdaParallel
-from algorithms.eaOnePlusLambdaCommaLambdaParallel import eaOnePlusLambdaCommaLambdaParallel
-from algorithms.eaStandardParallel import eaStandardParallel
-from algorithms.eaSteadyStateParallel import eaSteadyStateParallel
-from algorithms.randomParallel import randomParallel
+from algorithms.eaDynaMosaParallel import DynaMosa
+from algorithms.eaMonotonicParallel import Monotonic
+from algorithms.eaMosaParallel import Mosa
+from algorithms.eaMuPlusLambdaParallel import MuPlusLambda
+from algorithms.eaOnePlusLambdaCommaLambdaParallel import OnePlusLambdaCommaLambda
+from algorithms.eaStandardParallel import Standard
+from algorithms.eaSteadyStateParallel import SteadyState
+from algorithms.randomParallel import Random
 from devices import adb
 
 
@@ -85,14 +85,14 @@ def get_subject_paths(subjects_directory):
 
 if __name__ == "__main__":
     possible_strategies = {
-        "standard": eaStandardParallel,
-        "monotonic": eaMonotonicParallel,
-        "steady": eaSteadyStateParallel,
-        "muPlusLambda": eaMuPlusLambdaParallel,
-        "onePlusLambdaCommaLambda": eaOnePlusLambdaCommaLambdaParallel,
-        "mosa": eaMosaParallel,
-        "dynaMosa": eaDynaMosaParallel,
-        "random": randomParallel
+        "standard": Standard,
+        "monotonic": Monotonic,
+        "steady": SteadyState,
+        "muPlusLambda": MuPlusLambda,
+        "onePlusLambdaCommaLambda": OnePlusLambdaCommaLambda,
+        "mosa": Mosa,
+        "dynaMosa": DynaMosa,
+        "random": Random
     }
 
     possible_test_runners = {

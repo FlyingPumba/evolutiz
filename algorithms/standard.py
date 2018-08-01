@@ -5,13 +5,13 @@ import pickle
 from deap import tools, creator, base
 
 import settings
-from algorithms.eval_suite_single_objective import eval_suite
-from algorithms.parallalel_evaluation import evaluate_in_parallel
+from evaluation.eval_suite_single_objective import eval_suite
+from evaluation.parallalel_evaluation import evaluate_in_parallel
 from devices import adb
 from util import logger
 
 
-class eaStandardParallel:
+class Standard:
 
     def __init__(self):
         self.cxpb = settings.CXPB

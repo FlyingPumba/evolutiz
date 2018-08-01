@@ -4,12 +4,12 @@ import random
 from deap import tools, creator, base
 
 import settings
-from algorithms.eval_suite_single_objective import eval_suite
-from algorithms.mut_suite import sapienz_mut_suite
-from algorithms.parallalel_evaluation import evaluate_in_parallel
+from evaluation.eval_suite_single_objective import eval_suite
+from evaluation.mut_suite import sapienz_mut_suite
+from evaluation.parallalel_evaluation import evaluate_in_parallel
 
 
-class eaMonotonicParallel:
+class SteadyState:
     def __init__(self):
         self.cxpb = settings.CXPB
         self.mutpb = settings.MUTPB
@@ -54,21 +54,19 @@ class eaMonotonicParallel:
 
         # Begin the generational process
         for gen in range(1, self.ngen + 1):
-
             print "Starting generation ", gen
 
-            next_population = []
-            while len(next_population) < len(self.population):
-                offspring, parents = self.varOr(self.population)
+            offspring, parents = self.varOr(self.population)
 
-                # Evaluate the individuals with an invalid fitness in offspring
-                invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
-                evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, gen)
+            self.population.remove(parents[0])
+            self.population.remove(parents[1])
 
-                sorted_inds = sorted(offspring + parents, key=attrgetter("fitness"), reverse=True)
-                next_population.append(sorted_inds[0])
+            # Evaluate the individuals with an invalid fitness in offspring
+            invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
+            evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, gen)
 
-            self.population = next_population
+            sorted_inds = sorted(offspring + parents, key=attrgetter("fitness"), reverse=True)
+            self.population.append(sorted_inds[0])
 
         return self.population
 

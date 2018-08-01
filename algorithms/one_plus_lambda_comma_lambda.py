@@ -1,19 +1,17 @@
-from operator import attrgetter
-
-import random
-from deap import tools, creator, base
+from deap import tools, base, creator
 
 import settings
-from algorithms.eval_suite_single_objective import eval_suite
-from algorithms.mut_suite import sapienz_mut_suite
-from algorithms.parallalel_evaluation import evaluate_in_parallel
+from evaluation.mut_suite import sapienz_mut_suite
+from evaluation.parallalel_evaluation import evaluate_in_parallel
 
 
-class eaSteadyStateParallel:
+class OnePlusLambdaCommaLambda:
+
     def __init__(self):
         self.cxpb = settings.CXPB
         self.mutpb = settings.MUTPB
         self.ngen = settings.GENERATION
+        self.lambda_ = settings.OFFSPRING_SIZE
 
     def setup(self, toolbox, apk_dir, package_name, verbose=False):
         # assumes toolbox has registered:
@@ -25,7 +23,7 @@ class eaSteadyStateParallel:
         self.verbose = verbose
 
         ### deap framework setup
-        creator.create("FitnessCovLen", base.Fitness, weights=10.0)
+        creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
         creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
         self.toolbox.register("evaluate", eval_suite)
@@ -42,51 +40,64 @@ class eaSteadyStateParallel:
                                                   package_name=self.package_name)
 
     def evolve(self):
+        # 1 + (lambda, lambda) starts with population of only one individual
+        assert len(self.population) == 1
 
         # Evaluate the individuals with an invalid fitness
         invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
+        # fitnesses = toolbox.map(toolbox.evaluate, invalid_ind)
+        # for ind, fit in zip(invalid_ind, fitnesses):
+        # 	ind.fitness.values = fit
         evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, 0)
 
-        # discard invalid self.population individual
+        # discard invalid population individual
         for i in range(len(self.population) - 1, -1, -1):
             if not self.population[i].fitness.valid:
                 del self.population[i]
 
         # Begin the generational process
         for gen in range(1, self.ngen + 1):
+
             print "Starting generation ", gen
 
-            offspring, parents = self.varOr(self.population)
+            # Vary the population
+            offspring = self.varOr(population)
 
-            self.population.remove(parents[0])
-            self.population.remove(parents[1])
-
-            # Evaluate the individuals with an invalid fitness in offspring
+            # Evaluate the individuals with an invalid fitness
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
+
+            # this function will eval and match each invalid_ind to its fitness
             evaluate_in_parallel(self.toolbox.evaluate, invalid_ind, self.apk_dir, self.package_name, gen)
 
-            sorted_inds = sorted(offspring + parents, key=attrgetter("fitness"), reverse=True)
-            self.population.append(sorted_inds[0])
+            best_ind = tools.sortNondominated(offspring + population, 1)
+            if (best_ind != population[0]):
+                # the parent was improved by one individual of the offspring
+                population = [best_ind]
 
-        return self.population
+        return population
 
     def varOr(self, population):
+        parent = population[0]
+        # generate lambda_ mutants
+        mutants = []
+        for _ in xrange(self.lambda_):
+            ind = self.toolbox.clone(parent)
+            ind, = self.toolbox.mutate(ind)
+            del ind.fitness.values
+            mutants.append(ind)
 
-        parents = tools.selTournament(population, 2, tournsize=5)  # TODO: check if tournsize is correct
+        evaluate_in_parallel(self.toolbox.evaluate, mutants, self.apk_dir, self.package_name, self.ngen)
+        best_ind = tools.sortNondominated(mutants, 1)
 
-        ind1, ind2 = map(self.toolbox.clone, parents)
-
-        op_choice = random.random()
-        if op_choice < self.cxpb:  # Apply crossover
-            ind1, ind2 = self.toolbox.mate(ind1, ind2)
+        # generate lambda_ offspring
+        offspring = []
+        while len(offspring) < self.lambda_:
+            p1 = self.toolbox.clone(parent)
+            p2 = self.toolbox.clone(best_ind)
+            ind1, ind2 = self.toolbox.mate(p1, p2)
             del ind1.fitness.values
             del ind2.fitness.values
+            offspring.append(ind1)
+            offspring.append(ind2)
 
-        op_choice = random.random()
-        if op_choice < self.mutpb:  # Apply mutation
-            ind1 = self.toolbox.mutate(ind1)
-            del ind1.fitness.values
-            ind2 = self.toolbox.mutate(ind2)
-            del ind2.fitness.values
-
-        return [ind1, ind2], parents
+        return offspring

@@ -5,13 +5,13 @@ import pickle
 from deap import tools, creator, base
 
 import settings
-from algorithms.eval_suite_multi_objective import eval_suite
-from algorithms.mut_suite import sapienz_mut_suite
-from algorithms.parallalel_evaluation import evaluate_in_parallel
+from evaluation.eval_suite_multi_objective import eval_suite
+from evaluation.mut_suite import sapienz_mut_suite
+from evaluation.parallalel_evaluation import evaluate_in_parallel
 from util import logger
 
 
-class randomParallel:
+class Random:
 
     def __init__(self):
         self.cxpb = settings.CXPB

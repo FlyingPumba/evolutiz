@@ -1,11 +1,11 @@
 from deap import tools, base, creator
 
 import settings
-from algorithms.eval_suite_multi_objective import eval_suite
-from algorithms.mut_suite import sapienz_mut_suite
+from evaluation.eval_suite_multi_objective import eval_suite
+from evaluation.mut_suite import sapienz_mut_suite
 
 
-class eaDynaMosaParallel:
+class Mosa:
 
     def __init__(self):
         self.cxpb = settings.CXPB
