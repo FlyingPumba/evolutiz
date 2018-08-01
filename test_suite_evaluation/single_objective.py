@@ -23,7 +23,7 @@ class SingleObjectiveTestSuiteEvaluator(object):
 
         for index, seq in enumerate(individual):
             # generate script file list
-            filename = self.result_dir + "/intermediate/motifcore.evo.script." + str(gen) + "." + str(pop) + "." + str(index)
+            filename = self.result_dir + "/intermediate/script." + str(gen) + "." + str(pop) + "." + str(index)
             # check that directory exists before creating file
             dirname = os.path.dirname(filename)
             if not os.path.exists(dirname):
