@@ -74,7 +74,7 @@ def prepare_apk(devices, instrumented_app_path, package_name, result_dir):
     pool.close()
     pool.join()
 
-    logger.log_progress("\nFinished installing APK on devices")
+    logger.log_progress("\rInstalling apk on devices: " + str(successful_devices) + "/" + str(total_devices))
     return package_name, (successful_devices == total_devices)
 
 
