@@ -5,8 +5,6 @@ import pickle
 from deap import tools, creator, base
 
 import settings
-from evaluation import eval_suite
-from evaluation import evaluate_in_parallel
 from devices import adb
 from util import logger
 

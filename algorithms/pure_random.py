@@ -5,9 +5,6 @@ import pickle
 from deap import tools, creator, base
 
 import settings
-from evaluation import eval_suite
-from evaluation import sapienz_mut_suite
-from evaluation import evaluate_in_parallel
 from util import logger
 
 
