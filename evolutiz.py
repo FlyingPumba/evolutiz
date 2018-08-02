@@ -4,8 +4,7 @@ import time
 from datetime import datetime
 
 import numpy
-from deap import base
-from deap.benchmarks import tools
+from deap import base, tools
 
 import settings
 from application.instrumentator import instrument_apk
