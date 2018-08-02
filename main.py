@@ -53,7 +53,8 @@ def run_one_app(strategy_with_runner_name, strategy_class, test_suite_evaluator_
 
             logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + folder_name)
 
-            device_manager.clean_sdcard()
+            for device in device_manager.get_devices():
+                device.clean_sdcard()
 
             test_generator = Evolutiz(device_manager, strategy_class, test_suite_evaluator_class, test_runner, result_dir)
             test_generator.run(app_path)
