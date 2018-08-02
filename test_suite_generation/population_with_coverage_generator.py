@@ -37,7 +37,7 @@ class PopulationWithCoverageGenerator(object):
                 "\rInit population in parallel: " + str(len(self.individuals_generated)) + "/" + str(
                     self.total_individuals))
 
-    def initPop(self, n, gen):
+    def generate(self, n, gen):
         self.total_individuals = n
 
         if len(self.individuals_generated) > 0:

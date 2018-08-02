@@ -38,7 +38,7 @@ class PopulationGenerator(object):
                 "\rInit population in parallel: " + str(len(self.individuals_generated)) + "/" + str(self.total_individuals))
 
 
-    def initPop(self, n):
+    def generate(self, n):
         self.total_individuals = n
 
         if len(self.individuals_generated) > 0:
