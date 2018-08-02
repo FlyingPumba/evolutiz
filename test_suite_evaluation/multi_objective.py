@@ -21,7 +21,7 @@ class MultiObjectiveTestSuiteEvaluator(object):
 
     def register_selection_operator(self, toolbox):
         # self.toolbox.register("select", tools.selTournament, tournsize=5)
-        self.toolbox.register("select", tools.selNSGA2)
+        toolbox.register("select", tools.selNSGA2)
 
     def evaluate(self, individual, device, gen="", pop=""):
         self.package_name = RequiredFeature('package_name').request()
