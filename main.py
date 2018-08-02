@@ -55,7 +55,10 @@ def run_one_app(strategy_with_runner_name):
 
             #  reboot all devices and restart adb server before starting a repetition
             adb.restart_server()
-            device_manager.reboot_devices()
+            if len(device_manager.get_devices(refresh=True)) < device_manager.get_total_number_of_devices_expected():
+                device_manager.boot_emulators(wait_to_be_ready=True)
+            else:
+                device_manager.reboot_devices(wait_to_be_ready=True)
 
             logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + folder_name)
 
