@@ -24,7 +24,7 @@ def instrument_apk(app_path, result_dir):
 
     os.chdir(settings.WORKING_DIR)
 
-    return apk_path, package_name
+    return instrumented_source_path, package_name
 
 
 def prepare_app_for_instrumentation(app_path, result_dir):

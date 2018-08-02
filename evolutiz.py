@@ -50,9 +50,11 @@ class Evolutiz(object):
 
         devices = self.device_manager.get_devices()
 
-        instrument_apk(app_path, self.result_dir)
-        package_name = prepare_apk(devices, app_path, self.result_dir)
+        instrumented_app_path, package_name = instrument_apk(app_path, self.result_dir)
         features.provide('package_name', package_name)
+        features.provide('instrumented_app_path', instrumented_app_path)
+
+        prepare_apk(devices, instrumented_app_path, package_name, self.result_dir)
 
         self.device_manager.wait_for_battery_threshold()
         self.device_manager.log_devices_battery("init", self.result_dir)
