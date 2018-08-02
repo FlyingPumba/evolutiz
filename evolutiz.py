@@ -70,7 +70,7 @@ class Evolutiz(object):
         hof = tools.ParetoFront()
 
         # setup toolbox specific stuff by strategy
-        self.strategy.setup(self.toolbox, self.test_runner, stats=self.stats)
+        self.strategy.setup(stats=self.stats)
 
         # log the history
         history = tools.History()
