@@ -133,7 +133,7 @@ def set_brightness(device, value, timeout=None):
 
 def get_battery_level(device):
     try:
-        adb_cmd = adb_cmd_prefix + " -s " + device + " shell "
+        adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
         battery_cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
         cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + battery_cmd
         log_adb_command(device, cmd)

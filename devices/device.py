@@ -53,10 +53,10 @@ class Device(object):
         self.boot()
 
     def battery_level(self):
-        return adb.get_battery_level(self.name)
+        return adb.get_battery_level(self)
 
     def imei(self):
-        return adb.get_imei(self.name)
+        return adb.get_imei(self)
 
     def set_bluetooth_state(self, enabled):
         adb.set_bluetooth_state(self, enabled, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
