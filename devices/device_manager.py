@@ -67,7 +67,7 @@ class DeviceManager(object):
                               stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
                 output, errors = p.communicate()
                 if output.strip() == "stopped":
-                    device.set_state(State.booted)
+                    device.state = State.booted
 
         return [device for device in self.reachable_devices if device.state is State.booted]
 
@@ -79,7 +79,7 @@ class DeviceManager(object):
                               stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
                 output, errors = p.communicate()
                 if "Error: Could not access the Package Manager" not in output.strip():
-                    device.set_state(State.ready)
+                    device.state = State.ready
 
         return [device for device in self.reachable_devices if device.state is State.ready]
 
