@@ -1,7 +1,6 @@
 import os
 import random
-
-from deap.benchmarks import tools
+from deap import tools
 
 import motifcore_installer
 import settings
