@@ -132,17 +132,24 @@ def set_brightness(device, value, timeout=None):
 
 
 def get_battery_level(device):
-    try:
-        adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
-        battery_cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
-        cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + battery_cmd
-        log_adb_command(device, cmd)
+    while True:
+        try:
+            adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
+            battery_cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
+            cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + battery_cmd
+            log_adb_command(device, cmd)
 
-        res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
-        return int(res)
-    except Exception as e:
-        device.flag_as_malfunctioning()
-        raise Exception("There was an error fetching battery level for device: " + device.name)
+            res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+            return int(res)
+        except Exception as e:
+            # device.flag_as_malfunctioning()
+            # raise Exception("There was an error fetching battery level for device: " + device.name)
+
+            # TODO: we should be able to remove the while True and flag the device as malfunctioning when unable to fetch
+            # battery level, but it seems is very normal for this command to fail
+            pass
+
+
 
 
 def get_imei(device):
