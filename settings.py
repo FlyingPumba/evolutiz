@@ -1,4 +1,4 @@
-DEBUG = False  # or False
+DEBUG = False # or False
 # if False, "0" will be used
 ENABLE_STRING_SEEDING = True
 # use headless evaluator
