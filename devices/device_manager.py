@@ -93,7 +93,7 @@ class DeviceManager(object):
 
     def flag_device_as_malfunctioning(self, device):
         # remove device from available devices and reboot
-        self.devices.pop(device)
+        self.devices.remove(device)
         device.reboot()
 
     def boot_emulators(self, wait_to_be_ready=False):
