@@ -39,7 +39,7 @@ class MuPlusLambda(object):
         self.stats = stats
         self.verbose = verbose
 
-        self.targets_historic_log_file = self.toolbox.get_result_dir() + "/targets-historic.log"
+        self.targets_historic_log_file = self.result_dir + "/targets-historic.log"
         self.setup_log_best_historic_objectives_achieved()
 
     def run(self):
