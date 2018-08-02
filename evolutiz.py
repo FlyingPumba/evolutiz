@@ -25,7 +25,7 @@ class Evolutiz(object):
         self.toolbox = RequiredFeature('toolbox').request()
         self.result_dir = RequiredFeature('result_dir').request()
 
-        self.budget_manager = RequiredFeature('budget_manager')
+        self.budget_manager = RequiredFeature('budget_manager').request()
 
         self.toolbox.register("get_apk_dir", lambda: self.app_path)
         self.toolbox.register("get_package_name", lambda: self.package_name)

@@ -152,7 +152,7 @@ if __name__ == "__main__":
     # singletons
     features.provide('toolbox', Toolbox())
     features.provide('device_manager', DeviceManager())
-    features.provide('busget_manager', BudgetManager())
+    features.provide('budget_manager', BudgetManager())
 
     # run Evolutiz
     logger.prepare()
