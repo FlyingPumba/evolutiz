@@ -46,7 +46,7 @@ class MuPlusLambda(object):
     def run(self):
         success = self.initPopulation()
         if not success:
-            logger.log_progress("\nThere was an error initializing pupulation for app: " + app_name)
+            logger.log_progress("\nThere was an error initializing pupulation for app.")
             return False
 
         return self.evolve()
