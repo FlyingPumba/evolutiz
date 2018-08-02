@@ -33,9 +33,16 @@ class DeviceManager(object):
 
             if "offline" not in line:
                 device_name = line.split("\t")[0].strip()
-                if "emulator" in line and settings.USE_EMULATORS:
+
+                matching_devices = [device for device in self.devices if device.name == device_name]
+
+                if len(matching_devices) > 0:
+                    device = matching_devices.pop(0)
+                    if device.state is State.unknown or device.state is State.booting:
+                        device.state = State.reachable
+                elif "emulator" in line and settings.USE_EMULATORS:
                     self.devices.append(Emulator(self, device_name, state=State.reachable))
-                if "device" in line and settings.USE_REAL_DEVICES:
+                elif "device" in line and settings.USE_REAL_DEVICES:
                     self.devices.append(Device(self, device_name, state=State.reachable))
 
         return self.devices
