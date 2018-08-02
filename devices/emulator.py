@@ -10,7 +10,12 @@ class Emulator(Device):
     def __init__(self, device_manager, device_name="", state=State.unknown):
         Device.__init__(self, device_manager, device_name, state)
 
-        self.port = None
+        if device_name != "":
+            # we assume device_name has form "emulator-xxxx"
+            self.port = int(device_name.split('-')[1])
+        else:
+            self.port = None
+
         self.avd_name = None
 
     def boot(self, port=None):
