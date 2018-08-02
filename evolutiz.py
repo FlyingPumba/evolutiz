@@ -11,7 +11,7 @@ from application.instrumentator import instrument_apk
 from application.prepare_apk_parallel import prepare_apk
 from coverage.emma_coverage import EmmaCoverage
 from devices import adb
-from init import initRepeatParallel, initRepeatParallelWithCoverage
+from test_suite_generation import init_population, init_population_with_coverage
 from plot import two_d_line
 from util import logger
 
@@ -28,10 +28,10 @@ class Evolutiz(object):
         # register common functions in toolbox
         self.toolbox = base.Toolbox()
         self.toolbox.register("individual", gen_individual, self.test_runner)
-        self.toolbox.register("population", initRepeatParallel.initPop, self.device_manager, self.toolbox.individual)
+        self.toolbox.register("population", init_population.initPop, self.device_manager, self.toolbox.individual)
         self.toolbox.register("individual_with_coverage", gen_individual_with_coverage, self.test_runner)
-        self.toolbox.register("population_with_coverage", initRepeatParallelWithCoverage.initPop,
-                         self.toolbox.individual_with_coverage)
+        self.toolbox.register("population_with_coverage", init_population_with_coverage.initPop,
+                              self.toolbox.individual_with_coverage)
 
         self.toolbox.register("get_device_manager", lambda: self.device_manager)
         self.toolbox.register("log_devices_battery", self.device_manager.log_devices_battery)
