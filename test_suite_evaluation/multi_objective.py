@@ -2,7 +2,7 @@ import os
 import sys
 
 import numpy
-from deap import creator, base
+from deap import creator, base, tools
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
@@ -18,6 +18,10 @@ class MultiObjectiveTestSuiteEvaluator(object):
         # deap framework setup for multi objective
         creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
         creator.create("Individual", list, fitness=creator.FitnessCovLen)
+
+    def register_selection_operator(self, toolbox):
+        # self.toolbox.register("select", tools.selTournament, tournsize=5)
+        self.toolbox.register("select", tools.selNSGA2)
 
     def evaluate(self, individual, device, gen="", pop=""):
         self.package_name = RequiredFeature('package_name').request()

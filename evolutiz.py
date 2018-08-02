@@ -32,6 +32,7 @@ class Evolutiz(object):
 
         self.test_runner.register_crossover_operator(self.toolbox)
         self.test_runner.register_mutation_operator(self.toolbox)
+        self.test_suite_evaluator.register_selection_operator(self.toolbox)
 
         self.stats = tools.Statistics(lambda ind: ind.fitness.values)
         # axis = 0, the numpy.mean will return an array of results

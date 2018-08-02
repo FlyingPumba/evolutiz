@@ -1,6 +1,6 @@
 import os
 
-from deap import base, creator
+from deap import base, creator, tools
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
@@ -16,6 +16,11 @@ class SingleObjectiveTestSuiteEvaluator(object):
         # deap framework setup for single objective
         creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
         creator.create("Individual", list, fitness=creator.FitnessMin)
+
+    def register_selection_operator(self, toolbox):
+        # self.toolbox.register("select", tools.selTournament, tournsize=5)
+        # TODO: check if this is the proper selection operator for single_objective context
+        self.toolbox.register("select", tools.selNSGA2)
 
     def evaluate(self, individual, device, gen="", pop=""):
         self.package_name = RequiredFeature('package_name').request()
