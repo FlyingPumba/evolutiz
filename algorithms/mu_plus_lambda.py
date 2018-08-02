@@ -22,6 +22,7 @@ class MuPlusLambda(object):
 
         self.population = None
         self.device_manager = RequiredFeature('device_manager').request()
+        self.toolbox = RequiredFeature('toolbox').request()
         self.result_dir = RequiredFeature('result_dir').request()
         self.population_generator = RequiredFeature('population_generator').request()
         self.parallel_evaluator = ParallelEvaluator()
@@ -49,7 +50,6 @@ class MuPlusLambda(object):
         return self.evolve()
 
     def initPopulation(self):
-        print "### Initialising population ...."
         self.population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(),
                                                   package_name=self.toolbox.get_package_name())
         if (len(self.population) < settings.POPULATION_SIZE):
