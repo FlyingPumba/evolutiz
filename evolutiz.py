@@ -20,7 +20,7 @@ class Evolutiz(object):
 
     def __init__(self, device_manager, strategy_class, test_suite_evaluator_class, test_runner, result_dir):
         self.device_manager = device_manager
-        self.strategy = strategy_class()
+        self.strategy_class = strategy_class
         self.test_suite_evaluator_class = test_suite_evaluator_class
         self.test_runner = test_runner
         self.result_dir = result_dir
@@ -74,6 +74,7 @@ class Evolutiz(object):
                                                                          self.result_dir, self.app_path,
                                                                          self.package_name)
 
+        self.strategy = self.strategy_class(self.test_suite_evaluator, self.toolbox)
         # start time budget
         self.start_time = time.time()
         print "Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M")
