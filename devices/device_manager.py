@@ -74,7 +74,7 @@ class DeviceManager(object):
                 p = sub.Popen(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell getprop init.svc.bootanim',
                               stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
                 output, errors = p.communicate()
-                if output.strip() == "stopped":
+                if output.strip() == "stopped" and "error" not in errors.strip():
                     device.state = State.booted
 
         return [device for device in self.devices if device.state is State.booted]
@@ -86,7 +86,7 @@ class DeviceManager(object):
                 p = sub.Popen(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell pm list packages',
                               stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
                 output, errors = p.communicate()
-                if "Error: Could not access the Package Manager" not in output.strip():
+                if "Error: Could not access the Package Manager" not in output.strip() and "error" not in errors.strip():
                     device.state = State.ready
 
         return [device for device in self.devices if device.state is State.ready]
@@ -112,7 +112,6 @@ class DeviceManager(object):
         emulators = [device for device in self.get_devices() if type(device) is Emulator]
         for device in emulators:
             device.shutdown()
-        time.sleep(2)
 
     def reboot_devices(self, wait_to_be_ready=False):
         for device in self.get_devices():

@@ -1,4 +1,5 @@
 import subprocess as sub
+import time
 
 import settings
 from devices import adb
@@ -46,6 +47,7 @@ class Emulator(Device):
         Device.shutdown(self)
 
         adb.adb_command(self, "emu kill")
+        time.sleep(3)
 
     def reboot(self):
         Device.reboot(self)
