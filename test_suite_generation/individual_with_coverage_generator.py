@@ -12,18 +12,18 @@ from lxml import html
 
 import settings
 from crashes import crash_handler
+from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from util import logger
 
 
 class IndividualWithCoverageGenerator(object):
 
-    def __init__(self, test_runner, result_dir, apk_dir, package_name):
-
-        self.test_runner = test_runner
-        self.result_dir = result_dir
-        self.apk_dir = apk_dir
-        self.package_name = package_name
+    def __init__(self):
+        self.test_runner = RequiredFeature('test_runner').request()
+        self.result_dir = RequiredFeature('result_dir').request()
+        self.app_path = RequiredFeature('app_path').request()
+        self.package_name = None
 
     def get_suite_with_fitness(self, device, gen, pop):
         ret = []
@@ -153,7 +153,7 @@ class IndividualWithCoverageGenerator(object):
                 raise Exception("Unable to pull coverage for device: " + device.name)
 
             os.system(
-                "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + apk_dir + "/src " + logger.redirect_string())
+                "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + app_path + "/src " + logger.redirect_string())
 
             html_file = self.result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
             coverage_str = self.extract_coverage(html_file)
@@ -202,6 +202,7 @@ class IndividualWithCoverageGenerator(object):
         return ret, there_is_coverage
 
     def gen_individual_with_coverage(self, device, gen, pop):
+        self.package_name = RequiredFeature('package_name').request()
         try:
             suite, fitness = self.get_suite_with_fitness(device, gen, pop)
             ind = creator.Individual(suite)

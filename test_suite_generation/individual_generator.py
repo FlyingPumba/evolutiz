@@ -6,16 +6,16 @@ from deap import creator
 
 import settings
 from crashes import crash_handler
+from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 
 class IndividualGenerator(object):
 
-    def __init__(self, test_runner, result_dir, apk_dir, package_name):
+    def __init__(self):
 
-        self.test_runner = test_runner
-        self.result_dir = result_dir
-        self.apk_dir = apk_dir
-        self.package_name = package_name
+        self.test_runner = RequiredFeature('test_runner').request()
+        self.result_dir = RequiredFeature('result_dir').request()
+        self.package_name = None
 
     def get_suite(self, device):
         ret = []
@@ -52,6 +52,7 @@ class IndividualGenerator(object):
 
 
     def gen_individual(self, device):
+        self.package_name = RequiredFeature('package_name').request()
         try:
             suite = self.get_suite(device)
             return creator.Individual(suite), device

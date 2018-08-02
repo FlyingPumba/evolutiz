@@ -1,30 +1,30 @@
+import os
+import pickle
 import random
 import sys
 
-import os
-import pickle
-from deap import tools, creator, base
+from deap import tools
+from test_suite_evaluation.parallel_evaluator import ParallelEvaluator
 
 import settings
+from dependency_injection.required_feature import RequiredFeature
 from util import logger
 
 
 class MuPlusLambda(object):
 
-    def __init__(self, test_evaluator, toolbox):
+    def __init__(self):
         self.cxpb = settings.CXPB
         self.mutpb = settings.MUTPB
         self.ngen = settings.GENERATION
         self.mu = settings.POPULATION_SIZE
         self._lambda = settings.OFFSPRING_SIZE
+
         self.population = None
-
-        # assumes toolbox has registered:
-        # "individual" to generate individuals
-        # "population" to generate population
-        self.toolbox = toolbox
-
-        self.test_evaluator = test_evaluator
+        self.device_manager = RequiredFeature('device_manager').request()
+        self.result_dir = RequiredFeature('result_dir').request()
+        self.population_generator = RequiredFeature('population_generator').request()
+        self.parallel_evaluator = ParallelEvaluator()
 
         self.best_historic_crashes = 0
         self.best_historic_length = sys.maxint
@@ -61,7 +61,7 @@ class MuPlusLambda(object):
 
         # Evaluate the individuals with an invalid fitness
         invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-        completed_evaluation = evaluate_in_parallel(self.toolbox, invalid_ind, 0)
+        completed_evaluation = self.parallel_evaluator.evaluate(invalid_ind, 0)
 
         if not completed_evaluation:
             logger.log_progress("\nTime budget run out durring parallel evaluation, exiting setup")
@@ -74,7 +74,7 @@ class MuPlusLambda(object):
 
         self.update_best_historic_objectives_achieved(self.population, 0)
 
-        self.toolbox.log_devices_battery(0, self.toolbox.get_result_dir())
+        self.device_manager.log_devices_battery(0, self.result_dir)
         return True
 
     def evolve(self):

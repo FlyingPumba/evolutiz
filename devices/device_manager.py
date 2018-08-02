@@ -4,6 +4,7 @@ import time
 
 import adb
 import settings
+from dependency_injection.feature_broker import features
 from devices.device import Device, State
 from devices.do_parallel_fail_one_fail_all import DoParallelFailOneFailAll
 from devices.emulator import Emulator

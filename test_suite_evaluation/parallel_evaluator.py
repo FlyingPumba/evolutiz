@@ -1,15 +1,16 @@
 import multiprocessing as mp
 import time
 
+from dependency_injection.required_feature import RequiredFeature
 from util import logger
 
 
-class ParallelEvaluation(object):
+class ParallelEvaluator(object):
 
-    def __init__(self, device_manager, test_suite_evaluator, toolbox):
-        self.device_manager = device_manager
-        self.test_suite_evaluator = test_suite_evaluator
-        self.toolbox = toolbox
+    def __init__(self):
+        self.device_manager = RequiredFeature('device_manager').request()
+        self.test_suite_evaluator = RequiredFeature('test_suite_evaluator').request()
+        self.toolbox = RequiredFeature('toolbox').request()
 
         # attributes for mp callback
         self.idle_devices = []

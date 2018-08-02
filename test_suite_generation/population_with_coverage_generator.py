@@ -1,21 +1,20 @@
 import multiprocessing as mp
 import time
 
-from test_suite_generation.generate_individual_with_coverage import IndividualWithCoverageGenerator
+from dependency_injection.required_feature import RequiredFeature
+from test_suite_generation.individual_with_coverage_generator import IndividualWithCoverageGenerator
 from util import logger
 
 
-class InitPopulationWithCoverage(object):
+class PopulationWithCoverageGenerator(object):
 
-    def __init__(self, device_manager, test_runner, result_dir, apk_dir, package_name):
+    def __init__(self):
 
-        self.device_manager = device_manager
-        self.test_runner = test_runner
-        self.result_dir = result_dir
-        self.apk_dir = apk_dir
-        self.package_name = package_name
+        self.device_manager = RequiredFeature('device_manager').request()
+        self.test_runner = RequiredFeature('test_runner').request()
+        self.result_dir = RequiredFeature('result_dir').request()
 
-        self.individual_generator = IndividualWithCoverageGenerator(test_runner, result_dir, apk_dir, package_name)
+        self.individual_generator = IndividualWithCoverageGenerator()
         self.generate_individual_function = self.individual_generator.gen_individual_with_coverage
 
         # variables for mp callback

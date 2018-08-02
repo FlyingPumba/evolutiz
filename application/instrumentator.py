@@ -12,8 +12,6 @@ def instrument_apk(app_path, result_dir):
 
     instrumented_source_path, package_name = prepare_app_for_instrumentation(app_path, result_dir)
 
-    os.chdir(instrumented_source_path)
-
     result_code = os.system("ant clean emma debug 2>&1 >" + result_dir + "/build.log")
     if result_code != 0: raise Exception("Unable run ant clean emma debug")
 

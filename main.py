@@ -1,3 +1,11 @@
+import argparse
+import os
+import subprocess as sub
+import traceback
+
+from deap.base import Toolbox
+
+import settings
 from algorithms.dyna_mosa import DynaMosa
 from algorithms.monotonic import Monotonic
 from algorithms.mosa import Mosa
@@ -6,28 +14,25 @@ from algorithms.one_plus_lambda_comma_lambda import OnePlusLambdaCommaLambda
 from algorithms.pure_random import Random
 from algorithms.standard import Standard
 from algorithms.steady_state import SteadyState
-
-
-import settings
-from evolutiz import Evolutiz
-
+from coverage.emma_coverage import EmmaCoverage
+from dependency_injection.feature_broker import features
+from dependency_injection.required_feature import RequiredFeature
+from devices import adb
 from devices.device_manager import DeviceManager
+from evolutiz import Evolutiz
 from test_runner.evolutiz.evolutiz_test_runner import EvolutizTestRunner
 from test_runner.motifcore.motifcore_test_runner import MotifcoreTestRunner
-
-import argparse
-import os
-import subprocess as sub
-import traceback
-
 from test_suite_evaluation.multi_objective import MultiObjectiveTestSuiteEvaluator
 from test_suite_evaluation.single_objective import SingleObjectiveTestSuiteEvaluator
+from test_suite_generation.population_generator import PopulationGenerator
+from test_suite_generation.population_with_coverage_generator import PopulationWithCoverageGenerator
 from util import logger
-from devices import adb
+from util.budget_manager import BudgetManager
 
 
-def run_one_app(strategy_with_runner_name, strategy_class, test_suite_evaluator_class, test_runner, app_path):
-    device_manager = DeviceManager()
+def run_one_app(strategy_with_runner_name):
+    device_manager = RequiredFeature('device_manager').request()
+    app_path = RequiredFeature('app_path').request()
 
     folder_name = os.path.basename(app_path)
     try:
@@ -45,6 +50,7 @@ def run_one_app(strategy_with_runner_name, strategy_class, test_suite_evaluator_
             os.system("mkdir -p " + result_dir + "/coverage")
             os.system("mkdir -p " + result_dir + "/crashes")
 
+            features.provide('result_dir', result_dir)
             adb.adb_logs_dir = result_dir
 
             #  reboot all devices and restart adb server before starting a repetition
@@ -56,8 +62,8 @@ def run_one_app(strategy_with_runner_name, strategy_class, test_suite_evaluator_
             for device in device_manager.get_devices():
                 device.clean_sdcard()
 
-            test_generator = Evolutiz(device_manager, strategy_class, test_suite_evaluator_class, test_runner, result_dir)
-            test_generator.run(app_path)
+            test_generator = Evolutiz()
+            test_generator.run()
 
         return True
     except Exception as e:
@@ -66,9 +72,12 @@ def run_one_app(strategy_with_runner_name, strategy_class, test_suite_evaluator_
         return False
 
 
-def run(strategy_name, strategy, test_suite_evaluator_class, test_runner, app_paths):
+def run(strategy_name, app_paths):
     for i in range(0, len(app_paths)):
-        success = run_one_app(strategy_name, strategy, test_suite_evaluator_class, test_runner, app_paths[i])
+        features.provide('app_path', app_paths[i])
+        # TODO: the coverage_fetcher should depend on whether we are processing a closed source or open source app
+        features.provide('coverage_fetcher', EmmaCoverage)
+        success = run_one_app(strategy_name)
         if not success:
             break
 
@@ -100,6 +109,11 @@ if __name__ == "__main__":
         "single-objective": SingleObjectiveTestSuiteEvaluator
     }
 
+    possible_population_generators = {
+        "default": PopulationGenerator,
+        "with-coverage": PopulationWithCoverageGenerator
+    }
+
     possible_test_runners = {
         "motifcore": MotifcoreTestRunner(),
         "motifcore-nm": MotifcoreTestRunner(use_motifgene=True),
@@ -115,6 +129,8 @@ if __name__ == "__main__":
                         choices=possible_strategies.keys(), help='Strategy to be used')
     parser.add_argument('-e', '--evaluator', dest='selected_evaluator', default='multi-objective',
                         choices=possible_test_suite_evaluators.keys(), help='Test suite evaluator to be used')
+    parser.add_argument('-p', '--population-generator', dest='selected_population_generator', default='default',
+                        choices=possible_population_generators.keys(), help='Population generator to be used')
     parser.add_argument('-t', '--test-runner', dest='selected_test_runner', default='motifcore',
                         choices=possible_test_runners.keys(), help='Test runner to be used')
     # parser.add_argument('-nm', '--no-motifgene', dest='use_motifgene', action='store_false',
@@ -124,9 +140,16 @@ if __name__ == "__main__":
     app_paths = get_subject_paths(args.subjects_directory)[0:1]
 
     strategy_with_runner_name = args.selected_strategy + "-" + args.selected_test_runner
-    strategy_class = possible_strategies[args.selected_strategy]
-    test_suite_evaluator_class = possible_test_suite_evaluators[args.selected_evaluator]
-    test_runner = possible_test_runners[args.selected_test_runner]
+
+    features.provide('strategy', possible_strategies[args.selected_strategy])
+    features.provide('test_suite_evaluator', possible_test_suite_evaluators[args.selected_evaluator])
+    features.provide('test_runner', possible_test_runners[args.selected_test_runner])
+    features.provide('population_generator', possible_population_generators[args.selected_population_generator])
+
+    # singletons
+    features.provide('toolbox', Toolbox())
+    features.provide('device_manager', DeviceManager())
+    features.provide('busget_manager', BudgetManager())
 
     # run Evolutiz
     logger.prepare()
@@ -136,7 +159,7 @@ if __name__ == "__main__":
                         args.selected_evaluator + ", " +
                         args.selected_test_runner + ")")
 
-    run(strategy_with_runner_name, strategy_class, test_suite_evaluator_class, test_runner, app_paths)
+    run(strategy_with_runner_name, app_paths)
 
     # process results
     # results_per_app = process_results(app_paths)

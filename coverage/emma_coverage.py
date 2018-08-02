@@ -7,17 +7,16 @@ from lxml import html
 
 import settings
 from crashes import crash_handler
+from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from util import logger
 
 
 class EmmaCoverage(object):
 
-    def __init__(self, test_runner, result_dir, apk_dir, package_name):
-        self.test_runner = test_runner
-        self.result_dir = result_dir
-        self.apk_dir = apk_dir
-        self.package_name = package_name
+    def __init__(self):
+        self.test_runner = RequiredFeature('test_runner').request()
+        self.app_path = RequiredFeature('app_path').request()
 
     def extract_coverage(self, path):
         with open(path, 'rb') as file:
@@ -30,6 +29,9 @@ class EmmaCoverage(object):
 
 
     def get_suite_coverage(self, scripts, device, gen, pop):
+        self.result_dir = RequiredFeature('result_dir').request()
+        self.package_name = RequiredFeature('package_name').request()
+
         unique_crashes = set()
         scripts_crash_status = {}
 
@@ -164,7 +166,7 @@ class EmmaCoverage(object):
                 raise Exception("Unable to pull coverage for device: " + device.name)
 
             os.system(
-                "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + apk_dir + "/src " + logger.redirect_string())
+                "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + app_path + "/src " + logger.redirect_string())
 
             html_file = self.result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
             coverage_str = self.extract_coverage(html_file)

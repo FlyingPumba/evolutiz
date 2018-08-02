@@ -5,22 +5,23 @@ import numpy
 from deap import creator, base
 
 import settings
+from dependency_injection.required_feature import RequiredFeature
 
 
 class MultiObjectiveTestSuiteEvaluator(object):
 
-    def __init__(self, test_runner, coverage_fetcher, result_dir, apk_dir, package_name):
-        self.test_runner = test_runner
-        self.coverage_fetcher = coverage_fetcher
-        self.result_dir = result_dir
-        self.apk_dir = apk_dir
-        self.package_name = package_name
+    def __init__(self):
+        self.test_runner = RequiredFeature('test_runner').request()
+        self.coverage_fetcher = RequiredFeature('coverage_fetcher').request()
+        self.result_dir = RequiredFeature('result_dir').request()
 
         # deap framework setup for multi objective
         creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
         creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
     def evaluate(self, individual, device, gen="", pop=""):
+        self.package_name = RequiredFeature('package_name').request()
+
         script_path = []
         suite_lengths = {}
 
@@ -43,8 +44,8 @@ class MultiObjectiveTestSuiteEvaluator(object):
             suite_lengths[script] = length
             script_path.append(script)
 
-        coverage, num_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(
-            self.test_runner, script_path, device, self.result_dir, self.apk_dir, self.package_name, gen, pop)
+        coverage, num_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(script_path, device,
+                                                                                               gen, pop)
 
         # remove from suite lengths the scripts that did NOT cause a crash
         for script, had_crash in scripts_crash_status.iteritems():

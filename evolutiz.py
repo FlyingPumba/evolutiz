@@ -1,45 +1,33 @@
 import os
 import pickle
-import time
-from datetime import datetime
 
 import numpy
-from deap import base, tools
+from deap import tools
 
 import settings
 from application.instrumentator import instrument_apk
 from application.prepare_apk_parallel import prepare_apk
-from coverage.emma_coverage import EmmaCoverage
+from dependency_injection.feature_broker import features
+from dependency_injection.required_feature import RequiredFeature
 from devices import adb
-from test_suite_generation import init_population, init_population_with_coverage
 from plot import two_d_line
 from util import logger
 
 
 class Evolutiz(object):
 
-    def __init__(self, device_manager, strategy_class, test_suite_evaluator_class, test_runner, result_dir):
-        self.device_manager = device_manager
-        self.strategy_class = strategy_class
-        self.test_suite_evaluator_class = test_suite_evaluator_class
-        self.test_runner = test_runner
-        self.result_dir = result_dir
+    def __init__(self):
+        self.device_manager = RequiredFeature('device_manager').request()
+        self.strategy = RequiredFeature('strategy').request()
+        self.test_suite_evaluator = RequiredFeature('test_suite_evaluator').request()
+        self.test_runner = RequiredFeature('test_runner').request()
+        self.population_generator = RequiredFeature('population_generator').request()
+        self.toolbox = RequiredFeature('toolbox').request()
+        self.result_dir = RequiredFeature('result_dir').request()
 
-        # register common functions in toolbox
-        self.toolbox = base.Toolbox()
-        self.toolbox.register("individual", gen_individual, self.test_runner)
-        self.toolbox.register("population", init_population.initPop, self.device_manager, self.toolbox.individual)
-        self.toolbox.register("individual_with_coverage", gen_individual_with_coverage, self.test_runner)
-        self.toolbox.register("population_with_coverage", init_population_with_coverage.initPop,
-                              self.toolbox.individual_with_coverage)
+        self.budget_manager = RequiredFeature('budget_manager')
 
-        self.toolbox.register("get_device_manager", lambda: self.device_manager)
-        self.toolbox.register("log_devices_battery", self.device_manager.log_devices_battery)
-
-        self.toolbox.register("time_budget_available",
-                              lambda: time.time() - self.start_time < settings.SEARCH_BUDGET_IN_SECONDS)
         self.toolbox.register("get_apk_dir", lambda: self.app_path)
-        self.toolbox.register("get_result_dir", lambda: self.result_dir)
         self.toolbox.register("get_package_name", lambda: self.package_name)
 
         self.test_runner.register_crossover_operator(self.toolbox)
@@ -53,8 +41,8 @@ class Evolutiz(object):
         self.stats.register("max", numpy.max, axis=0)
         self.stats.register("pop_fitness", lambda x: x)
 
-    def run(self, app_path):
-        self.app_path = app_path
+    def run(self):
+        app_path = RequiredFeature('app_path').request()
         app_name = os.path.basename(app_path)
 
         # give test runner opportunity to install on devices
@@ -63,28 +51,17 @@ class Evolutiz(object):
         devices = self.device_manager.get_devices()
 
         instrument_apk(app_path, self.result_dir)
-        self.package_name = prepare_apk(devices, app_path, self.result_dir)
+        package_name = prepare_apk(devices, app_path, self.result_dir)
+        features.provide('package_name', package_name)
 
         self.device_manager.wait_for_battery_threshold()
         self.device_manager.log_devices_battery("init", self.result_dir)
 
-        # TODO: allow to use other coverage fetcher than EMMA, based on whether we are generating tests with source code or not
-        coverage_fetcher = EmmaCoverage(self.test_runner, self.result_dir, self.apk_dir, self.package_name)
-        self.test_suite_evaluator = self.test_suite_evaluator_class(self.test_runner, coverage_fetcher,
-                                                                         self.result_dir, self.app_path,
-                                                                         self.package_name)
-
-        self.strategy = self.strategy_class(self.test_suite_evaluator, self.toolbox)
-        # start time budget
-        self.start_time = time.time()
-        print "Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M")
-
-
+        self.budget_manager.start_time_budget()
 
         for device in devices:
             # clear package data from previous runs
-            adb.shell_command(device, "pm clear " + self.package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-
+            adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
         # hof = tools.HallOfFame(6)
         # pareto front can be large, there is a similarity option parameter
