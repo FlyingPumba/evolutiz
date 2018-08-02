@@ -95,8 +95,8 @@ if __name__ == "__main__":
     }
 
     possible_test_suite_evaluators = {
-        "single-objective": MultiObjectiveTestSuiteEvaluator,
-        "multi-objective": SingleObjectiveTestSuiteEvaluator
+        "multi-objective": MultiObjectiveTestSuiteEvaluator,
+        "single-objective": SingleObjectiveTestSuiteEvaluator
     }
 
     possible_test_runners = {
@@ -124,7 +124,7 @@ if __name__ == "__main__":
 
     strategy_with_runner_name = args.selected_strategy + "-" + args.selected_test_runner
     strategy_class = possible_strategies[args.selected_strategy]
-    test_suite_evaluator_class = possible_strategies[args.selected_evaluator]
+    test_suite_evaluator_class = possible_test_suite_evaluators[args.selected_evaluator]
     test_runner = possible_test_runners[args.selected_test_runner]
 
     # run Evolutiz
