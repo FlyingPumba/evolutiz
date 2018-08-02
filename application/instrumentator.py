@@ -44,10 +44,10 @@ def prepare_app_for_instrumentation(app_path, result_dir):
         raise Exception("Unable to find src folder of app" + app_path + " when trying to pre-instrument")
 
     emma_instrument_original_path = settings.SUBJECTS_PATH + "EmmaInstrument"
-    emma_instrument_dest_path = source_root + "EmmaInstrument"
-    os.system("cp -r " + emma_instrument_original_path + " " + emma_instrument_dest_path)
+    os.system("cp -r " + emma_instrument_original_path + " " + source_root)
 
     # modify emma source
+    emma_instrument_dest_path = source_root + "EmmaInstrument"
     for target in os.listdir(emma_instrument_dest_path):
         if target.endswith(".java"):
             alter_emma_file(emma_instrument_dest_path + "/" + target, package_name)
