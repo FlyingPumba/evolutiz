@@ -22,6 +22,7 @@ class MuPlusLambda(object):
 
         self.population = None
         self.device_manager = RequiredFeature('device_manager').request()
+        self.budget_manager = RequiredFeature('budget_manager').request()
         self.toolbox = RequiredFeature('toolbox').request()
         self.result_dir = RequiredFeature('result_dir').request()
         self.population_generator = RequiredFeature('population_generator').request()
@@ -50,8 +51,7 @@ class MuPlusLambda(object):
         return self.evolve()
 
     def initPopulation(self):
-        self.population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(),
-                                                  package_name=self.toolbox.get_package_name())
+        self.population = self.toolbox.population(n=settings.POPULATION_SIZE)
         if (len(self.population) < settings.POPULATION_SIZE):
             logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
             return False
@@ -89,7 +89,7 @@ class MuPlusLambda(object):
         # Begin the generational process
         for gen in range(1, self.ngen + 1):
 
-            if not self.toolbox.time_budget_available():
+            if not self.budget_manager.time_budget_available():
                 print "Time budget run out, exiting evolve"
                 break
 
@@ -103,7 +103,7 @@ class MuPlusLambda(object):
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
 
             # this function will eval and match each invalid_ind to its fitness
-            completed_evaluation = evaluate_in_parallel(self.toolbox, invalid_ind, gen)
+            completed_evaluation = self.parallel_evaluator.evaluate(invalid_ind, gen)
 
             if not completed_evaluation:
                 print "Time budget run out durring parallel evaluation, exiting evolve"
@@ -117,7 +117,7 @@ class MuPlusLambda(object):
 
             self.update_best_historic_objectives_achieved(offspring, gen)
 
-            self.toolbox.log_devices_battery(gen, self.toolbox.get_result_dir())
+            self.device_manager.log_devices_battery(gen, self.result_dir)
 
             # Select the next generation population
             self.population[:] = self.toolbox.select(self.population + offspring, self.mu)
@@ -127,7 +127,7 @@ class MuPlusLambda(object):
             logbook.record(gen=gen, nevals=len(invalid_ind), **record)
 
             # dump logbook in case we are interrupted
-            logbook_file = open(self.toolbox.get_result_dir() + "/intermediate/logbook.pickle", 'wb')
+            logbook_file = open(self.result_dir + "/intermediate/logbook.pickle", 'wb')
             pickle.dump(logbook, logbook_file)
             logbook_file.close()
 
