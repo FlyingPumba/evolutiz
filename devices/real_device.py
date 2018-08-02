@@ -18,12 +18,12 @@ class RealDevice(Device):
     def shutdown(self):
         Device.shutdown(self)
 
-        adb.shell_command(self.name, "reboot -p")
+        adb.shell_command(self, "reboot -p")
 
     def reboot(self):
         Device.reboot(self)
 
-        result_code = adb.adb_command(self.name, "reboot", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        result_code = adb.adb_command(self, "reboot", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             logger.log_progress("\nUnable to reboot device: " + self.name)
             logger.log_progress("\nPlease, turn it off and on manually.")

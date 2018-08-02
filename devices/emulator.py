@@ -40,7 +40,7 @@ class Emulator(Device):
     def shutdown(self):
         Device.shutdown(self)
 
-        adb.adb_command(self.name, "emu kill")
+        adb.adb_command(self, "emu kill")
 
     def reboot(self):
         Device.reboot(self)
@@ -49,9 +49,9 @@ class Emulator(Device):
         self.boot(self.port)
 
     def clean_sdcard(self):
-        adb.sudo_shell_command(self.name, "mount -o rw,remount rootfs", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        adb.sudo_shell_command(self.name, "chmod 777 /mnt/sdcard", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        adb.sudo_shell_command(self.name, "rm -rf /mnt/sdcard/*", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.sudo_shell_command(self, "mount -o rw,remount rootfs", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.sudo_shell_command(self, "chmod 777 /mnt/sdcard", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.sudo_shell_command(self, "rm -rf /mnt/sdcard/*", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
     @staticmethod
     def get_avd_name_for_emulator_port(port):
