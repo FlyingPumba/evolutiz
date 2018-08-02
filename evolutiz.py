@@ -26,6 +26,32 @@ class Evolutiz(object):
         self.test_runner = test_runner
         self.result_dir = result_dir
 
+        # register common functions in toolbox
+        self.toolbox = base.Toolbox()
+        self.toolbox.register("individual", gen_individual, self.test_runner)
+        self.toolbox.register("population", initRepeatParallel.initPop, self.device_manager, self.toolbox.individual)
+        self.toolbox.register("individual_with_coverage", gen_individual_with_coverage, self.test_runner)
+        self.toolbox.register("population_with_coverage", initRepeatParallelWithCoverage.initPop,
+                         self.toolbox.individual_with_coverage)
+        self.toolbox.register("time_budget_available",
+                         lambda: time.time() - self.start_time < settings.SEARCH_BUDGET_IN_SECONDS)
+        self.toolbox.register("get_apk_dir", lambda: app_path)
+        self.toolbox.register("get_result_dir", lambda: self.result_dir)
+        self.toolbox.register("get_package_name", lambda: self.package_name)
+        self.toolbox.register("get_device_manager", lambda: self.device_manager)
+        self.toolbox.register("log_devices_battery", self.device_manager.log_devices_battery)
+
+        self.test_runner.register_crossover_operator(self.toolbox)
+        self.test_runner.register_mutation_operator(self.toolbox)
+
+        self.stats = tools.Statistics(lambda ind: ind.fitness.values)
+        # axis = 0, the numpy.mean will return an array of results
+        self.stats.register("avg", numpy.mean, axis=0)
+        self.stats.register("std", numpy.std, axis=0)
+        self.stats.register("min", numpy.min, axis=0)
+        self.stats.register("max", numpy.max, axis=0)
+        self.stats.register("pop_fitness", lambda x: x)
+
     def run(self, app_path):
         app_name = os.path.basename(app_path)
 
@@ -42,7 +68,7 @@ class Evolutiz(object):
 
         # TODO: allow to use other coverage fetcher than EMMA, based on whether we are generating tests with source code or not
         coverage_fetcher = EmmaCoverage(self.test_runner, self.result_dir, self.apk_dir, self.package_name)
-        self.self.test_suite_evaluator = self.test_suite_evaluator_class(self.test_runner, coverage_fetcher,
+        self.test_suite_evaluator = self.test_suite_evaluator_class(self.test_runner, coverage_fetcher,
                                                                          self.result_dir, self.app_path,
                                                                          self.package_name)
 
@@ -54,41 +80,19 @@ class Evolutiz(object):
             # clear package data from previous runs
             adb.shell_command(device, "pm clear " + self.package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
-        # register common functions in toolbox
-        toolbox = base.Toolbox()
-        toolbox.register("individual", gen_individual, self.test_runner)
-        toolbox.register("population", initRepeatParallel.initPop, self.device_manager, toolbox.individual)
-        toolbox.register("individual_with_coverage", gen_individual_with_coverage, self.test_runner)
-        toolbox.register("population_with_coverage", initRepeatParallelWithCoverage.initPop,
-                         toolbox.individual_with_coverage)
-        toolbox.register("time_budget_available",
-                         lambda: time.time() - self.start_time < settings.SEARCH_BUDGET_IN_SECONDS)
-        toolbox.register("get_apk_dir", lambda: app_path)
-        toolbox.register("get_result_dir", lambda: self.result_dir)
-        toolbox.register("get_package_name", lambda: self.package_name)
-        toolbox.register("get_device_manager", lambda: self.device_manager)
-        toolbox.register("log_devices_battery", self.device_manager.log_devices_battery)
-
-        stats = tools.Statistics(lambda ind: ind.fitness.values)
-        # axis = 0, the numpy.mean will return an array of results
-        stats.register("avg", numpy.mean, axis=0)
-        stats.register("std", numpy.std, axis=0)
-        stats.register("min", numpy.min, axis=0)
-        stats.register("max", numpy.max, axis=0)
-        stats.register("pop_fitness", lambda x: x)
 
         # hof = tools.HallOfFame(6)
         # pareto front can be large, there is a similarity option parameter
         hof = tools.ParetoFront()
 
         # setup toolbox specific stuff by strategy
-        self.strategy.setup(toolbox, self.test_runner, stats=stats)
+        self.strategy.setup(self.toolbox, self.test_runner, stats=self.stats)
 
         # log the history
         history = tools.History()
         # Decorate the variation operators
-        toolbox.decorate("mate", history.decorator)
-        toolbox.decorate("mutate", history.decorator)
+        self.toolbox.decorate("mate", history.decorator)
+        self.toolbox.decorate("mutate", history.decorator)
 
         # run the strategy
         population, logbook = self.strategy.run()

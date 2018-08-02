@@ -11,11 +11,13 @@ from test_runner.test_runner import TestRunner
 
 class MotifcoreTestRunner(TestRunner):
 
-    def __init__(self, toolbox, use_motifgene=False):
+    def __init__(self, use_motifgene=False):
         self.use_motifgene = use_motifgene
 
-        # register specific operators for motifcore tests
+    def register_crossover_operator(self, toolbox):
         toolbox.register("mate", tools.cxUniform, indpb=0.5)
+
+    def register_mutation_operator(self, toolbox):
         toolbox.register("mutate", sapienz_mut_suite, indpb=0.5)
 
     def install_on_devices(self, device_manager):
