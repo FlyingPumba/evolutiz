@@ -33,13 +33,15 @@ class Evolutiz(object):
         self.toolbox.register("individual_with_coverage", gen_individual_with_coverage, self.test_runner)
         self.toolbox.register("population_with_coverage", initRepeatParallelWithCoverage.initPop,
                          self.toolbox.individual_with_coverage)
-        self.toolbox.register("time_budget_available",
-                         lambda: time.time() - self.start_time < settings.SEARCH_BUDGET_IN_SECONDS)
-        self.toolbox.register("get_apk_dir", lambda: app_path)
-        self.toolbox.register("get_result_dir", lambda: self.result_dir)
-        self.toolbox.register("get_package_name", lambda: self.package_name)
+
         self.toolbox.register("get_device_manager", lambda: self.device_manager)
         self.toolbox.register("log_devices_battery", self.device_manager.log_devices_battery)
+
+        self.toolbox.register("time_budget_available",
+                              lambda: time.time() - self.start_time < settings.SEARCH_BUDGET_IN_SECONDS)
+        self.toolbox.register("get_apk_dir", lambda: self.app_path)
+        self.toolbox.register("get_result_dir", lambda: self.result_dir)
+        self.toolbox.register("get_package_name", lambda: self.package_name)
 
         self.test_runner.register_crossover_operator(self.toolbox)
         self.test_runner.register_mutation_operator(self.toolbox)
@@ -53,6 +55,7 @@ class Evolutiz(object):
         self.stats.register("pop_fitness", lambda x: x)
 
     def run(self, app_path):
+        self.app_path = app_path
         app_name = os.path.basename(app_path)
 
         # give test runner opportunity to install on devices
@@ -75,6 +78,8 @@ class Evolutiz(object):
         # start time budget
         self.start_time = time.time()
         print "Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M")
+
+
 
         for device in devices:
             # clear package data from previous runs
