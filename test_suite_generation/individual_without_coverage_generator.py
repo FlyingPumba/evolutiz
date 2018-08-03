@@ -9,12 +9,10 @@ from crashes import crash_handler
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 
-class IndividualGenerator(object):
+class IndividualWithoutCoverageGenerator(object):
 
     def __init__(self):
-
         self.test_runner = RequiredFeature('test_runner').request()
-        self.result_dir = RequiredFeature('result_dir').request()
         self.package_name = None
 
     def get_suite(self, device):
@@ -50,13 +48,16 @@ class IndividualGenerator(object):
 
         return ret
 
-    def gen_individual(self, device):
+    def gen_individual(self, device, gen, individual_index):
         try:
+            self.result_dir = RequiredFeature('result_dir').request()
             self.package_name = RequiredFeature('package_name').request()
+
             suite = self.get_suite(device)
-            return creator.Individual(suite), device
+
+            return creator.Individual(suite), individual_index, device, True
 
         except Exception as e:
             print e
             traceback.print_exc()
-            return False, device
+            return None, individual_index, device, False

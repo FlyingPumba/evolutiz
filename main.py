@@ -25,8 +25,9 @@ from test_runner.evolutiz.evolutiz_test_runner import EvolutizTestRunner
 from test_runner.motifcore.motifcore_test_runner import MotifcoreTestRunner
 from test_suite_evaluation.multi_objective import MultiObjectiveTestSuiteEvaluator
 from test_suite_evaluation.single_objective import SingleObjectiveTestSuiteEvaluator
+from test_suite_generation.individual_with_coverage_generator import IndividualWithCoverageGenerator
+from test_suite_generation.individual_without_coverage_generator import IndividualWithoutCoverageGenerator
 from test_suite_generation.population_generator import PopulationGenerator
-from test_suite_generation.population_with_coverage_generator import PopulationWithCoverageGenerator
 from util import logger
 from util.budget_manager import BudgetManager
 from util.command_checker import is_command_available
@@ -185,14 +186,14 @@ if __name__ == "__main__":
     parser.add_argument('-e', '--evaluator', dest='selected_evaluator', default='multi-objective',
                         choices=possible_test_suite_evaluators.keys(), help='Test suite evaluator to be used')
 
-    # population related arguments
-    possible_population_generators = {
-        "default": PopulationGenerator,
-        "with-coverage": PopulationWithCoverageGenerator
+    # individual generator related arguments
+    possible_individual_generators = {
+        "default": IndividualWithoutCoverageGenerator,
+        "with-coverage": IndividualWithCoverageGenerator
     }
 
-    parser.add_argument('-p', '--population-generator', dest='selected_population_generator', default='default',
-                        choices=possible_population_generators.keys(), help='Population generator to be used')
+    parser.add_argument('-ig', '--individual-generator', dest='selected_individual_generator', default='default',
+                        choices=possible_individual_generators.keys(), help='Individual generator to be used')
 
     # test runner related arguments
     possible_test_runners = {
@@ -230,7 +231,8 @@ if __name__ == "__main__":
     features.provide('strategy', possible_strategies[args.selected_strategy])
     features.provide('test_suite_evaluator', possible_test_suite_evaluators[args.selected_evaluator])
     features.provide('test_runner', possible_test_runners[args.selected_test_runner])
-    features.provide('population_generator', possible_population_generators[args.selected_population_generator])
+    features.provide('individual_generator', possible_individual_generators[args.selected_individual_generator])
+    features.provide('population_generator', PopulationGenerator)
 
     check_needed_commands_available()
 

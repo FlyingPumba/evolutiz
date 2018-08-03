@@ -21,9 +21,6 @@ class IndividualWithCoverageGenerator(object):
 
     def __init__(self):
         self.test_runner = RequiredFeature('test_runner').request()
-        self.result_dir = RequiredFeature('result_dir').request()
-        self.app_path = RequiredFeature('app_path').request()
-        self.package_name = None
 
     def get_suite_with_fitness(self, device, gen, pop):
         ret = []
@@ -153,7 +150,7 @@ class IndividualWithCoverageGenerator(object):
                 raise Exception("Unable to pull coverage for device: " + device.name)
 
             os.system(
-                "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + app_path + "/src " + logger.redirect_string())
+                "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + self.app_path + "/src " + logger.redirect_string())
 
             html_file = self.result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
             coverage_str = self.extract_coverage(html_file)
@@ -201,20 +198,24 @@ class IndividualWithCoverageGenerator(object):
 
         return ret, there_is_coverage
 
-    def gen_individual_with_coverage(self, device, gen, pop):
+    def gen_individual(self, device, gen, individual_index):
         try:
+            self.result_dir = RequiredFeature('result_dir').request()
+            self.app_path = RequiredFeature('app_path').request()
             self.package_name = RequiredFeature('package_name').request()
-            suite, fitness = self.get_suite_with_fitness(device, gen, pop)
-            ind = creator.Individual(suite)
-            ind.fitness.values = fitness
+
+            suite, fitness = self.get_suite_with_fitness(device, gen, individual_index)
+            individual = creator.Individual(suite)
+            individual.fitness.values = fitness
             logger.log_fitness_result(fitness)
 
-            return ind, device
+            return individual, individual_index, device, True
 
         except Exception as e:
             print e
             traceback.print_exc()
-            return False, device
+
+            return None, individual_index, device, False
 
     def extract_coverage(self, path):
         with open(path, 'rb') as file:
