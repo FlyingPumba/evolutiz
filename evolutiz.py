@@ -5,7 +5,7 @@ import numpy
 from deap import tools
 
 import settings
-from application.instrumentator import instrument_apk
+from application.apk_instrumentator import ApkInstrumentator
 from application.prepare_apk_parallel import prepare_apk
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
@@ -48,7 +48,8 @@ class Evolutiz(object):
 
         devices = self.device_manager.get_devices()
 
-        instrumented_app_path, package_name = instrument_apk(app_path, self.result_dir)
+        apk_instrumentator = ApkInstrumentator()
+        instrumented_app_path, package_name = apk_instrumentator.instrument()
         features.provide('package_name', package_name)
         features.provide('instrumented_app_path', instrumented_app_path)
 

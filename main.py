@@ -91,6 +91,7 @@ def run(strategy_name, app_paths):
 
 def get_subject_paths(arguments):
     subjects_directory = arguments.subjects_directory
+    features.provide('subjects_path', subjects_directory)
 
     p = sub.Popen("ls -d " + subjects_directory + "*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     output, errors = p.communicate()
@@ -148,8 +149,11 @@ if __name__ == "__main__":
 
     # subjects related arguments
     parser.add_argument('-d', '--subjects', dest='subjects_directory',
-                        default=settings.SUBJECTS_PATH + 'are-we-there-yet/',
+                        default='subjects/are-we-there-yet/',
                         help='Directory where subjects are located')
+    parser.add_argument('--instrumented-subjects', dest='instrumented_subjects_directory',
+                        default='instrumented-subjects/',
+                        help='Directory where instrumented subjects will be located')
     parser.add_argument('--randomize-subjects', dest='randomize_subjects',
                         action='store_true', default=False, help='Randomize subjects to be processed')
     parser.add_argument('--limit-subjects-number', type=int, default=1, dest='limit_subjects_numbers',
@@ -222,6 +226,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # define subjects
+    features.provide('instrumented_subjects_path', args.instrumented_subjects_directory)
     app_paths = get_subject_paths(args)
 
     # define budget and repetitions

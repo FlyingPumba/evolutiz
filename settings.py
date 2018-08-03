@@ -3,8 +3,6 @@ DEBUG = False # or False
 ENABLE_STRING_SEEDING = True
 # use headless evaluator
 HEADLESS = True
-INSTRUMENTED_SUBJECTS_PATH = "instrumented-subjects/"  # folder for instrumented builds with emma
-SUBJECTS_PATH = "subjects/"  # folder for original sources
 ANDROID_TARGET = "android-10"  # TODO: this should depend on a configuration file in the subject itself
 
 MOTIFCORE_EVAL_TIMEOUT = 120

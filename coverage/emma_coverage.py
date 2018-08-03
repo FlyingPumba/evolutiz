@@ -6,6 +6,7 @@ from bs4 import UnicodeDammit
 from lxml import html
 
 import settings
+from coverage.coverage_extractor import extract_coverage
 from crashes import crash_handler
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
@@ -17,15 +18,6 @@ class EmmaCoverage(object):
     def __init__(self):
         self.test_runner = RequiredFeature('test_runner').request()
         self.app_path = RequiredFeature('app_path').request()
-
-    def extract_coverage(self, path):
-        with open(path, 'rb') as file:
-            content = file.read()
-            doc = UnicodeDammit(content, is_html=True)
-
-        parser = html.HTMLParser(encoding=doc.original_encoding)
-        root = html.document_fromstring(content, parser=parser)
-        return root.xpath('/html/body/table[2]/tr[2]/td[5]/text()')[0].strip()
 
 
     def get_suite_coverage(self, scripts, device, gen, pop):
@@ -170,7 +162,7 @@ class EmmaCoverage(object):
                       self.app_path + "/src " + logger.redirect_string())
 
             html_file = self.result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
-            coverage_str = self.extract_coverage(html_file)
+            coverage_str = extract_coverage(html_file)
 
             if coverage_str.find("%") != -1:
                 return int(coverage_str.split("%")[0]), len(unique_crashes), scripts_crash_status
