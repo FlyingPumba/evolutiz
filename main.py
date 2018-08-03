@@ -1,5 +1,6 @@
 import argparse
 import os
+import random
 import subprocess as sub
 import traceback
 
@@ -86,13 +87,22 @@ def run(strategy_name, app_paths):
             break
 
 
-def get_subject_paths(subjects_directory):
+def get_subject_paths(arguments):
+    subjects_directory = arguments.subjects_directory
+
     p = sub.Popen("ls -d " + subjects_directory + "*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     output, errors = p.communicate()
     app_paths = []
     for line in output.strip().split('\n'):
         if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
             app_paths.append(line.rstrip('/'))  # remove trailing forward slash
+
+    if arguments.randomize_subjects:
+        random.shuffle(app_paths)
+
+    if arguments.limit_subjects_numbers != -1:
+        app_paths = app_paths[0:arguments.limit_subjects_numbers]
+
     return app_paths
 
 
@@ -109,6 +119,19 @@ def check_needed_commands_available():
 
 
 if __name__ == "__main__":
+    # parse args
+    parser = argparse.ArgumentParser(description='Run Evolutiz with different strategies.')
+
+    # subjects related arguments
+    parser.add_argument('-d', '--subjects', dest='subjects_directory',
+                        default=settings.SUBJECTS_PATH + 'are-we-there-yet/',
+                        help='Directory where subjects are located')
+    parser.add_argument('--randomize-subjects', dest='randomize_subjects',
+                        action='store_true', default=False, help='Randomize subjects to be processed')
+    parser.add_argument('--limit-subjects-number', type=int, default=1, dest='limit_subjects_numbers',
+                        help='Limit the number of subjects to be processed (-1 to disable limit)')
+
+    # strategy related arguments
     possible_strategies = {
         "standard": Standard,
         "monotonic": Monotonic,
@@ -120,40 +143,45 @@ if __name__ == "__main__":
         "random": Random
     }
 
+    parser.add_argument('-s', '--strategy', dest='selected_strategy', default='muPlusLambda',
+                        choices=possible_strategies.keys(), help='Strategy to be used')
+
+    # evaluators related argurments
     possible_test_suite_evaluators = {
         "multi-objective": MultiObjectiveTestSuiteEvaluator,
         "single-objective": SingleObjectiveTestSuiteEvaluator
     }
 
+    parser.add_argument('-e', '--evaluator', dest='selected_evaluator', default='multi-objective',
+                        choices=possible_test_suite_evaluators.keys(), help='Test suite evaluator to be used')
+
+    # population related arguments
     possible_population_generators = {
         "default": PopulationGenerator,
         "with-coverage": PopulationWithCoverageGenerator
     }
 
+    parser.add_argument('-p', '--population-generator', dest='selected_population_generator', default='default',
+                        choices=possible_population_generators.keys(), help='Population generator to be used')
+
+    # test runner related arguments
     possible_test_runners = {
         "motifcore": MotifcoreTestRunner(),
         "motifcore-nm": MotifcoreTestRunner(use_motifgene=True),
         "evolutiz": EvolutizTestRunner()
     }
 
-    # parse args
-    parser = argparse.ArgumentParser(description='Run Evolutiz with different strategies.')
-    parser.add_argument('-d', '--subjects', dest='subjects_directory',
-                        default=settings.SUBJECTS_PATH + 'are-we-there-yet/',
-                        help='Directory where subjects are located')
-    parser.add_argument('-s', '--strategy', dest='selected_strategy', default='muPlusLambda',
-                        choices=possible_strategies.keys(), help='Strategy to be used')
-    parser.add_argument('-e', '--evaluator', dest='selected_evaluator', default='multi-objective',
-                        choices=possible_test_suite_evaluators.keys(), help='Test suite evaluator to be used')
-    parser.add_argument('-p', '--population-generator', dest='selected_population_generator', default='default',
-                        choices=possible_population_generators.keys(), help='Population generator to be used')
     parser.add_argument('-t', '--test-runner', dest='selected_test_runner', default='motifcore',
                         choices=possible_test_runners.keys(), help='Test runner to be used')
-    # parser.add_argument('-nm', '--no-motifgene', dest='use_motifgene', action='store_false',
-    #                     default=True, help='Disable motifgenes')
 
+    # --------------------------------------------------------------------------------- #
+    # --------------------------------------------------------------------------------- #
+
+    # Parse arguments
     args = parser.parse_args()
-    app_paths = get_subject_paths(args.subjects_directory)[0:1]
+
+    # define subjects
+    app_paths = get_subject_paths(args)
 
     strategy_with_runner_name = args.selected_strategy + "-" + args.selected_test_runner
 
