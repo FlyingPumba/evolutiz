@@ -118,10 +118,10 @@ class DeviceManager(object):
         device.reboot()
 
     def boot_emulators(self, wait_to_be_ready=False):
-        logger.log_progress("\nBooting devices: " + str(0) + "/" + str(self.total_emulators))
+        logger.log_progress("\nBooting devices: " + str(0) + "/" + str(self.emulators_number))
 
-        for i in range(0, self.total_emulators):
-            logger.log_progress("\rBooting devices: " + str(i + 1) + "/" + str(self.total_emulators))
+        for i in range(0, self.emulators_number):
+            logger.log_progress("\rBooting devices: " + str(i + 1) + "/" + str(self.emulators_number))
             emulator = Emulator(self)
             emulator.boot()
             self.devices.append(emulator)
