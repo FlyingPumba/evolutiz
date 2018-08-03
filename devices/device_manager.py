@@ -4,7 +4,6 @@ import time
 
 import adb
 import settings
-from dependency_injection.feature_broker import features
 from devices.device import Device, State
 from devices.do_parallel_fail_one_fail_all import DoParallelFailOneFailAll
 from devices.emulator import Emulator
@@ -12,6 +11,14 @@ from util import logger
 
 
 class DeviceManager(object):
+    """Manages the availability of the devices as they are used.
+
+    This involves:
+    - Know which devices were last seen using the command 'adb devices'. These devices are marked as reachable.
+    - Know which devices already finished booting, and which ones are ready to receive apk installations.
+    - Detect when a rebooting device is back.
+    - Boot and shutdown emulators.
+     """
     def __init__(self):
         self.total_emulators = settings.EMULATOR_DEVICE_NUM
         self.next_available_emulator_port = 5554
