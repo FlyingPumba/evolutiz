@@ -31,7 +31,7 @@ def prepare_app_for_instrumentation(app_path, result_dir):
     # copy sources to instrumented subjects folder
     app_name = os.path.basename(app_path)
     instrumented_source_path = settings.INSTRUMENTED_SUBJECTS_PATH + app_name
-    os.system("rm -r " + instrumented_source_path)
+    os.system("rm -rf " + instrumented_source_path)
     os.system("mkdir " + settings.INSTRUMENTED_SUBJECTS_PATH)
     os.system("cp -r " + app_path + " " + instrumented_source_path)
 
