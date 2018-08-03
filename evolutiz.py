@@ -63,10 +63,6 @@ class Evolutiz(object):
             # clear package data from previous runs
             adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
-        # hof = tools.HallOfFame(6)
-        # pareto front can be large, there is a similarity option parameter
-        hof = tools.ParetoFront()
-
         # setup toolbox specific stuff by strategy
         self.strategy.setup(stats=self.stats)
 

@@ -231,7 +231,7 @@ class Standard(object):
         if not os.path.exists(dirname):
             os.makedirs(dirname)
         with open(filename, "w") as script:
-            script.write(settings.MOTIFCORE_SCRIPT_HEADER)
+            script.write(settings.SCRIPT_HEADER)
             for line in content:
                 script.write(line + "\n")
 

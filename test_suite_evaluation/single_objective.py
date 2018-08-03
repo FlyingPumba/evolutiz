@@ -4,18 +4,19 @@ from deap import base, creator, tools
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
+from test_suite_evaluation.test_suite_evaluator import TestSuiteEvaluator
 
 
-class SingleObjectiveTestSuiteEvaluator(object):
+class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
     def __init__(self):
-        self.test_runner = RequiredFeature('test_runner').request()
-        self.coverage_fetcher = RequiredFeature('coverage_fetcher').request()
-        self.result_dir = RequiredFeature('result_dir').request()
+        super(SingleObjectiveTestSuiteEvaluator, self).__init__()
 
         # deap framework setup for single objective
         creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
         creator.create("Individual", list, fitness=creator.FitnessMin)
+
+        self.hall_of_fame = tools.HallOfFame(maxsize=10)
 
     def register_selection_operator(self, toolbox):
         # self.toolbox.register("select", tools.selTournament, tournsize=5)
@@ -24,27 +25,16 @@ class SingleObjectiveTestSuiteEvaluator(object):
 
     def evaluate(self, individual, device, gen="", pop=""):
         self.package_name = RequiredFeature('package_name').request()
+        try:
+            script_path, suite_lengths = self.dump_individual_to_files(individual, gen, pop)
+            coverage, num_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(script_path, device,
+                                                                                                   gen, pop)
+            # TODO: look into fusing coverage and number of crashes found into the fitness value
+            individual.fitness.values = coverage
 
-        script_path = []
+            # TODO: log single-objective fitness result
+            #logger.log_fitness_result(individual.fitness.values)
 
-        for index, seq in enumerate(individual):
-            # generate script file list
-            filename = self.result_dir + "/intermediate/script." + str(gen) + "." + str(pop) + "." + str(index)
-            # check that directory exists before creating file
-            dirname = os.path.dirname(filename)
-            if not os.path.exists(dirname):
-                os.makedirs(dirname)
-            with open(filename, "w+") as script:
-                script.write(settings.MOTIFCORE_SCRIPT_HEADER)
-
-                for line in seq:
-                    script.write(line + "\n")
-
-            script_path.append(os.path.abspath(filename))
-
-        coverage, num_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(script_path, device,
-                                                                                               gen, pop)
-
-        # TODO: look into fusing coverage and number of crashes found into the fitness value
-        fitness = coverage
-        return pop, fitness, device
+            return pop, device, True
+        except Exception as e:
+            return pop, device, False

@@ -45,4 +45,4 @@ REPETITIONS = 1
 # for initial population
 MOTIFCORE_SCRIPT_PATH = '/mnt/sdcard/motifcore.script'
 # header for evolved scripts
-MOTIFCORE_SCRIPT_HEADER = 'type= raw events\ncount= -1\nspeed= 1.0\nstart data >>\n'
+SCRIPT_HEADER = 'type= raw events\ncount= -1\nspeed= 1.0\nstart data >>\n'
