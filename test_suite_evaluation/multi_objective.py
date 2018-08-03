@@ -48,7 +48,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
             self.hall_of_fame.update([individual])
             logger.log_fitness_result(individual.fitness.values)
 
-            return pop, device, True
+            return individual, pop, device, True
 
         except Exception as e:
-            return pop, device, False
+            return None, pop, device, False

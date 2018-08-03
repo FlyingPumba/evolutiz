@@ -58,16 +58,13 @@ class MuPlusLambda(object):
 
         # Evaluate the individuals with an invalid fitness
         invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-        completed_evaluation = self.parallel_evaluator.evaluate(invalid_ind, 0)
+        individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind, 0)
 
-        if not completed_evaluation:
+        if individuals_evaluated is None:
             logger.log_progress("\nTime budget run out durring parallel evaluation, exiting setup")
             return False
 
-        # discard invalid population individual
-        for i in range(len(self.population) - 1, -1, -1):
-            if not self.population[i].fitness.valid:
-                del self.population[i]
+        self.population = individuals_evaluated[:]
 
         self.update_best_historic_objectives_achieved(self.population, 0)
 
@@ -103,9 +100,9 @@ class MuPlusLambda(object):
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
 
             # this function will eval and match each invalid_ind to its fitness
-            completed_evaluation = self.parallel_evaluator.evaluate(invalid_ind, gen)
+            individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind, gen)
 
-            if not completed_evaluation:
+            if individuals_evaluated is None:
                 print "Time budget run out durring parallel evaluation, exiting evolve"
                 break
 
