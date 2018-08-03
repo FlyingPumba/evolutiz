@@ -34,13 +34,6 @@ CXPB = 0.7
 MUTPB = 0.3
 SEARCH_BUDGET_IN_SECONDS = 60 * 60  # 60 * 60 # = 1 hour
 
-# === Only for main_multi ===
-# start from the ith apk
-APK_OFFSET = 0
-APK_DIR = ""
-REPEATED_RESULTS_DIR = ""
-REPETITIONS = 1
-
 # === MOTIFCORE script ===
 # for initial population
 MOTIFCORE_SCRIPT_PATH = '/mnt/sdcard/motifcore.script'

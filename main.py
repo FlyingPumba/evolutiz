@@ -36,10 +36,11 @@ from util.command_checker import is_command_available
 def run_one_app(strategy_with_runner_name):
     device_manager = RequiredFeature('device_manager').request()
     app_path = RequiredFeature('app_path').request()
+    repetitions = RequiredFeature('repetitions').request()
 
     folder_name = os.path.basename(app_path)
     try:
-        for repetition in range(0, settings.REPETITIONS):
+        for repetition in range(0, repetitions):
 
             # prepare result_dir folder
             result_dir = settings.WORKING_DIR + "results/" + \
@@ -153,6 +154,8 @@ if __name__ == "__main__":
                         action='store_true', default=False, help='Randomize subjects to be processed')
     parser.add_argument('--limit-subjects-number', type=int, default=1, dest='limit_subjects_numbers',
                         help='Limit the number of subjects to be processed (-1 to disable limit).')
+    parser.add_argument('-r', '--repetitions', type=int, default=1, dest='repetitions',
+                        help='Choose the number of repetitions per subject to run. Default is 1.')
 
     # devices related arguments
     parser.add_argument('--real-devices-number', type=int, default=0, dest='real_devices_number',
@@ -213,17 +216,13 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # define subjects
+    features.provide('repetitions', args.repetitions)
     app_paths = get_subject_paths(args)
 
     # define devices configuration
-    emulators_number = args.emulators_number
-    features.provide('emulators_number', emulators_number)
-
-    real_devices_number = args.real_devices_number
-    features.provide('real_devices_number', real_devices_number)
-
-    avd_series = args.avd_series
-    features.provide('avd_series', avd_series)
+    features.provide('emulators_number', args.emulators_number)
+    features.provide('real_devices_number', args.real_devices_number)
+    features.provide('avd_series', args.avd_series)
 
     # provide features
     strategy_with_runner_name = args.selected_strategy + "-" + args.selected_test_runner
