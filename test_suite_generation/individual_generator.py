@@ -50,8 +50,7 @@ class IndividualGenerator(object):
 
         return ret
 
-
-    def gen_individual(self, device):
+    def __call__(self, device):
         self.package_name = RequiredFeature('package_name').request()
         try:
             suite = self.get_suite(device)

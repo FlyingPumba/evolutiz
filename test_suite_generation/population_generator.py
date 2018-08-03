@@ -15,7 +15,6 @@ class PopulationGenerator(object):
         self.result_dir = RequiredFeature('result_dir').request()
 
         self.individual_generator = IndividualGenerator()
-        self.generate_individual_function = self.individual_generator.gen_individual
 
         self.idle_devices = []
         self.total_individuals = 0
@@ -63,8 +62,8 @@ class PopulationGenerator(object):
             if self.remaining_individuals_to_generate > 0 and len(self.idle_devices) > 0:
                 self.remaining_individuals_to_generate -= 1
                 device = self.idle_devices.pop(0)
-                pool.apply_async(self.generate_individual_function,
-                                 args=(device),
+                pool.apply_async(self.individual_generator,
+                                 args=device,
                                  callback=self.process_results)
             else:
                 time.sleep(2)
