@@ -91,7 +91,7 @@ class Random(object):
         # Begin the generational process
         for gen in range(1, self.ngen + 1):
 
-            if not self.toolbox.time_budget_available():
+            if not self.budget_manager.time_budget_available():
                 print "Time budget run out, exiting evolve"
                 break
 
