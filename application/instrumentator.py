@@ -84,12 +84,6 @@ def get_main_activity(root_path):
 
 
 def get_package_name(root_path):
-    # p = sub.Popen(
-    #     settings.AAPT + " d xmltree " + apk_path + " AndroidManifest.xml | grep package | awk 'BEGIN {FS=\"\\\"\"}{print $2}'",
-    #     stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
-    # package_name, errors = p.communicate()
-    # package_name = package_name.rstrip('\n')
-
     manifest = root_path + "/AndroidManifest.xml"
 
     tree = ET.ElementTree(file=manifest)
