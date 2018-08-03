@@ -86,7 +86,7 @@ class DeviceManager(object):
                 p = sub.Popen(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell pm list packages',
                               stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
                 output, errors = p.communicate()
-                if "Error: Could not access the Package Manager" not in output.strip() and "error" not in errors.strip():
+                if "Error: Could not access the Package Manager" not in output.strip() and errors.strip() == "":
                     device.state = State.ready
 
         return [device for device in self.devices if device.state is State.ready]

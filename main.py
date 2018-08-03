@@ -162,6 +162,8 @@ if __name__ == "__main__":
                         args.selected_evaluator + ", " +
                         args.selected_test_runner + ")")
 
+    # TODO: validate assumptions prior to running (eg. adb is a command reachable)
+
     run(strategy_with_runner_name, app_paths)
 
     # process results
