@@ -1,5 +1,5 @@
+import multiprocessing as mp
 import time
-from mimify import mp
 
 from dependency_injection.di_assertions import HasMethods
 from dependency_injection.required_feature import RequiredFeature
