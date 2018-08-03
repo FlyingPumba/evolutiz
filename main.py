@@ -28,6 +28,7 @@ from test_suite_generation.population_generator import PopulationGenerator
 from test_suite_generation.population_with_coverage_generator import PopulationWithCoverageGenerator
 from util import logger
 from util.budget_manager import BudgetManager
+from util.command_checker import is_command_available
 
 
 def run_one_app(strategy_with_runner_name):
@@ -95,6 +96,18 @@ def get_subject_paths(subjects_directory):
     return app_paths
 
 
+def check_needed_commands_available():
+    if not is_command_available(adb.adb_cmd_prefix):
+        cause = "Command 'adb' was not found in the " + adb.adb_cmd_prefix + " route"
+        logger.log_progress(cause)
+        raise Exception(cause)
+
+    if not is_command_available("ant"):
+        cause = "Command 'ant' needed but not found."
+        logger.log_progress(cause)
+        raise Exception(cause)
+
+
 if __name__ == "__main__":
     possible_strategies = {
         "standard": Standard,
@@ -149,20 +162,21 @@ if __name__ == "__main__":
     features.provide('test_runner', possible_test_runners[args.selected_test_runner])
     features.provide('population_generator', possible_population_generators[args.selected_population_generator])
 
+    logger.prepare()
+
+    check_needed_commands_available()
+
     # singletons
     features.provide('toolbox', Toolbox())
     features.provide('device_manager', DeviceManager())
     features.provide('budget_manager', BudgetManager())
 
     # run Evolutiz
-    logger.prepare()
     logger.clear_progress()
     logger.log_progress("Evolutiz (" +
                         args.selected_strategy + ", " +
                         args.selected_evaluator + ", " +
                         args.selected_test_runner + ")")
-
-    # TODO: validate assumptions prior to running (eg. adb is a command reachable)
 
     run(strategy_with_runner_name, app_paths)
 
