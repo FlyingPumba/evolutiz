@@ -1,5 +1,3 @@
-import subprocess as sub
-
 import settings
 from devices import adb
 from devices.device import Device, State

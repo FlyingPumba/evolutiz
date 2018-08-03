@@ -1,7 +1,3 @@
-import settings
-from devices import adb
-
-
 class TestRunner(object):
     def __init__(self):
         pass

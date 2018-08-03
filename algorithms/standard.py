@@ -1,8 +1,8 @@
 import datetime
-
 import os
 import pickle
-from deap import tools, creator, base
+
+from deap import tools
 
 import settings
 from devices import adb

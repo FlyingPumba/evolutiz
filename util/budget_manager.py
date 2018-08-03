@@ -1,8 +1,6 @@
 import time
 from datetime import datetime
 
-import settings
-
 
 class BudgetManager(object):
 

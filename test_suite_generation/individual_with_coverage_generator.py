@@ -1,14 +1,12 @@
 import datetime
-import sys
-import time
-
-import numpy
 import os
 import random
+import sys
+import time
 import traceback
-from bs4 import UnicodeDammit
+
+import numpy
 from deap import creator
-from lxml import html
 
 import settings
 from coverage.coverage_extractor import extract_coverage

@@ -1,8 +1,5 @@
-from datetime import datetime as dt
-
 import multiprocessing as mp
 import os
-import subprocess
 
 import settings
 from application import static_analyser

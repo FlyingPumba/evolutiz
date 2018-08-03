@@ -1,7 +1,7 @@
-import sys
-
 import os
 import pickle
+import sys
+
 from deap import tools, creator, base
 
 import settings

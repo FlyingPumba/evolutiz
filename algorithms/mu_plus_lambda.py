@@ -4,10 +4,10 @@ import random
 import sys
 
 from deap import tools
-from test_suite_evaluation.parallel_evaluator import ParallelEvaluator
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
+from test_suite_evaluation.parallel_evaluator import ParallelEvaluator
 from util import logger
 
 

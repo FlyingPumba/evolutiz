@@ -2,9 +2,6 @@ import datetime
 import os
 import time
 
-from bs4 import UnicodeDammit
-from lxml import html
-
 import settings
 from coverage.coverage_extractor import extract_coverage
 from crashes import crash_handler

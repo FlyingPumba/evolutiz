@@ -1,6 +1,7 @@
+import pickle
+
 import matplotlib.pyplot as plt
 import networkx
-import pickle
 
 import settings
 

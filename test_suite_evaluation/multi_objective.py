@@ -1,10 +1,8 @@
-import os
 import sys
 
 import numpy
 from deap import creator, base, tools
 
-import settings
 from dependency_injection.required_feature import RequiredFeature
 from test_suite_evaluation.test_suite_evaluator import TestSuiteEvaluator
 from util import logger

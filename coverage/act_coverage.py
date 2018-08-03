@@ -1,8 +1,7 @@
 import os
-import subprocess
-import threading
 
 import settings
+
 
 def cal_coverage(path, gen, pop):
     activities = set()

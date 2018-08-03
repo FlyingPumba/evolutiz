@@ -1,9 +1,6 @@
 import os
 import pickle
 
-from lxml import html
-from bs4 import UnicodeDammit
-
 from coverage.coverage_extractor import extract_coverage
 
 

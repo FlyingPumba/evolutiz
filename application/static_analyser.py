@@ -1,5 +1,3 @@
-from datetime import datetime as dt
-
 import os
 
 import settings

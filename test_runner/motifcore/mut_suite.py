@@ -1,4 +1,5 @@
 import random
+
 from deap import tools
 
 import settings
