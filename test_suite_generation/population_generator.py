@@ -3,7 +3,8 @@ import time
 
 from dependency_injection.required_feature import RequiredFeature
 from test_suite_generation.individual_generator import IndividualGenerator
-from util import logger, pickable_function
+from util import logger
+from util.pickable import pickable_function
 
 
 class PopulationGenerator(object):

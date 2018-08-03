@@ -51,8 +51,8 @@ class IndividualGenerator(object):
         return ret
 
     def gen_individual(self, device):
-        self.package_name = RequiredFeature('package_name').request()
         try:
+            self.package_name = RequiredFeature('package_name').request()
             suite = self.get_suite(device)
             return creator.Individual(suite), device
 

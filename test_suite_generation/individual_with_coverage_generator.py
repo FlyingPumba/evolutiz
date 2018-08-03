@@ -202,8 +202,8 @@ class IndividualWithCoverageGenerator(object):
         return ret, there_is_coverage
 
     def gen_individual_with_coverage(self, device, gen, pop):
-        self.package_name = RequiredFeature('package_name').request()
         try:
+            self.package_name = RequiredFeature('package_name').request()
             suite, fitness = self.get_suite_with_fitness(device, gen, pop)
             ind = creator.Individual(suite)
             ind.fitness.values = fitness
