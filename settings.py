@@ -7,17 +7,11 @@ INSTRUMENTED_SUBJECTS_PATH = "instrumented-subjects/"  # folder for instrumented
 SUBJECTS_PATH = "subjects/"  # folder for original sources
 ANDROID_TARGET = "android-10"  # TODO: this should depend on a configuration file in the subject itself
 
-USE_REAL_DEVICES = False
-USE_EMULATORS = True
-
-REAL_DEVICE_NUM = 0
 MOTIFCORE_EVAL_TIMEOUT = 120
 ADB_REGULAR_COMMAND_TIMEOUT = 30
 
 # === Emulator ===
-EMULATOR_DEVICE_NUM = 1
 AVD_BOOT_DELAY = 40  # 40
-AVD_SERIES = "Nexus_4_API_19"
 # if run on Mac OS, use "gtimeout"
 TIMEOUT_CMD = "timeout"
 

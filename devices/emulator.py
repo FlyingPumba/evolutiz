@@ -2,6 +2,7 @@ import subprocess as sub
 import time
 
 import settings
+from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device, State
 
@@ -63,5 +64,6 @@ class Emulator(Device):
 
     @staticmethod
     def get_avd_name_for_emulator_port(port):
+        avd_series = RequiredFeature('avd_series').request()
         avd_index = (port - 5554) / 2
-        return settings.AVD_SERIES + "_" + str(avd_index)
+        return avd_series + "_" + str(avd_index)

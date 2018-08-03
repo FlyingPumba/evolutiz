@@ -151,7 +151,15 @@ if __name__ == "__main__":
     parser.add_argument('--randomize-subjects', dest='randomize_subjects',
                         action='store_true', default=False, help='Randomize subjects to be processed')
     parser.add_argument('--limit-subjects-number', type=int, default=1, dest='limit_subjects_numbers',
-                        help='Limit the number of subjects to be processed (-1 to disable limit)')
+                        help='Limit the number of subjects to be processed (-1 to disable limit).')
+
+    # devices related arguments
+    parser.add_argument('--real-devices-number', type=int, default=0, dest='real_devices_number',
+                        help='Set the number of real devices to use. Default is 0.')
+    parser.add_argument('--emulators-number', type=int, default=2, dest='emulators_number',
+                        help='Set the number of emulators to use. Default is 2.')
+    parser.add_argument('--avd-series', type=str, default='Nexus_4_API_19', dest='avd_series',
+                        help='Set the prefix of avd names. Default is Nexus_4_API_19.')
 
     # strategy related arguments
     possible_strategies = {
@@ -206,6 +214,17 @@ if __name__ == "__main__":
     # define subjects
     app_paths = get_subject_paths(args)
 
+    # define devices configuration
+    emulators_number = args.emulators_number
+    features.provide('emulators_number')
+
+    real_devices_number = args.real_devices_number
+    features.provide('real_devices_number')
+
+    avd_series = args.avd_series
+    features.provide('avd_series')
+
+    # provide features
     strategy_with_runner_name = args.selected_strategy + "-" + args.selected_test_runner
 
     features.provide('strategy', possible_strategies[args.selected_strategy])

@@ -4,6 +4,7 @@ import time
 
 import adb
 import settings
+from dependency_injection.required_feature import RequiredFeature
 from devices.device import Device, State
 from devices.do_parallel_fail_one_fail_all import DoParallelFailOneFailAll
 from devices.emulator import Emulator
@@ -20,17 +21,21 @@ class DeviceManager(object):
     - Boot and shutdown emulators.
      """
     def __init__(self):
-        self.total_emulators = settings.EMULATOR_DEVICE_NUM
+        self.emulators_number = RequiredFeature('emulators_number').request()
+        self.real_devices_number = RequiredFeature('real_devices_number').request()
+
         self.next_available_emulator_port = 5554
 
         # all devices that can be used
-        # this depends on the settings (USE_REAL_DEVICES and USE_EMULATORS)
         self.devices = []
 
         # init available devices
         self.refresh_reachable_devices()
 
     def refresh_reachable_devices(self):
+        emulators_found = 0
+        real_devices_found = 0
+
         p = sub.Popen(adb.adb_cmd_prefix + ' devices', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
         output, errors = p.communicate()
         lines = output.split("\n")
@@ -47,10 +52,19 @@ class DeviceManager(object):
                     device = matching_devices.pop(0)
                     if device.state is State.unknown or device.state is State.booting:
                         device.state = State.reachable
-                elif "emulator" in line and settings.USE_EMULATORS:
+
+                    if type(device) is Emulator:
+                        emulators_found += 1
+                    else:
+                        real_devices_found += 1
+
+                elif "emulator" in line and emulators_found < self.emulators_number:
                     self.devices.append(Emulator(self, device_name, state=State.reachable))
-                elif "device" in line and settings.USE_REAL_DEVICES:
+                    emulators_found += 1
+
+                elif "device" in line and real_devices_found < self.real_devices_number:
                     self.devices.append(Device(self, device_name, state=State.reachable))
+                    real_devices_found += 1
 
         return self.devices
 
@@ -171,10 +185,4 @@ class DeviceManager(object):
         return port
 
     def get_total_number_of_devices_expected(self):
-        number = 0
-        if settings.USE_REAL_DEVICES:
-            number += settings.REAL_DEVICE_NUM
-        if settings.USE_EMULATORS:
-            number += settings.EMULATOR_DEVICE_NUM
-
-        return number
+        return self.real_devices_number + self.emulators_number
