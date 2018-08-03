@@ -165,8 +165,9 @@ class EmmaCoverage(object):
                 device.flag_as_malfunctioning()
                 raise Exception("Unable to pull coverage for device: " + device.name)
 
-            os.system(
-                "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + app_path + "/src " + logger.redirect_string())
+            os.system("java -cp " + settings.WORKING_DIR +
+                      "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " +
+                      self.app_path + "/src " + logger.redirect_string())
 
             html_file = self.result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
             coverage_str = self.extract_coverage(html_file)
