@@ -216,13 +216,13 @@ if __name__ == "__main__":
 
     # define devices configuration
     emulators_number = args.emulators_number
-    features.provide('emulators_number')
+    features.provide('emulators_number', emulators_number)
 
     real_devices_number = args.real_devices_number
-    features.provide('real_devices_number')
+    features.provide('real_devices_number', real_devices_number)
 
     avd_series = args.avd_series
-    features.provide('avd_series')
+    features.provide('avd_series', avd_series)
 
     # provide features
     strategy_with_runner_name = args.selected_strategy + "-" + args.selected_test_runner
