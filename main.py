@@ -178,6 +178,7 @@ if __name__ == "__main__":
     # --------------------------------------------------------------------------------- #
 
     # Parse arguments
+    logger.prepare()
     args = parser.parse_args()
 
     # define subjects
@@ -189,8 +190,6 @@ if __name__ == "__main__":
     features.provide('test_suite_evaluator', possible_test_suite_evaluators[args.selected_evaluator])
     features.provide('test_runner', possible_test_runners[args.selected_test_runner])
     features.provide('population_generator', possible_population_generators[args.selected_population_generator])
-
-    logger.prepare()
 
     check_needed_commands_available()
 
@@ -205,6 +204,7 @@ if __name__ == "__main__":
                         args.selected_strategy + ", " +
                         args.selected_evaluator + ", " +
                         args.selected_test_runner + ")")
+    logger.log_progress("\nSubjects to be processed: " + ''.join(map(lambda p: "\n -" + p, app_paths)))
 
     run(strategy_with_runner_name, app_paths)
 
