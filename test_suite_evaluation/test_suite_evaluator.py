@@ -1,4 +1,5 @@
 import os
+import pickle
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
@@ -35,3 +36,9 @@ class TestSuiteEvaluator(object):
             script_path.append(script)
 
         return script_path, suite_lengths
+
+    def dump_hall_of_fame(self):
+        if hasattr(self, 'hall_of_fame'):
+            hof_file = open(self.result_dir + "/intermediate/hof.pickle", 'wb')
+            pickle.dump(self.hall_of_fame, hof_file)
+            hof_file.close()

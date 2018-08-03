@@ -82,9 +82,7 @@ class Evolutiz(object):
         pickle.dump(logbook, logbook_file)
         logbook_file.close()
 
-        hof_file = open(self.result_dir + "/intermediate/hof.pickle", 'wb')
-        pickle.dump(hof, hof_file)
-        hof_file.close()
+        self.test_suite_evaluator.dump_hall_of_fame()
 
         history_file = open(self.result_dir + "/intermediate/history.pickle", 'wb')
         pickle.dump(history, history_file)

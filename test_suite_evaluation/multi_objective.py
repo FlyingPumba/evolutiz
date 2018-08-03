@@ -44,7 +44,10 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
                 length = sys.maxint
 
             individual.fitness.values = (coverage, length, num_crashes)
+
+            self.hall_of_fame.update([individual])
             logger.log_fitness_result(individual.fitness.values)
+
             return pop, device, True
 
         except Exception as e:

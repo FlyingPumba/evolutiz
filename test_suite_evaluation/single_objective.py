@@ -32,6 +32,8 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
             # TODO: look into fusing coverage and number of crashes found into the fitness value
             individual.fitness.values = coverage
 
+            self.hall_of_fame.update([individual])
+
             # TODO: log single-objective fitness result
             #logger.log_fitness_result(individual.fitness.values)
 
