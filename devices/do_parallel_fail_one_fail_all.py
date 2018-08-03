@@ -1,6 +1,7 @@
 import multiprocessing as mp
 
 from util import logger
+from util.pickable import pickable_function
 
 successful_devices = 0
 total_devices = 0
@@ -47,8 +48,8 @@ class DoParallelFailOneFailAll(object):
                             str(successful_devices) + "/" + str(total_devices))
         pool = mp.Pool(processes=total_devices)
         for device in self.device_manager.get_devices():
-            pool.apply_async(self.function_wrapper,
-                             args=(device, self.function_to_apply, self.arguments),
+            pool.apply_async(pickable_function,
+                             args=(self, 'function_wrapper', (device, self.function_to_apply, self.arguments,)),
                              callback=self.callback)
 
         # should wait for all processes finish

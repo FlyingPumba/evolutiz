@@ -3,6 +3,7 @@ import time
 
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
+from util.pickable import pickable_function
 
 
 class ParallelEvaluator(object):
@@ -54,8 +55,6 @@ class ParallelEvaluator(object):
         if len(self.idle_devices) > 0:
             self.idle_devices = []
 
-        self.rebooting_devices.clear()
-
         self.total_individuals = len(individuals)
 
         logger.log_progress("\nEvaluating in parallel: " +
@@ -67,7 +66,7 @@ class ParallelEvaluator(object):
         remaining_index_to_evaluate = [i for i in range(0, self.total_individuals)]
 
         # 2. aissign tasks to devices
-        pool = mp.Pool(processes=self.total_devices)
+        pool = mp.Pool(processes=len(self.idle_devices))
         time_out = False
         while len(self.individuals_evaluated) > 0:
 
@@ -80,8 +79,8 @@ class ParallelEvaluator(object):
                 device = self.idle_devices.pop(0)
                 index = remaining_index_to_evaluate.pop(0)
 
-                pool.apply_async(self.evaluation_wrapper,
-                                 args=(individuals[index], device, gen, index),
+                pool.apply_async(pickable_function,
+                                 args=(self, 'evaluation_wrapper', (individuals[index], device, gen, index,)),
                                  callback=self.process_results)
             else:
                 time.sleep(2)
