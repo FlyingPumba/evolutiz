@@ -107,6 +107,11 @@ def get_subject_paths(arguments):
 
 
 def check_needed_commands_available():
+    if not os.path.exists(settings.ANDROID_HOME):
+        cause = "Declared ANDROID_HOME points to a missing directory: " + settings.ANDROID_HOME
+        logger.log_progress(cause)
+        raise Exception(cause)
+
     if not is_command_available(adb.adb_cmd_prefix):
         cause = "Command 'adb' was not found in the " + adb.adb_cmd_prefix + " route"
         logger.log_progress(cause)
@@ -116,6 +121,23 @@ def check_needed_commands_available():
         cause = "Command 'ant' needed but not found."
         logger.log_progress(cause)
         raise Exception(cause)
+
+    # search for aapt in build-tools folder
+    # build_tools_cmd = "ls " + settings.ANDROID_HOME + "build-tools/ | sort -r"
+    # p = sub.Popen(build_tools_cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+    # output, errors = p.communicate()
+    # aapt_found = False
+    # for folder in output.strip().split('\n'):
+    #     aapt_path = settings.ANDROID_HOME + "build-tools/" + folder + "/aapt"
+    #     if os.path.exists(aapt_path):
+    #         aapt_found = True
+    #         features.Provide('aapt_path', aapt_path)
+    #         break
+    #
+    # if not aapt_found:
+    #     cause = "Command 'aapt' needed but not found in " + settings.ANDROID_HOME + "build-tools/"
+    #     logger.log_progress(cause)
+    #     raise Exception(cause)
 
 
 if __name__ == "__main__":

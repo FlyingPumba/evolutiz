@@ -27,9 +27,6 @@ class Evolutiz(object):
 
         self.budget_manager = RequiredFeature('budget_manager').request()
 
-        self.toolbox.register("get_apk_dir", lambda: self.app_path)
-        self.toolbox.register("get_package_name", lambda: self.package_name)
-
         self.test_runner.register_crossover_operator(self.toolbox)
         self.test_runner.register_mutation_operator(self.toolbox)
         self.test_suite_evaluator.register_selection_operator(self.toolbox)
