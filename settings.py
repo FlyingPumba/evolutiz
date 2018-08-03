@@ -32,7 +32,6 @@ GENERATION = 100  # 100
 CXPB = 0.7
 # Mutation probability
 MUTPB = 0.3
-SEARCH_BUDGET_IN_SECONDS = 60 * 60  # 60 * 60 # = 1 hour
 
 # === MOTIFCORE script ===
 # for initial population

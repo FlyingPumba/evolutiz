@@ -154,8 +154,14 @@ if __name__ == "__main__":
                         action='store_true', default=False, help='Randomize subjects to be processed')
     parser.add_argument('--limit-subjects-number', type=int, default=1, dest='limit_subjects_numbers',
                         help='Limit the number of subjects to be processed (-1 to disable limit).')
+
+    # budget related arguments
     parser.add_argument('-r', '--repetitions', type=int, default=1, dest='repetitions',
                         help='Choose the number of repetitions per subject to run. Default is 1.')
+    parser.add_argument('--time-budget', type=int, default=15*60, dest='time_budget',
+                        help='Choose the time budget (in seconds). Default is 15 minutes.')
+    parser.add_argument('--evaluations-budget', type=int, default=None, dest='evaluations_budget',
+                        help='Choose the evaluations budget. Default is unlimited.')
 
     # devices related arguments
     parser.add_argument('--real-devices-number', type=int, default=0, dest='real_devices_number',
@@ -216,8 +222,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # define subjects
-    features.provide('repetitions', args.repetitions)
     app_paths = get_subject_paths(args)
+
+    # define budget and repetitions
+    features.provide('repetitions', args.repetitions)
+    features.provide('budget_manager', BudgetManager(time_budget=args.time_budget, evaluations_budget=args.evaluations_budget))
 
     # define devices configuration
     features.provide('emulators_number', args.emulators_number)
@@ -238,7 +247,6 @@ if __name__ == "__main__":
     # singletons
     features.provide('toolbox', Toolbox())
     features.provide('device_manager', DeviceManager())
-    features.provide('budget_manager', BudgetManager())
 
     # run Evolutiz
     logger.clear_progress()

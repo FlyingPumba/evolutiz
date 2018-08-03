@@ -6,12 +6,12 @@ import settings
 
 class BudgetManager(object):
 
-    def __init__(self):
+    def __init__(self, time_budget=None, evaluations_budget=None):
         self.start_time = None
-        self.time_limit = settings.SEARCH_BUDGET_IN_SECONDS
+        self.time_limit = time_budget
 
         self.evaluations = 0
-        self.evaluations_limit = None
+        self.evaluations_limit = evaluations_budget
 
     def start_time_budget(self):
         print "Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M")
