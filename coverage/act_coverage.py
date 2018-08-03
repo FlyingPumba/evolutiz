@@ -4,32 +4,6 @@ import threading
 
 import settings
 
-
-class Command(object):
-    def __init__(self, cmd):
-        self.cmd = cmd
-        self.process = None
-
-    def run(self, timeout):
-        def target():
-            print '... Evaluate Script Thread started'
-            self.process = subprocess.Popen(self.cmd, shell=True)
-            self.process.communicate()
-            print '... Evaluate Script Thread finished'
-
-        thread = threading.Thread(target=target)
-        thread.start()
-
-        thread.join(timeout)
-        if thread.is_alive():
-            print 'Terminating process'
-            self.process.terminate()
-            # os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')")
-            # os.system("$ANDROID_HOME/platform-tools/adb devices")
-            thread.join()
-        print self.process.returncode
-
-
 def cal_coverage(path, gen, pop):
     activities = set()
     for file_name in os.listdir(path):
@@ -60,10 +34,6 @@ def get_suite_coverage(scripts, device, apk_dir, package_name, gen, pop):
         os.system("$ANDROID_HOME/platform-tools/adb -s " + device + " push " + script + " /mnt/sdcard/")
         script_name = script.split("/")[-1]
 
-        # command = Command("$ANDROID_HOME/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --bugreport --throttle " + str(
-        # 	settings.THROTTLE) + " -f /mnt/sdcard/" + script_name + " 1")
-        # command = Command("$ANDROID_HOME/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --bugreport " + "-f /mnt/sdcard/" + script_name + " 1")
-        # command.run(timeout=600)
         cmd = "$ANDROID_HOME/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml" + " -f /mnt/sdcard/" + script_name + " 1"
         os.system(settings.TIMEOUT_CMD + " " + str(settings.MOTIFCORE_EVAL_TIMEOUT) + " " + cmd)
         # need to manually kill motifcore when timeout
