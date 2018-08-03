@@ -3,7 +3,7 @@ import time
 
 from dependency_injection.required_feature import RequiredFeature
 from test_suite_generation.individual_with_coverage_generator import IndividualWithCoverageGenerator
-from util import logger
+from util import logger, pickable_function
 
 
 class PopulationWithCoverageGenerator(object):
@@ -15,7 +15,6 @@ class PopulationWithCoverageGenerator(object):
         self.result_dir = RequiredFeature('result_dir').request()
 
         self.individual_generator = IndividualWithCoverageGenerator()
-        self.generate_individual_function = self.individual_generator.gen_individual_with_coverage
 
         # variables for mp callback
         self.idle_devices = []
@@ -63,8 +62,9 @@ class PopulationWithCoverageGenerator(object):
             if self.remaining_individuals_to_generate > 0 and len(self.idle_devices) > 0:
                 self.remaining_individuals_to_generate -= 1
                 device = self.idle_devices.pop(0)
-                pool.apply_async(self.generate_individual_function,
-                                 args=(device, gen, self.remaining_individuals_to_generate),
+                pool.apply_async(pickable_function,
+                                 args=(self.individual_generator, 'gen_individual_with_coverage',
+                                       (device, gen, self.remaining_individuals_to_generate,)),
                                  callback=self.process_results)
             else:
                 time.sleep(2)

@@ -3,7 +3,7 @@ import time
 
 from dependency_injection.required_feature import RequiredFeature
 from test_suite_generation.individual_generator import IndividualGenerator
-from util import logger
+from util import logger, pickable_function
 
 
 class PopulationGenerator(object):
@@ -62,8 +62,8 @@ class PopulationGenerator(object):
             if self.remaining_individuals_to_generate > 0 and len(self.idle_devices) > 0:
                 self.remaining_individuals_to_generate -= 1
                 device = self.idle_devices.pop(0)
-                pool.apply_async(self.individual_generator,
-                                 args=device,
+                pool.apply_async(pickable_function,
+                                 args=(self.individual_generator, 'gen_individual', (device,)),
                                  callback=self.process_results)
             else:
                 time.sleep(2)
