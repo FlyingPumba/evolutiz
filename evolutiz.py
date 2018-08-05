@@ -31,6 +31,10 @@ class Evolutiz(object):
         self.test_runner.register_mutation_operator(self.toolbox)
         self.test_suite_evaluator.register_selection_operator(self.toolbox)
 
+        self.history = tools.History()
+        self.toolbox.decorate("mate", self.history.decorator)
+        self.toolbox.decorate("mutate", self.history.decorator)
+
         self.stats = tools.Statistics(lambda ind: ind.fitness.values)
         # axis = 0, the numpy.mean will return an array of results
         self.stats.register("avg", numpy.mean, axis=0)
@@ -67,29 +71,21 @@ class Evolutiz(object):
         # setup toolbox specific stuff by strategy
         self.strategy.setup(stats=self.stats)
 
-        # log the history
-        history = tools.History()
-        # Decorate the variation operators
-        self.toolbox.decorate("mate", history.decorator)
-        self.toolbox.decorate("mutate", history.decorator)
-
         # run the strategy
         population, logbook = self.strategy.run()
 
         logger.log_progress("\nEvolutiz finished for app: " + app_name + "\n")
 
-        # write stats
-        logbook_file = open(self.result_dir + "/intermediate/logbook.pickle", 'wb')
-        pickle.dump(logbook, logbook_file)
-        logbook_file.close()
+        self.write_summary_files()
 
-        self.test_suite_evaluator.dump_hall_of_fame()
+    def write_summary_files(self):
+        if RequiredFeature('write_hall_of_fame').request():
+            self.test_suite_evaluator.dump_hall_of_fame_to_file()
 
-        history_file = open(self.result_dir + "/intermediate/history.pickle", 'wb')
-        pickle.dump(history, history_file)
-        history_file.close()
+        if RequiredFeature('write_history').request():
+            history_file = open(self.result_dir + "/intermediate/history.pickle", 'wb')
+            pickle.dump(self.history, history_file)
+            history_file.close()
 
-        # draw graph
-        two_d_line.plot(logbook, 0, self.result_dir)
-        two_d_line.plot(logbook, 1, self.result_dir)
-        two_d_line.plot(logbook, 2, self.result_dir)
+        if RequiredFeature('write_logbook').request():
+            self.strategy.dump_logbook_to_file()

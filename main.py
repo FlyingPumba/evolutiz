@@ -155,7 +155,7 @@ if __name__ == "__main__":
                         default='instrumented-subjects/',
                         help='Directory where instrumented subjects will be located')
     parser.add_argument('--randomize-subjects', dest='randomize_subjects',
-                        action='store_true', default=False, help='Randomize subjects to be processed')
+                        action='store_true', default=False, help='Randomize subjects to be processed.')
     parser.add_argument('--limit-subjects-number', type=int, default=1, dest='limit_subjects_numbers',
                         help='Limit the number of subjects to be processed (-1 to disable limit).')
 
@@ -174,6 +174,14 @@ if __name__ == "__main__":
                         help='Set the number of emulators to use. Default is 2.')
     parser.add_argument('--avd-series', type=str, default='Nexus_4_API_19', dest='avd_series',
                         help='Set the prefix of avd names. Default is Nexus_4_API_19.')
+
+    # logging related arguments
+    parser.add_argument('--write-logbook', dest='write_logbook',
+                        action='store_false', default=True, help='Write logbook to a file.')
+    parser.add_argument('--write-history', dest='write_history',
+                        action='store_false', default=True, help='Write genealogical history of individuals to a file.')
+    parser.add_argument('--write-hall-of-fame', dest='write_hall_of_fame',
+                        action='store_false', default=True, help='Write hall of fame of best individuals to a file.')
 
     # strategy related arguments
     possible_strategies = {
@@ -246,6 +254,10 @@ if __name__ == "__main__":
     features.provide('test_runner', possible_test_runners[args.selected_test_runner])
     features.provide('individual_generator', possible_individual_generators[args.selected_individual_generator])
     features.provide('population_generator', PopulationGenerator)
+
+    features.provide('write_logbook', args.write_logbook)
+    features.provide('write_history', args.write_history)
+    features.provide('write_hall_of_fame', args.write_hall_of_fame)
 
     check_needed_commands_available()
 

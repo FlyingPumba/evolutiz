@@ -7,6 +7,7 @@ from deap import tools
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
+from plot import two_d_line
 from test_suite_evaluation.parallel_evaluator import ParallelEvaluator
 from util import logger
 
@@ -73,15 +74,15 @@ class MuPlusLambda(object):
 
     def evolve(self):
         # record first population in logbook
-        logbook = tools.Logbook()
-        logbook.header = ['gen', 'nevals'] + (self.stats.fields if self.stats else [])
+        self.logbook = tools.Logbook()
+        self.logbook.header = ['gen', 'nevals'] + (self.stats.fields if self.stats else [])
 
         if self.population is None:
-            return [], logbook
+            return [], self.logbook
 
         record = self.stats.compile(self.population) if self.stats is not None else {}
         invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-        logbook.record(gen=0, nevals=len(invalid_ind), **record)
+        self.logbook.record(gen=0, nevals=len(invalid_ind), **record)
 
         # Begin the generational process
         for gen in range(1, self.ngen + 1):
@@ -103,7 +104,7 @@ class MuPlusLambda(object):
             individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind, gen)
 
             if individuals_evaluated is None:
-                print "Time budget run out durring parallel evaluation, exiting evolve"
+                print "Time budget run out during parallel evaluation, exiting evolve"
                 break
 
             # discard invalid offspring individual
@@ -121,14 +122,9 @@ class MuPlusLambda(object):
 
             # Update the statistics with the new population
             record = self.stats.compile(self.population) if self.stats is not None else {}
-            logbook.record(gen=gen, nevals=len(invalid_ind), **record)
+            self.logbook.record(gen=gen, nevals=len(invalid_ind), **record)
 
-            # dump logbook in case we are interrupted
-            logbook_file = open(self.result_dir + "/intermediate/logbook.pickle", 'wb')
-            pickle.dump(logbook, logbook_file)
-            logbook_file.close()
-
-        return self.population, logbook
+        return self.population
 
     def varOr(self, population):
 
@@ -191,3 +187,13 @@ class MuPlusLambda(object):
 
         echo_cmd += "\" >> "
         os.system(echo_cmd + log_file)
+
+    def dump_logbook_to_file(self):
+        logbook_file = open(self.result_dir + "/logbook.pickle", 'wb')
+        pickle.dump(self.logbook, logbook_file)
+        logbook_file.close()
+
+        # draw graph
+        two_d_line.plot(self.logbook, 0, self.result_dir)
+        two_d_line.plot(self.logbook, 1, self.result_dir)
+        two_d_line.plot(self.logbook, 2, self.result_dir)

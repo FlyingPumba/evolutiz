@@ -37,8 +37,8 @@ class TestSuiteEvaluator(object):
 
         return script_path, suite_lengths
 
-    def dump_hall_of_fame(self):
+    def dump_hall_of_fame_to_file(self):
         if hasattr(self, 'hall_of_fame'):
-            hof_file = open(self.result_dir + "/intermediate/hof.pickle", 'wb')
+            hof_file = open(self.result_dir + "/hall_of_fame.pickle", 'wb')
             pickle.dump(self.hall_of_fame, hof_file)
             hof_file.close()
