@@ -53,7 +53,7 @@ class MuPlusLambda(object):
 
     def initPopulation(self):
         self.population = self.population_generator.generate(n=settings.POPULATION_SIZE)
-        if (len(self.population) < settings.POPULATION_SIZE):
+        if len(self.population) < settings.POPULATION_SIZE:
             logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
             return False
 

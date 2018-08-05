@@ -1,17 +1,11 @@
-import os
-import pickle
-
 import numpy
+import pickle
 from deap import tools
 
-import settings
 from application.apk_instrumentator import ApkInstrumentator
 from application.prepare_apk_parallel import prepare_apk
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
-from devices import adb
-from plot import two_d_line
-from util import logger
 
 
 class Evolutiz(object):
@@ -31,6 +25,8 @@ class Evolutiz(object):
         self.test_runner.register_mutation_operator(self.toolbox)
         self.test_suite_evaluator.register_selection_operator(self.toolbox)
 
+        self.apk_instrumentator = ApkInstrumentator()
+
         self.history = tools.History()
         self.toolbox.decorate("mate", self.history.decorator)
         self.toolbox.decorate("mutate", self.history.decorator)
@@ -44,37 +40,22 @@ class Evolutiz(object):
         self.stats.register("pop_fitness", lambda x: x)
 
     def run(self):
-        app_path = RequiredFeature('app_path').request()
-        app_name = os.path.basename(app_path)
-
         # give test runner opportunity to install on devices
         self.test_runner.install_on_devices(self.device_manager)
 
         devices = self.device_manager.get_devices()
 
-        apk_instrumentator = ApkInstrumentator()
-        instrumented_app_path, package_name = apk_instrumentator.instrument()
+        instrumented_app_path, package_name = self.apk_instrumentator.instrument()
         features.provide('package_name', package_name)
         features.provide('instrumented_app_path', instrumented_app_path)
 
         prepare_apk(devices, instrumented_app_path, package_name, self.result_dir)
 
-        self.device_manager.wait_for_battery_threshold()
-        self.device_manager.log_devices_battery("init", self.result_dir)
-
-        self.budget_manager.start_time_budget()
-
-        for device in devices:
-            # clear package data from previous runs
-            adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-
         # setup toolbox specific stuff by strategy
         self.strategy.setup(stats=self.stats)
 
         # run the strategy
-        population, logbook = self.strategy.run()
-
-        logger.log_progress("\nEvolutiz finished for app: " + app_name + "\n")
+        population = self.strategy.run()
 
         self.write_summary_files()
 

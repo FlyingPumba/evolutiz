@@ -37,14 +37,16 @@ def run_one_app(strategy_with_runner_name):
     device_manager = RequiredFeature('device_manager').request()
     app_path = RequiredFeature('app_path').request()
     repetitions = RequiredFeature('repetitions').request()
+    budget_manager = RequiredFeature('budget_manager').request()
 
-    folder_name = os.path.basename(app_path)
+    app_name = os.path.basename(app_path)
+
     try:
         for repetition in range(0, repetitions):
 
             # prepare result_dir folder
             result_dir = settings.WORKING_DIR + "results/" + \
-                         strategy_with_runner_name + "/" + folder_name + "/" + str(repetition)
+                         strategy_with_runner_name + "/" + app_name + "/" + str(repetition)
 
             os.system("rm -rf " + result_dir + "/*" + logger.redirect_string())
 
@@ -64,17 +66,24 @@ def run_one_app(strategy_with_runner_name):
             else:
                 device_manager.reboot_devices(wait_to_be_ready=True)
 
-            logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + folder_name)
+            logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + app_name)
 
             for device in device_manager.get_devices():
                 device.clean_sdcard()
 
+            device_manager.wait_for_battery_threshold()
+            device_manager.log_devices_battery("init", result_dir)
+
             test_generator = Evolutiz()
+
+            budget_manager.start_time_budget()
             test_generator.run()
+
+            logger.log_progress("\nEvolutiz finished for app: " + app_name + "\n")
 
         return True
     except Exception as e:
-        logger.log_progress("\nThere was an error running evolutiz on app: " + folder_name)
+        logger.log_progress("\nThere was an error running evolutiz on app: " + app_name)
         traceback.print_exc()
         return False
 
