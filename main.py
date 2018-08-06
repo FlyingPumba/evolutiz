@@ -172,10 +172,12 @@ def add_arguments_to_parser(parser):
     global possible_strategies, possible_test_suite_evaluators, possible_individual_generators, possible_test_runners
 
     # subjects related arguments
-    parser.add_argument('-d', '--subjects-path', dest='subjects_path',
+    parser.add_argument('--subjects-path', dest='subjects_path',
                         help='Directory where subjects are located')
     parser.add_argument('--instrumented-subjects-path', dest='instrumented_subjects_path',
                         help='Directory where instrumented subjects will be located')
+    parser.add_argument('--emma-instrument-path', dest='emma_instrument_path',
+                        help='Directory where is located the EmmaInstrument template')
     parser.add_argument('--randomize-subjects', dest='randomize_subjects',
                         action='store_true', help='Randomize subjects to be processed.')
     parser.add_argument('--limit-subjects-number', type=int, dest='limit_subjects_number',
@@ -250,6 +252,7 @@ def init_arguments_defaults():
     defaults = {
         "subjects_path": "subjects/are-we-there-yet/",
         "instrumented_subjects_path": "instrumented-subjects/",
+        "emma_instrument_path": "subjects/EmmaInstrument/",
         "randomize_subjects": False,
         "limit_subjects_number": 1,
         "repetitions": 1,
@@ -318,6 +321,7 @@ def parse_config_file():
 def provide_features():
     # define subjects
     features.provide('instrumented_subjects_path', args.instrumented_subjects_path)
+    features.provide('emma_instrument_path', args.emma_instrument_path)
     # define budget and repetitions
     features.provide('repetitions', args.repetitions)
     features.provide('budget_manager',

@@ -16,6 +16,7 @@ class ApkInstrumentator(object):
         self.result_dir = RequiredFeature('result_dir').request()
         self.subjects_path = RequiredFeature('subjects_path').request()
         self.instrumented_subjects_path = RequiredFeature('instrumented_subjects_path').request()
+        self.emma_instrument_path = RequiredFeature('emma_instrument_path').request()
 
     def instrument(self):
         logger.log_progress("\nInstrumenting app: " + os.path.basename(self.app_path))
@@ -53,8 +54,7 @@ class ApkInstrumentator(object):
             #  TODO: maybe we can do a better search ?
             raise Exception("Unable to find src folder of app" + self.app_path + " when trying to pre-instrument")
 
-        emma_instrument_original_path = self.subjects_path + "EmmaInstrument"
-        os.system("cp -r " + emma_instrument_original_path + " " + source_root)
+        os.system("cp -r " + self.emma_instrument_path + " " + source_root)
 
         # modify emma source
         emma_instrument_dest_path = source_root + "EmmaInstrument"
