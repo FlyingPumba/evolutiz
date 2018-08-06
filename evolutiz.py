@@ -1,5 +1,5 @@
-import numpy
 import pickle
+
 from deap import tools
 
 from application.apk_instrumentator import ApkInstrumentator
@@ -31,14 +31,6 @@ class Evolutiz(object):
         self.toolbox.decorate("mate", self.history.decorator)
         self.toolbox.decorate("mutate", self.history.decorator)
 
-        self.stats = tools.Statistics(lambda ind: ind.fitness.values)
-        # axis = 0, the numpy.mean will return an array of results
-        self.stats.register("avg", numpy.mean, axis=0)
-        self.stats.register("std", numpy.std, axis=0)
-        self.stats.register("min", numpy.min, axis=0)
-        self.stats.register("max", numpy.max, axis=0)
-        self.stats.register("pop_fitness", lambda x: x)
-
     def run(self):
         # give test runner opportunity to install on devices
         self.test_runner.install_on_devices(self.device_manager)
@@ -50,9 +42,6 @@ class Evolutiz(object):
         features.provide('instrumented_app_path', instrumented_app_path)
 
         prepare_apk(devices, instrumented_app_path, package_name, self.result_dir)
-
-        # setup toolbox specific stuff by strategy
-        self.strategy.setup(stats=self.stats)
 
         # run the strategy
         population = self.strategy.run()

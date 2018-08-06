@@ -8,6 +8,8 @@ import re
 import subprocess as sub
 import traceback
 
+import numpy
+from deap import tools
 from deap.base import Toolbox
 
 import settings
@@ -113,10 +115,10 @@ def run(strategy_name, app_paths):
 
 
 def get_subject_paths(arguments):
-    subjects_directory = arguments.subjects_directory
-    features.provide('subjects_path', subjects_directory)
+    subjects_path = arguments.subjects_path
+    features.provide('subjects_path', subjects_path)
 
-    p = sub.Popen("ls -d " + subjects_directory + "*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+    p = sub.Popen("ls -d " + subjects_path + "*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
     output, errors = p.communicate()
     app_paths = []
     for line in output.strip().split('\n'):
@@ -126,8 +128,8 @@ def get_subject_paths(arguments):
     if arguments.randomize_subjects:
         random.shuffle(app_paths)
 
-    if arguments.limit_subjects_numbers != -1:
-        app_paths = app_paths[0:arguments.limit_subjects_numbers]
+    if arguments.limit_subjects_number != -1:
+        app_paths = app_paths[0:arguments.limit_subjects_number]
 
     return app_paths
 
@@ -170,13 +172,13 @@ def add_arguments_to_parser(parser):
     global possible_strategies, possible_test_suite_evaluators, possible_individual_generators, possible_test_runners
 
     # subjects related arguments
-    parser.add_argument('-d', '--subjects', dest='subjects_directory',
+    parser.add_argument('-d', '--subjects-path', dest='subjects_path',
                         help='Directory where subjects are located')
-    parser.add_argument('--instrumented-subjects', dest='instrumented_subjects_directory',
+    parser.add_argument('--instrumented-subjects-path', dest='instrumented_subjects_path',
                         help='Directory where instrumented subjects will be located')
     parser.add_argument('--randomize-subjects', dest='randomize_subjects',
                         action='store_true', help='Randomize subjects to be processed.')
-    parser.add_argument('--limit-subjects-number', type=int, dest='limit_subjects_numbers',
+    parser.add_argument('--limit-subjects-number', type=int, dest='limit_subjects_number',
                         help='Limit the number of subjects to be processed (-1 to disable limit).')
 
     # budget related arguments
@@ -214,7 +216,7 @@ def add_arguments_to_parser(parser):
         "dynaMosa": DynaMosa,
         "random": Random
     }
-    parser.add_argument('-s', '--strategy', dest='selected_strategy',
+    parser.add_argument('-s', '--strategy', dest='strategy',
                         choices=possible_strategies.keys(), help='Strategy to be used')
 
     # evaluators related argurments
@@ -222,7 +224,7 @@ def add_arguments_to_parser(parser):
         "multi-objective": MultiObjectiveTestSuiteEvaluator,
         "single-objective": SingleObjectiveTestSuiteEvaluator
     }
-    parser.add_argument('-e', '--evaluator', dest='selected_evaluator',
+    parser.add_argument('-e', '--evaluator', dest='evaluator',
                         choices=possible_test_suite_evaluators.keys(), help='Test suite evaluator to be used')
 
     # individual generator related arguments
@@ -230,7 +232,7 @@ def add_arguments_to_parser(parser):
         "default": IndividualWithoutCoverageGenerator,
         "with-coverage": IndividualWithCoverageGenerator
     }
-    parser.add_argument('-ig', '--individual-generator', dest='selected_individual_generator',
+    parser.add_argument('-ig', '--individual-generator', dest='individual_generator',
                         choices=possible_individual_generators.keys(), help='Individual generator to be used')
 
     # test runner related arguments
@@ -239,15 +241,15 @@ def add_arguments_to_parser(parser):
         "motifcore-nm": MotifcoreTestRunner(use_motifgene=True),
         "evolutiz": EvolutizTestRunner()
     }
-    parser.add_argument('-t', '--test-runner', dest='selected_test_runner',
+    parser.add_argument('-t', '--test-runner', dest='test_runner',
                         choices=possible_test_runners.keys(), help='Test runner to be used')
 
 
 def init_arguments_defaults():
     global defaults
     defaults = {
-        "subjects": "subjects/are-we-there-yet/",
-        "instrumented_subjects": "instrumented-subjects/",
+        "subjects_path": "subjects/are-we-there-yet/",
+        "instrumented_subjects_path": "instrumented-subjects/",
         "randomize_subjects": False,
         "limit_subjects_number": 1,
         "repetitions": 1,
@@ -315,7 +317,7 @@ def parse_config_file():
 
 def provide_features():
     # define subjects
-    features.provide('instrumented_subjects_path', args.instrumented_subjects_directory)
+    features.provide('instrumented_subjects_path', args.instrumented_subjects_path)
     # define budget and repetitions
     features.provide('repetitions', args.repetitions)
     features.provide('budget_manager',
@@ -324,17 +326,30 @@ def provide_features():
     features.provide('emulators_number', args.emulators_number)
     features.provide('real_devices_number', args.real_devices_number)
     features.provide('avd_series', args.avd_series)
-    features.provide('strategy', possible_strategies[args.selected_strategy])
-    features.provide('test_suite_evaluator', possible_test_suite_evaluators[args.selected_evaluator])
-    features.provide('test_runner', possible_test_runners[args.selected_test_runner])
-    features.provide('individual_generator', possible_individual_generators[args.selected_individual_generator])
+    features.provide('strategy', possible_strategies[args.strategy])
+    features.provide('test_suite_evaluator', possible_test_suite_evaluators[args.evaluator])
+    features.provide('test_runner', possible_test_runners[args.test_runner])
+    features.provide('individual_generator', possible_individual_generators[args.individual_generator])
     features.provide('population_generator', PopulationGenerator)
     features.provide('write_logbook', args.write_logbook)
     features.provide('write_history', args.write_history)
     features.provide('write_hall_of_fame', args.write_hall_of_fame)
+
     # singletons
     features.provide('toolbox', Toolbox())
     features.provide('device_manager', DeviceManager())
+
+    stats = tools.Statistics(lambda ind: ind.fitness.values)
+    # Use axis = 0 to get the desired statistic computed across all fitness values
+    # Example:
+    # >>> a = np.array([[1, 2], [3, 4]])
+    # >>> np.mean(a, axis=0)
+    # array([ 2.,  3.])
+    stats.register("avg", numpy.mean, axis=0)
+    stats.register("std", numpy.std, axis=0)
+    stats.register("min", numpy.min, axis=0)
+    stats.register("max", numpy.max, axis=0)
+    features.provide('stats', stats)
 
 
 if __name__ == "__main__":
@@ -361,15 +376,15 @@ if __name__ == "__main__":
     check_needed_commands_available()
 
     app_paths = get_subject_paths(args)
-    strategy_with_runner_name = args.selected_strategy + "-" + args.selected_test_runner
+    strategy_with_runner_name = args.strategy + "-" + args.test_runner
 
     provide_features()
 
     # run Evolutiz
     logger.log_progress("Evolutiz (" +
-                        args.selected_strategy + ", " +
-                        args.selected_evaluator + ", " +
-                        args.selected_test_runner + ")")
+                        args.strategy + ", " +
+                        args.evaluator + ", " +
+                        args.test_runner + ")")
 
     logger.log_progress("\nSubjects to be processed: " + ''.join(map(lambda p: "\n -" + p, app_paths)))
 
