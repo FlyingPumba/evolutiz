@@ -1,4 +1,8 @@
+import datetime
+import os
 import random
+
+from deap import tools
 
 import settings
 from devices import adb
@@ -11,12 +15,10 @@ class EvolutizTestRunner(TestRunner):
         self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE = "/mnt/sdcard/evolutiz.script"
 
     def register_crossover_operator(self, toolbox):
-        #toolbox.register("mate", tools.cxUniform, indpb=0.5)
-        pass
+        toolbox.register("mate", tools.cxOnePoint)
 
     def register_mutation_operator(self, toolbox):
-        #toolbox.register("mutate", sapienz_mut_suite, indpb=0.5)
-        pass
+        toolbox.register("mutate", self.mutate)
 
     def run(self, device, package_name, script_name):
         self.prepare_device_for_run(device)
@@ -74,8 +76,40 @@ class EvolutizTestRunner(TestRunner):
         script.close()
         return test_content
 
-    def generate_ga_offspring(self, device, parentFilename1, parentFilename2, offspringFilename1,
-                              offspringFilename2):
+    def mutate(self, device, package_name, test_case):
+        # write individual to local file
+        ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
+        local_src_filename = self.result_dir + "/intermediate/offspring." + ts
+        self.write_test_case_to_file(test_case, local_src_filename)
+
+        # push individual to device
+        remote_src_filename = "/mnt/sdcard/offspring." + ts
+        result_code = adb.push(device, local_src_filename, remote_src_filename,
+                               timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+
+        # call evolutiz test runner
+        remote_dst_filename = "/mnt/sdcard/offspring.out." + ts
+        evolutiz_cmd = "evolutiz -p " + package_name \
+                       + " --dry --mutate " \
+                       + " -f /mnt/sdcard/" + remote_src_filename \
+                       + " -o /mnt/sdcard/" + remote_dst_filename + " 1"
+
+        adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.MOTIFCORE_EVAL_TIMEOUT, log_output=False)
+        adb.pkill(device, "evolutiz")
+
+        # fetch mutated individual
+        local_dst_filename = self.result_dir + "/intermediate/offspring.out." + ts
+        result_code = adb.pull(device, remote_dst_filename, local_dst_filename,
+                               timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+
+        # get content from local file
+        mutated_test_case = self.get_test_case_from_file(local_dst_filename)
+
+        return mutated_test_case
+
+    def generate_ga_offspring(self, device, package_name,
+                              parentFilename1, parentFilename2,
+                              offspringFilename1, offspringFilename2):
 
         evolutiz_cmd = "evolutiz -p " + package_name \
                        + " --dry --generate-ga-offspring " \
@@ -88,4 +122,35 @@ class EvolutizTestRunner(TestRunner):
 
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")
-        pass
+
+
+    def write_test_case_to_file(self, content, filename):
+        # check that directory exists before creating file
+        dirname = os.path.dirname(filename)
+        if not os.path.exists(dirname):
+            os.makedirs(dirname)
+        with open(filename, "w") as script:
+            script.write(settings.SCRIPT_HEADER)
+            for line in content:
+                script.write(line + "\n")
+
+    def get_test_case_from_file(self, filename):
+        test_content = []
+
+        script = open(filename)
+        is_content = False
+        is_skipped_first = False
+        for line in script:
+            line = line.strip()
+            if line.find("start data >>") != -1:
+                is_content = True
+                continue
+            if is_content and line != "":
+                if not is_skipped_first:
+                    is_skipped_first = True
+                    continue
+                if is_skipped_first:
+                    test_content.append(line)
+
+        script.close()
+        return test_content
