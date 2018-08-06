@@ -1,7 +1,5 @@
-import os
 import pickle
 import random
-import sys
 
 from deap import tools
 
@@ -24,24 +22,18 @@ class MuPlusLambda(object):
         self.population = None
         self.device_manager = RequiredFeature('device_manager').request()
         self.budget_manager = RequiredFeature('budget_manager').request()
-        self.toolbox = RequiredFeature('toolbox').request()
         self.result_dir = RequiredFeature('result_dir').request()
         self.population_generator = RequiredFeature('population_generator').request()
         self.parallel_evaluator = ParallelEvaluator()
 
-        self.best_historic_crashes = 0
-        self.best_historic_length = sys.maxint
-        self.best_historic_coverage = 0
+        self.toolbox = RequiredFeature('toolbox').request()
+        self.stats = RequiredFeature('stats').request()
+
+        self.logbook = tools.Logbook()
+        self.logbook.header = ['gen'] + (self.stats.fields if self.stats else [])
 
         assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
                                                  "probabilities must be smaller or equal to 1.0.")
-
-    def setup(self, stats=None, verbose=False):
-        self.stats = stats
-        self.verbose = verbose
-
-        self.targets_historic_log_file = self.result_dir + "/targets-historic.log"
-        self.setup_log_best_historic_objectives_achieved()
 
     def run(self):
         success = self.initPopulation()
@@ -62,36 +54,24 @@ class MuPlusLambda(object):
         individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind, 0)
 
         if individuals_evaluated is None:
-            logger.log_progress("\nTime budget run out durring parallel evaluation, exiting setup")
+            logger.log_progress("\nTime budget run out during parallel evaluation, exiting setup")
             return False
 
         self.population = individuals_evaluated[:]
 
-        self.update_best_historic_objectives_achieved(self.population, 0)
-
         self.device_manager.log_devices_battery(0, self.result_dir)
+
+        self.update_logbook(0)
+
         return True
 
     def evolve(self):
-        # record first population in logbook
-        self.logbook = tools.Logbook()
-        self.logbook.header = ['gen', 'nevals'] + (self.stats.fields if self.stats else [])
-
-        if self.population is None:
-            return [], self.logbook
-
-        record = self.stats.compile(self.population) if self.stats is not None else {}
-        invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-        self.logbook.record(gen=0, nevals=len(invalid_ind), **record)
-
-        # Begin the generational process
         for gen in range(1, self.ngen + 1):
 
             if not self.budget_manager.time_budget_available():
                 print "Time budget run out, exiting evolve"
                 break
 
-            print "Starting generation ", gen
             logger.log_progress("\n---> Starting generation " + str(gen))
 
             # Vary the population
@@ -107,22 +87,12 @@ class MuPlusLambda(object):
                 print "Time budget run out during parallel evaluation, exiting evolve"
                 break
 
-            # discard invalid offspring individual
-            for i in range(len(offspring) - 1, -1, -1):
-                if not offspring[i].fitness.valid:
-                    print "### Warning: Invalid Fitness"
-                    del offspring[i]
-
-            self.update_best_historic_objectives_achieved(offspring, gen)
-
             self.device_manager.log_devices_battery(gen, self.result_dir)
 
             # Select the next generation population
             self.population[:] = self.toolbox.select(self.population + offspring, self.mu)
 
-            # Update the statistics with the new population
-            record = self.stats.compile(self.population) if self.stats is not None else {}
-            self.logbook.record(gen=gen, nevals=len(invalid_ind), **record)
+            self.update_logbook(gen)
 
         return self.population
 
@@ -146,48 +116,6 @@ class MuPlusLambda(object):
 
         return offspring
 
-    def update_best_historic_objectives_achieved(self, population, gen):
-        for ind in population:
-            fit = ind.fitness.values
-            coverage = fit[0]
-            length = fit[1]
-            crashes = fit[2]
-
-            if crashes > self.best_historic_crashes:
-                self.best_historic_crashes = crashes
-
-            if coverage > self.best_historic_coverage:
-                self.best_historic_coverage = coverage
-
-            if crashes > 0 and length < self.best_historic_length:
-                self.best_historic_length = length
-
-        logger.log_progress("\n- Best historic crashes: " + str(self.best_historic_crashes))
-        logger.log_progress("\n- Best historic coverage: " + str(self.best_historic_coverage))
-        if self.best_historic_crashes > 0:
-            logger.log_progress("\n- Best historic length: " + str(self.best_historic_length))
-
-        self.log_best_historic_objectives_achieved(gen)
-
-    def setup_log_best_historic_objectives_achieved(self):
-        log_file = self.targets_historic_log_file
-        os.system("echo \"gen,coverage,crashes,length\" > " + log_file)
-
-    def log_best_historic_objectives_achieved(self, gen):
-        log_file = self.targets_historic_log_file
-        echo_cmd = "echo \"" + \
-                   str(gen) + "," + \
-                   str(self.best_historic_coverage) + "," + \
-                   str(self.best_historic_crashes) + ","
-
-        if self.best_historic_crashes > 0:
-            echo_cmd += str(self.best_historic_length) + " "
-        else:
-            echo_cmd += "-- "
-
-        echo_cmd += "\" >> "
-        os.system(echo_cmd + log_file)
-
     def dump_logbook_to_file(self):
         logbook_file = open(self.result_dir + "/logbook.pickle", 'wb')
         pickle.dump(self.logbook, logbook_file)
@@ -197,3 +125,22 @@ class MuPlusLambda(object):
         two_d_line.plot(self.logbook, 0, self.result_dir)
         two_d_line.plot(self.logbook, 1, self.result_dir)
         two_d_line.plot(self.logbook, 2, self.result_dir)
+
+    def update_logbook(self, gen):
+        record = self.stats.compile(self.population) if self.stats is not None else {}
+        self.logbook.record(gen=gen, **record)
+        self.show_best_historic_fitness()
+
+    def show_best_historic_fitness(self):
+        min_fitness_values_per_generation = self.logbook.select("min")
+        max_fitness_values_per_generation = self.logbook.select("max")
+
+        max_coverage = max(max_fitness_values_per_generation, key=lambda fit: fit[0])
+        min_length = max(min_fitness_values_per_generation, key=lambda fit: fit[1])
+        max_crashes = max(max_fitness_values_per_generation, key=lambda fit: fit[2])
+
+        # CAUTION: these min and max are from different individuals
+        logger.log_progress("\n- Best historic coverage: " + str(max_coverage))
+        logger.log_progress("\n- Best historic crashes: " + str(max_crashes))
+        if max_crashes > 0:
+            logger.log_progress("\n- Best historic length: " + str(min_length))
