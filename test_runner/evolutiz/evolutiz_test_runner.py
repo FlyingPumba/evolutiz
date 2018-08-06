@@ -74,8 +74,9 @@ class EvolutizTestRunner(TestRunner):
         script.close()
         return test_content
 
-    def generate_ga_offspring(self, device, package_name, parentFilename1, parentFilename2, offspringFilename1,
+    def generate_ga_offspring(self, device, parentFilename1, parentFilename2, offspringFilename1,
                               offspringFilename2):
+
         evolutiz_cmd = "evolutiz -p " + package_name \
                        + " --dry --generate-ga-offspring " \
                        + " -f /mnt/sdcard/" + parentFilename1 \

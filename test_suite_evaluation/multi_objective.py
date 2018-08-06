@@ -1,9 +1,11 @@
+import pickle
 import sys
 
 import numpy
 from deap import creator, base, tools
 
 from dependency_injection.required_feature import RequiredFeature
+from plot import two_d_line
 from test_suite_evaluation.test_suite_evaluator import TestSuiteEvaluator
 from util import logger
 
@@ -50,3 +52,29 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         except Exception as e:
             return None, pop, device, False
+
+    def update_logbook(self, gen, population):
+        super(MultiObjectiveTestSuiteEvaluator, self).update_logbook(gen, population)
+        self.show_best_historic_fitness()
+
+    def show_best_historic_fitness(self):
+        min_fitness_values_per_generation = self.logbook.select("min")
+        max_fitness_values_per_generation = self.logbook.select("max")
+
+        max_coverage = max(max_fitness_values_per_generation, key=lambda fit: fit[0])
+        min_length = max(min_fitness_values_per_generation, key=lambda fit: fit[1])
+        max_crashes = max(max_fitness_values_per_generation, key=lambda fit: fit[2])
+
+        # CAUTION: these min and max are from different individuals
+        logger.log_progress("\n- Best historic coverage: " + str(max_coverage))
+        logger.log_progress("\n- Best historic crashes: " + str(max_crashes))
+        if max_crashes > 0:
+            logger.log_progress("\n- Best historic length: " + str(min_length))
+
+    def dump_logbook_to_file(self):
+        super(MultiObjectiveTestSuiteEvaluator, self).dump_logbook_to_file()
+
+        # draw graph
+        two_d_line.plot(self.logbook, 0, self.result_dir)
+        two_d_line.plot(self.logbook, 1, self.result_dir)
+        two_d_line.plot(self.logbook, 2, self.result_dir)

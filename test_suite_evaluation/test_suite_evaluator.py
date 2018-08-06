@@ -1,6 +1,8 @@
 import os
 import pickle
 
+from deap import tools
+
 import settings
 from dependency_injection.required_feature import RequiredFeature
 
@@ -11,6 +13,10 @@ class TestSuiteEvaluator(object):
         self.test_runner = RequiredFeature('test_runner').request()
         self.coverage_fetcher = RequiredFeature('coverage_fetcher').request()
         self.result_dir = RequiredFeature('result_dir').request()
+
+        self.stats = RequiredFeature('stats').request()
+        self.logbook = self.logbook = tools.Logbook()
+        self.logbook.header = ['gen'] + (self.stats.fields if self.stats else [])
 
     def dump_individual_to_files(self, individual, gen, pop):
         script_path = []
@@ -42,3 +48,12 @@ class TestSuiteEvaluator(object):
             hof_file = open(self.result_dir + "/hall_of_fame.pickle", 'wb')
             pickle.dump(self.hall_of_fame, hof_file)
             hof_file.close()
+
+    def update_logbook(self, gen, population):
+        record = self.stats.compile(population) if self.stats is not None else {}
+        self.logbook.record(gen=gen, **record)
+
+    def dump_logbook_to_file(self):
+        logbook_file = open(self.result_dir + "/logbook.pickle", 'wb')
+        pickle.dump(self.logbook, logbook_file)
+        logbook_file.close()
