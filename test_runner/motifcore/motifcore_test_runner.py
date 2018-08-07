@@ -3,10 +3,10 @@ import random
 
 from deap import tools
 
-import motifcore_installer
 import settings
 from devices import adb
 from test_runner.motifcore.mut_suite import sapienz_mut_suite
+from test_runner.test_runner_installer import TestRunnerInstaller
 from test_runner.test_runner import TestRunner
 
 
@@ -15,14 +15,18 @@ class MotifcoreTestRunner(TestRunner):
     def __init__(self, use_motifgene=False):
         self.use_motifgene = use_motifgene
 
+        self.test_runner_installer = TestRunnerInstaller("motifcore",
+                                                         settings.WORKING_DIR + "test_runner/motifcore/motifcore",
+                                                         settings.WORKING_DIR + "test_runner/motifcore/motifcore.jar")
+
     def register_crossover_operator(self, toolbox):
         toolbox.register("mate", tools.cxUniform, indpb=0.5)
 
     def register_mutation_operator(self, toolbox):
         toolbox.register("mutate", sapienz_mut_suite, indpb=0.5)
 
-    def install_on_devices(self, device_manager):
-        motifcore_installer.install_in_all_devices(device_manager)
+    def install_on_devices(self):
+        self.test_runner_installer.install_in_all_devices()
 
     def run(self, device, package_name, script_name):
         self.prepare_device_for_run(device)

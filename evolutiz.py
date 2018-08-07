@@ -33,7 +33,7 @@ class Evolutiz(object):
 
     def run(self):
         # give test runner opportunity to install on devices
-        self.test_runner.install_on_devices(self.device_manager)
+        self.test_runner.install_on_devices()
 
         devices = self.device_manager.get_devices()
 

@@ -62,7 +62,7 @@ class Standard(GeneticAlgorithm):
 
                 pool.apply_async(pickable_function,
                                  args=(self, 'generate_two_offspring',
-                                       (self, device,)),
+                                       (device,)),
                                  callback=self.two_offspring_generated)
             else:
                 time.sleep(2)

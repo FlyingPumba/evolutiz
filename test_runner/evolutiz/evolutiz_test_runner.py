@@ -6,6 +6,7 @@ from deap import tools
 
 import settings
 from devices import adb
+from test_runner.test_runner_installer import TestRunnerInstaller
 from test_runner.test_runner import TestRunner
 
 
@@ -14,11 +15,18 @@ class EvolutizTestRunner(TestRunner):
     def __init__(self):
         self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE = "/mnt/sdcard/evolutiz.script"
 
+        self.test_runner_installer = TestRunnerInstaller("evolutiz",
+                                                         settings.WORKING_DIR + "test_runner/evolutiz/evolutiz",
+                                                         settings.WORKING_DIR + "test_runner/evolutiz/evolutiz.jar")
+
     def register_crossover_operator(self, toolbox):
         toolbox.register("mate", tools.cxOnePoint)
 
     def register_mutation_operator(self, toolbox):
         toolbox.register("mutate", self.mutate)
+
+    def install_on_devices(self):
+        self.test_runner_installer.install_in_all_devices()
 
     def run(self, device, package_name, script_name):
         self.prepare_device_for_run(device)
