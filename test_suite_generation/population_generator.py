@@ -23,9 +23,10 @@ class PopulationGenerator(object):
         data, individual_index, device, success = result
         if not success:
             logger.log_progress(
-                "\nInit population in parallel: failed to generate_individual on device: " + device.name)
+                "\nInit population in parallel: failed to generate_individual on device: " + device.name + "\n")
             # device was unable to complete the generation of individual
             self.remaining_individuals_index_to_generate.append(individual_index)
+            self.idle_devices.append(device)
         else:
             self.individuals_generated.append(data)
             self.idle_devices.append(device)
