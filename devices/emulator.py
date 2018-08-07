@@ -55,7 +55,7 @@ class Emulator(Device):
 
         # FIX: this shutdown and boot doesn't seem to work.
         self.shutdown()
-        self.boot(self.port)
+        self.boot(port=self.port)
 
     def clean_sdcard(self):
         adb.sudo_shell_command(self, "mount -o rw,remount rootfs", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)

@@ -50,7 +50,8 @@ class Device(object):
         self.state = State.unknown
 
     def reboot(self):
-        self.boot()
+        self.state = State.booting
+        self.boot_time = time.time()
 
     def battery_level(self):
         return adb.get_battery_level(self)
