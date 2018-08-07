@@ -141,7 +141,15 @@ def check_needed_commands_available():
         raise Exception(cause)
 
     if not is_command_available(adb.adb_cmd_prefix):
-        cause = "Command 'adb' was not found in the " + adb.adb_cmd_prefix + " route"
+        cause = "Command 'adb' was not found in the path " + adb.adb_cmd_prefix
+        logger.log_progress(cause)
+        raise Exception(cause)
+
+    avdmanager_path = settings.ANDROID_HOME + "tools/bin/avdmanager"
+    if os.path.exists(avdmanager_path):
+        features.provide('avdmanager_path', avdmanager_path)
+    else:
+        cause = "Command 'avdmanager' was not found in the path " + avdmanager_path
         logger.log_progress(cause)
         raise Exception(cause)
 
@@ -159,7 +167,7 @@ def check_needed_commands_available():
     #     aapt_path = settings.ANDROID_HOME + "build-tools/" + folder + "/aapt"
     #     if os.path.exists(aapt_path):
     #         aapt_found = True
-    #         features.Provide('aapt_path', aapt_path)
+    #         features.provide('aapt_path', aapt_path)
     #         break
     #
     # if not aapt_found:
