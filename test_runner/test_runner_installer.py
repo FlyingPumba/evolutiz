@@ -1,4 +1,5 @@
 import multiprocessing as mp
+import os
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
@@ -57,8 +58,14 @@ class TestRunnerInstaller(object):
             raise Exception("Unable to complete test runner installation in all devices")
 
     def install(self, device):
+        # gain root permissions on device
+        result_code = os.system(adb.adb_cmd_prefix + " root")
+        if result_code != 0:
+            device.flag_as_malfunctioning()
+            raise Exception("Unable to gain root permissions on device: " + device.name)
+
         # make /mnt/sdcard and /system writable
-        result_code = adb.sudo_shell_command(device, "mount -o rw,remount rootfs /",
+        result_code = adb.sudo_shell_command(device, "mount -o rw,remount /",
                                              timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             device.flag_as_malfunctioning()
