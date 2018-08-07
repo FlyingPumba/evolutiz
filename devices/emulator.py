@@ -4,6 +4,7 @@ import time
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
+from devices.avd_manager import AvdManager
 from devices.device import Device, State
 
 
@@ -11,6 +12,8 @@ class Emulator(Device):
 
     def __init__(self, device_manager, device_name="", state=State.unknown):
         Device.__init__(self, device_manager, device_name, state)
+
+        self.avd_manager = AvdManager()
 
         if device_name != "":
             # we assume device_name has form "emulator-xxxx"
@@ -24,7 +27,10 @@ class Emulator(Device):
         Device.boot(self)
 
         self.port = port if port is not None else self.device_manager.get_next_available_emulator_port()
-        self.avd_name = Emulator.get_avd_name_for_emulator_port(self.port)
+        self.avd_name = self.avd_manager.get_avd_name_for_emulator_port(self.port)
+        if not self.avd_manager.avd_name_exists(self.avd_name):
+            raise Exception("AVD name " + self.avd_name + " doesn't exist. Check that the provided AVD series (" + self.avd_manager.avd_series + ") is correct.")
+
         self.name = "emulator-" + str(self.port)
 
         emulator_cmd = "export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator"
@@ -61,9 +67,3 @@ class Emulator(Device):
         adb.sudo_shell_command(self, "mount -o rw,remount rootfs", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         adb.sudo_shell_command(self, "chmod 777 /mnt/sdcard", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         adb.sudo_shell_command(self, "rm -rf /mnt/sdcard/*", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-
-    @staticmethod
-    def get_avd_name_for_emulator_port(port):
-        avd_series = RequiredFeature('avd_series').request()
-        avd_index = (port - 5554) / 2
-        return avd_series + "_" + str(avd_index)
