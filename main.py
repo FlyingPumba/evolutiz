@@ -267,7 +267,7 @@ def init_arguments_defaults():
         "time_budget": 15 * 60,  # 15m
         "evaluations_budget": None,
         "real_devices_number": 0,
-        "emulators_number": 2,
+        "emulators_number": 1,
         "avd_series": "Nexus_4_API_19",
         "write_logbook": True,
         "write_history": True,

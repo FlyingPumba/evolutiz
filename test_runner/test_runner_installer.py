@@ -14,6 +14,8 @@ class TestRunnerInstaller(object):
         self.test_runner_executable_path = test_runner_executable_path
         self.test_runner_jar_path = test_runner_jar_path
 
+        self.successful_installations = 0
+
     def kill_test_runner_in_device(self, device):
         adb.pkill(device, self.test_runner_name)
 
@@ -24,6 +26,8 @@ class TestRunnerInstaller(object):
 
     def install_in_all_devices(self, minimum_api=None):
         self.device_manager = RequiredFeature('device_manager').request()
+        self.successful_installations = 0
+
         logger.log_progress("\nPreparing " + self.test_runner_name + " test runner in devices.")
 
         devices = [device for device in self.device_manager.get_devices()
@@ -42,9 +46,13 @@ class TestRunnerInstaller(object):
         pool.close()
         pool.join()
 
+        if self.successful_installations != len(devices):
+            raise Exception("Unable to install " + self.test_runner_name + " test runner in all devices")
+
     def install_wrapper(self, device):
         try:
             self.install(device)
+            self.successful_installations += 1
         except Exception as e:
             raise Exception("Unable to complete test runner installation in all devices")
 
