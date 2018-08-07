@@ -95,6 +95,7 @@ def pkill(device, string):
 
     return os.system(cmd + logger.redirect_string())
 
+
 def set_bluetooth_state(device, enabled, timeout=None):
     if enabled:
         # sometimes might not work
@@ -150,8 +151,6 @@ def get_battery_level(device):
             pass
 
 
-
-
 def get_imei(device):
     if device.name not in devices_imei:
         adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
@@ -202,3 +201,23 @@ def exists_file(device, file_path, timeout=None):
 def log_evaluation_result(device, result_dir, script, success):
     device_adb_log_file = result_dir + "/" + device.name + "-evaluations.log"
     os.system("echo \"" + str(success) + " -> " + script + "\" >> " + device_adb_log_file)
+
+
+def get_api_level(device):
+    adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
+    api_level_cmd = adb_cmd + " getprop ro.build.version.sdk"
+    cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + api_level_cmd
+    log_adb_command(device, cmd)
+
+    res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+    return int(res)
+
+
+def get_android_version(device):
+    adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
+    android_version_cmd = adb_cmd + " getprop ro.build.version.release"
+    cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + android_version_cmd
+    log_adb_command(device, cmd)
+
+    res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+    return res

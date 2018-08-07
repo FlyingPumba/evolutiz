@@ -59,6 +59,12 @@ class Device(object):
     def imei(self):
         return adb.get_imei(self)
 
+    def api_level(self):
+        return adb.get_api_level(self)
+
+    def android_version(self):
+        return adb.get_android_version(self)
+
     def set_bluetooth_state(self, enabled):
         adb.set_bluetooth_state(self, enabled, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 

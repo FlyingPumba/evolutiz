@@ -22,11 +22,16 @@ class TestRunnerInstaller(object):
         for device in self.device_manager.get_devices():
             self.kill_test_runner_in_device(device)
 
-    def install_in_all_devices(self):
+    def install_in_all_devices(self, minimum_api=None):
         self.device_manager = RequiredFeature('device_manager').request()
         logger.log_progress("\nPreparing " + self.test_runner_name + " test runner in devices.")
 
-        devices = self.device_manager.get_devices()
+        devices = [device for device in self.device_manager.get_devices()
+                   if minimum_api is None or device.api_level() >= minimum_api]
+
+        if len(devices) == 0:
+            raise Exception("No devices found with api level greater or equal than " + str(minimum_api))
+
         pool = mp.Pool(processes=len(devices))
         for device in devices:
             pool.apply_async(pickable_function,

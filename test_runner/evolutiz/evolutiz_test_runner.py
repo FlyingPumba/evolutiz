@@ -14,7 +14,7 @@ class EvolutizTestRunner(TestRunner):
 
     def __init__(self):
         self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE = "/mnt/sdcard/evolutiz.script"
-
+        self.minimum_api = 28
         self.test_runner_installer = TestRunnerInstaller("evolutiz",
                                                          settings.WORKING_DIR + "test_runner/evolutiz/evolutiz",
                                                          settings.WORKING_DIR + "test_runner/evolutiz/evolutiz.jar")
@@ -26,9 +26,10 @@ class EvolutizTestRunner(TestRunner):
         toolbox.register("mutate", self.mutate)
 
     def install_on_devices(self):
-        self.test_runner_installer.install_in_all_devices()
+        self.test_runner_installer.install_in_all_devices(minimum_api=self.minimum_api)
 
     def run(self, device, package_name, script_name):
+        assert device.api_level() >= self.minimum_api
         self.prepare_device_for_run(device)
 
         evolutiz_cmd = "evolutiz -p " + package_name \
@@ -41,6 +42,7 @@ class EvolutizTestRunner(TestRunner):
         adb.pkill(device, "evolutiz")
 
     def generate(self, device, package_name, destination_file_name):
+        assert device.api_level() >= self.minimum_api
         self.prepare_device_for_run(device)
 
         evolutiz_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
@@ -85,6 +87,7 @@ class EvolutizTestRunner(TestRunner):
         return test_content
 
     def mutate(self, device, package_name, test_case):
+        assert device.api_level() >= self.minimum_api
         # write individual to local file
         ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
         local_src_filename = self.result_dir + "/intermediate/offspring." + ts
@@ -118,7 +121,7 @@ class EvolutizTestRunner(TestRunner):
     def generate_ga_offspring(self, device, package_name,
                               parentFilename1, parentFilename2,
                               offspringFilename1, offspringFilename2):
-
+        assert device.api_level() >= self.minimum_api
         evolutiz_cmd = "evolutiz -p " + package_name \
                        + " --dry --generate-ga-offspring " \
                        + " -f /mnt/sdcard/" + parentFilename1 \
