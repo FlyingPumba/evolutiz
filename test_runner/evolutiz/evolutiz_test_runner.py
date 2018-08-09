@@ -118,23 +118,6 @@ class EvolutizTestRunner(TestRunner):
 
         return mutated_test_case
 
-    def generate_ga_offspring(self, device, package_name,
-                              parentFilename1, parentFilename2,
-                              offspringFilename1, offspringFilename2):
-        assert device.api_level() >= self.minimum_api
-        evolutiz_cmd = "evolutiz -p " + package_name \
-                       + " --dry --generate-ga-offspring " \
-                       + " -f /mnt/sdcard/" + parentFilename1 \
-                       + " -f /mnt/sdcard/" + parentFilename2 \
-                       + " -o /mnt/sdcard/" + offspringFilename1 \
-                       + " -o /mnt/sdcard/" + offspringFilename2 + " 1"
-
-        adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.MOTIFCORE_EVAL_TIMEOUT, log_output=False)
-
-        # need to manually kill evolutiz when timeout
-        adb.pkill(device, "evolutiz")
-
-
     def write_test_case_to_file(self, content, filename):
         # check that directory exists before creating file
         dirname = os.path.dirname(filename)
