@@ -20,6 +20,7 @@ class DeviceManager(object):
     - Detect when a rebooting device is back.
     - Boot and shutdown emulators.
      """
+
     def __init__(self):
         self.emulators_number = RequiredFeature('emulators_number').request()
         self.real_devices_number = RequiredFeature('real_devices_number').request()
@@ -79,8 +80,8 @@ class DeviceManager(object):
             self.refresh_reachable_devices()
 
             devices_still_booting = [device for device in self.devices if
-                                        device.state is State.booting and
-                                        current_time - device.boot_time >= settings.AVD_BOOT_DELAY]
+                                     device.state is State.booting and
+                                     current_time - device.boot_time >= settings.AVD_BOOT_DELAY]
 
             for device in devices_still_booting:
                 # update boot time with current one to wait another AVD_BOOT_DELAY seconds
