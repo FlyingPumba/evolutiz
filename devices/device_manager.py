@@ -75,14 +75,14 @@ class DeviceManager(object):
                                     current_time - device.boot_time >= settings.AVD_BOOT_DELAY]
 
         if refresh or len(booting_devices_to_check) > 0:
+            # fetch devices and update the state of devices that finished booting
             self.refresh_reachable_devices()
 
-        for device in booting_devices_to_check:
-            if device in self.devices:
-                # device is back
-                device.state = State.reachable
-            else:
-                # device is still booting
+            devices_still_booting = [device for device in self.devices if
+                                        device.state is State.booting and
+                                        current_time - device.boot_time >= settings.AVD_BOOT_DELAY]
+
+            for device in devices_still_booting:
                 # update boot time with current one to wait another AVD_BOOT_DELAY seconds
                 device.boot_time = time.time()
 
