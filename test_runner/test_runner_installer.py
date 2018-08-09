@@ -59,48 +59,52 @@ class TestRunnerInstaller(object):
 
     def install(self, device):
         # gain root permissions on device
-        result_code = os.system(adb.adb_cmd_prefix + " root")
+        result_code = adb.adb_command(device, "root", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             device.flag_as_malfunctioning()
             raise Exception("Unable to gain root permissions on device: " + device.name)
 
-        # make /mnt/sdcard and /system writable
-        result_code = adb.sudo_shell_command(device, "mount -o rw,remount /",
-                                             timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        # remount partitions
+        result_code = adb.adb_command(device, "remount", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             device.flag_as_malfunctioning()
-            raise Exception("Unable to install test runner on device: " + device.name)
+            raise Exception("Unable to remount partitions on device: " + device.name)
 
-        result_code = adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard",
+        # make /mnt/sdcard writable
+        result_code = adb.shell_command(device, "mount -o rw,remount /",
                                              timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             device.flag_as_malfunctioning()
-            raise Exception("Unable to install test runner on device: " + device.name)
+            raise Exception("Unable to remount root partition on device: " + device.name)
 
-        result_code = adb.sudo_shell_command(device, "mount -o rw,remount /system",
-                                             timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        if result_code != 0:
-            device.flag_as_malfunctioning()
-            raise Exception("Unable to install test runner on device: " + device.name)
+        # TODO: remove the following lines, they are not needed anymore and are not universal across emulators/devices
+        # result_code = adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard",
+        #                                      timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        # if result_code != 0:
+        #     device.flag_as_malfunctioning()
+        #     raise Exception("Unable to install test runner on device: " + device.name)
+        #
+        # result_code = adb.sudo_shell_command(device, "mount -o rw,remount /system",
+        #                                      timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        # if result_code != 0:
+        #     device.flag_as_malfunctioning()
+        #     raise Exception("Unable to install test runner on device: " + device.name)
 
         # push
-        filename = adb.sudo_push(device, self.test_runner_jar_path, "/system/framework/" + self.test_runner_name + ".jar",
+        adb.push(device, self.test_runner_jar_path, "/system/framework/" + self.test_runner_name + ".jar",
                                  timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        result_code = adb.sudo_shell_command(device, "chmod 777 /system/framework/" + filename,
+        result_code = adb.shell_command(device, "chmod 777 /system/framework/" + self.test_runner_name + ".jar",
                                              timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             device.flag_as_malfunctioning()
             raise Exception("Unable to install test runner on device: " + device.name)
 
-        filename = adb.sudo_push(device, self.test_runner_executable_path, "/system/bin/" + self.test_runner_name,
+        adb.push(device, self.test_runner_executable_path, "/system/bin/" + self.test_runner_name,
                                  timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        result_code = adb.sudo_shell_command(device, "chmod 777 /system/bin/" + filename,
+        result_code = adb.shell_command(device, "chmod 777 /system/bin/" + self.test_runner_name,
                                              timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             device.flag_as_malfunctioning()
             raise Exception("Unable to install test runner on device: " + device.name)
-
-        # recover permission
-        adb.sudo_shell_command(device, "mount -o ro,remount /system", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
         return True
