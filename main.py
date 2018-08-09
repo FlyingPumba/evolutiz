@@ -158,6 +158,33 @@ def check_needed_commands_available():
         logger.log_progress(cause)
         raise Exception(cause)
 
+    if not is_command_available("java"):
+        cause = "Command 'java' needed but not found."
+        logger.log_progress(cause)
+        raise Exception(cause)
+
+    if not is_command_available("javac"):
+        cause = "Command 'javac' needed but not found."
+        logger.log_progress(cause)
+        raise Exception(cause)
+
+    p = sub.Popen("java -version", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+    output, errors = p.communicate()
+    first_line = errors.split('\n')[0].strip()
+    version = first_line.split(' ')[2]
+    if not version[1:-1].startswith("1.8"):
+        cause = "Found java with version " + version + ", but 1.8 is needed."
+        logger.log_progress(cause)
+        raise Exception(cause)
+
+    p = sub.Popen("javac -version", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+    output, errors = p.communicate()
+    version = errors.split(' ')[1].strip()
+    if not version.startswith("1.8"):
+        cause = "Found javac with version " + version + ", but 1.8 is needed."
+        logger.log_progress(cause)
+        raise Exception(cause)
+
     # search for aapt in build-tools folder
     # build_tools_cmd = "ls " + settings.ANDROID_HOME + "build-tools/ | sort -r"
     # p = sub.Popen(build_tools_cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
