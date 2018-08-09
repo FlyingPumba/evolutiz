@@ -15,6 +15,9 @@ class AvdManager(object):
         p = sub.Popen(self.avdmanager_path + " list avd", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
         output, errors = p.communicate()
 
+        if errors.strip() != '':
+            raise Exception("There was an error running avdmanager command: " + errors)
+
         found = False
         lines = output.split("\n")
         for line in lines:
