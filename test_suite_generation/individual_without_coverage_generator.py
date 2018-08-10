@@ -31,7 +31,7 @@ class IndividualWithoutCoverageGenerator(object):
         random.seed()
 
         # clear data
-        result_code = adb.shell_command(device, "pm clear " + self.package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        result_code = adb.shell_command(device, "pm clear " + self.package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, retry=3)
         if result_code != 0:
             device.flag_as_malfunctioning()
             raise Exception("Failed to clear package " + self.package_name + " in device: " + device.name)

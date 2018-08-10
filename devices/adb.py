@@ -1,5 +1,6 @@
 import os
 import subprocess
+import time
 
 import settings
 from util import logger
@@ -19,24 +20,33 @@ devices_imei = {
 }
 
 
-def adb_command(device, command, timeout=None, log_output=True):
-    adb_cmd = adb_cmd_prefix + " -s " + device.name + " " + command
+def adb_command(device, command, timeout=None, log_output=True, retry=1):
+    cmd = adb_cmd_prefix + " -s " + device.name + " " + command
 
     if timeout is not None:
-        timeout_adb_cmd = settings.TIMEOUT_CMD + " " + str(timeout) + " " + adb_cmd
-        log_adb_command(device, timeout_adb_cmd)
-        return os.system(timeout_adb_cmd + logger.redirect_string(log_output))
-    else:
-        log_adb_command(device, adb_cmd)
-        return os.system(adb_cmd + logger.redirect_string(log_output))
+        cmd = settings.TIMEOUT_CMD + " " + str(timeout) + " " + cmd
+
+    tries = 0
+    while True:
+        tries += 1
+        log_adb_command(device, cmd)
+        result_code = os.system(cmd + logger.redirect_string(log_output))
+
+        if result_code == 0:
+            return 0
+        elif tries >= retry:
+            return result_code
+        else:
+            time.sleep(1)
 
 
-def shell_command(device, command, timeout=None, log_output=True):
-    return adb_command(device, "shell " + command, timeout, log_output)
+
+def shell_command(device, command, timeout=None, log_output=True, retry=1):
+    return adb_command(device, "shell " + command, timeout=timeout, log_output=log_output, retry=retry)
 
 
-def sudo_shell_command(device, command, timeout=None, log_output=True):
-    return shell_command(device, "\" su -s sh -c '" + command + "'\"", timeout, log_output)
+def sudo_shell_command(device, command, timeout=None, log_output=True, retry=1):
+    return shell_command(device, "\" su -s sh -c '" + command + "'\"", timeout=timeout, log_output=log_output, retry=retry)
 
 
 def push(device, src, dest, timeout=None):
