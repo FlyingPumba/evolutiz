@@ -41,7 +41,8 @@ class TestRunnerInstaller(object):
         for device in devices:
             pool.apply_async(pickable_function,
                              args=(self, 'install_wrapper',
-                                   (device,)))
+                                   (device,)),
+                             callback=self.on_successful_installation)
 
         # wait for all processes to finish
         pool.close()
@@ -50,12 +51,16 @@ class TestRunnerInstaller(object):
         if self.successful_installations != len(devices):
             raise Exception("Unable to install " + self.test_runner_name + " test runner in all devices")
 
+    def on_successful_installation(self, success):
+        if success:
+            self.successful_installations += 1
+
     def install_wrapper(self, device):
         try:
             self.install(device)
-            self.successful_installations += 1
+            return True
         except Exception as e:
-            raise Exception("Unable to complete test runner installation in all devices")
+            return False
 
     def install(self, device):
         # gain root permissions on device
