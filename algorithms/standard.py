@@ -61,7 +61,7 @@ class Standard(GeneticAlgorithm):
 
                 self.remaining_offspring_to_generate -= 1
                 device = idle_devices.pop(0)
-                device.mark_work_start()
+                self.device_manager.mark_work_start_on_device(device)
 
                 pool.apply_async(pickable_function,
                                  args=(self, 'generate_two_offspring',
@@ -81,7 +81,7 @@ class Standard(GeneticAlgorithm):
         self.offspring_generated.append(o1)
         self.offspring_generated.append(o2)
 
-        device.mark_work_stop()
+        self.device_manager.mark_work_stop_on_device(device)
 
     def generate_two_offspring(self, device):
         p1, p2 = self.toolbox.select(self.population, 2)

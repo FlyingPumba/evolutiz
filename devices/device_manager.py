@@ -128,6 +128,18 @@ class DeviceManager(object):
         # remove device from available devices and reboot
         device.reboot()
 
+    def mark_work_start_on_device(self, target_device):
+        # look by name in case this is a device copied by pickling
+        matching_devices = [device for device in self.get_devices() if device.name == target_device.name]
+        device = matching_devices.pop(0)
+        device.state = State.ready_working
+
+    def mark_work_stop_on_device(self, target_device):
+        # look by name in case this is a device copied by pickling
+        matching_devices = [device for device in self.get_devices() if device.name == target_device.name]
+        device = matching_devices.pop(0)
+        device.state = State.ready_idle
+
     def boot_emulators(self, wait_to_be_ready=False):
         logger.log_progress("\nBooting devices: " + str(0) + "/" + str(self.emulators_number))
 

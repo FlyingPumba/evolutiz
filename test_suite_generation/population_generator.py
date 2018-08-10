@@ -30,7 +30,7 @@ class PopulationGenerator(object):
             logger.log_progress("\rInit population in parallel: " +
                                 str(len(self.individuals_generated)) + "/" + str(self.total_individuals))
 
-        device.mark_work_stop()
+        self.device_manager.mark_work_stop_on_device(device)
 
     def generate(self, n, gen=""):
         self.total_individuals = n
@@ -53,7 +53,7 @@ class PopulationGenerator(object):
 
                 individual_index = self.remaining_individuals_index_to_generate.pop(0)
                 device = idle_devices.pop(0)
-                device.mark_work_start()
+                self.device_manager.mark_work_start_on_device(device)
 
                 pool.apply_async(pickable_function,
                                  args=(self.individual_generator, 'gen_individual',

@@ -28,7 +28,7 @@ class ParallelEvaluator(object):
             logger.log_progress("\rEvaluating in parallel: " +
                                 str(len(self.individuals_evaluated)) + "/" + str(self.total_individuals))
 
-        device.mark_work_stop()
+        self.device_manager.mark_work_stop_on_device(device)
 
     def evaluate(self, individuals, gen):
         self.individuals_evaluated = []
@@ -58,7 +58,7 @@ class ParallelEvaluator(object):
 
                 individual_index = remaining_individuals_index_to_evaluate.pop(0)
                 device = idle_devices.pop(0)
-                device.mark_work_start()
+                self.device_manager.mark_work_start_on_device(device)
 
                 pool.apply_async(pickable_function,
                                  args=(self.test_suite_evaluator, 'evaluate',
