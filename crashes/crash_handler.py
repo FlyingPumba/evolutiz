@@ -30,7 +30,7 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             device.flag_as_malfunctioning()
-            raise Exception("Failed to retrieve bugreport.crash file from device: " + device)
+            raise Exception("Failed to retrieve bugreport.crash file from device: " + device.name)
 
         # filter duplicate crashes
         with open(local_bugreport_path) as bug_report_file:
