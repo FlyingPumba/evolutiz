@@ -9,18 +9,21 @@ from devices import adb
 class State(Enum):
     """Describes the possible states of a device.
 
-       unknown     Initial state, nothing is known about the device.
-       booting     The device is booting and presumably not reachable.
-       reachable   The device is reachable.
-                   However, it might not be ready to accept some commands (e.g. install apk).
-       booted      The device finished booting.
-       ready       The device is reachable and fully ready.
+       unknown        Initial state, nothing is known about the device.
+       booting        The device is booting and presumably not reachable.
+       reachable      The device is reachable.
+                      However, it might not be ready to accept some commands (e.g. install apk).
+       booted         The device finished booting.
+       ready_idle     The device is reachable and fully ready, not currently working.
+       ready_working  The device is reachable and fully ready, currently working.
+
     """
     unknown = 0
     booting = 1
     reachable = 2
     booted = 3
-    ready = 4
+    ready_idle = 4
+    ready_working = 5
 
 
 class Device(object):
@@ -30,7 +33,7 @@ class Device(object):
         device_manager  The device manager that created this device.
         device_name     The name that appears for this device when running "adb devices" command.
         state           Last known state of the device.
-        booting_time    Last known time the device started to boot.
+        boot_time    Last known time the device started to boot.
     """
 
     def __init__(self, device_manager, device_name="", state=State.unknown):
@@ -52,6 +55,12 @@ class Device(object):
     def reboot(self):
         self.state = State.booting
         self.boot_time = time.time()
+
+    def mark_work_start(self):
+        self.state = State.ready_working
+
+    def mark_work_stop(self):
+        self.state = State.ready_idle
 
     def battery_level(self):
         return adb.get_battery_level(self)

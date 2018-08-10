@@ -47,18 +47,21 @@ class Standard(GeneticAlgorithm):
         return self.population
 
     def generate_offspring_in_parallel(self):
-        self.idle_devices = []
-        self.idle_devices.extend(self.device_manager.get_devices())
+        idle_devices = self.device_manager.get_idle_devices()
 
         self.offspring_generated = []
         self.remaining_offspring_to_generate = self.offspring_size
 
-        pool = mp.Pool(processes=len(self.idle_devices))
+        pool = mp.Pool(processes=len(idle_devices))
         while len(self.offspring_generated) < self.offspring_size:
 
-            if self.remaining_offspring_to_generate > 0 and len(self.idle_devices) > 0:
-                device = self.idle_devices.pop(0)
+            idle_devices = self.device_manager.get_idle_devices()
+
+            if self.remaining_offspring_to_generate > 0 and len(idle_devices) > 0:
+
                 self.remaining_offspring_to_generate -= 1
+                device = idle_devices.pop(0)
+                device.mark_work_start()
 
                 pool.apply_async(pickable_function,
                                  args=(self, 'generate_two_offspring',
@@ -77,6 +80,8 @@ class Standard(GeneticAlgorithm):
         o1, o2, device = result
         self.offspring_generated.append(o1)
         self.offspring_generated.append(o2)
+
+        device.mark_work_stop()
 
     def generate_two_offspring(self, device):
         p1, p2 = self.toolbox.select(self.population, 2)

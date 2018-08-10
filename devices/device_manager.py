@@ -109,9 +109,12 @@ class DeviceManager(object):
                               stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
                 output, errors = p.communicate()
                 if "Error: Could not access the Package Manager" not in output.strip() and errors.strip() == "":
-                    device.state = State.ready
+                    device.state = State.ready_idle
 
-        return [device for device in self.devices if device.state is State.ready]
+        return [device for device in self.devices if device.state is State.ready_idle]
+
+    def get_idle_devices(self):
+        return [device for device in self.get_devices() if device.state is State.ready_idle]
 
     def flag_device_as_malfunctioning(self, device):
         # remove device from available devices and reboot

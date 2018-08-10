@@ -15,7 +15,6 @@ class ParallelEvaluator(object):
         self.toolbox = RequiredFeature('toolbox').request()
 
         # attributes for mp callback
-        self.idle_devices = []
         self.total_individuals = 0
         self.remaining_index_to_evaluate = []
         self.individuals_evaluated = []
@@ -26,12 +25,12 @@ class ParallelEvaluator(object):
             self.remaining_index_to_evaluate.append(individual_index)
         else:
             self.individuals_evaluated.append(individual_evaluated)
-            self.idle_devices.append(device)
             logger.log_progress("\rEvaluating in parallel: " +
                                 str(len(self.individuals_evaluated)) + "/" + str(self.total_individuals))
 
+        device.mark_work_stop()
+
     def evaluate(self, individuals, gen):
-        self.idle_devices = []
         self.individuals_evaluated = []
         self.total_individuals = len(individuals)
 
@@ -39,12 +38,12 @@ class ParallelEvaluator(object):
                             str(len(self.individuals_evaluated)) + "/" + str(self.total_individuals))
 
         # get idle devices
-        self.idle_devices.extend(self.device_manager.get_devices())
+        idle_devices = self.device_manager.get_idle_devices()
 
         remaining_individuals_index_to_evaluate = [i for i in range(0, self.total_individuals)]
 
         # 2. aissign tasks to devices
-        pool = mp.Pool(processes=len(self.idle_devices))
+        pool = mp.Pool(processes=len(idle_devices))
         time_out = False
         while len(self.individuals_evaluated) < self.total_individuals:
 
@@ -53,9 +52,13 @@ class ParallelEvaluator(object):
                 time_out = True
                 break
 
-            if len(remaining_individuals_index_to_evaluate) > 0 and len(self.idle_devices) > 0:
-                device = self.idle_devices.pop(0)
+            idle_devices = self.device_manager.get_idle_devices()
+
+            if len(remaining_individuals_index_to_evaluate) > 0 and len(idle_devices) > 0:
+
                 individual_index = remaining_individuals_index_to_evaluate.pop(0)
+                device = idle_devices.pop(0)
+                device.mark_work_start()
 
                 pool.apply_async(pickable_function,
                                  args=(self.test_suite_evaluator, 'evaluate',

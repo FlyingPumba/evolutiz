@@ -14,7 +14,6 @@ class PopulationGenerator(object):
         self.individual_generator = RequiredFeature('individual_generator', HasMethods('gen_individual')).request()
 
         # variables for mp callback
-        self.idle_devices = []
         self.total_individuals = 0
         self.individuals_generated = []
         self.remaining_individuals_index_to_generate = []
@@ -26,33 +25,36 @@ class PopulationGenerator(object):
                 "\nInit population in parallel: failed to generate_individual on device: " + device.name + "\n")
             # device was unable to complete the generation of individual
             self.remaining_individuals_index_to_generate.append(individual_index)
-            self.idle_devices.append(device)
         else:
             self.individuals_generated.append(data)
-            self.idle_devices.append(device)
             logger.log_progress("\rInit population in parallel: " +
                                 str(len(self.individuals_generated)) + "/" + str(self.total_individuals))
 
+        device.mark_work_stop()
+
     def generate(self, n, gen=""):
-        self.idle_devices = []
         self.total_individuals = n
         self.individuals_generated = []
         self.remaining_individuals_index_to_generate = [i for i in range(0, self.total_individuals)]
 
         # get idle devices
-        self.idle_devices.extend(self.device_manager.get_devices())
-        total_devices = len(self.idle_devices)
+        idle_devices = self.device_manager.get_idle_devices()
 
         # 2. aissign tasks to devices
         logger.log_progress("\nInit population in parallel: " +
                             str(len(self.individuals_generated)) + "/" + str(self.total_individuals))
 
-        pool = mp.Pool(processes=total_devices)
+        pool = mp.Pool(processes=len(idle_devices))
         while len(self.individuals_generated) < self.total_individuals:
 
-            if len(self.remaining_individuals_index_to_generate) > 0 and len(self.idle_devices) > 0:
+            idle_devices = self.device_manager.get_idle_devices()
+
+            if len(self.remaining_individuals_index_to_generate) > 0 and len(idle_devices) > 0:
+
                 individual_index = self.remaining_individuals_index_to_generate.pop(0)
-                device = self.idle_devices.pop(0)
+                device = idle_devices.pop(0)
+                device.mark_work_start()
+
                 pool.apply_async(pickable_function,
                                  args=(self.individual_generator, 'gen_individual',
                                        (device, gen, individual_index,)),
