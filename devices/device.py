@@ -25,6 +25,18 @@ class State(Enum):
     ready_idle = 4
     ready_working = 5
 
+    def __lt__(self, other):
+        return self.value < other.value
+
+    def __le__(self, other):
+        return self.value <= other.value
+
+    def __gt__(self, other):
+        return self.value > other.value
+
+    def __ge__(self, other):
+        return self.value >= other.value
+
 
 class Device(object):
     """Represents the device entity (whether it is an emulator or a real device)

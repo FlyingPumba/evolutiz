@@ -51,7 +51,7 @@ class DeviceManager(object):
 
                 if len(matching_devices) > 0:
                     device = matching_devices.pop(0)
-                    if device.state is State.unknown or device.state is State.booting:
+                    if device.state < State.reachable:
                         device.state = State.reachable
 
                     if type(device) is Emulator:
@@ -93,6 +93,10 @@ class DeviceManager(object):
         if refresh is True:
             # check if boot animation is over for each device
             for device in self.get_devices(refresh=True):
+                if device.state >= State.booted:
+                    # don't change the state of devices when it is higher or equal than booted
+                    continue
+
                 p = sub.Popen(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell getprop init.svc.bootanim',
                               stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
                 output, errors = p.communicate()
@@ -105,6 +109,10 @@ class DeviceManager(object):
         if refresh is True:
             # check if package manager is ready for each device
             for device in self.get_devices(refresh=True):
+                if device.state >= State.ready_idle:
+                    # don't change the state of devices when it is higher or equal than ready_idle
+                    continue
+
                 p = sub.Popen(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell pm list packages',
                               stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
                 output, errors = p.communicate()
@@ -114,7 +122,7 @@ class DeviceManager(object):
         return [device for device in self.devices if device.state is State.ready_idle]
 
     def get_idle_devices(self):
-        return [device for device in self.get_devices() if device.state is State.ready_idle]
+        return self.get_ready_to_install_devices(refresh=True)
 
     def flag_device_as_malfunctioning(self, device):
         # remove device from available devices and reboot
