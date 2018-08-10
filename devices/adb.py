@@ -190,7 +190,8 @@ def exists_file(device, file_path, timeout=None):
     p = subprocess.Popen(adb_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     output, errors = p.communicate()
 
-    if output.find("No such file or directory") != -1:
+    no_file_str = "No such file or directory"
+    if output.find(no_file_str) != -1 or errors.find(no_file_str) != -1:
         # no such file was found
         return False
     else:
