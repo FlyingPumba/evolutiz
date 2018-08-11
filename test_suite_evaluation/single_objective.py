@@ -20,7 +20,7 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         # TODO: check if this is the proper selection operator for single_objective context
         toolbox.register("select", tools.selNSGA2)
 
-    def evaluate(self, individual, device, gen="", pop=""):
+    def evaluate(self, individual, device, gen, pop):
         self.package_name = RequiredFeature('package_name').request()
         try:
             script_path, suite_lengths = self.dump_individual_to_files(individual, gen, pop)

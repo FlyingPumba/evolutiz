@@ -25,7 +25,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         # self.toolbox.register("select", tools.selTournament, tournsize=5)
         toolbox.register("select", tools.selNSGA2)
 
-    def evaluate(self, individual, device, gen="", pop=""):
+    def evaluate(self, individual, device, gen, pop):
         self.package_name = RequiredFeature('package_name').request()
         try:
             script_path, suite_lengths = self.dump_individual_to_files(individual, gen, pop)
