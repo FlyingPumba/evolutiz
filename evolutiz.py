@@ -58,4 +58,4 @@ class Evolutiz(object):
             history_file.close()
 
         if RequiredFeature('write_logbook').request():
-            self.strategy.dump_logbook_to_file()
+            self.test_suite_evaluator.dump_logbook_to_file()
