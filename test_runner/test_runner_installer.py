@@ -63,11 +63,7 @@ class TestRunnerInstaller(object):
             return False
 
     def install(self, device):
-        # gain root permissions on device
-        result_code = adb.adb_command(device, "root", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        if result_code != 0:
-            device.flag_as_malfunctioning()
-            raise Exception("Unable to gain root permissions on device: " + device.name)
+        adb.get_root_permissions(device)
 
         # remount partitions
         result_code = adb.adb_command(device, "remount", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)

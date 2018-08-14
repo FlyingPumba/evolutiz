@@ -40,13 +40,21 @@ def adb_command(device, command, timeout=None, log_output=True, retry=1):
             time.sleep(1)
 
 
+def get_root_permissions(device):
+    # TODO: cache this result to avoid running 'adb root' each time we perform a "sudo command"
+    result_code = adb_command(device, "root", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+    if result_code != 0:
+        device.flag_as_malfunctioning()
+        raise Exception("Unable to gain root permissions on device: " + device.name)
+
 
 def shell_command(device, command, timeout=None, log_output=True, retry=1):
     return adb_command(device, "shell " + command, timeout=timeout, log_output=log_output, retry=retry)
 
 
 def sudo_shell_command(device, command, timeout=None, log_output=True, retry=1):
-    return shell_command(device, "\" su -s sh -c '" + command + "'\"", timeout=timeout, log_output=log_output, retry=retry)
+    get_root_permissions(device)
+    return shell_command(device, command, timeout=timeout, log_output=log_output, retry=retry)
 
 
 def push(device, src, dest, timeout=None):
@@ -54,19 +62,8 @@ def push(device, src, dest, timeout=None):
 
 
 def sudo_push(device, src, dest, timeout=None):
-    filename = os.path.basename(src)
-    aux_file = "/sdcard/" + filename
-
-    result_code = push(device, src, aux_file, timeout=timeout)
-    if result_code != 0: raise Exception("Unable to sudo_push file: " + src)
-
-    result_code = sudo_shell_command(device, "cat " + aux_file + " > " + dest, timeout=timeout)
-    if result_code != 0: raise Exception("Unable to sudo_push file: " + src)
-
-    result_code = sudo_shell_command(device, "rm " + aux_file, timeout=timeout)
-    if result_code != 0: raise Exception("Unable to sudo_push file: " + src)
-
-    return filename
+    get_root_permissions(device)
+    return push(device, src, dest, timeout=timeout)
 
 
 def pull(device, src, dest, timeout=None):

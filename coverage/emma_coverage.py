@@ -99,7 +99,7 @@ class EmmaCoverage(object):
                         "Coverage broadcast was sent for script " + script + " in device: " + device.name +
                         " but there is not file: " + coverage_path_in_device)
 
-                # save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
+            # save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
             result_code = adb.sudo_shell_command(device,
                                                  "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear,
                                                  timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
