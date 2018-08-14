@@ -353,6 +353,10 @@ def parse_config_file():
         defaults.update(dict(config_items_type_convert(config.items(ConfigParser.DEFAULTSECT))))
 
 
+def get_fitness_values_of_individual(individual):
+    return individual.fitness.values
+
+
 def provide_features():
     # define subjects
     features.provide('instrumented_subjects_path', args.instrumented_subjects_path)
@@ -378,7 +382,7 @@ def provide_features():
     features.provide('toolbox', Toolbox())
     features.provide('device_manager', DeviceManager())
 
-    stats = tools.Statistics(lambda ind: ind.fitness.values)
+    stats = tools.Statistics(get_fitness_values_of_individual)
     # Use axis = 0 to get the desired statistic computed across all fitness values
     # Example:
     # >>> a = np.array([[1, 2], [3, 4]])
