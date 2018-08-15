@@ -58,12 +58,15 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         self.show_best_historic_fitness()
 
     def show_best_historic_fitness(self):
-        min_fitness_values_per_generation = self.logbook.select("min")
-        max_fitness_values_per_generation = self.logbook.select("max")
+        min_fitness_values_per_generation = numpy.array(self.logbook.select("min"))
+        max_fitness_values_per_generation = numpy.array(self.logbook.select("max"))
 
-        max_coverage = max(max_fitness_values_per_generation, key=lambda fit: fit[0])
-        min_length = max(min_fitness_values_per_generation, key=lambda fit: fit[1])
-        max_crashes = max(max_fitness_values_per_generation, key=lambda fit: fit[2])
+        max_fitness_values_all_generations = max_fitness_values_per_generation.max(axis=0)
+        min_fitness_values_all_generations = min_fitness_values_per_generation.min(axis=0)
+
+        max_coverage = max_fitness_values_all_generations[0]
+        min_length = min_fitness_values_all_generations[1]
+        max_crashes = max_fitness_values_all_generations[2]
 
         # CAUTION: these min and max are from different individuals
         logger.log_progress("\n- Best historic coverage: " + str(max_coverage))
