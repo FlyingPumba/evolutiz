@@ -16,7 +16,7 @@ class AvdManager(object):
         list_avd_cmd = self.avdmanager_path + " list avd"
         cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + list_avd_cmd
 
-        p = sub.Popen(list_avd_cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+        p = sub.Popen(cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
         output, errors = p.communicate()
 
         if errors.strip() != '':

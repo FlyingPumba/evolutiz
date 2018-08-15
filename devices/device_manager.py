@@ -37,8 +37,15 @@ class DeviceManager(object):
         emulators_found = 0
         real_devices_found = 0
 
-        p = sub.Popen(adb.adb_cmd_prefix + ' devices', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+        devices_cmd = adb.adb_cmd_prefix + ' devices'
+        cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + devices_cmd
+
+        p = sub.Popen(cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
         output, errors = p.communicate()
+
+        if errors.strip() != '':
+            raise Exception("There was an error running 'adb devices' command: " + errors)
+
         lines = output.split("\n")
         for line in lines:
             if "List of devices attached" in line:
