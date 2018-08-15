@@ -11,7 +11,7 @@ ADB_REGULAR_COMMAND_TIMEOUT = 30
 # === Emulator ===
 AVD_BOOT_DELAY = 40  # 40
 # if run on Mac OS, use "gtimeout"
-TIMEOUT_CMD = "timeout"
+TIMEOUT_CMD = "timeout --kill-after=5"
 
 # === Env. Paths ===
 # path should end with a '/'
