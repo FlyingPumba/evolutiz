@@ -31,7 +31,7 @@ class MuPlusLambda(GeneticAlgorithm):
             self.population[:] = self.toolbox.select(self.population + offspring, self.population_size)
 
             self.device_manager.log_devices_battery(gen, self.result_dir)
-            self.parallel_evaluator.test_suite_evaluator.update_logbook(gen)
+            self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
         return self.population
 
