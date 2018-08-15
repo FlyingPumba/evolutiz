@@ -1,3 +1,4 @@
+import settings
 from dependency_injection.required_feature import RequiredFeature
 import subprocess as sub
 
@@ -12,7 +13,10 @@ class AvdManager(object):
         return self.avd_series + "_" + str(avd_index)
 
     def avd_name_exists(self, avd_name):
-        p = sub.Popen(self.avdmanager_path + " list avd", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+        list_avd_cmd = self.avdmanager_path + " list avd"
+        cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + list_avd_cmd
+
+        p = sub.Popen(list_avd_cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
         output, errors = p.communicate()
 
         if errors.strip() != '':
