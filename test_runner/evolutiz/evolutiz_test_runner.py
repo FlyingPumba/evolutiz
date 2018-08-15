@@ -33,7 +33,7 @@ class EvolutizTestRunner(TestRunner):
         self.prepare_device_for_run(device)
 
         evolutiz_cmd = "evolutiz -p " + package_name \
-                       + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
+                       + " -v -v -v --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
                        + " -f /mnt/sdcard/" + script_name + " 1"
 
         adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.MOTIFCORE_EVAL_TIMEOUT, log_output=False)
@@ -48,7 +48,7 @@ class EvolutizTestRunner(TestRunner):
         evolutiz_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
 
         evolutiz_cmd = "evolutiz -p " + package_name \
-                       + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
+                       + " -v -v -v --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
                        + " -o " + self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE \
                        + " -v " + str(evolutiz_events)
 
@@ -101,7 +101,7 @@ class EvolutizTestRunner(TestRunner):
         # call evolutiz test runner
         remote_dst_filename = "/mnt/sdcard/offspring.out." + ts
         evolutiz_cmd = "evolutiz -p " + package_name \
-                       + " --dry --mutate " \
+                       + " -v -v -v --dry --mutate " \
                        + " -f /mnt/sdcard/" + remote_src_filename \
                        + " -o /mnt/sdcard/" + remote_dst_filename + " 1"
 
