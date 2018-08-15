@@ -35,7 +35,7 @@ class Standard(GeneticAlgorithm):
             individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind, gen)
 
             if individuals_evaluated is None:
-                print "Time budget run out durring parallel evaluation, exiting evolve"
+                print "Time budget run out during parallel evaluation, exiting evolve"
                 break
 
             # Select the next generation population
