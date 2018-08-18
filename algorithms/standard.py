@@ -1,11 +1,10 @@
-import datetime
-import multiprocessing as mp
-import os
 import time
 
-import settings
+import multiprocessing as mp
+
 from algorithms.genetic_algorithm import GeneticAlgorithm
-from devices import adb
+from dependency_injection.required_feature import RequiredFeature
+from test_suite_evaluation.parallel_evaluator import ParallelEvaluator
 from util import logger
 from util.pickable import pickable_function
 
@@ -20,6 +19,8 @@ class Standard(GeneticAlgorithm):
         self.mutation_delete_probability = 1 / float(3)
 
     def evolve(self):
+        parallel_evaluator = ParallelEvaluator()
+
         for gen in range(1, self.max_generations + 1):
 
             if not self.budget_manager.time_budget_available():
@@ -32,7 +33,7 @@ class Standard(GeneticAlgorithm):
 
             # Evaluate the individuals with an invalid fitness
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
-            individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind, gen)
+            individuals_evaluated = parallel_evaluator.evaluate(invalid_ind, gen)
 
             if individuals_evaluated is None:
                 print "Time budget run out during parallel evaluation, exiting evolve"
@@ -42,7 +43,7 @@ class Standard(GeneticAlgorithm):
             self.population = offspring
 
             self.device_manager.log_devices_battery(gen, self.result_dir)
-            self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
+            parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
         return self.population
 
@@ -84,7 +85,9 @@ class Standard(GeneticAlgorithm):
         self.device_manager.mark_work_stop_on_device(device)
 
     def generate_two_offspring(self, device):
-        p1, p2 = self.toolbox.select(self.population, 2)
-        o1, o2 = self.toolbox.mate(p1, p2)
+        toolbox = RequiredFeature('toolbox').request()
+
+        p1, p2 = toolbox.select(self.population, 2)
+        o1, o2 = toolbox.mate(p1, p2)
         o1, o2 = self.mutate(device, self.package_name, o1, o2)
         return o1, o2, device
