@@ -1,8 +1,10 @@
 import time
 
 import multiprocessing.dummy as mp
+import traceback
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
+from dependency_injection.required_feature import RequiredFeature
 from util import logger
 from util.pickable import pickable_function
 
@@ -81,7 +83,13 @@ class Standard(GeneticAlgorithm):
         self.device_manager.mark_work_stop_on_device(device)
 
     def generate_two_offspring(self, device):
-        p1, p2 = self.toolbox.select(self.population, 2)
-        o1, o2 = self.toolbox.mate(p1, p2)
-        o1, o2 = self.mutate(device, self.package_name, o1, o2)
+        try:
+            p1, p2 = self.toolbox.select(self.population, 2)
+            o1, o2 = self.toolbox.mate(p1, p2)
+            o1 = self.toolbox.mutate(device, self.package_name, o1)
+            o2 = self.toolbox.mutate(device, self.package_name, o2)
+        except Exception as e:
+            tb = traceback.format_exc()
+            logger.log_progress(str(e) + tb)
+
         return o1, o2, device

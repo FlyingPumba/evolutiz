@@ -5,7 +5,6 @@ from deap import tools
 
 import settings
 from devices import adb
-from test_runner.motifcore.mut_suite import sapienz_mut_suite
 from test_runner.test_runner_installer import TestRunnerInstaller
 from test_runner.test_runner import TestRunner
 
@@ -20,10 +19,12 @@ class MotifcoreTestRunner(TestRunner):
                                                          settings.WORKING_DIR + "test_runner/motifcore/motifcore.jar")
 
     def register_crossover_operator(self, toolbox):
+        # the crossover between individuals is a uniform crossover
+        # that means each test case has 50-50 probability of ending up in each of the new individuals
         toolbox.register("mate", tools.cxUniform, indpb=0.5)
 
     def register_mutation_operator(self, toolbox):
-        toolbox.register("mutate", sapienz_mut_suite, indpb=0.5)
+        toolbox.register("mutate", self.sapienz_mut_suite, indpb=0.5)
 
     def install_on_devices(self):
         self.test_runner_installer.install_in_all_devices()
@@ -96,3 +97,27 @@ class MotifcoreTestRunner(TestRunner):
 
         script.close()
         return test_content
+
+    def sapienz_mut_suite(self, individual, indpb):
+        # shuffle seq
+        individual, = tools.mutShuffleIndexes(individual, indpb)
+
+        # crossover inside the suite
+        # perform one point crossover between odd and even pair positions of test cases
+        for i in range(1, len(individual), 2):
+            if random.random() < settings.MUTPB:
+                if len(individual[i - 1]) <= 2:
+                    continue
+                if len(individual[i]) <= 2:
+                    continue
+
+                individual[i - 1], individual[i] = tools.cxOnePoint(individual[i - 1], individual[i])
+
+        # shuffle events inside each test case
+        for i in range(len(individual)):
+            if random.random() < settings.MUTPB:
+                if len(individual[i]) <= 2:
+                    continue
+                individual[i], = tools.mutShuffleIndexes(individual[i], indpb)
+
+        return individual,
