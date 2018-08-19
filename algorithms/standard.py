@@ -1,6 +1,7 @@
 import time
 
-import multiprocessing as mp
+import multiprocessing.dummy as mp
+import pickle
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from dependency_injection.required_feature import RequiredFeature

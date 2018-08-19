@@ -1,4 +1,4 @@
-import multiprocessing as mp
+import multiprocessing.dummy as mp
 
 from util import logger
 from util.pickable import pickable_function
