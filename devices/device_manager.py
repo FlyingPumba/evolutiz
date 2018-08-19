@@ -43,12 +43,23 @@ class DeviceManager(object):
         p = sub.Popen(cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
         output, errors = p.communicate()
 
-        if errors.strip() != '':
-            raise Exception("There was an error running 'adb devices' command: " + errors)
+        error_lines = errors.split("\n")
+        for line in error_lines:
+            if "daemon not running" in line:
+                continue
+
+            if "daemon started successfully" in line:
+                continue
+
+            if line.strip() != "":
+                raise Exception("There was an error running 'adb devices' command: " + errors)
 
         lines = output.split("\n")
         for line in lines:
             if "List of devices attached" in line:
+                continue
+
+            if line.strip() == "":
                 continue
 
             if "offline" not in line:
