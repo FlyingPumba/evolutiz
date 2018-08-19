@@ -9,5 +9,9 @@ class Strategy(object):
         self.budget_manager = RequiredFeature('budget_manager').request()
 
         self.population_generator = RequiredFeature('population_generator').request()
+        self.parallel_evaluator = ParallelEvaluator()
+
+        self.toolbox = RequiredFeature('toolbox').request()
+        self.stats = RequiredFeature('stats').request()
 
         self.result_dir = RequiredFeature('result_dir').request()

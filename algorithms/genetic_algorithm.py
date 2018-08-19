@@ -1,7 +1,6 @@
 import settings
 from algorithms.Strategy import Strategy
 from dependency_injection.required_feature import RequiredFeature
-from test_suite_evaluation.parallel_evaluator import ParallelEvaluator
 from util import logger
 
 
@@ -32,8 +31,6 @@ class GeneticAlgorithm(Strategy):
         return self.evolve()
 
     def initPopulation(self):
-        parallel_evaluator = ParallelEvaluator()
-
         self.population = self.population_generator.generate(n=self.population_size)
         if len(self.population) < self.population_size:
             logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
@@ -41,7 +38,7 @@ class GeneticAlgorithm(Strategy):
 
         # Evaluate the individuals with an invalid fitness
         invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-        individuals_evaluated = parallel_evaluator.evaluate(invalid_ind, 0)
+        individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind, 0)
 
         if individuals_evaluated is None:
             logger.log_progress("\nTime budget run out during parallel evaluation, exiting setup")
@@ -50,7 +47,7 @@ class GeneticAlgorithm(Strategy):
         self.population = individuals_evaluated[:]
 
         self.device_manager.log_devices_battery(0, self.result_dir)
-        parallel_evaluator.test_suite_evaluator.update_logbook(0, self.population)
+        self.parallel_evaluator.test_suite_evaluator.update_logbook(0, self.population)
 
         return True
 

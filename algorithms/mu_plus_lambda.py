@@ -1,8 +1,6 @@
 import random
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
-from dependency_injection.required_feature import RequiredFeature
-from test_suite_evaluation.parallel_evaluator import ParallelEvaluator
 from util import logger
 
 
@@ -12,9 +10,6 @@ class MuPlusLambda(GeneticAlgorithm):
         super(MuPlusLambda, self).__init__()
 
     def evolve(self):
-        toolbox = RequiredFeature('toolbox').request()
-        parallel_evaluator = ParallelEvaluator()
-
         for gen in range(1, self.max_generations + 1):
 
             if not self.budget_manager.time_budget_available():
@@ -27,33 +22,32 @@ class MuPlusLambda(GeneticAlgorithm):
 
             # Evaluate the individuals with an invalid fitness
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
-            individuals_evaluated = parallel_evaluator.evaluate(invalid_ind, gen)
+            individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind, gen)
 
             if individuals_evaluated is None:
                 print "Time budget run out during parallel evaluation, exiting evolve"
                 break
 
-            self.population[:] = toolbox.select(self.population + offspring, self.population_size)
+            self.population[:] = self.toolbox.select(self.population + offspring, self.population_size)
 
             self.device_manager.log_devices_battery(gen, self.result_dir)
-            parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
+            self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
         return self.population
 
     def generate_offspring(self, population):
-        toolbox = RequiredFeature('toolbox').request()
-        offspring = []
 
+        offspring = []
         for _ in xrange(self.offspring_size):
             op_choice = random.random()
             if op_choice < self.crossover_probability:  # Apply crossover
-                ind1, ind2 = map(toolbox.clone, random.sample(population, 2))
-                ind1, ind2 = toolbox.mate(ind1, ind2)
+                ind1, ind2 = map(self.toolbox.clone, random.sample(population, 2))
+                ind1, ind2 = self.toolbox.mate(ind1, ind2)
                 del ind1.fitness.values
                 offspring.append(ind1)
             elif op_choice < self.crossover_probability + self.mutation_probability:  # Apply mutation
-                ind = toolbox.clone(random.choice(population))
-                ind, = toolbox.mutate(ind)
+                ind = self.toolbox.clone(random.choice(population))
+                ind, = self.toolbox.mutate(ind)
                 del ind.fitness.values
                 offspring.append(ind)
             else:  # Apply reproduction
