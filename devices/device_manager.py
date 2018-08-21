@@ -6,7 +6,6 @@ import adb
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices.device import Device, State
-from devices.do_parallel_fail_one_fail_all import DoParallelFailOneFailAll
 from devices.emulator import Emulator
 from util import logger
 
@@ -146,18 +145,6 @@ class DeviceManager(object):
         # remove device from available devices and reboot
         device.reboot()
 
-    def mark_work_start_on_device(self, target_device):
-        # look by name in case this is a device copied by pickling
-        matching_devices = [device for device in self.get_devices() if device.name == target_device.name]
-        device = matching_devices.pop(0)
-        device.state = State.ready_working
-
-    def mark_work_stop_on_device(self, target_device):
-        # look by name in case this is a device copied by pickling
-        matching_devices = [device for device in self.get_devices() if device.name == target_device.name]
-        device = matching_devices.pop(0)
-        device.state = State.ready_idle
-
     def boot_emulators(self, wait_to_be_ready=False):
         logger.log_progress("\nBooting devices: " + str(0) + "/" + str(self.emulators_number))
 
@@ -196,10 +183,6 @@ class DeviceManager(object):
 
         logger.log_progress("\rWaiting for devices to be ready: " +
                             str(len(ready_devices)) + "/" + str(devices_to_wait))
-
-    def do_parallel_fail_one_fail_all(self, motive, function_to_apply, arguments):
-        do_parallel = DoParallelFailOneFailAll(self, motive, function_to_apply, arguments)
-        do_parallel.run()
 
     def wait_for_battery_threshold(self, battery_threshold=20):
         while True:

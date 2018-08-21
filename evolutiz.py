@@ -35,13 +35,11 @@ class Evolutiz(object):
         # give test runner opportunity to install on devices
         self.test_runner.install_on_devices()
 
-        devices = self.device_manager.get_devices()
-
         instrumented_app_path, package_name = self.apk_instrumentator.instrument()
         features.provide('package_name', package_name)
         features.provide('instrumented_app_path', instrumented_app_path)
 
-        prepare_apk(devices, instrumented_app_path, package_name, self.result_dir)
+        prepare_apk(instrumented_app_path, package_name, self.result_dir)
 
         # run the strategy
         population = self.strategy.run()

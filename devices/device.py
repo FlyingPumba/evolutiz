@@ -68,6 +68,12 @@ class Device(object):
         self.state = State.booting
         self.boot_time = time.time()
 
+    def mark_work_start(self):
+        self.state = State.ready_working
+
+    def mark_work_stop(self):
+        self.state = State.ready_idle
+
     def battery_level(self):
         return adb.get_battery_level(self)
 

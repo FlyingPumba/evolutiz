@@ -49,16 +49,21 @@ class IndividualWithoutCoverageGenerator(object):
 
         return ret
 
-    def gen_individual(self, device, gen, individual_index):
+    def gen_individual(self, device, individual_index, gen):
         try:
             self.result_dir = RequiredFeature('result_dir').request()
             self.package_name = RequiredFeature('package_name').request()
 
+            device.mark_work_start()
+
             suite = self.get_suite(device)
 
-            return creator.Individual(suite), individual_index, device, True
+            device.mark_work_stop()
+
+            return creator.Individual(suite)
+
 
         except Exception as e:
             print e
             traceback.print_exc()
-            return None, individual_index, device, False
+            return None

@@ -197,21 +197,25 @@ class IndividualWithCoverageGenerator(object):
 
         return ret, there_is_coverage
 
-    def gen_individual(self, device, gen, individual_index):
+    def gen_individual(self, device, individual_index, gen):
         try:
             self.result_dir = RequiredFeature('result_dir').request()
             self.app_path = RequiredFeature('app_path').request()
             self.package_name = RequiredFeature('package_name').request()
+
+            device.mark_work_start()
 
             suite, fitness = self.get_suite_with_fitness(device, gen, individual_index)
             individual = creator.Individual(suite)
             individual.fitness.values = fitness
             logger.log_fitness_result(fitness)
 
+            device.mark_work_stop()
             return individual, individual_index, device, True
 
         except Exception as e:
             print e
             traceback.print_exc()
 
+            self.device_manager.mark_work_stop_on_device(device)
             return None, individual_index, device, False
