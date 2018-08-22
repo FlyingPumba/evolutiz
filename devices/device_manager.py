@@ -163,6 +163,8 @@ class DeviceManager(object):
             device.shutdown()
 
     def reboot_devices(self, wait_to_be_ready=False):
+        logger.log_progress("\nRebooting devices.")
+        
         for device in self.get_devices():
             device.reboot()
 
