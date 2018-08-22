@@ -26,7 +26,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         toolbox.register("select", tools.selNSGA2)
 
     def evaluate(self, device, individual):
-        assert not individual.fitness
+        assert not individual.fitness.valid
 
         self.package_name = RequiredFeature('package_name').request()
 
