@@ -47,37 +47,44 @@ class MultipleQueueConsumerThread(threading.Thread):
         try:
             while True:
                 recyclable_items = self.get_items_from_list_of_queues(self.recyclable_items_queues)
-                if recyclable_items is None:
-                    return
-
                 consumable_items = self.get_items_from_list_of_queues(self.consumable_items_queues)
-                if consumable_items is None:
-                    return
-
-                args = []
-                args.extend(recyclable_items)
-                args.extend(consumable_items)
-                args.extend(self.extra_args)
-                args = tuple(args)
 
                 try:
-                    result = self.func(*args, **self.extra_kwargs)
-                    if self.output_queue is not None:
-                        self.output_queue.put_nowait(result)
+                    if recyclable_items is not None and consumable_items is not None:
+                        args = []
+                        args.extend(recyclable_items)
+                        args.extend(consumable_items)
+                        args.extend(self.extra_args)
+                        args = tuple(args)
+
+                        result = self.func(*args, **self.extra_kwargs)
+                        if self.output_queue is not None:
+                            self.output_queue.put_nowait(result)
+
                 except Exception as e:
                     # There was an error processing the items, put the consumable items back in their respective queue
                     for index, item in enumerate(consumable_items):
                         queue = self.consumable_items_queues[index]
                         queue.put_nowait(item)
                 finally:
+                    # Mark task_done() once for each item used in all queues
+                    if self.recyclable_items_queues is not None:
+                        map(lambda q: q.task_done(), self.recyclable_items_queues)
+
+                    if self.consumable_items_queues is not None:
+                        map(lambda q: q.task_done(), self.consumable_items_queues)
+
                     # Put the recyclable items back in their respective queue
                     for index, item in enumerate(recyclable_items):
                         queue = self.recyclable_items_queues[index]
                         queue.put_nowait(item)
         except Exception as e:
+            print e
             return
 
     def get_items_from_list_of_queues(self, list_of_queues):
+        """Try to get one item from each queue of the provided list.
+        If at least one item of the queue is empty, return None."""
         items = []
 
         if list_of_queues is None:
@@ -89,8 +96,5 @@ class MultipleQueueConsumerThread(threading.Thread):
                 if item is not None:
                     items.append(item)
             except Empty as e:
-                # It looks like there are no more items to process in the last queue
-                # mark task_done() in all queues, since we wont be processing anymore
-                map(lambda q: q.task_done(), list_of_queues)
                 return None
         return items
