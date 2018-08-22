@@ -20,7 +20,7 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         # TODO: check if this is the proper selection operator for single_objective context
         toolbox.register("select", tools.selNSGA2)
 
-    def evaluate(self, individual, device):
+    def evaluate(self, device, individual):
         assert not individual.fitness
 
         self.package_name = RequiredFeature('package_name').request()
