@@ -20,21 +20,24 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         # TODO: check if this is the proper selection operator for single_objective context
         toolbox.register("select", tools.selNSGA2)
 
-    def evaluate(self, individual, device, gen, pop):
+    def evaluate(self, individual, device):
+        assert not individual.fitness
+
         self.package_name = RequiredFeature('package_name').request()
-        try:
-            script_path, suite_lengths = self.dump_individual_to_files(individual, gen, pop)
-            coverage, num_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(script_path, device,
-                                                                                                   gen, pop)
-            # TODO: look into fusing coverage and number of crashes found into the fitness value
-            individual.fitness.values = coverage
 
-            self.hall_of_fame.update([individual])
+        device.mark_work_start()
+        script_path, suite_lengths = self.dump_individual_to_files(individual)
+        coverage, num_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(script_path, device,
+                                                                                               individual.generation,
+                                                                                               individual.index_in_generation)
+        # TODO: look into fusing coverage and number of crashes found into the fitness value
+        individual.fitness.values = coverage
 
-            # TODO: log single-objective fitness result
-            #logger.log_fitness_result(individual.fitness.values)
+        self.hall_of_fame.update([individual])
 
-            return individual, pop, device, True
+        # TODO: log single-objective fitness result
+        #logger.log_fitness_result(individual.fitness.values)
 
-        except Exception as e:
-            return None, pop, device, False
+        device.mark_work_stop()
+
+        return individual

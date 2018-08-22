@@ -25,33 +25,36 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         # self.toolbox.register("select", tools.selTournament, tournsize=5)
         toolbox.register("select", tools.selNSGA2)
 
-    def evaluate(self, individual, device, gen, pop):
+    def evaluate(self, individual, device):
+        assert not individual.fitness
+
         self.package_name = RequiredFeature('package_name').request()
-        try:
-            script_path, suite_lengths = self.dump_individual_to_files(individual, gen, pop)
 
-            coverage, num_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(script_path, device,
-                                                                                                   gen, pop)
-            # remove from suite lengths the scripts that did NOT cause a crash
-            for script, had_crash in scripts_crash_status.iteritems():
-                if not had_crash:
-                    suite_lengths.pop(script, None)
+        device.mark_work_start()
+        script_path, suite_lengths = self.dump_individual_to_files(individual)
 
-            # 1st obj: coverage, 2nd: average seq length of the suite, 3nd: #crashes
-            if suite_lengths:
-                length = numpy.mean(suite_lengths.values())
-            else:
-                length = sys.maxint
+        coverage, num_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(script_path, device,
+                                                                                               individual.generation,
+                                                                                               individual.index_in_generation)
+        # remove from suite lengths the scripts that did NOT cause a crash
+        for script, had_crash in scripts_crash_status.iteritems():
+            if not had_crash:
+                suite_lengths.pop(script, None)
 
-            individual.fitness.values = (coverage, length, num_crashes)
+        # 1st obj: coverage, 2nd: average seq length of the suite, 3nd: #crashes
+        if suite_lengths:
+            length = numpy.mean(suite_lengths.values())
+        else:
+            length = sys.maxint
 
-            self.hall_of_fame.update([individual])
-            logger.log_fitness_result(individual.fitness.values)
+        individual.fitness.values = (coverage, length, num_crashes)
 
-            return individual, pop, device, True
+        self.hall_of_fame.update([individual])
+        logger.log_fitness_result(individual.fitness.values)
 
-        except Exception as e:
-            return None, pop, device, False
+        device.mark_work_stop()
+
+        return individual
 
     def update_logbook(self, gen, population):
         super(MultiObjectiveTestSuiteEvaluator, self).update_logbook(gen, population)

@@ -10,7 +10,7 @@ class PopulationGenerator(object):
         self.device_manager = RequiredFeature('device_manager').request()
         self.individual_generator = RequiredFeature('individual_generator', HasMethods('gen_individual')).request()
 
-    def generate(self, n, gen=""):
+    def generate(self, n, gen=0):
         individuals_index_to_generate = [i for i in range(0, n)]
 
         logger.log_progress("\nInit population of " + str(n) + " individuals in parallel")

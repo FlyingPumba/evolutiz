@@ -60,8 +60,11 @@ class IndividualWithoutCoverageGenerator(object):
 
             device.mark_work_stop()
 
-            return creator.Individual(suite)
+            individual = creator.Individual(suite)
+            individual.index_in_generation = individual_index
+            individual.generation = gen
 
+            return individual
 
         except Exception as e:
             print e

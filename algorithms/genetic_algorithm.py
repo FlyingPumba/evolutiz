@@ -31,14 +31,14 @@ class GeneticAlgorithm(Strategy):
         return self.evolve()
 
     def initPopulation(self):
-        self.population = self.population_generator.generate(n=self.population_size)
+        self.population = self.population_generator.generate(self.population_size, gen=0)
         if len(self.population) < self.population_size:
             logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
             return False
 
         # Evaluate the individuals with an invalid fitness
         invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-        individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind, 0)
+        individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind)
 
         if individuals_evaluated is None:
             logger.log_progress("\nTime budget run out during parallel evaluation, exiting setup")

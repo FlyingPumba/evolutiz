@@ -208,6 +208,9 @@ class IndividualWithCoverageGenerator(object):
             suite, fitness = self.get_suite_with_fitness(device, gen, individual_index)
             individual = creator.Individual(suite)
             individual.fitness.values = fitness
+            individual.index_in_generation = individual_index
+            individual.generation = gen
+
             logger.log_fitness_result(fitness)
 
             device.mark_work_stop()

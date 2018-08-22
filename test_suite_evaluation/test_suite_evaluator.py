@@ -18,13 +18,14 @@ class TestSuiteEvaluator(object):
         self.logbook = self.logbook = tools.Logbook()
         self.logbook.header = ['gen'] + (self.stats.fields if self.stats else [])
 
-    def dump_individual_to_files(self, individual, gen, pop):
+    def dump_individual_to_files(self, individual):
         script_path = []
         suite_lengths = {}
 
-        for index, seq in enumerate(individual):
+        for test_case_index, test_case in enumerate(individual):
             # generate script file list
-            filename = self.result_dir + "/intermediate/script." + str(gen) + "." + str(pop) + "." + str(index)
+            filename = self.result_dir + "/intermediate/script." + str(individual.generation) + "." + \
+                       str(individual.index_in_generation) + "." + str(test_case_index)
             # check that directory exists before creating file
             dirname = os.path.dirname(filename)
             if not os.path.exists(dirname):
@@ -33,7 +34,7 @@ class TestSuiteEvaluator(object):
                 script.write(settings.SCRIPT_HEADER)
 
                 length = 0
-                for line in seq:
+                for line in test_case:
                     script.write(line + "\n")
                     length += 1
 
