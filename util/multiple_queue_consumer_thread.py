@@ -1,4 +1,5 @@
 import threading
+import time
 from Queue import Empty
 
 
@@ -78,6 +79,10 @@ class MultipleQueueConsumerThread(threading.Thread):
                     for index, item in enumerate(recyclable_items):
                         queue = self.recyclable_items_queues[index]
                         queue.put_nowait(item)
+
+                    # pause this thread for a second to give time for items just put in queues to be "gettable"
+                    time.sleep(1)
+
         except Exception as e:
             print e
             return
