@@ -68,12 +68,8 @@ class MultipleQueueConsumerThread(threading.Thread):
                         queue = self.consumable_items_queues[index]
                         queue.put_nowait(item)
                 finally:
-                    # Mark task_done() once for each item used in all queues
-                    if self.recyclable_items_queues is not None:
-                        map(lambda q: q.task_done(), self.recyclable_items_queues)
-
-                    if self.consumable_items_queues is not None:
-                        map(lambda q: q.task_done(), self.consumable_items_queues)
+                    self.mark_used_items(recyclable_items, self.recyclable_items_queues)
+                    self.mark_used_items(consumable_items, self.consumable_items_queues)
 
                     # Put the recyclable items back in their respective queue
                     for index, item in enumerate(recyclable_items):
@@ -103,3 +99,9 @@ class MultipleQueueConsumerThread(threading.Thread):
             except Empty as e:
                 return None
         return items
+
+    def mark_used_items(self, items, list_of_queues):
+        """Mark task_done() once for each item used in all queues"""
+        if items is not None and list_of_queues is not None:
+            for index in xrange(0, len(items)):
+                list_of_queues[index].task_done()
