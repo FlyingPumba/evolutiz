@@ -27,9 +27,9 @@ class Standard(GeneticAlgorithm):
 
             # Evaluate the individuals with an invalid fitness
             invalid_ind = [ind for ind in self.offspring_generated if not ind.fitness.valid]
-            individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind)
+            success = self.parallel_evaluator.evaluate(invalid_ind)
 
-            if individuals_evaluated is None:
+            if not success:
                 print "Time budget run out during parallel evaluation, exiting evolve"
                 break
 
@@ -60,6 +60,9 @@ class Standard(GeneticAlgorithm):
         o1, o2 = self.toolbox.mate(p1, p2)
         o1 = self.toolbox.mutate(device, self.package_name, o1)
         o2 = self.toolbox.mutate(device, self.package_name, o2)
+
+        del o1.fitness.values
+        del o2.fitness.values
 
         self.offspring_generated.append(o1)
         self.offspring_generated.append(o2)

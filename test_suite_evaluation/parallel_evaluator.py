@@ -20,4 +20,4 @@ class ParallelEvaluator(object):
 
         individuals_evaluated = mapper.run()
 
-        return individuals_evaluated
+        return True

@@ -38,13 +38,13 @@ class GeneticAlgorithm(Strategy):
 
         # Evaluate the individuals with an invalid fitness
         invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-        individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind)
+        success = self.parallel_evaluator.evaluate(invalid_ind)
 
-        if individuals_evaluated is None:
+        if not success:
             logger.log_progress("\nTime budget run out during parallel evaluation, exiting setup")
             return False
 
-        self.population = individuals_evaluated[:]
+        self.population = invalid_ind[:]
 
         self.device_manager.log_devices_battery(0, self.result_dir)
         self.parallel_evaluator.test_suite_evaluator.update_logbook(0, self.population)

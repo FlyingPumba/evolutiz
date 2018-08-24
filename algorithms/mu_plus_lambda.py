@@ -22,9 +22,9 @@ class MuPlusLambda(GeneticAlgorithm):
 
             # Evaluate the individuals with an invalid fitness
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
-            individuals_evaluated = self.parallel_evaluator.evaluate(invalid_ind)
+            success = self.parallel_evaluator.evaluate(invalid_ind)
 
-            if individuals_evaluated is None:
+            if not success:
                 print "Time budget run out during parallel evaluation, exiting evolve"
                 break
 
