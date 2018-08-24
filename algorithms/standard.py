@@ -8,10 +8,6 @@ class Standard(GeneticAlgorithm):
     def __init__(self):
         super(Standard, self).__init__()
 
-        self.mutation_add_probability = 1 / float(3)
-        self.mutation_modify_probability = 1 / float(3)
-        self.mutation_delete_probability = 1 / float(3)
-
         self.offspring_generated = []
 
     def evolve(self):
