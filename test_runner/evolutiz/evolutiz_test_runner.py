@@ -69,8 +69,8 @@ class EvolutizTestRunner(TestRunner):
         remote_dst_filename = "/mnt/sdcard/offspring.out." + ts
         evolutiz_cmd = "evolutiz -p " + package_name \
                        + " -v -v -v --throttle 200 --dry --mutate " \
-                       + " -f /mnt/sdcard/" + remote_src_filename \
-                       + " -o /mnt/sdcard/" + remote_dst_filename + " 1"
+                       + " -f " + remote_src_filename \
+                       + " -o " + remote_dst_filename + " 1"
 
         adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.MOTIFCORE_EVAL_TIMEOUT, log_output=False)
         adb.pkill(device, "evolutiz")
