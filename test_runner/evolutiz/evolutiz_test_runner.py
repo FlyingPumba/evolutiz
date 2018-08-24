@@ -23,25 +23,13 @@ class EvolutizTestRunner(TestRunner):
     def register_crossover_operator(self, toolbox):
         # the crossover between individuals is a uniform crossover
         # that means each test case has 50-50 probability of ending up in each of the new individuals
-        toolbox.register("mate", self.crosover_test_suites)
+        toolbox.register("mate", tools.cxOnePoint)
 
     def register_mutation_operator(self, toolbox):
         toolbox.register("mutate", self.mutate_test_suite)
 
     def install_on_devices(self):
         self.test_runner_installer.install_in_all_devices(minimum_api=self.minimum_api)
-
-    def crosover_test_suites(self, ind1, ind2):
-        """Perform uniform crossover with probability 0.5 between each individual.
-        Perform also one-point crossover for each test case pair that is going to switch places."""
-        cxpb = 0.5
-
-        size = min(len(ind1), len(ind2))
-        for i in xrange(size):
-            if random.random() < cxpb:
-                ind1[i], ind2[i] = tools.cxOnePoint(ind2[i], ind1[i])
-
-        return ind1, ind2
 
     def mutate_test_suite(self, device, package_name, individual):
         # mutate each test case with probability MUTPB
