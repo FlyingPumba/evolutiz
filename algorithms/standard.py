@@ -53,7 +53,7 @@ class Standard(GeneticAlgorithm):
 
         mapper.run()
 
-    def generate_two_offspring(self, device, ):
+    def generate_two_offspring(self, device, pair_index):
         device.mark_work_start()
 
         p1, p2 = self.toolbox.select(self.population, 2)
