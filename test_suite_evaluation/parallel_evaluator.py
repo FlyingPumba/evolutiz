@@ -16,7 +16,7 @@ class ParallelEvaluator(object):
         self.toolbox = RequiredFeature('toolbox').request()
 
     def evaluate(self, individuals):
-        logger.log_progress("\nEvaluating in parallel " + str(len(individuals)) + " individuals")
+        logger.log_progress("\nEvaluating " + str(len(individuals)) + " individuals in parallel ")
 
         mapper = MapperOnDevices(self.test_suite_evaluator.evaluate,
                                  items_to_map=individuals,
