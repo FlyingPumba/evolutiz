@@ -66,4 +66,4 @@ class Standard(GeneticAlgorithm):
 
         device.mark_work_stop()
 
-        return o1, o2, device
+        return True

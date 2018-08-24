@@ -47,7 +47,7 @@ class EvolutizTestRunner(TestRunner):
         # mutate each test case with probability MUTPB
         for i in range(len(individual)):
             if random.random() < settings.MUTPB:
-                individual[i], = self.mutate_test_case(device, package_name, individual[i])
+                individual[i] = self.mutate_test_case(device, package_name, individual[i])
 
         return individual
 

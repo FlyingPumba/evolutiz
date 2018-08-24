@@ -1,6 +1,9 @@
 import threading
 import time
+import traceback
 from Queue import Empty
+
+from util import logger
 
 
 class MultipleQueueConsumerThread(threading.Thread):
@@ -63,6 +66,8 @@ class MultipleQueueConsumerThread(threading.Thread):
                             self.output_queue.put_nowait(result)
 
                 except Exception as e:
+                    logger.log_progress("An error occurred when calling func in MultipleQueueConsumerThread:\n" + traceback.format_exc())
+
                     # There was an error processing the items, put the consumable items back in their respective queue
                     for index, item in enumerate(consumable_items):
                         queue = self.consumable_items_queues[index]
