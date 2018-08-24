@@ -1,9 +1,24 @@
+# coding=utf-8
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from devices.mapper_on_devices import MapperOnDevices
 from util import logger
 
 
 class Standard(GeneticAlgorithm):
+    """Implements the Standard Evolutionary Algorithm as described in [CamposGFEA17]_.
+
+    It starts by creating an initial random population of size p_n. Then, a pair of individuals is selected from the
+    population using a strategy s_f, such as rank-based, elitism or tournament selection. Next, both selected
+    individuals are recombined using crossover c_f (e.g., single point, multiple-point) with a probability of c_p to
+    produce two new offspring o_1, o_2. Afterwards, mutation is applied on both offspring, independently changing the
+    genes with a probability of m_p, which usually is equal to 1/n, where n is the number of genes in a chromosome.
+    The two mutated offspring are then included in the next population. At the end of each iteration the fitness value
+    of all individuals is computed.
+
+    .. [CamposGFEA17] J. Campos, Y. Ge, G. Fraser, M. Eler, and A. Arcuri,
+        “An Empirical Evaluation of Evolutionary Algorithms for Test Suite Generation”,
+        in Search Based Software Engineering, 2017, pp. 33–48.
+    """
 
     def __init__(self):
         super(Standard, self).__init__()
