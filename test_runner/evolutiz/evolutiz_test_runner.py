@@ -21,8 +21,6 @@ class EvolutizTestRunner(TestRunner):
                                                          settings.WORKING_DIR + "test_runner/evolutiz/evolutiz.jar")
 
     def register_crossover_operator(self, toolbox):
-        # the crossover between individuals is a uniform crossover
-        # that means each test case has 50-50 probability of ending up in each of the new individuals
         toolbox.register("mate", tools.cxOnePoint)
 
     def register_mutation_operator(self, toolbox):
