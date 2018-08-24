@@ -5,8 +5,8 @@ from deap import tools
 
 import settings
 from devices import adb
-from test_runner.test_runner_installer import TestRunnerInstaller
 from test_runner.test_runner import TestRunner
+from test_runner.test_runner_installer import TestRunnerInstaller
 
 
 class MotifcoreTestRunner(TestRunner):

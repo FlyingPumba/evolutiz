@@ -2,7 +2,6 @@ import subprocess as sub
 import time
 
 import settings
-from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.avd_manager import AvdManager
 from devices.device import Device, State

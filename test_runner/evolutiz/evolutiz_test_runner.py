@@ -7,8 +7,8 @@ from deap import tools
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
-from test_runner.test_runner_installer import TestRunnerInstaller
 from test_runner.test_runner import TestRunner
+from test_runner.test_runner_installer import TestRunnerInstaller
 
 
 class EvolutizTestRunner(TestRunner):

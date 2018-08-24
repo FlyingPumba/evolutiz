@@ -1,5 +1,3 @@
-import sys
-
 import ConfigParser
 import argparse
 import os

@@ -1,6 +1,8 @@
+import subprocess as sub
+
 import settings
 from dependency_injection.required_feature import RequiredFeature
-import subprocess as sub
+
 
 class AvdManager(object):
 

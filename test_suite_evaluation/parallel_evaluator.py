@@ -1,10 +1,6 @@
-import multiprocessing.dummy as mp
-import time
-
 from dependency_injection.required_feature import RequiredFeature
 from devices.mapper_on_devices import MapperOnDevices
 from util import logger
-from util.pickable import pickable_function
 
 
 class ParallelEvaluator(object):

@@ -1,4 +1,3 @@
-import pickle
 import sys
 
 import numpy
