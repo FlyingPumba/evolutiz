@@ -45,7 +45,7 @@ class Standard(GeneticAlgorithm):
         self.offspring_generated = []
         offspring_pairs_to_generate = [i for i in range(0, self.offspring_size/2)]
 
-        logger.log_progress("\nInit population of " + str(self.offspring_size) + " individuals in parallel")
+        logger.log_progress("\nGenerating offspring of " + str(self.offspring_size) + " individuals in parallel")
 
         mapper = MapperOnDevices(self.generate_two_offspring,
                                  items_to_map=offspring_pairs_to_generate,
