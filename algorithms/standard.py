@@ -23,7 +23,7 @@ class Standard(GeneticAlgorithm):
     def __init__(self):
         super(Standard, self).__init__()
 
-        self.offspring_generated = []
+        self.new_population = []
 
     def evolve(self):
         for gen in range(1, self.max_generations + 1):
@@ -37,7 +37,7 @@ class Standard(GeneticAlgorithm):
             self.generate_offspring_in_parallel()
 
             # Evaluate the individuals with an invalid fitness
-            invalid_ind = [ind for ind in self.offspring_generated if not ind.fitness.valid]
+            invalid_ind = [ind for ind in self.new_population if not ind.fitness.valid]
             success = self.parallel_evaluator.evaluate(invalid_ind)
 
             if not success:
@@ -45,7 +45,7 @@ class Standard(GeneticAlgorithm):
                 break
 
             # Select the next generation population
-            self.population = self.offspring_generated
+            self.population = self.new_population
 
             self.device_manager.log_devices_battery(gen, self.result_dir)
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
@@ -53,7 +53,7 @@ class Standard(GeneticAlgorithm):
         return self.population
 
     def generate_offspring_in_parallel(self):
-        self.offspring_generated = []
+        self.new_population = []
         offspring_pairs_to_generate = [i for i in range(0, self.offspring_size/2)]
 
         logger.log_progress("\nGenerating offspring of " + str(self.offspring_size) + " individuals in parallel")
@@ -75,8 +75,8 @@ class Standard(GeneticAlgorithm):
         del o1.fitness.values
         del o2.fitness.values
 
-        self.offspring_generated.append(o1)
-        self.offspring_generated.append(o2)
+        self.new_population.append(o1)
+        self.new_population.append(o2)
 
         device.mark_work_stop()
 
