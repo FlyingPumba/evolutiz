@@ -1,3 +1,4 @@
+# coding=utf-8
 import datetime
 import os
 import random
@@ -30,10 +31,64 @@ class EvolutizTestRunner(TestRunner):
         self.test_runner_installer.install_in_all_devices(minimum_api=self.minimum_api)
 
     def mutate_test_suite(self, device, package_name, individual):
-        # mutate each test case with probability MUTPB
+        """Implements the mutation operator of test suites as described in [ArcuriF13]_.
+
+        The mutation operator for test suites works both at test suite and test case levels: When a test suite T is
+        mutated, each of its test cases is mutated with probability 1/|T|. Then, with probability σ = 0.1, a new test
+        case is added to the test suite. If it is added, then a second test case is added with probability σ^2 , and so
+        on until the ith test case is not added (which happens with probability 1 − σ^i ). Test cases are added only if
+        the limit N has not been reached.
+
+        When a test case is chosen to be mutated, we apply a number of mutations at random in between 1 and m, for some
+        constant m (which is a parameter that needs to be tuned). For each of these mutations on a test case (which are
+        applied sequentially), we apply three different operations with probability 1/3 in order: remove, change and
+        insert.
+
+        When removing statements out of a test case of length l, each statement is removed with probability 1/l.
+        Removing a statement might invalidate dependencies within the test case, which we attempt to repair; if this
+        repair fails, then dependent statements are also deleted. When applying the change mutation, each statement is
+        changed with probability 1/l. A change means it is replaced with a different statement that retains the validity
+        of the test case; e.g., a different method call with the same return type. When inserting statements, we first
+        insert a new statement with probability σ' = 0.5 at a random position. If it is added, then a second statement
+        is added with probability σ'^2 , and so on until the ith statement is not inserted. If after applying these
+        mutation operators a test case t has no statement left (i.e., all have been removed), then t is removed from T.
+
+        .. [ArcuriF13] A. Arcuri and G. Fraser, “Parameter tuning or default values? An empirical investigation in
+         search-based software engineering,” Empirical Software Engineering, vol. 18, no. 3, pp. 594–623, Jun. 2013.
+
+        :param device: the device where the test suite will be mutated.
+        :param package_name: the package name of the application being tested.
+        :param individual: the test suite.
+        :return: mutated test suite.
+        """
+        result_dir = RequiredFeature('result_dir').request()
+
+        # mutate test cases
+        test_suite_size = settings.SUITE_SIZE
+        test_case_mutation_pb = 1/float(test_suite_size)
+
         for i in range(len(individual)):
-            if random.random() < settings.MUTPB:
-                individual[i] = self.mutate_test_case(device, package_name, individual[i])
+            if random.random() < test_case_mutation_pb:
+                mutated_test_case = self.mutate_test_case(device, package_name, individual[i])
+                if len(mutated_test_case) > 0:
+                    individual[i] = mutated_test_case
+                else:
+                    del individual[i]
+
+        # add test cases
+        sigma = float(0.1)
+        test_case_addition_pb = sigma
+
+        pb = random.random()
+        while pb < test_case_mutation_pb and len(individual) < test_suite_size:
+
+            ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
+            local_dst_filename = result_dir + "/intermediate/offspring." + ts
+            self.generate(device, package_name, local_dst_filename)
+            individual.append(self.get_test_case_from_file(local_dst_filename))
+
+            test_case_addition_pb = test_case_addition_pb * sigma
+            pb = random.random()
 
         return individual
 
