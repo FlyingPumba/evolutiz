@@ -1,24 +1,33 @@
 import pickle
+import argparse
 
 from deap import creator, base
-
-import settings
 
 creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
 creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
+def show_hof(hof_file_path):
+    try:
+        hof_file = open(hof_file_path)
+        hof = pickle.load(hof_file)
+        print "Hall of fame contains: " + str(len(hof)) + " individuals"
+        print "Stored fitness are: "
 
-def show_hof():
-    hof_file = open(settings.WORKING_DIR + "intermediate/hof.pickle")
+        for individual in hof:
+            coverage, length, crashes = individual.fitness.values
+            if crashes == 0:
+                length = "--"
+            else:
+                length = str(length)
+            print "(%d, %s, %d)" % (coverage, length, crashes)
 
-    hof = pickle.load(hof_file)
-
-    print len(hof)
-
-    for individual in hof:
-        print type(individual)
-        print individual.fitness.values
+    except Exception as e:
+        print "Unable to process file: " + hof_file_path
 
 
 if __name__ == "__main__":
-    show_hof()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('hof_file_path', help='Hall of fame pickle file path.')
+    args = parser.parse_args()
+
+    show_hof(args.hof_file_path)
