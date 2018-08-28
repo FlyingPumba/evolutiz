@@ -1,6 +1,6 @@
 # coding=utf-8
 class OnePlusLambdaCommaLambda(object):
-    """Implements the 1+(λ, λ) Evolutionary Algorithm as described in [CamposGFEA17]_.
+    """Implements the 1 + (λ, λ) Evolutionary Algorithm as described in [CamposGFEA17]_.
 
     The 1 + (λ, λ) GA, starts by generating a random population of size 1. Then, mutation is used to create λ different
     mutated versions of the current individual. Mutation is applied with a high mutation probability, defined as

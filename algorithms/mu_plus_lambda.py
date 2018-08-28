@@ -1,3 +1,4 @@
+# coding=utf-8
 import random
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
@@ -5,6 +6,19 @@ from util import logger
 
 
 class MuPlusLambda(GeneticAlgorithm):
+    """Implements the μ + λ Evolutionary Algorithm as described in [CamposGFEA17]_.
+
+    The μ + λ Evolutionary Algorithm (EA) is a mutation-based algorithm. As its name suggests, the number of parents and
+    offspring are restricted to μ and λ, respectively. Each gene is mutated independently with probability 1/n . After
+    mutation, the generated offspring are compared with each parent, aiming to preserve so-far best individual including
+    parents; that is, parents are replaced once a better offspring is found. Among the different (μ + λ) EA versions,
+    two common settings are (1 + λ) EA and (1 + 1) EA, where the population size is 1, and the number of offspring is
+    also limited to 1 for the (1 + 1) EA.
+
+    .. [CamposGFEA17] J. Campos, Y. Ge, G. Fraser, M. Eler, and A. Arcuri,
+        “An Empirical Evaluation of Evolutionary Algorithms for Test Suite Generation”,
+        in Search Based Software Engineering, 2017, pp. 33–48.
+    """
 
     def __init__(self):
         super(MuPlusLambda, self).__init__()
