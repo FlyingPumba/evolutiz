@@ -4,6 +4,7 @@ import pickle
 from deap import tools
 
 import settings
+from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 
 
@@ -17,6 +18,11 @@ class TestSuiteEvaluator(object):
         self.stats = RequiredFeature('stats').request()
         self.logbook = self.logbook = tools.Logbook()
         self.logbook.header = ['gen'] + (self.stats.fields if self.stats else [])
+
+        # override future responses of calling RequiredFeature('test_suite_evaluator').request(),
+        # this way we have a TestSuiteEvaluator singleton
+        # This is useful for example to have a single hall-of-fame across a single run.
+        features.provide('test_suite_evaluator', self)
 
     def dump_individual_to_files(self, individual):
         script_path = []
