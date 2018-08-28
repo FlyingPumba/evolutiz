@@ -1,6 +1,7 @@
 import os
 import pickle
 
+import numpy
 from deap import tools
 
 import settings
@@ -58,6 +59,11 @@ class TestSuiteEvaluator(object):
 
     def update_logbook(self, gen, population):
         record = self.stats.compile(population) if self.stats is not None else {}
+        fitness = []
+        for individual in population:
+            fitness.append(individual.fitness.values)
+
+        record['fitness'] = numpy.array(fitness)
         self.logbook.record(gen=gen, **record)
 
     def dump_logbook_to_file(self):

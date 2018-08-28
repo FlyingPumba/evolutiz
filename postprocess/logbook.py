@@ -1,51 +1,58 @@
+import argparse
+import os
 import pickle
 
 import matplotlib.pyplot as plt
 
 
-def print_pop_fitness(file_folder_path):
-    logbook_file = open(file_folder_path + "logbook.pickle")
-
+def print_avg_fitness(logbook_file_path):
+    logbook_file = open(logbook_file_path)
     logbook = pickle.load(logbook_file)
 
-    for gen_pop in logbook.select("pop_fitness"):
-        print gen_pop
+    print "Average fitness by generation:\n"
+    print "gen\tcovrg.\tcrashes"
+    print "--------------------"
+
+    for gen, (coverage, length, crashes) in enumerate(logbook.select("avg")):
+        print "%d\t%d\t%d" % (gen, coverage, crashes)
 
 
-def draw_pop_fitness(file_folder_path):
+def draw_pop_fitness(logbook_file_path):
     coverages = []
-    lengths = []
+    generations = []
     colors = []  # color stands for the ith gen
 
-    logbook_file = open(file_folder_path + "logbook.pickle")
-
+    logbook_file = open(logbook_file_path)
     logbook = pickle.load(logbook_file)
 
-    gen_size = len(logbook.select("pop_fitness"))
-    for gen, gen_pop in enumerate(logbook.select("pop_fitness")):
-        for indi in gen_pop:
-            coverages.append(indi[0])
-            lengths.append(indi[1])
+    fitness_by_gen =  logbook.select("fitness")
+
+    gen_size = len(fitness_by_gen)
+    for gen, population in enumerate(fitness_by_gen):
+        for fitness in population:
+            coverages.append(fitness[0])
+            generations.append(gen)
             colors.append(int(gen + 1))
 
     # print coverages, lengths, colors
 
     fig, ax = plt.subplots()
-    ax.set_xlabel("Length")
+    ax.set_xlabel("Generations")
     ax.set_ylabel("Coverage")
 
     # ax.scatter(lengths, coverages, color="red", marker="^")
-    im = ax.scatter(lengths, coverages, c=colors, cmap=plt.cm.jet, marker=".", s=100)
+    im = ax.scatter(generations, coverages, c=colors, cmap=plt.cm.jet, marker=".", s=100)
 
     fig.colorbar(im, ax=ax, ticks=range(1, gen_size + 1))
     im.set_clim(1, gen_size)
 
-    fig.savefig(file_folder_path + "logbook_pop_fitness.png")
+    fig.savefig(os.path.dirname(logbook_file_path) + "/logbook_fitness_by_generation.png")
     plt.show()
 
-
 if __name__ == "__main__":
-    file_folder_path = "/media/kemao/Windows7_OS/bak_p500/emma_run_results/sapienz_open_p/19/com.brocktice.JustSit_17_src/intermediate/"
+    parser = argparse.ArgumentParser()
+    parser.add_argument('logbook_file_path', help='Logbook pickle file path.')
+    args = parser.parse_args()
 
-    print_pop_fitness(file_folder_path)
-    draw_pop_fitness(file_folder_path)
+    print_avg_fitness(args.logbook_file_path)
+    draw_pop_fitness(args.logbook_file_path)
