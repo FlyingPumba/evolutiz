@@ -7,7 +7,7 @@ from util import logger
 class Monotonic(Standard):
     """Implements the Monotonic Evolutionary Algorithm as described in [CamposGFEA17]_.
 
-    The monotonic version of the Standard GA only includes either the best offspring or the best parent in the next
+    The Monotonic version of the Standard GA only includes either the best offspring or the best parent in the next
     population (whereas the Standard GA includes both offspring in the next population regardless of their fitness
     value).
 
