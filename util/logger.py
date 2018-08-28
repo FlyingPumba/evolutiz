@@ -13,6 +13,9 @@ error_file = None
 output_filename = None
 error_filename = None
 
+fitness_log_filename = "fitness-historic.log"
+fitness_log_file_path = "./" + fitness_log_filename
+
 lock = multiprocessing.Lock()
 
 
@@ -31,8 +34,6 @@ def prepare():
     global error_file
     error_file = open(error_filename, 'w')
     sys.stderr = error_file
-
-    prepare_fitness_log()
 
     print starting_datetime
 
@@ -65,15 +66,18 @@ def redirect_string(log_output=True):
         return " 1>>/dev/null 2>>" + str(error_filename)
 
 
-def prepare_fitness_log():
-    fitness_log_file = settings.WORKING_DIR + "/fitness-historic.log"
-    os.system("echo \"timestamp,coverage,crashes,length\" > " + fitness_log_file)
+def prepare_fitness_log(result_dir):
+    global fitness_log_filename
+    global fitness_log_file_path
+    fitness_log_file_path = result_dir + "/" + fitness_log_filename
+
+    os.system("echo \"timestamp,coverage,crashes,length\" > " + fitness_log_file_path)
 
 
 def log_fitness_result(fitness):
-    fitness_log_file = settings.WORKING_DIR + "fitness-historic.log"
+    global fitness_log_file_path
     coverage = str(fitness[0])
     length = str(fitness[1])
     crashes = str(fitness[2])
     timestamp = str(time.time())
-    os.system("echo \"" + timestamp + "," + coverage + "," + crashes + "," + length + "\" >> " + fitness_log_file)
+    os.system("echo \"" + timestamp + "," + coverage + "," + crashes + "," + length + "\" >> " + fitness_log_file_path)
