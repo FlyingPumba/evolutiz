@@ -22,20 +22,10 @@ def prepare_apk(instrumented_app_path, package_name, result_dir):
 
     print "### Working on apk:", package_name
     # static analysis
+    decoded_dir = result_dir + "/decoded-apk"
     if settings.ENABLE_STRING_SEEDING:
         logger.log_progress("\nRunning static analysis on apk")
-        output_dir = None
-        if instrumented_app_path.endswith(".apk_output"):
-            output_dir = instrumented_app_path
-        else:
-            output_dir = instrumented_app_path + "/bin"
-        static_analyser.decode_apk(apk_path, output_dir)
-
-    decoded_dir = None
-    if instrumented_app_path.endswith(".apk_output"):
-        decoded_dir = instrumented_app_path + "/" + apk_path.split("/")[-1].split(".apk")[0]
-    else:
-        decoded_dir = instrumented_app_path + "/bin/" + apk_path.split("/")[-1].split(".apk")[0]
+        static_analyser.decode_apk(apk_path, decoded_dir)
 
     logger.log_progress("\nInstalling apk")
 

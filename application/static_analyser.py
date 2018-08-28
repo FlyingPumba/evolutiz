@@ -6,7 +6,7 @@ from util import logger
 
 
 def decode_apk(input_apk, output_dir):
-    os.system("java -jar " + settings.WORKING_DIR + "lib/apktool.jar d -f " + input_apk + logger.redirect_string())
+    os.system("java -jar " + settings.WORKING_DIR + "lib/apktool.jar d -f -o " + output_dir + " " + input_apk + logger.redirect_string())
 
 
 def upload_string_xml(device, decoded_dir, package_name):
