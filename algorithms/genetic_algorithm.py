@@ -1,5 +1,5 @@
 import settings
-from algorithms.Strategy import Strategy
+from algorithms.strategy import Strategy
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
 
