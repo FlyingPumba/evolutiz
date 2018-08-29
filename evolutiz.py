@@ -51,7 +51,7 @@ class Evolutiz(object):
             self.test_suite_evaluator.dump_hall_of_fame_to_file()
 
         if RequiredFeature('write_history').request():
-            history_file = open(self.result_dir + "/intermediate/history.pickle", 'wb')
+            history_file = open(self.result_dir + "/history.pickle", 'wb')
             pickle.dump(self.history, history_file)
             history_file.close()
 
