@@ -5,7 +5,7 @@ ENABLE_STRING_SEEDING = True
 HEADLESS = True
 ANDROID_TARGET = "android-10"  # TODO: this should depend on a configuration file in the subject itself
 
-MOTIFCORE_EVAL_TIMEOUT = 120
+TEST_CASE_EVAL_TIMEOUT = 120
 ADB_REGULAR_COMMAND_TIMEOUT = 30
 
 # === Emulator ===
