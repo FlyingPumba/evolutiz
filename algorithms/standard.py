@@ -67,10 +67,16 @@ class Standard(GeneticAlgorithm):
     def generate_two_offspring(self, device, pair_index):
         device.mark_work_start()
 
-        p1, p2 = self.toolbox.select(self.population, 2)
+        p1, p2 = map(self.toolbox.clone, self.toolbox.select(self.population, 2))
+        assert len(p1) > 0
+        assert len(p2) > 0
+
         o1, o2 = self.toolbox.mate(p1, p2)
         o1 = self.toolbox.mutate(device, self.package_name, o1)
         o2 = self.toolbox.mutate(device, self.package_name, o2)
+
+        assert len(o1) > 0
+        assert len(o2) > 0
 
         del o1.fitness.values
         del o2.fitness.values

@@ -61,7 +61,13 @@ class TestSuiteEvaluator(object):
         record = self.stats.compile(population) if self.stats is not None else {}
         fitness = []
         for individual in population:
-            fitness.append(individual.fitness.values)
+            aux = {
+                'coverage': individual.fitness.values[0],
+                'length': individual.fitness.values[2],
+                'crashes': individual.fitness.values[2],
+                'timestamp': individual.fitness.timestamp,
+            }
+            fitness.append(aux)
 
         record['fitness'] = numpy.array(fitness)
         self.logbook.record(gen=gen, **record)

@@ -1,4 +1,5 @@
 import sys
+import time
 
 import numpy
 from deap import creator, base, tools
@@ -47,9 +48,9 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
             length = sys.maxint
 
         individual.fitness.values = (coverage, length, num_crashes)
+        individual.fitness.timestamp = time.time()
 
         self.hall_of_fame.update([individual])
-        logger.log_fitness_result(individual.fitness.values)
 
         device.mark_work_stop()
 
@@ -75,6 +76,8 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         logger.log_progress("\n- Best historic crashes: " + str(max_crashes))
         if max_crashes > 0:
             logger.log_progress("\n- Best historic length: " + str(min_length))
+        else:
+            logger.log_progress("\n- Best historic length: --")
 
     def dump_logbook_to_file(self):
         super(MultiObjectiveTestSuiteEvaluator, self).dump_logbook_to_file()

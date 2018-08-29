@@ -99,8 +99,6 @@ def prepare_result_dir(app_name, repetition, strategy_with_runner_name):
     features.provide('result_dir', result_dir)
     adb.adb_logs_dir = result_dir
 
-    logger.prepare_fitness_log(result_dir)
-
     return result_dir
 
 

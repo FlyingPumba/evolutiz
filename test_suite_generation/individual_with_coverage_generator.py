@@ -211,7 +211,7 @@ class IndividualWithCoverageGenerator(object):
             individual.index_in_generation = individual_index
             individual.generation = gen
 
-            logger.log_fitness_result(fitness)
+            # logger.log_fitness_result(fitness)
 
             device.mark_work_stop()
             return individual, individual_index, device, True

@@ -25,12 +25,12 @@ def draw_pop_fitness(logbook_file_path):
     logbook_file = open(logbook_file_path)
     logbook = pickle.load(logbook_file)
 
-    fitness_by_gen =  logbook.select("fitness")
+    fitness_by_gen = logbook.select("fitness")
 
     gen_size = len(fitness_by_gen)
     for gen, population in enumerate(fitness_by_gen):
         for fitness in population:
-            coverages.append(fitness[0])
+            coverages.append(fitness['coverage'])
             generations.append(gen)
             colors.append(int(gen + 1))
 

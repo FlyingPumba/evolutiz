@@ -1,3 +1,5 @@
+import time
+
 from deap import base, creator, tools
 
 from dependency_injection.required_feature import RequiredFeature
@@ -32,11 +34,9 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
                                                                                                individual.index_in_generation)
         # TODO: look into fusing coverage and number of crashes found into the fitness value
         individual.fitness.values = coverage
+        individual.fitness.timestamp = time.time()
 
         self.hall_of_fame.update([individual])
-
-        # TODO: log single-objective fitness result
-        #logger.log_fitness_result(individual.fitness.values)
 
         device.mark_work_stop()
 
