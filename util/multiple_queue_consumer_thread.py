@@ -81,8 +81,12 @@ class MultipleQueueConsumerThread(threading.Thread):
                         queue = self.recyclable_items_queues[index]
                         queue.put_nowait(item)
 
-                    # pause this thread for a second to give time for items just put in queues to be "gettable"
-                    time.sleep(1)
+                    if recyclable_items is not None and consumable_items is not None:
+                        # pause this thread for a second to give time for items just put in queues to be "gettable"
+                        time.sleep(1)
+                    else:
+                        # there is nothing else to do, finish thread
+                        return
 
         except Exception as e:
             print e
