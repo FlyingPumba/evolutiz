@@ -17,8 +17,7 @@ class TestSuiteEvaluator(object):
         self.result_dir = RequiredFeature('result_dir').request()
 
         self.stats = RequiredFeature('stats').request()
-        self.logbook = self.logbook = tools.Logbook()
-        self.logbook.header = ['gen'] + (self.stats.fields if self.stats else [])
+        self.logbook = RequiredFeature('logbook').request()
 
         # override future responses of calling RequiredFeature('test_suite_evaluator').request(),
         # this way we have a TestSuiteEvaluator singleton

@@ -233,6 +233,7 @@ def add_arguments_to_parser(parser):
                         help='Set the prefix of avd names. Default is Nexus_4_API_19.')
 
     # logging related arguments
+    parser.add_argument('-v', '--verbose', action='count')
     parser.add_argument('--write-logbook', dest='write_logbook',
                         action='store_false', help='Write logbook to a file.')
     parser.add_argument('--write-history', dest='write_history',
@@ -294,6 +295,7 @@ def init_arguments_defaults():
         "real_devices_number": 0,
         "emulators_number": 1,
         "avd_series": "Nexus_4_API_19",
+        "verbose": 0,
         "write_logbook": True,
         "write_history": True,
         "write_hall_of_fame": True,
@@ -372,6 +374,7 @@ def provide_features():
     features.provide('test_runner', possible_test_runners[args.test_runner])
     features.provide('individual_generator', possible_individual_generators[args.individual_generator])
     features.provide('population_generator', PopulationGenerator)
+    features.provide('verbose_level', args.verbose)
     features.provide('write_logbook', args.write_logbook)
     features.provide('write_history', args.write_history)
     features.provide('write_hall_of_fame', args.write_hall_of_fame)
@@ -392,6 +395,12 @@ def provide_features():
     stats.register("max", numpy.max, axis=0)
     features.provide('stats', stats)
 
+    logbook = tools.Logbook()
+    logbook.header = ['gen'] + (stats.fields if stats else [])
+    features.provide('logbook', logbook)
+
+    history = tools.History()
+    features.provide('history', history)
 
 if __name__ == "__main__":
     logger.prepare()

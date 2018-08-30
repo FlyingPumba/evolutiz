@@ -49,6 +49,9 @@ class GeneticAlgorithm(Strategy):
         self.device_manager.log_devices_battery(0, self.result_dir)
         self.parallel_evaluator.test_suite_evaluator.update_logbook(0, self.population)
 
+        history = RequiredFeature('history').request()
+        history.update(self.population)
+
         return True
 
     def evolve(self):

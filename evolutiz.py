@@ -27,9 +27,9 @@ class Evolutiz(object):
 
         self.apk_instrumentator = ApkInstrumentator()
 
-        self.history = tools.History()
-        # self.toolbox.decorate("mate", self.history.decorator)
-        # self.toolbox.decorate("mutate", self.history.decorator)
+        self.history = RequiredFeature('history').request()
+        self.toolbox.decorate("mate", self.history.decorator)
+        self.toolbox.decorate("mutate", self.history.decorator)
 
     def run(self):
         # give test runner opportunity to install on devices
