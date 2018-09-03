@@ -2,6 +2,7 @@ import subprocess as sub
 import time
 
 import settings
+from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.avd_manager import AvdManager
 from devices.device import Device, State
@@ -23,6 +24,8 @@ class Emulator(Device):
         self.avd_name = None
 
     def boot(self, port=None):
+        verbose_level = RequiredFeature('verbose_level').request()
+
         Device.boot(self)
 
         self.port = port if port is not None else self.device_manager.get_next_available_emulator_port()
@@ -36,13 +39,13 @@ class Emulator(Device):
 
         flags = " -wipe-data -no-boot-anim -writable-system -port " + str(self.port)
 
-        if settings.HEADLESS:
+        if verbose_level > 1:
             # -no-window flag can't be at the end
             flags = " -no-window" + flags
 
         logs = " >/dev/null 2>/dev/null"
 
-        if settings.DEBUG:
+        if verbose_level > 0:
             logs = " > " + self.avd_name + ".log 2>" + self.avd_name + ".err"
             flags = flags + " -verbose -debug all"
 

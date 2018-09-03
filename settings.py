@@ -1,8 +1,5 @@
-DEBUG = False # or False
 # if False, "0" will be used
 ENABLE_STRING_SEEDING = True
-# use headless evaluator
-HEADLESS = True
 ANDROID_TARGET = "android-10"  # TODO: this should depend on a configuration file in the subject itself
 
 TEST_CASE_EVAL_TIMEOUT = 120
