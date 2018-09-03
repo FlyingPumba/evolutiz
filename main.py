@@ -122,23 +122,28 @@ def run(strategy_name, app_paths):
 
 
 def get_subject_paths(arguments):
-    subjects_path = arguments.subjects_path
-    features.provide('subjects_path', subjects_path)
+    subject_path = arguments.subject_path
+    if subject_path is not None:
+        features.provide('subjects_path', [subject_path])
+        return [subject_path]
+    else:
+        subjects_path = arguments.subjects_path
+        features.provide('subjects_path', subjects_path)
 
-    p = sub.Popen("ls -d " + subjects_path + "*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
-    output, errors = p.communicate()
-    app_paths = []
-    for line in output.strip().split('\n'):
-        if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
-            app_paths.append(line.rstrip('/'))  # remove trailing forward slash
+        p = sub.Popen("ls -d " + subjects_path + "*/", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+        output, errors = p.communicate()
+        app_paths = []
+        for line in output.strip().split('\n'):
+            if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
+                app_paths.append(line.rstrip('/'))  # remove trailing forward slash
 
-    if arguments.randomize_subjects:
-        random.shuffle(app_paths)
+        if arguments.randomize_subjects:
+            random.shuffle(app_paths)
 
-    if arguments.limit_subjects_number != -1:
-        app_paths = app_paths[0:arguments.limit_subjects_number]
+        if arguments.limit_subjects_number != -1:
+            app_paths = app_paths[0:arguments.limit_subjects_number]
 
-    return app_paths
+        return app_paths
 
 
 def check_needed_commands_available():
@@ -214,6 +219,8 @@ def add_arguments_to_parser(parser):
     global possible_strategies, possible_test_suite_evaluators, possible_individual_generators, possible_test_runners
 
     # subjects related arguments
+    parser.add_argument('--subject-path', dest='subject_path',
+                        help='Directory where the subject to be processed is located')
     parser.add_argument('--subjects-path', dest='subjects_path',
                         help='Directory where subjects are located')
     parser.add_argument('--instrumented-subjects-path', dest='instrumented_subjects_path',
