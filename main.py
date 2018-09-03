@@ -396,7 +396,7 @@ def provide_features():
     features.provide('stats', stats)
 
     logbook = tools.Logbook()
-    logbook.header = ['gen'] + (stats.fields if stats else [])
+    logbook.header = ['gen'] + stats.fields
     features.provide('logbook', logbook)
 
     history = tools.History()
