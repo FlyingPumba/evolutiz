@@ -158,7 +158,7 @@ class EmmaCoverage(object):
             emma_cmd = "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + self.app_path + "/src " + logger.redirect_string()
             output, errors = subprocess.Popen(emma_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
 
-            logger.log_progress("Emma jar finished.\nOutput:\n" + output + ".\nErrors:\n" + errors)
+            logger.log_progress("Emma jar finished.\nOutput:\n" + output + ".\nErrors:\n" + errors + "\n")
 
             html_file = self.result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
             coverage_str = extract_coverage(html_file)
