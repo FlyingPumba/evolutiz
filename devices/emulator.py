@@ -39,7 +39,7 @@ class Emulator(Device):
 
         flags = " -wipe-data -no-boot-anim -writable-system -port " + str(self.port)
 
-        if verbose_level > 1:
+        if verbose_level < 2:
             # -no-window flag can't be at the end
             flags = " -no-window" + flags
 
