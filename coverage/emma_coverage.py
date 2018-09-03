@@ -160,7 +160,7 @@ class EmmaCoverage(object):
 
             logger.log_progress("Emma jar finished.\nOutput:\n" + output + ".\nErrors:\n" + errors + "\n")
 
-            html_file = self.result_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
+            html_file = "coverage/index.html"
             coverage_str = extract_coverage(html_file)
 
             if coverage_str.find("%") != -1:
