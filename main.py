@@ -46,7 +46,6 @@ def run_one_app(strategy_with_runner_name):
 
     try:
         for repetition in range(0, repetitions):
-
             result_dir = prepare_result_dir(app_name, repetition, strategy_with_runner_name)
 
             prepare_devices(result_dir)
@@ -405,6 +404,7 @@ def provide_features():
     stats.register("max", numpy.max, axis=0)
     features.provide('stats', stats)
 
+
 if __name__ == "__main__":
     logger.prepare()
     logger.clear_progress()
@@ -416,7 +416,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         # Inherit options from config_parser
         parents=[conf_parser],
-        )
+    )
     parser.set_defaults(**defaults)
 
     add_arguments_to_parser(parser)
