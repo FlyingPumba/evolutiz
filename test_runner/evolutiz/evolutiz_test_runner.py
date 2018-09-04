@@ -2,6 +2,7 @@
 import datetime
 import os
 import random
+import time
 
 from deap import tools
 
@@ -10,6 +11,7 @@ from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from test_runner.test_runner import TestRunner
 from test_runner.test_runner_installer import TestRunnerInstaller
+from util import logger
 
 
 class EvolutizTestRunner(TestRunner):
@@ -141,6 +143,10 @@ class EvolutizTestRunner(TestRunner):
 
     def generate(self, device, package_name, destination_file_name):
         assert device.api_level() >= self.minimum_api
+
+        verbose_level = RequiredFeature('verbose_level').request()
+        start_time = time.time()
+
         self.prepare_device_for_run(device)
 
         evolutiz_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
@@ -155,7 +161,12 @@ class EvolutizTestRunner(TestRunner):
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")
 
-        return self.retrieve_generated_test(device, destination_file_name)
+        test_content = self.retrieve_generated_test(device, destination_file_name)
+
+        if verbose_level > 0:
+            logger.log_progress('\nMotifcore test generation took: %.2f seconds' % (time.time() - start_time))
+
+        return test_content
 
     def retrieve_generated_test(self, device, destination_file_name):
         result_code = adb.pull(device, self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE, destination_file_name,

@@ -1,12 +1,15 @@
 import os
 import random
+import time
 
 from deap import tools
 
 import settings
+from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from test_runner.test_runner import TestRunner
 from test_runner.test_runner_installer import TestRunnerInstaller
+from util import logger
 
 
 class MotifcoreTestRunner(TestRunner):
@@ -47,6 +50,9 @@ class MotifcoreTestRunner(TestRunner):
         adb.pkill(device, "motifcore")
 
     def generate(self, device, package_name, destination_file_name):
+        verbose_level = RequiredFeature('verbose_level').request()
+        start_time = time.time()
+
         self.prepare_device_for_run(device)
 
         motifcore_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
@@ -65,7 +71,12 @@ class MotifcoreTestRunner(TestRunner):
         # need to manually kill motifcore when timeout
         adb.pkill(device, "motifcore")
 
-        return self.retrieve_generated_test(device, destination_file_name)
+        test_content = self.retrieve_generated_test(device, destination_file_name)
+
+        if verbose_level > 0:
+            logger.log_progress('\nMotifcore test generation took: %.2f seconds' % (time.time() - start_time))
+
+        return test_content
 
     def retrieve_generated_test(self, device, destination_file_name):
         result_code = adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, destination_file_name,

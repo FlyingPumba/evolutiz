@@ -15,6 +15,7 @@ class GeneticAlgorithm(Strategy):
         self.offspring_size = settings.OFFSPRING_SIZE
 
         self.population = None
+        self.package_name = None
 
         assert (self.crossover_probability + self.mutation_probability) <= 1.0, (
             "The sum of the crossover and mutation "
