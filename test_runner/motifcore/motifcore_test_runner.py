@@ -74,7 +74,7 @@ class MotifcoreTestRunner(TestRunner):
         test_content = self.retrieve_generated_test(device, destination_file_name)
 
         if verbose_level > 0:
-            logger.log_progress('\nMotifcore test generation took: %.2f seconds' % (time.time() - start_time))
+            logger.log_progress('\nMotifcore test generation took: %.2f seconds for %d events' % (time.time() - start_time, motifcore_events))
 
         return test_content
 
