@@ -92,7 +92,7 @@ class EvolutizTestRunner(TestRunner):
             test_case_addition_pb = test_case_addition_pb * sigma
             pb = random.random()
 
-        return individual
+        return individual,
 
     def mutate_test_case(self, device, package_name, test_case):
         assert device.api_level() >= self.minimum_api
