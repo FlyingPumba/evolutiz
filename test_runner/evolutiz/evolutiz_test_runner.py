@@ -130,6 +130,10 @@ class EvolutizTestRunner(TestRunner):
 
     def run(self, device, package_name, script_name):
         assert device.api_level() >= self.minimum_api
+
+        verbose_level = RequiredFeature('verbose_level').request()
+        start_time = time.time()
+
         self.prepare_device_for_run(device)
 
         evolutiz_cmd = "evolutiz -p " + package_name \
@@ -140,6 +144,9 @@ class EvolutizTestRunner(TestRunner):
 
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")
+
+        if verbose_level > 0:
+            logger.log_progress('\nEvolutiz test run took: %.2f seconds' % (time.time() - start_time))
 
     def generate(self, device, package_name, destination_file_name):
         assert device.api_level() >= self.minimum_api

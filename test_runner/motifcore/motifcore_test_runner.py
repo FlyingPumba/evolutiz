@@ -33,6 +33,9 @@ class MotifcoreTestRunner(TestRunner):
         self.test_runner_installer.install_in_all_devices()
 
     def run(self, device, package_name, script_name):
+        verbose_level = RequiredFeature('verbose_level').request()
+        start_time = time.time()
+
         self.prepare_device_for_run(device)
 
         string_seeding_flag = ""
@@ -48,6 +51,9 @@ class MotifcoreTestRunner(TestRunner):
 
         # need to manually kill motifcore when timeout
         adb.pkill(device, "motifcore")
+
+        if verbose_level > 0:
+            logger.log_progress('\nMotifcore test run took: %.2f seconds' % (time.time() - start_time))
 
     def generate(self, device, package_name, destination_file_name):
         verbose_level = RequiredFeature('verbose_level').request()
