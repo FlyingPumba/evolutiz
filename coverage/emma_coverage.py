@@ -51,7 +51,7 @@ class EmmaCoverage(object):
         for index, script in enumerate(scripts):
             result_code = adb.shell_command(device,
                                             "am instrument " + self.package_name + "/" + self.package_name + ".EmmaInstrument.EmmaInstrumentation",
-                                            timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+                                            timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, retry=2)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script, False)
                 device.flag_as_malfunctioning()
