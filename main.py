@@ -57,7 +57,8 @@ def run_one_app(strategy_with_runner_name):
             budget_manager.start_time_budget()
             test_generator.run()
 
-            logger.log_progress("\nEvolutiz finished for app: " + app_name + "\n")
+            logger.log_progress("\nEvolutiz finished for app: " + app_name)
+            logger.log_progress("\nTime budget used: %.2f seconds\n" % (budget_manager.get_time_budget_used()))
 
         return True
     except Exception as e:

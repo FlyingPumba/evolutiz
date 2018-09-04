@@ -15,6 +15,12 @@ class BudgetManager(object):
         print "Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M")
         self.start_time = time.time()
 
+    def get_time_budget_used(self):
+        if self.time_limit is not None:
+            return time.time() - self.start_time
+        else:
+            return None
+
     def time_budget_available(self):
         if self.time_limit is not None:
             return time.time() - self.start_time < self.time_limit
@@ -23,6 +29,12 @@ class BudgetManager(object):
 
     def reset_evaluations_budget(self):
         self.evaluations = 0
+
+    def get_evaluations_budget_used(self):
+        if self.evaluations_limit is not None:
+            return self.evaluations
+        else:
+            return None
 
     def evaluations_budget_available(self):
         if self.evaluations_limit is not None:
