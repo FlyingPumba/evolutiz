@@ -69,11 +69,11 @@ class MultipleQueueConsumerThread(threading.Thread):
                             self.output_queue.put_nowait(result)
 
                 except Exception as e:
-                    if verbose_level > 0:
-                        logger.log_progress("\nAn error occurred when calling func in MultipleQueueConsumerThread.\n")
-                    elif verbose_level > 1:
+                    if verbose_level > 1:
                         logger.log_progress("\nAn error occurred when calling func in MultipleQueueConsumerThread:\n" +
                                             traceback.format_exc())
+                    elif verbose_level > 0:
+                        logger.log_progress("\nAn error occurred when calling func in MultipleQueueConsumerThread.\n")
 
                     # There was an error processing the items, put the consumable items back in their respective queue
                     for index, item in enumerate(consumable_items):
