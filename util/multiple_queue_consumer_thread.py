@@ -3,6 +3,7 @@ import time
 import traceback
 from Queue import Empty
 
+from dependency_injection.required_feature import RequiredFeature
 from util import logger
 
 
@@ -48,6 +49,8 @@ class MultipleQueueConsumerThread(threading.Thread):
         self.output_queue = output_queue
 
     def run(self):
+        verbose_level = RequiredFeature('verbose_level').request()
+
         try:
             while True:
                 recyclable_items = self.get_items_from_list_of_queues(self.recyclable_items_queues)
@@ -66,7 +69,11 @@ class MultipleQueueConsumerThread(threading.Thread):
                             self.output_queue.put_nowait(result)
 
                 except Exception as e:
-                    logger.log_progress("An error occurred when calling func in MultipleQueueConsumerThread:\n" + traceback.format_exc())
+                    if verbose_level > 0:
+                        logger.log_progress("\nAn error occurred when calling func in MultipleQueueConsumerThread.\n")
+                    elif verbose_level > 1:
+                        logger.log_progress("\nAn error occurred when calling func in MultipleQueueConsumerThread:\n" +
+                                            traceback.format_exc())
 
                     # There was an error processing the items, put the consumable items back in their respective queue
                     for index, item in enumerate(consumable_items):
