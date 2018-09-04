@@ -236,8 +236,9 @@ def add_arguments_to_parser(parser):
     # budget related arguments
     parser.add_argument('-r', '--repetitions', type=int, dest='repetitions',
                         help='Choose the number of repetitions per subject to run. Default is 1.')
-    parser.add_argument('--time-budget', type=int, dest='time_budget',
-                        help='Choose the time budget (in seconds). Default is 15 minutes.')
+    parser.add_argument('--time-budget', dest='time_budget',
+                        help='Choose the time budget. Format can be a number (assumed to be seconds) or a number '
+                             'followed by "s" (seconds), "m" (minutes) or "h" (hours). Default is 15 minutes.')
     parser.add_argument('--evaluations-budget', type=int, dest='evaluations_budget',
                         help='Choose the evaluations budget. Default is unlimited.')
 
