@@ -19,7 +19,7 @@ class FeatureBroker:
         try:
             provider = self.providers[feature]
         except KeyError:
-            raise KeyError, "Unknown feature named %r" % feature
+            raise KeyError("Unknown feature named %r" % feature)
         return provider()
 
 

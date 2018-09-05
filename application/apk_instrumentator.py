@@ -135,7 +135,7 @@ class ApkInstrumentator(object):
         new_file.close()
 
         if not is_mod:
-            print "[Error] Failed when update AndroidManifest.xml"
+            print("[Error] Failed when update AndroidManifest.xml")
 
     def alter_InstrumentedActivity(self, path, main_activity):
         content = ""

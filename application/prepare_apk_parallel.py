@@ -20,7 +20,7 @@ def prepare_apk(instrumented_app_path, package_name, result_dir):
         instrumented_app_path += "_output"
         os.system("mkdir -p " + instrumented_app_path)
 
-    print "### Working on apk:", package_name
+    print("### Working on apk:", package_name)
     # static analysis
     decoded_dir = result_dir + "/decoded-apk"
     if settings.ENABLE_STRING_SEEDING:

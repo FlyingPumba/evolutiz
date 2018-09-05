@@ -163,14 +163,14 @@ def run_monkey_one_app(app_path, device):
 
 
 def run_monkey(app_paths):
-    print "Preparing devices ..."
+    print("Preparing devices ...")
     device_manager = DeviceManager()
     device_manager.boot_emulators()
 
     # start time budget
     global start_time
     start_time = time.time()
-    print "Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M")
+    print("Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M"))
 
     device_manager.clean_sdcard()
 
@@ -189,11 +189,11 @@ def run_monkey(app_paths):
                          args=(app_paths[i], device),
                          callback=process_app_result)
 
-    print "run_monkey is wating for all processes to finish ... "
+    print("run_monkey is wating for all processes to finish ... ")
     pool.close()
     pool.join()
 
-    print "### Finished run_monkey"
+    print("### Finished run_monkey")
 
 
 def process_results(app_paths):
@@ -235,8 +235,8 @@ def process_results(app_paths):
             try:
                 coverage_str = emma_coverage.extract_coverage(html_file)
                 os.system("mv coverage/ coverage." + str(repetition) + logger.redirect_string())
-            except Exception, e:
-                print "Exception occurred trying to extra coverage from html file: ", str(e)
+            except Exception as e:
+                print("Exception occurred trying to extra coverage from html file: ", str(e))
 
             if coverage_str.find("%") != -1:
                 coverage = int(coverage_str.split("%")[0])

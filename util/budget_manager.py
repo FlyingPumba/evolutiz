@@ -22,7 +22,7 @@ class BudgetManager(object):
         self.evaluations_limit = evaluations_budget
 
     def start_time_budget(self):
-        print "Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M")
+        print("Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M"))
         self.start_time = time.time()
 
     def get_time_budget_used(self):

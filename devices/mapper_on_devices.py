@@ -1,4 +1,4 @@
-from Queue import Queue, Empty
+from queue import Queue, Empty
 
 from dependency_injection.required_feature import RequiredFeature
 from util.multiple_queue_consumer_thread import MultipleQueueConsumerThread

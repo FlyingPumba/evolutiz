@@ -3,7 +3,7 @@ import pickle
 import sys
 
 def calculate_effiency(logbook_file_path, delta_time):
-    print "Using Delta time: " + str(delta_time) + "s"
+    print("Using Delta time: " + str(delta_time) + "s")
 
     coverage_data, crashes_data, length_data, timestamp_data = gather_data(logbook_file_path)
 
@@ -13,8 +13,8 @@ def calculate_effiency(logbook_file_path, delta_time):
     coverage_auc, crashes_auc = calculate_auc(coverage_accumulated_data, crashes_accumulated_data, delta_time,
                                               length_accumulated_data)
 
-    print "Coverage AUC: " + str(coverage_auc)
-    print "Crashes AUC: " + str(crashes_auc)
+    print("Coverage AUC: " + str(coverage_auc))
+    print("Crashes AUC: " + str(crashes_auc))
     # print "Length AUC: " + str(length_auc)
 
 
@@ -110,8 +110,8 @@ def gather_data(logbook_file_path):
             crashes_data.append(float(fitness['crashes']))
             length_data.append(float(fitness['length']))
 
-    print "Number of generations: %d" % (len(fitness_by_gen))
-    print "Number of fitness evaluations: %d" % (len(coverage_data))
+    print("Number of generations: %d" % (len(fitness_by_gen)))
+    print("Number of fitness evaluations: %d" % (len(coverage_data)))
 
     # normalize coverage
     coverage_data = list(map(lambda c: c / 100, coverage_data))

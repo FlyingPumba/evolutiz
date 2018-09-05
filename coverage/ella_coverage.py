@@ -30,10 +30,10 @@ class Command(object):
 
 
 def cal_coverage(coverage_file, covids_file):
-    print "before open"
+    print("before open")
     ec_reader = open(coverage_file)
     em_reader = open(covids_file)
-    print "after open"
+    print("after open")
 
     covered = set()
     total = 0
@@ -47,7 +47,7 @@ def cal_coverage(coverage_file, covids_file):
         if line != "":
             covered.add(line)
 
-    print "return coverage:", 100.0 * len(covered) / total
+    print("return coverage:", 100.0 * len(covered) / total)
     return 100.0 * len(covered) / total
 
 

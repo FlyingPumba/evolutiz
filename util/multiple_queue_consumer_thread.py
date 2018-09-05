@@ -1,7 +1,7 @@
 import threading
 import time
 import traceback
-from Queue import Empty
+from queue import Empty
 
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
@@ -96,7 +96,7 @@ class MultipleQueueConsumerThread(threading.Thread):
                         return
 
         except Exception as e:
-            print e
+            print(e)
             return
 
     def get_items_from_list_of_queues(self, list_of_queues):

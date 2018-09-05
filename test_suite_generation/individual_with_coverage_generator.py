@@ -126,7 +126,7 @@ class IndividualWithCoverageGenerator(object):
 
             adb.log_evaluation_result(device, self.result_dir, "success", True)
 
-        print "### Getting EMMA coverage.ec and report ..."
+        print("### Getting EMMA coverage.ec and report ...")
         result_code = adb.shell_command(device, "pm clear " + self.package_name,
                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
@@ -217,7 +217,7 @@ class IndividualWithCoverageGenerator(object):
             return individual, individual_index, device, True
 
         except Exception as e:
-            print e
+            print(e)
             traceback.print_exc()
 
             self.device_manager.mark_work_stop_on_device(device)

@@ -32,12 +32,12 @@ def prepare():
     error_file = open(error_filename, 'w')
     sys.stderr = error_file
 
-    print starting_datetime
+    print(starting_datetime)
 
 
 def restore():
     ending_datetime = datetime.today().strftime("%Y-%m-%d_%H-%M")
-    print ending_datetime
+    print(ending_datetime)
 
     global orig_stdout
     sys.stdout = orig_stdout

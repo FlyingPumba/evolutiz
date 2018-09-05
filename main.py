@@ -1,4 +1,4 @@
-import ConfigParser
+import configparser
 import argparse
 import os
 import random
@@ -366,7 +366,7 @@ def parse_config_file():
     args, remaining_argv = conf_parser.parse_known_args()
     init_arguments_defaults()
     if args.conf_file:
-        config = ConfigParser.SafeConfigParser()
+        config = configparser.ConfigParser()
         config.read([args.conf_file])
         defaults.update(dict(config_items_type_convert(config.items(ConfigParser.DEFAULTSECT))))
 

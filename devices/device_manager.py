@@ -2,7 +2,7 @@ import os
 import subprocess as sub
 import time
 
-import adb
+from . import adb
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices.device import Device, State

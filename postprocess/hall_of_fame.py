@@ -10,8 +10,8 @@ def show_hof(hof_file_path):
     try:
         hof_file = open(hof_file_path)
         hof = pickle.load(hof_file)
-        print "Hall of fame contains: " + str(len(hof)) + " individuals"
-        print "Stored fitness are: "
+        print("Hall of fame contains: " + str(len(hof)) + " individuals")
+        print("Stored fitness are: ")
 
         for individual in hof:
             coverage, length, crashes = individual.fitness.values
@@ -19,10 +19,10 @@ def show_hof(hof_file_path):
                 length = "--"
             else:
                 length = str(length)
-            print "(%d, %s, %d)" % (coverage, length, crashes)
+            print("(%d, %s, %d)" % (coverage, length, crashes))
 
     except Exception as e:
-        print "Unable to process file: " + hof_file_path
+        print("Unable to process file: " + hof_file_path)
 
 
 if __name__ == "__main__":
