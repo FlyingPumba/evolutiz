@@ -9,6 +9,7 @@ from crashes import crash_handler
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from util import logger
+from util.command import run_cmd
 
 
 class EmmaCoverage(object):
@@ -86,7 +87,7 @@ class EmmaCoverage(object):
                 max_tries = 10
                 found_coverage_file = False
                 while tries < max_tries:
-                    if not adb.exists_file(device, coverage_path_in_device, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT):
+                    if not adb.exists_file(device, coverage_path_in_device):
                         time.sleep(15)
                         tries += 1
                     else:
@@ -156,7 +157,7 @@ class EmmaCoverage(object):
                 raise Exception("Unable to pull coverage for device: " + device.name)
 
             emma_cmd = "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + self.app_path + "/src "
-            output, errors = subprocess.Popen(emma_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
+            output, errors = run_cmd(emma_cmd)
 
             # logger.log_progress("Emma jar finished.\nOutput:\n" + output + ".\nErrors:\n" + errors + "\n")
 

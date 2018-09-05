@@ -1,7 +1,7 @@
 import os
-import subprocess as sub
 import time
 
+from util.command import run_cmd
 from . import adb
 import settings
 from dependency_injection.required_feature import RequiredFeature
@@ -39,8 +39,7 @@ class DeviceManager(object):
         devices_cmd = adb.adb_cmd_prefix + ' devices'
         cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + devices_cmd
 
-        p = sub.Popen(cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
-        output, errors = p.communicate()
+        output, errors = run_cmd(cmd)
 
         error_lines = errors.split("\n")
         for line in error_lines:
@@ -114,9 +113,7 @@ class DeviceManager(object):
                     # don't change the state of devices when it is higher or equal than booted
                     continue
 
-                p = sub.Popen(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell getprop init.svc.bootanim',
-                              stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
-                output, errors = p.communicate()
+                output, errors = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell getprop init.svc.bootanim')
                 if output.strip() == "stopped" and "error" not in errors.strip():
                     device.state = State.booted
 
@@ -130,9 +127,7 @@ class DeviceManager(object):
                     # don't change the state of devices when it is higher or equal than ready_idle
                     continue
 
-                p = sub.Popen(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell pm list packages',
-                              stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
-                output, errors = p.communicate()
+                output, errors = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell pm list packages')
                 if "Error: Could not access the Package Manager" not in output.strip() and errors.strip() == "":
                     device.state = State.ready_idle
 

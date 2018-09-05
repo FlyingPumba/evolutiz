@@ -50,7 +50,7 @@ class Emulator(Device):
             flags = flags + " -verbose -debug all"
 
         cmd = emulator_cmd + ' -avd ' + self.avd_name + flags + logs
-        sub.Popen(cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+        sub.Popen(cmd, shell=True)
 
     def shutdown(self):
         Device.shutdown(self)

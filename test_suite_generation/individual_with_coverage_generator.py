@@ -72,8 +72,7 @@ class IndividualWithCoverageGenerator(object):
                 max_tries = 10
                 found_coverage_file = False
                 while tries < max_tries:
-                    if not adb.exists_file(device, coverage_path_in_device,
-                                           timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT):
+                    if not adb.exists_file(device, coverage_path_in_device):
                         time.sleep(15)
                         tries += 1
                     else:

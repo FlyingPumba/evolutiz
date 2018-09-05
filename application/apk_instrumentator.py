@@ -7,6 +7,7 @@ from lxml import etree
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
+from util.command import run_cmd
 
 
 class ApkInstrumentator(object):
@@ -29,8 +30,7 @@ class ApkInstrumentator(object):
         result_code = os.system("cp bin/coverage.em " + self.result_dir + "/" + logger.redirect_string())
         if result_code != 0: raise Exception("Unable to copy coverage.em file")
 
-        p = sub.Popen("ls bin/*-debug.apk", stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
-        apk_path, errors = p.communicate()
+        apk_path, errors = run_cmd("ls bin/*-debug.apk")
         apk_path = apk_path.rstrip('\n')
 
         os.chdir(settings.WORKING_DIR)

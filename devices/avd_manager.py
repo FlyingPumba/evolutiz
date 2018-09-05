@@ -2,6 +2,7 @@ import subprocess as sub
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
+from util.command import run_cmd
 
 
 class AvdManager(object):
@@ -18,8 +19,7 @@ class AvdManager(object):
         list_avd_cmd = self.avdmanager_path + " list avd"
         cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + list_avd_cmd
 
-        p = sub.Popen(cmd, stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
-        output, errors = p.communicate()
+        output, errors = run_cmd(cmd)
 
         if errors.strip() != '':
             raise Exception("There was an error running avdmanager command: " + errors)
