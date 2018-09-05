@@ -119,5 +119,5 @@ class MultipleQueueConsumerThread(threading.Thread):
     def mark_used_items(self, items, list_of_queues):
         """Mark task_done() once for each item used in all queues"""
         if items is not None and list_of_queues is not None:
-            for index in xrange(0, len(items)):
+            for index in range(0, len(items)):
                 list_of_queues[index].task_done()

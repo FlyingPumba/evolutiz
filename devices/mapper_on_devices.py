@@ -62,7 +62,7 @@ class MapperOnDevices(object):
                                                    consumable_items_queues=[devices_to_use],
                                                    extra_args=self.extra_args, extra_kwargs=self.extra_kwargs,
                                                    output_queue=output_queue)
-                       for i in xrange(0, total_devices)]
+                       for i in range(0, total_devices)]
 
             map(lambda t: t.start(), threads)
 
@@ -83,7 +83,7 @@ class MapperOnDevices(object):
                                                    extra_args=self.extra_args,
                                                    extra_kwargs=self.extra_kwargs,
                                                    output_queue=output_queue)
-                       for i in xrange(0, total_devices)]
+                       for i in range(0, total_devices)]
 
             map(lambda t: t.start(), threads)
 
