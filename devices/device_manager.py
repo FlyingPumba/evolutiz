@@ -37,9 +37,7 @@ class DeviceManager(object):
         real_devices_found = 0
 
         devices_cmd = adb.adb_cmd_prefix + ' devices'
-        cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + devices_cmd
-
-        output, errors = run_cmd(cmd)
+        output, errors = run_cmd(devices_cmd)
 
         error_lines = errors.split("\n")
         for line in error_lines:
