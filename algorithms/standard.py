@@ -68,15 +68,22 @@ class Standard(GeneticAlgorithm):
         device.mark_work_start()
 
         p1, p2 = map(self.toolbox.clone, self.toolbox.select(self.population, 2))
-        assert len(p1) > 0
-        assert len(p2) > 0
+        # assert len(p1) > 1
+        # assert len(p2) > 1
+        # assert hasattr(p1, 'history_index')
+        # assert hasattr(p2, 'history_index')
 
         o1, o2 = self.toolbox.mate(p1, p2)
-        o1 = self.toolbox.mutate(device, self.package_name, o1)
-        o2 = self.toolbox.mutate(device, self.package_name, o2)
+        # assert hasattr(o1, 'history_index')
+        # assert hasattr(o2, 'history_index')
 
-        assert len(o1) > 0
-        assert len(o2) > 0
+        o1, = self.toolbox.mutate(device, self.package_name, o1)
+        # assert hasattr(o1, 'history_index')
+        # assert len(o1) > 1
+
+        o2, = self.toolbox.mutate(device, self.package_name, o2)
+        # assert hasattr(o1, 'history_index')
+        # assert len(o2) > 1
 
         del o1.fitness.values
         del o2.fitness.values

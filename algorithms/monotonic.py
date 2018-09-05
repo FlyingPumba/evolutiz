@@ -38,8 +38,8 @@ class Monotonic(Standard):
 
         p1, p2 = self.toolbox.select(self.population, 2)
         o1, o2 = self.toolbox.mate(p1, p2)
-        o1 = self.toolbox.mutate(device, self.package_name, o1)
-        o2 = self.toolbox.mutate(device, self.package_name, o2)
+        o1, = self.toolbox.mutate(device, self.package_name, o1)
+        o2, = self.toolbox.mutate(device, self.package_name, o2)
 
         del o1.fitness.values
         del o2.fitness.values
