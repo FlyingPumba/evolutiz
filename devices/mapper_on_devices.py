@@ -86,7 +86,8 @@ class MapperOnDevices(object):
                                                    output_queue=output_queue)
                        for i in range(0, total_devices)]
 
-            map(lambda t: t.start(), threads)
+            for thread in threads:
+                thread.start()
 
             # join on the consumable queue
             items_queue.join()
