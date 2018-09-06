@@ -1,3 +1,5 @@
+import time
+
 from Queue import Queue, Empty
 
 from dependency_injection.required_feature import RequiredFeature
@@ -37,6 +39,8 @@ class MapperOnDevices(object):
         self.idle_devices_only = idle_devices_only
 
     def run(self):
+        budget_manager = RequiredFeature('budget_manager').request()
+
         device_manager = RequiredFeature('device_manager').request()
         all_devices = device_manager.get_idle_devices() if self.idle_devices_only else device_manager.get_devices()
         devices = [device for device in all_devices
@@ -66,8 +70,20 @@ class MapperOnDevices(object):
 
             map(lambda t: t.start(), threads)
 
-            # join on the consumable queue
-            devices_to_use.join()
+            # busy loop checking if we still have budget available
+            budget_run_out = False
+            while not devices_to_use.empty():
+                if not budget_manager.time_budget_available():
+                    map(lambda t: t.stop(), threads)
+                    budget_run_out = True
+                    break
+                else:
+                    time.sleep(5)
+
+            if not budget_run_out:
+                # only join the consumable queue if we are sure thread was able to run until the end
+                # and was not preemptively stopped.
+                devices_to_use.join()
 
         else:
             items_queue = Queue(maxsize=len(self.items_to_map))
@@ -87,8 +103,20 @@ class MapperOnDevices(object):
 
             map(lambda t: t.start(), threads)
 
-            # join on the consumable queue
-            items_queue.join()
+            # busy loop checking if we still have budget available
+            budget_run_out = False
+            while not items_queue.empty():
+                if not budget_manager.time_budget_available():
+                    map(lambda t: t.stop(), threads)
+                    budget_run_out = True
+                    break
+                else:
+                    time.sleep(5)
+
+            if not budget_run_out:
+                # only join the consumable queue if we are sure thread was able to run until the end
+                # and was not preemptively stopped.
+                items_queue.join()
 
         # collect output
         results = []
