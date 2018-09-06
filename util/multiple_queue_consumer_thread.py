@@ -48,11 +48,16 @@ class MultipleQueueConsumerThread(threading.Thread):
 
         self.output_queue = output_queue
 
+        self.stop_event = threading.Event()
+
+    def stop(self):
+        self.stop_event.set()
+
     def run(self):
         verbose_level = RequiredFeature('verbose_level').request()
 
         try:
-            while True:
+            while not self.stop_event.is_set():
                 recyclable_items = self.get_items_from_list_of_queues(self.recyclable_items_queues)
                 consumable_items = self.get_items_from_list_of_queues(self.consumable_items_queues)
 
