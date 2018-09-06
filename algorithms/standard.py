@@ -54,7 +54,7 @@ class Standard(GeneticAlgorithm):
 
     def generate_offspring_in_parallel(self):
         self.new_population = []
-        offspring_pairs_to_generate = [i for i in range(0, self.offspring_size/2)]
+        offspring_pairs_to_generate = [i for i in range(0, int(self.offspring_size/2))]
 
         logger.log_progress("\nGenerating offspring of " + str(self.offspring_size) + " individuals in parallel")
 
