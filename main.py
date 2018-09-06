@@ -1,4 +1,5 @@
 import signal
+import sys
 import threading
 
 import ConfigParser
@@ -420,6 +421,7 @@ def sigint_handler(sig, frame):
     # stop each one of the MultipleQueueConsumerThread
     for thread in threading.enumerate():
         thread.stop()
+    sys.exit(1)
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, sigint_handler)
