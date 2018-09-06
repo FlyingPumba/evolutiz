@@ -45,7 +45,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         if suite_lengths:
             length = numpy.mean(suite_lengths.values())
         else:
-            length = sys.maxint
+            length = sys.maxsize
 
         individual.fitness.values = (coverage, length, num_crashes)
         individual.fitness.timestamp = time.time()

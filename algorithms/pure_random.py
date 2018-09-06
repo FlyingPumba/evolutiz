@@ -18,7 +18,7 @@ class Random(object):
         self.lambda_ = settings.OFFSPRING_SIZE
 
         self.best_historic_crashes_measure = 0
-        self.best_historic_length_measure = sys.maxint
+        self.best_historic_length_measure = sys.maxsize
         self.best_historic_coverage_measure = 0
         self.best_historic_crashes_individual = None
         self.best_historic_length_individual = None

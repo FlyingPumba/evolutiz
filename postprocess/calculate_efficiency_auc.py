@@ -46,7 +46,7 @@ def calculate_accumulated_data(coverage_data, crashes_data, delta_time, length_d
 
     coverage_best = -1
     crashes_best = -1
-    length_best = sys.maxint
+    length_best = sys.maxsize
 
     start_time = timestamp_data[0]
     end_time = timestamp_data[-1]
@@ -70,7 +70,7 @@ def calculate_accumulated_data(coverage_data, crashes_data, delta_time, length_d
             # reset values
             # coverage_best = -1
             # crashes_best = -1
-            # length_best = sys.maxint
+            # length_best = sys.maxsize
 
         # check if we increased a value
         if coverage_data[index] > coverage_best or coverage_best == -1:
@@ -79,7 +79,7 @@ def calculate_accumulated_data(coverage_data, crashes_data, delta_time, length_d
         if crashes_data[index] > crashes_best or crashes_best == -1:
             crashes_best = crashes_data[index]
 
-        if length_data[index] < length_best or length_best == sys.maxint:
+        if length_data[index] < length_best or length_best == sys.maxsize:
             length_best = length_data[index]
 
         index += 1

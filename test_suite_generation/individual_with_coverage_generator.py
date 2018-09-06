@@ -134,7 +134,7 @@ class IndividualWithCoverageGenerator(object):
             raise Exception("Unable to clear package " + self.package_name + " in device: " + device.name)
 
         crashes = len(unique_crashes)
-        length = sys.maxint
+        length = sys.maxsize
         if len(lengths) > 0:
             length = numpy.mean(lengths)
         coverage = 0
