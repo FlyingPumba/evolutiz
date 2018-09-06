@@ -1,3 +1,6 @@
+import signal
+import threading
+
 import ConfigParser
 import argparse
 import os
@@ -413,8 +416,14 @@ def provide_features():
     stats.register("max", numpy.max, axis=0)
     features.provide('stats', stats)
 
+def sigint_handler(sig, frame):
+    # stop each one of the MultipleQueueConsumerThread
+    for thread in threading.enumerate():
+        thread.stop()
 
 if __name__ == "__main__":
+    signal.signal(signal.SIGINT, sigint_handler)
+
     logger.prepare()
     logger.clear_progress()
 
