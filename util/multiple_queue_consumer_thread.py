@@ -1,4 +1,4 @@
-import threading
+from threading import Thread
 import time
 import traceback
 from queue import Empty
@@ -7,7 +7,7 @@ from dependency_injection.required_feature import RequiredFeature
 from util import logger
 
 
-class MultipleQueueConsumerThread(threading.Thread):
+class MultipleQueueConsumerThread(Thread):
     """Provides a thread where a function can be called.
     The arguments of this function are fetched from different queues.
     These queues are of two types:
@@ -30,8 +30,9 @@ class MultipleQueueConsumerThread(threading.Thread):
         output_queue                Optional queue to store the results of the function call.
     """
 
-    def __init__(self, func, recyclable_items_queues=None, consumable_items_queues=None, extra_args=(), extra_kwargs=None, output_queue=None):
-        threading.Thread.__init__(self)
+    def __init__(self, func, recyclable_items_queues=None, consumable_items_queues=None, extra_args=(),
+                 extra_kwargs=None, output_queue=None):
+        super().__init__()
 
         if recyclable_items_queues is None and consumable_items_queues is None:
             raise ValueError("recyclable_items_queues and consumable_items_queues can not be both None")
