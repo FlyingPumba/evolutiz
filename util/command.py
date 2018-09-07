@@ -14,7 +14,7 @@ def is_command_available(command):
 def run_cmd(command):
     verbose_level = RequiredFeature('verbose_level').request(none_if_missing=True)
     if verbose_level is not None and verbose_level > 1:
-        logger.log_progress("\nRunning command: %s" % command)
+        logger.log_progress("\nRunning command: %s\n" % command)
 
     p = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,
                        timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, encoding="utf-8")
