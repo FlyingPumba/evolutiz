@@ -95,9 +95,9 @@ class MultipleQueueConsumerThread(KillableThread):
 
                     # log accordingly
                     if len(devices) > 0:
-                        self.log_exception(e, device=devices[0])
+                        self.log_exception(e, traceback.format_exc(), device=devices[0])
                     else:
-                        self.log_exception(e)
+                        self.log_exception(e, traceback.format_exc())
 
                     # There was an error processing the items, put the consumable items back in their respective queue
                     for index, item in enumerate(consumable_items):
@@ -123,14 +123,14 @@ class MultipleQueueConsumerThread(KillableThread):
             print(e)
             return
 
-    def log_exception(self, e, verbose_level, device=None):
+    def log_exception(self, e, stack_trace, device=None):
         verbose_level = RequiredFeature('verbose_level').request()
         template_base = "\nAn error occurred when calling func in MultipleQueueConsumerThread"
 
         if device is None:
             if verbose_level > 1:
                 template = template_base + ": \n%s"
-                formatted_string = template % (traceback.format_exc())
+                formatted_string = template % stack_trace
                 logger.log_progress(formatted_string)
 
             elif verbose_level > 0:
