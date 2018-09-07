@@ -70,7 +70,7 @@ class MapperOnDevices(object):
             for thread in threads:
                 thread.start()
 
-            watchdog_thread = WatchDogThread(queue_to_join=devices_to_use)
+            watchdog_thread = WatchDogThread(devices_to_use, output_queue, total_devices)
             watchdog_thread.start()
             time.sleep(5)
 
@@ -99,7 +99,7 @@ class MapperOnDevices(object):
             for thread in threads:
                 thread.start()
 
-            watchdog_thread = WatchDogThread(queue_to_join=items_queue)
+            watchdog_thread = WatchDogThread(items_queue, output_queue, len(self.items_to_map))
             watchdog_thread.start()
             time.sleep(5)
 
