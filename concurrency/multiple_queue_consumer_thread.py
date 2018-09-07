@@ -63,6 +63,9 @@ class MultipleQueueConsumerThread(KillableThread):
 
     def run(self):
         try:
+            recyclable_items = None
+            consumable_items = None
+            
             while not self.stop_event.is_set():
                 try:
                     self.item_processing_start_time = time.time()
