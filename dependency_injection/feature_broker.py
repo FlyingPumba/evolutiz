@@ -15,6 +15,13 @@ class FeatureBroker:
                 return provider
         self.providers[feature] = call
 
+    def get(self, feature, default=None):
+        try:
+            provider = self.providers[feature]
+        except KeyError:
+            return default
+        return provider()
+
     def __getitem__(self, feature):
         try:
             provider = self.providers[feature]
