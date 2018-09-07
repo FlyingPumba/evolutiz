@@ -62,16 +62,14 @@ class MultipleQueueConsumerThread(KillableThread):
         return self.item_processing_start_time
 
     def run(self):
-        verbose_level = RequiredFeature('verbose_level').request()
-
         try:
             while not self.stop_event.is_set():
-                self.item_processing_start_time = time.time()
-
-                recyclable_items = self.get_items_from_list_of_queues(self.recyclable_items_queues)
-                consumable_items = self.get_items_from_list_of_queues(self.consumable_items_queues)
-
                 try:
+                    self.item_processing_start_time = time.time()
+
+                    recyclable_items = self.get_items_from_list_of_queues(self.recyclable_items_queues)
+                    consumable_items = self.get_items_from_list_of_queues(self.consumable_items_queues)
+
                     if recyclable_items is not None and consumable_items is not None:
                         args = []
                         args.extend(recyclable_items)
@@ -79,21 +77,24 @@ class MultipleQueueConsumerThread(KillableThread):
                         args.extend(self.extra_args)
                         args = tuple(args)
 
-                        # result = self.func(*args, **self.extra_kwargs)
-                        # if self.output_queue is not None:
-                        #     self.output_queue.put_nowait(result)
-                        while True:
-                            time.sleep(1)
+                        result = self.func(*args, **self.extra_kwargs)
+                        if self.output_queue is not None:
+                            self.output_queue.put_nowait(result)
 
                 except Exception as e:
                     # find out if there is a device we where working on
-                    devices = [item for item in recyclable_items + consumable_items if issubclass(type(item), Device)]
+                    items = []
+                    if recyclable_items is not None:
+                        items.extend(recyclable_items)
+                    if consumable_items is not None:
+                        items.extend(consumable_items)
+                    devices = [item for item in items if issubclass(type(item), Device)]
 
                     # log accordingly
                     if len(devices) > 0:
-                        self.log_exception(e, verbose_level, device=devices[0])
+                        self.log_exception(e, device=devices[0])
                     else:
-                        self.log_exception(e, verbose_level)
+                        self.log_exception(e)
 
                     # There was an error processing the items, put the consumable items back in their respective queue
                     for index, item in enumerate(consumable_items):
@@ -120,6 +121,7 @@ class MultipleQueueConsumerThread(KillableThread):
             return
 
     def log_exception(self, e, verbose_level, device=None):
+        verbose_level = RequiredFeature('verbose_level').request()
         template_base = "\nAn error occurred when calling func in MultipleQueueConsumerThread"
 
         if device is None:
