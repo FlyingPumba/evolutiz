@@ -12,8 +12,8 @@ def is_command_available(command):
     return result_code == 0
 
 def run_cmd(command):
-    verbose_level = RequiredFeature('verbose_level').request()
-    if verbose_level > 1:
+    verbose_level = RequiredFeature('verbose_level').request(none_if_missing=True)
+    if verbose_level is not None and verbose_level > 1:
         logger.log_progress("Running command: %s" % command)
 
     p = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,

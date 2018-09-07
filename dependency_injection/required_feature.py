@@ -15,8 +15,12 @@ class RequiredFeature(object):
         self.result = self.Request()
         return self.result
 
-    def request(self):
-        obj = features[self.feature]
+    def request(self, none_if_missing=False):
+        if none_if_missing:
+            obj = features.get(self.feature)
+        else:
+            obj = features[self.feature]
+
         assert self.assertion(obj), \
             "The value %r of %r does not match the specified criteria" \
             % (obj, self.feature)
