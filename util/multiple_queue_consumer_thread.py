@@ -6,7 +6,7 @@ from threading import Event
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
 from util.killable_thread import KillableThread
-from util.watchdog_thread import ThreadHungError
+from util.thread_hung_exception import ThreadHungException
 
 
 class MultipleQueueConsumerThread(KillableThread):
@@ -83,7 +83,7 @@ class MultipleQueueConsumerThread(KillableThread):
                             self.output_queue.put_nowait(result)
 
                 except Exception as e:
-                    if type(e) is not ThreadHungError:
+                    if type(e) is not ThreadHungException:
                         if verbose_level > 1:
                             logger.log_progress("\nAn error occurred when calling func in MultipleQueueConsumerThread:\n" +
                                                 traceback.format_exc())

@@ -4,10 +4,7 @@ import threading
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
 from util.multiple_queue_consumer_thread import MultipleQueueConsumerThread
-
-
-class ThreadHungError(Exception):
-    pass
+from util.thread_hung_exception import ThreadHungException
 
 
 class WatchDogThread(threading.Thread):
@@ -65,7 +62,7 @@ class WatchDogThread(threading.Thread):
                 if elapsed_time > 200:
                     # this thread is presumably hung: no more mr. nice guy
                     # raising the exception only once will cause the current item to stop being processed
-                    thread.raiseExc(ThreadHungError)
+                    thread.raiseExc(ThreadHungException)
                     logger.log_progress("\nThread " + thread.name + " has been processing the same item for more than "
                                                                     "200 seconds, finishing item processing.")
                     # give time to the thread to process the exception
