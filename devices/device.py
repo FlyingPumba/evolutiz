@@ -54,6 +54,9 @@ class Device(object):
         self.state = state
         self.boot_time = None
 
+    def __str__(self):
+        return self.name
+
     def flag_as_malfunctioning(self):
         self.device_manager.flag_device_as_malfunctioning(self)
 

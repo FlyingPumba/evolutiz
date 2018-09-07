@@ -4,6 +4,7 @@ from queue import Empty
 from threading import Event
 
 from dependency_injection.required_feature import RequiredFeature
+from devices.device import Device
 from util import logger
 from concurrency.killable_thread import KillableThread
 from concurrency.thread_hung_exception import ThreadHungException
@@ -78,17 +79,21 @@ class MultipleQueueConsumerThread(KillableThread):
                         args.extend(self.extra_args)
                         args = tuple(args)
 
-                        result = self.func(*args, **self.extra_kwargs)
-                        if self.output_queue is not None:
-                            self.output_queue.put_nowait(result)
+                        # result = self.func(*args, **self.extra_kwargs)
+                        # if self.output_queue is not None:
+                        #     self.output_queue.put_nowait(result)
+                        while True:
+                            time.sleep(1)
 
                 except Exception as e:
-                    if type(e) is not ThreadHungException:
-                        if verbose_level > 1:
-                            logger.log_progress("\nAn error occurred when calling func in MultipleQueueConsumerThread:\n" +
-                                                traceback.format_exc())
-                        elif verbose_level > 0:
-                            logger.log_progress("\nAn error occurred when calling func in MultipleQueueConsumerThread.\n")
+                    # find out if there is a device we where working on
+                    devices = [item for item in recyclable_items + consumable_items if issubclass(type(item), Device)]
+
+                    # log accordingly
+                    if len(devices) > 0:
+                        self.log_exception(e, verbose_level, device=devices[0])
+                    else:
+                        self.log_exception(e, verbose_level)
 
                     # There was an error processing the items, put the consumable items back in their respective queue
                     for index, item in enumerate(consumable_items):
@@ -113,6 +118,29 @@ class MultipleQueueConsumerThread(KillableThread):
         except Exception as e:
             print(e)
             return
+
+    def log_exception(self, e, verbose_level, device=None):
+        template_base = "\nAn error occurred when calling func in MultipleQueueConsumerThread"
+
+        if device is None:
+            if verbose_level > 1:
+                template = template_base + ": \n%s"
+                formatted_string = template % (traceback.format_exc())
+                logger.log_progress(formatted_string)
+
+            elif verbose_level > 0:
+                logger.log_progress(template_base + ".\n")
+
+        else:
+            if verbose_level > 1:
+                template = template_base + " on device %s: \n%s"
+                formatted_string = template % (device, traceback.format_exc())
+                logger.log_progress(formatted_string)
+
+            elif verbose_level > 0:
+                template = template_base + " on device %s.\n"
+                formatted_string = template % device
+                logger.log_progress(formatted_string)
 
     def get_items_from_list_of_queues(self, list_of_queues):
         """Try to get one item from each queue of the provided list.
