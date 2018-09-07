@@ -1,6 +1,7 @@
 import os
 import time
 
+from devices.real_device import RealDevice
 from util.command import run_cmd
 from . import adb
 import settings
@@ -195,8 +196,12 @@ class DeviceManager(object):
 
         for device in self.get_devices():
             level = device.battery_level()
-            imei = device.imei()
-            os.system("echo '" + imei + " -> " + str(level) + "' >> " + log_file)
+            name = device.name
+            
+            if type(device) is RealDevice:
+                name = device.imei()
+
+            os.system("echo '" + name + " -> " + str(level) + "' >> " + log_file)
 
     def get_next_available_emulator_port(self):
         port = self.next_available_emulator_port
