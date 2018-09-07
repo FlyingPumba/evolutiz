@@ -1,7 +1,7 @@
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
-from devices.mapper_on_devices import MapperOnDevices
+from concurrency.mapper_on_devices import MapperOnDevices
 from util import logger
 
 

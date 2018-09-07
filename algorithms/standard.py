@@ -1,6 +1,6 @@
 # coding=utf-8
 from algorithms.genetic_algorithm import GeneticAlgorithm
-from devices.mapper_on_devices import MapperOnDevices
+from concurrency.mapper_on_devices import MapperOnDevices
 from util import logger
 
 

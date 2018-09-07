@@ -3,8 +3,8 @@ import threading
 
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
-from util.multiple_queue_consumer_thread import MultipleQueueConsumerThread
-from util.thread_hung_exception import ThreadHungException
+from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
+from concurrency.thread_hung_exception import ThreadHungException
 
 
 class WatchDogThread(threading.Thread):

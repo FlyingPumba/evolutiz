@@ -5,8 +5,8 @@ from threading import Event
 
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
-from util.killable_thread import KillableThread
-from util.thread_hung_exception import ThreadHungException
+from concurrency.killable_thread import KillableThread
+from concurrency.thread_hung_exception import ThreadHungException
 
 
 class MultipleQueueConsumerThread(KillableThread):

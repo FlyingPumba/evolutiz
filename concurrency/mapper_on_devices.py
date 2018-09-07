@@ -3,8 +3,8 @@ import time
 from queue import Queue, Empty
 
 from dependency_injection.required_feature import RequiredFeature
-from util.multiple_queue_consumer_thread import MultipleQueueConsumerThread
-from util.watchdog_thread import WatchDogThread
+from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
+from concurrency.watchdog_thread import WatchDogThread
 
 
 class MapperOnDevices(object):

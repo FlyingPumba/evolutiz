@@ -1,5 +1,5 @@
 from devices import adb
-from devices.mapper_on_devices import MapperOnDevices
+from concurrency.mapper_on_devices import MapperOnDevices
 
 
 def push_to_all(src, target, timeout=None):

@@ -32,7 +32,6 @@ from test_suite_generation.population_generator import PopulationGenerator
 from util import logger
 from util.budget_manager import BudgetManager
 from util.command import *
-from util.multiple_queue_consumer_thread import MultipleQueueConsumerThread
 
 
 def run_one_app(strategy_with_runner_name):

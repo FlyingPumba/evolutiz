@@ -1,6 +1,6 @@
 # coding=utf-8
 from algorithms.standard import Standard
-from devices.mapper_on_devices import MapperOnDevices
+from concurrency.mapper_on_devices import MapperOnDevices
 from util import logger
 
 

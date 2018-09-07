@@ -1,6 +1,6 @@
 from dependency_injection.di_assertions import HasMethods
 from dependency_injection.required_feature import RequiredFeature
-from devices.mapper_on_devices import MapperOnDevices
+from concurrency.mapper_on_devices import MapperOnDevices
 from util import logger
 
 
