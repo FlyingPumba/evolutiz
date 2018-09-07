@@ -30,7 +30,7 @@ class FunctionMapperOnDevices(object):
             devices_to_be_processed.put_nowait(device)
 
         threads = [QueueConsumerThread(devices_to_be_processed, self.func, args=self.args, kwargs=self.kwargs)
-                   for i in xrange(0, total_devices)]
+                   for i in range(0, total_devices)]
 
         map(lambda t: t.start(), threads)
         devices_to_be_processed.join()

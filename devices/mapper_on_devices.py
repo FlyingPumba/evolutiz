@@ -1,6 +1,6 @@
 import time
 
-from Queue import Queue, Empty
+from queue import Queue, Empty
 
 from dependency_injection.required_feature import RequiredFeature
 from util.multiple_queue_consumer_thread import MultipleQueueConsumerThread
@@ -66,9 +66,10 @@ class MapperOnDevices(object):
                                                    consumable_items_queues=[devices_to_use],
                                                    extra_args=self.extra_args, extra_kwargs=self.extra_kwargs,
                                                    output_queue=output_queue)
-                       for i in xrange(0, total_devices)]
+                       for i in range(0, total_devices)]
 
-            map(lambda t: t.start(), threads)
+            for thread in threads:
+                thread.start()
 
             # busy loop checking if we still have budget available
             budget_run_out = False
@@ -99,9 +100,10 @@ class MapperOnDevices(object):
                                                    extra_args=self.extra_args,
                                                    extra_kwargs=self.extra_kwargs,
                                                    output_queue=output_queue)
-                       for i in xrange(0, total_devices)]
+                       for i in range(0, total_devices)]
 
-            map(lambda t: t.start(), threads)
+            for thread in threads:
+                thread.start()
 
             # busy loop checking if we still have budget available
             budget_run_out = False

@@ -29,7 +29,7 @@ class Standard(GeneticAlgorithm):
         for gen in range(1, self.max_generations + 1):
 
             if not self.budget_manager.time_budget_available():
-                print "Time budget run out, exiting evolve"
+                print("Time budget run out, exiting evolve")
                 break
 
             logger.log_progress("\n---> Starting generation " + str(gen))
@@ -41,7 +41,7 @@ class Standard(GeneticAlgorithm):
             success = self.parallel_evaluator.evaluate(invalid_ind)
 
             if not success:
-                print "Time budget run out during parallel evaluation, exiting evolve"
+                print("Time budget run out during parallel evaluation, exiting evolve")
                 break
 
             # Select the next generation population
@@ -54,7 +54,7 @@ class Standard(GeneticAlgorithm):
 
     def generate_offspring_in_parallel(self):
         self.new_population = []
-        offspring_pairs_to_generate = [i for i in range(0, self.offspring_size/2)]
+        offspring_pairs_to_generate = [i for i in range(0, int(self.offspring_size/2))]
 
         logger.log_progress("\nGenerating offspring of " + str(self.offspring_size) + " individuals in parallel")
 
@@ -68,22 +68,23 @@ class Standard(GeneticAlgorithm):
         device.mark_work_start()
 
         p1, p2 = map(self.toolbox.clone, self.toolbox.select(self.population, 2))
-        # assert len(p1) > 1
-        # assert len(p2) > 1
-        # assert hasattr(p1, 'history_index')
-        # assert hasattr(p2, 'history_index')
+        assert len(p1) > 1
+        assert len(p2) > 1
+        assert hasattr(p1, 'history_index')
+        assert hasattr(p2, 'history_index')
 
         o1, o2 = self.toolbox.mate(p1, p2)
-        # assert hasattr(o1, 'history_index')
-        # assert hasattr(o2, 'history_index')
+        assert hasattr(o1, 'history_index')
+        assert hasattr(o2, 'history_index')
 
         o1, = self.toolbox.mutate(device, self.package_name, o1)
-        # assert hasattr(o1, 'history_index')
-        # assert len(o1) > 1
+        assert hasattr(o1, 'history_index')
+        # TODO: fix mutate returning individual with length equal or less than one
+        assert len(o1) > 1
 
         o2, = self.toolbox.mutate(device, self.package_name, o2)
-        # assert hasattr(o1, 'history_index')
-        # assert len(o2) > 1
+        assert hasattr(o1, 'history_index')
+        assert len(o2) > 1
 
         del o1.fitness.values
         del o2.fitness.values

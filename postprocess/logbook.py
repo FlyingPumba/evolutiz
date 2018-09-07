@@ -9,12 +9,12 @@ def print_avg_fitness(logbook_file_path):
     logbook_file = open(logbook_file_path)
     logbook = pickle.load(logbook_file)
 
-    print "Average fitness by generation:\n"
-    print "gen\tcovrg.\tcrashes"
-    print "--------------------"
+    print("Average fitness by generation:\n")
+    print("gen\tcovrg.\tcrashes")
+    print("--------------------")
 
     for gen, (coverage, length, crashes) in enumerate(logbook.select("avg")):
-        print "%d\t%d\t%d" % (gen, coverage, crashes)
+        print("%d\t%d\t%d" % (gen, coverage, crashes))
 
 
 def draw_pop_fitness(logbook_file_path):

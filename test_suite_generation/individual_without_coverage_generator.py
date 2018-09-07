@@ -67,6 +67,6 @@ class IndividualWithoutCoverageGenerator(object):
             return individual
 
         except Exception as e:
-            print e
+            print(e)
             traceback.print_exc()
             return None

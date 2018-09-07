@@ -25,7 +25,7 @@ def plot(history, apk_dir):
 
 
 if __name__ == "__main__":
-    print "Test"
+    print("Test")
     history_pickle = open(settings.WORKING_DIR + "intermediate/history.pickle")
     history = pickle.load(history_pickle)
     plot(history)

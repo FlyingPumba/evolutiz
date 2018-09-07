@@ -81,5 +81,5 @@ if __name__ == "__main__":
     ella_output_path = "/home/kemao/test/apk/ella_output"
 
     count, report_paths = get_all_unique_bug_reports(ella_output_path)
-    print "Total:", count
-    print report_paths
+    print("Total:", count)
+    print(report_paths)

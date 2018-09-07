@@ -27,7 +27,7 @@ class MuPlusLambda(GeneticAlgorithm):
         for gen in range(1, self.max_generations + 1):
 
             if not self.budget_manager.time_budget_available():
-                print "Time budget run out, exiting evolve"
+                print("Time budget run out, exiting evolve")
                 break
 
             logger.log_progress("\n---> Starting generation " + str(gen))
@@ -39,7 +39,7 @@ class MuPlusLambda(GeneticAlgorithm):
             success = self.parallel_evaluator.evaluate(invalid_ind)
 
             if not success:
-                print "Time budget run out during parallel evaluation, exiting evolve"
+                print("Time budget run out during parallel evaluation, exiting evolve")
                 break
 
             self.population[:] = self.toolbox.select(self.population + offspring, self.population_size)
@@ -52,7 +52,7 @@ class MuPlusLambda(GeneticAlgorithm):
     def generate_offspring(self, population, gen):
 
         offspring = []
-        for index_in_generation in xrange(self.offspring_size):
+        for index_in_generation in range(self.offspring_size):
             op_choice = random.random()
             if op_choice < self.crossover_probability:  # Apply crossover
                 ind1, ind2 = map(self.toolbox.clone, random.sample(population, 2))

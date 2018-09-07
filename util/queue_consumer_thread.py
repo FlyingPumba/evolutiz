@@ -1,12 +1,12 @@
-import threading
-from Queue import Empty
+from threading import Thread
+from queue import Empty
 
 
-class QueueConsumerThread(threading.Thread):
+class QueueConsumerThread(Thread):
     """We assume all items in the queue are loaded before running the thread."""
 
     def __init__(self, queue, func, args=(), kwargs=None):
-        threading.Thread.__init__(self)
+        super().__init__()
 
         self.queue = queue
         self.func = func

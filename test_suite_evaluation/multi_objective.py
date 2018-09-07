@@ -37,7 +37,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
                                                                                                individual.generation,
                                                                                                individual.index_in_generation)
         # remove from suite lengths the scripts that did NOT cause a crash
-        for script, had_crash in scripts_crash_status.iteritems():
+        for script, had_crash in scripts_crash_status.items():
             if not had_crash:
                 suite_lengths.pop(script, None)
 
@@ -45,7 +45,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         if suite_lengths:
             length = numpy.mean(suite_lengths.values())
         else:
-            length = sys.maxint
+            length = sys.maxsize
 
         individual.fitness.values = (coverage, length, num_crashes)
         individual.fitness.timestamp = time.time()

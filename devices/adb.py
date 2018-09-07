@@ -1,9 +1,9 @@
 import os
-import subprocess
 import time
 
 import settings
 from util import logger
+from util.command import run_cmd
 
 adb_logs_dir = ""
 adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb"
@@ -82,11 +82,10 @@ def install(device, package_name, apk_path):
         device.flag_as_malfunctioning()
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
 
-    cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + \
-          adb_cmd_prefix + " -s " + device.name + " shell pm list packages | grep " + package_name
+    cmd = adb_cmd_prefix + " -s " + device.name + " shell pm list packages | grep " + package_name
     log_adb_command(device, cmd)
 
-    res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+    res = run_cmd(cmd)[0].strip()
     if package_name not in res:
         # we were unable to install
         # Reboot and raise exception
@@ -147,7 +146,7 @@ def get_battery_level(device):
             cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + battery_cmd
             log_adb_command(device, cmd)
 
-            res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+            res = run_cmd(cmd)[0].strip()
             return int(res)
         except Exception as e:
             # device.flag_as_malfunctioning()
@@ -166,7 +165,7 @@ def get_imei(device):
         # leave commented to avoid infinite recursion
         # log_adb_command(device, cmd)
 
-        res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+        res = run_cmd(cmd)[0].strip()
         devices_imei[device.name] = res
 
     return devices_imei[device.name]
@@ -187,15 +186,12 @@ def log_adb_command(device, cmd):
     os.system("echo \"" + cmd + "\" >> " + device_adb_log_file)
 
 
-def exists_file(device, file_path, timeout=None):
+def exists_file(device, file_path):
     adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell ls " + file_path
-    if timeout:
-        adb_cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + adb_cmd
 
     log_adb_command(device, adb_cmd)
 
-    p = subprocess.Popen(adb_cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-    output, errors = p.communicate()
+    output, errors = run_cmd(adb_cmd)
 
     no_file_str = "No such file or directory"
     if output.find(no_file_str) != -1 or errors.find(no_file_str) != -1:
@@ -217,7 +213,7 @@ def get_api_level(device):
     cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + api_level_cmd
     log_adb_command(device, cmd)
 
-    res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+    res = run_cmd(cmd)[0].strip()
     return int(res)
 
 
@@ -227,5 +223,5 @@ def get_android_version(device):
     cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + android_version_cmd
     log_adb_command(device, cmd)
 
-    res = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE).communicate()[0].strip()
+    res = run_cmd(cmd)[0].strip()
     return res

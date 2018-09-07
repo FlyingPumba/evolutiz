@@ -1,13 +1,13 @@
-import threading
+from threading import *
 import time
 import traceback
-from Queue import Empty
+from queue import Empty
 
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
 
 
-class MultipleQueueConsumerThread(threading.Thread):
+class MultipleQueueConsumerThread(Thread):
     """Provides a thread where a function can be called.
     The arguments of this function are fetched from different queues.
     These queues are of two types:
@@ -30,8 +30,9 @@ class MultipleQueueConsumerThread(threading.Thread):
         output_queue                Optional queue to store the results of the function call.
     """
 
-    def __init__(self, func, recyclable_items_queues=None, consumable_items_queues=None, extra_args=(), extra_kwargs=None, output_queue=None):
-        threading.Thread.__init__(self)
+    def __init__(self, func, recyclable_items_queues=None, consumable_items_queues=None, extra_args=(),
+                 extra_kwargs=None, output_queue=None):
+        super().__init__()
 
         if recyclable_items_queues is None and consumable_items_queues is None:
             raise ValueError("recyclable_items_queues and consumable_items_queues can not be both None")
@@ -48,7 +49,7 @@ class MultipleQueueConsumerThread(threading.Thread):
 
         self.output_queue = output_queue
 
-        self.stop_event = threading.Event()
+        self.stop_event = Event()
 
     def stop(self):
         self.stop_event.set()
@@ -101,7 +102,7 @@ class MultipleQueueConsumerThread(threading.Thread):
                         return
 
         except Exception as e:
-            print e
+            print(e)
             return
 
     def get_items_from_list_of_queues(self, list_of_queues):
@@ -124,5 +125,5 @@ class MultipleQueueConsumerThread(threading.Thread):
     def mark_used_items(self, items, list_of_queues):
         """Mark task_done() once for each item used in all queues"""
         if items is not None and list_of_queues is not None:
-            for index in xrange(0, len(items)):
+            for index in range(0, len(items)):
                 list_of_queues[index].task_done()

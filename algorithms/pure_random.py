@@ -18,7 +18,7 @@ class Random(object):
         self.lambda_ = settings.OFFSPRING_SIZE
 
         self.best_historic_crashes_measure = 0
-        self.best_historic_length_measure = sys.maxint
+        self.best_historic_length_measure = sys.maxsize
         self.best_historic_coverage_measure = 0
         self.best_historic_crashes_individual = None
         self.best_historic_length_individual = None
@@ -54,7 +54,7 @@ class Random(object):
         self.setup_log_best_historic_objectives_achieved()
 
     def initPopulation(self):
-        print "### Initialising population ...."
+        print("### Initialising population ....")
         self.population = self.toolbox.population(n=settings.POPULATION_SIZE, result_dir=self.toolbox.get_result_dir(),
                                                   package_name=self.toolbox.get_package_name())
         if (len(self.population) < settings.EMULATOR_DEVICE_NUM):
@@ -92,10 +92,10 @@ class Random(object):
         for gen in range(1, self.ngen + 1):
 
             if not self.budget_manager.time_budget_available():
-                print "Time budget run out, exiting evolve"
+                print("Time budget run out, exiting evolve")
                 break
 
-            print "Starting generation ", gen
+            print("Starting generation ", gen)
             logger.log_progress("\nStarting generation " + str(gen))
 
             # Generate new random population

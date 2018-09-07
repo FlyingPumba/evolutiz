@@ -72,8 +72,7 @@ class IndividualWithCoverageGenerator(object):
                 max_tries = 10
                 found_coverage_file = False
                 while tries < max_tries:
-                    if not adb.exists_file(device, coverage_path_in_device,
-                                           timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT):
+                    if not adb.exists_file(device, coverage_path_in_device):
                         time.sleep(15)
                         tries += 1
                     else:
@@ -126,7 +125,7 @@ class IndividualWithCoverageGenerator(object):
 
             adb.log_evaluation_result(device, self.result_dir, "success", True)
 
-        print "### Getting EMMA coverage.ec and report ..."
+        print("### Getting EMMA coverage.ec and report ...")
         result_code = adb.shell_command(device, "pm clear " + self.package_name,
                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
@@ -135,7 +134,7 @@ class IndividualWithCoverageGenerator(object):
             raise Exception("Unable to clear package " + self.package_name + " in device: " + device.name)
 
         crashes = len(unique_crashes)
-        length = sys.maxint
+        length = sys.maxsize
         if len(lengths) > 0:
             length = numpy.mean(lengths)
         coverage = 0
@@ -217,7 +216,7 @@ class IndividualWithCoverageGenerator(object):
             return individual, individual_index, device, True
 
         except Exception as e:
-            print e
+            print(e)
             traceback.print_exc()
 
             self.device_manager.mark_work_stop_on_device(device)

@@ -21,7 +21,7 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
 
     device_bugreport_path = "/mnt/sdcard/bugreport.crash"
 
-    if not adb.exists_file(device, device_bugreport_path, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT):
+    if not adb.exists_file(device, device_bugreport_path):
         # no crash
         return False
     else:
@@ -65,6 +65,6 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
         os.system("cp " + script_path + " "
                   + result_dir + "/crashes/" + "script." + individual_suffix)
 
-        print "### Caught a crash."
+        print("### Caught a crash.")
         adb.shell_command(device, "rm " + device_bugreport_path, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         return True

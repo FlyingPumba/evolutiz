@@ -60,3 +60,4 @@ fitness-historic.log
 benchmark-dir
 instrumented-subjects/
 results/
+.env3
