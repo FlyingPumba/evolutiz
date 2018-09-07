@@ -1,10 +1,5 @@
-import signal
-import sys
-import threading
-
 from configparser import ConfigParser
 import argparse
-import os
 import random
 import re
 import traceback
@@ -13,7 +8,6 @@ import numpy
 from deap import tools
 from deap.base import Toolbox
 
-import settings
 from algorithms.dyna_mosa import DynaMosa
 from algorithms.monotonic import Monotonic
 from algorithms.mosa import Mosa
@@ -38,6 +32,7 @@ from test_suite_generation.population_generator import PopulationGenerator
 from util import logger
 from util.budget_manager import BudgetManager
 from util.command import *
+from util.multiple_queue_consumer_thread import MultipleQueueConsumerThread
 
 
 def run_one_app(strategy_with_runner_name):
@@ -412,15 +407,8 @@ def provide_features():
     stats.register("max", numpy.max, axis=0)
     features.provide('stats', stats)
 
-def sigint_handler(sig, frame):
-    # stop each one of the MultipleQueueConsumerThread
-    for thread in threading.enumerate():
-        thread.stop()
-    sys.exit(1)
 
 if __name__ == "__main__":
-    signal.signal(signal.SIGINT, sigint_handler)
-
     logger.prepare()
     logger.clear_progress()
 

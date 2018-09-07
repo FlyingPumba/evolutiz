@@ -1,13 +1,14 @@
-from threading import *
 import time
 import traceback
 from queue import Empty
+from threading import Event
 
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
+from util.killable_thread import KillableThread
 
 
-class MultipleQueueConsumerThread(Thread):
+class MultipleQueueConsumerThread(KillableThread):
     """Provides a thread where a function can be called.
     The arguments of this function are fetched from different queues.
     These queues are of two types:
@@ -31,8 +32,8 @@ class MultipleQueueConsumerThread(Thread):
     """
 
     def __init__(self, func, recyclable_items_queues=None, consumable_items_queues=None, extra_args=(),
-                 extra_kwargs=None, output_queue=None):
-        super().__init__()
+                 extra_kwargs=None, output_queue=None, name=None):
+        super().__init__(name=name)
 
         if recyclable_items_queues is None and consumable_items_queues is None:
             raise ValueError("recyclable_items_queues and consumable_items_queues can not be both None")
@@ -50,15 +51,21 @@ class MultipleQueueConsumerThread(Thread):
         self.output_queue = output_queue
 
         self.stop_event = Event()
+        self.item_processing_start_time = None
 
     def stop(self):
         self.stop_event.set()
+
+    def get_item_processing_start_time(self):
+        return self.item_processing_start_time
 
     def run(self):
         verbose_level = RequiredFeature('verbose_level').request()
 
         try:
             while not self.stop_event.is_set():
+                self.item_processing_start_time = time.time()
+
                 recyclable_items = self.get_items_from_list_of_queues(self.recyclable_items_queues)
                 consumable_items = self.get_items_from_list_of_queues(self.consumable_items_queues)
 

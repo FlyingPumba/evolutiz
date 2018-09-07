@@ -4,6 +4,7 @@ from queue import Queue, Empty
 
 from dependency_injection.required_feature import RequiredFeature
 from util.multiple_queue_consumer_thread import MultipleQueueConsumerThread
+from util.watchdog_thread import WatchDogThread
 
 
 class MapperOnDevices(object):
@@ -39,8 +40,6 @@ class MapperOnDevices(object):
         self.idle_devices_only = idle_devices_only
 
     def run(self):
-        budget_manager = RequiredFeature('budget_manager').request()
-
         device_manager = RequiredFeature('device_manager').request()
         all_devices = device_manager.get_idle_devices() if self.idle_devices_only else device_manager.get_devices()
         devices = [device for device in all_devices
@@ -65,26 +64,21 @@ class MapperOnDevices(object):
             threads = [MultipleQueueConsumerThread(self.func,
                                                    consumable_items_queues=[devices_to_use],
                                                    extra_args=self.extra_args, extra_kwargs=self.extra_kwargs,
-                                                   output_queue=output_queue)
+                                                   output_queue=output_queue, name="MQCThread-" + str(i))
                        for i in range(0, total_devices)]
 
             for thread in threads:
                 thread.start()
 
-            # busy loop checking if we still have budget available
-            budget_run_out = False
-            while not devices_to_use.empty():
-                if not budget_manager.time_budget_available():
-                    map(lambda t: t.stop(), threads)
-                    budget_run_out = True
-                    break
-                else:
-                    time.sleep(5)
+            watchdog_thread = WatchDogThread(queue_to_join=devices_to_use)
+            watchdog_thread.start()
+            time.sleep(5)
 
-            if not budget_run_out:
-                # only join the consumable queue if we are sure thread was able to run until the end
-                # and was not preemptively stopped.
-                devices_to_use.join()
+            while not watchdog_thread.finished():
+                time.sleep(2)
+
+            if not watchdog_thread.finished_successfully():
+                raise Exception("MapperOnDevices finished unsuccessfully.")
 
         else:
             items_queue = Queue(maxsize=len(self.items_to_map))
@@ -99,26 +93,21 @@ class MapperOnDevices(object):
                                                    consumable_items_queues=[items_queue],
                                                    extra_args=self.extra_args,
                                                    extra_kwargs=self.extra_kwargs,
-                                                   output_queue=output_queue)
+                                                   output_queue=output_queue, name="MQCThread-" + str(i))
                        for i in range(0, total_devices)]
 
             for thread in threads:
                 thread.start()
 
-            # busy loop checking if we still have budget available
-            budget_run_out = False
-            while not items_queue.empty():
-                if not budget_manager.time_budget_available():
-                    map(lambda t: t.stop(), threads)
-                    budget_run_out = True
-                    break
-                else:
-                    time.sleep(5)
+            watchdog_thread = WatchDogThread(queue_to_join=items_queue)
+            watchdog_thread.start()
+            time.sleep(5)
 
-            if not budget_run_out:
-                # only join the consumable queue if we are sure thread was able to run until the end
-                # and was not preemptively stopped.
-                items_queue.join()
+            while not watchdog_thread.finished():
+                time.sleep(2)
+
+            if not watchdog_thread.finished_successfully():
+                raise Exception("MapperOnDevices finished unsuccessfully.")
 
         # collect output
         results = []
