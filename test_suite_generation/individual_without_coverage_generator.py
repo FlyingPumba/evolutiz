@@ -44,9 +44,6 @@ class IndividualWithoutCoverageGenerator(object):
 
         ret = self.test_runner.generate(device, self.package_name, motifcore_script_filename)
 
-        # deal with crash
-        crash_handler.handle(device, self.result_dir, motifcore_script_filename, "init", ts, index, unique_crashes)
-
         return ret
 
     def gen_individual(self, device, individual_index, gen):
