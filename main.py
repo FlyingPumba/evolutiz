@@ -441,6 +441,7 @@ if __name__ == "__main__":
                         args.evaluator + ", " +
                         args.test_runner + ")")
 
+    logger.log_progress("\nVerbose level: " + str(args.verbose))
     logger.log_progress("\nSubjects to be processed: " + ''.join(map(lambda p: "\n -" + p, app_paths)))
 
     run(strategy_with_runner_name, app_paths)

@@ -5,7 +5,6 @@ import traceback
 from deap import creator
 
 import settings
-from crashes import crash_handler
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 
