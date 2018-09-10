@@ -103,7 +103,7 @@ def pkill(device, string):
 
     log_adb_command(device, pkill_cmd)
     try:
-        output, errors, result_code = run_cmd(pkill_cmd + logger.redirect_string())
+        output, errors, result_code = run_cmd(pkill_cmd)
         return result_code
     except TimeoutException as e:
         return 124

@@ -182,7 +182,7 @@ def boot_emulator(device_manager):
 
 
 def reboot_device(device_manager, device):
-    result_code = adb.adb_command(device, "reboot")
+    output, errors, result_code = adb.adb_command(device, "reboot")
     if result_code != 0:
         logger.log_progress("\nUnable to reboot device: " + device.name)
         logger.log_progress("\nPlease, turn it off and on manually.")
