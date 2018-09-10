@@ -38,7 +38,7 @@ class DeviceManager(object):
         real_devices_found = 0
 
         devices_cmd = adb.adb_cmd_prefix + ' devices'
-        output, errors = run_cmd(devices_cmd)
+        output, errors, = run_cmd(devices_cmd)
 
         error_lines = errors.split("\n")
         for line in error_lines:
@@ -112,7 +112,7 @@ class DeviceManager(object):
                     # don't change the state of devices when it is higher or equal than booted
                     continue
 
-                output, errors = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell getprop init.svc.bootanim')
+                output, errors, = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell getprop init.svc.bootanim')
                 if output.strip() == "stopped" and "error" not in errors.strip():
                     device.state = State.booted
 
@@ -126,7 +126,7 @@ class DeviceManager(object):
                     # don't change the state of devices when it is higher or equal than ready_idle
                     continue
 
-                output, errors = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell pm list packages')
+                output, errors, = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell pm list packages')
                 if "Error: Could not access the Package Manager" not in output.strip() and errors.strip() == "":
                     device.state = State.ready_idle
 

@@ -17,7 +17,7 @@ class AvdManager(object):
 
     def avd_name_exists(self, avd_name):
         list_avd_cmd = self.avdmanager_path + " list avd"
-        output, errors = run_cmd(list_avd_cmd)
+        output, errors, = run_cmd(list_avd_cmd)
 
         if errors.strip() != '':
             raise Exception("There was an error running avdmanager command: " + errors)

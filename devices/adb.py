@@ -191,7 +191,7 @@ def exists_file(device, file_path):
 
     log_adb_command(device, adb_cmd)
 
-    output, errors = run_cmd(adb_cmd)
+    output, errors, = run_cmd(adb_cmd)
 
     no_file_str = "No such file or directory"
     if output.find(no_file_str) != -1 or errors.find(no_file_str) != -1:

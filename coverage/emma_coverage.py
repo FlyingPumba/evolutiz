@@ -157,7 +157,7 @@ class EmmaCoverage(object):
                 raise Exception("Unable to pull coverage for device: " + device.name)
 
             emma_cmd = "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + self.app_path + "/src "
-            output, errors = run_cmd(emma_cmd)
+            output, errors, = run_cmd(emma_cmd)
 
             # logger.log_progress("Emma jar finished.\nOutput:\n" + output + ".\nErrors:\n" + errors + "\n")
 
