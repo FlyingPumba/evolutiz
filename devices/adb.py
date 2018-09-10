@@ -197,7 +197,7 @@ def log_adb_command(device, cmd):
 
 def exists_file(device, file_path):
     try:
-        output, errors, = shell_command(device, "ls " + file_path)
+        output, errors, result_code = shell_command(device, "ls " + file_path)
     except TimeoutException:
         return False
 
@@ -217,7 +217,7 @@ def log_evaluation_result(device, result_dir, script, success):
 
 def get_api_level(device):
     try:
-        output, = shell_command(device, "getprop ro.build.version.sdk")
+        output, errors, result_code = shell_command(device, "getprop ro.build.version.sdk")
         res = output.strip()
         return int(res)
     except TimeoutException:
@@ -226,7 +226,7 @@ def get_api_level(device):
 
 def get_android_version(device):
     try:
-        output, = shell_command(device, "getprop ro.build.version.release")
+        output, errors, result_code = shell_command(device, "getprop ro.build.version.release")
         res = output.strip()
         return int(res)
     except TimeoutException:
