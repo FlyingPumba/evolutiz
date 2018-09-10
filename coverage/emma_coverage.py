@@ -50,7 +50,7 @@ class EmmaCoverage(object):
 
         # run scripts
         for index, script in enumerate(scripts):
-            result_code = adb.shell_command(device,
+            output, errors, result_code = adb.shell_command(device,
                                             "am instrument " + self.package_name + "/" + self.package_name + ".EmmaInstrument.EmmaInstrumentation",
                                             timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, retry=2)
             if result_code != 0:
@@ -74,7 +74,7 @@ class EmmaCoverage(object):
             else:
                 scripts_crash_status[script] = False
                 # no crash, can broadcast
-                result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE",
+                output, errors, result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE",
                                                 timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
                 if result_code != 0:
                     adb.log_evaluation_result(device, self.result_dir, script, False)
@@ -112,7 +112,7 @@ class EmmaCoverage(object):
                     "Unable to retrieve coverage.ec file after coverage broadcast for script " + script + " in  device: " + device.name)
 
         # close app
-        result_code = adb.shell_command(device, "pm clear " + self.package_name,
+        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name,
                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, script, False)
@@ -142,7 +142,7 @@ class EmmaCoverage(object):
         adb.log_evaluation_result(device, self.result_dir, script, True)
 
         print("### Getting EMMA coverage.ec and report ...")
-        result_code = adb.shell_command(device, "pm clear " + self.package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, "clear-package", False)
             device.flag_as_malfunctioning()

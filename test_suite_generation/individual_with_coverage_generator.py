@@ -52,7 +52,7 @@ class IndividualWithCoverageGenerator(object):
 
         for i in range(0, settings.SUITE_SIZE):
 
-            result_code = adb.shell_command(device,
+            output, errors, result_code = adb.shell_command(device,
                                             "am instrument " + self.package_name + "/" + self.package_name + ".EmmaInstrument.EmmaInstrumentation",
                                             timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
@@ -96,7 +96,7 @@ class IndividualWithCoverageGenerator(object):
                         "Unable to retrieve coverage.ec file after coverage broadcast in  device: " + device.name)
 
             # close app
-            result_code = adb.shell_command(device, "pm clear " + self.package_name,
+            output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name,
                                             timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, "pm clear", False)
@@ -126,7 +126,7 @@ class IndividualWithCoverageGenerator(object):
             adb.log_evaluation_result(device, self.result_dir, "success", True)
 
         print("### Getting EMMA coverage.ec and report ...")
-        result_code = adb.shell_command(device, "pm clear " + self.package_name,
+        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name,
                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, "clear-package", False)
@@ -181,7 +181,7 @@ class IndividualWithCoverageGenerator(object):
             pass
         else:
             # no crash, can broadcast
-            result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE",
+            output, errors, result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE",
                                             timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, motifcore_script_filename, False)
