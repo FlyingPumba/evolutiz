@@ -26,6 +26,7 @@ def run_cmd(command):
 
         process = subprocess.run("exec " + command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,
                        timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, encoding="utf-8")
+
     except subprocess.TimeoutExpired as timeout:
         if verbose_level is not None and verbose_level > 1:
             logger.log_progress("\nTimeout occurred.\nOn timeout, stdout is : '%s', stderr is: '%s'\n" %
@@ -33,4 +34,4 @@ def run_cmd(command):
 
         raise TimeoutException(process.args, timeout, output=timeout.stdout, stderr=timeout.stderr)
 
-    return p.stdout, p.stderr, p.returncode
+    return process.stdout, process.stderr, process.returncode
