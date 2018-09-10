@@ -26,8 +26,7 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
         return False
     else:
         # save the crash report
-        output, errors, result_code = adb.pull(device, device_bugreport_path, local_bugreport_path,
-                               timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        output, errors, result_code = adb.pull(device, device_bugreport_path, local_bugreport_path)
         if result_code != 0:
             device.flag_as_malfunctioning()
             raise Exception("Failed to retrieve bugreport.crash file from device: " + device.name)
@@ -39,8 +38,7 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
                 if line_no == 0:
                     # should not caused by android itself
                     if line.startswith("// CRASH: com.android."):
-                        adb.shell_command(device, "rm " + device_bugreport_path,
-                                          timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+                        adb.shell_command(device, "rm " + device_bugreport_path)
                         os.system("rm " + local_bugreport_path)
 
                         # caught a crash, but it was Android related
@@ -49,7 +47,7 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
                     continue
                 content += line
             if content in unique_crashes:
-                adb.shell_command(device, "rm " + device_bugreport_path, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+                adb.shell_command(device, "rm " + device_bugreport_path)
                 os.system("rm " + local_bugreport_path)
 
                 # caught a crash, but it wasn't a new one
@@ -66,5 +64,5 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
                   + result_dir + "/crashes/" + "script." + individual_suffix)
 
         print("### Caught a crash.")
-        adb.shell_command(device, "rm " + device_bugreport_path, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.shell_command(device, "rm " + device_bugreport_path)
         return True
