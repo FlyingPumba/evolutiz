@@ -86,7 +86,7 @@ class IndividualWithCoverageGenerator(object):
                         "Coverage broadcast was sent in device: " + device.name + " but there is not file: " + coverage_path_in_device)
 
                 # save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
-                result_code = adb.sudo_shell_command(device,
+                output, errors, result_code = adb.sudo_shell_command(device,
                                                      "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear,
                                                      timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
                 if result_code != 0:
@@ -105,7 +105,7 @@ class IndividualWithCoverageGenerator(object):
                     "Unable to clear package in device: " + device.name)
 
             # restore the coverage.ec file from /mnt/sdcard to app files
-            result_code = adb.sudo_shell_command(device, "mkdir " + application_files,
+            output, errors, result_code = adb.sudo_shell_command(device, "mkdir " + application_files,
                                                  timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, "mkdir application_files", False)
@@ -114,7 +114,7 @@ class IndividualWithCoverageGenerator(object):
                     "Unable to create application files directory in device: " + device.name)
 
             if there_is_coverage_in_suite:
-                result_code = adb.sudo_shell_command(device,
+                output, errors, result_code = adb.sudo_shell_command(device,
                                                      "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device,
                                                      timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
                 if result_code != 0:
