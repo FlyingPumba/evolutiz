@@ -1,4 +1,5 @@
 import os
+import signal
 import subprocess
 
 import settings
@@ -16,6 +17,13 @@ def run_cmd(command):
     if verbose_level is not None and verbose_level > 1:
         logger.log_progress("\nRunning command: %s\n" % command)
 
-    p = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,
-                       timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, encoding="utf-8")
+    try:
+        p = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,
+                       timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, encoding="utf-8", preexec_fn=os.setsid)
+    except subprocess.TimeoutExpired as timeout:
+        logger.log_progress("\nTimeout occurred\n")
+        # in case process was not properly killed, send the signal to all the process groups
+        os.killpg(os.getpgid(p.pid), signal.SIGTERM)
+        return timeout.stdout, timeout.stderr
+
     return p.stdout, p.stderr
