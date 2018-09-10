@@ -28,7 +28,7 @@ def run_cmd(command):
                        timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, encoding="utf-8")
     except subprocess.TimeoutExpired as timeout:
         if verbose_level is not None and verbose_level > 1:
-            logger.log_progress("\nTimeout occurred.\nOn timeout, stdout is : %s, stderr is: %s\n" % (timeout.stdout, timeout.stderr))
+            logger.log_progress("\nTimeout occurred.\nOn timeout, stdout is : '%s', stderr is: '%s'\n" % (timeout.stdout, timeout.stderr))
 
         return timeout.stdout, timeout.stderr, 124
 
