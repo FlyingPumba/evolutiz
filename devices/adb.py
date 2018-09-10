@@ -3,7 +3,7 @@ import time
 
 import settings
 from util import logger
-from util.command import run_cmd
+from util.command import run_cmd, TimeoutException
 
 adb_logs_dir = ""
 adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb"
@@ -23,26 +23,30 @@ devices_imei = {
 def adb_command(device, command, timeout=None, log_output=True, retry=1):
     cmd = adb_cmd_prefix + " -s " + device.name + " " + command
 
-    if timeout is not None:
-        cmd = settings.TIMEOUT_CMD + " " + str(timeout) + " " + cmd
-
     tries = 0
     while True:
         tries += 1
         log_adb_command(device, cmd)
-        result_code = os.system(cmd + logger.redirect_string(log_output))
 
-        if result_code == 0:
-            return 0
-        elif tries >= retry:
-            return result_code
-        else:
-            time.sleep(1)
+        try:
+            output, errors, result_code = run_cmd(cmd + logger.redirect_string(log_output), timeout=timeout)
+
+            if tries >= retry or result_code == 0:
+                return output, errors, result_code
+            else:
+                time.sleep(1)
+
+        except TimeoutException as e:
+
+            if tries >= retry:
+                return e.stdout, e.stderr, 124
+            else:
+                time.sleep(1)
 
 
 def get_root_permissions(device):
     # TODO: cache this result to avoid running 'adb root' each time we perform a "sudo command"
-    result_code = adb_command(device, "root", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+    output, errors, result_code = adb_command(device, "root", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
         device.flag_as_malfunctioning()
         raise Exception("Unable to gain root permissions on device: " + device.name)
@@ -75,7 +79,7 @@ def uninstall(device, package_name):
 
 
 def install(device, package_name, apk_path):
-    result_code = adb_command(device, "install " + apk_path, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+    output, errors, result_code = adb_command(device, "install " + apk_path, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
     if result_code != 0:
         # we were unable to install the apk in device.
         # Reboot and raise exception
@@ -96,10 +100,13 @@ def install(device, package_name, apk_path):
 def pkill(device, string):
     adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
     pkill_cmd = adb_cmd + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd + "kill pid "
-    cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + pkill_cmd
-    log_adb_command(device, cmd)
 
-    return os.system(cmd + logger.redirect_string())
+    log_adb_command(device, pkill_cmd)
+    try:
+        output, errors, result_code = run_cmd(pkill_cmd + logger.redirect_string())
+        return result_code
+    except TimeoutException as e:
+        return 124
 
 
 def set_bluetooth_state(device, enabled, timeout=None):
@@ -140,45 +147,51 @@ def set_brightness(device, value, timeout=None):
 
 def get_battery_level(device):
     while True:
-        try:
-            adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
-            battery_cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
-            cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + battery_cmd
-            log_adb_command(device, cmd)
+        adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
+        battery_cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
 
-            res = run_cmd(cmd)[0].strip()
+        log_adb_command(device, battery_cmd)
+        try:
+            output, errors, result_code = run_cmd(battery_cmd + logger.redirect_string())
+
+            res = output[0].strip()
             return int(res)
-        except Exception as e:
+
+        except TimeoutException as e:
             # device.flag_as_malfunctioning()
             # raise Exception("There was an error fetching battery level for device: " + device.name)
 
             # TODO: we should be able to remove the while True and flag the device as malfunctioning when unable to fetch
             # battery level, but it seems is very normal for this command to fail
-            pass
+            return 124
 
 
 def get_imei(device):
     if device.name not in devices_imei:
         adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
         imei_cmd = adb_cmd + "dumpsys iphonesubinfo | grep 'Device ID' | cut -d ' ' -f 6 "
-        cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + imei_cmd
+
         # leave commented to avoid infinite recursion
         # log_adb_command(device, cmd)
 
-        res = run_cmd(cmd)[0].strip()
-        devices_imei[device.name] = res
+        try:
+            output, errors, result_code = run_cmd(imei_cmd + logger.redirect_string())
+
+            res = output[0].strip()
+            devices_imei[device.name] = res
+
+        except TimeoutException as e:
+            pass
 
     return devices_imei[device.name]
 
 
 def restart_server():
-    # print "### killall adb"
-    # os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')" + logger.redirect_string())
-    # os.system("killall adb" + logger.redirect_string())
-    os.system(settings.TIMEOUT_CMD + " " + str(
-        settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + adb_cmd_prefix + " kill-server" + logger.redirect_string())
-    os.system(settings.TIMEOUT_CMD + " " + str(
-        settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + adb_cmd_prefix + " devices" + logger.redirect_string())
+    try:
+        run_cmd(adb_cmd_prefix + " kill-server" + logger.redirect_string())
+        run_cmd(adb_cmd_prefix + " devices" + logger.redirect_string())
+    except TimeoutException as e:
+        pass
 
 
 def log_adb_command(device, cmd):
@@ -187,11 +200,10 @@ def log_adb_command(device, cmd):
 
 
 def exists_file(device, file_path):
-    adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell ls " + file_path
-
-    log_adb_command(device, adb_cmd)
-
-    output, errors, = run_cmd(adb_cmd)
+    try:
+        output, errors, = shell_command(device, "ls " + file_path)
+    except TimeoutException:
+        return False
 
     no_file_str = "No such file or directory"
     if output.find(no_file_str) != -1 or errors.find(no_file_str) != -1:
@@ -208,20 +220,18 @@ def log_evaluation_result(device, result_dir, script, success):
 
 
 def get_api_level(device):
-    adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
-    api_level_cmd = adb_cmd + " getprop ro.build.version.sdk"
-    cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + api_level_cmd
-    log_adb_command(device, cmd)
-
-    res = run_cmd(cmd)[0].strip()
-    return int(res)
+    try:
+        output, = shell_command(device, "getprop ro.build.version.sdk")
+        res = output.strip()
+        return int(res)
+    except TimeoutException:
+        return None
 
 
 def get_android_version(device):
-    adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
-    android_version_cmd = adb_cmd + " getprop ro.build.version.release"
-    cmd = settings.TIMEOUT_CMD + " " + str(settings.ADB_REGULAR_COMMAND_TIMEOUT) + " " + android_version_cmd
-    log_adb_command(device, cmd)
-
-    res = run_cmd(cmd)[0].strip()
-    return res
+    try:
+        output, = shell_command(device, "getprop ro.build.version.release")
+        res = output.strip()
+        return int(res)
+    except TimeoutException:
+        return None
