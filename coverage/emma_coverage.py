@@ -56,7 +56,7 @@ class EmmaCoverage(object):
                 device.flag_as_malfunctioning()
                 raise Exception("Unable to instrument " + self.package_name)
 
-            result_code = adb.push(device, script, "/mnt/sdcard/")
+            output, errors, result_code = adb.push(device, script, "/mnt/sdcard/")
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script, False)
                 device.flag_as_malfunctioning()

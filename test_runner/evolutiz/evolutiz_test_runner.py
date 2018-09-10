@@ -105,7 +105,7 @@ class EvolutizTestRunner(TestRunner):
 
         # push individual to device
         remote_src_filename = "/mnt/sdcard/offspring." + ts
-        result_code = adb.push(device, local_src_filename, remote_src_filename,
+        output, errors, result_code = adb.push(device, local_src_filename, remote_src_filename,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
         # call evolutiz test runner
