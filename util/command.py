@@ -30,6 +30,6 @@ def run_cmd(command):
         if verbose_level is not None and verbose_level > 1:
             logger.log_progress("\nTimeout occurred.\nOn timeout, stdout is : %s, stderr is: %s\n" % (timeout.stdout, timeout.stderr))
 
-        return timeout.stdout, timeout.stderr
+        return timeout.stdout, timeout.stderr, 124
 
-    return p.stdout, p.stderr
+    return p.stdout, p.stderr, p.returncode
