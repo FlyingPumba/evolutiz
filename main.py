@@ -128,7 +128,7 @@ def get_subject_paths(arguments):
         subjects_path = arguments.subjects_path
         features.provide('subjects_path', subjects_path)
 
-        output, errors, = run_cmd("ls -d " + subjects_path + "*/")
+        output, errors, result_code = run_cmd("ls -d " + subjects_path + "*/")
         app_paths = []
         for line in output.strip().split('\n'):
             if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
@@ -177,7 +177,7 @@ def check_needed_commands_available():
         logger.log_progress(cause)
         raise Exception(cause)
 
-    output, errors, = run_cmd("java -version")
+    output, errors, result_code = run_cmd("java -version")
     first_line = errors.split('\n')[0].strip()
     version = first_line.split(' ')[2]
     if not version[1:-1].startswith("1.8"):
@@ -185,7 +185,7 @@ def check_needed_commands_available():
         logger.log_progress(cause)
         raise Exception(cause)
 
-    output, errors, = run_cmd("javac -version")
+    output, errors, result_code = run_cmd("javac -version")
     version = errors.split(' ')[1].strip()
     if not version.startswith("1.8"):
         cause = "Found javac with version " + version + ", but 1.8 is needed."
@@ -194,7 +194,7 @@ def check_needed_commands_available():
 
     # search for aapt in build-tools folder
     # build_tools_cmd = "ls " + settings.ANDROID_HOME + "build-tools/ | sort -r"
-    # output, errors, = run_cmd(build_tools_cmd)
+    # output, errors, result_code = run_cmd(build_tools_cmd)
     # aapt_found = False
     # for folder in output.strip().split('\n'):
     #     aapt_path = settings.ANDROID_HOME + "build-tools/" + folder + "/aapt"

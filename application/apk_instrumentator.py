@@ -30,9 +30,6 @@ class ApkInstrumentator(object):
         result_code = os.system("cp bin/coverage.em " + self.result_dir + "/" + logger.redirect_string())
         if result_code != 0: raise Exception("Unable to copy coverage.em file")
 
-        apk_path, errors, = run_cmd("ls bin/*-debug.apk")
-        apk_path = apk_path.rstrip('\n')
-
         os.chdir(settings.WORKING_DIR)
 
         return instrumented_source_path, package_name

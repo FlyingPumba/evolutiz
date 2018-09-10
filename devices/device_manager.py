@@ -2,7 +2,7 @@ import os
 import time
 
 from devices.real_device import RealDevice
-from util.command import run_cmd
+from util.command import run_cmd, TimeoutException
 from . import adb
 import settings
 from dependency_injection.required_feature import RequiredFeature
@@ -38,7 +38,11 @@ class DeviceManager(object):
         real_devices_found = 0
 
         devices_cmd = adb.adb_cmd_prefix + ' devices'
-        output, errors, = run_cmd(devices_cmd)
+
+        try:
+            output, errors, result_code = run_cmd(devices_cmd)
+        except TimeoutException as e:
+            return []
 
         error_lines = errors.split("\n")
         for line in error_lines:
@@ -112,9 +116,13 @@ class DeviceManager(object):
                     # don't change the state of devices when it is higher or equal than booted
                     continue
 
-                output, errors, = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell getprop init.svc.bootanim')
-                if output.strip() == "stopped" and "error" not in errors.strip():
-                    device.state = State.booted
+                try:
+                    output, errors, result_code = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell getprop init.svc.bootanim')
+                    if output.strip() == "stopped" and "error" not in errors.strip():
+                        device.state = State.booted
+
+                except TimeoutException as e:
+                    continue
 
         return [device for device in self.devices if device.state is State.booted]
 
@@ -126,9 +134,12 @@ class DeviceManager(object):
                     # don't change the state of devices when it is higher or equal than ready_idle
                     continue
 
-                output, errors, = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell pm list packages')
-                if "Error: Could not access the Package Manager" not in output.strip() and errors.strip() == "":
-                    device.state = State.ready_idle
+                try:
+                    output, errors, result_code = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell pm list packages')
+                    if "Error: Could not access the Package Manager" not in output.strip() and errors.strip() == "":
+                        device.state = State.ready_idle
+                except TimeoutException as e:
+                    continue
 
         return [device for device in self.devices if device.state is State.ready_idle]
 

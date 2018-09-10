@@ -152,10 +152,8 @@ def get_battery_level(device):
 
         log_adb_command(device, battery_cmd)
         try:
-            output, errors, result_code = run_cmd(battery_cmd + logger.redirect_string())
-
-            res = output[0].strip()
-            return int(res)
+            output, errors, result_code = run_cmd(battery_cmd)
+            return int(output.strip())
 
         except TimeoutException as e:
             # device.flag_as_malfunctioning()
@@ -163,7 +161,7 @@ def get_battery_level(device):
 
             # TODO: we should be able to remove the while True and flag the device as malfunctioning when unable to fetch
             # battery level, but it seems is very normal for this command to fail
-            return 124
+            return None
 
 
 def get_imei(device):
@@ -175,13 +173,11 @@ def get_imei(device):
         # log_adb_command(device, cmd)
 
         try:
-            output, errors, result_code = run_cmd(imei_cmd + logger.redirect_string())
-
-            res = output[0].strip()
-            devices_imei[device.name] = res
+            output, errors, result_code = run_cmd(imei_cmd)
+            devices_imei[device.name] = output.strip()
 
         except TimeoutException as e:
-            pass
+            return None
 
     return devices_imei[device.name]
 
