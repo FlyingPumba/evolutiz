@@ -20,14 +20,16 @@ def run_cmd(command):
     try:
         # use exec in order for process kill to also eliminate childs
         # from SO: https://stackoverflow.com/a/13143013/2271834
-        
+
         # this doesn't work if a semi-colon is used in the command
         assert ";" not in command
 
         p = subprocess.run("exec " + command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,
                        timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, encoding="utf-8")
     except subprocess.TimeoutExpired as timeout:
-        logger.log_progress("\nTimeout occurred\n")
+        if verbose_level is not None and verbose_level > 1:
+            logger.log_progress("\nTimeout occurred.\nOn timeout, stdout is : %s, stderr is: %s\n" % (timeout.stdout, timeout.stderr))
+
         return timeout.stdout, timeout.stderr
 
     return p.stdout, p.stderr
