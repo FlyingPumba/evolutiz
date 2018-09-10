@@ -140,7 +140,7 @@ class IndividualWithCoverageGenerator(object):
         coverage = 0
 
         if there_is_coverage_in_suite:
-            result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec",
+            output, errors, result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec",
                                    timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, "pull-coverage", False)

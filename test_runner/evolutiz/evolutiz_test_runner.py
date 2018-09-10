@@ -120,7 +120,7 @@ class EvolutizTestRunner(TestRunner):
 
         # fetch mutated individual
         local_dst_filename = result_dir + "/intermediate/offspring.out." + ts
-        result_code = adb.pull(device, remote_dst_filename, local_dst_filename,
+        output, errors, result_code = adb.pull(device, remote_dst_filename, local_dst_filename,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
         # get content from local file
@@ -176,7 +176,7 @@ class EvolutizTestRunner(TestRunner):
         return test_content
 
     def retrieve_generated_test(self, device, destination_file_name):
-        result_code = adb.pull(device, self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE, destination_file_name,
+        output, errors, result_code = adb.pull(device, self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE, destination_file_name,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             device.flag_as_malfunctioning()

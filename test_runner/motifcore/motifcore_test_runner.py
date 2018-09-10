@@ -85,7 +85,7 @@ class MotifcoreTestRunner(TestRunner):
         return test_content
 
     def retrieve_generated_test(self, device, destination_file_name):
-        result_code = adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, destination_file_name,
+        output, errors, result_code = adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, destination_file_name,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             device.flag_as_malfunctioning()

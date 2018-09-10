@@ -27,16 +27,15 @@ class EmmaCoverage(object):
         scripts_crash_status = {}
 
         # clean states
-        adb.shell_command(device, "am force-stop " + self.package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        adb.shell_command(device, "pm clear " + self.package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.shell_command(device, "am force-stop " + self.package_name)
+        adb.shell_command(device, "pm clear " + self.package_name)
 
         application_files = "/data/data/" + self.package_name + "/files"
         coverage_path_in_device = application_files + "/coverage.ec"
         coverage_backup_path_before_clear = "/mnt/sdcard/coverage.ec"
 
-        adb.shell_command(device, "rm -f " + coverage_path_in_device, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        adb.shell_command(device, "rm -f " + coverage_backup_path_before_clear,
-                          timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.shell_command(device, "rm -f " + coverage_path_in_device)
+        adb.shell_command(device, "rm -f " + coverage_backup_path_before_clear)
 
         ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
         coverage_folder = str(gen) + "." + str(pop) + "." + ts
@@ -51,14 +50,13 @@ class EmmaCoverage(object):
         # run scripts
         for index, script in enumerate(scripts):
             output, errors, result_code = adb.shell_command(device,
-                                            "am instrument " + self.package_name + "/" + self.package_name + ".EmmaInstrument.EmmaInstrumentation",
-                                            timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, retry=2)
+                                            "am instrument " + self.package_name + "/" + self.package_name + ".EmmaInstrument.EmmaInstrumentation", retry=2)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script, False)
                 device.flag_as_malfunctioning()
                 raise Exception("Unable to instrument " + self.package_name)
 
-            result_code = adb.push(device, script, "/mnt/sdcard/", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+            result_code = adb.push(device, script, "/mnt/sdcard/")
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script, False)
                 device.flag_as_malfunctioning()
@@ -74,8 +72,7 @@ class EmmaCoverage(object):
             else:
                 scripts_crash_status[script] = False
                 # no crash, can broadcast
-                output, errors, result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE",
-                                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+                output, errors, result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
                 if result_code != 0:
                     adb.log_evaluation_result(device, self.result_dir, script, False)
                     device.flag_as_malfunctioning()
@@ -103,8 +100,7 @@ class EmmaCoverage(object):
 
             # save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
             result_code = adb.sudo_shell_command(device,
-                                                 "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear,
-                                                 timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+                                                 "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script, False)
                 device.flag_as_malfunctioning()
@@ -112,8 +108,7 @@ class EmmaCoverage(object):
                     "Unable to retrieve coverage.ec file after coverage broadcast for script " + script + " in  device: " + device.name)
 
         # close app
-        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name,
-                                        timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, script, False)
             device.flag_as_malfunctioning()
@@ -121,8 +116,7 @@ class EmmaCoverage(object):
                 "Unable to clear package for script " + script + " in device: " + device.name)
 
         # restore the coverage.ec file from /mnt/sdcard to app files
-        result_code = adb.sudo_shell_command(device, "mkdir " + application_files,
-                                             timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        result_code = adb.sudo_shell_command(device, "mkdir " + application_files)
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, script, False)
             device.flag_as_malfunctioning()
@@ -131,8 +125,7 @@ class EmmaCoverage(object):
 
         if there_is_coverage:
             result_code = adb.sudo_shell_command(device,
-                                                 "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device,
-                                                 timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+                                                 "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script, False)
                 device.flag_as_malfunctioning()
@@ -142,15 +135,14 @@ class EmmaCoverage(object):
         adb.log_evaluation_result(device, self.result_dir, script, True)
 
         print("### Getting EMMA coverage.ec and report ...")
-        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, "clear-package", False)
             device.flag_as_malfunctioning()
             raise Exception("Unable to clear package " + self.package_name + " in device: " + device.name)
 
         if there_is_coverage:
-            result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec",
-                                   timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+            output, errors, result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, "pull-coverage", False)
                 device.flag_as_malfunctioning()
