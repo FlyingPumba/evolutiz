@@ -1,11 +1,11 @@
 import os
-import signal
 import subprocess
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
 
+TimeoutException = subprocess.TimeoutExpired
 
 def is_command_available(command):
     cmd_check = "command -v " + command + " >/dev/null 2>&1"
@@ -24,12 +24,13 @@ def run_cmd(command):
         # this doesn't work if a semi-colon is used in the command
         assert ";" not in command
 
-        p = subprocess.run("exec " + command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,
+        process = subprocess.run("exec " + command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,
                        timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, encoding="utf-8")
     except subprocess.TimeoutExpired as timeout:
         if verbose_level is not None and verbose_level > 1:
-            logger.log_progress("\nTimeout occurred.\nOn timeout, stdout is : '%s', stderr is: '%s'\n" % (timeout.stdout, timeout.stderr))
+            logger.log_progress("\nTimeout occurred.\nOn timeout, stdout is : '%s', stderr is: '%s'\n" %
+                                (timeout.stdout, timeout.stderr))
 
-        return timeout.stdout, timeout.stderr, 124
+        raise TimeoutException(process.args, timeout, output=timeout.stdout, stderr=timeout.stderr)
 
     return p.stdout, p.stderr, p.returncode
