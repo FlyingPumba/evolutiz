@@ -29,6 +29,7 @@ class WatchDogThread(threading.Thread):
         return self.successful_finish
 
     def run(self):
+        verbose_level = RequiredFeature('verbose_level').request()
         budget_manager = RequiredFeature('budget_manager').request()
 
         # watchdog the threads while we are not asked to stop, there is budget and items available to consume
@@ -44,6 +45,9 @@ class WatchDogThread(threading.Thread):
             threads_to_check = [thread for thread in threading.enumerate() if
                                 type(thread) is MultipleQueueConsumerThread]
 
+            if verbose_level > 1:
+                logger.log_progress("\nWatchDog thread is about to check %d MultipleQueueConsumer threads" % len(threads_to_check))
+
             if len(threads_to_check) == 0:
                 break
 
@@ -53,18 +57,18 @@ class WatchDogThread(threading.Thread):
 
                 if not budget_available:
                     # ask nicely
+                    logger.log_progress("\nTime budget run out, finishing thread: " + thread.name)
                     thread.stop()
                     stopped_threads = True
-                    logger.log_progress("\nTime budget run out, finishing thread: " + thread.name)
 
                 # check if this thread has been processing a thread for more than 200 seconds,
                 # this time should be more than enough to process a test case of 500 events.
                 if elapsed_time > 200:
                     # this thread is presumably hung: no more mr. nice guy
                     # raising the exception only once will cause the current item to stop being processed
-                    thread.raiseExc(ThreadHungException)
                     logger.log_progress("\nThread " + thread.name + " has been processing the same item for more than "
                                                                     "200 seconds, finishing item processing.")
+                    thread.raiseExc(ThreadHungException)
                     # give time to the thread to process the exception
                     time.sleep(5)
 
