@@ -115,7 +115,7 @@ class EvolutizTestRunner(TestRunner):
                        + " -f " + remote_src_filename \
                        + " -o " + remote_dst_filename + " 1"
 
-        adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT, log_output=False)
+        adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
         adb.pkill(device, "evolutiz")
 
         # fetch mutated individual
@@ -140,7 +140,7 @@ class EvolutizTestRunner(TestRunner):
                        + " -v -v -v --throttle 200 --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
                        + " -f /mnt/sdcard/" + script_name + " 1"
 
-        adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT, log_output=False)
+        adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
 
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")
@@ -163,7 +163,7 @@ class EvolutizTestRunner(TestRunner):
                        + " -o " + self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE \
                        + " -v " + str(evolutiz_events)
 
-        adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT, log_output=False)
+        adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
 
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")

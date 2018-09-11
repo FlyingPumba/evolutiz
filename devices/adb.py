@@ -20,7 +20,7 @@ devices_imei = {
 }
 
 
-def adb_command(device, command, timeout=None, log_output=True, retry=1):
+def adb_command(device, command, timeout=None, retry=1):
     cmd = adb_cmd_prefix + " -s " + device.name + " " + command
 
     tries = 0
@@ -29,7 +29,7 @@ def adb_command(device, command, timeout=None, log_output=True, retry=1):
         log_adb_command(device, cmd)
 
         try:
-            output, errors, result_code = run_cmd(cmd + logger.redirect_string(log_output), timeout=timeout)
+            output, errors, result_code = run_cmd(cmd, timeout=timeout)
 
             if tries >= retry or result_code == 0:
                 return output, errors, result_code
@@ -52,13 +52,13 @@ def get_root_permissions(device):
         raise Exception("Unable to gain root permissions on device: " + device.name)
 
 
-def shell_command(device, command, timeout=None, log_output=True, retry=1):
-    return adb_command(device, "shell " + command, timeout=timeout, log_output=log_output, retry=retry)
+def shell_command(device, command, timeout=None, retry=1):
+    return adb_command(device, "shell " + command, timeout=timeout, retry=retry)
 
 
-def sudo_shell_command(device, command, timeout=None, log_output=True, retry=1):
+def sudo_shell_command(device, command, timeout=None, retry=1):
     get_root_permissions(device)
-    return shell_command(device, command, timeout=timeout, log_output=log_output, retry=retry)
+    return shell_command(device, command, timeout=timeout, retry=retry)
 
 
 def push(device, src, dest, timeout=None):

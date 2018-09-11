@@ -47,7 +47,7 @@ class MotifcoreTestRunner(TestRunner):
                         + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
                         + string_seeding_flag + " -f /mnt/sdcard/" + script_name + " 1"
 
-        adb.sudo_shell_command(device, motifcore_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT, log_output=False)
+        adb.sudo_shell_command(device, motifcore_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
 
         # need to manually kill motifcore when timeout
         adb.pkill(device, "motifcore")
@@ -72,7 +72,7 @@ class MotifcoreTestRunner(TestRunner):
                         + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
                         + string_seeding_flag + " -v " + str(motifcore_events)
 
-        adb.shell_command(device, motifcore_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT, log_output=False)
+        adb.shell_command(device, motifcore_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
 
         # need to manually kill motifcore when timeout
         adb.pkill(device, "motifcore")
