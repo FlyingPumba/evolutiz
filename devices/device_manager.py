@@ -154,7 +154,7 @@ class DeviceManager(object):
         logger.log_progress("\nBooting devices: " + str(0) + "/" + str(self.emulators_number))
 
         for i in range(0, self.emulators_number):
-            logger.log_progress("\rBooting devices: " + str(i + 1) + "/" + str(self.emulators_number))
+            logger.log_progress("\nBooting devices: " + str(i + 1) + "/" + str(self.emulators_number))
             emulator = Emulator(self)
             emulator.boot()
             self.devices.append(emulator)
@@ -183,12 +183,12 @@ class DeviceManager(object):
 
         ready_devices = self.get_ready_to_install_devices(refresh=True)
         while len(ready_devices) < devices_to_wait:
-            logger.log_progress("\rWaiting for devices to be ready: " +
+            logger.log_progress("\nWaiting for devices to be ready: " +
                                 str(len(ready_devices)) + "/" + str(devices_to_wait))
             time.sleep(10)
             ready_devices = self.get_ready_to_install_devices(refresh=True)
 
-        logger.log_progress("\rWaiting for devices to be ready: " +
+        logger.log_progress("\nWaiting for devices to be ready: " +
                             str(len(ready_devices)) + "/" + str(devices_to_wait))
 
     def wait_for_battery_threshold(self, battery_threshold=20):

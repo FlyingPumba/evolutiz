@@ -268,7 +268,7 @@ if __name__ == "__main__":
     times_by_repetition = []
     all_times = []
     for i in range(0, benchmark_repetitions):
-        logger.log_progress("\rRunning benchmark: " + str(i + 1) + "/" + str(benchmark_repetitions))
+        logger.log_progress("\nRunning benchmark: " + str(i + 1) + "/" + str(benchmark_repetitions))
         benchmark = run_benchmark(app_path)
         times_by_repetition.append(benchmark)
         all_times.extend(benchmark)

@@ -20,7 +20,7 @@ def run_cmd(command, timeout=None):
 
     verbose_level = RequiredFeature('verbose_level').request(none_if_missing=True)
     if verbose_level is not None and verbose_level > 1:
-        logger.log_progress("\nRunning command: %s\n" % command)
+        logger.log_progress("\nRunning command: %s" % command)
 
     try:
         # use exec in order for process kill to also eliminate childs
@@ -34,7 +34,7 @@ def run_cmd(command, timeout=None):
 
     except subprocess.TimeoutExpired as timeout:
         if verbose_level is not None and verbose_level > 1:
-            logger.log_progress("\nTimeout occurred.\nOn timeout, stdout is : '%s', stderr is: '%s'\n" %
+            logger.log_progress("\nTimeout occurred.\nOn timeout, stdout is : '%s', stderr is: '%s'" %
                                 (timeout.stdout, timeout.stderr))
 
         raise TimeoutException(process.args, timeout, output=timeout.stdout, stderr=timeout.stderr)
