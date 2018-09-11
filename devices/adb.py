@@ -46,7 +46,7 @@ def adb_command(device, command, timeout=None, log_output=True, retry=1):
 
 def get_root_permissions(device):
     # TODO: cache this result to avoid running 'adb root' each time we perform a "sudo command"
-    output, errors, result_code = adb_command(device, "root", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+    output, errors, result_code = adb_command(device, "root")
     if result_code != 0:
         device.flag_as_malfunctioning()
         raise Exception("Unable to gain root permissions on device: " + device.name)
@@ -75,11 +75,11 @@ def pull(device, src, dest, timeout=None):
 
 
 def uninstall(device, package_name):
-    return adb_command(device, "uninstall " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+    return adb_command(device, "uninstall " + package_name)
 
 
 def install(device, package_name, apk_path):
-    output, errors, result_code = adb_command(device, "install " + apk_path, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+    output, errors, result_code = adb_command(device, "install " + apk_path)
     if result_code != 0:
         # we were unable to install the apk in device.
         # Reboot and raise exception
