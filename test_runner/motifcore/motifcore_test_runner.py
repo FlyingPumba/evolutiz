@@ -45,7 +45,8 @@ class MotifcoreTestRunner(TestRunner):
 
         motifcore_cmd = "motifcore -p " + package_name \
                         + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
-                        + string_seeding_flag + " -f /mnt/sdcard/" + script_name + " 1"
+                        + string_seeding_flag + " -f /mnt/sdcard/" + script_name + " 1" \
+                        + logger.log_progress()
 
         adb.sudo_shell_command(device, motifcore_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
 
@@ -70,7 +71,8 @@ class MotifcoreTestRunner(TestRunner):
 
         motifcore_cmd = "motifcore -p " + package_name \
                         + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
-                        + string_seeding_flag + " -v " + str(motifcore_events)
+                        + string_seeding_flag + " -v " + str(motifcore_events) \
+                        + logger.log_progress()
 
         adb.shell_command(device, motifcore_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
 
