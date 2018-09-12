@@ -14,7 +14,7 @@ def is_command_available(command):
     return result_code == 0
 
 
-def run_cmd(command, timeout=None):
+def run_cmd(command, timeout=None, discard_output=False):
     if timeout is None:
         timeout = settings.ADB_REGULAR_COMMAND_TIMEOUT
 
@@ -29,7 +29,12 @@ def run_cmd(command, timeout=None):
         # this doesn't work if a semi-colon is used in the command
         assert ";" not in command
 
-        process = subprocess.run("exec " + command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True,
+        if discard_output:
+            output_file = subprocess.DEVNULL
+        else:
+            output_file = subprocess.PIPE
+
+        process = subprocess.run("exec " + command, stdout=output_file, stderr=output_file, shell=True,
                                  timeout=timeout, encoding="utf-8")
 
     except subprocess.TimeoutExpired as timeout:
