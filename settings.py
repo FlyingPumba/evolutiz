@@ -2,7 +2,7 @@
 ENABLE_STRING_SEEDING = True
 ANDROID_TARGET = "android-10"  # TODO: this should depend on a configuration file in the subject itself
 
-TEST_CASE_EVAL_TIMEOUT = 150
+TEST_CASE_EVAL_TIMEOUT = 200
 ADB_REGULAR_COMMAND_TIMEOUT = 30
 
 # === Emulator ===
