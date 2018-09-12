@@ -1,6 +1,7 @@
 import time
 import threading
 
+import settings
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
@@ -63,7 +64,7 @@ class WatchDogThread(threading.Thread):
 
                 # check if this thread has been processing a thread for more than 250 seconds,
                 # this time should be more than enough to process a test case of 500 events.
-                if elapsed_time > 250:
+                if elapsed_time > settings.TEST_CASE_EVAL_TIMEOUT + 50:
                     # this thread is presumably hung: no more mr. nice guy
                     # raising the exception only once will cause the current item to stop being processed
                     logger.log_progress("\nThread " + thread.name + " has been processing the same item for more than "
