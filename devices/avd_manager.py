@@ -1,8 +1,7 @@
-import subprocess as sub
+from subprocess import TimeoutExpired
 
-import settings
 from dependency_injection.required_feature import RequiredFeature
-from util.command import run_cmd, TimeoutException
+from util.command import run_cmd
 
 
 class AvdManager(object):
@@ -19,7 +18,7 @@ class AvdManager(object):
         list_avd_cmd = self.avdmanager_path + " list avd"
         try:
             output, errors, result_code = run_cmd(list_avd_cmd)
-        except TimeoutException as e:
+        except TimeoutExpired as e:
             raise Exception("There was an error running avdmanager command: " + errors)
 
         if errors.strip() != '':

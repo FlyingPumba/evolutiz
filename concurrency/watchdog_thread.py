@@ -61,9 +61,9 @@ class WatchDogThread(threading.Thread):
                     thread.stop()
                     stopped_threads = True
 
-                # check if this thread has been processing a thread for more than 200 seconds,
+                # check if this thread has been processing a thread for more than 250 seconds,
                 # this time should be more than enough to process a test case of 500 events.
-                if elapsed_time > 200:
+                if elapsed_time > 250:
                     # this thread is presumably hung: no more mr. nice guy
                     # raising the exception only once will cause the current item to stop being processed
                     logger.log_progress("\nThread " + thread.name + " has been processing the same item for more than "

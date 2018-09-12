@@ -1,6 +1,5 @@
 import datetime
 import os
-import subprocess
 import time
 
 import settings
@@ -9,7 +8,7 @@ from crashes import crash_handler
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from util import logger
-from util.command import run_cmd, TimeoutException
+from util.command import run_cmd
 
 
 class EmmaCoverage(object):

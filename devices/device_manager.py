@@ -1,8 +1,9 @@
 import os
 import time
+from subprocess import TimeoutExpired
 
 from devices.real_device import RealDevice
-from util.command import run_cmd, TimeoutException
+from util.command import run_cmd
 from . import adb
 import settings
 from dependency_injection.required_feature import RequiredFeature
@@ -41,7 +42,7 @@ class DeviceManager(object):
 
         try:
             output, errors, result_code = run_cmd(devices_cmd)
-        except TimeoutException as e:
+        except TimeoutExpired as e:
             return []
 
         error_lines = errors.split("\n")
@@ -121,7 +122,7 @@ class DeviceManager(object):
                     if output.strip() == "stopped" and "error" not in errors.strip():
                         device.state = State.booted
 
-                except TimeoutException as e:
+                except TimeoutExpired as e:
                     continue
 
         return [device for device in self.devices if device.state is State.booted]
@@ -138,7 +139,7 @@ class DeviceManager(object):
                     output, errors, result_code = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell pm list packages')
                     if "Error: Could not access the Package Manager" not in output.strip() and errors.strip() == "":
                         device.state = State.ready_idle
-                except TimeoutException as e:
+                except TimeoutExpired as e:
                     continue
 
         return [device for device in self.devices if device.state is State.ready_idle]

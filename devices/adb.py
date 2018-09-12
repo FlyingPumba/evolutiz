@@ -1,9 +1,10 @@
 import os
 import time
+from subprocess import TimeoutExpired
 
 import settings
 from util import logger
-from util.command import run_cmd, TimeoutException
+from util.command import run_cmd
 
 adb_logs_dir = ""
 adb_cmd_prefix = "$ANDROID_HOME/platform-tools/adb"
@@ -36,7 +37,7 @@ def adb_command(device, command, timeout=None, retry=1, discard_output=False):
             else:
                 time.sleep(1)
 
-        except TimeoutException as e:
+        except TimeoutExpired as e:
 
             if tries >= retry:
                 return e.stdout, e.stderr, 124
@@ -105,7 +106,7 @@ def pkill(device, string):
     try:
         output, errors, result_code = run_cmd(pkill_cmd)
         return result_code
-    except TimeoutException as e:
+    except TimeoutExpired as e:
         return 124
 
 
@@ -155,7 +156,7 @@ def get_battery_level(device):
             output, errors, result_code = run_cmd(battery_cmd)
             return int(output.strip())
 
-        except TimeoutException as e:
+        except TimeoutExpired as e:
             # device.flag_as_malfunctioning()
             # raise Exception("There was an error fetching battery level for device: " + device.name)
 
@@ -176,7 +177,7 @@ def get_imei(device):
             output, errors, result_code = run_cmd(imei_cmd)
             devices_imei[device.name] = output.strip()
 
-        except TimeoutException as e:
+        except TimeoutExpired as e:
             return None
 
     return devices_imei[device.name]
@@ -186,7 +187,7 @@ def restart_server():
     try:
         run_cmd(adb_cmd_prefix + " kill-server" + logger.redirect_string())
         run_cmd(adb_cmd_prefix + " devices" + logger.redirect_string())
-    except TimeoutException as e:
+    except TimeoutExpired as e:
         pass
 
 
@@ -198,7 +199,7 @@ def log_adb_command(device, cmd):
 def exists_file(device, file_path):
     try:
         output, errors, result_code = shell_command(device, "ls " + file_path)
-    except TimeoutException:
+    except TimeoutExpired:
         return False
 
     no_file_str = "No such file or directory"
@@ -220,7 +221,7 @@ def get_api_level(device):
         output, errors, result_code = shell_command(device, "getprop ro.build.version.sdk")
         res = output.strip()
         return int(res)
-    except TimeoutException:
+    except TimeoutExpired:
         return None
 
 
@@ -229,5 +230,5 @@ def get_android_version(device):
         output, errors, result_code = shell_command(device, "getprop ro.build.version.release")
         res = output.strip()
         return int(res)
-    except TimeoutException:
+    except TimeoutExpired:
         return None

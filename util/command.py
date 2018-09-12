@@ -5,9 +5,6 @@ import settings
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
 
-TimeoutException = subprocess.TimeoutExpired
-
-
 def is_command_available(command):
     cmd_check = "command -v " + command + " >/dev/null 2>&1"
     result_code = os.system(cmd_check)
@@ -22,26 +19,18 @@ def run_cmd(command, timeout=None, discard_output=False):
     if verbose_level is not None and verbose_level > 1:
         logger.log_progress("\nRunning command: %s" % command)
 
-    try:
-        # use exec in order for process kill to also eliminate childs
-        # from SO: https://stackoverflow.com/a/13143013/2271834
+    # use exec in order for process kill to also eliminate childs
+    # from SO: https://stackoverflow.com/a/13143013/2271834
 
-        # this doesn't work if a semi-colon is used in the command
-        assert ";" not in command
+    # this doesn't work if a semi-colon is used in the command
+    assert ";" not in command
 
-        if discard_output:
-            output_file = subprocess.DEVNULL
-        else:
-            output_file = subprocess.PIPE
+    if discard_output:
+        output_file = subprocess.DEVNULL
+    else:
+        output_file = subprocess.PIPE
 
-        process = subprocess.run("exec " + command, stdout=output_file, stderr=output_file, shell=True,
-                                 timeout=timeout, encoding="utf-8")
-
-    except subprocess.TimeoutExpired as timeout:
-        if verbose_level is not None and verbose_level > 1:
-            logger.log_progress("\nTimeout occurred running command.\nOn timeout, stdout is : '%s', stderr is: '%s'" %
-                                (timeout.stdout, timeout.stderr))
-
-        raise TimeoutException(process.args, timeout, output=timeout.stdout, stderr=timeout.stderr)
+    process = subprocess.run("exec " + command, stdout=output_file, stderr=output_file, shell=True,
+                             timeout=timeout, encoding="utf-8")
 
     return process.stdout, process.stderr, process.returncode
