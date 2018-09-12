@@ -39,7 +39,7 @@ def run_cmd(command, timeout=None, discard_output=False):
 
     except subprocess.TimeoutExpired as timeout:
         if verbose_level is not None and verbose_level > 1:
-            logger.log_progress("\nTimeout occurred.\nOn timeout, stdout is : '%s', stderr is: '%s'" %
+            logger.log_progress("\nTimeout occurred running command.\nOn timeout, stdout is : '%s', stderr is: '%s'" %
                                 (timeout.stdout, timeout.stderr))
 
         raise TimeoutException(process.args, timeout, output=timeout.stdout, stderr=timeout.stderr)
