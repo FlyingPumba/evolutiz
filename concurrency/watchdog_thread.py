@@ -48,6 +48,8 @@ class WatchDogThread(threading.Thread):
 
             if verbose_level > 1:
                 logger.log_progress("\nWatchDog thread is about to check %d MultipleQueueConsumer threads" % len(threads_to_check))
+                logger.log_progress("\nCurrent output estimate count is %d of %d" % (self.output_queue.qsize(), 
+                                                                                     self.expected_output_count))
 
             if len(threads_to_check) == 0:
                 break
