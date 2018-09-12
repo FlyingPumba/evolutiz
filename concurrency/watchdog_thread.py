@@ -19,7 +19,7 @@ class WatchDogThread(threading.Thread):
 
         self.stop_event = threading.Event()
         self.successful_finish = False
-        self.watchdog_timeout = settings.TEST_CASE_EVAL_TIMEOUT + 50
+        self.watchdog_timeout = settings.TEST_CASE_EVAL_TIMEOUT + 100
 
     def stop(self):
         self.stop_event.set()
