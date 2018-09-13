@@ -1,6 +1,7 @@
 import time
 
 from queue import Queue, Empty
+from subprocess import TimeoutExpired
 
 from dependency_injection.required_feature import RequiredFeature
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
@@ -78,7 +79,7 @@ class MapperOnDevices(object):
                 time.sleep(2)
 
             if not watchdog_thread.finished_successfully():
-                raise Exception("MapperOnDevices finished unsuccessfully.")
+                raise TimeoutExpired("Timeout occurred while running MapperOnDevices")
 
         else:
             items_queue = Queue(maxsize=len(self.items_to_map))
@@ -107,7 +108,7 @@ class MapperOnDevices(object):
                 time.sleep(2)
 
             if not watchdog_thread.finished_successfully():
-                raise Exception("MapperOnDevices finished unsuccessfully.")
+                raise TimeoutExpired("Timeout occurred while running MapperOnDevices")
 
         # collect output
         results = []

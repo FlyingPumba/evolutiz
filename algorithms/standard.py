@@ -1,4 +1,6 @@
 # coding=utf-8
+from subprocess import TimeoutExpired
+
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from concurrency.mapper_on_devices import MapperOnDevices
 from util import logger
@@ -34,13 +36,13 @@ class Standard(GeneticAlgorithm):
 
             logger.log_progress("\n---> Starting generation " + str(gen))
 
-            self.generate_offspring_in_parallel()
+            if not self.generate_offspring_in_parallel():
+                print("Time budget run out during offspring generation, exiting evolve")
+                break
 
             # Evaluate the individuals with an invalid fitness
             invalid_ind = [ind for ind in self.new_population if not ind.fitness.valid]
-            success = self.parallel_evaluator.evaluate(invalid_ind)
-
-            if not success:
+            if not self.parallel_evaluator.evaluate(invalid_ind):
                 print("Time budget run out during parallel evaluation, exiting evolve")
                 break
 
@@ -61,8 +63,11 @@ class Standard(GeneticAlgorithm):
         mapper = MapperOnDevices(self.generate_two_offspring,
                                  items_to_map=offspring_pairs_to_generate,
                                  idle_devices_only=True)
-
-        mapper.run()
+        try:
+            mapper.run()
+            return True
+        except TimeoutExpired:
+            return False
 
     def generate_two_offspring(self, device, pair_index):
         device.mark_work_start()

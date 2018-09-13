@@ -1,4 +1,5 @@
 import os
+from subprocess import TimeoutExpired
 
 import settings
 from application import static_analyser
@@ -30,8 +31,8 @@ def prepare_apk(instrumented_app_path, package_name, result_dir):
     logger.log_progress("\nInstalling apk")
 
     mapper = MapperOnDevices(push_apk_and_string_xml, extra_args=(decoded_dir, package_name, apk_path,))
-    mapper.run()
 
+    mapper.run()
     return package_name
 
 

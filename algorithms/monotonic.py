@@ -1,4 +1,6 @@
 # coding=utf-8
+from subprocess import TimeoutExpired
+
 from algorithms.standard import Standard
 from concurrency.mapper_on_devices import MapperOnDevices
 from util import logger
@@ -31,7 +33,11 @@ class Monotonic(Standard):
                                  items_to_map=offspring_pairs_to_generate,
                                  idle_devices_only=True)
 
-        mapper.run()
+        try:
+            mapper.run()
+            return True
+        except TimeoutExpired:
+            return False
 
     def generate_two_offspring(self, device, pair_index):
         device.mark_work_start()

@@ -1,3 +1,5 @@
+from subprocess import TimeoutExpired
+
 from dependency_injection.required_feature import RequiredFeature
 from concurrency.mapper_on_devices import MapperOnDevices
 from util import logger
@@ -17,7 +19,8 @@ class ParallelEvaluator(object):
         mapper = MapperOnDevices(self.test_suite_evaluator.evaluate,
                                  items_to_map=individuals,
                                  idle_devices_only=True)
-
-        individuals_evaluated = mapper.run()
-
-        return True
+        try:
+            individuals_evaluated = mapper.run()
+            return True
+        except TimeoutExpired:
+            return False

@@ -1,3 +1,5 @@
+from subprocess import TimeoutExpired
+
 from dependency_injection.di_assertions import HasMethods
 from dependency_injection.required_feature import RequiredFeature
 from concurrency.mapper_on_devices import MapperOnDevices
@@ -19,6 +21,9 @@ class PopulationGenerator(object):
                                  items_to_map=individuals_index_to_generate,
                                  extra_args=(gen,))
 
-        individuals_generated = mapper.run()
+        try:
+            individuals_generated = mapper.run()
+            return individuals_generated
+        except TimeoutExpired:
+            return None
 
-        return individuals_generated
