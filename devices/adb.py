@@ -156,7 +156,7 @@ def get_battery_level(device):
             output, errors, result_code = run_cmd(battery_cmd)
             return int(output.strip())
 
-        except TimeoutExpired as e:
+        except Exception as e:
             # device.flag_as_malfunctioning()
             # raise Exception("There was an error fetching battery level for device: " + device.name)
 
