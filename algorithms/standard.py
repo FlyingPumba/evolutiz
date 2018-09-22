@@ -1,5 +1,4 @@
 # coding=utf-8
-from subprocess import TimeoutExpired
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from concurrency.mapper_on_devices import MapperOnDevices
@@ -66,7 +65,7 @@ class Standard(GeneticAlgorithm):
         try:
             mapper.run()
             return True
-        except TimeoutExpired:
+        except TimeoutError:
             return False
 
     def generate_two_offspring(self, device, pair_index):

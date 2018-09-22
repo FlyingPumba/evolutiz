@@ -2,7 +2,6 @@ import os
 import time
 from subprocess import TimeoutExpired
 
-import settings
 from util import logger
 from util.command import run_cmd
 
