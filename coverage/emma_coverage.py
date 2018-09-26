@@ -133,7 +133,6 @@ class EmmaCoverage(object):
 
         adb.log_evaluation_result(device, self.result_dir, script, True)
 
-        print("### Getting EMMA coverage.ec and report ...")
         output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, "clear-package", False)
