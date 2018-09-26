@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 def print_avg_fitness(logbook_file_path):
-    logbook_file = open(logbook_file_path)
+    logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
 
     print("Average fitness by generation:\n")
@@ -22,7 +22,7 @@ def draw_pop_fitness(logbook_file_path):
     generations = []
     colors = []  # color stands for the ith gen
 
-    logbook_file = open(logbook_file_path)
+    logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
 
     fitness_by_gen = logbook.select("fitness")
