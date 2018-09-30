@@ -1,6 +1,6 @@
 // Copyright (C) 2009 Mihai Preda
 
-package calculator;
+package arity.calculator;
 
 import android.app.ListActivity;
 import android.os.Bundle;

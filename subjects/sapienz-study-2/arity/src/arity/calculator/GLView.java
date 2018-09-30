@@ -1,6 +1,6 @@
 // Copyright (C) 2009 Mihai Preda
 
-package calculator;
+package arity.calculator;
 
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGL11;
