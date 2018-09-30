@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
    xmlns:android="http://schemas.android.com/apk/res/android"
-   package="arity.calculator"
+   package="calculator"
    android:versionCode="27"
    android:versionName="1.27">
   <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="7" />
@@ -22,13 +22,4 @@
     <activity android:name="calculator.ListDefs" android:label="User definitions" />
     <activity android:name="calculator.Help" android:label="Arity Calculator" />
     <activity android:name="calculator.Settings" android:label="Calculator settings" />
-  <receiver android:name="arity.calculator.EmmaInstrument.SMSInstrumentedReceiver">
-  <intent-filter>
-    <action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
-  </intent-filter>
-  </receiver>
-  <activity android:label="EmmaInstrumentationActivity" android:name="arity.calculator.EmmaInstrument.InstrumentedActivity"/>
-  </application>
-   <instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="arity.calculator.EmmaInstrument.EmmaInstrumentation" android:targetPackage="arity.calculator"/>
-   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest> 
