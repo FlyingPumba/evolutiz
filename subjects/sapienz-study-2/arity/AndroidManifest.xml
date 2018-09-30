@@ -22,4 +22,5 @@
     <activity android:name="calculator.ListDefs" android:label="User definitions" />
     <activity android:name="calculator.Help" android:label="Arity Calculator" />
     <activity android:name="calculator.Settings" android:label="Calculator settings" />
+  </application>
 </manifest> 
