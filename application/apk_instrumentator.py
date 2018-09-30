@@ -49,7 +49,8 @@ class ApkInstrumentator(object):
         source_root = instrumented_source_path + "/src/" + "/".join(package_name.split(".")) + "/"
         if not os.path.exists(source_root):
             #  TODO: maybe we can do a better search ?
-            raise Exception("Unable to find src folder of app " + self.app_path + " when trying to pre-instrument")
+            raise Exception("Unable to find src folder of app " + self.app_path +
+                            " when trying to pre-instrument. This folder should be in path: " + source_root)
 
         os.system("cp -r " + self.emma_instrument_path + " " + source_root)
 
