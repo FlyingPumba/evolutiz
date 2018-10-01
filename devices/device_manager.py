@@ -113,17 +113,7 @@ class DeviceManager(object):
         if refresh is True:
             # check if boot animation is over for each device
             for device in self.get_devices(refresh=True):
-                if device.state >= State.booted:
-                    # don't change the state of devices when it is higher or equal than booted
-                    continue
-
-                try:
-                    output, errors, result_code = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell getprop init.svc.bootanim')
-                    if output.strip() == "stopped" and "error" not in errors.strip():
-                        device.state = State.booted
-
-                except TimeoutExpired as e:
-                    continue
+                device.check_booted()
 
         return [device for device in self.devices if device.state is State.booted]
 
@@ -131,25 +121,12 @@ class DeviceManager(object):
         if refresh is True:
             # check if package manager is ready for each device
             for device in self.get_devices(refresh=True):
-                if device.state >= State.ready_idle:
-                    # don't change the state of devices when it is higher or equal than ready_idle
-                    continue
-
-                try:
-                    output, errors, result_code = run_cmd(adb.adb_cmd_prefix + ' -s ' + device.name + ' shell pm list packages')
-                    if "Error: Could not access the Package Manager" not in output.strip() and errors.strip() == "":
-                        device.state = State.ready_idle
-                except TimeoutExpired as e:
-                    continue
+                device.check_ready()
 
         return [device for device in self.devices if device.state is State.ready_idle]
 
     def get_idle_devices(self):
         return self.get_ready_to_install_devices(refresh=True)
-
-    def flag_device_as_malfunctioning(self, device):
-        # remove device from available devices and reboot
-        device.reboot()
 
     def boot_emulators(self, wait_to_be_ready=False):
         logger.log_progress("\nBooting devices: " + str(0) + "/" + str(self.emulators_number))

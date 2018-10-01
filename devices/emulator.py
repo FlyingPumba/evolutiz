@@ -61,7 +61,6 @@ class Emulator(Device):
     def reboot(self):
         Device.reboot(self)
 
-        # FIX: this shutdown and boot doesn't seem to work.
         self.shutdown()
         self.boot(port=self.port)
 

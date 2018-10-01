@@ -1,9 +1,11 @@
 import time
 
 from enum import Enum
+from subprocess import TimeoutExpired
 
 import settings
 from devices import adb
+from util.command import run_cmd
 
 
 class State(Enum):
@@ -58,7 +60,7 @@ class Device(object):
         return self.name
 
     def flag_as_malfunctioning(self):
-        self.device_manager.flag_device_as_malfunctioning(self)
+        self.reboot()
 
     def boot(self):
         self.state = State.booting
@@ -72,6 +74,7 @@ class Device(object):
         self.boot_time = time.time()
 
     def mark_work_start(self):
+        assert self.state == State.ready_idle
         self.state = State.ready_working
 
     def mark_work_stop(self):
@@ -98,3 +101,27 @@ class Device(object):
     def set_location_state(self, enabled):
         adb.set_location_state(self, enabled, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
+    def check_ready(self):
+        if self.state >= State.ready_idle:
+            # don't change the state of devices when it is higher or equal than ready_idle
+            return
+
+        try:
+            output, errors, result_code = run_cmd(adb.adb_cmd_prefix + ' -s ' + self.name + ' shell pm list packages')
+            if "Error: Could not access the Package Manager" not in output.strip() and errors.strip() == "":
+                self.state = State.ready_idle
+        except TimeoutExpired as e:
+            return
+
+    def check_booted(self):
+        if self.state >= State.booted:
+            # don't change the state of devices when it is higher or equal than booted
+            return
+
+        try:
+            output, errors, result_code = run_cmd(
+                adb.adb_cmd_prefix + ' -s ' + self.name + ' shell getprop init.svc.bootanim')
+            if output.strip() == "stopped" and "error" not in errors.strip():
+                self.state = State.booted
+        except TimeoutExpired as e:
+            return
