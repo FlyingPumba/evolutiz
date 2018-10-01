@@ -1,7 +1,0 @@
-package net.sf.andbatdog.batterydog.EmmaInstrument;
-
-
-public interface FinishListener {
-	void onActivityFinished();
-	void dumpIntermediateCoverage(String filePath);
-}

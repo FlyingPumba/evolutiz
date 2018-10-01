@@ -1,0 +1,1109 @@
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:507:Malformed DiskSize value 100 MB for key sdcard.size
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 1: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 2: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 3: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 4: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 5: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 6: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 7: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 8: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 9: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 10: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 11: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 12: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 13: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 15: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 16: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 17: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 18: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 19: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 20: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 21: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 22: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 23: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 24: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 25: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 26: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 27: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 28: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 29: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 30: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 31: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 32: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 33: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 34: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 36: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 37: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 38: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 39: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 40: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 41: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 42: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 43: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 44: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 45: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 46: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 47: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 48: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 49: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 50: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 51: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 52: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 53: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 54: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 55: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 56: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 57: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 58: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 59: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 60: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 61: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 62: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 64: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 65: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 66: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 67: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 68: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 69: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 70: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 71: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 72: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 74: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 75: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 76: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 77: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 78: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 79: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 80: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 81: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 83: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 84: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 85: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 86: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 87: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 88: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 90: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 91: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 92: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 93: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 94: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 95: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 96: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 97: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 98: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 99: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 101: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 102: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 103: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 104: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 105: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 106: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 107: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 109: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 110: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 111: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 112: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 113: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 114: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 115: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 116: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 117: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 119: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 120: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 121: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 122: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 123: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 125: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 126: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 127: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 128: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 129: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 131: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 132: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 133: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 134: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 135: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 137: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 138: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 139: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 140: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 141: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 142: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 143: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 144: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 149: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 150: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 151: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 152: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 154: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 155: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 156: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 157: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 159: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 160: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 161: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 162: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 164: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 165: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 166: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 167: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 169: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 170: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 171: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 172: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 174: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 175: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 176: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 178: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 179: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 180: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 182: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 183: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 184: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 186: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 187: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 188: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:94:Line 190: Skipped empty line.
+[140115476831168]:VERBOSE:android/android-emu/android/base/files/IniFile.cpp:101:Line 191: Skipped comment line.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/control/AdbInterface.cpp:156:Found: 2 adb executables
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/control/AdbInterface.cpp:158:Adb: /usr/local/android-sdk/platform-tools/adb
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/control/AdbInterface.cpp:158:Adb: /usr/local/android-sdk/platform-tools/adb
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/control/AdbInterface.cpp:177:Path:/usr/local/android-sdk/platform-tools/adb protocol version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/control/AdbInterface.cpp:177:Path:/usr/local/android-sdk/platform-tools/adb protocol version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+Using config file: /home/ivan/.android/modem-nv-ram-5554
+Setting value of oper_name_index to 2 (2)Setting value of selection_mode to 0 (0)Setting value of oper_index to 0 (0)Setting value of oper_count to 2 (2)Setting value of in_ecbm to 0 (0)Setting value of prl_version to 0 (0)Setting value of preferred_mode to 15 (15)Setting value of cdma_subscription_source to 1 (1)Setting value of cdma_roaming_pref to 2 (2)[140114435360512]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [0012host:emulator:5555] to adb daemon.
+get_zoneinfo_timezone: found timezone dir as /usr/share/zoneinfo
+get_zoneinfo_timezone: found localtime file as /etc/localtime
+get_zoneinfo_timezone: found zoneinfo timezone America/Argentina/Buenos_Aires from /etc/localtime symlink
+found timezone America/Argentina/Buenos_Aires
+Setting device orientation 0
+setCoarseOrientation - HwSensors 0x2e12980
+Setting coarse orientation to portrait
+_amodem_switch_technology: oldtech: 0, newtech 1, preferred: 15. newpreferred: 15
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140114742101760]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [0012host:emulator:5555] to adb daemon.
+[140114742101760]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [0012host:emulator:5555] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+<< ATE0Q0V1
+>> OK
+<< AT+CTEC?
+handleTech. cmd: +CTEC?
+>> +CTEC: 1,f<CR>OK
+<< AT+CTEC=?
+>> +CTEC: 0,1,2,3<CR>OK
+<< ATE0Q0V1
+>> OK
+<< ATS0=0
+>> OK
+<< AT+CMEE=1
+>> OK
+<< AT+CREG=2
+>> OK
+<< AT+CGREG=1
+>> OK
+<< AT+CCWA=1
+>> OK
+<< AT+CMOD=0
+>> OK
+<< AT+CMUT=0
+>> OK
+<< AT+CSSN=0,1
+>> OK
+<< AT+COLP=0
+>> OK
+<< AT+CSCS="HEX"
+>> OK
+<< AT+CUSD=1
+>> OK
+<< AT+CGEREP=1,0
+>> OK
+<< AT+CMGF=0
+>> %CTZV: 18/10/01:18:10:10+0:0:America!Argentina!Buenos_Aires<CR><LF><CR>OK
+<< AT+CFUN?
+>> +CFUN: 0<CR>OK
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140114742101760]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [0012host:emulator:5555] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140114742101760]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [0012host:emulator:5555] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+<< AT+CPIN?
+>> +CPIN: READY<CR>OK
+<< AT+CGSN
+>> 358240051111110<CR>OK
+<< AT+CFUN=1
+>> OK
+<< AT+COPS=3,0;+COPS?;+COPS=3,1;+COPS?;+COPS=3,2;+COPS?
+>> +COPS: 0,0,"Android"<CR>+COPS: 0,1,"Android"<CR>+COPS: 0,2,"310260"<CR>OK
+<< AT+COPS?
+>> +COPS: 0,2,310260<CR>OK
+<< AT+COPS=3,0;+COPS?;+COPS=3,1;+COPS?;+COPS=3,2;+COPS?
+>> +COPS: 0,0,"Android"<CR>+COPS: 0,1,"Android"<CR>+COPS: 0,2,"310260"<CR>OK
+<< AT+COPS?
+>> +COPS: 0,2,310260<CR>OK
+<< AT+CPIN?
+>> +CPIN: READY<CR>OK
+<< AT+CCHO=A00000015144414300
+>> 1<CR>OK
+<< AT+COPS=3,0;+COPS?;+COPS=3,1;+COPS?;+COPS=3,2;+COPS?
+>> +COPS: 0,0,"Android"<CR>+COPS: 0,1,"Android"<CR>+COPS: 0,2,"310260"<CR>OK
+<< AT+COPS?
+>> +COPS: 0,2,310260<CR>OK
+<< AT+CLCC
+>> <CR>OK
+<< AT+CGREG?
+>> +CGREG: 1,1,"0003","005b","000e"<CR>OK
+<< AT+CREG?
+>> +CREG: 2,1, "0003", "005b"<CR>OK
+<< AT+CCSS?
+handleSubscriptionSource(+CCSS?)
+>> +CCSS: 1<CR>OK
+<< AT+CPIN?
+>> +CPIN: READY<CR>OK
+<< AT+CGLA=1,10,80caff4000
+>> +CME ERROR: 100 (255, 64) (+CGLA=1,10,80caff4000)
+<< AT+CIMI
+>> 310260000000000<CR>OK
+<< AT+CRSM=192,12258,0,0,15
+>> +CRSM: 144,0,0000000a2fe204000fa0aa01020000<CR>OK
+<< AT+CRSM=192,28480,0,0,15
+>> +CRSM: 144,0,000000806f40040011a0aa01020120<CR>OK
+<< AT+CRSM=192,28617,0,0,15
+>> +CRSM: 144,0,000000086fc9040011a0aa01020104<CR>OK
+<< AT+CRSM=192,28589,0,0,15
+>> +CRSM: 144,0,000000046fad04000aa0aa01020000<CR>OK
+<< AT+CRSM=192,28618,0,0,15
+>> +CRSM: 144,0,0000000a6fca040011a0aa01020105<CR>OK
+<< AT+CRSM=192,28433,0,0,15
+>> +CRSM: 144,0,000000016f11040011a0aa01020000<CR>OK
+<< AT+CRSM=192,28619,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28435,0,0,15
+>> +CRSM: 144,0,000000016f13040011a0aa01020000<CR>OK
+<< AT+CRSM=192,28486,0,0,15
+>> +CRSM: 148,4<CR>OK
+<< AT+CRSM=192,28621,0,0,15
+>> +CRSM: 148,4<CR>OK
+<< AT+CRSM=192,28613,0,0,15
+>> +CRSM: 144,0,000000f06fc504000aa0aa01020118<CR>OK
+<< AT+CRSM=192,28472,0,0,15
+>> +CRSM: 144,0,0000000f6f3804001aa0aa01020000<CR>OK
+<< AT+CRSM=192,28438,0,0,15
+>> +CRSM: 144,0,000000026f1604001aa0aa01020000<CR>OK
+<< AT+CRSM=192,28437,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28478,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28479,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28512,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28513,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28514,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28633,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28539,0,0,15
+>> +CRSM: 144,0,000000406fc7040011a0aa01000000<CR>OK
+<< AT+CRSM=192,28421,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,12037,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+COPS=3,0;+COPS?;+COPS=3,1;+COPS?;+COPS=3,2;+COPS?
+>> +COPS: 0,0,"Android"<CR>+COPS: 0,1,"Android"<CR>+COPS: 0,2,"310260"<CR>OK
+<< AT+CGREG?
+>> +CGREG: 1,1,"0003","005b","000e"<CR>OK
+<< AT+COPS?
+>> +COPS: 0,2,310260<CR>OK
+<< AT+CREG?
+>> +CREG: 2,1, "0003", "005b"<CR>OK
+<< AT+CIMI
+>> 310260000000000<CR>OK
+<< AT+CRSM=192,12258,0,0,15
+>> +CRSM: 144,0,0000000a2fe204000fa0aa01020000<CR>OK
+<< AT+CRSM=192,12037,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28474,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28481,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28484,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28450,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28456,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=176,28506,0,0,4
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28493,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28418,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28420,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28419,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28423,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=192,28425,0,0,15
+>> ERROR: BAD COMMAND
+<< AT+CRSM=176,12258,0,0,10
+>> +CRSM: 144,0,98101430121181157002<CR>OK
+<< AT+CRSM=178,28480,1,4,32
+>> +CRSM: 144,0,ffffffffffffffffffffffffffffffffffff09915155255155f4ffffffffffff<CR>OK
+<< AT+CRSM=178,28617,1,4,4
+>> +CRSM: 144,0,01000000<CR>OK
+<< AT+CRSM=176,28589,0,0,4
+>> +CRSM: 144,0,00000003<CR>OK
+<< AT+CRSM=178,28618,1,4,5
+>> +CRSM: 144,0,0000000000<CR>OK
+<< AT+CRSM=176,28433,0,0,1
+>> +CRSM: 144,0,55<CR>OK
+<< AT+CRSM=176,28435,0,0,1
+>> +CRSM: 144,0,55<CR>OK
+<< AT+CRSM=178,28613,1,4,24
+>> +CRSM: 144,0,43058441aa890affffffffffffffffffffffffffffffffff<CR>OK
+<< AT+CRSM=176,28472,0,0,15
+>> +CRSM: 144,0,ff30ffff3c003c03000c0000f03f00<CR>OK
+<< AT+CRSM=176,28438,0,0,2
+>> +CRSM: 144,0,0233<CR>OK
+<< AT+CRSM=176,28539,0,0,64
+>> +CRSM: 144,0,ffffffffffffffffffffffff<CR>OK
+<< AT+CRSM=176,12258,0,0,10
+>> +CRSM: 144,0,98101430121181157002<CR>OK
+<< AT+CCHC=1
+>> +CCHC<CR>OK
+<< AT+CRSM=192,28436,0,0,15
+>> +CRSM: 144,0,000000146f1404001aa0aa01020000<CR>OK
+<< AT+CRSM=192,28615,0,0,15
+>> +CRSM: 144,0,000000406fc7040011a0aa01020120<CR>OK
+<< AT+CRSM=176,28436,0,0,20
+>> +CRSM: 144,0,416e64726f6964ffffffffffffffffffffffffff<CR>OK
+<< AT+CRSM=178,28615,1,4,32
+>> +CRSM: 144,0,566f6963656d61696cffffffffffffffffff07915155125740f9ffffffffffff<CR>OK
+<< AT+CCHO=A00000015141434C00
+>> 1<CR>OK
+<< AT+CGLA=1,10,80caff4000
+>> +CGLA: 144,0,FF403eE23cE12eC11461ed377e85d386a8dfee6b864bd85b0bfaa5af81CA16616e64726f69642e636172726965726170692e637473E30aDB080000000000000000<CR>OK
+<< AT+CCHC=1
+>> +CCHC<CR>OK
+<< AT+CTEC?
+handleTech. cmd: +CTEC?
+>> +CTEC: 1,f<CR>OK
+<< AT+CTEC=1,"201"
+handleTech. cmd: +CTEC=1,"201"
+cmd: ,"201"
+_amodem_switch_technology: oldtech: 1, newtech 1, preferred: 15. newpreferred: 513
+>> +CTEC: DONE<CR>OK
+<< AT+COPS?
+>> +COPS: 0,2,310260<CR>OK
+<< AT+CTEC?
+handleTech. cmd: +CTEC?
+>> +CTEC: 1,201<CR>OK
+<< AT+CTEC=1,"201"
+handleTech. cmd: +CTEC=1,"201"
+cmd: ,"201"
+_amodem_switch_technology: oldtech: 1, newtech 1, preferred: 513. newpreferred: 513
+>> +CTEC: DONE<CR>OK
+<< AT+COPS?
+>> +COPS: 0,2,310260<CR>OK
+<< AT+CGDCONT=1,"IP","epc.tmobile.com",,0,0
+>> OK
+<< AT+CGQREQ=1
+>> OK
+<< AT+CGQMIN=1
+>> OK
+<< AT+CGEREP=1,0
+>> OK
+<< AT+CGACT=1,0
+>> OK
+<< ATD*99***1#
+>> OK
+<< AT+CGACT?
+>> +CGACT: 1,1<CR><LF><CR>OK
+<< AT+CGDCONT?
+>> +CGDCONT: 1,"IP","epc.tmobile.com","192.168.200.2/24",0,0<CR><LF><CR>OK
+<< AT+COPS=3,0;+COPS?;+COPS=3,1;+COPS?;+COPS=3,2;+COPS?
+>> +COPS: 0,0,"Android"<CR>+COPS: 0,1,"Android"<CR>+COPS: 0,2,"310260"<CR>OK
+<< AT+COPS?
+>> +COPS: 0,2,310260<CR>OK
+<< AT+CGREG?
+>> +CGREG: 1,1,"0003","005b","000e"<CR>OK
+<< AT+CREG?
+>> +CREG: 2,1, "0003", "005b"<CR>OK
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+<< AT+CSQ
+>> %CTZV: 18/10/01:18:10:56+0:0:America!Argentina!Buenos_Aires<CR><LF>+CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:49:Send [000chost:version] to adb daemon.
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [OKAY]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0004]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:69:ReadResponse: [0028]
+[140115476831168]:VERBOSE:android/android-emu/android/emulation/AdbHostServer.cpp:115: Server version: 40
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+COPS=3,0;+COPS?;+COPS=3,1;+COPS?;+COPS=3,2;+COPS?
+>> +COPS: 0,0,"Android"<CR>+COPS: 0,1,"Android"<CR>+COPS: 0,2,"310260"<CR>OK
+<< AT+COPS?
+>> +COPS: 0,2,310260<CR>OK
+<< AT+CGREG?
+>> +CGREG: 1,1,"0003","005b","000e"<CR>OK
+<< AT+CREG?
+>> +CREG: 2,1, "0003", "005b"<CR>OK
+<< AT+CPIN?
+>> +CPIN: READY<CR>OK
+<< AT+CMGS=29
+>> > 
+SMS<< 004100038121F20004140605040710000041637469766174653A64743D36\x1a
+>> +CMGS: 0<CR>OK<CR>
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CPIN?
+>> +CPIN: READY<CR>OK
+<< AT+CMGS=29
+>> > 
+SMS<< 004100038121F20004140605040710000041637469766174653A64743D36\x1a
+>> +CMGS: 0<CR>OK<CR>
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CPIN?
+>> +CPIN: READY<CR>OK
+<< AT+CMGS=29
+>> > 
+SMS<< 004100038121F20004140605040710000041637469766174653A64743D36\x1a
+>> +CMGS: 0<CR>OK<CR>
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CPIN?
+>> +CPIN: READY<CR>OK
+<< AT+CMGS=29
+>> > 
+SMS<< 004100038121F20004140605040710000041637469766174653A64743D36\x1a
+>> +CMGS: 0<CR>OK<CR>
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CPIN?
+>> +CPIN: READY<CR>OK
+<< AT+CMGS=29
+>> > 
+SMS<< 004100038121F20004140605040710000041637469766174653A64743D36\x1a
+>> +CMGS: 0<CR>OK<CR>
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+MAI
+** UNSUPPORTED COMMAND **
+>> ERROR: UNSUPPORTED
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
+<< AT+CSQ
+>> +CSQ: 12,4,90,120,80,120,4,90,100,10,30,7,200<CR><LF><CR>OK
