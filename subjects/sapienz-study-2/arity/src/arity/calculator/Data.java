@@ -1,6 +1,6 @@
 // Copyright (C) 2009 Mihai Preda
 
-package calculator;
+package arity.calculator;
 
 class Data {
     float[] xs = new float[4];

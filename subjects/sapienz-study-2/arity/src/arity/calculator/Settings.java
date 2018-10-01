@@ -1,4 +1,4 @@
-package calculator;
+package arity.calculator;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;

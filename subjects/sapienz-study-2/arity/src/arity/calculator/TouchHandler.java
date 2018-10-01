@@ -1,6 +1,6 @@
 // Copyright (C) 2009-2010 Mihai Preda
 
-package calculator;
+package arity.calculator;
 
 import android.view.MotionEvent;
 import android.view.VelocityTracker;

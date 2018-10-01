@@ -1,6 +1,6 @@
 // Copyright (C) 2010 Mihai Preda
 
-package calculator;
+package arity.calculator;
 
 class ZoomTracker {
     private float sx1, sy1, sx2, sy2;

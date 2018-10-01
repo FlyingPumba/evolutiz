@@ -7,7 +7,7 @@
   <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="7" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <application android:label="Arity" android:icon="@drawable/icon" >
-    <activity android:name="calculator.Calculator"
+    <activity android:name="arity.calculator.Calculator"
               android:label="Arity"
               android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
               android:configChanges="orientation|keyboard|keyboardHidden"
@@ -17,18 +17,10 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <activity android:name="calculator.ShowGraph" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-    <activity android:name="calculator.ShowGraph3d" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-    <activity android:name="calculator.ListDefs" android:label="User definitions" />
-    <activity android:name="calculator.Help" android:label="Arity Calculator" />
-    <activity android:name="calculator.Settings" android:label="Calculator settings" />
-  <receiver android:name="arity.calculator.EmmaInstrument.SMSInstrumentedReceiver">
-  <intent-filter>
-    <action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
-  </intent-filter>
-  </receiver>
-  <activity android:label="EmmaInstrumentationActivity" android:name="arity.calculator.EmmaInstrument.InstrumentedActivity"/>
+    <activity android:name="arity.calculator.ShowGraph" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+    <activity android:name="arity.calculator.ShowGraph3d" android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+    <activity android:name="arity.calculator.ListDefs" android:label="User definitions" />
+    <activity android:name="arity.calculator.Help" android:label="Arity Calculator" />
+    <activity android:name="arity.calculator.Settings" android:label="Calculator settings" />
   </application>
-   <instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="arity.calculator.EmmaInstrument.EmmaInstrumentation" android:targetPackage="arity.calculator"/>
-   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest> 

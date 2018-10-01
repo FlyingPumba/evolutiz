@@ -1,4 +1,4 @@
-package calculator;
+package arity.calculator;
 
 class FPS {
     private int drawCnt;

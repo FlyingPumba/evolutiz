@@ -123,7 +123,7 @@ def get_subject_paths(arguments):
     subject_path = arguments.subject_path
     if subject_path is not None:
         features.provide('subjects_path', [subject_path])
-        return [subject_path]
+        return [subject_path.rstrip('/')]
     else:
         subjects_path = arguments.subjects_path
         features.provide('subjects_path', subjects_path)

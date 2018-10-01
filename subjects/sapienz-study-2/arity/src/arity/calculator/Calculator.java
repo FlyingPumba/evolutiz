@@ -1,6 +1,6 @@
 // Copyright (C) 2009 Mihai Preda
   
-package calculator;
+package arity.calculator;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -165,7 +165,7 @@ public class Calculator extends Activity implements TextWatcher,
         prefs.registerOnSharedPreferenceChangeListener(this);
         String value = prefs.getString("quality", null);
         if (value == null) {
-            useHighQuality3d = calculator.Util.SDK_VERSION >= 5;
+            useHighQuality3d = arity.calculator.Util.SDK_VERSION >= 5;
             prefs.edit().putString("quality", useHighQuality3d ? "high" : "low").commit();
         } else {
             useHighQuality3d = value.equals("high");   
