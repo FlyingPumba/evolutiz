@@ -90,7 +90,7 @@ def collectCoverage(device, package_name, result_dir, suffix=""):
     logger.log_progress(
         "\nSending coverage broadcast in device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
     os.system(
-        adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE" + logger.redirect_string())
+        adb.adb_cmd_prefix + " -s " + device + " shell am broadcast -a evolutiz.emma.COLLECT_COVERAGE" + logger.redirect_string())
 
     logger.log_progress("\nPulling coverage from device: " + device + " at: " + datetime.today().strftime("%H:%M:%S"))
     coverageFilePath = "/data/data/" + package_name + "/files/coverage.ec"

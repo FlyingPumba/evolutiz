@@ -71,7 +71,9 @@ class EmmaCoverage(object):
             else:
                 scripts_crash_status[script] = False
                 # no crash, can broadcast
-                output, errors, result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
+                broadcast = "am broadcast -a evolutiz.emma.COLLECT_COVERAGE -n " + self.package_name + "/" + \
+                            self.package_name + ".EmmaInstrument.CollectCoverageReceiver"
+                output, errors, result_code = adb.shell_command(device, broadcast)
                 if result_code != 0:
                     adb.log_evaluation_result(device, self.result_dir, script, False)
                     device.flag_as_malfunctioning()
@@ -79,18 +81,10 @@ class EmmaCoverage(object):
                         "Unable to broadcast coverage gathering for script " + script + " in device: " + device.name)
                 there_is_coverage = True
 
-                tries = 0
-                max_tries = 10
-                found_coverage_file = False
-                while tries < max_tries:
-                    if not adb.exists_file(device, coverage_path_in_device):
-                        time.sleep(15)
-                        tries += 1
-                    else:
-                        found_coverage_file = True
-                        break
+                # wait some time for coverage file to be written
+                time.sleep(5)
 
-                if not found_coverage_file:
+                if not adb.exists_file(device, coverage_path_in_device):
                     adb.log_evaluation_result(device, self.result_dir, script, False)
                     device.flag_as_malfunctioning()
                     raise Exception(

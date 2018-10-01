@@ -107,9 +107,9 @@ class ApkInstrumentator(object):
     
                      <!-- emma updated -->
                     <activity android:label="EmmaInstrumentationActivity" android:name="''' + package_name + '''.EmmaInstrument.InstrumentedActivity"/>
-                <receiver android:name="''' + package_name + '''.EmmaInstrument.SMSInstrumentedReceiver">
+                <receiver android:name="''' + package_name + '''.EmmaInstrument.CollectCoverageReceiver">
                     <intent-filter>
-                    <action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE" />
+                    <action android:name="evolutiz.emma.COLLECT_COVERAGE" />
                     </intent-filter>
                 </receiver>
                  <!-- emma updated -->

@@ -8,9 +8,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
-public class SMSInstrumentedReceiver extends BroadcastReceiver {
-                public static String TAG = "M3SMSInstrumentedReceiver";
-
+public class CollectCoverageReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// TODO Auto-generated method stub

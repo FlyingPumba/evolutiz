@@ -9,9 +9,7 @@ import android.util.Log;
 import android.os.Environment;
 import java.io.File;
 
-public class SMSInstrumentedReceiver extends BroadcastReceiver {
-                public static String TAG = "M3SMSInstrumentedReceiver";
-
+public class CollectCoverageReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			Log.v(TAG, "Hola, recibi el broadcast");

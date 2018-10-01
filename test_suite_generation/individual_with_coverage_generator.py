@@ -181,7 +181,7 @@ class IndividualWithCoverageGenerator(object):
             pass
         else:
             # no crash, can broadcast
-            output, errors, result_code = adb.shell_command(device, "am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE",
+            output, errors, result_code = adb.shell_command(device, "am broadcast -a evolutiz.emma.COLLECT_COVERAGE",
                                             timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, motifcore_script_filename, False)

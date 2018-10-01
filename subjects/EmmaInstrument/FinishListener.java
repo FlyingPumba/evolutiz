@@ -1,4 +1,4 @@
-package arity.calculator.EmmaInstrument;
+package pkg.name.EmmaInstrument;
 
 
 public interface FinishListener {
