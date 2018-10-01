@@ -10,6 +10,7 @@ import android.os.Environment;
 import java.io.File;
 
 public class CollectCoverageReceiver extends BroadcastReceiver {
+        public static String TAG = "CollectCoverageReceiver";
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			Log.v(TAG, "Hola, recibi el broadcast");
