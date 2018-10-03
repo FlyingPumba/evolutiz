@@ -140,10 +140,13 @@ class DeviceManager(object):
         if wait_to_be_ready:
             self.wait_devices_to_be_ready()
 
-    def shutdown_emulators(self):
+    def shutdown_emulators(self, remove=False):
         emulators = [device for device in self.get_devices() if type(device) is Emulator]
         for device in emulators:
             device.shutdown()
+
+        if remove:
+            self.devices = [device for device in self.get_devices() if type(device) is RealDevice]
 
     def reboot_devices(self, wait_to_be_ready=False):
         logger.log_progress("\nRebooting devices.")

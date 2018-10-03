@@ -69,10 +69,10 @@ def prepare_devices(result_dir):
     device_manager = RequiredFeature('device_manager').request()
     adb.restart_server()
 
-    if len(device_manager.get_devices(refresh=True)) < device_manager.get_total_number_of_devices_expected():
-        device_manager.boot_emulators(wait_to_be_ready=True)
-    else:
-        device_manager.reboot_devices(wait_to_be_ready=True)
+    if len(device_manager.get_devices(refresh=True)) > 0:
+        device_manager.shutdown_emulators(remove=True)
+
+    device_manager.boot_emulators(wait_to_be_ready=True)
 
     for device in device_manager.get_devices():
         device.clean_sdcard()

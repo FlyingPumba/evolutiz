@@ -46,7 +46,7 @@ def adb_command(device, command, timeout=None, retry=1, discard_output=False):
 
 def get_root_permissions(device):
     # TODO: cache this result to avoid running 'adb root' each time we perform a "sudo command"
-    output, errors, result_code = adb_command(device, "root")
+    output, errors, result_code = adb_command(device, "root", retry=3)
     if result_code != 0:
         device.flag_as_malfunctioning()
         raise Exception("Unable to gain root permissions on device: " + device.name)
@@ -146,23 +146,15 @@ def set_brightness(device, value, timeout=None):
 
 
 def get_battery_level(device):
-    while True:
-        adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
-        battery_cmd = adb_cmd + "dumpsys battery | grep level | cut -d ' ' -f 4 "
+    output, errors, result_code = shell_command(device, "dumpsys battery", retry=3)
 
-        log_adb_command(device, battery_cmd)
-        try:
-            output, errors, result_code = run_cmd(battery_cmd)
-            return int(output.strip())
-
-        except Exception as e:
-            # device.flag_as_malfunctioning()
-            # raise Exception("There was an error fetching battery level for device: " + device.name)
-
-            # TODO: we should be able to remove the while True and flag the device as malfunctioning when unable to fetch
-            # battery level, but it seems is very normal for this command to fail
-            return None
-
+    if result_code != 0:
+        return None
+    else:
+        for line in output.split('\n'):
+            if 'level' in line:
+                level_str = line.split(':')
+                return int(level_str[1].strip())
 
 def get_imei(device):
     if device.name not in devices_imei:
