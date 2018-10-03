@@ -140,7 +140,13 @@ class EvolutizTestRunner(TestRunner):
                        + " -v -v -v --throttle 200 --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
                        + " -f /mnt/sdcard/" + script_name + " 1"
 
-        adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
+        output, errors, result_code = adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
+        if verbose_level > 1:
+            print("Test case running finished with output:\n" + output)
+
+        if "Exception" in errors:
+            device_stacktrace = errors.split("** Error: ")[1]
+            raise Exception("An error occurred when generating test case: " + device_stacktrace)
 
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")
@@ -163,7 +169,13 @@ class EvolutizTestRunner(TestRunner):
                        + " -o " + self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE \
                        + " -v " + str(evolutiz_events)
 
-        adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
+        output, errors, result_code = adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
+        if verbose_level > 1:
+            print("Test case generation finished with output:\n" + output)
+
+        if "Exception" in errors:
+            device_stacktrace = errors.split("** Error: ")[1]
+            raise Exception("An error occurred when generating test case: " + device_stacktrace)
 
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")
