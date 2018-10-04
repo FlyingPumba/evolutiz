@@ -1,3 +1,5 @@
+import threading
+import time
 from configparser import ConfigParser
 import argparse
 import random
@@ -16,6 +18,7 @@ from algorithms.one_plus_lambda_comma_lambda import OnePlusLambdaCommaLambda
 from algorithms.pure_random import Random
 from algorithms.standard import Standard
 from algorithms.steady_state import SteadyState
+from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
 from coverage.emma_coverage import EmmaCoverage
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
@@ -53,6 +56,13 @@ def run_one_app(strategy_with_runner_name):
 
             budget_manager.start_time_budget()
             test_generator.run()
+
+            # wait for all MultipleQueueConsumerThread to terminate
+            for thread in threading.enumerate():
+                if type(thread) is MultipleQueueConsumerThread:
+                    thread.stop()
+                    thread.raiseExc(Exception)
+            time.sleep(5)
 
             logger.log_progress("\nEvolutiz finished for app: " + app_name)
             logger.log_progress("\nTime budget used: %.2f seconds\n" % (budget_manager.get_time_budget_used()))
