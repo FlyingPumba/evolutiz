@@ -146,7 +146,7 @@ class EvolutizTestRunner(TestRunner):
 
         if "Exception" in errors:
             device_stacktrace = errors.split("** Error: ")[1]
-            raise Exception("An error occurred when generating test case: " + device_stacktrace)
+            raise Exception("An error occurred when running test case: " + device_stacktrace)
 
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")
