@@ -46,6 +46,8 @@ def run_one_app(strategy_with_runner_name):
 
     try:
         for repetition in range(0, repetitions):
+            os.chdir(settings.WORKING_DIR)
+
             result_dir = prepare_result_dir(app_name, repetition, strategy_with_runner_name)
 
             prepare_devices(result_dir)
