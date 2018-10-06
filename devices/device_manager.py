@@ -146,6 +146,7 @@ class DeviceManager(object):
             device.shutdown()
 
         if remove:
+            self.next_available_emulator_port = 5554
             self.devices = [device for device in self.get_devices() if type(device) is RealDevice]
 
     def reboot_devices(self, wait_to_be_ready=False):
