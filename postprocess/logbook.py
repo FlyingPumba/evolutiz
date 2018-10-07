@@ -22,7 +22,7 @@ def print_fitness(logbook_file_path):
     logbook = pickle.load(logbook_file)
 
     print("Fitness records:\n")
-    print("gen\tcoverage\tlength\tcrashes\ttimestamp")
+    print("gen\tcovrg.\tlength\tcrashes\ttimestamp")
     print("-----------------------------------------")
 
     fitness_by_gen = logbook.select("fitness")
