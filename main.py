@@ -48,6 +48,13 @@ def run_one_app(strategy_with_runner_name):
         for repetition in range(0, repetitions):
             os.chdir(settings.WORKING_DIR)
 
+            stats = RequiredFeature('stats').request()
+            logbook = tools.Logbook()
+            logbook.header = ['gen'] + stats.fields
+            features.provide('logbook', logbook)
+            history = tools.History()
+            features.provide('history', history)
+
             result_dir = prepare_result_dir(app_name, repetition, strategy_with_runner_name)
 
             prepare_devices(result_dir)
@@ -114,14 +121,6 @@ def prepare_result_dir(app_name, repetition, strategy_with_runner_name):
 def run(strategy_name, app_paths):
     for i in range(0, len(app_paths)):
         features.provide('app_path', app_paths[i])
-
-        stats = RequiredFeature('stats').request()
-        logbook = tools.Logbook()
-        logbook.header = ['gen'] + stats.fields
-        features.provide('logbook', logbook)
-
-        history = tools.History()
-        features.provide('history', history)
 
         # TODO: the coverage_fetcher should depend on whether we are processing a closed source or open source app
         features.provide('coverage_fetcher', EmmaCoverage)
