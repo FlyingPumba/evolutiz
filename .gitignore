@@ -41,3 +41,5 @@
 .DS_Store?
 .Spotlight-V100
 Thumbs.db
+.env
+.pyc
