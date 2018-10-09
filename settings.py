@@ -2,23 +2,23 @@ DEBUG = False
 # if False, "0" will be used
 ENABLE_STRING_SEEDING = True
 # use headless evaluator
-HEADLESS = False
+HEADLESS = True
 
 
 # === Emulator ===
 DEVICE_NUM = 1
-AVD_BOOT_DELAY = 30
-AVD_SERIES = "api19_"
-EVAL_TIMEOUT = 120
+AVD_BOOT_DELAY = 60
+AVD_SERIES = "Nexus_4_API_19_"
+EVAL_TIMEOUT = 150
 # if run on Mac OS, use "gtimeout"
 TIMEOUT_CMD = "timeout"
 
 
 # === Env. Paths ===
 # path should end with a '/'
-ANDROID_HOME = '/'
+ANDROID_HOME = '/usr/local/android-sdk/'
 # the path of sapienz folder
-WORKING_DIR = '/'
+WORKING_DIR = '/home/ivan/src/sapienz/'
 
 
 # === GA parameters ===
