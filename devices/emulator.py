@@ -75,10 +75,10 @@ def boot_devices():
 		print "Booting Device:", device_name
 		time.sleep(0.3)
 		if settings.HEADLESS:
-			sub.Popen('emulator -avd ' + device_name + " -wipe-data -no-audio -no-window",
+			sub.Popen('emulator -avd ' + device_name + " -wipe-data -no-window -no-boot-anim",
 					  stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 		else:
-			sub.Popen('emulator -avd ' + device_name + " -wipe-data -no-audio",
+			sub.Popen('emulator -avd ' + device_name + " -wipe-data -no-boot-anim",
 					  stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 
 	print "Waiting", settings.AVD_BOOT_DELAY, "seconds"
