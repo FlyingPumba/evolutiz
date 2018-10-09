@@ -14,7 +14,6 @@ class TestSuiteEvaluator(object):
     def __init__(self):
         self.test_runner = RequiredFeature('test_runner').request()
         self.coverage_fetcher = RequiredFeature('coverage_fetcher').request()
-        self.result_dir = RequiredFeature('result_dir').request()
 
         self.stats = RequiredFeature('stats').request()
         self.logbook = RequiredFeature('logbook').request()
@@ -24,7 +23,11 @@ class TestSuiteEvaluator(object):
         # This is useful for example to have a single hall-of-fame across a single run.
         features.provide('test_suite_evaluator', self)
 
+        self.result_dir = None
+
     def dump_individual_to_files(self, individual):
+        self.result_dir = RequiredFeature('result_dir').request()
+
         script_path = []
         suite_lengths = {}
 
@@ -51,12 +54,14 @@ class TestSuiteEvaluator(object):
         return script_path, suite_lengths
 
     def dump_hall_of_fame_to_file(self):
+        self.result_dir = RequiredFeature('result_dir').request()
         if hasattr(self, 'hall_of_fame'):
             hof_file = open(self.result_dir + "/hall_of_fame.pickle", 'wb')
             pickle.dump(self.hall_of_fame, hof_file)
             hof_file.close()
 
     def update_logbook(self, gen, population):
+        self.result_dir = RequiredFeature('result_dir').request()
         record = self.stats.compile(population) if self.stats is not None else {}
         fitness = []
         for individual in population:
@@ -72,6 +77,7 @@ class TestSuiteEvaluator(object):
         self.logbook.record(gen=gen, **record)
 
     def dump_logbook_to_file(self):
+        self.result_dir = RequiredFeature('result_dir').request()
         logbook_file = open(self.result_dir + "/logbook.pickle", 'wb')
         pickle.dump(self.logbook, logbook_file)
         logbook_file.close()

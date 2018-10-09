@@ -17,6 +17,24 @@ def print_avg_fitness(logbook_file_path):
         print("%d\t%d\t%d" % (gen, coverage, crashes))
 
 
+def print_fitness(logbook_file_path):
+    logbook_file = open(logbook_file_path, 'rb')
+    logbook = pickle.load(logbook_file)
+
+    print("Fitness records:\n")
+    print("gen\tcovrg.\tlength\tcrashes\ttimestamp")
+    print("-----------------------------------------")
+
+    fitness_by_gen = logbook.select("fitness")
+
+    for gen, population in enumerate(fitness_by_gen):
+        for fitness in population:
+            print("%d\t%d\t%d\t%d\t%d" % (gen,
+                                          fitness['coverage'],
+                                          fitness['crashes'],
+                                          fitness['length'],
+                                          fitness['timestamp']))
+
 def draw_pop_fitness(logbook_file_path):
     coverages = []
     generations = []
@@ -54,5 +72,6 @@ if __name__ == "__main__":
     parser.add_argument('logbook_file_path', help='Logbook pickle file path.')
     args = parser.parse_args()
 
-    print_avg_fitness(args.logbook_file_path)
-    draw_pop_fitness(args.logbook_file_path)
+    # print_avg_fitness(args.logbook_file_path)
+    # draw_pop_fitness(args.logbook_file_path)
+    print_fitness(args.logbook_file_path)
