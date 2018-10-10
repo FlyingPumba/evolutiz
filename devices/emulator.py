@@ -44,14 +44,14 @@ def get_devices():
 	:return: a list of avaiable devices names, e.g., emulator-5556
 	"""
 	ret = []
-	p = sub.Popen('adb devices', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+	p = sub.Popen('/usr/local/android-sdk/platform-tools/adb devices', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 	output, errors = p.communicate()
 	print output
 	segs = output.split("\n")
 	for seg in segs:
 		device = seg.split("\t")[0].strip()
 		if seg.startswith("emulator-"):
-			p = sub.Popen('adb -s ' + device + ' shell getprop init.svc.bootanim', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
+			p = sub.Popen('/usr/local/android-sdk/platform-tools/adb -s ' + device + ' shell getprop init.svc.bootanim', stdout=sub.PIPE, stderr=sub.PIPE, shell=True)
 			output, errors = p.communicate()
 			if output.strip() != "stopped":
 				time.sleep(10)
@@ -87,10 +87,10 @@ def boot_devices():
 
 def clean_sdcard():
 	for device in get_devices():
-		os.system("adb -s " + device + " shell mount -o rw,remount rootfs /")
-		os.system("adb -s " + device + " shell chmod 777 /mnt/sdcard")
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell mount -o rw,remount rootfs /")
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell chmod 777 /mnt/sdcard")
 
-		os.system("adb -s " + device + " shell rm -rf /mnt/sdcard/*")
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell rm -rf /mnt/sdcard/*")
 
 
 def prepare_motifcore():
@@ -105,7 +105,7 @@ def pack_and_deploy_aut():
 
 def destory_devices():
 	# for device in get_devices():
-	# 	os.system("adb -s " + device + " emu kill")
+	# 	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " emu kill")
 	# do force kill
 	os.system("kill -9  $(ps aux | grep 'emulator' | awk '{print $2}')")
 

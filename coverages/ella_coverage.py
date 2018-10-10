@@ -88,26 +88,26 @@ def get_ella_suite_coverage(scripts, device, apk_dir, package_name, gen):
 	std_out_file = apk_dir + "/intermediate/" + "output.stdout"
 
 	# clean states
-	os.system("adb -s " + device + " shell am force-stop " + package_name)
-	os.system("adb -s " + device + " shell pm clear " + package_name)
+	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell am force-stop " + package_name)
+	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell pm clear " + package_name)
 	os.system("rm " + apk_dir + "/coverage.dat*")
 
 	# run scripts
 	for index, script in enumerate(scripts):
-		start_target = "adb -s " + device + " shell motifcore -p " + package_name + " -c android.intent.category.LAUNCHER 1"
+		start_target = "/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " -c android.intent.category.LAUNCHER 1"
 		os.system(start_target + " > " + std_out_file)
 		# p = subprocess.Popen(start_target, shell=True, stdout=subprocess.PIPE).communicate()[0]
 
-		os.system("adb -s " + device + " push " + script + " /mnt/sdcard/" + " > " + std_out_file)
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " push " + script + " /mnt/sdcard/" + " > " + std_out_file)
 		script_name = script.split("/")[-1]
 		# start motifcore replay
 		# add timeout
-		command = Command("adb -s " + device + " shell motifcore -p " + package_name + " --bugreport --throttle " + str(
+		command = Command("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --bugreport --throttle " + str(
 			settings.THROTTLE) + " -f /mnt/sdcard/" + script_name + " 1")
 		command.run(timeout=600)
 		# print "... Start evaluating a script"
-		# p = subprocess.Popen("adb -s " + settings.DEVICE + " shell motifcore -p " + package_name + " --throttle " + str(settings.THROTTLE) + " -f /mnt/sdcard/" + script_name + " 1", shell=True, stdout=subprocess.PIPE).communicate()[0]
-		# os.system("adb -s " + device + " shell motifcore -p " + package_name + " --bugreport --throttle " + str(settings.THROTTLE) + " -f /mnt/sdcard/" + script_name + " 1" + " > " + std_out_file)
+		# p = subprocess.Popen("/usr/local/android-sdk/platform-tools/adb -s " + settings.DEVICE + " shell motifcore -p " + package_name + " --throttle " + str(settings.THROTTLE) + " -f /mnt/sdcard/" + script_name + " 1", shell=True, stdout=subprocess.PIPE).communicate()[0]
+		# os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --bugreport --throttle " + str(settings.THROTTLE) + " -f /mnt/sdcard/" + script_name + " 1" + " > " + std_out_file)
 		# print "... Finished evaluating a script"
 
 		# TODO: handle the bugreport: save to db together with generation info and the script
@@ -115,8 +115,8 @@ def get_ella_suite_coverage(scripts, device, apk_dir, package_name, gen):
 			num_crashes += 1
 
 		# close app
-		os.system("adb -s " + device + " shell pm clear " + package_name + " > " + std_out_file)
-		os.system("adb -s " + device + " shell am force-stop " + package_name + " > " + std_out_file)
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell pm clear " + package_name + " > " + std_out_file)
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell am force-stop " + package_name + " > " + std_out_file)
 
 	coverage_file = ''
 	covids_file = apk_dir + "/covids"

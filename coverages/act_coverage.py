@@ -57,7 +57,7 @@ class Command(object):
 			print 'Terminating process'
 			self.process.terminate()
 			# os.system("kill -9 $(lsof -i:5037 | tail -n +2 | awk '{print $2}')")
-			# os.system("adb devices")
+			# os.system("/usr/local/android-sdk/platform-tools/adb devices")
 			thread.join()
 		print self.process.returncode
 
@@ -81,35 +81,35 @@ def get_suite_coverage(scripts, device, apk_dir, package_name, gen, pop):
 	unique_crashes = set()
 
 	# clean states
-	os.system("adb -s " + device + " shell am force-stop " + package_name)
-	os.system("adb -s " + device + " shell pm clear " + package_name)
+	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell am force-stop " + package_name)
+	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell pm clear " + package_name)
 	# os.system("rm " + apk_dir + "/intermediate/activity.coverage.*")
 
 	# run scripts
 	for index, script in enumerate(scripts):
-		start_target = "adb -s " + device + " shell motifcore -p " + package_name + " -c android.intent.category.LAUNCHER 1"
+		start_target = "/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " -c android.intent.category.LAUNCHER 1"
 		os.system(start_target)
 
-		os.system("adb -s " + device + " push " + script + " /mnt/sdcard/")
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " push " + script + " /mnt/sdcard/")
 		script_name = script.split("/")[-1]
 
-		# command = Command("adb -s " + device + " shell motifcore -p " + package_name + " --bugreport --throttle " + str(
+		# command = Command("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --bugreport --throttle " + str(
 		# 	settings.THROTTLE) + " -f /mnt/sdcard/" + script_name + " 1")
-		# command = Command("adb -s " + device + " shell motifcore -p " + package_name + " --bugreport " + "-f /mnt/sdcard/" + script_name + " 1")
+		# command = Command("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --bugreport " + "-f /mnt/sdcard/" + script_name + " 1")
 		# command.run(timeout=600)
-		cmd = "adb -s " + device + " shell motifcore -p " + package_name + " --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml" + " -f /mnt/sdcard/" + script_name + " 1"
+		cmd = "/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml" + " -f /mnt/sdcard/" + script_name + " 1"
 		os.system(settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + cmd)
 		# need to manually kill motifcore when timeout
-		kill_motifcore_cmd = "shell ps | awk '/com\.android\.commands\.motifcore/ { system(\"adb -s " + device + " shell kill \" $2) }'"
-		os.system("adb -s " + device + " " + kill_motifcore_cmd)
+		kill_motifcore_cmd = "shell ps | awk '/com\.android\.commands\.motifcore/ { system(\"/usr/local/android-sdk/platform-tools/adb -s " + device + " shell kill \" $2) }'"
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " " + kill_motifcore_cmd)
 
-		os.system("adb -s " + device + " pull /sdcard/activity.coverage " + apk_dir + "/coverages/activity.coverage." + str(gen) + "." + str(pop) + "." + str(index))
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " pull /sdcard/activity.coverage " + apk_dir + "/coverages/activity.coverage." + str(gen) + "." + str(pop) + "." + str(index))
 
 		crash_handler.handle(device, apk_dir, script, gen, pop, index, unique_crashes)
 
 		# close app
-		os.system("adb -s " + device + " shell pm clear " + package_name)
-		os.system("adb -s " + device + " shell am force-stop " + package_name)
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell pm clear " + package_name)
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell am force-stop " + package_name)
 
 	coverage = cal_coverage(apk_dir + "/coverages/", gen, pop)
 

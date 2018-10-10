@@ -43,6 +43,6 @@ def upload_string_xml(device, decoded_dir, package_name):
 	if settings.ENABLE_STRING_SEEDING is False or os.path.exists(string_xml_path) is False:
 		# if not exist, upload dummy strings.xml
 		string_xml_path = settings.WORKING_DIR + "resources/dummy_strings.xml"
-	os.system("adb -s " + device + " shell rm /mnt/sdcard/" + package_name + "_strings.xml")
-	os.system("adb -s " + device + " push " + string_xml_path + " /mnt/sdcard/" + package_name + "_strings.xml")
+	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/" + package_name + "_strings.xml")
+	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " push " + string_xml_path + " /mnt/sdcard/" + package_name + "_strings.xml")
 

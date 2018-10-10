@@ -47,10 +47,10 @@ def compile_apk(path, package_name, devices):
 	print "... uninstall existed version"
 
 	for device in devices:
-		os.system("adb -s " + device + " uninstall " + package_name)
-		os.system("adb -s " + device + " install " + path + "/bin/bugroid-instrumented.apk")
+		os.system("/usr/local/android-sdk/platform-tools/ -s " + device + " uninstall " + package_name)
+		os.system("/usr/local/android-sdk/platform-tools/ -s " + device + " install " + path + "/bin/bugroid-instrumented.apk")
 
-	# start_target = "adb -s " + device + " shell am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation"
+	# start_target = "/usr/local/android-sdk/platform-tools/ -s " + device + " shell am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation"
 	# os.system( start_target )
 
 

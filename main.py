@@ -84,26 +84,26 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	ret = []
 
 	# clear data
-	os.system("adb -s " + device + " shell pm clear " + package_name)
+	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell pm clear " + package_name)
 
 	# start motifcore
 	print "... Start generating a sequence"
-	# command = Command("adb -s " + device + " shell motifcore -p " + package_name + " -v --throttle " + str(
+	# command = Command("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " -v --throttle " + str(
 	# 	settings.THROTTLE) + " " + str(motifcore_events))
 	# command.run(timeout=600)
-	cmd = "adb -s " + device + " shell motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml -v " + str(
+	cmd = "/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml -v " + str(
 		motifcore_events)
 	os.system(settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + cmd)
 	# need to kill motifcore when timeout
-	kill_motifcore_cmd = "shell ps | awk '/com\.android\.commands\.motifcore/ { system(\"adb -s " + device + " shell kill \" $2) }'"
-	os.system("adb -s " + device + " " + kill_motifcore_cmd)
+	kill_motifcore_cmd = "shell ps | awk '/com\.android\.commands\.motifcore/ { system(\"/usr/local/android-sdk/platform-tools/adb -s " + device + " shell kill \" $2) }'"
+	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " " + kill_motifcore_cmd)
 
 	print "... Finish generating a sequence"
 	# access the generated script, should ignore the first launch activity
 	script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]
 	ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
 	os.system(
-		"adb -s " + device + " pull " + settings.MOTIFCORE_SCRIPT_PATH + " " + apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(
+		"/usr/local/android-sdk/platform-tools/adb -s " + device + " pull " + settings.MOTIFCORE_SCRIPT_PATH + " " + apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(
 			index))
 	script = open(apk_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index))
 	is_content = False
@@ -302,9 +302,9 @@ def main(instrumented_app_dir):
 			decoded_dir = instrumented_app_dir + "/bin/" + apk_path.split("/")[-1].split(".apk")[0]
 		static_analyser.upload_string_xml(device, decoded_dir, package_name)
 
-		os.system("adb -s " + device + " shell rm /mnt/sdcard/bugreport.crash")
-		os.system("adb -s " + device + " uninstall " + package_name)
-		os.system("adb -s " + device + " install " + apk_path)
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/bugreport.crash")
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " uninstall " + package_name)
+		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " install " + apk_path)
 
 	# intermediate should be in app folder
 	os.system("rm -rf " + instrumented_app_dir + "/intermediate")
