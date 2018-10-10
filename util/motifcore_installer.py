@@ -34,7 +34,8 @@ import os
 
 def install(motifcore_path, motifcore_script_path, device):
 	# obtain write permission
-	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell mount -o rw,remount /system")
+	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " remount")
+	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell mount -o rw,remount /")
 
 	# push
 	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " push " + motifcore_path + " /system/framework")
