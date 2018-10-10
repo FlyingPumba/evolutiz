@@ -42,5 +42,5 @@
 .Spotlight-V100
 Thumbs.db
 .env
-.pyc
+*.pyc
 .idea
