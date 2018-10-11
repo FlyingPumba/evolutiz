@@ -93,7 +93,7 @@ def get_sequence(device, apk_dir, package_name, index, unique_crashes):
 	# command.run(timeout=600)
 	cmd = "/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml -v " + str(
 		motifcore_events)
-	os.system(settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + cmd)
+	os.system(settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + cmd + " 1>>/dev/null 2>>/dev/null")
 	# need to kill motifcore when timeout
 	kill_motifcore_cmd = "shell ps | awk '/com\.android\.commands\.motifcore/ { system(\"/usr/local/android-sdk/platform-tools/adb -s " + device + " shell kill \" $2) }'"
 	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " " + kill_motifcore_cmd)

@@ -102,7 +102,7 @@ def get_suite_coverage(scripts, device, apk_dir, package_name, gen, pop):
 		# command = Command("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --bugreport " + "-f /mnt/sdcard/" + script_name + " 1")
 		# command.run(timeout = 180)
 		cmd = "/usr/local/android-sdk/platform-tools/adb -s " + device + " shell motifcore -p " + package_name + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport --string-seeding /mnt/sdcard/" + package_name + "_strings.xml" + " -f /mnt/sdcard/" + script_name + " 1"
-		os.system(settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + cmd)
+		os.system(settings.TIMEOUT_CMD + " " + str(settings.EVAL_TIMEOUT) + " " + cmd + " 1>>/dev/null 2>>/dev/null")
 		# need to manually kill motifcore when timeout
 		kill_motifcore_cmd = "shell ps | awk '/com\.android\.commands\.motifcore/ { system(\"/usr/local/android-sdk/platform-tools/adb -s " + device + " shell kill \" $2) }'"
 		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " " + kill_motifcore_cmd)
