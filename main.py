@@ -366,9 +366,9 @@ def main(instrumented_app_dir):
 	history_file.close()
 
 	# draw graph
-	two_d_line.plot(logbook, 0, instrumented_app_dir)
-	two_d_line.plot(logbook, 1, instrumented_app_dir)
-	two_d_line.plot(logbook, 2, instrumented_app_dir)
+	# two_d_line.plot(logbook, 0, instrumented_app_dir)
+	# two_d_line.plot(logbook, 1, instrumented_app_dir)
+	# two_d_line.plot(logbook, 2, instrumented_app_dir)
 
 
 # draw history network
