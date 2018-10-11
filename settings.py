@@ -27,7 +27,7 @@ SEQUENCE_LENGTH_MAX = 500
 SUITE_SIZE = 5
 POPULATION_SIZE = 50
 OFFSPRING_SIZE = 50
-GENERATION = 100
+GENERATION = 4
 # Crossover probability
 CXPB = 0.7
 # Mutation probability
