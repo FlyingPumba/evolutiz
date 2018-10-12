@@ -121,7 +121,7 @@ def get_suite_coverage(scripts, device, apk_dir, package_name, gen, pop):
 	time.sleep(0.5)
 	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " pull /mnt/sdcard/coverage.ec")
 	os.system(
-		"java -cp " + settings.ANDROID_HOME + "tools/lib/emma.jar emma report -r html -in coverage.em,coverage.ec")
+		"java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec")
 
 	html_file = apk_dir + "/coverages/" + coverage_folder + "/coverage/index.html"
 	try:
