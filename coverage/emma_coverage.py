@@ -69,8 +69,13 @@ class EmmaCoverage(object):
                 scripts_crash_status[script] = True
                 pass
             else:
-                scripts_crash_status[script] = False
                 # no crash, can broadcast
+                scripts_crash_status[script] = False
+
+                # don't check result_code of the following command, since it can fail if this is the first time running emma
+                # for this test suite and there is no coverage.ec file in /mnt/sdcard folder.
+                adb.sudo_shell_command(device, "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device)
+
                 broadcast = "am broadcast -a evolutiz.emma.COLLECT_COVERAGE -n " + self.package_name + "/" + \
                             self.package_name + ".EmmaInstrument.CollectCoverageReceiver"
                 output, errors, result_code = adb.shell_command(device, broadcast)
@@ -81,9 +86,6 @@ class EmmaCoverage(object):
                         "Unable to broadcast coverage gathering for script " + script + " in device: " + device.name)
                 there_is_coverage = True
 
-                # wait some time for coverage file to be written
-                time.sleep(5)
-
                 if not adb.exists_file(device, coverage_path_in_device):
                     adb.log_evaluation_result(device, self.result_dir, script, False)
                     device.flag_as_malfunctioning()
@@ -91,47 +93,24 @@ class EmmaCoverage(object):
                         "Coverage broadcast was sent for script " + script + " in device: " + device.name +
                         " but there is not file: " + coverage_path_in_device)
 
-            # save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
-            output, errors, result_code = adb.sudo_shell_command(device,
-                                                 "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear)
+                adb.log_evaluation_result(device, self.result_dir, script, True)
+
+                # save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
+                output, errors, result_code = adb.sudo_shell_command(device,
+                                                     "cp -p " + coverage_path_in_device + " " + coverage_backup_path_before_clear)
+                if result_code != 0:
+                    adb.log_evaluation_result(device, self.result_dir, script, False)
+                    device.flag_as_malfunctioning()
+                    raise Exception(
+                        "Unable to retrieve coverage.ec file after coverage broadcast for script " + script + " in  device: " + device.name)
+
+            # close app
+            output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script, False)
                 device.flag_as_malfunctioning()
                 raise Exception(
-                    "Unable to retrieve coverage.ec file after coverage broadcast for script " + script + " in  device: " + device.name)
-
-        # close app
-        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
-        if result_code != 0:
-            adb.log_evaluation_result(device, self.result_dir, script, False)
-            device.flag_as_malfunctioning()
-            raise Exception(
-                "Unable to clear package for script " + script + " in device: " + device.name)
-
-        # restore the coverage.ec file from /mnt/sdcard to app files
-        output, errors, result_code = adb.sudo_shell_command(device, "mkdir " + application_files)
-        if result_code != 0:
-            adb.log_evaluation_result(device, self.result_dir, script, False)
-            device.flag_as_malfunctioning()
-            raise Exception(
-                "Unable to create application files directory for script " + script + " in device: " + device.name)
-
-        if there_is_coverage:
-            output, errors, result_code = adb.sudo_shell_command(device,
-                                                 "cp -p " + coverage_backup_path_before_clear + " " + coverage_path_in_device)
-            if result_code != 0:
-                adb.log_evaluation_result(device, self.result_dir, script, False)
-                device.flag_as_malfunctioning()
-                raise Exception(
-                    "Unable to copy backup coverage.ec file in sdcard for script " + script + " in device: " + device.name)
-
-        adb.log_evaluation_result(device, self.result_dir, script, True)
-
-        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
-        if result_code != 0:
-            adb.log_evaluation_result(device, self.result_dir, "clear-package", False)
-            device.flag_as_malfunctioning()
-            raise Exception("Unable to clear package " + self.package_name + " in device: " + device.name)
+                    "Unable to clear package for script " + script + " in device: " + device.name)
 
         if there_is_coverage:
             output, errors, result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
@@ -144,7 +123,6 @@ class EmmaCoverage(object):
 
             output, errors, result_code = run_cmd(emma_cmd)
             # logger.log_progress("Emma jar finished.\nOutput:\n" + output + ".\nErrors:\n" + errors + "\n")
-
 
             html_file = "coverage/index.html"
             coverage_str = extract_coverage(html_file)
