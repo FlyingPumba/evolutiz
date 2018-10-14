@@ -82,7 +82,7 @@ def get_suite_coverage(scripts, device, apk_dir, package_name, gen, pop):
 	# clean states
 	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell am force-stop " + package_name)
 	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell pm clear " + package_name)
-	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell rm /mnt/sdcard/coverage.ec")
+	os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell rm /data/data/" + package_name + "/files/coverage.ec")
 
 	os.chdir(apk_dir)
 	ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
@@ -111,7 +111,11 @@ def get_suite_coverage(scripts, device, apk_dir, package_name, gen, pop):
 			pass
 		else:
 			# no crash, can broadcast
+			os.system(
+				"/usr/local/android-sdk/platform-tools/adb -s " + device + " shell cp -p /mnt/sdcard/coverage.ec /data/data/" + package_name + "/files/coverage.ec")
 			os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell am broadcast -a edu.gatech.m3.emma.COLLECT_COVERAGE")
+			os.system(
+				"/usr/local/android-sdk/platform-tools/adb -s " + device + " shell cp -p /data/data/" + package_name + "/files/coverage.ec /mnt/sdcard/coverage.ec")
 
 		# close app
 		os.system("/usr/local/android-sdk/platform-tools/adb -s " + device + " shell pm clear " + package_name)
