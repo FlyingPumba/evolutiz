@@ -27,7 +27,7 @@
 # THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
+import time
 
 import random
 import os
@@ -279,6 +279,9 @@ def main(instrumented_app_dir):
 	# get emulator device
 	print "Preparing devices ..."
 	emulator.boot_devices()
+
+	start_time = time.time()
+
 	emulator.prepare_motifcore()
 	emulator.clean_sdcard()
 
@@ -350,7 +353,8 @@ def main(instrumented_app_dir):
 														ngen=settings.GENERATION,
 														apk_dir=instrumented_app_dir,
 														package_name=package_name,
-														stats=stats, halloffame=hof, verbose=True)
+														stats=stats, halloffame=hof, verbose=True,
+														start_time=start_time)
 
 	# persistent
 	logbook_file = open(instrumented_app_dir + "/intermediate/logbook.pickle", 'wb')

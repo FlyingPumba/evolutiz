@@ -58,7 +58,7 @@ def evaluate_in_parallel(eval_suite_parallel, individuals, apk_dir, package_name
 
 
 def evolve(population, toolbox, mu, lambda_, cxpb, mutpb, ngen, apk_dir, package_name,
-		   stats=None, halloffame=None, verbose=__debug__):
+		   stats=None, halloffame=None, verbose=__debug__, start_time=None):
 	logbook = tools.Logbook()
 	logbook.header = ['gen', 'nevals'] + (stats.fields if stats else [])
 
@@ -84,6 +84,9 @@ def evolve(population, toolbox, mu, lambda_, cxpb, mutpb, ngen, apk_dir, package
 
 	# Begin the generational process
 	for gen in range(1, ngen + 1):
+
+		print "Starting generation ", gen, " at ", (time.time() - start_time)
+
 		# Vary the population
 		offspring = varOr(population, toolbox, lambda_, cxpb, mutpb)
 
@@ -126,6 +129,8 @@ def evolve(population, toolbox, mu, lambda_, cxpb, mutpb, ngen, apk_dir, package
 		logbook_file = open(apk_dir + "/intermediate/logbook.pickle", 'wb')
 		pickle.dump(logbook, logbook_file)
 		logbook_file.close()
+
+		print "Finished generation ", gen, " at ", (time.time() - start_time)
 
 	return population, logbook
 
