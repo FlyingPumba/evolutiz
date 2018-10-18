@@ -27,7 +27,6 @@ class EmmaCoverage(object):
 
         # clean states
         adb.shell_command(device, "am force-stop " + self.package_name)
-        adb.shell_command(device, "pm clear " + self.package_name)
 
         application_files = "/data/data/" + self.package_name + "/files"
         coverage_path_in_device = application_files + "/coverage.ec"
@@ -48,6 +47,14 @@ class EmmaCoverage(object):
 
         # run scripts
         for index, script in enumerate(scripts):
+            # close app in case it's open and clear it's data and state
+            output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
+            if result_code != 0:
+                adb.log_evaluation_result(device, self.result_dir, script, False)
+                device.flag_as_malfunctioning()
+                raise Exception(
+                    "Unable to clear package for script " + script + " in device: " + device.name)
+
             output, errors, result_code = adb.shell_command(device,
                                             "am instrument " + self.package_name + "/" + self.package_name + ".EmmaInstrument.EmmaInstrumentation", retry=2)
             if result_code != 0:
@@ -103,14 +110,6 @@ class EmmaCoverage(object):
                     device.flag_as_malfunctioning()
                     raise Exception(
                         "Unable to retrieve coverage.ec file after coverage broadcast for script " + script + " in  device: " + device.name)
-
-            # close app
-            output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
-            if result_code != 0:
-                adb.log_evaluation_result(device, self.result_dir, script, False)
-                device.flag_as_malfunctioning()
-                raise Exception(
-                    "Unable to clear package for script " + script + " in device: " + device.name)
 
         if there_is_coverage:
             output, errors, result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
