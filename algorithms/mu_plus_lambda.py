@@ -2,6 +2,7 @@
 import random
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
+from dependency_injection.required_feature import RequiredFeature
 from util import logger
 
 
@@ -24,11 +25,16 @@ class MuPlusLambda(GeneticAlgorithm):
         super(MuPlusLambda, self).__init__()
 
     def evolve(self):
+        verbose_level = RequiredFeature('verbose_level').request()
+
         for gen in range(1, self.max_generations + 1):
 
             if not self.budget_manager.time_budget_available():
                 print("Time budget run out, exiting evolve")
                 break
+
+            if verbose_level > 0:
+                logger.log_progress("Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
 
             logger.log_progress("\n---> Starting generation " + str(gen))
 
@@ -46,6 +52,9 @@ class MuPlusLambda(GeneticAlgorithm):
 
             self.device_manager.log_devices_battery(gen, self.result_dir)
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
+
+            if verbose_level > 0:
+                logger.log_progress("Finished generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
 
         return self.population
 
