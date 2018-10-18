@@ -34,7 +34,7 @@ class MuPlusLambda(GeneticAlgorithm):
                 break
 
             if verbose_level > 0:
-                logger.log_progress("Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
+                logger.log_progress("\nStarting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
 
             logger.log_progress("\n---> Starting generation " + str(gen))
 
@@ -54,7 +54,7 @@ class MuPlusLambda(GeneticAlgorithm):
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
             if verbose_level > 0:
-                logger.log_progress("Finished generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
+                logger.log_progress("\nFinished generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
 
         return self.population
 
