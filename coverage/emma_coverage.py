@@ -55,13 +55,6 @@ class EmmaCoverage(object):
                 raise Exception(
                     "Unable to clear package for script " + script + " in device: " + device.name)
 
-            output, errors, result_code = adb.shell_command(device,
-                                            "am instrument " + self.package_name + "/" + self.package_name + ".EmmaInstrument.EmmaInstrumentation", retry=2)
-            if result_code != 0:
-                adb.log_evaluation_result(device, self.result_dir, script, False)
-                device.flag_as_malfunctioning()
-                raise Exception("Unable to instrument " + self.package_name)
-
             output, errors, result_code = adb.push(device, script, "/mnt/sdcard/")
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script, False)
