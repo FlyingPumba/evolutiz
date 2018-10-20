@@ -13,9 +13,6 @@ error_file = None
 output_filename = None
 error_filename = None
 
-lock = multiprocessing.Lock()
-
-
 def prepare():
     # redirect stdout and stderr
     starting_datetime = datetime.today().strftime("%Y-%m-%d_%H-%M")
@@ -46,10 +43,8 @@ def restore():
 
 
 def log_progress(string):
-    lock.acquire()
     orig_stdout.write(string)
     orig_stdout.flush()
-    lock.release()
 
 
 def clear_progress():
