@@ -87,10 +87,18 @@ class MultipleQueueConsumerThread(KillableThread):
                 except Exception as e:
                     # find out if there is a device we where working on
                     items = []
+
                     if recyclable_items is not None:
                         items.extend(recyclable_items)
+
                     if consumable_items is not None:
                         items.extend(consumable_items)
+
+                        # Put the consumable items back in their respective queue
+                        for index, item in enumerate(consumable_items):
+                            queue = self.consumable_items_queues[index]
+                            queue.put_nowait(item)
+
                     devices = [item for item in items if issubclass(type(item), Device)]
 
                     # log accordingly
@@ -99,22 +107,19 @@ class MultipleQueueConsumerThread(KillableThread):
                     else:
                         self.log_exception(e, traceback.format_exc())
 
-                    # There was an error processing the items, put the consumable items back in their respective queue
-                    for index, item in enumerate(consumable_items):
-                        queue = self.consumable_items_queues[index]
-                        queue.put_nowait(item)
                 finally:
                     self.mark_used_items(recyclable_items, self.recyclable_items_queues)
                     self.mark_used_items(consumable_items, self.consumable_items_queues)
 
-                    # Put the recyclable items back in their respective queue
-                    for index, item in enumerate(recyclable_items):
-                        queue = self.recyclable_items_queues[index]
-                        queue.put_nowait(item)
-
                     if recyclable_items is None or consumable_items is None:
                         # there is nothing else to do, finish thread
                         return
+
+                    if recyclable_items is not None:
+                        # Put the recyclable items back in their respective queue
+                        for index, item in enumerate(recyclable_items):
+                            queue = self.recyclable_items_queues[index]
+                            queue.put_nowait(item)
 
         except Exception as e:
             print(e)
@@ -122,6 +127,9 @@ class MultipleQueueConsumerThread(KillableThread):
 
     def log_exception(self, e, stack_trace, device=None):
         verbose_level = RequiredFeature('verbose_level').request()
+        if verbose_level == 0:
+            return
+
         template_base = "\nAn error occurred when calling func in MultipleQueueConsumerThread"
 
         if device is None:
