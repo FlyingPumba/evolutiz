@@ -71,7 +71,7 @@ def run_one_app(strategy_with_runner_name):
                 if type(thread) is MultipleQueueConsumerThread:
                     thread.stop()
                     thread.raiseExc(Exception)
-            time.sleep(5)
+            time.sleep(1)
 
             logger.log_progress("\nEvolutiz finished for app: " + app_name)
             logger.log_progress("\nTime budget used: %.2f seconds\n" % (budget_manager.get_time_budget_used()))

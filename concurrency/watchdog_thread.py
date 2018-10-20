@@ -74,9 +74,9 @@ class WatchDogThread(threading.Thread):
                                         "finishing item processing." % (thread.name, self.watchdog_timeout))
                     thread.raiseExc(ThreadHungException)
                     # give time to the thread to process the exception
-                    time.sleep(5)
+                    time.sleep(1)
 
-            time.sleep(2)
+            time.sleep(1)
 
         self.successful_finish = not stopped_threads
         if not stopped_threads:

@@ -71,12 +71,12 @@ class MapperOnDevices(object):
 
             watchdog_thread = WatchDogThread(devices_to_use, output_queue, total_devices)
             watchdog_thread.start()
-            time.sleep(5)
+            time.sleep(1)
 
             while not watchdog_thread.finished():
                 # ask for idle devices to set state in case one or more devices are booting
                 device_manager.get_idle_devices()
-                time.sleep(5)
+                time.sleep(15)
 
             if not watchdog_thread.finished_successfully():
                 raise TimeoutError("Timeout occurred while running MapperOnDevices")
@@ -102,12 +102,12 @@ class MapperOnDevices(object):
 
             watchdog_thread = WatchDogThread(items_queue, output_queue, len(self.items_to_map))
             watchdog_thread.start()
-            time.sleep(5)
+            time.sleep(1)
 
             while not watchdog_thread.finished():
                 # ask for idle devices to set state in case one or more devices are booting
                 device_manager.get_idle_devices()
-                time.sleep(5)
+                time.sleep(15)
 
             if not watchdog_thread.finished_successfully():
                 raise TimeoutError("Timeout occurred while running MapperOnDevices")

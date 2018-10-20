@@ -167,7 +167,7 @@ class DeviceManager(object):
         while len(ready_devices) < devices_to_wait:
             logger.log_progress("\nWaiting for devices to be ready: " +
                                 str(len(ready_devices)) + "/" + str(devices_to_wait))
-            time.sleep(10)
+            time.sleep(3)
             ready_devices = self.get_ready_to_install_devices(refresh=True)
 
         logger.log_progress("\nWaiting for devices to be ready: " +
