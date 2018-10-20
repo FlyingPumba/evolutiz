@@ -1,5 +1,5 @@
 import os
-import time
+import multiprocessing
 from subprocess import TimeoutExpired
 
 from dependency_injection.required_feature import RequiredFeature
@@ -20,6 +20,7 @@ devices_imei = {
     '4df7c3bb449221d3': '391'
 }
 
+devices_with_root_permissions = []
 
 def adb_command(device, command, timeout=None, retry=1, discard_output=False):
     cmd = adb_cmd_prefix + " -s " + device.name + " " + command
@@ -42,11 +43,15 @@ def adb_command(device, command, timeout=None, retry=1, discard_output=False):
 
 
 def get_root_permissions(device):
-    # TODO: cache this result to avoid running 'adb root' each time we perform a "sudo command"
+    if device.name in devices_with_root_permissions:
+        return
+
     output, errors, result_code = adb_command(device, "root", retry=3)
     if result_code != 0:
         device.flag_as_malfunctioning()
         raise Exception("Unable to gain root permissions on device: " + device.name)
+
+    devices_with_root_permissions.append(device.name)
 
 
 def shell_command(device, command, timeout=None, retry=1, discard_output=False):
