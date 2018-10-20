@@ -41,7 +41,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
             if not had_crash:
                 suite_lengths.pop(script, None)
 
-        # 1st obj: coverage, 2nd: average seq length of the suite, 3nd: #crashes
+        # 1st obj: coverage, 2nd: average seq length of the suite, 3rd: #crashes
         if suite_lengths:
             length = numpy.mean(suite_lengths.values())
         else:

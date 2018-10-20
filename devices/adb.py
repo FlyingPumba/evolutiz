@@ -2,6 +2,7 @@ import os
 import time
 from subprocess import TimeoutExpired
 
+from dependency_injection.required_feature import RequiredFeature
 from util import logger
 from util.command import run_cmd
 
@@ -199,8 +200,10 @@ def exists_file(device, file_path):
 
 
 def log_evaluation_result(device, result_dir, script, success):
-    device_adb_log_file = result_dir + "/" + device.name + "-evaluations.log"
-    os.system("echo \"" + str(success) + " -> " + script + "\" >> " + device_adb_log_file)
+    verbose_level = RequiredFeature('verbose_level').request()
+    if verbose_level > 0:
+        device_adb_log_file = result_dir + "/" + device.name + "-evaluations.log"
+        os.system("echo \"" + str(success) + " -> " + script + "\" >> " + device_adb_log_file)
 
 
 def get_api_level(device):

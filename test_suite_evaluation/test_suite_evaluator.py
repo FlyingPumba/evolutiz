@@ -32,20 +32,15 @@ class TestSuiteEvaluator(object):
         suite_lengths = {}
 
         for test_case_index, test_case in enumerate(individual):
+            length = len(test_case)
             # generate script file list
             filename = self.result_dir + "/intermediate/script." + str(individual.generation) + "." + \
                        str(individual.index_in_generation) + "." + str(test_case_index)
-            # check that directory exists before creating file
-            dirname = os.path.dirname(filename)
-            if not os.path.exists(dirname):
-                os.makedirs(dirname)
-            with open(filename, "w+") as script:
-                script.write(settings.SCRIPT_HEADER)
 
-                length = 0
-                for line in test_case:
-                    script.write(line + "\n")
-                    length += 1
+            test_case.insert(0, settings.SCRIPT_HEADER)
+            with open(filename, "w+") as script:
+                script.write("\n".join(test_case))
+                script.write("\n")
 
             script = os.path.abspath(filename)
             suite_lengths[script] = length
