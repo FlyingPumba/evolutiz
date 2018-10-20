@@ -6,6 +6,7 @@ from dependency_injection.required_feature import RequiredFeature
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
 from concurrency.watchdog_thread import WatchDogThread
 
+
 class MapperOnDevices(object):
     """Manages parallel execution of a function in the available devices.
 
@@ -24,7 +25,8 @@ class MapperOnDevices(object):
         idle_devices_only   Use only idle devices.
     """
 
-    def __init__(self, func, items_to_map=None, extra_args=(), extra_kwargs=None, minimum_api=None, idle_devices_only=False):
+    def __init__(self, func, items_to_map=None, extra_args=(), extra_kwargs=None, minimum_api=None,
+                 idle_devices_only=False):
 
         self.func = func
         self.items_to_map = items_to_map
@@ -40,9 +42,14 @@ class MapperOnDevices(object):
 
     def run(self):
         device_manager = RequiredFeature('device_manager').request()
-        all_devices = device_manager.get_idle_devices() if self.idle_devices_only else device_manager.get_devices()
-        devices = [device for device in all_devices
-                   if self.minimum_api is None or device.api_level() >= self.minimum_api]
+
+        if self.idle_devices_only:
+            devices = device_manager.get_idle_devices()
+        else:
+            devices = device_manager.get_devices()
+
+        if self.minimum_api is not None:
+            devices = [device for device in devices if device.api_level() >= self.minimum_api]
 
         total_devices = len(devices)
         if total_devices == 0:
@@ -60,26 +67,15 @@ class MapperOnDevices(object):
             # prepare output queue
             output_queue = Queue(maxsize=total_devices)
 
-            threads = [MultipleQueueConsumerThread(self.func,
-                                                   consumable_items_queues=[devices_to_use],
-                                                   extra_args=self.extra_args, extra_kwargs=self.extra_kwargs,
-                                                   output_queue=output_queue, name="MQCThread-" + str(i))
-                       for i in range(0, total_devices)]
-
-            for thread in threads:
+            for i in range(0, total_devices):
+                thread = MultipleQueueConsumerThread(self.func,
+                                                     consumable_items_queues=[devices_to_use],
+                                                     extra_args=self.extra_args, extra_kwargs=self.extra_kwargs,
+                                                     output_queue=output_queue, name="MQCThread-" + str(i))
                 thread.start()
 
             watchdog_thread = WatchDogThread(devices_to_use, output_queue, total_devices)
-            watchdog_thread.start()
-            time.sleep(1)
-
-            while not watchdog_thread.finished():
-                # ask for idle devices to set state in case one or more devices are booting
-                device_manager.get_idle_devices()
-                time.sleep(15)
-
-            if not watchdog_thread.finished_successfully():
-                raise TimeoutError("Timeout occurred while running MapperOnDevices")
+            self.wait_for_watchdog_to_finish(device_manager, watchdog_thread)
 
         else:
             items_queue = Queue(maxsize=len(self.items_to_map))
@@ -89,28 +85,17 @@ class MapperOnDevices(object):
             # prepare output queue
             output_queue = Queue(maxsize=len(self.items_to_map))
 
-            threads = [MultipleQueueConsumerThread(self.func,
-                                                   recyclable_items_queues=[devices_to_use],
-                                                   consumable_items_queues=[items_queue],
-                                                   extra_args=self.extra_args,
-                                                   extra_kwargs=self.extra_kwargs,
-                                                   output_queue=output_queue, name="MQCThread-" + str(i))
-                       for i in range(0, total_devices)]
-
-            for thread in threads:
+            for i in range(0, total_devices):
+                thread = MultipleQueueConsumerThread(self.func,
+                                                     recyclable_items_queues=[devices_to_use],
+                                                     consumable_items_queues=[items_queue],
+                                                     extra_args=self.extra_args,
+                                                     extra_kwargs=self.extra_kwargs,
+                                                     output_queue=output_queue, name="MQCThread-" + str(i))
                 thread.start()
 
             watchdog_thread = WatchDogThread(items_queue, output_queue, len(self.items_to_map))
-            watchdog_thread.start()
-            time.sleep(1)
-
-            while not watchdog_thread.finished():
-                # ask for idle devices to set state in case one or more devices are booting
-                device_manager.get_idle_devices()
-                time.sleep(15)
-
-            if not watchdog_thread.finished_successfully():
-                raise TimeoutError("Timeout occurred while running MapperOnDevices")
+            self.wait_for_watchdog_to_finish(device_manager, watchdog_thread)
 
         # collect output
         results = []
@@ -122,3 +107,15 @@ class MapperOnDevices(object):
                 # no more output values
                 break
         return results
+
+    def wait_for_watchdog_to_finish(self, device_manager, watchdog_thread):
+        watchdog_thread.start()
+        time.sleep(1)
+
+        while not watchdog_thread.finished():
+            # ask for idle devices to set state in case one or more devices are booting
+            device_manager.get_idle_devices()
+            time.sleep(15)
+
+        if not watchdog_thread.finished_successfully():
+            raise TimeoutError("Timeout occurred while running MapperOnDevices")
