@@ -37,8 +37,8 @@ class TestSuiteEvaluator(object):
             filename = self.result_dir + "/intermediate/script." + str(individual.generation) + "." + \
                        str(individual.index_in_generation) + "." + str(test_case_index)
 
-            test_case.insert(0, settings.SCRIPT_HEADER)
             with open(filename, "w+") as script:
+                script.write(settings.SCRIPT_HEADER)
                 script.write("\n".join(test_case))
                 script.write("\n")
 
