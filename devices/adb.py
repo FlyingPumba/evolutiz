@@ -180,8 +180,10 @@ def restart_server():
 
 
 def log_adb_command(device, cmd):
-    device_adb_log_file = adb_logs_dir + "/" + device.name + "-adb.log"
-    os.system("echo \"" + cmd + "\" >> " + device_adb_log_file)
+    verbose_level = RequiredFeature('verbose_level').request()
+    if verbose_level > 0:
+        device_adb_log_file = adb_logs_dir + "/" + device.name + "-adb.log"
+        os.system("echo \"" + cmd + "\" >> " + device_adb_log_file)
 
 
 def exists_file(device, file_path):
