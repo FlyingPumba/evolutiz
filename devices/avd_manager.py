@@ -1,3 +1,4 @@
+import traceback
 from subprocess import TimeoutExpired
 
 from dependency_injection.required_feature import RequiredFeature
@@ -19,7 +20,8 @@ class AvdManager(object):
         try:
             output, errors, result_code = run_cmd(list_avd_cmd)
         except TimeoutExpired as e:
-            raise Exception("There was an error running avdmanager command: " + errors)
+            stack_trace = traceback.format_exc()
+            raise Exception("There was an error running avdmanager command: " + stack_trace)
 
         if errors.strip() != '':
             raise Exception("There was an error running avdmanager command: " + errors)
