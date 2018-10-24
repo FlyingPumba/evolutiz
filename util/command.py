@@ -11,7 +11,7 @@ def is_command_available(command):
     return result_code == 0
 
 
-def run_cmd(command, timeout=None, discard_output=False):
+def run_cmd(command, timeout=None, discard_output=False, cwd=None):
     if timeout is None:
         timeout = settings.ADB_REGULAR_COMMAND_TIMEOUT
 
@@ -31,6 +31,6 @@ def run_cmd(command, timeout=None, discard_output=False):
         output_file = subprocess.PIPE
 
     process = subprocess.run("exec " + command, stdout=output_file, stderr=output_file, shell=True,
-                             timeout=timeout, encoding="utf-8")
+                             timeout=timeout, encoding="utf-8", cwd=cwd)
 
     return process.stdout, process.stderr, process.returncode

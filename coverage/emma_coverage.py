@@ -36,12 +36,14 @@ class EmmaCoverage(object):
         adb.shell_command(device, "rm -f " + coverage_backup_path_before_clear)
 
         ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-        coverage_folder = str(gen) + "." + str(pop) + "." + ts
+        coverage_folder_name = str(gen) + "." + str(pop) + "." + ts
 
-        os.chdir(self.result_dir)
-        os.system("mkdir -p coverages/" + coverage_folder)
-        os.system("cp coverage.em coverages/" + coverage_folder + logger.redirect_string())
-        os.chdir("coverages/" + coverage_folder)
+        coverage_folder_path = self.result_dir + "/coverages/" + coverage_folder_name
+        os.system("mkdir -p " + coverage_folder_path)
+
+        coverage_ec_path = coverage_folder_path + "/coverage.ec"
+        coverage_em_path = coverage_folder_path + "/coverage.em"
+        os.system("cp " + self.result_dir + "/coverage.em " + coverage_em_path + logger.redirect_string())
 
         there_is_coverage = False
 
@@ -105,18 +107,19 @@ class EmmaCoverage(object):
                         "Unable to retrieve coverage.ec file after coverage broadcast for script " + script + " in  device: " + device.name)
 
         if there_is_coverage:
-            output, errors, result_code = adb.pull(device, coverage_backup_path_before_clear, "coverage.ec")
+            output, errors, result_code = adb.pull(device, coverage_backup_path_before_clear, coverage_ec_path)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, "pull-coverage", False)
                 device.flag_as_malfunctioning()
                 raise Exception("Unable to pull coverage for device: " + device.name)
 
-            emma_cmd = "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp " + self.app_path + "/src "
+            emma_cmd = "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in " \
+                                                            "coverage.em,coverage.ec -sp " + self.app_path + "/src "
 
-            output, errors, result_code = run_cmd(emma_cmd)
+            output, errors, result_code = run_cmd(emma_cmd, cwd=coverage_folder_path)
             # logger.log_progress("Emma jar finished.\nOutput:\n" + output + ".\nErrors:\n" + errors + "\n")
 
-            html_file = "coverage/index.html"
+            html_file = coverage_folder_path + "/coverage/index.html"
             coverage_str = extract_coverage(html_file)
 
             if coverage_str.find("%") != -1:

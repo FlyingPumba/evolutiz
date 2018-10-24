@@ -53,5 +53,5 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
     unique_crashes.add(content)
 
     # save the script, indicate its ith gen
-    os.system("cp " + script_path + " " + result_dir + "/crashes/" + "script." + individual_suffix)
+    os.system("cp " + script_path + " " + result_dir + "/crashes/script." + individual_suffix)
     return True
