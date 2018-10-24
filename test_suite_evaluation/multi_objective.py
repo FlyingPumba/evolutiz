@@ -43,7 +43,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         # 1st obj: coverage, 2nd: average seq length of the suite, 3rd: #crashes
         if suite_lengths:
-            length = numpy.mean(suite_lengths.values())
+            length = numpy.mean(list(suite_lengths.values()))
         else:
             length = sys.maxsize
 
