@@ -42,6 +42,7 @@ class IndividualWithCoverageGenerator(object):
         ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
         coverage_folder = str(gen) + "." + str(pop) + "." + ts
 
+        # FIX: changing working directory while multi-threading can cause race conditions.
         os.chdir(self.result_dir)
         os.system("mkdir -p coverages/" + coverage_folder)
         os.system("cp coverage.em coverages/" + coverage_folder + logger.redirect_string())
