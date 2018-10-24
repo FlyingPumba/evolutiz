@@ -60,7 +60,8 @@ class Device(object):
         return self.name
 
     def flag_as_malfunctioning(self):
-        self.reboot()
+        #self.reboot()
+        self.state = State.ready_idle
 
     def boot(self):
         self.state = State.booting
