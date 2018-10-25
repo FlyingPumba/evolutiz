@@ -215,14 +215,10 @@ class EvolutizTestRunner(TestRunner):
         return test_content
 
     def write_test_case_to_file(self, content, filename):
-        # check that directory exists before creating file
-        dirname = os.path.dirname(filename)
-        if not os.path.exists(dirname):
-            os.makedirs(dirname)
         with open(filename, "w") as script:
             script.write(settings.SCRIPT_HEADER)
-            for line in content:
-                script.write(line + "\n")
+            script.write("\n".join(content))
+            script.write("\n")
 
     def get_test_case_from_file(self, filename):
         test_content = []
