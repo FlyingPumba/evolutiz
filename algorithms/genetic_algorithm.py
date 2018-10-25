@@ -32,10 +32,20 @@ class GeneticAlgorithm(Strategy):
         return self.evolve()
 
     def initPopulation(self):
+        verbose_level = RequiredFeature('verbose_level').request()
+
+        if verbose_level > 0:
+            logger.log_progress(
+                "\n---> Starting to generate initial population at " + str(self.budget_manager.get_time_budget_used()))
+
         self.population = self.population_generator.generate(self.population_size, gen=0)
         if len(self.population) < self.population_size:
             logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
             return False
+
+        if verbose_level > 0:
+            logger.log_progress(
+                "\n---> Starting to evaluate initial population at " + str(self.budget_manager.get_time_budget_used()))
 
         # Evaluate the individuals with an invalid fitness
         invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
@@ -52,6 +62,10 @@ class GeneticAlgorithm(Strategy):
 
         history = RequiredFeature('history').request()
         history.update(self.population)
+
+        if verbose_level > 0:
+            logger.log_progress(
+                "\n---> Finished creating initial population at " + str(self.budget_manager.get_time_budget_used()))
 
         return True
 
