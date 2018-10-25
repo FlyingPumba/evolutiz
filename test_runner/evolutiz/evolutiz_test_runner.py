@@ -87,7 +87,7 @@ class EvolutizTestRunner(TestRunner):
             ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
             local_dst_filename = result_dir + "/intermediate/offspring." + ts
             self.generate(device, package_name, local_dst_filename)
-            individual.append(self.get_test_case_from_file(local_dst_filename))
+            individual.append(self.get_test_case_content_from_file(local_dst_filename))
 
             test_case_addition_pb = test_case_addition_pb * sigma
             pb = random.random()
@@ -124,7 +124,7 @@ class EvolutizTestRunner(TestRunner):
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
         # get content from local file
-        mutated_test_case = self.get_test_case_from_file(local_dst_filename)
+        mutated_test_case = self.get_test_case_content_from_file(local_dst_filename)
 
         return mutated_test_case
 
@@ -194,49 +194,4 @@ class EvolutizTestRunner(TestRunner):
             device.flag_as_malfunctioning()
             raise Exception("Failed to retrieve evolutiz script from device: " + device.name)
 
-        test_content = []
-
-        script = open(destination_file_name)
-        is_content = False
-        is_skipped_first = False
-        for line in script:
-            line = line.strip()
-            if line.find("start data >>") != -1:
-                is_content = True
-                continue
-            if is_content and line != "":
-                if not is_skipped_first:
-                    is_skipped_first = True
-                    continue
-                if is_skipped_first:
-                    test_content.append(line)
-
-        script.close()
-        return test_content
-
-    def write_test_case_to_file(self, content, filename):
-        with open(filename, "w") as script:
-            script.write(settings.SCRIPT_HEADER)
-            script.write("\n".join(content))
-            script.write("\n")
-
-    def get_test_case_from_file(self, filename):
-        test_content = []
-
-        script = open(filename)
-        is_content = False
-        is_skipped_first = False
-        for line in script:
-            line = line.strip()
-            if line.find("start data >>") != -1:
-                is_content = True
-                continue
-            if is_content and line != "":
-                if not is_skipped_first:
-                    is_skipped_first = True
-                    continue
-                if is_skipped_first:
-                    test_content.append(line)
-
-        script.close()
-        return test_content
+        return self.get_test_case_content_from_file(destination_file_name)

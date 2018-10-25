@@ -107,25 +107,7 @@ class MotifcoreTestRunner(TestRunner):
         if not self.use_motifgene:
             os.system("sed -i '/GUIGen/d' " + destination_file_name)
 
-        test_content = []
-
-        script = open(destination_file_name)
-        is_content = False
-        is_skipped_first = False
-        for line in script:
-            line = line.strip()
-            if line.find("start data >>") != -1:
-                is_content = True
-                continue
-            if is_content and line != "":
-                if not is_skipped_first:
-                    is_skipped_first = True
-                    continue
-                if is_skipped_first:
-                    test_content.append(line)
-
-        script.close()
-        return test_content
+        return self.get_test_case_content_from_file(destination_file_name)
 
     def sapienz_mut_suite(self, individual, indpb):
         # shuffle seq
