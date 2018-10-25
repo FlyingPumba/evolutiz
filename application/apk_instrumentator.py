@@ -1,5 +1,5 @@
 import os
-import subprocess as sub
+import shutil
 import xml.etree.cElementTree as ET
 
 from lxml import etree
@@ -153,18 +153,11 @@ class ApkInstrumentator(object):
         new_file.close()
 
     def alter_emma_file(self, path, package):
-        content = ""
+        with open(path) as reading_file:
+            # read first line of file to advance position.
+            line_to_discard = reading_file.readline()
 
-        in_stream = open(path)
-
-        for index, line in enumerate(in_stream):
-            if index == 0:
-                content += "package " + package + ".EmmaInstrument;\n"
-            else:
-                content += line
-
-        in_stream.close()
-        os.remove(path)
-        new_file = open(path, "w")
-        new_file.write(content)
-        new_file.close()
+            with open(path, 'w') as writing_file:
+                # write new package name
+                writing_file.write("package " + package + ".EmmaInstrument;\n")
+                shutil.copyfileobj(reading_file, writing_file)
