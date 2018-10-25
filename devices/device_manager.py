@@ -27,6 +27,7 @@ class DeviceManager(object):
         self.real_devices_number = RequiredFeature('real_devices_number').request()
 
         self.next_available_emulator_port = 5554
+        self.next_available_adb_server_port = 5037
 
         # all devices that can be used
         self.devices = []
@@ -199,6 +200,11 @@ class DeviceManager(object):
     def get_next_available_emulator_port(self):
         port = self.next_available_emulator_port
         self.next_available_emulator_port += 2
+        return port
+
+    def get_next_available_adb_server_port(self):
+        port = self.next_available_adb_server_port
+        self.next_available_adb_server_port += 2
         return port
 
     def get_total_number_of_devices_expected(self):
