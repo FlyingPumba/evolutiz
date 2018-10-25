@@ -23,6 +23,7 @@ from coverage.emma_coverage import EmmaCoverage
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
+from devices.avd_manager import AvdManager
 from devices.device_manager import DeviceManager
 from evolutiz import Evolutiz
 from test_runner.evolutiz.evolutiz_test_runner import EvolutizTestRunner
@@ -165,11 +166,11 @@ def check_needed_commands_available():
         logger.log_progress(cause)
         raise Exception(cause)
 
-    avdmanager_path = settings.ANDROID_HOME + "tools/bin/avdmanager"
-    if os.path.exists(avdmanager_path):
-        features.provide('avdmanager_path', avdmanager_path)
+    avd_manager_path = settings.ANDROID_HOME + "tools/bin/avdmanager"
+    if os.path.exists(avd_manager_path):
+        features.provide('avd_manager_path', avd_manager_path)
     else:
-        cause = "Command 'avdmanager' was not found in the path " + avdmanager_path
+        cause = "Command 'avdmanager' was not found in the path " + avd_manager_path
         logger.log_progress(cause)
         raise Exception(cause)
 
@@ -391,6 +392,7 @@ def provide_features():
     features.provide('emulators_number', args.emulators_number)
     features.provide('real_devices_number', args.real_devices_number)
     features.provide('avd_series', args.avd_series)
+    features.provide('avd_manager', AvdManager())
     features.provide('strategy', possible_strategies[args.strategy])
     features.provide('test_suite_evaluator', possible_test_suite_evaluators[args.evaluator])
     features.provide('test_runner', possible_test_runners[args.test_runner])
