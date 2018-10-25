@@ -28,7 +28,7 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
 
     # get content
     with open(local_bugreport_path) as bug_report_file:
-        content = bug_report_file.read()
+        content = bug_report_file.read().split('\n')
 
     # delete remote file
     adb.shell_command(device, "rm " + device_bugreport_path)

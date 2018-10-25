@@ -22,7 +22,7 @@ class TestRunner(object):
         test_content = []
 
         with open(filename) as script:
-            lines = script.read()
+            lines = script.read().split('\n')
             
         is_content = False
         is_skipped_first = False
