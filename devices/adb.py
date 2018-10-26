@@ -34,7 +34,7 @@ def adb_command(device, command, timeout=None, retry=1, discard_output=False):
 
         try:
             output, errors, result_code = run_cmd(cmd, timeout=timeout, discard_output=discard_output,
-                                                  env={"ANDROID_ADB_SERVER_PORT": device.adb_port})
+                                                  env={"ANDROID_ADB_SERVER_PORT": str(device.adb_port)})
 
             if tries >= retry or result_code == 0:
                 return output, errors, result_code
