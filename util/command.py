@@ -11,9 +11,15 @@ def is_command_available(command):
     return result_code == 0
 
 
-def run_cmd(command, timeout=None, discard_output=False, cwd=None):
+def run_cmd(command, timeout=None, discard_output=False, cwd=None, env=None):
     if timeout is None:
         timeout = settings.ADB_REGULAR_COMMAND_TIMEOUT
+
+    env_str = ""
+    if env is not None and len(env) > 0:
+        env_str = "env "
+        for key, value in env.items():
+            env_str += key + "=" + value + " "
 
     verbose_level = RequiredFeature('verbose_level').request(none_if_missing=True)
     if verbose_level is not None and verbose_level > 1:
@@ -30,7 +36,7 @@ def run_cmd(command, timeout=None, discard_output=False, cwd=None):
     else:
         output_file = subprocess.PIPE
 
-    process = subprocess.run("exec " + command, stdout=output_file, stderr=output_file, shell=True,
+    process = subprocess.run("exec " + env_str + command, stdout=output_file, stderr=output_file, shell=True,
                              timeout=timeout, encoding="utf-8", cwd=cwd)
 
     return process.stdout, process.stderr, process.returncode

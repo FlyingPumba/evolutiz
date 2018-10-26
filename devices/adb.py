@@ -1,5 +1,4 @@
 import os
-import multiprocessing
 from subprocess import TimeoutExpired
 
 from dependency_injection.required_feature import RequiredFeature
@@ -22,8 +21,11 @@ devices_imei = {
 
 devices_with_root_permissions = []
 
+def get_adb_cmd_prefix_for_device(device):
+    return "env " + device.get_adb_server_port_prefix() + " " + adb_cmd_prefix + " -s " + device.name
+
 def adb_command(device, command, timeout=None, retry=1, discard_output=False):
-    cmd = adb_cmd_prefix + " -s " + device.name + " " + command
+    cmd = get_adb_cmd_prefix_for_device(device) + " " + command
 
     tries = 0
     while True:
@@ -40,7 +42,6 @@ def adb_command(device, command, timeout=None, retry=1, discard_output=False):
 
             if tries >= retry:
                 return e.stdout, e.stderr, 124
-
 
 def get_root_permissions(device):
     if device.name in devices_with_root_permissions:
@@ -88,7 +89,7 @@ def install(device, package_name, apk_path):
         device.flag_as_malfunctioning()
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
 
-    cmd = adb_cmd_prefix + " -s " + device.name + " shell pm list packages | grep " + package_name
+    cmd = get_adb_cmd_prefix_for_device(device) + " shell pm list packages | grep " + package_name
     log_adb_command(device, cmd)
 
     res = run_cmd(cmd)[0].strip()
@@ -100,7 +101,7 @@ def install(device, package_name, apk_path):
 
 
 def pkill(device, string):
-    adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
+    adb_cmd = get_adb_cmd_prefix_for_device(device) + " shell "
     pkill_cmd = adb_cmd + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd + "kill pid "
 
     log_adb_command(device, pkill_cmd)
@@ -160,7 +161,7 @@ def get_battery_level(device):
 
 def get_imei(device):
     if device.name not in devices_imei:
-        adb_cmd = adb_cmd_prefix + " -s " + device.name + " shell "
+        adb_cmd = get_adb_cmd_prefix_for_device(device) + " shell "
         imei_cmd = adb_cmd + "dumpsys iphonesubinfo | grep 'Device ID' | cut -d ' ' -f 6 "
 
         # leave commented to avoid infinite recursion

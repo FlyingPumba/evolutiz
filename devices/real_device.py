@@ -9,6 +9,8 @@ class RealDevice(Device):
     def __init__(self, device_manager, device_name, state=State.unknown):
         Device.__init__(self, device_manager, device_name, state)
 
+        self.adb_port = 5037
+
     def boot(self, port=None):
         """There is no way to contact a real device if it's shutdown."""
         Device.boot(self)
