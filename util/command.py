@@ -23,7 +23,8 @@ def run_cmd(command, timeout=None, discard_output=False, cwd=None, env=None):
 
     verbose_level = RequiredFeature('verbose_level').request(none_if_missing=True)
     if verbose_level is not None and verbose_level > 1:
-        logger.log_progress("\nRunning command: %s" % command)
+        aux = env_str + command
+        logger.log_progress("\nRunning command: %s" % aux)
 
     # use exec in order for process kill to also eliminate childs
     # from SO: https://stackoverflow.com/a/13143013/2271834
