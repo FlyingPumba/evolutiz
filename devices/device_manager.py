@@ -205,7 +205,7 @@ class DeviceManager(object):
 
     def get_next_available_adb_server_port(self):
         port = self.next_available_adb_server_port
-        self.next_available_adb_server_port += 1
+        self.next_available_adb_server_port += 2
         return port
 
     def get_total_number_of_devices_expected(self):

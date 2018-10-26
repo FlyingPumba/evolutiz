@@ -18,6 +18,7 @@ class Emulator(Device):
         if device_name != "":
             # we assume device_name has form "emulator-xxxx"
             self.port = int(device_name.split('-')[1])
+            self.adb_port = self.get_adb_server_port_for_emulator_port(self.port)
         else:
             self.port = None
 
@@ -76,3 +77,6 @@ class Emulator(Device):
         adb.adb_command(self, "remount", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         adb.shell_command(self, "mount -o rw,remount /", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         adb.shell_command(self, "rm -rf /mnt/sdcard/*", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+
+    def get_adb_server_port_for_emulator_port(self, port):
+        return port - 516
