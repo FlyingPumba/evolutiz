@@ -25,7 +25,7 @@ def get_adb_cmd_prefix_for_device(device):
     return "env " + device.get_adb_server_port_prefix() + " " + adb_cmd_prefix + " -s " + device.name
 
 def adb_command(device, command, timeout=None, retry=1, discard_output=False):
-    cmd = get_adb_cmd_prefix_for_device(device) + " " + command
+    cmd = adb_cmd_prefix + " -s " + device.name + " " + command
 
     tries = 0
     while True:
@@ -33,7 +33,8 @@ def adb_command(device, command, timeout=None, retry=1, discard_output=False):
         log_adb_command(device, cmd)
 
         try:
-            output, errors, result_code = run_cmd(cmd, timeout=timeout, discard_output=discard_output)
+            output, errors, result_code = run_cmd(cmd, timeout=timeout, discard_output=discard_output,
+                                                  env={"ANDROID_ADB_SERVER_PORT": device.adb_port})
 
             if tries >= retry or result_code == 0:
                 return output, errors, result_code
