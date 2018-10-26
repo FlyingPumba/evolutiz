@@ -27,7 +27,7 @@ class DeviceManager(object):
         self.real_devices_number = RequiredFeature('real_devices_number').request()
 
         self.next_available_emulator_port = 5554
-        self.next_available_adb_server_port = 5037
+        self.next_available_adb_server_port = 5038
 
         # all devices that can be used
         self.devices = []
@@ -39,54 +39,55 @@ class DeviceManager(object):
         emulators_found = 0
         real_devices_found = 0
 
-        devices_cmd = adb.adb_cmd_prefix + ' devices'
+        for adb_port in range(5037, 5037 + self.get_total_number_of_devices_expected() + 1):
+            devices_cmd = adb.adb_cmd_prefix + ' devices'
 
-        try:
-            output, errors, result_code = run_cmd(devices_cmd)
-        except TimeoutExpired as e:
-            return []
+            try:
+                output, errors, result_code = run_cmd(devices_cmd, env={"ANDROID_ADB_SERVER_PORT": str(adb_port)})
+            except TimeoutExpired as e:
+                return []
 
-        error_lines = errors.split("\n")
-        for line in error_lines:
-            if "daemon not running" in line:
-                continue
+            error_lines = errors.split("\n")
+            for line in error_lines:
+                if "daemon not running" in line:
+                    continue
 
-            if "daemon started successfully" in line:
-                continue
+                if "daemon started successfully" in line:
+                    continue
 
-            if line.strip() != "":
-                raise Exception("There was an error running 'adb devices' command: " + errors)
+                if line.strip() != "":
+                    raise Exception("There was an error running 'adb devices' command: " + errors)
 
-        lines = output.split("\n")
-        for line in lines:
-            if "List of devices attached" in line:
-                continue
+            lines = output.split("\n")
+            for line in lines:
+                if "List of devices attached" in line:
+                    continue
 
-            if line.strip() == "":
-                continue
+                if line.strip() == "":
+                    continue
 
-            if "offline" not in line:
-                device_name = line.split("\t")[0].strip()
+                if "offline" not in line:
+                    device_name = line.split("\t")[0].strip()
 
-                matching_devices = [device for device in self.devices if device.name == device_name]
+                    matching_devices = [device for device in self.devices if device.name == device_name]
 
-                if len(matching_devices) > 0:
-                    device = matching_devices.pop(0)
-                    if device.state < State.reachable:
-                        device.state = State.reachable
+                    if len(matching_devices) > 0:
+                        device = matching_devices.pop(0)
+                        if device.state < State.reachable:
+                            device.state = State.reachable
 
-                    if type(device) is Emulator:
+                        if type(device) is Emulator:
+                            emulators_found += 1
+                        else:
+                            real_devices_found += 1
+
+                    elif "emulator" in line and emulators_found < self.emulators_number:
+                        self.devices.append(Emulator(self, device_name, state=State.reachable))
                         emulators_found += 1
-                    else:
+
+                    elif "device" in line and real_devices_found < self.real_devices_number:
+                        self.devices.append(Device(self, device_name, state=State.reachable))
                         real_devices_found += 1
-
-                elif "emulator" in line and emulators_found < self.emulators_number:
-                    self.devices.append(Emulator(self, device_name, state=State.reachable))
-                    emulators_found += 1
-
-                elif "device" in line and real_devices_found < self.real_devices_number:
-                    self.devices.append(Device(self, device_name, state=State.reachable))
-                    real_devices_found += 1
 
         return self.devices
 
@@ -204,7 +205,7 @@ class DeviceManager(object):
 
     def get_next_available_adb_server_port(self):
         port = self.next_available_adb_server_port
-        self.next_available_adb_server_port += 2
+        self.next_available_adb_server_port += 1
         return port
 
     def get_total_number_of_devices_expected(self):

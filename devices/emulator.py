@@ -4,7 +4,6 @@ import time
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
-from devices.avd_manager import AvdManager
 from devices.device import Device, State
 from util.command import run_cmd
 
@@ -23,7 +22,6 @@ class Emulator(Device):
             self.port = None
 
         self.avd_name = None
-        self.adb_port = None
 
     def boot(self, port=None):
         verbose_level = RequiredFeature('verbose_level').request()
@@ -38,12 +36,12 @@ class Emulator(Device):
 
         # start custom abd server for this emulator
         self.adb_port = self.device_manager.get_next_available_adb_server_port()
-        output, errors, result_code = run_cmd("ANDROID_ADB_SERVER_PORT=" + self.adb_port + " adb start-server")
+        output, errors, result_code = run_cmd(adb.adb_cmd_prefix + " start-server", env={"ANDROID_ADB_SERVER_PORT": str(self.adb_port)})
 
         # start emulator
         self.name = "emulator-" + str(self.port)
 
-        emulator_cmd = "ANDROID_ADB_SERVER_PORT=" + self.adb_port + " QEMU_AUDIO_DRV=none $ANDROID_HOME/emulator/emulator"
+        emulator_cmd = self.get_adb_server_port_prefix() + " QEMU_AUDIO_DRV=none $ANDROID_HOME/emulator/emulator"
 
         flags = " -wipe-data -no-boot-anim -writable-system -port " + str(self.port)
 

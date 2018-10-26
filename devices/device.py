@@ -55,6 +55,7 @@ class Device(object):
         self.name = device_name
         self.state = state
         self.boot_time = None
+        self.adb_port = None
 
     def __str__(self):
         return self.name
@@ -108,7 +109,7 @@ class Device(object):
             return
 
         try:
-            output, errors, result_code = run_cmd(adb.adb_cmd_prefix + ' -s ' + self.name + ' shell pm list packages')
+            output, errors, result_code = adb.shell_command(self, "pm list packages")
             if "Error: Could not access the Package Manager" not in output.strip() and errors.strip() == "":
                 self.state = State.ready_idle
         except TimeoutExpired as e:
@@ -120,9 +121,11 @@ class Device(object):
             return
 
         try:
-            output, errors, result_code = run_cmd(
-                adb.adb_cmd_prefix + ' -s ' + self.name + ' shell getprop init.svc.bootanim')
+            output, errors, result_code = adb.shell_command(self, "getprop init.svc.bootanim")
             if output.strip() == "stopped" and "error" not in errors.strip():
                 self.state = State.booted
         except TimeoutExpired as e:
             return
+
+    def get_adb_server_port_prefix(self):
+        return "ANDROID_ADB_SERVER_PORT=" + str(self.adb_port)
