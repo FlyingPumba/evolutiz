@@ -154,6 +154,15 @@ def get_subject_paths(arguments):
 
         return app_paths
 
+def check_virtualbox_is_not_running():
+    if is_command_available("vboxmanage"):
+        output, errors, result_code = run_cmd("vboxmanage list runningvms")
+        if output.strip() != "":
+            cause = "Android emulators can't be run while VirtualBox is running.\n" \
+                    "Shutdown VirtualBox before running Evolutiz."
+            logger.log_progress(cause)
+            raise Exception(cause)
+
 
 def check_needed_commands_available():
     if not os.path.exists(settings.ANDROID_HOME):
@@ -440,6 +449,8 @@ if __name__ == "__main__":
 
     # --------------------------------------------------------------------------------- #
     # --------------------------------------------------------------------------------- #
+
+    check_virtualbox_is_not_running()
 
     check_needed_commands_available()
 
