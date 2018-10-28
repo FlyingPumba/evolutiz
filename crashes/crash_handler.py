@@ -44,13 +44,14 @@ def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
     content = content[1:]
 
     # filter duplicate crashes
-    if content in unique_crashes:
+    content_str = "".join(content)
+    if content_str in unique_crashes:
         os.system("rm " + local_bugreport_path)
 
         # caught a crash, but it wasn't a new one
         return True
 
-    unique_crashes.add(content)
+    unique_crashes.add(content_str)
 
     # save the script, indicate its ith gen
     os.system("cp " + script_path + " " + result_dir + "/crashes/script." + individual_suffix)
