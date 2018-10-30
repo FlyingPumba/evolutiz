@@ -458,10 +458,12 @@ if __name__ == "__main__":
     provide_features()
 
     # run Evolutiz
-    logger.log_progress("Evolutiz (" +
+    logger.log_progress("\nEvolutiz (" +
                         args.strategy + ", " +
                         args.evaluator + ", " +
-                        args.test_runner + ")")
+                        args.test_runner + ", " +
+                        "emulators: " + str(args.emulators_number) + ", " +
+                        "real devices: " + str(args.real_devices_number) + ")")
 
     logger.log_progress("\nVerbose level: " + str(args.verbose))
     logger.log_progress("\nSubjects to be processed: " + ''.join(map(lambda p: "\n -" + p, app_paths)))
