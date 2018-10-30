@@ -33,7 +33,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         device.mark_work_start()
         script_path, suite_lengths = self.dump_individual_to_files(individual)
 
-        coverage, num_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(script_path, device,
+        coverage, unique_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(script_path, device,
                                                                                                individual.generation,
                                                                                                individual.index_in_generation)
         # remove from suite lengths the scripts that did NOT cause a crash
@@ -47,7 +47,9 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         else:
             length = sys.maxsize
 
-        individual.fitness.values = (coverage, length, num_crashes)
+        crashes = len(unique_crashes)
+
+        individual.fitness.values = (coverage, length, crashes)
         individual.fitness.timestamp = time.time()
 
         self.hall_of_fame.update([individual])

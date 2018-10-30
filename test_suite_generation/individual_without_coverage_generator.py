@@ -1,62 +1,47 @@
-import datetime
-import random
-import traceback
-
 from deap import creator
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
+from test_suite_generation.individual_generator import IndividualGenerator
 
 
-class IndividualWithoutCoverageGenerator(object):
+class IndividualWithoutCoverageGenerator(IndividualGenerator):
 
     def __init__(self):
-        self.test_runner = RequiredFeature('test_runner').request()
-        self.package_name = None
+        super(IndividualWithoutCoverageGenerator, self).__init__()
 
-    def get_suite(self, device):
-        ret = []
-        unique_crashes = set()
+    def get_suite(self, device, generation, individual_index):
+        test_suite = []
 
-        for i in range(0, settings.SUITE_SIZE):
-            seq = self.get_sequence(device, i, unique_crashes)
-            ret.append(seq)
+        for test_case_index in range(0, settings.SUITE_SIZE):
+            test_case_content = self.get_sequence(device, generation, individual_index, test_case_index)
+            test_suite.append(test_case_content)
 
-        return ret
+        return test_suite
 
+    def get_sequence(self, device, generation, individual_index, test_case_index):
+        package_name = RequiredFeature('package_name').request()
+        test_runner = RequiredFeature('test_runner').request()
 
-    def get_sequence(self, device, index, unique_crashes):
-        random.seed()
-
-        # clear data
-        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, retry=5)
+        # clear data before generating new test case
+        output, errors, result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, retry=2)
         if result_code != 0:
             device.flag_as_malfunctioning()
-            raise Exception("Failed to clear package " + self.package_name + " in device: " + device.name)
+            raise Exception("Failed to clear package " + package_name + " in device: " + device.name)
 
-        # access the generated script, should ignore the first launch activity
-        script_name = settings.MOTIFCORE_SCRIPT_PATH.split("/")[-1]
-        ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
+        script_path = self.get_path_for_test_case(generation, individual_index, test_case_index)
+        test_case_content = test_runner.generate(device, package_name, script_path)
 
-        motifcore_script_filename = self.result_dir + "/intermediate/" + script_name + ".init." + ts + "." + str(index)
+        return test_case_content
 
-        ret = self.test_runner.generate(device, self.package_name, motifcore_script_filename)
-
-        return ret
-
-    def gen_individual(self, device, individual_index, gen):
-        self.result_dir = RequiredFeature('result_dir').request()
-        self.package_name = RequiredFeature('package_name').request()
-
+    def gen_individual(self, device, individual_index, generation):
         device.mark_work_start()
-
-        suite = self.get_suite(device)
-
+        suite = self.get_suite(device, generation, individual_index)
         device.mark_work_stop()
 
         individual = creator.Individual(suite)
         individual.index_in_generation = individual_index
-        individual.generation = gen
+        individual.generation = generation
 
         return individual

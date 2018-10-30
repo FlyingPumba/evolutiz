@@ -16,7 +16,7 @@ class MotifcoreTestRunner(TestRunner):
 
     def __init__(self, use_motifgene=True):
         self.use_motifgene = use_motifgene
-
+        self.motifcore_script_path_in_devices = "/mnt/sdcard/motifcore.script"
         self.test_runner_installer = TestRunnerInstaller("motifcore",
                                                          settings.WORKING_DIR + "test_runner/motifcore/motifcore",
                                                          settings.WORKING_DIR + "test_runner/motifcore/motifcore.jar")
@@ -97,7 +97,7 @@ class MotifcoreTestRunner(TestRunner):
         return test_content
 
     def retrieve_generated_test(self, device, destination_file_name):
-        output, errors, result_code = adb.pull(device, settings.MOTIFCORE_SCRIPT_PATH, destination_file_name,
+        output, errors, result_code = adb.pull(device, self.motifcore_script_path_in_devices, destination_file_name,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             device.flag_as_malfunctioning()

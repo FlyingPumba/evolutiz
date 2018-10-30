@@ -1,24 +1,15 @@
 import os
-import random
-import string
 
-import settings
+from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 
 
-def handle(device, result_dir, script_path, gen, pop, index, unique_crashes):
-    """
-    :param device:
-    :param apk_dir:
-    :param script_path:
-    :param gen_str: string, "init" is caused when init,
-        "0" is caused when evaluate the init population
-    :return: True if it is a real crash
-    """
+def handle(device, script_path, generation, individual_index, test_case_index, unique_crashes):
+    result_dir = RequiredFeature('result_dir').request()
 
     device_bugreport_path = "/mnt/sdcard/bugreport.crash"
 
-    individual_suffix = str(gen) + "." + str(pop) + "." + str(index)
+    individual_suffix = str(generation) + "." + str(individual_index) + "." + str(test_case_index)
     local_bugreport_path = result_dir + "/crashes/bugreport." + individual_suffix
 
     # save the crash report

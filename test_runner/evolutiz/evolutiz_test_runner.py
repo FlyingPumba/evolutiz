@@ -17,7 +17,7 @@ from util import logger
 class EvolutizTestRunner(TestRunner):
 
     def __init__(self):
-        self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE = "/mnt/sdcard/evolutiz.script"
+        self.evolutiz_script_path_in_devices = "/mnt/sdcard/evolutiz.script"
         self.minimum_api = 28
         self.test_runner_installer = TestRunnerInstaller("evolutiz",
                                                          settings.WORKING_DIR + "test_runner/evolutiz/evolutiz",
@@ -166,7 +166,7 @@ class EvolutizTestRunner(TestRunner):
 
         evolutiz_cmd = "evolutiz -p " + package_name \
                        + " -v -v -v --throttle 200 --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
-                       + " -o " + self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE \
+                       + " -o " + self.evolutiz_script_path_in_devices \
                        + " -v " + str(evolutiz_events)
 
         output, errors, result_code = adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
@@ -188,8 +188,8 @@ class EvolutizTestRunner(TestRunner):
         return test_content
 
     def retrieve_generated_test(self, device, destination_file_name):
-        output, errors, result_code = adb.pull(device, self.EVOLUTIZ_SCRIPT_PATH_IN_DEVICE, destination_file_name,
-                               timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        output, errors, result_code = adb.pull(device, self.evolutiz_script_path_in_devices, destination_file_name,
+                                               timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
             device.flag_as_malfunctioning()
             raise Exception("Failed to retrieve evolutiz script from device: " + device.name)
