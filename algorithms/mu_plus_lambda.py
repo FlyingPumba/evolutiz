@@ -33,10 +33,7 @@ class MuPlusLambda(GeneticAlgorithm):
                 print("Time budget run out, exiting evolve")
                 break
 
-            if verbose_level > 0:
-                logger.log_progress("\n---> Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
-            else:
-                logger.log_progress("\n---> Starting generation " + str(gen))
+            logger.log_progress("\n---> Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
 
 
             offspring = self.generate_offspring(self.population, gen)
