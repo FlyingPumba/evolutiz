@@ -1,5 +1,6 @@
 from algorithms.strategy import Strategy
 from dependency_injection.required_feature import RequiredFeature
+from util import logger
 
 
 class RandomSearch(Strategy):
@@ -27,6 +28,9 @@ class RandomSearch(Strategy):
         gen = 0
         while self.budget_manager.time_budget_available():
             new_population = self.population_generator.generate(self.population_size, gen=gen)
+            if new_population is None:
+                # Timeout occurred
+                break
 
             # Evaluate the individuals with an invalid fitness
             invalid_ind = [ind for ind in new_population if not ind.fitness.valid]
