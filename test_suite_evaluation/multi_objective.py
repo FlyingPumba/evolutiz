@@ -30,6 +30,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         self.package_name = RequiredFeature('package_name').request()
 
+        start_time = time.time()
         device.mark_work_start()
         script_path, suite_lengths = self.dump_individual_to_files(individual)
 
@@ -50,7 +51,10 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         crashes = len(unique_crashes)
 
         individual.fitness.values = (coverage, length, crashes)
-        individual.fitness.timestamp = time.time()
+
+        finish_time = time.time()
+        individual.evaluation_finish_timestamp = finish_time
+        individual.evaluation_elapsed_time = finish_time - start_time
 
         self.hall_of_fame.update([individual])
 

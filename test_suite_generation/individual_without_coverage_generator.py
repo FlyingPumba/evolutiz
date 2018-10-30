@@ -1,3 +1,5 @@
+import time
+
 from deap import creator
 
 import settings
@@ -10,6 +12,23 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
 
     def __init__(self):
         super(IndividualWithoutCoverageGenerator, self).__init__()
+
+    def gen_individual(self, device, individual_index, generation):
+        start_time = time.time()
+        device.mark_work_start()
+        suite = self.get_suite(device, generation, individual_index)
+        device.mark_work_stop()
+
+        individual = creator.Individual(suite)
+
+        finish_time = time.time()
+        individual.creation_finish_timestamp = finish_time
+        individual.creation_elapsed_time = finish_time - start_time
+
+        individual.index_in_generation = individual_index
+        individual.generation = generation
+
+        return individual
 
     def get_suite(self, device, generation, individual_index):
         test_suite = []
@@ -34,14 +53,3 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
         test_case_content = test_runner.generate(device, package_name, script_path)
 
         return test_case_content
-
-    def gen_individual(self, device, individual_index, generation):
-        device.mark_work_start()
-        suite = self.get_suite(device, generation, individual_index)
-        device.mark_work_stop()
-
-        individual = creator.Individual(suite)
-        individual.index_in_generation = individual_index
-        individual.generation = generation
-
-        return individual

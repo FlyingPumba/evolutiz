@@ -59,16 +59,29 @@ class TestSuiteEvaluator(object):
 
         record = self.stats.compile(population) if self.stats is not None else {}
         fitness = []
+        evaluation = []
+        creation = []
         for individual in population:
-            aux = {
+            fitness.append({
+                'index_in_generation': individual.index_in_generation,
                 'coverage': individual.fitness.values[0],
                 'length': individual.fitness.values[1],
                 'crashes': individual.fitness.values[2],
-                'timestamp': individual.fitness.timestamp,
-            }
-            fitness.append(aux)
+            })
+            evaluation.append({
+                'index_in_generation': individual.index_in_generation,
+                'evaluation_finish_timestamp': individual.evaluation_finish_timestamp,
+                'evaluation_elapsed_time': individual.evaluation_elapsed_time,
+            })
+            creation.append({
+                'index_in_generation': individual.index_in_generation,
+                'creation_finish_timestamp': individual.creation_finish_timestamp,
+                'creation_elapsed_time': individual.creation_elapsed_time,
+            })
 
         record['fitness'] = numpy.array(fitness)
+        record['evaluation'] = numpy.array(evaluation)
+        record['creation'] = numpy.array(creation)
         self.logbook.record(gen=gen, **record)
 
     def dump_logbook_to_file(self):

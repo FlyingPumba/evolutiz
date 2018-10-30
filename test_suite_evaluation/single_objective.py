@@ -27,6 +27,7 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         self.package_name = RequiredFeature('package_name').request()
 
+        start_time = time.time()
         device.mark_work_start()
         script_path, suite_lengths = self.dump_individual_to_files(individual)
         coverage, unique_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(script_path, device,
@@ -34,7 +35,10 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
                                                                                                individual.index_in_generation)
         # TODO: look into fusing coverage and number of crashes found into the fitness value
         individual.fitness.values = coverage
-        individual.fitness.timestamp = time.time()
+
+        finish_time = time.time()
+        individual.evaluation_finish_timestamp = finish_time
+        individual.evaluation_elapsed_time = finish_time - start_time
 
         self.hall_of_fame.update([individual])
 
