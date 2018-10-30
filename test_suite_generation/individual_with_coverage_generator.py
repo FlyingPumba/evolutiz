@@ -17,6 +17,8 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
         super(IndividualWithCoverageGenerator, self).__init__()
 
     def gen_individual(self, device, individual_index, generation):
+        budget_manager = RequiredFeature('budget_manager').request()
+
         start_time = time.time()
         device.mark_work_start()
         suite, fitness = self.get_suite_with_fitness(device, generation, individual_index)
@@ -26,14 +28,17 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
         individual.fitness.values = fitness
 
         finish_time = time.time()
+        elapsed_time = finish_time - start_time
         individual.creation_finish_timestamp = finish_time
-        individual.creation_elapsed_time = finish_time - start_time
+        individual.creation_elapsed_time = elapsed_time
 
         individual.evaluation_finish_timestamp = finish_time
         individual.evaluation_elapsed_time = 0 # this will indicate that generation and evaluation occurred at the same time
 
         individual.index_in_generation = individual_index
         individual.generation = generation
+
+        budget_manager.increase_time_budget(elapsed_time)
 
         return individual
 
