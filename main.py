@@ -304,7 +304,7 @@ def add_arguments_to_parser(parser):
     # test runner related arguments
     possible_test_runners = {
         "motifcore": MotifcoreTestRunner(),
-        "motifcore-nm": MotifcoreTestRunner(use_motifgene=True),
+        "motifcore-nm": MotifcoreTestRunner(use_motifgene=False),
         "evolutiz": EvolutizTestRunner()
     }
     parser.add_argument('-t', '--test-runner', dest='test_runner',

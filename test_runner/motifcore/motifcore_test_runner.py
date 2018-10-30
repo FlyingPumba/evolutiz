@@ -14,7 +14,7 @@ from util import logger
 
 class MotifcoreTestRunner(TestRunner):
 
-    def __init__(self, use_motifgene=False):
+    def __init__(self, use_motifgene=True):
         self.use_motifgene = use_motifgene
 
         self.test_runner_installer = TestRunnerInstaller("motifcore",
