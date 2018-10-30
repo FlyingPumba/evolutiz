@@ -310,6 +310,10 @@ def add_arguments_to_parser(parser):
     parser.add_argument('-t', '--test-runner', dest='test_runner',
                         choices=possible_test_runners.keys(), help='Test runner to be used')
 
+    parser.add_argument('--seed', type=int, dest='seed',
+                        help='Choose the random seed to be used in the Evolutiz runner. This seed doesn\'t affect the '
+                             'one used inside the test runners.')
+
 
 def init_arguments_defaults():
     global defaults
@@ -332,7 +336,8 @@ def init_arguments_defaults():
         "strategy": "muPlusLambda",
         "evaluator": "multi-objective",
         "individual_generator": "default",
-        "test_runner": "motifcore"
+        "test_runner": "motifcore",
+        "seed": None
     }
 
 
@@ -454,6 +459,8 @@ if __name__ == "__main__":
 
     app_paths = get_subject_paths(args)
     strategy_with_runner_name = args.strategy + "-" + args.test_runner
+
+    random.seed(args.seed)
 
     provide_features()
 
