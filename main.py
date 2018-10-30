@@ -1,12 +1,12 @@
-import threading
 import time
-from configparser import ConfigParser
+
 import argparse
+import numpy
 import random
 import re
+import threading
 import traceback
-
-import numpy
+from configparser import ConfigParser
 from deap import tools
 from deap.base import Toolbox
 
@@ -15,13 +15,12 @@ from algorithms.monotonic import Monotonic
 from algorithms.mosa import Mosa
 from algorithms.mu_plus_lambda import MuPlusLambda
 from algorithms.one_plus_lambda_comma_lambda import OnePlusLambdaCommaLambda
-from algorithms.pure_random import Random
+from algorithms.random_search import RandomSearch
 from algorithms.standard import Standard
 from algorithms.steady_state import SteadyState
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
 from coverage.emma_coverage import EmmaCoverage
 from dependency_injection.feature_broker import features
-from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.avd_manager import AvdManager
 from devices.device_manager import DeviceManager
@@ -33,7 +32,6 @@ from test_suite_evaluation.single_objective import SingleObjectiveTestSuiteEvalu
 from test_suite_generation.individual_with_coverage_generator import IndividualWithCoverageGenerator
 from test_suite_generation.individual_without_coverage_generator import IndividualWithoutCoverageGenerator
 from test_suite_generation.population_generator import PopulationGenerator
-from util import logger
 from util.budget_manager import BudgetManager
 from util.command import *
 
@@ -282,7 +280,7 @@ def add_arguments_to_parser(parser):
         "onePlusLambdaCommaLambda": OnePlusLambdaCommaLambda,
         "mosa": Mosa,
         "dynaMosa": DynaMosa,
-        "random": Random
+        "randomSearch": RandomSearch
     }
     parser.add_argument('-s', '--strategy', dest='strategy',
                         choices=possible_strategies.keys(), help='Strategy to be used')
