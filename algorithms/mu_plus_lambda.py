@@ -1,4 +1,6 @@
 # coding=utf-8
+import time
+
 import random
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
@@ -66,8 +68,12 @@ class MuPlusLambda(GeneticAlgorithm):
                 ind1, ind2 = self.toolbox.mate(ind1, ind2)
 
                 del ind1.fitness.values
+
                 ind1.index_in_generation = index_in_generation
                 ind1.generation = gen
+                ind1.creation_finish_timestamp = time.time()
+                ind1.creation_elapsed_time = 0
+
                 offspring.append(ind1)
 
             elif op_choice < self.crossover_probability + self.mutation_probability:  # Apply mutation
@@ -75,14 +81,22 @@ class MuPlusLambda(GeneticAlgorithm):
                 ind, = self.toolbox.mutate(ind)
 
                 del ind.fitness.values
+
                 ind.index_in_generation = index_in_generation
                 ind.generation = gen
+                ind.creation_finish_timestamp = time.time()
+                ind.creation_elapsed_time = 0
+
                 offspring.append(ind)
 
             else:  # Apply reproduction
                 ind = self.toolbox.clone(random.choice(population))
+
                 ind.index_in_generation = index_in_generation
                 ind.generation = gen
+                ind.creation_finish_timestamp = time.time()
+                ind.creation_elapsed_time = 0
+                
                 offspring.append(ind)
 
         return offspring
