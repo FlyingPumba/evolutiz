@@ -12,6 +12,4 @@ class Strategy(object):
         self.parallel_evaluator = ParallelEvaluator()
 
         self.toolbox = RequiredFeature('toolbox').request()
-        self.stats = RequiredFeature('stats').request()
-
         self.result_dir = RequiredFeature('result_dir').request()

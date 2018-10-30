@@ -15,9 +15,6 @@ class TestSuiteEvaluator(object):
         self.test_runner = RequiredFeature('test_runner').request()
         self.coverage_fetcher = RequiredFeature('coverage_fetcher').request()
 
-        self.stats = RequiredFeature('stats').request()
-        self.logbook = RequiredFeature('logbook').request()
-
         # override future responses of calling RequiredFeature('test_suite_evaluator').request(),
         # this way we have a TestSuiteEvaluator singleton
         # This is useful for example to have a single hall-of-fame across a single run.
@@ -57,12 +54,15 @@ class TestSuiteEvaluator(object):
 
     def update_logbook(self, gen, population):
         self.result_dir = RequiredFeature('result_dir').request()
+        self.logbook = RequiredFeature('logbook').request()
+        self.stats = RequiredFeature('stats').request()
+
         record = self.stats.compile(population) if self.stats is not None else {}
         fitness = []
         for individual in population:
             aux = {
                 'coverage': individual.fitness.values[0],
-                'length': individual.fitness.values[2],
+                'length': individual.fitness.values[1],
                 'crashes': individual.fitness.values[2],
                 'timestamp': individual.fitness.timestamp,
             }
@@ -72,7 +72,9 @@ class TestSuiteEvaluator(object):
         self.logbook.record(gen=gen, **record)
 
     def dump_logbook_to_file(self):
+        self.logbook = RequiredFeature('logbook').request()
         self.result_dir = RequiredFeature('result_dir').request()
+
         logbook_file = open(self.result_dir + "/logbook.pickle", 'wb')
         pickle.dump(self.logbook, logbook_file)
         logbook_file.close()

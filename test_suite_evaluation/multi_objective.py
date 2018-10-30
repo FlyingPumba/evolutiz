@@ -61,6 +61,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         self.show_best_historic_fitness()
 
     def show_best_historic_fitness(self):
+        self.logbook = RequiredFeature('logbook').request()
         min_fitness_values_per_generation = numpy.array(self.logbook.select("min"))
         max_fitness_values_per_generation = numpy.array(self.logbook.select("max"))
 
