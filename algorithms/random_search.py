@@ -11,21 +11,7 @@ from util import logger
 class Random(object):
 
     def __init__(self):
-        self.cxpb = settings.CXPB
-        self.mutpb = settings.MUTPB
-        self.ngen = settings.GENERATION
-        self.mu = settings.POPULATION_SIZE
-        self.lambda_ = settings.OFFSPRING_SIZE
-
-        self.best_historic_crashes_measure = 0
-        self.best_historic_length_measure = sys.maxsize
-        self.best_historic_coverage_measure = 0
-        self.best_historic_crashes_individual = None
-        self.best_historic_length_individual = None
-        self.best_historic_coverage_individual = None
-
-        assert (self.cxpb + self.mutpb) <= 1.0, ("The sum of the crossover and mutation "
-                                                 "probabilities must be smaller or equal to 1.0.")
+        super(MuPlusLambda, self).__init__()
 
     def setup(self, toolbox, test_runner, stats=None, verbose=False):
         # assumes toolbox has registered:
