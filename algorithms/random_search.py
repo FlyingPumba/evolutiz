@@ -34,7 +34,10 @@ class RandomSearch(Strategy):
 
             # Evaluate the individuals with an invalid fitness
             invalid_ind = [ind for ind in new_population if not ind.fitness.valid]
-            self.parallel_evaluator.evaluate(invalid_ind)
+            success = self.parallel_evaluator.evaluate(invalid_ind)
+            if not success:
+                # Timeout occurred
+                break
 
             # save stats
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, new_population)
