@@ -136,21 +136,21 @@ class MultipleQueueConsumerThread(KillableThread):
         template_base = "\nAn error occurred when calling func in MultipleQueueConsumerThread"
 
         if device is None:
-            if verbose_level > 1:
+            if verbose_level > 0:
                 template = template_base + ": \n%s"
                 formatted_string = template % stack_trace
                 logger.log_progress(formatted_string)
 
-            elif verbose_level > 0:
+            else:
                 logger.log_progress(template_base + ".\n")
 
         else:
-            if verbose_level > 1:
+            if verbose_level > 0:
                 template = template_base + " on device %s: \n%s"
                 formatted_string = template % (device, traceback.format_exc())
                 logger.log_progress(formatted_string)
 
-            elif verbose_level > 0:
+            else:
                 template = template_base + " on device %s.\n"
                 formatted_string = template % device
                 logger.log_progress(formatted_string)
