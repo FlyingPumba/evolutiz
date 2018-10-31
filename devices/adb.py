@@ -57,32 +57,29 @@ def get_root_permissions(device):
 
     devices_with_root_permissions.append(device.name)
 
-
 def shell_command(device, command, timeout=None, retry=1, discard_output=False):
     return adb_command(device, "shell " + command, timeout=timeout, retry=retry, discard_output=discard_output)
-
 
 def sudo_shell_command(device, command, timeout=None, retry=1, discard_output=False):
     get_root_permissions(device)
     return shell_command(device, command, timeout=timeout, retry=retry, discard_output=discard_output)
 
-
 def push(device, src, dest, timeout=None):
     return adb_command(device, "push " + src + " " + dest, timeout=timeout)
 
+def push_all(device, src_list, dest, timeout=None):
+    src_str = " ".join(src_list)
+    return adb_command(device, "push " + src_str + " " + dest, timeout=timeout)
 
 def sudo_push(device, src, dest, timeout=None):
     get_root_permissions(device)
     return push(device, src, dest, timeout=timeout)
 
-
 def pull(device, src, dest, timeout=None):
     return adb_command(device, "pull " + src + " " + dest, timeout=timeout)
 
-
 def uninstall(device, package_name):
     return adb_command(device, "uninstall " + package_name)
-
 
 def install(device, package_name, apk_path):
     output, errors, result_code = adb_command(device, "install " + apk_path)
@@ -102,7 +99,6 @@ def install(device, package_name, apk_path):
         device.flag_as_malfunctioning()
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
 
-
 def pkill(device, string):
     adb_cmd = get_adb_cmd_prefix_for_device(device) + " shell "
     pkill_cmd = adb_cmd + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd + "kill pid "
@@ -114,7 +110,6 @@ def pkill(device, string):
     except TimeoutExpired as e:
         return 124
 
-
 def set_bluetooth_state(device, enabled, timeout=None):
     if enabled:
         # sometimes might not work
@@ -123,14 +118,12 @@ def set_bluetooth_state(device, enabled, timeout=None):
         # the following command is not working. Also tried with number 9.
         return sudo_shell_command(device, "service call bluetooth_manager 8", timeout=timeout)
 
-
 def set_wifi_state(device, enabled, timeout=None):
     if enabled:
         return sudo_shell_command(device, "svc wifi enable", timeout=timeout)
     else:
         # the following command is not working.
         return sudo_shell_command(device, "svc wifi disable", timeout=timeout)
-
 
 def set_stay_awake_state(device, enabled, timeout=None):
     if enabled:
@@ -145,11 +138,9 @@ def set_location_state(device, enabled, timeout=None):
     else:
         return shell_command(device, "settings put secure location_providers_allowed ' '", timeout=timeout)
 
-
 def set_brightness(device, value, timeout=None):
     # value should be between 0 and 250
     return shell_command(device, "settings put system screen_brightness " + value, timeout=timeout)
-
 
 def get_battery_level(device):
     output, errors, result_code = shell_command(device, "dumpsys battery", retry=3)
@@ -179,7 +170,6 @@ def get_imei(device):
 
     return devices_imei[device.name]
 
-
 def restart_server():
     try:
         run_cmd(adb_cmd_prefix + " kill-server" + logger.redirect_string())
@@ -187,13 +177,11 @@ def restart_server():
     except TimeoutExpired as e:
         pass
 
-
 def log_adb_command(device, cmd):
     verbose_level = RequiredFeature('verbose_level').request()
     if verbose_level > 0:
         device_adb_log_file = adb_logs_dir + "/" + device.name + "-adb.log"
         os.system("echo \"" + cmd + "\" >> " + device_adb_log_file)
-
 
 def exists_file(device, file_path):
     try:
@@ -209,13 +197,11 @@ def exists_file(device, file_path):
         # file exist
         return True
 
-
 def log_evaluation_result(device, result_dir, script, success):
     verbose_level = RequiredFeature('verbose_level').request()
     if verbose_level > 0:
         device_adb_log_file = result_dir + "/" + device.name + "-evaluations.log"
         os.system("echo \"" + str(success) + " -> " + script + "\" >> " + device_adb_log_file)
-
 
 def get_api_level(device):
     try:
@@ -224,7 +210,6 @@ def get_api_level(device):
         return int(res)
     except TimeoutExpired:
         return None
-
 
 def get_android_version(device):
     try:

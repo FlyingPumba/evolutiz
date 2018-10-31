@@ -27,6 +27,8 @@ class EmmaCoverage(object):
         self.set_coverage_paths(device, generation, individual_index)
         adb.shell_command(device, "am force-stop " + self.package_name)
 
+        adb.push_all(device, scripts, "/mnt/sdcard")
+
         # run scripts
         for test_case_index, script_path in enumerate(scripts):
             self.generate_test_coverage(device, script_path, generation, individual_index,
@@ -48,13 +50,6 @@ class EmmaCoverage(object):
             device.flag_as_malfunctioning()
             raise Exception(
                 "Unable to clear package for script_path " + script_path + " in device: " + device.name)
-
-        # push script to device
-        output, errors, result_code = adb.push(device, script_path, "/mnt/sdcard/")
-        if result_code != 0:
-            adb.log_evaluation_result(device, self.result_dir, script_path, False)
-            device.flag_as_malfunctioning()
-            raise Exception("Unable to push motifcore script_path " + script_path + " to device: " + device.name)
 
         script_name = script_path.split("/")[-1]
         test_runner = RequiredFeature('test_runner').request()
