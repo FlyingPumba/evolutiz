@@ -472,6 +472,9 @@ if __name__ == "__main__":
                         "emulators: " + str(args.emulators_number) + ", " +
                         "real devices: " + str(args.real_devices_number) + ")")
 
+    output, errors, result_code = run_cmd("git rev-parse HEAD")
+    logger.log_progress("\nLast Git commit hash: " + output.split('\n')[0])
+
     logger.log_progress("\nVerbose level: " + str(args.verbose))
     logger.log_progress("\nSubjects to be processed: " + ''.join(map(lambda p: "\n -" + p, app_paths)))
 
