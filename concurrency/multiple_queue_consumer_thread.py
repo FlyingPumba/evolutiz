@@ -107,6 +107,9 @@ class MultipleQueueConsumerThread(KillableThread):
                     else:
                         self.log_exception(e, traceback.format_exc())
 
+                    # set state ready_idle in device that might be still in state ready_working
+                    devices[0].mark_work_stop()
+
                 finally:
                     self.mark_used_items(recyclable_items, self.recyclable_items_queues)
                     self.mark_used_items(consumable_items, self.consumable_items_queues)
