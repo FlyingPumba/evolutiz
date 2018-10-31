@@ -1,6 +1,5 @@
 import time
 
-import threading
 from datetime import datetime
 
 
@@ -23,28 +22,23 @@ class BudgetManager(object):
         self.evaluations = 0
         self.evaluations_limit = evaluations_budget
 
-        self.time_limit_lock = threading.Lock()
-
     def start_time_budget(self):
         print("Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M"))
         self.start_time = time.time()
 
     def increase_time_budget(self, seconds):
         if self.time_limit is not None:
-            with self.time_limit_lock:
-                self.time_limit += seconds
+            self.time_limit += seconds
 
     def get_time_budget_used(self):
         if self.time_limit is not None:
-            with self.time_limit_lock:
-                return time.time() - self.start_time
+            return time.time() - self.start_time
         else:
             return None
 
     def time_budget_available(self):
         if self.time_limit is not None:
-            with self.time_limit_lock:
-                return time.time() - self.start_time < self.time_limit
+            return time.time() - self.start_time < self.time_limit
         else:
             return True
 

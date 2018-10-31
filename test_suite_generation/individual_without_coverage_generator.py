@@ -14,8 +14,6 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
         super(IndividualWithoutCoverageGenerator, self).__init__()
 
     def gen_individual(self, device, individual_index, generation):
-        budget_manager = RequiredFeature('budget_manager').request()
-
         start_time = time.time()
         device.mark_work_start()
         suite = self.get_suite(device, generation, individual_index)
@@ -30,8 +28,6 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
 
         individual.index_in_generation = individual_index
         individual.generation = generation
-
-        budget_manager.increase_time_budget(elapsed_time)
 
         return individual
 

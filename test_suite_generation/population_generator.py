@@ -1,3 +1,5 @@
+import time
+
 from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.di_assertions import HasMethods
 from dependency_injection.required_feature import RequiredFeature
@@ -11,6 +13,7 @@ class PopulationGenerator(object):
         self.individual_generator = RequiredFeature('individual_generator', HasMethods('gen_individual')).request()
 
     def generate(self, n, gen=0):
+        budget_manager = RequiredFeature('budget_manager').request()
         individuals_index_to_generate = [i for i in range(0, n)]
 
         logger.log_progress("\nInit population of " + str(n) + " individuals in parallel")
@@ -20,7 +23,14 @@ class PopulationGenerator(object):
                                  extra_args=(gen,))
 
         try:
+            start_time = time.time()
+
             individuals_generated = mapper.run()
+
+            finish_time = time.time()
+            elapsed_time = finish_time - start_time
+            budget_manager.increase_time_budget(elapsed_time)
+
             return individuals_generated
         except TimeoutError:
             return None
