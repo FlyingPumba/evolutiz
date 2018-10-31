@@ -147,12 +147,8 @@ class EmmaCoverage(object):
         html_path = self.coverage_folder_local_path + "/coverage/index.html"
         coverage_str = self.extract_coverage(html_path)
 
-        coverage = 0
         aux = coverage_str.split("%")
-        if len(aux) > 1:
-            coverage = int(aux[0])
-        else:
-            adb.log_evaluation_result(device, self.result_dir, "html-extract-coverage", False)
+        coverage = int(aux[0])
 
         return coverage
 
