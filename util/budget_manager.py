@@ -19,16 +19,18 @@ class BudgetManager(object):
             # unknown format
             raise ValueError('Invalid time budget "%s".' % time_budget)
 
+        self.time_limit_increase = 0
+
         self.evaluations = 0
         self.evaluations_limit = evaluations_budget
 
     def start_time_budget(self):
         print("Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M"))
         self.start_time = time.time()
+        self.time_limit_increase = 0
 
     def increase_time_budget(self, seconds):
-        if self.time_limit is not None:
-            self.time_limit += seconds
+        self.time_limit_increase += seconds
 
     def get_time_budget_used(self):
         if self.time_limit is not None:
@@ -38,7 +40,7 @@ class BudgetManager(object):
 
     def time_budget_available(self):
         if self.time_limit is not None:
-            return time.time() - self.start_time < self.time_limit
+            return time.time() - self.start_time < self.time_limit + self.time_limit_increase
         else:
             return True
 
