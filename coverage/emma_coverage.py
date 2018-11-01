@@ -17,6 +17,7 @@ class EmmaCoverage(object):
         self.coverage_ec_device_backup_path = "/mnt/sdcard/coverage.ec"
 
     def get_suite_coverage(self, scripts, device, generation, individual_index):
+        self.verbose_level = RequiredFeature('verbose_level').request()
         self.package_name = RequiredFeature('package_name').request()
         self.result_dir = RequiredFeature('result_dir').request()
 
@@ -47,6 +48,9 @@ class EmmaCoverage(object):
         output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, script_path, False)
+            if self.verbose_level > 0:
+                logger.log_progress(output)
+                logger.log_progress(errors)
             device.flag_as_malfunctioning()
             raise Exception(
                 "Unable to clear package for script_path " + script_path + " in device: " + device.name)
@@ -76,6 +80,9 @@ class EmmaCoverage(object):
             output, errors, result_code = adb.shell_command(device, broadcast)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script_path, False)
+                if self.verbose_level > 0:
+                    logger.log_progress(output)
+                    logger.log_progress(errors)
                 device.flag_as_malfunctioning()
                 raise Exception(
                     "Unable to broadcast coverage gathering for script_path " + script_path + " in device: " + device.name)
@@ -84,6 +91,9 @@ class EmmaCoverage(object):
 
             if not adb.exists_file(device, self.coverage_ec_device_path):
                 adb.log_evaluation_result(device, self.result_dir, script_path, False)
+                if self.verbose_level > 0:
+                    logger.log_progress(output)
+                    logger.log_progress(errors)
                 device.flag_as_malfunctioning()
                 raise Exception(
                     "Coverage broadcast was sent for script_path " + script_path + " in device: " + device.name +
@@ -96,6 +106,9 @@ class EmmaCoverage(object):
                                                                  "cp -p " + self.coverage_ec_device_path + " " + self.coverage_ec_device_backup_path)
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script_path, False)
+                if self.verbose_level > 0:
+                    logger.log_progress(output)
+                    logger.log_progress(errors)
                 device.flag_as_malfunctioning()
                 raise Exception(
                     "Unable to retrieve coverage.ec file after coverage broadcast for script_path " + script_path + " in  device: " + device.name)
@@ -130,6 +143,9 @@ class EmmaCoverage(object):
         output, errors, result_code = adb.pull(device, self.coverage_ec_device_backup_path, self.coverage_ec_local_path)
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, "pull-coverage", False)
+            if self.verbose_level > 0:
+                logger.log_progress(output)
+                logger.log_progress(errors)
             device.flag_as_malfunctioning()
             raise Exception("Unable to pull coverage for device: " + device.name)
 
@@ -140,6 +156,9 @@ class EmmaCoverage(object):
         output, errors, result_code = run_cmd(emma_cmd, cwd=self.coverage_folder_local_path)
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, "process-coverage", False)
+            if self.verbose_level > 0:
+                logger.log_progress(output)
+                logger.log_progress(errors)
             device.flag_as_malfunctioning()
             raise Exception("Unable to process coverage.ec file fetched from device: " + device.name)
 
