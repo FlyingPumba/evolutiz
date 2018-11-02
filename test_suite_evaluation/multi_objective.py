@@ -28,13 +28,14 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
     def evaluate(self, device, individual):
         assert not individual.fitness.valid
 
+        coverage_fetcher = RequiredFeature('coverage_fetcher').request()
         self.package_name = RequiredFeature('package_name').request()
 
         start_time = time.time()
         device.mark_work_start()
         script_path, suite_lengths = self.dump_individual_to_files(individual)
 
-        coverage, unique_crashes, scripts_crash_status = self.coverage_fetcher.get_suite_coverage(script_path, device,
+        coverage, unique_crashes, scripts_crash_status = coverage_fetcher.get_suite_coverage(script_path, device,
                                                                                                individual.generation,
                                                                                                individual.index_in_generation)
         # remove from suite lengths the scripts that did NOT cause a crash

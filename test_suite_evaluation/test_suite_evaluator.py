@@ -13,7 +13,6 @@ class TestSuiteEvaluator(object):
 
     def __init__(self):
         self.test_runner = RequiredFeature('test_runner').request()
-        self.coverage_fetcher = RequiredFeature('coverage_fetcher').request()
 
         # override future responses of calling RequiredFeature('test_suite_evaluator').request(),
         # this way we have a TestSuiteEvaluator singleton
