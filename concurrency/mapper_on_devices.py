@@ -70,8 +70,10 @@ class MapperOnDevices(object):
             for i in range(0, total_devices):
                 thread = MultipleQueueConsumerThread(self.func,
                                                      consumable_items_queues=[devices_to_use],
-                                                     extra_args=self.extra_args, extra_kwargs=self.extra_kwargs,
-                                                     output_queue=output_queue, name="MQCThread-" + str(i))
+                                                     extra_args=self.extra_args,
+                                                     extra_kwargs=self.extra_kwargs,
+                                                     output_queue=output_queue,
+                                                     name="MQCThread-" + str(i))
                 thread.start()
 
             watchdog_thread = WatchDogThread(devices_to_use, output_queue, total_devices)
@@ -91,7 +93,8 @@ class MapperOnDevices(object):
                                                      consumable_items_queues=[items_queue],
                                                      extra_args=self.extra_args,
                                                      extra_kwargs=self.extra_kwargs,
-                                                     output_queue=output_queue, name="MQCThread-" + str(i))
+                                                     output_queue=output_queue,
+                                                     name="MQCThread-" + str(i))
                 thread.start()
 
             watchdog_thread = WatchDogThread(items_queue, output_queue, len(self.items_to_map))
