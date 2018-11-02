@@ -1,5 +1,6 @@
 import datetime
 import os
+from bs4 import UnicodeDammit
 
 from lxml import html
 
@@ -178,6 +179,10 @@ class EmmaCoverage(object):
         return coverage
 
     def extract_coverage(self, html_path):
-        tree = html.parse(html_path)
-        coverage = tree.getroot().xpath('/html/body/table[2]/tr[2]/td[5]/text()')[0].strip()
-        return coverage
+        with open(html_path, 'rb') as file:
+            content = file.read()
+            doc = UnicodeDammit(content, is_html=True)
+
+        parser = html.HTMLParser(encoding=doc.original_encoding)
+        root = html.document_fromstring(content, parser=parser)
+        return root.xpath('/html/body/table[2]/tr[2]/td[5]/text()')[0].strip()
