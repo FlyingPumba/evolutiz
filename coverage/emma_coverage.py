@@ -52,8 +52,16 @@ class EmmaCoverage(object):
             if self.verbose_level > 0:
                 logger.log_progress("\n" + str(result_code) + "\n" + output + "\n" + errors)
             device.flag_as_malfunctioning()
-            raise Exception(
-                "Unable to clear package for script_path " + script_path + " in device: " + device.name)
+            raise Exception("Unable to clear package for script_path " + script_path + " in device: " + device.name)
+
+        output, errors, result_code = adb.shell_command(device, "am instrument " + self.package_name + "/" +
+                                                        self.package_name + ".EmmaInstrument.EmmaInstrumentation")
+        if result_code != 0:
+            adb.log_evaluation_result(device, self.result_dir, script_path, False)
+            if self.verbose_level > 0:
+                logger.log_progress("\n" + str(result_code) + "\n" + output + "\n" + errors)
+            device.flag_as_malfunctioning()
+            raise Exception("Unable to instrument for script_path " + script_path + " in device: " + device.name)
 
         script_name = script_path.split("/")[-1]
         test_runner = RequiredFeature('test_runner').request()
