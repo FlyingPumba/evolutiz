@@ -78,7 +78,7 @@ class EmmaCoverage(object):
             broadcast = "am broadcast -a evolutiz.emma.COLLECT_COVERAGE -n " + self.package_name + "/" + \
                         self.package_name + ".EmmaInstrument.CollectCoverageReceiver"
             output, errors, result_code = adb.shell_command(device, broadcast)
-            if result_code != 0:
+            if result_code != 0 or "Exception" in errors:
                 adb.log_evaluation_result(device, self.result_dir, script_path, False)
                 if self.verbose_level > 0:
                     logger.log_progress(output)
