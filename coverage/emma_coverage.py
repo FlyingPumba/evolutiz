@@ -83,6 +83,8 @@ class EmmaCoverage(object):
 
             if "Exception" in errors:
                 adb.log_evaluation_result(device, self.result_dir, script_path, False)
+                # if self.verbose_level > 0:
+                #     logger.log_progress("\n" + str(result_code) + "\n" + output + "\n" + errors)
                 device.flag_as_malfunctioning()
                 raise Exception(
                     "Unable to broadcast coverage gathering for script_path " + script_path + " in device: " + device.name)
