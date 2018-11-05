@@ -31,10 +31,13 @@ class MultipleQueueConsumerThread(KillableThread):
         extra_args                  The extra arguments to be applied to the function: arg_1, ..., arg_n
         extra_kwargs                The extra keyword arguments to be applied to the function: karg_1, ..., karg_m
         output_queue                Optional queue to store the results of the function call.
+        fail_times_limit            Maximum number of times an item can fail before being discarded.
+        default_output              Default output in case an item fails more than the allowed number of times.
+        name                        Name of the thread.
     """
 
     def __init__(self, func, recyclable_items_queues=None, consumable_items_queues=None, extra_args=(),
-                 extra_kwargs=None, output_queue=None, name=None):
+                 extra_kwargs=None, output_queue=None, fail_times_limit=3, default_output=None, name=None):
         super().__init__(name=name)
 
         if recyclable_items_queues is None and consumable_items_queues is None:
