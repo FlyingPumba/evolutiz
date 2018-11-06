@@ -36,15 +36,19 @@ class MultipleQueueConsumerThread(KillableThread):
         name                        Name of the thread.
     """
 
-    def __init__(self, func, recyclable_items_queues=None, consumable_items_queues=None, extra_args=(),
-                 extra_kwargs=None, output_queue=None, fail_times_limit=3, default_output=None, name=None):
+    def __init__(self, func, items_queue=None, devices_queue=None, devices_are_consumable=False,
+                 items_are_consumable=True, extra_args=(), extra_kwargs=None, output_queue=None,
+                 fail_times_limit=3, default_output=None, name=None):
         super().__init__(name=name)
 
-        if recyclable_items_queues is None and consumable_items_queues is None:
-            raise ValueError("recyclable_items_queues and consumable_items_queues can not be both None")
+        if items_queue is None and devices_queue is None:
+            raise ValueError("items_queue and devices_queue can not be both None")
 
-        self.recyclable_items_queues = recyclable_items_queues
-        self.consumable_items_queues = consumable_items_queues
+        self.items_queue = items_queue
+        self.devices_queue = devices_queue
+
+        self.items_are_consumable = items_are_consumable
+        self.devices_are_consumable = devices_are_consumable
 
         self.func = func
         self.extra_args = extra_args
@@ -54,6 +58,11 @@ class MultipleQueueConsumerThread(KillableThread):
             self.extra_kwargs = extra_kwargs
 
         self.output_queue = output_queue
+        self.default_output = default_output
+        self.fail_times_limit = fail_times_limit
+
+        self.devices_used_by_item = {}
+        self.failures_by_device = {}
 
         self.stop_event = Event()
         self.item_processing_start_time = None
@@ -66,66 +75,58 @@ class MultipleQueueConsumerThread(KillableThread):
 
     def run(self):
         try:
-            recyclable_items = None
-            consumable_items = None
+            item = None
+            device = None
             
             while not self.stop_event.is_set():
                 try:
                     self.item_processing_start_time = time.time()
 
-                    recyclable_items = self.get_items_from_list_of_queues(self.recyclable_items_queues)
-                    consumable_items = self.get_items_from_list_of_queues(self.consumable_items_queues)
+                    item = self.fetch_item()
+                    device = self.fetch_device_for_item(item)
 
-                    if recyclable_items is not None and consumable_items is not None:
-                        args = []
-                        args.extend(recyclable_items)
-                        args.extend(consumable_items)
-                        args.extend(self.extra_args)
-                        args = tuple(args)
-
-                        result = self.func(*args, **self.extra_kwargs)
-                        if self.output_queue is not None:
-                            self.output_queue.put_nowait(result)
-
-                except Exception as e:
-                    # find out if there is a device we where working on
-                    items = []
-
-                    if recyclable_items is not None:
-                        items.extend(recyclable_items)
-
-                    if consumable_items is not None:
-                        items.extend(consumable_items)
-
-                        # Put the consumable items back in their respective queue
-                        for index, item in enumerate(consumable_items):
-                            queue = self.consumable_items_queues[index]
-                            queue.put_nowait(item)
-
-                    devices = [item for item in items if issubclass(type(item), Device)]
-
-                    # log accordingly
-                    if len(devices) > 0:
-                        self.log_exception(e, traceback.format_exc(), device=devices[0])
-                    else:
-                        self.log_exception(e, traceback.format_exc())
-
-                    # set state ready_idle in device that might be still in state ready_working
-                    devices[0].mark_work_stop()
-
-                finally:
-                    self.mark_used_items(recyclable_items, self.recyclable_items_queues)
-                    self.mark_used_items(consumable_items, self.consumable_items_queues)
-
-                    if recyclable_items is None or consumable_items is None:
+                    if item is None or device is None:
                         # there is nothing else to do, finish thread
                         return
 
-                    if recyclable_items is not None:
-                        # Put the recyclable items back in their respective queue
-                        for index, item in enumerate(recyclable_items):
-                            queue = self.recyclable_items_queues[index]
-                            queue.put_nowait(item)
+                    args = []
+                    if item is not None:
+                        args.append(item)
+                    if device is not None:
+                        args.append(device)
+                    args.extend(self.extra_args)
+                    args = tuple(args)
+
+                    result = self.func(*args, **self.extra_kwargs)
+                    if self.output_queue is not None:
+                        self.output_queue.put_nowait(result)
+
+                except Exception as e:
+                    self.devices_used_by_item[item].append(device)
+                    self.failures_by_device[device] += 1
+
+                    # Put the consumable items back in their respective queue
+                    if self.items_are_consumable:
+                        self.items_queue.put_nowait(item)
+
+                    if self.devices_are_consumable:
+                        self.devices_queue.put_nowait(device)
+
+                    self.log_exception(e, traceback.format_exc(), device=device)
+
+                    # set state ready_idle in device that might be still in state ready_working
+                    device.mark_work_stop()
+
+                finally:
+                    self.mark_task_done(item, self.items_queue)
+                    self.mark_task_done(device, self.devices_queue)
+
+                    # Put the recyclable items back in their respective queue
+                    if not self.items_are_consumable:
+                        self.items_queue.put_nowait(item)
+
+                    if not self.devices_are_consumable:
+                        self.devices_queue.put_nowait(device)
 
         except Exception as e:
             print(e)
@@ -158,25 +159,37 @@ class MultipleQueueConsumerThread(KillableThread):
                 formatted_string = template % device
                 logger.log_progress(formatted_string)
 
-    def get_items_from_list_of_queues(self, list_of_queues):
-        """Try to get one item from each queue of the provided list.
-        If at least one item of the queue is empty, return None."""
-        items = []
+    def fetch_item(self):
+        try:
+            item = self.items_queue.get_nowait()
+            if item not in self.devices_used_by_item:
+                self.devices_used_by_item[item] = []
+            return item
+        except Empty as e:
+            return None
 
-        if list_of_queues is None:
-            return items
+    def fetch_device_for_item(self, item):
+        devices_blacklisted = self.devices_used_by_item[item]
+        try:
+            # draw from the devices_queue until we find a device which is not blacklisted
+            device = self.devices_queue.get_nowait()
+            popped_devices = []
+            while device in devices_blacklisted:
+                popped_devices.append(device)
+                device = self.devices_queue.get_nowait()
 
-        for queue in list_of_queues:
-            try:
-                item = queue.get_nowait()
-                if item is not None:
-                    items.append(item)
-            except Empty as e:
-                return None
-        return items
+            # return to the queue the devices that are not going to be used
+            for device in popped_devices:
+                self.devices_queue.put_nowait(device)
 
-    def mark_used_items(self, items, list_of_queues):
-        """Mark task_done() once for each item used in all queues"""
-        if items is not None and list_of_queues is not None:
-            for index in range(0, len(items)):
-                list_of_queues[index].task_done()
+            # init failures for this device
+            if device not in self.failures_by_device:
+                self.failures_by_device[device] = 0
+            
+            return device
+        except Empty as e:
+            return None
+
+    def mark_task_done(self, element, queue):
+        if element is not None and queue is not None:
+            queue.task_done()
