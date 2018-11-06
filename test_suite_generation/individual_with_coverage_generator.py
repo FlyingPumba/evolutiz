@@ -81,7 +81,6 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
         output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, script_path, False)
-            device.flag_as_malfunctioning()
             raise Exception(
                 "Unable to clear package for script_path " + script_path + " in device: " + device.name)
 

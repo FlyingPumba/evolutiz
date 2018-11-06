@@ -1,3 +1,5 @@
+import traceback
+
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
@@ -24,7 +26,12 @@ class TestRunnerInstaller(object):
         logger.log_progress("\nPreparing " + self.test_runner_name + " test runner in devices.")
 
         mapper = MapperOnDevices(self.install, minimum_api=minimum_api)
-        mapper.run()
+
+        try:
+            mapper.run()
+        except Exception as e:
+            str = traceback.format_exc()
+            print(str)
 
     def install(self, device):
         adb.get_root_permissions(device)
@@ -32,37 +39,31 @@ class TestRunnerInstaller(object):
         # remount partitions
         output, errors, result_code = adb.adb_command(device, "remount")
         if result_code != 0:
-            device.flag_as_malfunctioning()
             raise Exception("Unable to remount partitions on device: " + device.name)
 
         # make /mnt/sdcard writable
         output, errors, result_code = adb.shell_command(device, "mount -o rw,remount /")
         if result_code != 0:
-            device.flag_as_malfunctioning()
             raise Exception("Unable to remount root partition on device: " + device.name)
 
         # TODO: remove the following lines, they are not needed anymore and are not universal across emulators/devices
         # output, errors, result_code = adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
         # if result_code != 0:
-        #     device.flag_as_malfunctioning()
         #     raise Exception("Unable to install test runner on device: " + device.name)
         #
         # output, errors, result_code = adb.sudo_shell_command(device, "mount -o rw,remount /system")
         # if result_code != 0:
-        #     device.flag_as_malfunctioning()
         #     raise Exception("Unable to install test runner on device: " + device.name)
 
         # push
         adb.push(device, self.test_runner_jar_path, "/system/framework/" + self.test_runner_name + ".jar")
         output, errors, result_code = adb.shell_command(device, "chmod 777 /system/framework/" + self.test_runner_name + ".jar")
         if result_code != 0:
-            device.flag_as_malfunctioning()
             raise Exception("Unable to install test runner on device: " + device.name)
 
         adb.push(device, self.test_runner_executable_path, "/system/bin/" + self.test_runner_name)
         output, errors, result_code = adb.shell_command(device, "chmod 777 /system/bin/" + self.test_runner_name)
         if result_code != 0:
-            device.flag_as_malfunctioning()
             raise Exception("Unable to install test runner on device: " + device.name)
 
         return True

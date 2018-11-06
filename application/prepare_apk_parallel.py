@@ -18,7 +18,6 @@ def push_apk_and_string_xml(device, decoded_dir, package_name, apk_path):
     instrumentation_cmd = "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation"
     output, errors, result_code = adb.shell_command(device, instrumentation_cmd, retry=2)
     if result_code != 0:
-        device.flag_as_malfunctioning()
         raise Exception("Unable to instrument " + package_name)
 
 def prepare_apk(instrumented_app_path, package_name, result_dir):
@@ -39,6 +38,7 @@ def prepare_apk(instrumented_app_path, package_name, result_dir):
     mapper = MapperOnDevices(push_apk_and_string_xml, extra_args=(decoded_dir, package_name, apk_path,))
 
     mapper.run()
+
     return package_name
 
 

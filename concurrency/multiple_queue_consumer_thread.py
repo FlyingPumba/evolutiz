@@ -36,8 +36,10 @@ class MultipleQueueConsumerThread(KillableThread):
         name                        Name of the thread.
     """
 
-    def __init__(self, func, items_queue=None, devices_queue=None, devices_are_consumable=False,
-                 items_are_consumable=True, extra_args=(), extra_kwargs=None, output_queue=None,
+    def __init__(self, func,
+                 items_queue=None, devices_queue=None,
+                 items_are_consumable=True, devices_are_consumable=False,
+                 extra_args=(), extra_kwargs=None, output_queue=None,
                  fail_times_limit=3, default_output=None, name=None):
         super().__init__(name=name)
 
@@ -75,47 +77,53 @@ class MultipleQueueConsumerThread(KillableThread):
 
     def run(self):
         try:
-            item = None
-            device = None
-            
             while not self.stop_event.is_set():
                 try:
-                    self.item_processing_start_time = time.time()
+                    if self.items_queue is not None:
+                        item = self.fetch_item()
 
-                    item = self.fetch_item()
-                    device = self.fetch_device_for_item(item)
+                        if self.devices_queue is not None:
+                            device = self.fetch_device_for_item(item)
+                    else:
+                        device = self.fetch_device()
 
-                    if item is None or device is None:
-                        # there is nothing else to do, finish thread
-                        return
+                    if self.items_queue is not None:
+                        item = self.fetch_item()
 
-                    args = []
-                    if item is not None:
-                        args.append(item)
-                    if device is not None:
+                    if item is not None and device is not None:
+                        args = []
                         args.append(device)
-                    args.extend(self.extra_args)
-                    args = tuple(args)
+                        args.append(item)
+                        args.extend(self.extra_args)
+                        args = tuple(args)
 
-                    result = self.func(*args, **self.extra_kwargs)
-                    if self.output_queue is not None:
-                        self.output_queue.put_nowait(result)
+                        self.item_processing_start_time = time.time()
+                        result = self.func(*args, **self.extra_kwargs)
+                        if self.output_queue is not None:
+                            self.output_queue.put_nowait(result)
 
                 except Exception as e:
                     self.devices_used_by_item[item].append(device)
                     self.failures_by_device[device] += 1
 
-                    # Put the consumable items back in their respective queue
-                    if self.items_are_consumable:
-                        self.items_queue.put_nowait(item)
+                    if len(self.devices_used_by_item[item]) < self.fail_times_limit:
+                        # Put the consumable items back in their respective queue
+                        if self.items_are_consumable:
+                            self.items_queue.put_nowait(item)
 
-                    if self.devices_are_consumable:
-                        self.devices_queue.put_nowait(device)
-
-                    self.log_exception(e, traceback.format_exc(), device=device)
+                        if self.devices_are_consumable:
+                            self.devices_queue.put_nowait(device)
+                    else:
+                        if self.output_queue is not None:
+                            self.output_queue.put_nowait(self.default_output)
 
                     # set state ready_idle in device that might be still in state ready_working
                     device.mark_work_stop()
+
+                    if self.failures_by_device[device] > 5:
+                        device.flag_as_malfunctioning()
+
+                    self.log_exception(e, traceback.format_exc(), device=device)
 
                 finally:
                     self.mark_task_done(item, self.items_queue)
@@ -127,6 +135,10 @@ class MultipleQueueConsumerThread(KillableThread):
 
                     if not self.devices_are_consumable:
                         self.devices_queue.put_nowait(device)
+
+                    if item is None or device is None:
+                        # there is nothing else to do, finish thread
+                        return
 
         except Exception as e:
             print(e)
@@ -162,14 +174,21 @@ class MultipleQueueConsumerThread(KillableThread):
     def fetch_item(self):
         try:
             item = self.items_queue.get_nowait()
+
+            # init failures for this item
             if item not in self.devices_used_by_item:
                 self.devices_used_by_item[item] = []
+
             return item
         except Empty as e:
             return None
 
     def fetch_device_for_item(self, item):
-        devices_blacklisted = self.devices_used_by_item[item]
+        if self.items_queue is not None:
+            devices_blacklisted = self.devices_used_by_item[item]
+        else:
+            devices_blacklisted = []
+
         try:
             # draw from the devices_queue until we find a device which is not blacklisted
             device = self.devices_queue.get_nowait()
@@ -186,6 +205,18 @@ class MultipleQueueConsumerThread(KillableThread):
             if device not in self.failures_by_device:
                 self.failures_by_device[device] = 0
             
+            return device
+        except Empty as e:
+            return None
+
+    def fetch_device(self):
+        try:
+            device = self.devices_queue.get_nowait()
+
+            # init failures for this device
+            if device not in self.failures_by_device:
+                self.failures_by_device[device] = 0
+
             return device
         except Empty as e:
             return None

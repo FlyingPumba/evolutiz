@@ -52,7 +52,6 @@ def get_root_permissions(device):
     print(output)
     print(errors)
     if result_code != 0:
-        device.flag_as_malfunctioning()
         raise Exception("Unable to gain root permissions on device: " + device.name)
 
     devices_with_root_permissions.append(device.name)
@@ -86,7 +85,6 @@ def install(device, package_name, apk_path):
     if result_code != 0:
         # we were unable to install the apk in device.
         # Reboot and raise exception
-        device.flag_as_malfunctioning()
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
 
     cmd = get_adb_cmd_prefix_for_device(device) + " shell pm list packages | grep " + package_name
@@ -96,7 +94,6 @@ def install(device, package_name, apk_path):
     if package_name not in res:
         # we were unable to install
         # Reboot and raise exception
-        device.flag_as_malfunctioning()
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
 
 def pkill(device, string):

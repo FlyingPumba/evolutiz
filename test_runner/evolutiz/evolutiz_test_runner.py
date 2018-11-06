@@ -191,7 +191,6 @@ class EvolutizTestRunner(TestRunner):
         output, errors, result_code = adb.pull(device, self.evolutiz_script_path_in_devices, destination_file_name,
                                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            device.flag_as_malfunctioning()
             raise Exception("Failed to retrieve evolutiz script from device: " + device.name)
 
         return self.get_test_case_content_from_file(destination_file_name)

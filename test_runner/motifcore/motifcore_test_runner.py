@@ -100,7 +100,6 @@ class MotifcoreTestRunner(TestRunner):
         output, errors, result_code = adb.pull(device, self.motifcore_script_path_in_devices, destination_file_name,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            device.flag_as_malfunctioning()
             raise Exception("Failed to retrieve motifcore script from device: " + device.name)
 
         # remove motifgenes from test case if they are disabled

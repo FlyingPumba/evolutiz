@@ -19,13 +19,16 @@ class MapperOnDevices(object):
         items_to_map        Extra items that will be "consumed" on each function call.
                             If this parameter is provided, the function will be applied until all items have been applied.
                             Otherwise, the function will be applied once per device.
+        fail_times_limit    Maximum number of times an item can fail before being discarded.
+        default_output      Default output in case an item fails more than the allowed number of times.
         extra_args          The extra arguments to be applied to the function: arg_1, ..., arg_n
         extra_kwargs        The extra keyword arguments to be applied to the function: karg_1, ..., karg_m
         minimum_api         Filter devices to be used by minimum API level.
         idle_devices_only   Use only idle devices.
     """
 
-    def __init__(self, func, items_to_map=None, extra_args=(), extra_kwargs=None, minimum_api=None,
+    def __init__(self, func, items_to_map=None, fail_times_limit=3, default_output=None,
+                 extra_args=(), extra_kwargs=None, minimum_api=None,
                  idle_devices_only=False):
 
         self.func = func
@@ -39,6 +42,9 @@ class MapperOnDevices(object):
 
         self.minimum_api = minimum_api
         self.idle_devices_only = idle_devices_only
+
+        self.default_output = default_output
+        self.fail_times_limit = fail_times_limit
 
     def run(self):
         device_manager = RequiredFeature('device_manager').request()
@@ -69,10 +75,13 @@ class MapperOnDevices(object):
 
             for i in range(0, total_devices):
                 thread = MultipleQueueConsumerThread(self.func,
-                                                     consumable_items_queues=[devices_to_use],
+                                                     devices_queue=devices_to_use,
+                                                     devices_are_consumable=True,
                                                      extra_args=self.extra_args,
                                                      extra_kwargs=self.extra_kwargs,
                                                      output_queue=output_queue,
+                                                     fail_times_limit=self.fail_times_limit,
+                                                     default_output=self.default_output,
                                                      name="MQCThread-" + str(i))
                 thread.start()
 
@@ -89,11 +98,15 @@ class MapperOnDevices(object):
 
             for i in range(0, total_devices):
                 thread = MultipleQueueConsumerThread(self.func,
-                                                     recyclable_items_queues=[devices_to_use],
-                                                     consumable_items_queues=[items_queue],
+                                                     items_queue=items_queue,
+                                                     items_are_consumable=True,
+                                                     devices_queue=devices_to_use,
+                                                     devices_are_consumable=False,
                                                      extra_args=self.extra_args,
                                                      extra_kwargs=self.extra_kwargs,
                                                      output_queue=output_queue,
+                                                     fail_times_limit=self.fail_times_limit,
+                                                     default_output=self.default_output,
                                                      name="MQCThread-" + str(i))
                 thread.start()
 
