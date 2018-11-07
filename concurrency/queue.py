@@ -46,6 +46,7 @@ class Queue(object):
         possible_elements = [element for element in self._elements if element not in blacklist]
         if len(possible_elements) > 0:
             element = possible_elements.pop()
+            self._elements.remove(element)
         else:
             element = None
         self._lock_elements.release()

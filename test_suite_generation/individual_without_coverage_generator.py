@@ -45,7 +45,8 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
         test_runner = RequiredFeature('test_runner').request()
 
         # clear data before generating new test case
-        output, errors, result_code = adb.shell_command(device, "pm clear " + package_name, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, retry=2)
+        output, errors, result_code = adb.shell_command(device, "pm clear " + package_name,
+                                                        timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, retry=2)
         if result_code != 0:
             raise Exception("Failed to clear package " + package_name + " in device: " + device.name)
 
