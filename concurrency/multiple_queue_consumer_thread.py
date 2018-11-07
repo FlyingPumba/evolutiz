@@ -192,6 +192,11 @@ class MultipleQueueConsumerThread(KillableThread):
         try:
             # draw from the devices_queue until we find a device which is not blacklisted
             device = self.devices_queue.get_nowait()
+
+            # FIX: el siguiente código puede hacer que, dados dos threads concurrentes,
+            # uno desencola todos los devices, el otro ve que no hay más devices se cierra,
+            # y luego el primero vuelve a encolar los devices
+
             popped_devices = []
             while device in devices_blacklisted:
                 popped_devices.append(device)
