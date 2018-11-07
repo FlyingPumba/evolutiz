@@ -44,8 +44,6 @@ class MultipleQueueConsumerThread(KillableThread):
         if items_queue is None and devices_queue is None:
             raise ValueError("items_queue and devices_queue can not be both None")
 
-        assert fail_times_limit <= devices_queue.size()
-
         self.items_queue = items_queue
         self.devices_queue = devices_queue
 
