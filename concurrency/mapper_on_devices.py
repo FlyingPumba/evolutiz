@@ -1,11 +1,9 @@
 import time
 
-from queue import Queue, Empty
-
+from concurrency.queue import Queue
 from dependency_injection.required_feature import RequiredFeature
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
 from concurrency.watchdog_thread import WatchDogThread
-
 
 class MapperOnDevices(object):
     """Manages parallel execution of a function in the available devices.
@@ -63,16 +61,13 @@ class MapperOnDevices(object):
                             " to apply function mapper.")
 
         # prepare devices queue
-        devices_to_use = Queue(maxsize=total_devices)
-        for device in devices:
-            devices_to_use.put_nowait(device)
+        devices_to_use = Queue(elements=devices)
+
+        # prepare output queue
+        output_queue = Queue()
 
         # prepare items to map queue
         if self.items_to_map is None:
-
-            # prepare output queue
-            output_queue = Queue(maxsize=total_devices)
-
             for i in range(0, total_devices):
                 thread = MultipleQueueConsumerThread(self.func,
                                                      devices_queue=devices_to_use,
@@ -85,16 +80,11 @@ class MapperOnDevices(object):
                                                      name="MQCThread-" + str(i))
                 thread.start()
 
-            watchdog_thread = WatchDogThread(devices_to_use, output_queue, total_devices)
+            watchdog_thread = WatchDogThread(output_queue, total_devices)
             self.wait_for_watchdog_to_finish(device_manager, watchdog_thread)
 
         else:
-            items_queue = Queue(maxsize=len(self.items_to_map))
-            for item in self.items_to_map:
-                items_queue.put_nowait(item)
-
-            # prepare output queue
-            output_queue = Queue(maxsize=len(self.items_to_map))
+            items_queue = Queue(elements=self.items_to_map)
 
             for i in range(0, total_devices):
                 thread = MultipleQueueConsumerThread(self.func,
@@ -110,18 +100,11 @@ class MapperOnDevices(object):
                                                      name="MQCThread-" + str(i))
                 thread.start()
 
-            watchdog_thread = WatchDogThread(items_queue, output_queue, len(self.items_to_map))
+            watchdog_thread = WatchDogThread(output_queue, len(self.items_to_map))
             self.wait_for_watchdog_to_finish(device_manager, watchdog_thread)
 
         # collect output
-        results = []
-        while True:
-            try:
-                output = output_queue.get_nowait()
-                results.append(output)
-            except Empty as e:
-                # no more output values
-                break
+        results = output_queue.pop_all()
         return results
 
     def wait_for_watchdog_to_finish(self, device_manager, watchdog_thread):

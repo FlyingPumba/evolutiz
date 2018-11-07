@@ -10,10 +10,9 @@ from concurrency.thread_hung_exception import ThreadHungException
 
 class WatchDogThread(threading.Thread):
 
-    def __init__(self, queue_to_join, output_queue, expected_output_count):
+    def __init__(self, output_queue, expected_output_count):
         super().__init__(name="WatchDogThread")
 
-        self.queue_to_join = queue_to_join
         self.output_queue = output_queue
         self.expected_output_count = expected_output_count
 
@@ -38,7 +37,7 @@ class WatchDogThread(threading.Thread):
         budget_available = True
         stopped_threads = False
         while not self.stop_event.is_set() and \
-                not self.output_queue.qsize() >= self.expected_output_count and \
+                self.output_queue.size() < self.expected_output_count and \
                 budget_available:
 
             budget_available = budget_manager.time_budget_available()
@@ -49,8 +48,8 @@ class WatchDogThread(threading.Thread):
 
             if verbose_level > 1:
                 logger.log_progress("\nWatchDog thread is about to check %d MultipleQueueConsumer threads" % len(threads_to_check))
-                logger.log_progress("\nCurrent output estimate count is %d of %d" % (self.output_queue.qsize(),
-                                                                                     self.expected_output_count))
+                logger.log_progress("\nCurrent output count is %d of %d" % (self.output_queue.size(),
+                                                                            self.expected_output_count))
 
             if len(threads_to_check) == 0:
                 break
@@ -83,7 +82,3 @@ class WatchDogThread(threading.Thread):
             time.sleep(1)
 
         self.successful_finish = not stopped_threads
-        if not stopped_threads:
-            # only join the consumable queue if we are sure threads were able to run until the end
-            # and were not preemptively stopped.
-            self.queue_to_join.join()
