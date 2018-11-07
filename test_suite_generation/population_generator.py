@@ -20,6 +20,7 @@ class PopulationGenerator(object):
 
         mapper = MapperOnDevices(self.individual_generator.gen_individual,
                                  items_to_map=individuals_index_to_generate,
+                                 fail_times_limit=3,
                                  extra_args=(gen,))
 
         try:

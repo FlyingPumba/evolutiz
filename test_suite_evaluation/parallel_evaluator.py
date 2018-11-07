@@ -16,6 +16,7 @@ class ParallelEvaluator(object):
 
         mapper = MapperOnDevices(self.test_suite_evaluator.evaluate,
                                  items_to_map=individuals,
+                                 fail_times_limit=3,
                                  idle_devices_only=True)
         try:
             mapper.run()

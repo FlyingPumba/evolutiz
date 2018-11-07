@@ -38,11 +38,13 @@ class MultipleQueueConsumerThread(KillableThread):
                  items_queue=None, devices_queue=None,
                  items_are_consumable=True, devices_are_consumable=False,
                  extra_args=(), extra_kwargs=None, output_queue=None,
-                 fail_times_limit=3, default_output=None, name=None):
+                 fail_times_limit=1, default_output=None, name=None):
         super().__init__(name=name)
 
         if items_queue is None and devices_queue is None:
             raise ValueError("items_queue and devices_queue can not be both None")
+
+        assert fail_times_limit <= devices_queue.size()
 
         self.items_queue = items_queue
         self.devices_queue = devices_queue
@@ -115,21 +117,26 @@ class MultipleQueueConsumerThread(KillableThread):
         args = []
 
         if self.items_queue is not None:
-            item = self.fetch_item()
-            if item is None:
-                queue_run_out = True
-            else:
-                # if the items_queue is being used, the device selected for one item
-                # has to take into account previous failures of that item
-                if self.devices_queue is not None:
-                    device = self.fetch_device_for_item(item)
-                    if device is None:
-                        queue_run_out = True
-                    else:
-                        args.append(device)
+            while True:
+                item = self.fetch_item()
+                if item is None:
+                    queue_run_out = True
+                else:
+                    # if the items_queue is being used, the device selected for one item
+                    # has to take into account previous failures of that item
+                    if self.devices_queue is not None:
+                        device = self.fetch_device_for_item(item)
+                        if device is None:
+                            # No matching device for this item right now
+                            # Put back the item at the end of the queue, and fetch another one.
+                            self.items_queue.put(item)
+                            continue
+                        else:
+                            args.append(device)
 
-                # item goes in args after device, just by convention inside Evolutiz.
-                args.append(item)
+                    # item goes in args after device, just by convention inside Evolutiz.
+                    args.append(item)
+                break
         else:
             # if the items_queue is disabled, we can use any device
             device = self.fetch_device()
@@ -186,10 +193,10 @@ class MultipleQueueConsumerThread(KillableThread):
         device = self.devices_queue.pop_with_blacklist(devices_blacklisted)
 
         if device is None:
-            # If this device is None, it means that all devices in the queue are blacklisted.
-            # This can happen if fail_times_limit > len(devices)
-            # In such case, just get any device
-            device = self.devices_queue.pop()
+            # If this device is None, it means that all devices currently in the queue are blacklisted.
+            # Since we ensured that fail_times_limit <= len(devices), we know that at some point in the future
+            # another device will become available to process this item.
+            return None
 
         # init failures for this device
         if device not in self.failures_by_device:
