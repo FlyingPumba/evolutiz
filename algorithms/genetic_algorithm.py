@@ -55,7 +55,10 @@ class GeneticAlgorithm(Strategy):
             logger.log_progress("\nTime budget run out during parallel evaluation, exiting setup")
             return False
 
-        self.population = invalid_ind[:]
+        self.population = invalid_ind.copy()
+
+        if verbose_level > 1:
+            logger.log_progress("\nPoblación inicial:\n" + str(self.population))
 
         self.device_manager.log_devices_battery(0, self.result_dir)
         self.parallel_evaluator.test_suite_evaluator.update_logbook(0, self.population)
