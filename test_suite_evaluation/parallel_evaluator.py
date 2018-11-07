@@ -18,10 +18,10 @@ class ParallelEvaluator(object):
                                  items_to_map=individuals,
                                  idle_devices_only=True)
         try:
-            individuals_evaluated = mapper.run()
+            mapper.run()
 
             # make sure that there are no individuals with invalid fitness
-            for individual in individuals_evaluated:
+            for individual in individuals:
                 if not individual.fitness.valid:
                     self.test_suite_evaluator.set_empty_fitness(individual)
 
