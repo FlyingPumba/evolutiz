@@ -78,71 +78,74 @@ class MultipleQueueConsumerThread(KillableThread):
     def run(self):
         try:
             while not self.stop_event.is_set():
+                # prepare args for calling func
+                args, device, item, queue_run_out = self.build_arguments()
+
+                if queue_run_out:
+                    # no more work to do
+                    return
+
                 try:
-                    if self.items_queue is not None:
-                        item = self.fetch_item()
+                    self.item_processing_start_time = time.time()
+                    result = self.func(*args, **self.extra_kwargs)
+                    self.item_processing_start_time = None
 
-                        if self.devices_queue is not None:
-                            device = self.fetch_device_for_item(item)
-                    else:
-                        device = self.fetch_device()
-
-                    if self.items_queue is not None:
-                        item = self.fetch_item()
-
-                    if item is not None and device is not None:
-                        args = []
-                        args.append(device)
-                        args.append(item)
-                        args.extend(self.extra_args)
-                        args = tuple(args)
-
-                        self.item_processing_start_time = time.time()
-                        result = self.func(*args, **self.extra_kwargs)
-                        if self.output_queue is not None:
-                            self.output_queue.put_nowait(result)
+                    if self.output_queue is not None:
+                        self.output_queue.put_nowait(result)
 
                 except Exception as e:
-                    self.devices_used_by_item[item].append(device)
-                    self.failures_by_device[device] += 1
-
-                    if len(self.devices_used_by_item[item]) < self.fail_times_limit:
-                        # Put the consumable items back in their respective queue
-                        if self.items_are_consumable:
-                            self.items_queue.put_nowait(item)
-
-                        if self.devices_are_consumable:
-                            self.devices_queue.put_nowait(device)
-                    else:
-                        if self.output_queue is not None:
-                            self.output_queue.put_nowait(self.default_output)
-
-                    # set state ready_idle in device that might be still in state ready_working
-                    device.mark_work_stop()
-
-                    if self.failures_by_device[device] > 5:
-                        device.flag_as_malfunctioning()
-
                     self.log_exception(e, traceback.format_exc(), device=device)
+
+                    if device is not None:
+                        self.register_device_failure(device)
+
+                        if item is not None:
+                            self.register_item_failure_in_device(item, device)
 
                 finally:
                     self.mark_task_done(item, self.items_queue)
                     self.mark_task_done(device, self.devices_queue)
 
                     # Put the recyclable items back in their respective queue
-                    if not self.items_are_consumable:
-                        self.items_queue.put_nowait(item)
-
-                    if not self.devices_are_consumable:
-                        self.devices_queue.put_nowait(device)
-
-                    if item is None or device is None:
-                        # there is nothing else to do, finish thread
-                        return
+                    self.put_back_recyclables(device, item)
 
         except Exception as e:
-            print(e)
+            print(traceback.format_exc())
             return
+
+    def build_arguments(self):
+        queue_run_out = False
+        item = None
+        device = None
+        args = []
+
+        if self.items_queue is not None:
+            item = self.fetch_item()
+            if item is None:
+                queue_run_out = True
+            else:
+                # if the items_queue is being used, the device selected for one item
+                # has to take into account previous failures of that item
+                if self.devices_queue is not None:
+                    device = self.fetch_device_for_item(item)
+                    if device is None:
+                        queue_run_out = True
+                    else:
+                        args.append(device)
+
+                # item goes in args after device, just by convention inside Evolutiz.
+                args.append(item)
+        else:
+            # if the items_queue is disabled, we can use any device
+            device = self.fetch_device()
+            if device is None:
+                queue_run_out = True
+            else:
+                args.append(device)
+
+        args.extend(self.extra_args)
+        args = tuple(args)
+        return args, device, item, queue_run_out
 
     def log_exception(self, e, stack_trace, device=None):
         verbose_level = RequiredFeature('verbose_level').request()
@@ -176,18 +179,15 @@ class MultipleQueueConsumerThread(KillableThread):
             item = self.items_queue.get_nowait()
 
             # init failures for this item
-            if item not in self.devices_used_by_item:
-                self.devices_used_by_item[item] = []
+            if str(item) not in self.devices_used_by_item:
+                self.devices_used_by_item[str(item)] = []
 
             return item
         except Empty as e:
             return None
 
     def fetch_device_for_item(self, item):
-        if self.items_queue is not None:
-            devices_blacklisted = self.devices_used_by_item[item]
-        else:
-            devices_blacklisted = []
+        devices_blacklisted = self.devices_used_by_item[str(item)]
 
         try:
             # draw from the devices_queue until we find a device which is not blacklisted
@@ -224,3 +224,31 @@ class MultipleQueueConsumerThread(KillableThread):
     def mark_task_done(self, element, queue):
         if element is not None and queue is not None:
             queue.task_done()
+
+    def put_back_recyclables(self, device, item):
+        if not self.items_are_consumable:
+            self.items_queue.put_nowait(item)
+        if not self.devices_are_consumable:
+            self.devices_queue.put_nowait(device)
+
+    def register_device_failure(self, device):
+        # set state ready_idle in device that might be still in state ready_working
+        device.mark_work_stop()
+
+        self.failures_by_device[device] += 1
+        if self.failures_by_device[device] > 5:
+            device.flag_as_malfunctioning()
+
+    def register_item_failure_in_device(self, item, device):
+        self.devices_used_by_item[str(item)].append(device)
+
+        if len(self.devices_used_by_item[str(item)]) < self.fail_times_limit:
+            # Put the consumable items back in their respective queue
+            if self.items_are_consumable:
+                self.items_queue.put_nowait(item)
+
+            if self.devices_are_consumable:
+                self.devices_queue.put_nowait(device)
+        else:
+            if self.output_queue is not None:
+                self.output_queue.put_nowait(self.default_output)

@@ -57,6 +57,10 @@ class WatchDogThread(threading.Thread):
 
             for thread in threads_to_check:
                 start_time = thread.get_item_processing_start_time()
+                if start_time is None:
+                    # this thread is not processing an item right now
+                    continue
+
                 elapsed_time = time.time() - start_time
 
                 if not budget_available:
