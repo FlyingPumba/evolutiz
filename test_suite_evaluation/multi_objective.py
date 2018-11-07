@@ -25,6 +25,14 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         # self.toolbox.register("select", tools.selTournament, tournsize=5)
         toolbox.register("select", tools.selNSGA2)
 
+    def set_empty_fitness(self, individual):
+        individual.fitness.values = (0, sys.maxsize, 0)
+
+        individual.evaluation_finish_timestamp = time.time()
+        individual.evaluation_elapsed_time = 0
+
+        self.hall_of_fame.update([individual])
+
     def evaluate(self, device, individual):
         assert not individual.fitness.valid
 

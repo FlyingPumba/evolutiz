@@ -16,10 +16,15 @@ class ParallelEvaluator(object):
 
         mapper = MapperOnDevices(self.test_suite_evaluator.evaluate,
                                  items_to_map=individuals,
-                                 default_output=(0,0,0), # TODO: generalize default_output
                                  idle_devices_only=True)
         try:
             individuals_evaluated = mapper.run()
+
+            # make sure that there are no individuals with invalid fitness
+            for individual in individuals_evaluated:
+                if not individual.fitness.valid:
+                    self.test_suite_evaluator.set_empty_fitness(individual)
+
             return True
         except TimeoutError:
             return False
