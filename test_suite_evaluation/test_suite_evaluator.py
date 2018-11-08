@@ -62,17 +62,20 @@ class TestSuiteEvaluator(object):
         creation = []
         for individual in population:
             fitness.append({
+                'generation': individual.generation,
                 'index_in_generation': individual.index_in_generation,
                 'coverage': individual.fitness.values[0],
                 'length': individual.fitness.values[1],
                 'crashes': individual.fitness.values[2],
             })
             evaluation.append({
+                'generation': individual.generation,
                 'index_in_generation': individual.index_in_generation,
                 'evaluation_finish_timestamp': individual.evaluation_finish_timestamp,
                 'evaluation_elapsed_time': individual.evaluation_elapsed_time,
             })
             creation.append({
+                'generation': individual.generation,
                 'index_in_generation': individual.index_in_generation,
                 'creation_finish_timestamp': individual.creation_finish_timestamp,
                 'creation_elapsed_time': individual.creation_elapsed_time,

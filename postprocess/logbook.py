@@ -23,37 +23,37 @@ def print_fitness(logbook_file_path):
     logbook = pickle.load(logbook_file)
 
     print("Fitness records:")
-    print("gen\tindex\tcovrg.\tcrashes\t\tlength")
+    print("gen\tid\tcovrg.\tcrashes\t\tlength")
     print("---------------------------------------------------")
     fitness_by_gen = logbook.select("fitness")
     for gen, population in enumerate(fitness_by_gen):
         for fitness in population:
-            print("%d\t%d\t%d\t%d\t%d" % (gen,
-                       fitness['index_in_generation'],
+            print("%d\t%s\t%d\t%d\t%d" % (gen,
+                       str(fitness['generation']) + "." + str(fitness['index_in_generation']),
                        fitness['coverage'],
                        fitness['crashes'],
                        fitness['length']))
 
 
     print("\nEvaluation records:")
-    print("gen\tindex\teval elapsed time\teval finish timestamp")
+    print("gen\tid\teval elapsed time\teval finish timestamp")
     print("-------------------------------------------------------------")
     evaluation_by_gen = logbook.select("evaluation")
     for gen, population in enumerate(evaluation_by_gen):
         for evaluation in population:
-            print("%d\t%d\t\t%d\t\t%d" % (gen,
-                                      evaluation['index_in_generation'],
+            print("%d\t%s\t\t%d\t\t%d" % (gen,
+                                      str(evaluation['generation']) + "." + str(evaluation['index_in_generation']),
                                       evaluation['evaluation_elapsed_time'],
                                       evaluation['evaluation_finish_timestamp']))
 
     print("\nCreation records:")
-    print("gen\tindex\tcreation elapsed time\tcreation finish timestamp")
+    print("gen\tid\tcreation elapsed time\tcreation finish timestamp")
     print("-----------------------------------------------------------------")
     creation_by_gen = logbook.select("creation")
     for gen, population in enumerate(creation_by_gen):
         for creation in population:
-            print("%d\t%d\t\t%d\t\t%d" % (gen,
-                                      creation['index_in_generation'],
+            print("%d\t%s\t\t%d\t\t%d" % (gen,
+                                      str(creation['generation']) + "." + str(creation['index_in_generation']),
                                       creation['creation_elapsed_time'],
                                       creation['creation_finish_timestamp']))
 

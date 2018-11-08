@@ -37,7 +37,6 @@ class MuPlusLambda(GeneticAlgorithm):
 
             logger.log_progress("\n---> Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
 
-
             offspring = self.generate_offspring(self.population, gen)
 
             # Evaluate the individuals with an invalid fitness
