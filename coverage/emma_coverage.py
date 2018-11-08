@@ -143,7 +143,7 @@ class EmmaCoverage(object):
         ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
 
         coverage_folder_name = str(generation) + "." + str(individual_index) + "." + ts
-        coverage_folder_path = self.result_dir + "/coverages/" + coverage_folder_name
+        coverage_folder_path = self.result_dir + "/coverage/" + coverage_folder_name
 
         os.system("mkdir -p " + coverage_folder_path)
         return coverage_folder_path
