@@ -177,8 +177,8 @@ class DeviceManager(object):
 
     def wait_for_battery_threshold(self, battery_threshold=20):
         while True:
-            all_devices_above_threshold = all(map(lambda device: device.battery_level() >= battery_threshold,
-                                                  self.get_devices()))
+            all_devices_above_threshold = all([level is None or level >= battery_threshold
+                                               for level in (device.battery_level() for device in self.get_devices())])
             if all_devices_above_threshold:
                 break
             else:
