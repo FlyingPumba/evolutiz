@@ -28,8 +28,5 @@ CXPB = 0.7
 # Mutation probability
 MUTPB = 0.3
 
-# === MOTIFCORE script ===
-# for initial population
-MOTIFCORE_SCRIPT_PATH = '/mnt/sdcard/motifcore.script'
 # header for evolved scripts
 SCRIPT_HEADER = 'type= raw events\ncount= -1\nspeed= 1.0\nstart data >>\n'
