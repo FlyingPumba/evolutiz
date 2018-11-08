@@ -38,14 +38,14 @@
      android:scrollbarStyle="outsideInset"
      android:scrollbars="none"
     />
-<calculator.GraphView
+<arity.calculator.GraphView
      android:id="@+id/graph"
      android:layout_width="fill_parent"
      android:layout_height="0dip"
      android:layout_weight="1"
      android:visibility="gone"
      />
-<calculator.Graph3dView
+<arity.calculator.Graph3dView
      android:id="@+id/graph3d"
      android:layout_width="fill_parent"
      android:layout_height="0dip"
