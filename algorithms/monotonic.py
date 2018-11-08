@@ -3,6 +3,7 @@
 from algorithms.standard import Standard
 from concurrency.mapper_on_devices import MapperOnDevices
 from util import logger
+from util.integer import Integer
 
 
 class Monotonic(Standard):
@@ -24,7 +25,7 @@ class Monotonic(Standard):
 
     def generate_offspring_in_parallel(self):
         self.new_population = []
-        offspring_pairs_to_generate = [i for i in range(0, self.offspring_size)]
+        offspring_pairs_to_generate = [Integer(i) for i in range(0, self.offspring_size)]
 
         logger.log_progress("\nGenerating offspring of " + str(self.offspring_size) + " individuals in parallel")
 

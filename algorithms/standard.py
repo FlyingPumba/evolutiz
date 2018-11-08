@@ -3,6 +3,7 @@
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from concurrency.mapper_on_devices import MapperOnDevices
 from util import logger
+from util.integer import Integer
 
 
 class Standard(GeneticAlgorithm):
@@ -55,7 +56,7 @@ class Standard(GeneticAlgorithm):
 
     def generate_offspring_in_parallel(self):
         self.new_population = []
-        offspring_pairs_to_generate = [i for i in range(0, int(self.offspring_size/2))]
+        offspring_pairs_to_generate = [Integer(i) for i in range(0, int(self.offspring_size/2))]
 
         logger.log_progress("\nGenerating offspring of " + str(self.offspring_size) + " individuals in parallel")
 

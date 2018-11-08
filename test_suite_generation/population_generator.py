@@ -4,6 +4,7 @@ from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.di_assertions import HasMethods
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
+from util.integer import Integer
 
 
 class PopulationGenerator(object):
@@ -14,7 +15,7 @@ class PopulationGenerator(object):
 
     def generate(self, n, gen=0):
         budget_manager = RequiredFeature('budget_manager').request()
-        individuals_index_to_generate = [i for i in range(0, n)]
+        individuals_index_to_generate = [Integer(i) for i in range(0, n)]
 
         logger.log_progress("\nInit population of " + str(n) + " individuals in parallel")
 
