@@ -61,9 +61,6 @@ class MultipleQueueConsumerThread(KillableThread):
         self.default_output = default_output
         self.fail_times_limit = fail_times_limit
 
-        self.devices_used_by_item = {}
-        self.failures_by_device = {}
-
         self.stop_event = Event()
         self.item_processing_start_time = None
 
@@ -179,15 +176,15 @@ class MultipleQueueConsumerThread(KillableThread):
             item = self.items_queue.pop()
 
             # init failures for this item
-            if str(item) not in self.devices_used_by_item:
-                self.devices_used_by_item[str(item)] = []
+            if not hasattr(item, 'devices_used'):
+                item.devices_used = []
 
             return item
         except Empty as e:
             return None
 
     def fetch_device_for_item(self, item):
-        devices_blacklisted = self.devices_used_by_item[str(item)]
+        devices_blacklisted = item.devices_used
         device = self.devices_queue.pop_with_blacklist(devices_blacklisted)
 
         if device is None:
@@ -196,19 +193,11 @@ class MultipleQueueConsumerThread(KillableThread):
             # another device will become available to process this item.
             return None
 
-        # init failures for this device
-        if device not in self.failures_by_device:
-            self.failures_by_device[device] = 0
-
         return device
 
     def fetch_device(self):
         try:
             device = self.devices_queue.pop()
-
-            # init failures for this device
-            if device not in self.failures_by_device:
-                self.failures_by_device[device] = 0
 
             return device
         except Empty as e:
@@ -223,15 +212,12 @@ class MultipleQueueConsumerThread(KillableThread):
     def register_device_failure(self, device):
         # set state ready_idle in device that might be still in state ready_working
         device.mark_work_stop()
-
-        self.failures_by_device[device] += 1
-        if self.failures_by_device[device] > 5:
-            device.flag_as_malfunctioning()
+        device.register_failure()
 
     def register_item_failure_in_device(self, item, device):
-        self.devices_used_by_item[str(item)].append(device)
+        item.devices_used.append(device)
 
-        if len(self.devices_used_by_item[str(item)]) < self.fail_times_limit:
+        if len(item.devices_used) < self.fail_times_limit:
             # Put the consumable items back in their respective queue
             if self.items_are_consumable:
                 self.items_queue.put(item)

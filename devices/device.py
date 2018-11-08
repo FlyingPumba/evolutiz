@@ -2,6 +2,7 @@ import time
 
 from enum import Enum
 from subprocess import TimeoutExpired
+from threading import Lock
 
 import settings
 from devices import adb
@@ -57,8 +58,17 @@ class Device(object):
         self.boot_time = None
         self.adb_port = None
 
+        self.lock_failures = Lock()
+        self.failures = 0
+
     def __str__(self):
         return self.name
+
+    def register_failure(self):
+        self.lock_failures.acquire()
+        self.failures += 1
+        # TODO: do something if the number of failures is greater than some value
+        self.lock_failures.release()
 
     def flag_as_malfunctioning(self):
         #self.reboot()
