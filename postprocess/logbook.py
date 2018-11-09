@@ -1,9 +1,11 @@
 import argparse
 import os
 import pickle
-import sys
 
 import matplotlib.pyplot as plt
+
+# This script needs to be run like:
+# python -m postprocess.logbook logbook.pickle
 
 
 def print_avg_fitness(logbook_file_path):
