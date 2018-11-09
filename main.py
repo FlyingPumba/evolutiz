@@ -328,7 +328,7 @@ def init_arguments_defaults():
         "randomize_subjects": False,
         "limit_subjects_number": 1,
         "repetitions": 1,
-        "repetitions_offset": 1,
+        "repetitions_offset": 0,
         "time_budget": 15 * 60,  # 15m
         "evaluations_budget": None,
         "real_devices_number": 0,
