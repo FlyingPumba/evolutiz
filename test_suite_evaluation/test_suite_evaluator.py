@@ -51,41 +51,6 @@ class TestSuiteEvaluator(object):
             pickle.dump(self.hall_of_fame, hof_file)
             hof_file.close()
 
-    def update_logbook(self, gen, population):
-        self.result_dir = RequiredFeature('result_dir').request()
-        self.logbook = RequiredFeature('logbook').request()
-        self.stats = RequiredFeature('stats').request()
-
-        record = self.stats.compile(population) if self.stats is not None else {}
-        fitness = []
-        evaluation = []
-        creation = []
-        for individual in population:
-            fitness.append({
-                'generation': individual.generation,
-                'index_in_generation': individual.index_in_generation,
-                'coverage': individual.fitness.values[0],
-                'length': individual.fitness.values[1],
-                'crashes': individual.fitness.values[2],
-            })
-            evaluation.append({
-                'generation': individual.generation,
-                'index_in_generation': individual.index_in_generation,
-                'evaluation_finish_timestamp': individual.evaluation_finish_timestamp,
-                'evaluation_elapsed_time': individual.evaluation_elapsed_time,
-            })
-            creation.append({
-                'generation': individual.generation,
-                'index_in_generation': individual.index_in_generation,
-                'creation_finish_timestamp': individual.creation_finish_timestamp,
-                'creation_elapsed_time': individual.creation_elapsed_time,
-            })
-
-        record['fitness'] = numpy.array(fitness)
-        record['evaluation'] = numpy.array(evaluation)
-        record['creation'] = numpy.array(creation)
-        self.logbook.record(gen=gen, **record)
-
     def dump_logbook_to_file(self):
         self.logbook = RequiredFeature('logbook').request()
         self.result_dir = RequiredFeature('result_dir').request()

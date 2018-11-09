@@ -1,9 +1,12 @@
 import time
 
+import numpy
 from deap import base, creator, tools
 
 from dependency_injection.required_feature import RequiredFeature
+from plot import two_d_line
 from test_suite_evaluation.test_suite_evaluator import TestSuiteEvaluator
+from util import logger
 
 
 class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
@@ -12,15 +15,13 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         super(SingleObjectiveTestSuiteEvaluator, self).__init__()
 
         # deap framework setup for single objective
-        creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
-        creator.create("Individual", list, fitness=creator.FitnessMin)
+        creator.create("FitnessMax", base.Fitness, weights=(1.0,))
+        creator.create("Individual", list, fitness=creator.FitnessMax)
 
         self.hall_of_fame = tools.HallOfFame(maxsize=10)
 
     def register_selection_operator(self, toolbox):
-        # self.toolbox.register("select", tools.selTournament, tournsize=5)
-        # TODO: check if this is the proper selection operator for single_objective context
-        toolbox.register("select", tools.selNSGA2)
+        toolbox.register("select", tools.selRoulette)
 
     def set_empty_fitness(self, individual):
         individual.fitness.values = 0
@@ -43,7 +44,7 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
                                                                                                individual.generation,
                                                                                                individual.index_in_generation)
         # TODO: look into fusing coverage and number of crashes found into the fitness value
-        individual.fitness.values = coverage
+        individual.fitness.values = (coverage, )
 
         finish_time = time.time()
         individual.evaluation_finish_timestamp = finish_time
@@ -54,3 +55,55 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         device.mark_work_stop()
 
         return individual
+
+    def update_logbook(self, gen, population):
+        self.result_dir = RequiredFeature('result_dir').request()
+        self.logbook = RequiredFeature('logbook').request()
+        self.stats = RequiredFeature('stats').request()
+
+        record = self.stats.compile(population) if self.stats is not None else {}
+        fitness = []
+        evaluation = []
+        creation = []
+        for individual in population:
+            fitness.append({
+                'generation': individual.generation,
+                'index_in_generation': individual.index_in_generation,
+                'coverage': individual.fitness.values[0],
+            })
+            evaluation.append({
+                'generation': individual.generation,
+                'index_in_generation': individual.index_in_generation,
+                'evaluation_finish_timestamp': individual.evaluation_finish_timestamp,
+                'evaluation_elapsed_time': individual.evaluation_elapsed_time,
+            })
+            creation.append({
+                'generation': individual.generation,
+                'index_in_generation': individual.index_in_generation,
+                'creation_finish_timestamp': individual.creation_finish_timestamp,
+                'creation_elapsed_time': individual.creation_elapsed_time,
+            })
+
+        record['fitness'] = numpy.array(fitness)
+        record['evaluation'] = numpy.array(evaluation)
+        record['creation'] = numpy.array(creation)
+        self.logbook.record(gen=gen, **record)
+
+        self.show_best_historic_fitness()
+
+    def show_best_historic_fitness(self):
+        self.logbook = RequiredFeature('logbook').request()
+        max_fitness_values_per_generation = numpy.array(self.logbook.select("max"))
+
+        max_fitness_values_all_generations = max_fitness_values_per_generation.max(axis=0)
+
+        max_coverage = max_fitness_values_all_generations[0]
+
+        # CAUTION: these min and max are from different individuals
+        logger.log_progress("\n- Best historic coverage: " + str(max_coverage))
+
+    def dump_logbook_to_file(self):
+        super(SingleObjectiveTestSuiteEvaluator, self).dump_logbook_to_file()
+
+        # draw graph
+        two_d_line.plot(self.logbook, 0, self.result_dir)
