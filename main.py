@@ -57,7 +57,7 @@ def run_one_app(strategy_with_runner_name):
 
             result_dir = prepare_result_dir(app_name, repetition, strategy_with_runner_name)
 
-            prepare_devices(result_dir)
+            get_emulators_running(result_dir)
 
             logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + app_name)
 
@@ -83,18 +83,15 @@ def run_one_app(strategy_with_runner_name):
         return False
 
 
-def prepare_devices(result_dir):
+def get_emulators_running(result_dir):
     """Reboot all devices and restart adb server before starting a repetition."""
     device_manager = RequiredFeature('device_manager').request()
-    adb.restart_server()
+    adb.kill_server()
 
     if len(device_manager.get_devices(refresh=True)) > 0:
         device_manager.shutdown_emulators(remove=True)
 
     device_manager.boot_emulators(wait_to_be_ready=True)
-
-    for device in device_manager.get_devices():
-        device.clean_sdcard()
 
     device_manager.wait_for_battery_threshold()
     device_manager.log_devices_battery("init", result_dir)

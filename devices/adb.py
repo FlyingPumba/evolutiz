@@ -167,12 +167,21 @@ def get_imei(device):
 
     return devices_imei[device.name]
 
-def restart_server():
+def start_server():
     try:
-        run_cmd(adb_cmd_prefix + " kill-server" + logger.redirect_string())
-        run_cmd(adb_cmd_prefix + " devices" + logger.redirect_string())
+        run_cmd(adb_cmd_prefix + " start-server" + logger.redirect_string())
     except TimeoutExpired as e:
         pass
+
+def kill_server():
+    try:
+        run_cmd(adb_cmd_prefix + " kill-server" + logger.redirect_string())
+    except TimeoutExpired as e:
+        pass
+
+def restart_server():
+    kill_server()
+    start_server()
 
 def log_adb_command(device, cmd):
     verbose_level = RequiredFeature('verbose_level').request()
