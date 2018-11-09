@@ -39,12 +39,13 @@ from util.command import *
 def run_one_app(strategy_with_runner_name):
     app_path = RequiredFeature('app_path').request()
     repetitions = RequiredFeature('repetitions').request()
+    repetitions_offset = RequiredFeature('repetitions_offset').request()
     budget_manager = RequiredFeature('budget_manager').request()
 
     app_name = os.path.basename(app_path)
 
     try:
-        for repetition in range(0, repetitions):
+        for repetition in range(repetitions_offset, repetitions):
             os.chdir(settings.WORKING_DIR)
 
             stats = RequiredFeature('stats').request()
@@ -248,6 +249,9 @@ def add_arguments_to_parser(parser):
     # budget related arguments
     parser.add_argument('-r', '--repetitions', type=int, dest='repetitions',
                         help='Choose the number of repetitions per subject to run. Default is 1.')
+    parser.add_argument('-ro', '--repetitions-offset', type=int, dest='repetitions_offset',
+                        help='Choose the offset from which to start counting the repetitions. '
+                             'For example, an offset of 5 means that the first repetition will be the number 5.')
     parser.add_argument('--time-budget', dest='time_budget',
                         help='Choose the time budget. Format can be a number (assumed to be seconds) or a number '
                              'followed by "s" (seconds), "m" (minutes) or "h" (hours). Default is 15 minutes.')
@@ -324,6 +328,7 @@ def init_arguments_defaults():
         "randomize_subjects": False,
         "limit_subjects_number": 1,
         "repetitions": 1,
+        "repetitions_offset": 1,
         "time_budget": 15 * 60,  # 15m
         "evaluations_budget": None,
         "real_devices_number": 0,
@@ -398,6 +403,7 @@ def provide_features():
     features.provide('emma_instrument_path', args.emma_instrument_path)
     # define budget and repetitions
     features.provide('repetitions', args.repetitions)
+    features.provide('repetitions_offset', args.repetitions_offset)
     features.provide('budget_manager',
                      BudgetManager(time_budget=args.time_budget, evaluations_budget=args.evaluations_budget))
     # define devices configuration
