@@ -84,7 +84,7 @@ def run_one_app(strategy_with_runner_name):
 
 
 def get_emulators_running(result_dir):
-    """Reboot all devices and restart adb server before starting a repetition."""
+    """Reboot all devices and kill adb server before starting a repetition."""
     device_manager = RequiredFeature('device_manager').request()
     adb.kill_server()
 
