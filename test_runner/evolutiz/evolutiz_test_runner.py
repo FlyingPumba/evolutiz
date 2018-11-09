@@ -7,6 +7,7 @@ import time
 from deap import tools
 
 import settings
+from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from test_runner.test_runner import TestRunner
@@ -18,10 +19,12 @@ class EvolutizTestRunner(TestRunner):
 
     def __init__(self):
         self.evolutiz_script_path_in_devices = "/mnt/sdcard/evolutiz.script"
-        self.minimum_api = 28
         self.test_runner_installer = TestRunnerInstaller("evolutiz",
                                                          settings.WORKING_DIR + "test_runner/evolutiz/evolutiz",
                                                          settings.WORKING_DIR + "test_runner/evolutiz/evolutiz.jar")
+    def register_minimum_api(self):
+        self.minimum_api = 28
+        features.provide('minimum_api', self.minimum_api)
 
     def register_crossover_operator(self, toolbox):
         toolbox.register("mate", tools.cxOnePoint)

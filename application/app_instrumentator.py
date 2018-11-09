@@ -5,34 +5,39 @@ import xml.etree.cElementTree as ET
 from lxml import etree
 
 import settings
+from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
-from util.command import run_cmd
 
 
-class ApkInstrumentator(object):
+class AppInstrumentator(object):
 
-    def __init__(self):
+    def instrument(self):
         self.app_path = RequiredFeature('app_path').request()
         self.result_dir = RequiredFeature('result_dir').request()
         self.subjects_path = RequiredFeature('subjects_path').request()
         self.instrumented_subjects_path = RequiredFeature('instrumented_subjects_path').request()
         self.emma_instrument_path = RequiredFeature('emma_instrument_path').request()
 
-    def instrument(self):
         logger.log_progress("\nInstrumenting app: " + os.path.basename(self.app_path))
 
-        instrumented_source_path, package_name = self.prepare_app_for_instrumentation()
+        # copy sources and instrument application
+        instrumented_app_path, package_name = self.prepare_app_for_instrumentation()
 
+        # compile with emma data
         result_code = os.system("ant clean emma debug 2>&1 >" + self.result_dir + "/build.log")
-        if result_code != 0: raise Exception("Unable run ant clean emma debug")
+        if result_code != 0:
+            raise Exception("Unable run ant clean emma debug")
 
+        # copy emma generated file
         result_code = os.system("cp bin/coverage.em " + self.result_dir + "/" + logger.redirect_string())
-        if result_code != 0: raise Exception("Unable to copy coverage.em file")
+        if result_code != 0:
+            raise Exception("Unable to copy coverage.em file")
 
         os.chdir(settings.WORKING_DIR)
 
-        return instrumented_source_path, package_name
+        features.provide('package_name', package_name)
+        features.provide('instrumented_app_path', instrumented_app_path)
 
     def prepare_app_for_instrumentation(self):
         # copy sources to instrumented subjects folder

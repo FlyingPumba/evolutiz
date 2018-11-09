@@ -1,11 +1,12 @@
 import pickle
+import traceback
 
-from deap import tools
-
-from application.apk_instrumentator import ApkInstrumentator
-from application.prepare_apk_parallel import prepare_apk
+from application.apk_preparer import ApkPreparer
+from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
+from devices.device_setup import DeviceSetupThread
+from util import logger
 
 
 class Evolutiz(object):
@@ -25,21 +26,27 @@ class Evolutiz(object):
         self.test_runner.register_mutation_operator(self.toolbox)
         self.test_suite_evaluator.register_selection_operator(self.toolbox)
 
-        self.apk_instrumentator = ApkInstrumentator()
+        self.apk_preparer = ApkPreparer()
+        features.provide('apk_preparer', self.apk_preparer)
 
         self.history = RequiredFeature('history').request()
         self.toolbox.decorate("mate", self.history.decorator)
         self.toolbox.decorate("mutate", self.history.decorator)
 
     def run(self):
-        # give test runner opportunity to install on devices
-        self.test_runner.install_on_devices()
+        self.apk_preparer.prepare()
 
-        instrumented_app_path, package_name = self.apk_instrumentator.instrument()
-        features.provide('package_name', package_name)
-        features.provide('instrumented_app_path', instrumented_app_path)
+        logger.log_progress("\nSetting up devices.")
 
-        prepare_apk(instrumented_app_path, package_name, self.result_dir)
+        minimum_api = RequiredFeature('minimum_api').request()
+        mapper = MapperOnDevices(DeviceSetupThread.setup, minimum_api=minimum_api)
+
+        try:
+            mapper.run()
+        except Exception as e:
+            str = traceback.format_exc()
+            logger.log_progress("An error happened setting up devices: " + str)
+            return
 
         # run the strategy
         population = self.strategy.run()

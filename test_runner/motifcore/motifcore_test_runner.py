@@ -5,6 +5,7 @@ import time
 from deap import tools
 
 import settings
+from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from test_runner.test_runner import TestRunner
@@ -20,6 +21,10 @@ class MotifcoreTestRunner(TestRunner):
         self.test_runner_installer = TestRunnerInstaller("motifcore",
                                                          settings.WORKING_DIR + "test_runner/motifcore/motifcore",
                                                          settings.WORKING_DIR + "test_runner/motifcore/motifcore.jar")
+
+    def register_minimum_api(self):
+        self.minimum_api = 19
+        features.provide('minimum_api', self.minimum_api)
 
     def register_crossover_operator(self, toolbox):
         # the crossover between individuals is a uniform crossover

@@ -410,7 +410,11 @@ def provide_features():
     features.provide('avd_manager', AvdManager())
     features.provide('strategy', possible_strategies[args.strategy])
     features.provide('test_suite_evaluator', possible_test_suite_evaluators[args.evaluator])
-    features.provide('test_runner', possible_test_runners[args.test_runner])
+
+    test_runner = possible_test_runners[args.test_runner]
+    features.provide('test_runner', test_runner)
+    test_runner.register_minimum_api()
+
     features.provide('individual_generator', possible_individual_generators[args.individual_generator])
     features.provide('population_generator', PopulationGenerator)
     features.provide('verbose_level', args.verbose)

@@ -17,8 +17,9 @@ class State(Enum):
        reachable      The device is reachable.
                       However, it might not be ready to accept some commands (e.g. install apk).
        booted         The device finished booting.
-       ready_idle     The device is reachable and fully ready, not currently working.
-       ready_working  The device is reachable and fully ready, currently working.
+       ready_idle     The device is reachable and ready to receive commands, not currently working.
+       setting_up     The device is being set up.
+       ready_working  The device is reachable and ready to receive commands, currently working.
 
     """
     unknown = 0
@@ -26,7 +27,8 @@ class State(Enum):
     reachable = 2
     booted = 3
     ready_idle = 4
-    ready_working = 5
+    setting_up = 5
+    ready_working = 6
 
     def __lt__(self, other):
         return self.value < other.value
@@ -57,6 +59,7 @@ class Device(object):
         self.state = state
         self.boot_time = None
         self.adb_port = None
+        self.setup = False
 
         self.lock_failures = Lock()
         self.failures = 0
@@ -67,15 +70,16 @@ class Device(object):
     def register_failure(self):
         self.lock_failures.acquire()
         self.failures += 1
-        # TODO: do something if the number of failures is greater than some value
+        if self.failures >=5:
+            self.flag_as_malfunctioning()
         self.lock_failures.release()
 
     def flag_as_malfunctioning(self):
-        #self.reboot()
-        self.state = State.ready_idle
+        self.reboot()
 
     def boot(self):
         self.state = State.booting
+        self.setup = False
         self.boot_time = time.time()
 
     def shutdown(self):
@@ -87,6 +91,7 @@ class Device(object):
 
     def mark_work_start(self):
         assert self.state == State.ready_idle
+        assert self.setup
         self.state = State.ready_working
 
     def mark_work_stop(self):
@@ -112,6 +117,13 @@ class Device(object):
 
     def set_location_state(self, enabled):
         adb.set_location_state(self, enabled, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+
+    def clean_sdcard(self):
+        adb.get_root_permissions(self)
+
+        adb.adb_command(self, "remount", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.shell_command(self, "mount -o rw,remount /", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
+        adb.shell_command(self, "rm -rf /mnt/sdcard/*", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
     def check_ready(self):
         if self.state >= State.ready_idle:

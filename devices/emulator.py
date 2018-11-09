@@ -71,12 +71,5 @@ class Emulator(Device):
         self.shutdown()
         self.boot(port=self.port)
 
-    def clean_sdcard(self):
-        adb.get_root_permissions(self)
-
-        adb.adb_command(self, "remount", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        adb.shell_command(self, "mount -o rw,remount /", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        adb.shell_command(self, "rm -rf /mnt/sdcard/*", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-
     def get_adb_server_port_for_emulator_port(self, port):
         return port - 516

@@ -46,15 +46,6 @@ class TestRunnerInstaller(object):
         if result_code != 0:
             raise Exception("Unable to remount root partition on device: " + device.name)
 
-        # TODO: remove the following lines, they are not needed anymore and are not universal across emulators/devices
-        # output, errors, result_code = adb.sudo_shell_command(device, "chmod 777 /mnt/sdcard")
-        # if result_code != 0:
-        #     raise Exception("Unable to install test runner on device: " + device.name)
-        #
-        # output, errors, result_code = adb.sudo_shell_command(device, "mount -o rw,remount /system")
-        # if result_code != 0:
-        #     raise Exception("Unable to install test runner on device: " + device.name)
-
         # push
         adb.push(device, self.test_runner_jar_path, "/system/framework/" + self.test_runner_name + ".jar")
         output, errors, result_code = adb.shell_command(device, "chmod 777 /system/framework/" + self.test_runner_name + ".jar")
