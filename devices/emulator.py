@@ -1,10 +1,11 @@
-import subprocess as sub
 import time
 
-import settings
+import subprocess as sub
+
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
-from devices.device import Device, State
+from devices.device import Device
+from devices.device_state import State
 from util.command import run_cmd
 
 
@@ -21,10 +22,11 @@ class Emulator(Device):
             self.adb_port = self.get_adb_server_port_for_emulator_port(self.port)
         else:
             self.port = None
+            self.adb_port = None
 
         self.avd_name = None
 
-    def boot(self, port=None):
+    def boot(self, port=None, adb_port=None):
         verbose_level = RequiredFeature('verbose_level').request()
 
         Device.boot(self)
@@ -36,7 +38,7 @@ class Emulator(Device):
             raise Exception("AVD name " + self.avd_name + " doesn't exist. Check that the provided AVD series (" + self.avd_manager.avd_series + ") is correct.")
 
         # start custom abd server for this emulator
-        self.adb_port = self.device_manager.get_next_available_adb_server_port()
+        self.adb_port = adb_port if adb_port is not None else self.device_manager.get_next_available_adb_server_port()
         output, errors, result_code = run_cmd(adb.adb_cmd_prefix + " start-server", env={"ANDROID_ADB_SERVER_PORT": str(self.adb_port)})
 
         # start emulator
@@ -69,7 +71,8 @@ class Emulator(Device):
         Device.reboot(self)
 
         self.shutdown()
-        self.boot(port=self.port)
+        self.boot(port=self.port, adb_port=self.adb_port)
 
     def get_adb_server_port_for_emulator_port(self, port):
         return port - 516
+

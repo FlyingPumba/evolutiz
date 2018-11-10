@@ -4,6 +4,7 @@ from queue import Empty
 from threading import Event
 
 from dependency_injection.required_feature import RequiredFeature
+from devices.device_state import State
 from util import logger
 from concurrency.killable_thread import KillableThread
 
@@ -125,6 +126,7 @@ class MultipleQueueConsumerThread(KillableThread):
                             # No matching device for this item right now
                             # Put back the item at the end of the queue, and fetch another one.
                             self.items_queue.put(item)
+                            time.sleep(1)
                             continue
                         else:
                             args.append(device)
@@ -191,6 +193,12 @@ class MultipleQueueConsumerThread(KillableThread):
             # If this device is None, it means that all devices currently in the queue are blacklisted.
             # Since we ensured that fail_times_limit <= len(devices), we know that at some point in the future
             # another device will become available to process this item.
+            return None
+
+        if device.state != State.ready_idle:
+            # This device is probably rebooting or being set up.
+            # Don't use it and put it back in the queue
+            self.devices_queue.put(device)
             return None
 
         return device

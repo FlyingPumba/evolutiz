@@ -1,7 +1,7 @@
 import threading
 
 from dependency_injection.required_feature import RequiredFeature
-from devices.device import State
+from devices.device_state import State
 
 
 class DeviceSetupThread(threading.Thread):
@@ -25,5 +25,5 @@ class DeviceSetupThread(threading.Thread):
         apk_preparer = RequiredFeature('apk_preparer').request()
         apk_preparer.install_on_device(device)
 
-        device.setup = True
+        device.needs_setup = False
         device.state = State.ready_idle

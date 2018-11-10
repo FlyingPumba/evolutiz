@@ -36,12 +36,12 @@ def adb_command(device, command, timeout=None, retry=1, discard_output=False):
             output, errors, result_code = run_cmd(cmd, timeout=timeout, discard_output=discard_output,
                                                   env={"ANDROID_ADB_SERVER_PORT": str(device.adb_port)})
 
-            if tries > retry or result_code == 0:
+            if tries >= retry or result_code == 0:
                 return output, errors, result_code
 
         except TimeoutExpired as e:
 
-            if tries > retry:
+            if tries >= retry:
                 return e.stdout, e.stderr, 124
 
 def get_root_permissions(device):

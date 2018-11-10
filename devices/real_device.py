@@ -1,6 +1,7 @@
 import settings
 from devices import adb
-from devices.device import Device, State
+from devices.device import Device
+from devices.device_state import State
 from util import logger
 
 

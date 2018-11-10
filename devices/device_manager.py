@@ -2,12 +2,13 @@ import os
 import time
 from subprocess import TimeoutExpired
 
+from devices.device_state import State
 from devices.real_device import RealDevice
 from util.command import run_cmd
 from . import adb
 import settings
 from dependency_injection.required_feature import RequiredFeature
-from devices.device import Device, State
+from devices.device import Device
 from devices.emulator import Emulator
 from util import logger
 
@@ -36,60 +37,64 @@ class DeviceManager(object):
         self.refresh_reachable_devices()
 
     def refresh_reachable_devices(self):
-        emulators_found = 0
-        real_devices_found = 0
+        emulators_found, real_devices_found = self.parse_adb_devices(5037, 0, 0)
 
-        for adb_port in range(5037, 5037 + self.get_total_number_of_devices_expected() + 1):
-            devices_cmd = adb.adb_cmd_prefix + ' devices'
-
-            try:
-                output, errors, result_code = run_cmd(devices_cmd, env={"ANDROID_ADB_SERVER_PORT": str(adb_port)})
-            except TimeoutExpired as e:
-                return []
-
-            error_lines = errors.split("\n")
-            for line in error_lines:
-                if "daemon not running" in line:
-                    continue
-
-                if "daemon started successfully" in line:
-                    continue
-
-                if line.strip() != "":
-                    raise Exception("There was an error running 'adb devices' command: " + errors)
-
-            lines = output.split("\n")
-            for line in lines:
-                if "List of devices attached" in line:
-                    continue
-
-                if line.strip() == "":
-                    continue
-
-                if "offline" not in line:
-                    device_name = line.split("\t")[0].strip()
-
-                    matching_devices = [device for device in self.devices if device.name == device_name]
-
-                    if len(matching_devices) > 0:
-                        device = matching_devices.pop(0)
-                        if device.state < State.reachable:
-                            device.state = State.reachable
-
-                        if type(device) is Emulator:
-                            emulators_found += 1
-                        else:
-                            real_devices_found += 1
-
-                    elif "emulator" in line and emulators_found < self.emulators_number:
-                        self.devices.append(Emulator(self, device_name, state=State.reachable))
-                        emulators_found += 1
-
-                    elif "device" in line and real_devices_found < self.real_devices_number:
-                        self.devices.append(Device(self, device_name, state=State.reachable))
-                        real_devices_found += 1
+        for adb_port in range(5038, 5038 + self.get_total_number_of_devices_expected()*2, 2):
+            emulators_found, real_devices_found = self.parse_adb_devices(adb_port, emulators_found, real_devices_found)
 
         return self.devices
+
+    def parse_adb_devices(self, adb_port, emulators_found, real_devices_found):
+        devices_cmd = adb.adb_cmd_prefix + ' devices'
+
+        try:
+            output, errors, result_code = run_cmd(devices_cmd, env={"ANDROID_ADB_SERVER_PORT": str(adb_port)})
+        except TimeoutExpired as e:
+            return emulators_found, real_devices_found
+
+        error_lines = errors.split("\n")
+        for line in error_lines:
+            if "daemon not running" in line:
+                continue
+
+            if "daemon started successfully" in line:
+                continue
+
+            if line.strip() != "":
+                raise Exception("There was an error running 'adb devices' command: " + errors)
+
+        lines = output.split("\n")
+        for line in lines:
+            if "List of devices attached" in line:
+                continue
+
+            if line.strip() == "":
+                continue
+
+            if "offline" not in line:
+                device_name = line.split("\t")[0].strip()
+
+                matching_devices = [device for device in self.devices if device.name == device_name]
+
+                if len(matching_devices) > 0:
+                    device = matching_devices.pop(0)
+                    if device.state < State.reachable:
+                        device.state = State.reachable
+
+                    if type(device) is Emulator:
+                        emulators_found += 1
+                    else:
+                        real_devices_found += 1
+
+                elif "emulator" in line and emulators_found < self.emulators_number:
+                    self.devices.append(Emulator(self, device_name, state=State.reachable))
+                    emulators_found += 1
+
+                elif "device" in line and real_devices_found < self.real_devices_number:
+                    self.devices.append(Device(self, device_name, state=State.reachable))
+                    real_devices_found += 1
+
+        return emulators_found, real_devices_found
 
     def get_devices(self, refresh=False):
         current_time = time.time()
@@ -114,7 +119,8 @@ class DeviceManager(object):
     def get_booted_devices(self, refresh=False):
         if refresh is True:
             # check if boot animation is over for each device
-            for device in self.get_devices(refresh=True):
+            devices = self.get_devices(refresh=True)
+            for device in devices:
                 device.check_booted()
 
         return [device for device in self.devices if device.state is State.booted]
@@ -122,7 +128,8 @@ class DeviceManager(object):
     def get_ready_to_install_devices(self, refresh=False):
         if refresh is True:
             # check if package manager is ready for each device
-            for device in self.get_devices(refresh=True):
+            devices = self.get_devices(refresh=True)
+            for device in devices:
                 device.check_ready()
 
         return [device for device in self.devices if device.state is State.ready_idle]

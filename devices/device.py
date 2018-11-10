@@ -1,46 +1,12 @@
 import time
 
-from enum import Enum
 from subprocess import TimeoutExpired
 from threading import Lock
 
 import settings
 from devices import adb
-from util.command import run_cmd
-
-
-class State(Enum):
-    """Describes the possible states of a device.
-
-       unknown        Initial state, nothing is known about the device.
-       booting        The device is booting and presumably not reachable.
-       reachable      The device is reachable.
-                      However, it might not be ready to accept some commands (e.g. install apk).
-       booted         The device finished booting.
-       ready_idle     The device is reachable and ready to receive commands, not currently working.
-       setting_up     The device is being set up.
-       ready_working  The device is reachable and ready to receive commands, currently working.
-
-    """
-    unknown = 0
-    booting = 1
-    reachable = 2
-    booted = 3
-    ready_idle = 4
-    setting_up = 5
-    ready_working = 6
-
-    def __lt__(self, other):
-        return self.value < other.value
-
-    def __le__(self, other):
-        return self.value <= other.value
-
-    def __gt__(self, other):
-        return self.value > other.value
-
-    def __ge__(self, other):
-        return self.value >= other.value
+from devices.device_setup import DeviceSetupThread
+from devices.device_state import State
 
 
 class Device(object):
@@ -59,10 +25,11 @@ class Device(object):
         self.state = state
         self.boot_time = None
         self.adb_port = None
-        self.setup = False
+        self.needs_setup = False
 
         self.lock_failures = Lock()
         self.failures = 0
+        self.fail_limit = 5
 
     def __str__(self):
         return self.name
@@ -70,16 +37,17 @@ class Device(object):
     def register_failure(self):
         self.lock_failures.acquire()
         self.failures += 1
-        if self.failures >=5:
+        if self.failures >= self.fail_limit:
+            self.failures = 0
             self.flag_as_malfunctioning()
         self.lock_failures.release()
 
     def flag_as_malfunctioning(self):
         self.reboot()
+        self.needs_setup = True
 
     def boot(self):
         self.state = State.booting
-        self.setup = False
         self.boot_time = time.time()
 
     def shutdown(self):
@@ -91,7 +59,7 @@ class Device(object):
 
     def mark_work_start(self):
         assert self.state == State.ready_idle
-        assert self.setup
+        assert not self.needs_setup
         self.state = State.ready_working
 
     def mark_work_stop(self):
@@ -133,7 +101,14 @@ class Device(object):
         try:
             output, errors, result_code = adb.shell_command(self, "pm list packages")
             if "Error: Could not access the Package Manager" not in output.strip() and errors.strip() == "":
-                self.state = State.ready_idle
+
+                # this device is ready to receive commands, but first we have to check if it needs to be set up
+                if not self.needs_setup:
+                    self.state = State.ready_idle
+                else:
+                    device_setup_thread = DeviceSetupThread(self)
+                    device_setup_thread.run()
+
         except TimeoutExpired as e:
             return
 
