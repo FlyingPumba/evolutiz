@@ -465,7 +465,7 @@ if __name__ == "__main__":
     check_needed_commands_available()
 
     app_paths = get_subject_paths(args)
-    strategy_with_runner_name = args.strategy + "-" + args.test_runner
+    strategy_with_runner_name = args.strategy + "-" + args.test_runner + "-" + args.evaluator
 
     random.seed(args.seed)
 
