@@ -88,6 +88,8 @@ class MultipleQueueConsumerThread(KillableThread):
 
                     if self.output_queue is not None:
                         self.output_queue.put(result)
+                        
+                    del item.devices_used
 
                 except Exception as e:
                     self.log_exception(e, traceback.format_exc(), device=device)
