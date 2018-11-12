@@ -1,6 +1,5 @@
 import time
 import traceback
-from queue import Empty
 from threading import Event
 
 from dependency_injection.required_feature import RequiredFeature
@@ -177,16 +176,13 @@ class MultipleQueueConsumerThread(KillableThread):
                 logger.log_progress(formatted_string)
 
     def fetch_item(self):
-        try:
-            item = self.items_queue.pop()
+        item = self.items_queue.pop()
 
-            # init failures for this item
-            if not hasattr(item, 'devices_used'):
-                item.devices_used = []
+        # init failures for this item
+        if item is not None and not hasattr(item, 'devices_used'):
+            item.devices_used = []
 
-            return item
-        except Empty as e:
-            return None
+        return item
 
     def fetch_device_for_item(self, item):
         devices_blacklisted = item.devices_used
@@ -207,12 +203,8 @@ class MultipleQueueConsumerThread(KillableThread):
         return device
 
     def fetch_device(self):
-        try:
-            device = self.devices_queue.pop()
-
-            return device
-        except Empty as e:
-            return None
+        device = self.devices_queue.pop()
+        return device
 
     def put_back_recyclables(self, device, item):
         if not self.items_are_consumable:
@@ -226,7 +218,7 @@ class MultipleQueueConsumerThread(KillableThread):
         device.register_failure()
 
     def register_item_failure_in_device(self, item, device):
-        item.devices_used.append(device)
+        item.devices_used.append(str(device))
 
         if len(item.devices_used) < self.fail_times_limit:
             # Put the consumable items back in their respective queue

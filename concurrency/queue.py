@@ -43,7 +43,7 @@ class Queue(object):
 
     def pop_with_blacklist(self, blacklist):
         self._lock_elements.acquire()
-        possible_elements = [element for element in self._elements if element not in blacklist]
+        possible_elements = [element for element in self._elements if str(element) not in blacklist]
         if len(possible_elements) > 0:
             element = possible_elements.pop(0)
             self._elements.remove(element)
