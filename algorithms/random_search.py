@@ -27,6 +27,9 @@ class RandomSearch(Strategy):
     def run(self):
         gen = 0
         while self.budget_manager.time_budget_available():
+            logger.log_progress(
+                "\n---> Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
+
             new_population = self.population_generator.generate(self.population_size, gen=gen)
             if new_population is None:
                 # Timeout occurred
