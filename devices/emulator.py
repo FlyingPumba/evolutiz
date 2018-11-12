@@ -46,7 +46,7 @@ class Emulator(Device):
 
         emulator_cmd = self.get_adb_server_port_prefix() + " QEMU_AUDIO_DRV=none $ANDROID_HOME/emulator/emulator"
 
-        flags = " -wipe-data -no-boot-anim -writable-system -port " + str(self.port)
+        flags = " -no-snapshot -wipe-data -no-boot-anim -writable-system -port " + str(self.port)
 
         if verbose_level < 3:
             # -no-window flag can't be at the end
