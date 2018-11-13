@@ -162,7 +162,7 @@ class EmmaCoverage(object):
         # process coverage.ec file
         app_path = RequiredFeature('app_path').request()
         emma_cmd = "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in " \
-                                                        "coverage.em,coverage.ec -sp " + app_path + "/src "
+                                                        "coverage.em,coverage.ec -sp " + settings.WORKING_DIR + app_path + "/src "
         output, errors, result_code = run_cmd(emma_cmd, cwd=self.coverage_folder_local_path)
         self.output += output
         self.errors += errors
