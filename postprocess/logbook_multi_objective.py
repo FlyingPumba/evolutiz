@@ -1,4 +1,5 @@
 import argparse
+import numpy
 import os
 import pickle
 
@@ -7,6 +8,22 @@ import matplotlib.pyplot as plt
 # This script needs to be run like:
 # python -m postprocess.logbook_multi_objective logbook.pickle
 
+def print_best_fitness(logbook_file_path):
+    logbook_file = open(logbook_file_path, 'rb')
+    logbook = pickle.load(logbook_file)
+
+    min_fitness_values_per_generation = numpy.array(logbook.select("min"))
+    max_fitness_values_per_generation = numpy.array(logbook.select("max"))
+
+    max_fitness_values_all_generations = max_fitness_values_per_generation.max(axis=0)
+    min_fitness_values_all_generations = min_fitness_values_per_generation.min(axis=0)
+
+    max_coverage = max_fitness_values_all_generations[0]
+    min_length = min_fitness_values_all_generations[1]
+    max_crashes = max_fitness_values_all_generations[2]
+
+    # CAUTION: these min and max are from different individuals
+    print(str(max_coverage) + "," + str(max_crashes) + "," + str(min_length))
 
 def print_avg_fitness(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
@@ -19,8 +36,7 @@ def print_avg_fitness(logbook_file_path):
     for gen, (coverage, length, crashes) in enumerate(logbook.select("avg")):
         print("%d\t%d\t%d" % (gen, coverage, crashes))
 
-
-def print_fitness(logbook_file_path):
+def print_all(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
 
@@ -94,8 +110,16 @@ def draw_pop_fitness(logbook_file_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('logbook_file_path', help='Logbook pickle file path.')
+    parser.add_argument('processing', default='print-all', nargs='?', help='Processing to do')
     args = parser.parse_args()
 
-    # print_avg_fitness(args.logbook_file_path)
-    # draw_pop_fitness(args.logbook_file_path)
-    print_fitness(args.logbook_file_path)
+    if args.processing == 'print-all':
+        print_all(args.logbook_file_path)
+    elif args.processing == 'draw-fitness':
+        draw_pop_fitness(args.logbook_file_path)
+    elif args.processing == 'print-avg':
+        print_avg_fitness(args.logbook_file_path)
+    elif args.processing == 'print-best':
+        print_best_fitness(args.logbook_file_path)
+    else:
+        print(args.processing)
