@@ -13,6 +13,9 @@ from devices.emulator import Emulator
 from util import logger
 
 
+class WaitDevicesTimeout(Exception):
+    pass
+
 class DeviceManager(object):
     """Manages the availability of the devices as they are used.
 
@@ -138,16 +141,26 @@ class DeviceManager(object):
         return self.get_ready_to_install_devices(refresh=True)
 
     def boot_emulators(self, wait_to_be_ready=False):
-        logger.log_progress("\nBooting devices: " + str(0) + "/" + str(self.emulators_number))
+        while True:
+            logger.log_progress("\nBooting devices: " + str(0) + "/" + str(self.emulators_number))
 
-        for i in range(0, self.emulators_number):
-            logger.log_progress("\nBooting devices: " + str(i + 1) + "/" + str(self.emulators_number))
-            emulator = Emulator(self)
-            emulator.boot()
-            self.devices.append(emulator)
+            for i in range(0, self.emulators_number):
+                logger.log_progress("\nBooting devices: " + str(i + 1) + "/" + str(self.emulators_number))
+                emulator = Emulator(self)
+                emulator.boot()
+                self.devices.append(emulator)
 
-        if wait_to_be_ready:
-            self.wait_devices_to_be_ready()
+            if wait_to_be_ready:
+                try:
+                    self.wait_devices_to_be_ready()
+                except WaitDevicesTimeout as e:
+                    logger.log_progress("\n" + str(e))
+                    logger.log_progress("\nForce kill on all current emulator processes")
+                    run_cmd("pgrep emu | xargs kill -9", discard_output=True)
+                    time.sleep(5)
+                    continue
+
+            break
 
     def shutdown_emulators(self, remove=False):
         emulators = [device for device in self.get_devices() if type(device) is Emulator]
@@ -173,10 +186,17 @@ class DeviceManager(object):
                             str(0) + "/" + str(devices_to_wait))
 
         ready_devices = self.get_ready_to_install_devices(refresh=True)
+        time_limit = devices_to_wait * 60  # 1 minute per device
+        start_time = time.time()
         while len(ready_devices) < devices_to_wait:
             logger.log_progress("\nWaiting for devices to be ready: " +
                                 str(len(ready_devices)) + "/" + str(devices_to_wait))
             time.sleep(3)
+
+            elapsed_time = time.time() - start_time
+            if elapsed_time > time_limit:
+                raise WaitDevicesTimeout("Devices still not ready after " + str(time_limit) + " seconds.")
+
             ready_devices = self.get_ready_to_install_devices(refresh=True)
 
         logger.log_progress("\nWaiting for devices to be ready: " +
