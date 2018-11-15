@@ -142,6 +142,9 @@ class DeviceManager(object):
 
     def boot_emulators(self, wait_to_be_ready=False):
         while True:
+            self.next_available_emulator_port = 5554
+            self.next_available_adb_server_port = 5038
+            self.devices = []
             logger.log_progress("\nBooting devices: " + str(0) + "/" + str(self.emulators_number))
 
             for i in range(0, self.emulators_number):
@@ -186,7 +189,7 @@ class DeviceManager(object):
                             str(0) + "/" + str(devices_to_wait))
 
         ready_devices = self.get_ready_to_install_devices(refresh=True)
-        time_limit = devices_to_wait * 60  # 1 minute per device
+        time_limit = devices_to_wait * 90  # 1.5 minutes per device
         start_time = time.time()
         while len(ready_devices) < devices_to_wait:
             logger.log_progress("\nWaiting for devices to be ready: " +
