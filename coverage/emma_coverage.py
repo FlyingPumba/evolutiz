@@ -1,10 +1,14 @@
 import datetime
 import os
+from enum import Enum
+
 from bs4 import UnicodeDammit
 
 from lxml import html
 
 import settings
+from coverage.line import Line
+from coverage.line_coverage_status import LineCoverageStatus
 from crashes import crash_handler
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
@@ -17,10 +21,11 @@ class EmmaCoverage(object):
     def __init__(self):
         self.coverage_ec_device_backup_path = "/mnt/sdcard/coverage.ec"
 
-    def get_suite_coverage(self, scripts, device, generation, individual_index):
+    def get_suite_coverage(self, scripts, device, generation, individual_index, get_executable_lines=False):
         self.verbose_level = RequiredFeature('verbose_level').request()
         self.package_name = RequiredFeature('package_name').request()
         self.result_dir = RequiredFeature('result_dir').request()
+        self.get_executable_lines = get_executable_lines
 
         unique_crashes = set()
         scripts_crash_status = {}
@@ -40,10 +45,11 @@ class EmmaCoverage(object):
 
         # collect coverage data
         coverage = 0
+        executable_lines = []
         if self.there_is_coverage:
-            coverage = self.get_coverage(device)
+            coverage, executable_lines = self.get_coverage(device)
 
-        return coverage, unique_crashes, scripts_crash_status
+        return coverage, unique_crashes, scripts_crash_status, executable_lines
 
     def generate_test_coverage(self, device, script_path, generation, individual_index, test_case_index, unique_crashes,
                                scripts_crash_status):
@@ -173,13 +179,17 @@ class EmmaCoverage(object):
             raise Exception("Unable to process coverage.ec file fetched from device: " + device.name)
 
         # parse generated html to extract global line coverage
-        html_path = self.coverage_folder_local_path + "/coverage/index.html"
-        coverage_str = self.extract_coverage(html_path)
-
+        index_html_path = self.coverage_folder_local_path + "/coverage/index.html"
+        coverage_str = self.extract_coverage(index_html_path)
         aux = coverage_str.split("%")
         coverage = int(aux[0])
 
-        return coverage
+        if self.get_executable_lines:
+            executable_lines = self.extract_executable_lines(index_html_path)
+        else:
+            executable_lines = []
+
+        return coverage, executable_lines
 
     def extract_coverage(self, html_path):
         with open(html_path, 'rb') as file:
@@ -189,3 +199,73 @@ class EmmaCoverage(object):
         parser = html.HTMLParser(encoding=doc.original_encoding)
         root = html.document_fromstring(content, parser=parser)
         return root.xpath('/html/body/table[2]/tr[2]/td[5]/text()')[0].strip()
+
+    def extract_executable_lines(self, index_html_path):
+        # get packages in application
+        index_root = html.parse(index_html_path)
+        package_links = index_root.xpath('/html/body/table[4]/tr/td/a')
+        package_links_to_process = [(package_link.text, package_link.attrib['href']) for package_link in package_links
+                                    if "EmmaInstrument" not in package_link.text]
+
+        # get executable lines from each package
+        executable_lines = []
+        for package_link in package_links_to_process:
+            executable_lines.extend(self.parse_executable_lines_for_package(package_link[0], package_link[1]))
+
+        return executable_lines
+
+    def parse_executable_lines_for_package(self, package_name, file_suffix):
+        # get classes in package
+        html_path = self.coverage_folder_local_path + "/coverage/" + file_suffix
+        root = html.parse(html_path)
+        class_links = root.xpath('/html/body/table[3]/tr/td/a')
+        class_links_to_process = map(lambda x: (x.text, x.attrib['href']), class_links)
+
+        # get executable lines from each class
+        executable_lines = []
+        for class_link in class_links_to_process:
+            executable_lines.extend(self.parse_executable_lines_for_class(package_name, class_link[0], class_link[1]))
+
+        return executable_lines
+
+    def parse_executable_lines_for_class(self, package_name, class_name, file_suffix):
+        html_path = self.coverage_folder_local_path + "/coverage/_files/" + file_suffix
+        root = html.parse(html_path)
+
+        # collect executable lines
+        executable_lines = []
+
+        non_covered_lines = root.xpath('/html/body/table[4]/tr[@class="z"]/td')
+        for i in range(0, len(non_covered_lines), 2):
+            if len(non_covered_lines[i]) > 0:
+                # this td element has an "a" tag inside with the line number
+                line_number = non_covered_lines[i][0].text
+            else:
+                line_number = non_covered_lines[i].text
+            code = non_covered_lines[i+1].text.strip()
+            line = Line(package_name, class_name, line_number, code, LineCoverageStatus.non_covered)
+            executable_lines.append(line)
+
+        partially_covered_lines = root.xpath('/html/body/table[4]/tr[@class="p"]/td')
+        for i in range(0, len(partially_covered_lines), 2):
+            if len(partially_covered_lines[i]) > 0:
+                # this td element has an "a" tag inside with the line number
+                line_number = partially_covered_lines[i][0].text
+            else:
+                line_number = partially_covered_lines[i].text
+            code = partially_covered_lines[i+1].text.strip()
+            line = Line(package_name, class_name, line_number, code, LineCoverageStatus.partially_covered)
+            executable_lines.append(line)
+
+        covered_lines = root.xpath('/html/body/table[4]/tr[@class="c"]/td')
+        for i in range(0, len(covered_lines), 2):
+            if len(covered_lines[i]) > 0:
+                # this td element has an "a" tag inside with the line number
+                line_number = covered_lines[i][0].text
+            else:
+                line_number = covered_lines[i].text
+            code = covered_lines[i+1].text.strip()
+            line = Line(package_name, class_name, line_number, code, LineCoverageStatus.covered)
+            executable_lines.append(line)
+
+        return executable_lines

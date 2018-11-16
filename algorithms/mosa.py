@@ -1,12 +1,22 @@
 # coding=utf-8
-class Mosa(object):
+import os
+
+from deap import creator, base
+
+import settings
+from algorithms.genetic_algorithm import GeneticAlgorithm
+from dependency_injection.required_feature import RequiredFeature
+from test_suite_evaluation.all_lines_objective import AllLinesObjectiveTestSuiteEvaluator
+
+
+class Mosa(GeneticAlgorithm):
     """Implements the MOSA Evolutionary Algorithm as described in [CamposGFEA17]_.
 
-    Unlike the single-objective optimisation on the test suite level described above, the Many-Objective Sorting
-    Algorithm (MOSA) regards each coverage goal as an independent optimisation objective. MOSA is a variant of NSGA-II,
-    and uses a preference sorting criterion to reward the best tests for each non- covered target, regardless of their
-    dominance relation with other tests in the population. MOSA also uses an archive to store the tests that cover new
-    targets, which aiming to keep record on current best cases after each iteration.
+    Unlike the single-objective optimisation on the test suite level, the Many-Objective Sorting Algorithm (MOSA)
+    regards each coverage goal as an independent optimisation objective. MOSA is a variant of NSGA-II, and uses a
+    preference sorting criterion to reward the best tests for each non-covered target, regardless of their dominance
+    relation with other tests in the population. MOSA also uses an archive to store the tests that cover new targets,
+    which aims to keep record on current best cases after each iteration.
 
     It starts with a random population of test cases. Then, and similar to typical EAs, the offspring are created by
     applying crossover and mutation. Selection is based on the combined set of parents and offspring. This set is sorted
@@ -22,16 +32,16 @@ class Mosa(object):
     """
 
     def __init__(self):
-        pass
+        super(Mosa, self).__init__()
 
-    def setup(self, toolbox, test_runner, stats=None, verbose=False):
-        pass
+        self.test_suite_evaluator = RequiredFeature('test_suite_evaluator').request()
+
+        assert type(self.test_suite_evaluator) is AllLinesObjectiveTestSuiteEvaluator
 
     def run(self):
-        pass
-
-    def initPopulation(self):
-        pass
+        self.test_suite_evaluator.fetch_executable_lines()
+        super(Mosa, self).run()
 
     def evolve(self):
         pass
+

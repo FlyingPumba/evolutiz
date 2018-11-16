@@ -22,7 +22,6 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         self.hall_of_fame = tools.ParetoFront()
 
     def register_selection_operator(self, toolbox):
-        # self.toolbox.register("select", tools.selTournament, tournsize=5)
         toolbox.register("select", tools.selNSGA2)
 
     def set_empty_fitness(self, individual):
@@ -43,7 +42,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         device.mark_work_start()
         script_path, suite_lengths = self.dump_individual_to_files(individual)
 
-        coverage, unique_crashes, scripts_crash_status = coverage_fetcher.get_suite_coverage(script_path, device,
+        coverage, unique_crashes, scripts_crash_status, = coverage_fetcher.get_suite_coverage(script_path, device,
                                                                                                individual.generation,
                                                                                                individual.index_in_generation)
         # remove from suite lengths the scripts that did NOT cause a crash
