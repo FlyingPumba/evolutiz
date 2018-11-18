@@ -40,7 +40,7 @@ class SteadyState(Standard):
             parents = self.toolbox.select(self.population, self.parents_size)
             offspring = self.generate_offspring(parents, gen, self.offspring_size)
 
-            # Evaluate the individuals with an invalid fitness
+            # Evaluate the individuals in offspring with an invalid fitness
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
             success = self.parallel_evaluator.evaluate(invalid_ind)
 

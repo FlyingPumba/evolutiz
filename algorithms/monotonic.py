@@ -1,9 +1,8 @@
 # coding=utf-8
 
 from algorithms.standard import Standard
-from concurrency.mapper_on_devices import MapperOnDevices
+from dependency_injection.required_feature import RequiredFeature
 from util import logger
-from util.integer import Integer
 
 
 class Monotonic(Standard):
@@ -13,6 +12,11 @@ class Monotonic(Standard):
     population (whereas the Standard GA includes both offspring in the next population regardless of their fitness
     value).
 
+    This implementation generalizes the typical implementation of Monotonic EA that uses only 2 parents to generate 2
+    offspring per cycle. In this implementation we use _n_ parents to generate _n_ offspring, where _n_ is the number of
+    devices available. This allows us to retain the "monotonic" nature of this EA while also leveraging the parallelism
+    available.
+
     .. [CamposGFEA17] J. Campos, Y. Ge, G. Fraser, M. Eler, and A. Arcuri,
         “An Empirical Evaluation of Evolutionary Algorithms for Test Suite Generation”,
         in Search Based Software Engineering, 2017, pp. 33–48.
@@ -21,56 +25,53 @@ class Monotonic(Standard):
     def __init__(self):
         super(Monotonic, self).__init__()
 
-        self.new_population = []
+    def evolve(self):
+        verbose_level = RequiredFeature('verbose_level').request()
 
-    def generate_offspring_in_parallel(self):
-        self.new_population = []
-        offspring_pairs_to_generate = [Integer(i) for i in range(0, self.offspring_size)]
+        for gen in range(1, self.max_generations + 1):
 
-        logger.log_progress("\nGenerating offspring of " + str(self.offspring_size) + " individuals in parallel")
+            if not self.budget_manager.time_budget_available():
+                print("Time budget run out, exiting evolve")
+                break
 
-        mapper = MapperOnDevices(self.generate_two_offspring,
-                                 items_to_map=offspring_pairs_to_generate,
-                                 idle_devices_only=True)
+            logger.log_progress("\n---> Starting generation " + str(gen) + " at " +
+                                str(self.budget_manager.get_time_budget_used()))
 
-        try:
-            mapper.run()
-            return True
-        except TimeoutError:
-            return False
+            # create new population
+            new_population = []
+            while len(new_population) < self.population_size:
+                # calculate number of offspring to generate
+                needed_offspring = self.population_size - len(new_population)
+                offspring_number = self.offspring_size
+                if offspring_number > needed_offspring:
+                    offspring_number = needed_offspring
 
-    def generate_two_offspring(self, device, pair_index):
-        device.mark_work_start()
+                # generate offspring
+                parents = self.toolbox.select(self.population, self.parents_size)
+                offspring = self.generate_offspring(parents, gen, offspring_number,
+                                                    base_index_in_generation=len(new_population))
 
-        p1, p2 = self.toolbox.select(self.population, 2)
-        o1, o2 = self.toolbox.mate(p1, p2)
-        o1, = self.toolbox.mutate(device, self.package_name, o1)
-        o2, = self.toolbox.mutate(device, self.package_name, o2)
+                # Evaluate the individuals in offspring with an invalid fitness
+                invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
+                success = self.parallel_evaluator.evaluate(invalid_ind)
+                if not success:
+                    print("Time budget run out during parallel evaluation, exiting evolve")
+                    return self.population
 
-        del o1.fitness.values
-        del o2.fitness.values
+                # extend new population with offspring or parents, depending which ones have the best individual
+                best_ind, = self.toolbox.select(offspring + parents, 1)
+                if best_ind in offspring:
+                    new_population.extend(offspring)
+                else:
+                    new_population.extend(parents)
 
-        self.parallel_evaluator.test_suite_evaluator.evaluate(device, o1)
-        self.parallel_evaluator.test_suite_evaluator.evaluate(device, o1)
+            self.population = new_population.copy()
 
-        # TODO: the following comparisons of fitness will only work with single-objective fitness functions.
-        best_parent = None
-        if p1.fitness.values > p2.fitness.values:
-            best_parent = p1
-        else:
-            best_parent = p2
+            self.device_manager.log_devices_battery(gen, self.result_dir)
+            self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
-        best_offspring = None
-        if o1.fitness.values > o2.fitness.values:
-            best_offspring = o1
-        else:
-            best_offspring = o2
+            if verbose_level > 0:
+                logger.log_progress("\nFinished generation " + str(gen) + " at " +
+                                    str(self.budget_manager.get_time_budget_used()))
 
-        if best_parent.fitness.values > best_offspring.fitness.values:
-            self.new_population.append(best_parent)
-        else:
-            self.new_population.append(best_offspring)
-
-        device.mark_work_stop()
-
-        return True
+        return self.population
