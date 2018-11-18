@@ -1,7 +1,11 @@
 # coding=utf-8
+import time
+
+import random
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from concurrency.mapper_on_devices import MapperOnDevices
+from dependency_injection.required_feature import RequiredFeature
 from util import logger
 from util.integer import Integer
 
@@ -17,6 +21,11 @@ class Standard(GeneticAlgorithm):
     The two mutated offspring are then included in the next population. At the end of each iteration the fitness value
     of all individuals is computed.
 
+    This implementation generalizes the typical implementation of Standard EA that uses only 2 parents to generate 2
+    offspring per cycle. In this implementation we use _n_ parents to generate _n_ offspring, where _n_ is the number of
+    devices available. This allows us to retain the "standard" nature of this EA while also leveraging the parallelism
+    available.
+
     .. [CamposGFEA17] J. Campos, Y. Ge, G. Fraser, M. Eler, and A. Arcuri,
         “An Empirical Evaluation of Evolutionary Algorithms for Test Suite Generation”,
         in Search Based Software Engineering, 2017, pp. 33–48.
@@ -25,78 +34,92 @@ class Standard(GeneticAlgorithm):
     def __init__(self):
         super(Standard, self).__init__()
 
-        self.new_population = []
+        device_manager = RequiredFeature('device_manager').request()
+        self.offspring_size = len(device_manager.get_devices())
 
     def evolve(self):
+        verbose_level = RequiredFeature('verbose_level').request()
+
+        if self.offspring_size < 2:
+            raise Exception("Steady State EA needs at least 2 devices to work.")
+
         for gen in range(1, self.max_generations + 1):
 
             if not self.budget_manager.time_budget_available():
                 print("Time budget run out, exiting evolve")
                 break
 
-            logger.log_progress("\n---> Starting generation " + str(gen))
+            logger.log_progress("\n---> Starting generation " + str(gen) + " at " +
+                                str(self.budget_manager.get_time_budget_used()))
 
-            if not self.generate_offspring_in_parallel():
-                print("Time budget run out during offspring generation, exiting evolve")
-                break
+            # create new population
+            new_population = []
+            while len(new_population) < self.population_size:
+                # calculate number of offspring to generate
+                needed_offspring = self.population_size - len(new_population)
+                offspring_number = self.offspring_size
+                if offspring_number > needed_offspring:
+                    offspring_number = needed_offspring
+
+                # generate offspring
+                parents = self.toolbox.select(self.population, self.offspring_size)
+                offspring = self.generate_offspring(parents, gen, offspring_number,
+                                                    base_index_in_generation=len(new_population))
+
+                # add offspring to new population
+                new_population.extend(offspring)
 
             # Evaluate the individuals with an invalid fitness
-            invalid_ind = [ind for ind in self.new_population if not ind.fitness.valid]
-            if not self.parallel_evaluator.evaluate(invalid_ind):
+            invalid_ind = [ind for ind in new_population if not ind.fitness.valid]
+            success = self.parallel_evaluator.evaluate(invalid_ind)
+
+            if not success:
                 print("Time budget run out during parallel evaluation, exiting evolve")
                 break
 
-            # Select the next generation population
-            self.population = self.new_population
+            self.population = new_population.copy()
 
             self.device_manager.log_devices_battery(gen, self.result_dir)
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
+            if verbose_level > 0:
+                logger.log_progress("\nFinished generation " + str(gen) + " at " +
+                                    str(self.budget_manager.get_time_budget_used()))
+
         return self.population
 
-    def generate_offspring_in_parallel(self):
-        self.new_population = []
-        offspring_pairs_to_generate = [Integer(i) for i in range(0, int(self.offspring_size/2))]
+    def generate_offspring(self, parents, gen, offspring_number, base_index_in_generation=0):
+        offspring = self.crossover(parents, gen, offspring_number, base_index_in_generation=base_index_in_generation)
+        self.mutation(offspring)
 
-        logger.log_progress("\nGenerating offspring of " + str(self.offspring_size) + " individuals in parallel")
+        return offspring
 
-        mapper = MapperOnDevices(self.generate_two_offspring,
-                                 items_to_map=offspring_pairs_to_generate,
-                                 idle_devices_only=True)
-        try:
-            mapper.run()
-            return True
-        except TimeoutError:
-            return False
+    def crossover(self, parents, gen, offspring_number, base_index_in_generation=0):
+        offspring = []
+        for index_in_generation in range(0, offspring_number, 2):
+            ind1, ind2 = map(self.toolbox.clone, random.sample(parents, 2))
+            ind1, ind2 = self.toolbox.mate(ind1, ind2)
 
-    def generate_two_offspring(self, device, pair_index):
-        device.mark_work_start()
+            del ind1.fitness.values
+            ind1.index_in_generation = base_index_in_generation + index_in_generation
+            ind1.generation = gen
+            ind1.creation_finish_timestamp = time.time()
+            ind1.creation_elapsed_time = 0
 
-        p1, p2 = map(self.toolbox.clone, self.toolbox.select(self.population, 2))
-        assert len(p1) > 1
-        assert len(p2) > 1
-        assert hasattr(p1, 'history_index')
-        assert hasattr(p2, 'history_index')
+            offspring.append(ind1)
 
-        o1, o2 = self.toolbox.mate(p1, p2)
-        assert hasattr(o1, 'history_index')
-        assert hasattr(o2, 'history_index')
+            if len(offspring) < offspring_number:
+                del ind2.fitness.values
+                ind2.index_in_generation = base_index_in_generation + index_in_generation + 1
+                ind2.generation = gen
+                ind2.creation_finish_timestamp = time.time()
+                ind2.creation_elapsed_time = 0
 
-        o1, = self.toolbox.mutate(device, self.package_name, o1)
-        assert hasattr(o1, 'history_index')
-        # TODO: fix mutate returning individual with length equal or less than one
-        assert len(o1) > 1
+                offspring.append(ind2)
 
-        o2, = self.toolbox.mutate(device, self.package_name, o2)
-        assert hasattr(o1, 'history_index')
-        assert len(o2) > 1
+        return offspring
 
-        del o1.fitness.values
-        del o2.fitness.values
-
-        self.new_population.append(o1)
-        self.new_population.append(o2)
-
-        device.mark_work_stop()
-
-        return True
+    def mutation(self, offspring):
+        for index_in_generation in range(len(offspring)):
+            ind = offspring[index_in_generation]
+            self.toolbox.mutate(ind)
