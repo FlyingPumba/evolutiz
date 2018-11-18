@@ -36,12 +36,10 @@ class Standard(GeneticAlgorithm):
 
         device_manager = RequiredFeature('device_manager').request()
         self.offspring_size = len(device_manager.get_devices())
+        self.parents_size = self.offspring_size if self.offspring_size > 2 else 2
 
     def evolve(self):
         verbose_level = RequiredFeature('verbose_level').request()
-
-        if self.offspring_size < 2:
-            raise Exception("Steady State EA needs at least 2 devices to work.")
 
         for gen in range(1, self.max_generations + 1):
 
@@ -62,7 +60,7 @@ class Standard(GeneticAlgorithm):
                     offspring_number = needed_offspring
 
                 # generate offspring
-                parents = self.toolbox.select(self.population, self.offspring_size)
+                parents = self.toolbox.select(self.population, self.parents_size)
                 offspring = self.generate_offspring(parents, gen, offspring_number,
                                                     base_index_in_generation=len(new_population))
 

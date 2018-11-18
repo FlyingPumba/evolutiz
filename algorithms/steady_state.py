@@ -14,7 +14,7 @@ class SteadyState(Standard):
 
     This implementation generalizes the typical implementation of Steady State EA that uses only 2 parents to generate 2
     offspring per cycle. In this implementation we use _n_ parents to generate _n_ offspring, where _n_ is the number of
-    devices available. This allows us to retain the "steady" nature of this EA while also leveraging the parallelism
+    devices available. This allows us to retain the "steady state" nature of this EA while also leveraging the parallelism
     available.
 
     .. [CamposGFEA17] J. Campos, Y. Ge, G. Fraser, M. Eler, and A. Arcuri,
@@ -25,14 +25,8 @@ class SteadyState(Standard):
     def __init__(self):
         super(SteadyState, self).__init__()
 
-        device_manager = RequiredFeature('device_manager').request()
-        self.offspring_size = len(device_manager.get_devices())
-
     def evolve(self):
         verbose_level = RequiredFeature('verbose_level').request()
-
-        if self.offspring_size < 2:
-            raise Exception("Steady State EA needs at least 2 devices to work.")
 
         for gen in range(1, self.max_generations + 1):
 
@@ -43,7 +37,7 @@ class SteadyState(Standard):
             logger.log_progress("\n---> Starting generation " + str(gen) + " at " +
                                 str(self.budget_manager.get_time_budget_used()))
 
-            parents = self.toolbox.select(self.population, self.offspring_size)
+            parents = self.toolbox.select(self.population, self.parents_size)
             offspring = self.generate_offspring(parents, gen, self.offspring_size)
 
             # Evaluate the individuals with an invalid fitness
