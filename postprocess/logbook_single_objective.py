@@ -1,11 +1,26 @@
 import argparse
+import numpy
 import os
 import pickle
 
 import matplotlib.pyplot as plt
 
+
 # This script needs to be run like:
 # python -m postprocess.logbook_single_objective logbook.pickle
+
+def print_best_fitness(logbook_file_path):
+    logbook_file = open(logbook_file_path, 'rb')
+    logbook = pickle.load(logbook_file)
+
+    max_fitness_values_per_generation = numpy.array(logbook.select("max"))
+
+    max_fitness_values_all_generations = max_fitness_values_per_generation.max(axis=0)
+
+    max_coverage = max_fitness_values_all_generations[0]
+
+    # CAUTION: these min and max are from different individuals
+    print(str(max_coverage))
 
 
 def print_avg_fitness(logbook_file_path):
@@ -20,7 +35,7 @@ def print_avg_fitness(logbook_file_path):
         print("%d\t%d" % (gen, coverage))
 
 
-def print_fitness(logbook_file_path):
+def print_all(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
 
@@ -31,9 +46,8 @@ def print_fitness(logbook_file_path):
     for gen, population in enumerate(fitness_by_gen):
         for fitness in population:
             print("%d\t%s\t%d" % (gen,
-                       str(fitness['generation']) + "." + str(fitness['index_in_generation']),
-                       fitness['coverage']))
-
+                                  str(fitness['generation']) + "." + str(fitness['index_in_generation']),
+                                  fitness['coverage']))
 
     print("\nEvaluation records:")
     print("gen\tid\teval elapsed time\teval finish timestamp")
@@ -42,9 +56,9 @@ def print_fitness(logbook_file_path):
     for gen, population in enumerate(evaluation_by_gen):
         for evaluation in population:
             print("%d\t%s\t\t%d\t\t%d" % (gen,
-                                      str(evaluation['generation']) + "." + str(evaluation['index_in_generation']),
-                                      evaluation['evaluation_elapsed_time'],
-                                      evaluation['evaluation_finish_timestamp']))
+                                          str(evaluation['generation']) + "." + str(evaluation['index_in_generation']),
+                                          evaluation['evaluation_elapsed_time'],
+                                          evaluation['evaluation_finish_timestamp']))
 
     print("\nCreation records:")
     print("gen\tid\tcreation elapsed time\tcreation finish timestamp")
@@ -53,9 +67,10 @@ def print_fitness(logbook_file_path):
     for gen, population in enumerate(creation_by_gen):
         for creation in population:
             print("%d\t%s\t\t%d\t\t%d" % (gen,
-                                      str(creation['generation']) + "." + str(creation['index_in_generation']),
-                                      creation['creation_elapsed_time'],
-                                      creation['creation_finish_timestamp']))
+                                          str(creation['generation']) + "." + str(creation['index_in_generation']),
+                                          creation['creation_elapsed_time'],
+                                          creation['creation_finish_timestamp']))
+
 
 def draw_pop_fitness(logbook_file_path):
     coverages = []
@@ -89,11 +104,20 @@ def draw_pop_fitness(logbook_file_path):
     fig.savefig(os.path.dirname(logbook_file_path) + "/logbook_fitness_by_generation.png")
     plt.show()
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('logbook_file_path', help='Logbook pickle file path.')
+    parser.add_argument('processing', default='print-all', nargs='?', help='Processing to do')
     args = parser.parse_args()
 
-    # print_avg_fitness(args.logbook_file_path)
-    # draw_pop_fitness(args.logbook_file_path)
-    print_fitness(args.logbook_file_path)
+    if args.processing == 'print-all':
+        print_all(args.logbook_file_path)
+    elif args.processing == 'draw-fitness':
+        draw_pop_fitness(args.logbook_file_path)
+    elif args.processing == 'print-avg':
+        print_avg_fitness(args.logbook_file_path)
+    elif args.processing == 'print-best':
+        print_best_fitness(args.logbook_file_path)
+    else:
+        print(args.processing)

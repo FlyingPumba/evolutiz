@@ -5,6 +5,7 @@ import pickle
 
 import matplotlib.pyplot as plt
 
+
 # This script needs to be run like:
 # python -m postprocess.logbook_multi_objective logbook.pickle
 
@@ -25,6 +26,7 @@ def print_best_fitness(logbook_file_path):
     # CAUTION: these min and max are from different individuals
     print(str(max_coverage) + "," + str(max_crashes) + "," + str(min_length))
 
+
 def print_avg_fitness(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
@@ -35,6 +37,7 @@ def print_avg_fitness(logbook_file_path):
 
     for gen, (coverage, length, crashes) in enumerate(logbook.select("avg")):
         print("%d\t%d\t%d" % (gen, coverage, crashes))
+
 
 def print_all(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
@@ -47,11 +50,10 @@ def print_all(logbook_file_path):
     for gen, population in enumerate(fitness_by_gen):
         for fitness in population:
             print("%d\t%s\t%d\t%d\t%d" % (gen,
-                       str(fitness['generation']) + "." + str(fitness['index_in_generation']),
-                       fitness['coverage'],
-                       fitness['crashes'],
-                       fitness['length']))
-
+                                          str(fitness['generation']) + "." + str(fitness['index_in_generation']),
+                                          fitness['coverage'],
+                                          fitness['crashes'],
+                                          fitness['length']))
 
     print("\nEvaluation records:")
     print("gen\tid\teval elapsed time\teval finish timestamp")
@@ -60,9 +62,9 @@ def print_all(logbook_file_path):
     for gen, population in enumerate(evaluation_by_gen):
         for evaluation in population:
             print("%d\t%s\t\t%d\t\t%d" % (gen,
-                                      str(evaluation['generation']) + "." + str(evaluation['index_in_generation']),
-                                      evaluation['evaluation_elapsed_time'],
-                                      evaluation['evaluation_finish_timestamp']))
+                                          str(evaluation['generation']) + "." + str(evaluation['index_in_generation']),
+                                          evaluation['evaluation_elapsed_time'],
+                                          evaluation['evaluation_finish_timestamp']))
 
     print("\nCreation records:")
     print("gen\tid\tcreation elapsed time\tcreation finish timestamp")
@@ -71,9 +73,10 @@ def print_all(logbook_file_path):
     for gen, population in enumerate(creation_by_gen):
         for creation in population:
             print("%d\t%s\t\t%d\t\t%d" % (gen,
-                                      str(creation['generation']) + "." + str(creation['index_in_generation']),
-                                      creation['creation_elapsed_time'],
-                                      creation['creation_finish_timestamp']))
+                                          str(creation['generation']) + "." + str(creation['index_in_generation']),
+                                          creation['creation_elapsed_time'],
+                                          creation['creation_finish_timestamp']))
+
 
 def draw_pop_fitness(logbook_file_path):
     coverages = []
@@ -106,6 +109,7 @@ def draw_pop_fitness(logbook_file_path):
 
     fig.savefig(os.path.dirname(logbook_file_path) + "/logbook_fitness_by_generation.png")
     plt.show()
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
