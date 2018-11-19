@@ -45,7 +45,8 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
                 print("Time budget run out, exiting evolve")
                 break
 
-            logger.log_progress("\n---> Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
+            logger.log_progress("\n---> Starting generation " + str(gen) + " at " +
+                                str(self.budget_manager.get_time_budget_used()))
 
             # Create and evaluate mutants
             mutants = self.generate_mutants(gen)
@@ -74,7 +75,8 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
             if verbose_level > 0:
-                logger.log_progress("\nFinished generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
+                logger.log_progress("\nFinished generation " + str(gen) + " at " +
+                                    str(self.budget_manager.get_time_budget_used()))
 
         return [self.parent]
 
@@ -82,7 +84,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
         mutants = []
         for index_in_generation in range(self.offspring_size):
             ind = self.toolbox.clone(self.parent)
-            ind, = self.mutate_suite(ind)
+            self.toolbox.mutate(ind)
 
             del ind.fitness.values
 
@@ -93,29 +95,11 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
 
             mutants.append(ind)
 
-        self.history.update(mutants)
         return mutants
-
-    def mutate_suite(self, individual):
-        n = len(individual)
-        k = random.randint(2, n)
-        prob = float(k)/float(n)
-
-        # TODO: check if we need to do uniform crossover between test cases as in "sapienz_mut_suite" operator
-
-        # shuffle events inside each test case with probability k/n
-        for i in range(len(individual)):
-            if random.random() < prob:
-                if len(individual[i]) <= 2:
-                    continue
-
-                individual[i], = tools.mutShuffleIndexes(individual[i], 0.5)
-
-        return individual,
 
     def generate_offspring(self, gen, mutant):
         offspring = []
-        for index_in_generation in range(self.offspring_size):
+        for index_in_generation in range(0, self.offspring_size, 2):
             ind1, ind2 = map(self.toolbox.clone, [self.parent, mutant])
             ind1, ind2 = self.toolbox.mate(ind1, ind2)
 
@@ -127,6 +111,15 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
             ind1.creation_elapsed_time = 0
 
             offspring.append(ind1)
+
+            if len(offspring) < self.offspring_size:
+                del ind2.fitness.values
+                ind2.index_in_generation = index_in_generation + 1
+                ind2.generation = gen
+                ind2.creation_finish_timestamp = time.time()
+                ind2.creation_elapsed_time = 0
+
+                offspring.append(ind2)
 
         return offspring
 
