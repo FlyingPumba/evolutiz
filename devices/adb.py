@@ -81,17 +81,23 @@ def uninstall(device, package_name):
     return adb_command(device, "uninstall " + package_name)
 
 def install(device, package_name, apk_path):
+    verbose_level = RequiredFeature('verbose_level').request()
+
     output, errors, result_code = adb_command(device, "install " + apk_path)
     if result_code != 0:
-        # we were unable to install the apk in device.
-        raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
+        error_msg = "Unable to install apk: " + apk_path + " on device: " + device.name
+        if verbose_level > 0:
+            print(error_msg)
+            print(output)
+            print(errors)
+
+        raise Exception(error_msg)
 
     cmd = get_adb_cmd_prefix_for_device(device) + " shell pm list packages | grep " + package_name
     log_adb_command(device, cmd)
 
     res = run_cmd(cmd)[0].strip()
     if package_name not in res:
-        # we were unable to install
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
 
 def pkill(device, string):
