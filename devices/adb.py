@@ -84,7 +84,6 @@ def install(device, package_name, apk_path):
     output, errors, result_code = adb_command(device, "install " + apk_path)
     if result_code != 0:
         # we were unable to install the apk in device.
-        # Reboot and raise exception
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
 
     cmd = get_adb_cmd_prefix_for_device(device) + " shell pm list packages | grep " + package_name
@@ -93,7 +92,6 @@ def install(device, package_name, apk_path):
     res = run_cmd(cmd)[0].strip()
     if package_name not in res:
         # we were unable to install
-        # Reboot and raise exception
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
 
 def pkill(device, string):
