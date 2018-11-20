@@ -1,3 +1,5 @@
+import time
+
 from application.apk_analyser import ApkAnalyser
 from application.app_instrumentator import AppInstrumentator
 from dependency_injection.required_feature import RequiredFeature
@@ -17,13 +19,25 @@ class ApkPreparer(object):
         package_name = RequiredFeature('package_name').request()
         apk_path = RequiredFeature('apk_path').request()
 
-        self.apk_analyser.upload_string_xml(device)
-        adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
+        successful = False
+        for i in range(3):
+            try:
+                self.apk_analyser.upload_string_xml(device)
+                adb.shell_command(device, "rm /mnt/sdcard/bugreport.crash")
 
-        adb.uninstall(device, package_name)
-        adb.install(device, package_name, apk_path)
+                adb.uninstall(device, package_name)
+                adb.install(device, package_name, apk_path)
 
-        instrumentation_cmd = "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation"
-        output, errors, result_code = adb.shell_command(device, instrumentation_cmd, retry=2)
-        if result_code != 0:
-            raise Exception("Unable to instrument " + package_name)
+                instrumentation_cmd = "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation"
+                output, errors, result_code = adb.shell_command(device, instrumentation_cmd)
+                if result_code != 0:
+                    raise Exception("Unable to instrument " + package_name)
+
+                successful = True
+                break
+            except Exception as e:
+                print(e)
+                time.sleep(5)
+
+        if not successful:
+            raise Exception("Unable to setup device: " + device.name)
