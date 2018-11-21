@@ -66,11 +66,11 @@ def run_one_app(strategy_with_runner_name):
             budget_manager.start_time_budget()
             test_generator.run()
 
-            # wait for all MultipleQueueConsumerThread to terminate
-            wait_for_working_threas_to_finish()
-
             logger.log_progress("\nEvolutiz finished for app: " + app_name)
             logger.log_progress("\nTime budget used: %.2f seconds\n" % (budget_manager.get_time_budget_used()))
+
+            # wait for all MultipleQueueConsumerThread to terminate
+            wait_for_working_threas_to_finish()
 
         return True
     except Exception as e:
