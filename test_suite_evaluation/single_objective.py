@@ -24,7 +24,7 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         toolbox.register("select", tools.selRoulette)
 
     def set_empty_fitness(self, individual):
-        individual.fitness.values = 0
+        individual.fitness.values = (0, )
 
         individual.evaluation_finish_timestamp = time.time()
         individual.evaluation_elapsed_time = 0
