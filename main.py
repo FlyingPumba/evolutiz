@@ -68,7 +68,7 @@ def run_one_app(strategy_with_runner_name):
 
             # wait for all MultipleQueueConsumerThread to terminate
             for thread in threading.enumerate():
-                if type(thread) is MultipleQueueConsumerThread:
+                if type(thread) is MultipleQueueConsumerThread and thread.isAlive():
                     thread.stop()
                     thread.raiseExc(Exception)
             time.sleep(1)
