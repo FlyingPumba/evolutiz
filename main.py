@@ -67,11 +67,7 @@ def run_one_app(strategy_with_runner_name):
             test_generator.run()
 
             # wait for all MultipleQueueConsumerThread to terminate
-            for thread in threading.enumerate():
-                if type(thread) is MultipleQueueConsumerThread and thread.isAlive():
-                    thread.stop()
-                    thread.raiseExc(Exception)
-            time.sleep(1)
+            wait_for_working_threas_to_finish()
 
             logger.log_progress("\nEvolutiz finished for app: " + app_name)
             logger.log_progress("\nTime budget used: %.2f seconds\n" % (budget_manager.get_time_budget_used()))
@@ -82,6 +78,19 @@ def run_one_app(strategy_with_runner_name):
         traceback.print_exc()
         return False
 
+def wait_for_working_threas_to_finish():
+    threads_working = [thread for thread in threading.enumerate()
+                       if type(thread) is MultipleQueueConsumerThread and thread.isAlive()]
+    for thread in threads_working:
+        thread.stop()
+
+    while True:
+        threads_working = [thread for thread in threading.enumerate()
+                           if type(thread) is MultipleQueueConsumerThread and thread.isAlive()]
+        if len(threads_working) == 0:
+            return
+
+        time.sleep(3)
 
 def get_emulators_running(result_dir):
     """Reboot all devices and kill adb server before starting a repetition."""
