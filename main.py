@@ -13,6 +13,7 @@ from deap.base import Toolbox
 from algorithms.dyna_mosa import DynaMosa
 from algorithms.monotonic import Monotonic
 from algorithms.mosa import Mosa
+from algorithms.mu_comma_lambda import MuCommaLambda
 from algorithms.mu_plus_lambda import MuPlusLambda
 from algorithms.one_plus_lambda_comma_lambda import OnePlusLambdaCommaLambda
 from algorithms.random_search import RandomSearch
@@ -287,6 +288,7 @@ def add_arguments_to_parser(parser):
         "monotonic": Monotonic,
         "steady": SteadyState,
         "muPlusLambda": MuPlusLambda,
+        "muCommaLambda": MuCommaLambda,
         "onePlusLambdaCommaLambda": OnePlusLambdaCommaLambda,
         "mosa": Mosa,
         "dynaMosa": DynaMosa,
