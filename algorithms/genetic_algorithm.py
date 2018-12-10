@@ -26,8 +26,8 @@ class GeneticAlgorithm(Strategy):
 
         success = self.initPopulation()
         if not success:
-            logger.log_progress("\nThere was an error initializing pupulation for app.")
-            return False
+            logger.log_progress("\nThere was an error initializing population for app.")
+            raise Exception("There was an error initializing population for app.")
 
         return self.evolve()
 
