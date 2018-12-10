@@ -35,6 +35,7 @@ from test_suite_generation.individual_without_coverage_generator import Individu
 from test_suite_generation.population_generator import PopulationGenerator
 from util.budget_manager import BudgetManager
 from util.command import *
+from util.compress import compress_results
 
 
 def run_one_app(strategy_with_runner_name):
@@ -126,6 +127,8 @@ def prepare_result_dir(app_name, repetition, strategy_with_runner_name):
 
 
 def run(strategy_name, app_paths):
+    compress = RequiredFeature('compress').request()
+
     for i in range(0, len(app_paths)):
         features.provide('app_path', app_paths[i])
 
@@ -136,6 +139,8 @@ def run(strategy_name, app_paths):
         if not success:
             break
 
+        if compress:
+            compress_results(strategy_name)
 
 def get_subject_paths(arguments):
     subject_path = arguments.subject_path
@@ -281,6 +286,8 @@ def add_arguments_to_parser(parser):
                         action='store_false', help='Write genealogical history of individuals to a file.')
     parser.add_argument('--write-hall-of-fame', dest='write_hall_of_fame',
                         action='store_false', help='Write hall of fame of best individuals to a file.')
+    parser.add_argument('--compress', dest='compress',
+                        action='store_false', help='Compress results after successful run.')
 
     # strategy related arguments
     possible_strategies = {
@@ -346,6 +353,7 @@ def init_arguments_defaults():
         "write_logbook": True,
         "write_history": True,
         "write_hall_of_fame": True,
+        "compress": True,
         "strategy": "muPlusLambda",
         "evaluator": "multi-objective",
         "individual_generator": "default",
@@ -432,6 +440,7 @@ def provide_features():
     features.provide('write_logbook', args.write_logbook)
     features.provide('write_history', args.write_history)
     features.provide('write_hall_of_fame', args.write_hall_of_fame)
+    features.provide('compress', args.compress)
 
     # singletons
     features.provide('toolbox', Toolbox())
