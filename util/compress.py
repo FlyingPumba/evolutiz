@@ -16,7 +16,8 @@ def compress_results(strategy_with_runner_name):
 
     pool = mp.Pool(processes=len(repetition_dir_paths))
     for path in repetition_dir_paths:
-        pool.apply_async(compress_repetition, args=(path,))
+        if path.strip() != '':
+            pool.apply_async(compress_repetition, args=(path,))
     pool.close()
     pool.join()
 
