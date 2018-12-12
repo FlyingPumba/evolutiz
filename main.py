@@ -148,7 +148,7 @@ def get_subject_paths(arguments):
         features.provide('subjects_path', [subject_path])
         return [subject_path.rstrip('/')]
     else:
-        subjects_path = arguments.subjects_path
+        subjects_path = arguments.subjects_path.rstrip('/') + '/'
         features.provide('subjects_path', subjects_path)
 
         output, errors, result_code = run_cmd("ls -d " + subjects_path + "*/")
