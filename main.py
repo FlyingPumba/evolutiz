@@ -280,13 +280,13 @@ def add_arguments_to_parser(parser):
 
     # logging related arguments
     parser.add_argument('-v', '--verbose', action='count')
-    parser.add_argument('--write-logbook', dest='write_logbook',
+    parser.add_argument('--no-logbook', dest='write_logbook',
                         action='store_false', help='Write logbook to a file.')
-    parser.add_argument('--write-history', dest='write_history',
+    parser.add_argument('--no-history', dest='write_history',
                         action='store_false', help='Write genealogical history of individuals to a file.')
-    parser.add_argument('--write-hall-of-fame', dest='write_hall_of_fame',
+    parser.add_argument('--no-hall-of-fame', dest='write_hall_of_fame',
                         action='store_false', help='Write hall of fame of best individuals to a file.')
-    parser.add_argument('--compress', dest='compress',
+    parser.add_argument('--no-compress', dest='compress',
                         action='store_false', help='Compress results after successful run.')
 
     # strategy related arguments
