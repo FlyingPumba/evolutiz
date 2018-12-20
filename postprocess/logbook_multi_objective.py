@@ -77,6 +77,40 @@ def print_all(logbook_file_path):
                                           creation['creation_elapsed_time'],
                                           creation['creation_finish_timestamp']))
 
+def print_fitness_by_time(logbook_file_path):
+    logbook_file = open(logbook_file_path, 'rb')
+    logbook = pickle.load(logbook_file)
+
+    # gather each fitness by id
+    fitness_by_gen = logbook.select("fitness")
+    evaluations = {}
+    for gen, population in enumerate(fitness_by_gen):
+        for fitness in population:
+            id = str(fitness['generation']) + "." + str(fitness['index_in_generation'])
+            evaluations[id] = {
+                'coverage': fitness['coverage'],
+                'crashes': fitness['crashes'],
+                'length': fitness['length']
+            }
+
+    # gather timestamp of each fitness evaluation
+    evaluation_by_gen = logbook.select("evaluation")
+    for gen, population in enumerate(evaluation_by_gen):
+        for evaluation in population:
+            id = str(evaluation['generation']) + "." + str(evaluation['index_in_generation'])
+            evaluations[id]['timestamp'] = evaluation['evaluation_finish_timestamp']
+
+    # sort information by timestamp
+    values = evaluations.values()
+    sorted_values = sorted(values, key=lambda k: k['timestamp'])
+
+    first_timestamp = sorted_values[0]['timestamp']
+    print("timestamp,coverage,crashes,length")
+    print("\n".join(map(lambda x: "{0},{1},{2},{3}".format(
+        x['timestamp'] - first_timestamp,
+        x['coverage'],
+        x['crashes'],
+        x['length']), sorted_values)))
 
 def draw_pop_fitness(logbook_file_path):
     coverages = []
@@ -125,5 +159,7 @@ if __name__ == "__main__":
         print_avg_fitness(args.logbook_file_path)
     elif args.processing == 'print-best':
         print_best_fitness(args.logbook_file_path)
+    elif args.processing == 'fitness-by-time':
+        print_fitness_by_time(args.logbook_file_path)
     else:
         print(args.processing)
