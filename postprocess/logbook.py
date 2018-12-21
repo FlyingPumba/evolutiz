@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 # This script needs to be run like:
-# python -m postprocess.logbook_multi_objective logbook.pickle
+# python -m postprocess.logbook logbook.pickle
 
 def print_best_fitness(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
@@ -16,27 +16,39 @@ def print_best_fitness(logbook_file_path):
     min_fitness_values_per_generation = numpy.array(logbook.select("min"))
     max_fitness_values_per_generation = numpy.array(logbook.select("max"))
 
+    # CAUTION: these min and max are from different individuals
     max_fitness_values_all_generations = max_fitness_values_per_generation.max(axis=0)
     min_fitness_values_all_generations = min_fitness_values_per_generation.min(axis=0)
 
-    max_coverage = max_fitness_values_all_generations[0]
-    min_length = min_fitness_values_all_generations[1]
-    max_crashes = max_fitness_values_all_generations[2]
+    max_coverage = str(max_fitness_values_all_generations[0])
+    min_length = ""
+    max_crashes = ""
 
-    # CAUTION: these min and max are from different individuals
-    print(str(max_coverage) + "," + str(max_crashes) + "," + str(min_length))
+    if len(max_fitness_values_all_generations) > 1:
+        # multi-objective logbook
+        min_length = str(min_fitness_values_all_generations[1])
+        max_crashes = str(max_fitness_values_all_generations[2])
+
+    print("{0},{1},{2}".format(max_coverage, max_crashes, min_length))
 
 
 def print_avg_fitness(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
 
-    print("Average fitness by generation:\n")
-    print("gen\tcovrg.\tcrashes")
-    print("--------------------")
+    print("gen,avg_coverage,avg_crashes,avg_length")
 
-    for gen, (coverage, length, crashes) in enumerate(logbook.select("avg")):
-        print("%d\t%d\t%d" % (gen, coverage, crashes))
+    for gen, avg_fitness in enumerate(logbook.select("avg")):
+        avg_coverage = str(avg_fitness[0])
+        avg_crashes = ""
+        avg_length = ""
+
+        if len(avg_fitness) > 1:
+            # multi-objective logbook
+            avg_crashes = str(avg_fitness[1])
+            avg_length = str(avg_fitness[2])
+
+        print("{0},{1},{2},{3}".format(gen, avg_coverage, avg_crashes, avg_length))
 
 
 def print_all(logbook_file_path):
@@ -49,11 +61,18 @@ def print_all(logbook_file_path):
     fitness_by_gen = logbook.select("fitness")
     for gen, population in enumerate(fitness_by_gen):
         for fitness in population:
-            print("%d\t%s\t%d\t%d\t%d" % (gen,
-                                          str(fitness['generation']) + "." + str(fitness['index_in_generation']),
-                                          fitness['coverage'],
-                                          fitness['crashes'],
-                                          fitness['length']))
+            if 'crashes' in fitness:
+                # multi-objective logbook
+                print("%d\t%s\t%d\t%d\t%d" % (gen,
+                                              str(fitness['generation']) + "." + str(fitness['index_in_generation']),
+                                              fitness['coverage'],
+                                              fitness['crashes'],
+                                              fitness['length']))
+            else:
+                # single-objective logbook
+                print("%d\t%s\t%d" % (gen,
+                                      str(fitness['generation']) + "." + str(fitness['index_in_generation']),
+                                      fitness['coverage']))
 
     print("\nEvaluation records:")
     print("gen\tid\teval elapsed time\teval finish timestamp")
@@ -87,10 +106,20 @@ def print_fitness_by_time(logbook_file_path):
     for gen, population in enumerate(fitness_by_gen):
         for fitness in population:
             id = str(fitness['generation']) + "." + str(fitness['index_in_generation'])
+
+            coverage = str(fitness['coverage'])
+            crashes = ""
+            length = ""
+
+            if 'crashes' in fitness:
+                # multi-objective logbook
+                crashes = str(fitness['crashes'])
+                length = str(fitness['length'])
+
             evaluations[id] = {
-                'coverage': fitness['coverage'],
-                'crashes': fitness['crashes'],
-                'length': fitness['length']
+                'coverage': coverage,
+                'crashes': crashes,
+                'length': length
             }
 
     # gather timestamp of each fitness evaluation
