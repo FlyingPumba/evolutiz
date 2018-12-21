@@ -29,6 +29,7 @@ def print_best_fitness(logbook_file_path):
         min_length = str(min_fitness_values_all_generations[1])
         max_crashes = str(max_fitness_values_all_generations[2])
 
+    print("coverage,crashes,length")
     print("{0},{1},{2}".format(max_coverage, max_crashes, min_length))
 
 
