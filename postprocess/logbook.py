@@ -134,10 +134,9 @@ def print_fitness_by_time(logbook_file_path):
     values = evaluations.values()
     sorted_values = sorted(values, key=lambda k: k['timestamp'])
 
-    first_timestamp = sorted_values[0]['timestamp']
     print("timestamp,coverage,crashes,length")
     print("\n".join(map(lambda x: "{0},{1},{2},{3}".format(
-        x['timestamp'] - first_timestamp,
+        x['timestamp'],
         x['coverage'],
         x['crashes'],
         x['length']), sorted_values)))
