@@ -14,6 +14,7 @@ def load_hof(hof_file):
     except Exception as e1:
         try:
             # An error occurred, perhaps this is a single-objective HoF:
+            del creator.Individual
             creator.create("FitnessMax", base.Fitness, weights=(1.0,))
             creator.create("Individual", list, fitness=creator.FitnessMax)
             hof = pickle.load(hof_file)
