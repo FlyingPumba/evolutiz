@@ -19,6 +19,7 @@ def show_hof(hof_file_path):
     print("Stored fitness are: ")
 
     for individual in hof:
+        print(individual.evaluation_finish_timestamp)
         fitness = individual.fitness.values
         coverage = str(fitness[0])
         length = "--"
