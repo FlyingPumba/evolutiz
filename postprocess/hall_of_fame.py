@@ -1,3 +1,4 @@
+import sys
 import pickle
 import argparse
 
@@ -18,13 +19,17 @@ def show_hof(hof_file_path):
     print("Stored fitness are: ")
 
     for individual in hof:
-        coverage, length, crashes = individual.fitness.values
-        if crashes == 0:
-            length = "--"
-        else:
-            length = str(length)
-        print("(%d, %s, %d)" % (coverage, length, crashes))
+        fitness = individual.fitness.values
+        coverage = str(fitness[0])
+        length = "--"
+        crashes = "0"
 
+        if len(fitness) > 1:
+            # multi-objective hof
+            length = str(fitness[1])
+            crashes = str(fitness[2])
+
+        print("%s,%s,%s" % (coverage, length, crashes))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
