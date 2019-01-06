@@ -54,6 +54,7 @@ def print_fitness_by_time(hof_file_path):
 
     evaluations = []
     for individual in hof:
+        print(individual.evaluation_finish_timestamp)
         fitness = individual.fitness.values
         coverage = str(fitness[0])
         length = ""
