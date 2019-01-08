@@ -1,3 +1,4 @@
+import sys
 import pickle
 import argparse
 
@@ -29,8 +30,8 @@ def print_best_fitness(hof_file_path):
     hof = load_hof(hof_file)
 
     max_coverage = 0
-    min_length = None
-    max_crashes = None
+    min_length = sys.maxsize
+    max_crashes = 0
 
     for individual in hof:
         fitness = individual.fitness.values
