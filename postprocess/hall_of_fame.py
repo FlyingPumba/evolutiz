@@ -29,6 +29,8 @@ def print_best_fitness(hof_file_path):
     hof_file = open(hof_file_path, 'rb')
     hof = load_hof(hof_file)
 
+    multi_objective = False
+
     max_coverage = 0
     min_length = sys.maxsize
     max_crashes = 0
@@ -40,10 +42,11 @@ def print_best_fitness(hof_file_path):
 
         if len(fitness) > 1:
             # multi-objective hof
+            multi_objective = True
             min_length = min(fitness[1], min_length)
             max_crashes = max(fitness[2], max_crashes)
 
-    if max_crashes is None:
+    if not multi_objective:
         max_crashes = ""
         min_length = ""
 
