@@ -43,6 +43,7 @@ def run_one_app(strategy_with_runner_name):
     repetitions = RequiredFeature('repetitions').request()
     repetitions_offset = RequiredFeature('repetitions_offset').request()
     budget_manager = RequiredFeature('budget_manager').request()
+    test_runner = RequiredFeature('test_runner').request()
 
     app_name = os.path.basename(app_path)
 
@@ -54,8 +55,12 @@ def run_one_app(strategy_with_runner_name):
             logbook = tools.Logbook()
             logbook.header = ['gen'] + stats.fields
             features.provide('logbook', logbook)
+
             history = tools.History()
             features.provide('history', history)
+
+            hall_of_fame = test_runner.new_hall_of_fame()
+            features.provide('hall_of_fame', hall_of_fame)
 
             result_dir = prepare_result_dir(app_name, repetition, strategy_with_runner_name)
 

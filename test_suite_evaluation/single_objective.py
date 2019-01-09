@@ -18,10 +18,11 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         creator.create("FitnessMax", base.Fitness, weights=(1.0,))
         creator.create("Individual", list, fitness=creator.FitnessMax)
 
-        self.hall_of_fame = tools.HallOfFame(maxsize=10)
-
     def register_selection_operator(self, toolbox):
         toolbox.register("select", tools.selRoulette)
+
+    def new_hall_of_fame(self):
+        return tools.HallOfFame(maxsize=50)
 
     def set_empty_fitness(self, individual):
         individual.fitness.values = (0, )
@@ -29,7 +30,8 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         individual.evaluation_finish_timestamp = time.time()
         individual.evaluation_elapsed_time = 0
 
-        self.hall_of_fame.update([individual])
+        hall_of_fame = RequiredFeature('hall_of_fame').request()
+        hall_of_fame.update([individual])
 
     def evaluate(self, device, individual):
         assert not individual.fitness.valid
@@ -50,7 +52,8 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         individual.evaluation_finish_timestamp = finish_time
         individual.evaluation_elapsed_time = finish_time - start_time
 
-        self.hall_of_fame.update([individual])
+        hall_of_fame = RequiredFeature('hall_of_fame').request()
+        hall_of_fame.update([individual])
 
         device.mark_work_stop()
 

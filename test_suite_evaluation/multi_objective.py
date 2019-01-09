@@ -19,11 +19,12 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
         creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
-        self.hall_of_fame = tools.ParetoFront()
-
     def register_selection_operator(self, toolbox):
         # self.toolbox.register("select", tools.selTournament, tournsize=5)
         toolbox.register("select", tools.selNSGA2)
+
+    def new_hall_of_fame(self):
+        return tools.ParetoFront()
 
     def set_empty_fitness(self, individual):
         individual.fitness.values = (0, sys.maxsize, 0)
@@ -31,7 +32,8 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         individual.evaluation_finish_timestamp = time.time()
         individual.evaluation_elapsed_time = 0
 
-        self.hall_of_fame.update([individual])
+        hall_of_fame = RequiredFeature('hall_of_fame').request()
+        hall_of_fame.update([individual])
 
     def evaluate(self, device, individual):
         assert not individual.fitness.valid
@@ -65,7 +67,8 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         individual.evaluation_finish_timestamp = finish_time
         individual.evaluation_elapsed_time = finish_time - start_time
 
-        self.hall_of_fame.update([individual])
+        hall_of_fame = RequiredFeature('hall_of_fame').request()
+        hall_of_fame.update([individual])
 
         device.mark_work_stop()
 
