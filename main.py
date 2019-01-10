@@ -66,11 +66,13 @@ def run_one_app(strategy_with_runner_name):
 
             get_emulators_running(result_dir)
 
-            logger.log_progress("\n-----> Starting repetition: " + str(repetition) + " for app: " + app_name)
-
             test_generator = Evolutiz()
 
             budget_manager.start_time_budget()
+
+            logger.log_progress("\n-----> Starting repetition: " + str(repetition) +
+                                " for app: " + app_name +
+                                ", initial timestamp is: " + str(budget_manager.start_time))
             test_generator.run()
 
             logger.log_progress("\nEvolutiz finished for app: " + app_name)
