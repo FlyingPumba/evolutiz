@@ -106,7 +106,7 @@ def print_fitness_by_time(logbook_file_path):
     evaluations = {}
     for gen, population in enumerate(fitness_by_gen):
         for fitness in population:
-            id = str(fitness['generation']) + "." + str(fitness['index_in_generation'])
+            id = str(gen) + "." + str(fitness['index_in_generation'])
 
             coverage = str(fitness['coverage'])
             crashes = ""
@@ -118,6 +118,7 @@ def print_fitness_by_time(logbook_file_path):
                 length = str(fitness['length'])
 
             evaluations[id] = {
+                'generation': gen,
                 'coverage': coverage,
                 'crashes': crashes,
                 'length': length
@@ -127,22 +128,24 @@ def print_fitness_by_time(logbook_file_path):
     evaluation_by_gen = logbook.select("evaluation")
     for gen, population in enumerate(evaluation_by_gen):
         for evaluation in population:
-            id = str(evaluation['generation']) + "." + str(evaluation['index_in_generation'])
+            id = str(gen) + "." + str(evaluation['index_in_generation'])
             evaluations[id]['timestamp'] = evaluation['evaluation_finish_timestamp']
 
     # substract creation_elapsed_time for each individual's timestamp
     creation_by_gen = logbook.select("creation")
     for gen, population in enumerate(creation_by_gen):
         for creation in population:
-            id = str(creation['generation']) + "." + str(creation['index_in_generation'])
+            id = str(gen) + "." + str(creation['index_in_generation'])
             evaluations[id]['timestamp'] = evaluations[id]['timestamp'] - creation['creation_elapsed_time']
 
     # sort information by timestamp
     values = evaluations.values()
     sorted_values = sorted(values, key=lambda k: k['timestamp'])
+    sorted_values = sorted(sorted_values, key=lambda k: k['generation'])
 
-    print("timestamp,coverage,crashes,length")
-    print("\n".join(map(lambda x: "{0},{1},{2},{3}".format(
+    print("generation,timestamp,coverage,crashes,length")
+    print("\n".join(map(lambda x: "{0},{1},{2},{3},{4}".format(
+        x['generation'],
         x['timestamp'],
         x['coverage'],
         x['crashes'],
