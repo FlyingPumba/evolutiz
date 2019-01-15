@@ -1,3 +1,4 @@
+import sys
 import argparse
 import numpy
 import os
@@ -9,7 +10,7 @@ import matplotlib.pyplot as plt
 # This script needs to be run like:
 # python -m postprocess.logbook logbook.pickle
 
-def print_best_fitness(logbook_file_path):
+def print_best_overall_fitness(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
 
@@ -32,6 +33,36 @@ def print_best_fitness(logbook_file_path):
     print("coverage,crashes,length")
     print("{0},{1},{2}".format(max_coverage, max_crashes, min_length))
 
+
+def print_best_last_gen_fitness(logbook_file_path):
+    logbook_file = open(logbook_file_path, 'rb')
+    logbook = pickle.load(logbook_file)
+
+    fitness_by_gen = logbook.select("fitness")
+    last_population = fitness_by_gen[-1]
+
+    multi_objective = False
+
+    max_coverage = 0
+    min_length = sys.maxsize
+    max_crashes = 0
+
+    for fitness in last_population:
+
+        max_coverage = max(fitness['coverage'], max_coverage)
+
+        if 'crashes' in fitness:
+            # multi-objective hof
+            multi_objective = True
+            min_length = min(fitness['length'], min_length)
+            max_crashes = max(fitness['crashes'], max_crashes)
+
+    if not multi_objective:
+        max_crashes = ""
+        min_length = ""
+
+    print("coverage,crashes,length")
+    print("{0},{1},{2}".format(max_coverage, max_crashes, min_length))
 
 def print_avg_fitness(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
@@ -196,8 +227,10 @@ if __name__ == "__main__":
         draw_pop_fitness(args.logbook_file_path)
     elif args.processing == 'print-avg':
         print_avg_fitness(args.logbook_file_path)
-    elif args.processing == 'print-best':
-        print_best_fitness(args.logbook_file_path)
+    elif args.processing == 'print-best-overall':
+        print_best_overall_fitness(args.logbook_file_path)
+    elif args.processing == 'print-best-last-gen':
+        print_best_last_gen_fitness(args.logbook_file_path)
     elif args.processing == 'fitness-by-time':
         print_fitness_by_time(args.logbook_file_path)
     else:
