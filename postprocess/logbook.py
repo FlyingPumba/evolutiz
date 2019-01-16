@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 # This script needs to be run like:
 # python -m postprocess.logbook logbook.pickle
 
-def print_best_overall_fitness(logbook_file_path):
+def print_best_overall_fitness_single_objective(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
 
@@ -33,6 +33,34 @@ def print_best_overall_fitness(logbook_file_path):
     print("coverage,crashes,length")
     print("{0},{1},{2}".format(max_coverage, max_crashes, min_length))
 
+def print_best_overall_fitness_multi_objective(logbook_file_path):
+    logbook_file = open(logbook_file_path, 'rb')
+    logbook = pickle.load(logbook_file)
+
+    fitness_by_gen = logbook.select("fitness")
+
+    max_coverage = 0
+    min_length = sys.maxsize
+    max_crashes = 0
+
+    for gen, population in enumerate(fitness_by_gen):
+        for fitness in population:
+
+            at_least_as_good = fitness['coverage'] >= max_coverage \
+                               and fitness['length'] <= min_length \
+                               and fitness['crashes'] >= max_crashes
+
+            partially_better = fitness['coverage'] > max_coverage \
+                               or fitness['length'] < min_length \
+                               or fitness['crashes'] > max_crashes
+
+            if at_least_as_good and partially_better:
+                max_coverage = fitness['coverage']
+                min_length = fitness['length']
+                max_crashes = fitness['crashes']
+
+    print("coverage,crashes,length")
+    print("{0},{1},{2}".format(max_coverage, max_crashes, min_length))
 
 def print_best_last_gen_fitness(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
@@ -52,7 +80,7 @@ def print_best_last_gen_fitness(logbook_file_path):
         max_coverage = max(fitness['coverage'], max_coverage)
 
         if 'crashes' in fitness:
-            # multi-objective hof
+            # multi-objective logbook
             multi_objective = True
             min_length = min(fitness['length'], min_length)
             max_crashes = max(fitness['crashes'], max_crashes)
@@ -227,8 +255,10 @@ if __name__ == "__main__":
         draw_pop_fitness(args.logbook_file_path)
     elif args.processing == 'print-avg':
         print_avg_fitness(args.logbook_file_path)
-    elif args.processing == 'print-best-overall':
-        print_best_overall_fitness(args.logbook_file_path)
+    elif args.processing == 'print-best-overall-single-objective':
+        print_best_overall_fitness_single_objective(args.logbook_file_path)
+    elif args.processing == 'print-best-overall-multi-objective':
+        print_best_overall_fitness_multi_objective(args.logbook_file_path)
     elif args.processing == 'print-best-last-gen':
         print_best_last_gen_fitness(args.logbook_file_path)
     elif args.processing == 'fitness-by-time':
