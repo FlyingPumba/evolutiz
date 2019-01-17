@@ -26,6 +26,7 @@ from devices import adb
 from devices.avd_manager import AvdManager
 from devices.device_manager import DeviceManager
 from evolutiz import Evolutiz
+from postprocess.evaluate_scripts import EvaluateScripts
 from test_runner.evolutiz.evolutiz_test_runner import EvolutizTestRunner
 from test_runner.motifcore.motifcore_test_runner import MotifcoreTestRunner
 from test_suite_evaluation.multi_objective import MultiObjectiveTestSuiteEvaluator
@@ -306,7 +307,8 @@ def add_arguments_to_parser(parser):
         "onePlusLambdaCommaLambda": OnePlusLambdaCommaLambda,
         "mosa": Mosa,
         "dynaMosa": DynaMosa,
-        "randomSearch": RandomSearch
+        "randomSearch": RandomSearch,
+        "evaluateScripts": EvaluateScripts,
     }
     parser.add_argument('-s', '--strategy', dest='strategy',
                         choices=possible_strategies.keys(), help='Strategy to be used')
@@ -340,6 +342,10 @@ def add_arguments_to_parser(parser):
                         help='Choose the random seed to be used in the Evolutiz runner. This seed doesn\'t affect the '
                              'one used inside the test runners.')
 
+    parser.add_argument('--evaluate-scripts-folder-path', dest='evaluate_scripts_folder_path',
+                        help='Path to folder with scripts to evaluate. '
+                             'For example: results/steady-motifcore-multi-objective/arity/0/intermediate/')
+
 
 def init_arguments_defaults():
     global defaults
@@ -365,7 +371,8 @@ def init_arguments_defaults():
         "evaluator": "multi-objective",
         "individual_generator": "default",
         "test_runner": "motifcore",
-        "seed": None
+        "seed": None,
+        'evaluate_scripts_folder_path': None,
     }
 
 
@@ -464,6 +471,8 @@ def provide_features():
     stats.register("min", numpy.min, axis=0)
     stats.register("max", numpy.max, axis=0)
     features.provide('stats', stats)
+
+    features.provide('evaluate_scripts_folder_path', args.evaluate_scripts_folder_path)
 
 
 if __name__ == "__main__":
