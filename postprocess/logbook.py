@@ -10,6 +10,14 @@ import matplotlib.pyplot as plt
 # This script needs to be run like:
 # python -m postprocess.logbook logbook.pickle
 
+def print_number_of_generations(logbook_file_path):
+    logbook_file = open(logbook_file_path, 'rb')
+    logbook = pickle.load(logbook_file)
+
+    fitness_by_gen = logbook.select("fitness")
+    print("generations")
+    print("{0}".format(len(fitness_by_gen)))
+
 def print_best_overall_fitness_single_objective(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
@@ -263,5 +271,7 @@ if __name__ == "__main__":
         print_best_last_gen_fitness(args.logbook_file_path)
     elif args.processing == 'fitness-by-time':
         print_fitness_by_time(args.logbook_file_path)
+    elif args.processing == 'generations':
+        print_number_of_generations(args.logbook_file_path)
     else:
         print(args.processing)
