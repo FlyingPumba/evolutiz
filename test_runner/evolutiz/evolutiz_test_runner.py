@@ -89,8 +89,8 @@ class EvolutizTestRunner(TestRunner):
 
             ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
             local_dst_filename = result_dir + "/intermediate/offspring." + ts
-            self.generate(device, package_name, local_dst_filename)
-            individual.append(self.get_test_case_content_from_file(local_dst_filename))
+            test_content = self.generate(device, package_name, local_dst_filename)
+            individual.append(test_content)
 
             test_case_addition_pb = test_case_addition_pb * sigma
             pb = random.random()
