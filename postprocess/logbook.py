@@ -199,11 +199,11 @@ def print_fitness_by_time(logbook_file_path):
             evaluations[id]['timestamp'] = evaluation['evaluation_finish_timestamp']
 
     # substract creation_elapsed_time for each individual's timestamp
-    creation_by_gen = logbook.select("creation")
-    for gen, population in enumerate(creation_by_gen):
-        for creation in population:
-            id = str(gen) + "." + str(creation['index_in_generation'])
-            evaluations[id]['timestamp'] = evaluations[id]['timestamp'] - creation['creation_elapsed_time']
+    # creation_by_gen = logbook.select("creation")
+    # for gen, population in enumerate(creation_by_gen):
+    #     for creation in population:
+    #         id = str(gen) + "." + str(creation['index_in_generation'])
+    #         evaluations[id]['timestamp'] = evaluations[id]['timestamp'] - creation['creation_elapsed_time']
 
     # sort information by timestamp
     values = evaluations.values()
