@@ -191,29 +191,36 @@ def print_fitness_by_time(logbook_file_path):
                 'length': length
             }
 
-    # gather timestamp of each fitness evaluation
+    # gather fitness evaluation info
     evaluation_by_gen = logbook.select("evaluation")
     for gen, population in enumerate(evaluation_by_gen):
         for evaluation in population:
             id = str(gen) + "." + str(evaluation['index_in_generation'])
-            evaluations[id]['timestamp'] = evaluation['evaluation_finish_timestamp']
+            evaluations[id]['evaluation.timestamp'] = evaluation['evaluation_finish_timestamp']
+            evaluations[id]['evaluation.elapsed'] = evaluation['evaluation_elapsed_time']
 
-    # substract creation_elapsed_time for each individual's timestamp
-    # creation_by_gen = logbook.select("creation")
-    # for gen, population in enumerate(creation_by_gen):
-    #     for creation in population:
-    #         id = str(gen) + "." + str(creation['index_in_generation'])
-    #         evaluations[id]['timestamp'] = evaluations[id]['timestamp'] - creation['creation_elapsed_time']
+    # gather individual creation info
+    creation_by_gen = logbook.select("creation")
+    for gen, population in enumerate(creation_by_gen):
+        for creation in population:
+            id = str(gen) + "." + str(creation['index_in_generation'])
+            evaluations[id]['creation.timestamp'] = creation['creation_finish_timestamp']
+            evaluations[id]['creation.elapsed'] = creation['creation_elapsed_time']
+
+            # evaluations[id]['timestamp'] = evaluations[id]['timestamp'] - creation['creation_elapsed_time']
 
     # sort information by timestamp
     values = evaluations.values()
-    sorted_values = sorted(values, key=lambda k: k['timestamp'])
+    sorted_values = sorted(values, key=lambda k: k['evaluation.timestamp'])
     sorted_values = sorted(sorted_values, key=lambda k: k['generation'])
 
-    print("generation,timestamp,coverage,crashes,length")
+    print("generation,evaluation.timestamp,evaluation.elapsed,creation.timestamp,creation.elapsed,coverage,crashes,length")
     print("\n".join(map(lambda x: "{0},{1},{2},{3},{4}".format(
         x['generation'],
-        x['timestamp'],
+        x['evaluation.timestamp'],
+        x['evaluation.elapsed'],
+        x['creation.timestamp'],
+        x['creation.elapsed'],
         x['coverage'],
         x['crashes'],
         x['length']), sorted_values)))
