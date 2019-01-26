@@ -215,7 +215,7 @@ def print_fitness_by_time(logbook_file_path):
     sorted_values = sorted(sorted_values, key=lambda k: k['generation'])
 
     print("generation,evaluation.timestamp,evaluation.elapsed,creation.timestamp,creation.elapsed,coverage,crashes,length")
-    print("\n".join(map(lambda x: "{0},{1},{2},{3},{4}".format(
+    print("\n".join(map(lambda x: "{0},{1},{2},{3},{4},{5},{6},{7}".format(
         x['generation'],
         x['evaluation.timestamp'],
         x['evaluation.elapsed'],
