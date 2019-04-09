@@ -196,8 +196,8 @@ def print_fitness_by_time(logbook_file_path):
     evaluation_by_gen = logbook.select("evaluation")
     for gen, population in enumerate(evaluation_by_gen):
         for evaluation in population:
-            original_generation = str(fitness['generation'])
-            id = original_generation + "." + str(fitness['index_in_generation'])
+            original_generation = str(evaluation['generation'])
+            id = original_generation + "." + str(evaluation['index_in_generation'])
             evaluations[id]['evaluation.timestamp'] = evaluation['evaluation_finish_timestamp']
             evaluations[id]['evaluation.elapsed'] = evaluation['evaluation_elapsed_time']
 
@@ -205,8 +205,8 @@ def print_fitness_by_time(logbook_file_path):
     creation_by_gen = logbook.select("creation")
     for gen, population in enumerate(creation_by_gen):
         for creation in population:
-            original_generation = str(fitness['generation'])
-            id = original_generation + "." + str(fitness['index_in_generation'])
+            original_generation = str(creation['generation'])
+            id = original_generation + "." + str(creation['index_in_generation'])
             evaluations[id]['creation.timestamp'] = creation['creation_finish_timestamp']
             evaluations[id]['creation.elapsed'] = creation['creation_elapsed_time']
 
