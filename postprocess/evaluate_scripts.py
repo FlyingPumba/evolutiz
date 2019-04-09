@@ -40,6 +40,13 @@ class EvaluateScripts(Strategy):
             script_path = evaluate_scripts_folder_path + "/" + file_name
 
             aux = file_name.split('.')
+            if len(aux) != 4:
+                # to avoid double evaluation of initial scripts, the format for file names has to be "script.G.I.T",
+                # where G is the generation at which the script was created,
+                # I the index of individual in that generation, and
+                # T is the number of test sequence for that individual.
+                continue
+
             generation = int(aux[1])
             individual_index = int(aux[2])
             test_case_index = int(aux[3])
