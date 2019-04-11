@@ -8,20 +8,32 @@ from util import logger
 
 class EvaluateScripts(Strategy):
     def run(self):
-        generation, script_paths = self.get_script_paths_for_individuals()
-        individuals = self.script_paths_to_individuals(generation, script_paths)
+        script_paths = self.fetch_script_paths()
 
-        success = self.parallel_evaluator.evaluate(individuals)
+        # transform all script_paths to individuals
+        individuals_by_generation = {}
+        for generation, individuals_script_paths in sorted(script_paths.items()):
+            individuals = self.script_paths_to_individuals(generation, individuals_script_paths)
+            individuals_by_generation[generation] = individuals
+
+        # evaluate all individuals together for performance
+        success = self.parallel_evaluator.evaluate(individuals_by_generation.values())
 
         if not success:
             logger.log_progress("\nTime budget run out during parallel evaluation")
             return False
 
-        self.parallel_evaluator.test_suite_evaluator.update_logbook(0, individuals)
+        # update logbook for each generation
+        for generation, individuals in sorted(individuals_by_generation.items()):
+            self.parallel_evaluator.test_suite_evaluator.update_logbook(generation, individuals)
 
         return True
 
-    def get_script_paths_for_individuals(self):
+    def fetch_script_paths(self):
+        """
+        Analyzes "evaluate_scripts_folder_path" and clusters scripts paths by generation and individual index.
+        :return:
+        """
         evaluate_scripts_folder_path = RequiredFeature('evaluate_scripts_folder_path').request()
         if evaluate_scripts_folder_path is None or evaluate_scripts_folder_path.strip() == "":
             raise Exception("EvaluateScripts strategy selected but 'evaluate-scripts-folder-path'"
@@ -30,14 +42,11 @@ class EvaluateScripts(Strategy):
         evaluate_scripts_folder_path = evaluate_scripts_folder_path.rstrip('/')
         logger.log_progress("\nEvaluating scripts in folder: " + evaluate_scripts_folder_path)
 
-        current_generation = -1
-        script_paths_for_individuals = {}
+        script_paths = {}
 
-        for file_name in sorted(os.listdir(evaluate_scripts_folder_path)):
+        for file_name in os.listdir(evaluate_scripts_folder_path):
             if not file_name.startswith("script"):
                 continue
-
-            script_path = evaluate_scripts_folder_path + "/" + file_name
 
             aux = file_name.split('.')
             if len(aux) != 4:
@@ -47,35 +56,36 @@ class EvaluateScripts(Strategy):
                 # T is the number of test sequence for that individual.
                 continue
 
+            script_path = evaluate_scripts_folder_path + "/" + file_name
+
             generation = int(aux[1])
             individual_index = int(aux[2])
             test_case_index = int(aux[3])
 
-            if generation > current_generation:
-                # we found a script for a generation greater than the one we previously had
-                # clean previous individuals
-                current_generation = generation
-                script_paths_for_individuals = {}
+            if generation not in script_paths:
+                script_paths[generation] = {}
 
-            if individual_index not in script_paths_for_individuals:
-                script_paths_for_individuals[individual_index] = {}
+            if individual_index not in script_paths[generation]:
+                # we have to store 5 test sequences per individual
+                script_paths[generation][individual_index] = {}
 
-            script_paths_for_individuals[individual_index][test_case_index] = script_path
+            script_paths[generation][individual_index][test_case_index] = script_path
 
-        return current_generation, script_paths_for_individuals
+        return script_paths
 
     def script_paths_to_individuals(self, generation, script_paths):
         test_runner = RequiredFeature('test_runner').request()
         individuals = []
 
-        for individual_index, test_suite in script_paths.items():
-            suite = []
-            for test_case_index, script_path in test_suite.items():
+        for individual_index, test_suite_script_paths in script_paths.items():
+            test_suite = []
+
+            for test_case_index, script_path in test_suite_script_paths.items():
                 logger.log_progress("\n- " + script_path)
                 test_case_content = test_runner.get_test_case_content_from_file(script_path)
-                suite.append(test_case_content)
+                test_suite.append(test_case_content)
 
-            individual = creator.Individual(suite)
+            individual = creator.Individual(test_suite)
             individual.creation_finish_timestamp = 0
             individual.creation_elapsed_time = 0
             individual.index_in_generation = individual_index
