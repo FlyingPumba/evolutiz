@@ -12,12 +12,14 @@ class EvaluateScripts(Strategy):
 
         # transform all script_paths to individuals
         individuals_by_generation = {}
+        individuals_to_evaluate = []
         for generation, individuals_script_paths in sorted(script_paths.items()):
             individuals = self.script_paths_to_individuals(generation, individuals_script_paths)
+            
             individuals_by_generation[generation] = individuals
+            individuals_to_evaluate.extend(individuals)
 
         # evaluate all individuals together for performance
-        individuals_to_evaluate = list(individuals_by_generation.values())
         success = self.parallel_evaluator.evaluate(individuals_to_evaluate)
 
         if not success:
