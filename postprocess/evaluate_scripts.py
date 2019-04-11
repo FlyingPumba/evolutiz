@@ -17,7 +17,8 @@ class EvaluateScripts(Strategy):
             individuals_by_generation[generation] = individuals
 
         # evaluate all individuals together for performance
-        success = self.parallel_evaluator.evaluate(individuals_by_generation.values())
+        individuals_to_evaluate = list(individuals_by_generation.values())
+        success = self.parallel_evaluator.evaluate(individuals_to_evaluate)
 
         if not success:
             logger.log_progress("\nTime budget run out during parallel evaluation")
@@ -77,10 +78,10 @@ class EvaluateScripts(Strategy):
         test_runner = RequiredFeature('test_runner').request()
         individuals = []
 
-        for individual_index, test_suite_script_paths in script_paths.items():
+        for individual_index, test_suite_script_paths in sorted(script_paths.items()):
             test_suite = []
 
-            for test_case_index, script_path in test_suite_script_paths.items():
+            for test_case_index, script_path in sorted(test_suite_script_paths.items()):
                 logger.log_progress("\n- " + script_path)
                 test_case_content = test_runner.get_test_case_content_from_file(script_path)
                 test_suite.append(test_case_content)
