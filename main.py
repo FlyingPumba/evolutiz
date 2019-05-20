@@ -117,8 +117,15 @@ def get_emulators_running(result_dir):
 
 
 def prepare_result_dir(app_name, repetition, strategy_with_runner_name):
+    repetition_folder = str(repetition)
+
+    # check if the user wants to overwrite repetition_folder because it's evaluating scripts
+    evaluate_scripts_repetition_number = RequiredFeature('evaluate_scripts_repetition_number').request()
+    if evaluate_scripts_repetition_number is not None:
+        repetition_folder = str(evaluate_scripts_repetition_number)
+
     result_dir = settings.WORKING_DIR + "results/" + \
-                 strategy_with_runner_name + "/" + app_name + "/" + str(repetition)
+                 strategy_with_runner_name + "/" + app_name + "/" + repetition_folder
 
     os.system("rm -rf " + result_dir + "/*" + logger.redirect_string())
     result_code = os.system("mkdir -p " + result_dir)
@@ -346,6 +353,10 @@ def add_arguments_to_parser(parser):
                         help='Path to folder with scripts to evaluate. '
                              'For example: results/steady-motifcore-multi-objective/arity/0/intermediate/')
 
+    parser.add_argument('--evaluate-scripts-repetition-number', type=int, dest='evaluate_scripts_repetition_number',
+                        help='This argument is useful for changing the result directory path when evaluating several '
+                             'repetitions of a same algorithm-app.')
+
 
 def init_arguments_defaults():
     global defaults
@@ -373,6 +384,7 @@ def init_arguments_defaults():
         "test_runner": "motifcore",
         "seed": None,
         'evaluate_scripts_folder_path': None,
+        'evaluate_scripts_repetition_number': None,
     }
 
 
@@ -473,6 +485,7 @@ def provide_features():
     features.provide('stats', stats)
 
     features.provide('evaluate_scripts_folder_path', args.evaluate_scripts_folder_path)
+    features.provide('evaluate_scripts_repetition_number', args.evaluate_scripts_repetition_number)
 
 
 if __name__ == "__main__":
