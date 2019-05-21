@@ -364,7 +364,7 @@ def add_arguments_to_parser(parser):
                         help='This argument is useful for changing the result directory path when evaluating several '
                              'repetitions of a same algorithm-app.')
 
-    parser.add_argument('--evaluate-scripts-algorithm-name', type=int, dest='evaluate_scripts_algorithm_name',
+    parser.add_argument('--evaluate-scripts-algorithm-name', dest='evaluate_scripts_algorithm_name',
                         help='This argument is useful for changing the result directory path when evaluating scripts '
                              'from a previous run.')
 
