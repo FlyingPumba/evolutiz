@@ -118,15 +118,22 @@ def get_emulators_running(result_dir):
 
 def prepare_result_dir(app_name, repetition, strategy_with_runner_name):
     repetition_folder = str(repetition)
+    algorithm_folder = strategy_with_runner_name
 
     # check if the user wants to overwrite repetition_folder because it's evaluating scripts
     evaluate_scripts_repetition_number = RequiredFeature('evaluate_scripts_repetition_number').request()
     if evaluate_scripts_repetition_number is not None:
         repetition_folder = str(evaluate_scripts_repetition_number)
 
-    result_dir = settings.WORKING_DIR + "results/" + \
-                 strategy_with_runner_name + "/" + app_name + "/" + repetition_folder
+    evaluate_scripts_algorithm_name = RequiredFeature('evaluate_scripts_algorithm_name').request()
+    if evaluate_scripts_algorithm_name is not None:
+        algorithm_folder = str(evaluate_scripts_algorithm_name)
 
+    # build result_dir path
+    result_dir = settings.WORKING_DIR + "results/" + \
+                 algorithm_folder + "/" + app_name + "/" + repetition_folder
+
+    # clean and create result_dir
     os.system("rm -rf " + result_dir + "/*" + logger.redirect_string())
     result_code = os.system("mkdir -p " + result_dir)
     if result_code != 0: raise Exception("Unable to create result dir")
@@ -357,6 +364,10 @@ def add_arguments_to_parser(parser):
                         help='This argument is useful for changing the result directory path when evaluating several '
                              'repetitions of a same algorithm-app.')
 
+    parser.add_argument('--evaluate-scripts-algorithm-name', type=int, dest='evaluate_scripts_algorithm_name',
+                        help='This argument is useful for changing the result directory path when evaluating scripts '
+                             'from a previous run.')
+
 
 def init_arguments_defaults():
     global defaults
@@ -385,6 +396,7 @@ def init_arguments_defaults():
         "seed": None,
         'evaluate_scripts_folder_path': None,
         'evaluate_scripts_repetition_number': None,
+        'evaluate_scripts_algorithm_name': None,
     }
 
 
@@ -486,6 +498,7 @@ def provide_features():
 
     features.provide('evaluate_scripts_folder_path', args.evaluate_scripts_folder_path)
     features.provide('evaluate_scripts_repetition_number', args.evaluate_scripts_repetition_number)
+    features.provide('evaluate_scripts_algorithm_name', args.evaluate_scripts_algorithm_name)
 
 
 if __name__ == "__main__":
