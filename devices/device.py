@@ -72,7 +72,15 @@ class Device(object):
         return adb.get_imei(self)
 
     def api_level(self):
-        return adb.get_api_level(self)
+        for i in range(3):
+            try:
+                level = adb.get_api_level(self)
+                if level is not None:
+                    return level
+            except Exception as e:
+                time.sleep(15)
+
+        raise Exception("Unable to get API level for device " + self.name)
 
     def android_version(self):
         return adb.get_android_version(self)
