@@ -25,7 +25,7 @@ from dependency_injection.feature_broker import features
 from devices import adb
 from devices.avd_manager import AvdManager
 from devices.device_manager import DeviceManager
-from evolutiz import Evolutiz
+from util.evolutiz import Evolutiz
 from postprocess.evaluate_scripts import EvaluateScripts
 from test_runner.evolutiz.evolutiz_test_runner import EvolutizTestRunner
 from test_runner.motifcore.motifcore_test_runner import MotifcoreTestRunner
