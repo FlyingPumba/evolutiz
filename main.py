@@ -502,9 +502,6 @@ def provide_features():
 
 
 if __name__ == "__main__":
-    logger.prepare()
-    logger.clear_progress()
-
     parse_config_file()
 
     # Parse rest of arguments
@@ -521,6 +518,9 @@ if __name__ == "__main__":
 
     # --------------------------------------------------------------------------------- #
     # --------------------------------------------------------------------------------- #
+
+    logger.prepare()
+    logger.clear_progress()
 
     check_virtualbox_is_not_running()
 
