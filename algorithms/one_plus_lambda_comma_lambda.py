@@ -56,8 +56,8 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
                 print("Time budget run out during parallel evaluation, exiting evolve")
                 break
 
-            # select best mutant and apply crossover with parent
-            best_mutant, = self.toolbox.select(mutants, 1)
+            # select best mutant and generate offspring by applying crossover with parent
+            best_mutant, = self.toolbox.selBest(mutants, 1)
             offspring = self.generate_offspring(gen, best_mutant)
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
             success = self.parallel_evaluator.evaluate(invalid_ind)
@@ -66,9 +66,9 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
                 break
 
             # select best offspring and set as new parent
-            # the parent is included in the selection to avoid degrading the solution
+            # the parent is included in the selection to avoid degrading the current solution
             offspring.append(self.parent)
-            best_offspring, = self.toolbox.select(offspring, 1)
+            best_offspring, = self.toolbox.selBest(offspring, 1)
             self.parent = best_offspring
             self.population = [self.parent]
 
@@ -112,14 +112,14 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
 
             offspring.append(ind1)
 
-            if len(offspring) < self.offspring_size:
-                del ind2.fitness.values
-                ind2.index_in_generation = index_in_generation + 1
-                ind2.generation = gen
-                ind2.creation_finish_timestamp = time.time()
-                ind2.creation_elapsed_time = 0
+            del ind2.fitness.values
 
-                offspring.append(ind2)
+            ind2.index_in_generation = index_in_generation + 1
+            ind2.generation = gen
+            ind2.creation_finish_timestamp = time.time()
+            ind2.creation_elapsed_time = 0
+
+            offspring.append(ind2)
 
         return offspring
 
