@@ -18,10 +18,11 @@ class RandomSearch(Strategy):
     def __init__(self):
         super(RandomSearch, self).__init__()
 
-        # use expected number of devices as population size to leverage parallelism when using more than one emulator.
+        # use expected number of devices as sampling size to leverage parallelism when using more than one emulator.
         self.device_manager = RequiredFeature('device_manager').request()
-        self.population_size = self.device_manager.get_total_number_of_devices_expected()
+        self.sampling_size = self.device_manager.get_total_number_of_devices_expected()
 
+        self.population_size = 1
         self.population = []
 
     def run(self):
@@ -30,25 +31,25 @@ class RandomSearch(Strategy):
             logger.log_progress(
                 "\n---> Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
 
-            new_population = self.population_generator.generate(self.population_size, gen=gen)
-            if new_population is None:
+            new_individuals = self.population_generator.generate(self.sampling_size, gen=gen)
+            if new_individuals is None:
                 # Timeout occurred
                 break
 
             # Evaluate the individuals with an invalid fitness
-            invalid_ind = [ind for ind in new_population if not ind.fitness.valid]
+            invalid_ind = [ind for ind in new_individuals if not ind.fitness.valid]
             success = self.parallel_evaluator.evaluate(invalid_ind)
             if not success:
                 # Timeout occurred
                 break
 
             # save stats
-            self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, new_population)
+            self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, new_individuals)
             history = RequiredFeature('history').request()
             history.update(self.population)
 
             # select best individuals between current population and new one
-            self.population[:] = self.toolbox.select(self.population + new_population, self.population_size)
+            self.population[:] = self.toolbox.selBest(self.population + new_individuals, self.population_size)
             gen += 1
 
         return self.population
