@@ -26,6 +26,9 @@ class MuPlusLambda(GeneticAlgorithm):
     def __init__(self):
         super(MuPlusLambda, self).__init__()
 
+        # offpsring_size (Lambda) must be multiple of population_size (Mu)
+        assert self.offspring_size % self.population_size == 0
+
     def evolve(self):
         verbose_level = RequiredFeature('verbose_level').request()
 
@@ -39,15 +42,14 @@ class MuPlusLambda(GeneticAlgorithm):
 
             offspring = self.generate_offspring(self.population, gen)
 
-            # Evaluate the individuals with an invalid fitness
+            # evaluate the individuals with an invalid fitness
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
             success = self.parallel_evaluator.evaluate(invalid_ind)
-
             if not success:
                 print("Time budget run out during parallel evaluation, exiting evolve")
                 break
 
-            self.population[:] = self.toolbox.select(self.population + offspring, self.population_size)
+            self.population[:] = self.toolbox.selBest(self.population + offspring, self.population_size)
 
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
@@ -57,28 +59,16 @@ class MuPlusLambda(GeneticAlgorithm):
         return self.population
 
     def generate_offspring(self, population, gen):
-
         offspring = []
-        for index_in_generation in range(self.offspring_size):
-            op_choice = random.random()
-            if op_choice < self.crossover_probability:  # Apply crossover
-                ind1, ind2 = map(self.toolbox.clone, random.sample(population, 2))
-                ind1, ind2 = self.toolbox.mate(ind1, ind2)
+        index_in_generation = 0
+        for p in population:
+            for i in range(self.offspring_size / self.population_size):
+                ind = self.toolbox.clone(p)
 
-                del ind1.fitness.values
-
-                ind1.index_in_generation = index_in_generation
-                ind1.generation = gen
-                ind1.creation_finish_timestamp = time.time()
-                ind1.creation_elapsed_time = 0
-
-                offspring.append(ind1)
-
-            elif op_choice < self.crossover_probability + self.mutation_probability:  # Apply mutation
-                ind = self.toolbox.clone(random.choice(population))
-                ind, = self.toolbox.mutate(ind)
-
-                del ind.fitness.values
+                op_choice = random.random()
+                if op_choice < self.mutation_probability:
+                    ind, = self.toolbox.mutate([ind])
+                    del ind.fitness.values
 
                 ind.index_in_generation = index_in_generation
                 ind.generation = gen
@@ -86,15 +76,6 @@ class MuPlusLambda(GeneticAlgorithm):
                 ind.creation_elapsed_time = 0
 
                 offspring.append(ind)
-
-            else:  # Apply reproduction
-                ind = self.toolbox.clone(random.choice(population))
-
-                ind.index_in_generation = index_in_generation
-                ind.generation = gen
-                ind.creation_finish_timestamp = time.time()
-                ind.creation_elapsed_time = 0
-                
-                offspring.append(ind)
+                index_in_generation += 1
 
         return offspring
