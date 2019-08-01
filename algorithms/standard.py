@@ -55,7 +55,7 @@ class Standard(GeneticAlgorithm):
                 # add offspring to new population
                 new_population.extend(offspring)
 
-            # Evaluate the individuals with an invalid fitness
+            # evaluate the individuals with an invalid fitness
             invalid_ind = [ind for ind in new_population if not ind.fitness.valid]
             success = self.parallel_evaluator.evaluate(invalid_ind)
 
