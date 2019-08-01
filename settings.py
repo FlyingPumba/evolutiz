@@ -1,3 +1,5 @@
+import sys
+
 # if False, "0" will be used
 ENABLE_STRING_SEEDING = True
 ANDROID_TARGET = "android-10"  # TODO: this should depend on a configuration file in the subject itself
@@ -23,7 +25,7 @@ SUITE_SIZE = 5  # 5
 POPULATION_SIZE = 50  # 50
 OFFSPRING_SIZE = 50  # 50
 ELITISM_SIZE = 1 # By default 1, the same that uses Evosuite
-GENERATION = 100  # 100
+GENERATION = sys.maxsize
 # Crossover probability
 CXPB = 0.7
 # Mutation probability
