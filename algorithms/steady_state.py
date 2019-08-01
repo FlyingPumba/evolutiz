@@ -39,9 +39,7 @@ class SteadyState(Standard):
             offspring = self.crossover(parents, gen, 2)
             self.mutation(offspring)
 
-            # evaluate the individuals in offspring with an invalid fitness
-            invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
-            success = self.parallel_evaluator.evaluate(invalid_ind)
+            success = self.parallel_evaluator.evaluate(offspring)
             if not success:
                 print("Time budget run out during parallel evaluation, exiting evolve")
                 break

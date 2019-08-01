@@ -48,15 +48,11 @@ class GeneticAlgorithm(Strategy):
             logger.log_progress(
                 "\n---> Starting to evaluate initial population at " + str(self.budget_manager.get_time_budget_used()))
 
-        # Evaluate the individuals with an invalid fitness
-        invalid_ind = [ind for ind in self.population if not ind.fitness.valid]
-        success = self.parallel_evaluator.evaluate(invalid_ind)
+        success = self.parallel_evaluator.evaluate(self.population)
 
         if not success:
             logger.log_progress("\nTime budget run out during parallel evaluation, exiting setup")
             return False
-
-        self.population = invalid_ind.copy()
 
         self.parallel_evaluator.test_suite_evaluator.update_logbook(0, self.population)
 

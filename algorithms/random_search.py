@@ -36,9 +36,7 @@ class RandomSearch(Strategy):
                 # Timeout occurred
                 break
 
-            # Evaluate the individuals with an invalid fitness
-            invalid_ind = [ind for ind in new_individuals if not ind.fitness.valid]
-            success = self.parallel_evaluator.evaluate(invalid_ind)
+            success = self.parallel_evaluator.evaluate(new_individuals)
             if not success:
                 # Timeout occurred
                 break

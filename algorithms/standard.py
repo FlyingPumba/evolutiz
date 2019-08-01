@@ -55,9 +55,8 @@ class Standard(GeneticAlgorithm):
                 # add offspring to new population
                 new_population.extend(offspring)
 
-            # evaluate the individuals with an invalid fitness
-            invalid_ind = [ind for ind in new_population if not ind.fitness.valid]
-            success = self.parallel_evaluator.evaluate(invalid_ind)
+            # evaluate new
+            success = self.parallel_evaluator.evaluate(new_population)
 
             if not success:
                 print("Time budget run out during parallel evaluation, exiting evolve")
