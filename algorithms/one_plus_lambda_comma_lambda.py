@@ -39,7 +39,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
         verbose_level = RequiredFeature('verbose_level').request()
         self.parent = self.population[0]
 
-        for gen in range(1, self.max_generations + 1):
+        for gen in range(1, self.max_generations):
 
             if not self.budget_manager.time_budget_available():
                 print("Time budget run out, exiting evolve")

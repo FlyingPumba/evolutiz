@@ -23,7 +23,7 @@ class Monotonic(Standard):
     def evolve(self):
         verbose_level = RequiredFeature('verbose_level').request()
 
-        for gen in range(1, self.max_generations + 1):
+        for gen in range(1, self.max_generations):
 
             if not self.budget_manager.time_budget_available():
                 print("Time budget run out, exiting evolve")
