@@ -32,7 +32,7 @@ class MuCommaLambda(MuPlusLambda):
 
             offspring = self.generate_offspring(self.population, gen)
 
-            # Evaluate the individuals with an invalid fitness
+            # evaluate the individuals with an invalid fitness
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
             success = self.parallel_evaluator.evaluate(invalid_ind)
 
@@ -40,7 +40,7 @@ class MuCommaLambda(MuPlusLambda):
                 print("Time budget run out during parallel evaluation, exiting evolve")
                 break
 
-            self.population[:] = self.toolbox.select(offspring, self.population_size)
+            self.population[:] = self.toolbox.selBest(offspring, self.population_size)
 
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
