@@ -54,7 +54,6 @@ class SteadyState(Standard):
                 # only update population if the best individual among parents and offspring is a new one
                 self.population = [ind for ind in self.population if ind not in parents] + offspring
 
-            self.device_manager.log_devices_battery(gen, self.result_dir)
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
             if verbose_level > 0:
