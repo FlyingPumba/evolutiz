@@ -21,11 +21,6 @@ class Standard(GeneticAlgorithm):
     The two mutated offspring are then included in the next population. At the end of each iteration the fitness value
     of all individuals is computed.
 
-    This implementation generalizes the typical implementation of Standard EA that uses only 2 parents to generate 2
-    offspring per cycle. In this implementation we use _n_ parents to generate _n_ offspring, where _n_ is the number of
-    devices available. This allows us to retain the "standard" nature of this EA while also leveraging the parallelism
-    available.
-
     .. [CamposGFEA17] J. Campos, Y. Ge, G. Fraser, M. Eler, and A. Arcuri,
         “An Empirical Evaluation of Evolutionary Algorithms for Test Suite Generation”,
         in Search Based Software Engineering, 2017, pp. 33–48.
@@ -33,10 +28,6 @@ class Standard(GeneticAlgorithm):
 
     def __init__(self):
         super(Standard, self).__init__()
-
-        device_manager = RequiredFeature('device_manager').request()
-        self.offspring_size = len(device_manager.get_devices())
-        self.parents_size = self.offspring_size if self.offspring_size > 2 else 2
 
     def evolve(self):
         verbose_level = RequiredFeature('verbose_level').request()
@@ -53,16 +44,13 @@ class Standard(GeneticAlgorithm):
             # create new population, starting with elitism
             new_population = self.toolbox.selBest(self.population, self.elitism_size)
             while len(new_population) < self.population_size:
-                # calculate number of offspring to generate
-                needed_offspring = self.population_size - len(new_population)
-                offspring_number = self.offspring_size
-                if offspring_number > needed_offspring:
-                    offspring_number = needed_offspring
+                # select parents
+                parents = self.toolbox.select(self.population, 2)
 
                 # generate offspring
-                parents = self.toolbox.select(self.population, self.parents_size)
-                offspring = self.generate_offspring(parents, gen, offspring_number,
-                                                    base_index_in_generation=len(new_population))
+                needed_offspring = max(self.population_size - len(new_population), 2)
+                offspring = self.crossover(parents, gen, needed_offspring, base_index_in_generation=len(new_population))
+                self.mutation(offspring)
 
                 # add offspring to new population
                 new_population.extend(offspring)
@@ -85,12 +73,6 @@ class Standard(GeneticAlgorithm):
                                     str(self.budget_manager.get_time_budget_used()))
 
         return self.population
-
-    def generate_offspring(self, parents, gen, offspring_number, base_index_in_generation=0):
-        offspring = self.crossover(parents, gen, offspring_number, base_index_in_generation=base_index_in_generation)
-        self.mutation(offspring)
-
-        return offspring
 
     def crossover(self, parents, gen, offspring_number, base_index_in_generation=0):
         offspring = []
