@@ -13,6 +13,7 @@ class GeneticAlgorithm(Strategy):
         self.max_generations = settings.GENERATION
         self.population_size = settings.POPULATION_SIZE
         self.offspring_size = settings.OFFSPRING_SIZE
+        self.elitism_size = settings.ELITISM_SIZE
 
         self.population = None
         self.package_name = None

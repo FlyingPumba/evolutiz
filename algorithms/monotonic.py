@@ -37,8 +37,8 @@ class Monotonic(Standard):
             logger.log_progress("\n---> Starting generation " + str(gen) + " at " +
                                 str(self.budget_manager.get_time_budget_used()))
 
-            # create new population
-            new_population = []
+            # create new population, starting with elitism
+            new_population = self.toolbox.selBest(self.population, self.elitism_size)
             while len(new_population) < self.population_size:
                 # calculate number of offspring to generate
                 needed_offspring = self.population_size - len(new_population)
