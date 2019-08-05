@@ -52,7 +52,7 @@ class GeneticAlgorithm(Strategy):
         success = self.parallel_evaluator.evaluate(invalid_ind)
 
         if not success:
-            logger.log_progress("\nTime budget run out during parallel evaluation, exiting setup")
+            logger.log_progress("\nBudget ran out during parallel evaluation, exiting setup")
             return False
 
         self.population = invalid_ind.copy()

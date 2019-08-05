@@ -40,7 +40,7 @@ class WatchDogThread(threading.Thread):
                 self.output_queue.size() < self.expected_output_count and \
                 budget_available:
 
-            budget_available = budget_manager.time_budget_available()
+            budget_available = budget_manager.is_budget_available()
 
             # check that every MultipleQueueConsumerThread is not hung
             threads_to_check = [thread for thread in threading.enumerate() if
@@ -64,7 +64,7 @@ class WatchDogThread(threading.Thread):
 
                 if not budget_available:
                     # ask nicely
-                    logger.log_progress("\nTime budget run out, finishing thread: " + thread.name)
+                    logger.log_progress("\nBudget ran out, finishing thread: " + thread.name)
                     thread.stop()
                     stopped_threads = True
 

@@ -41,8 +41,8 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
 
         for gen in range(1, self.max_generations + 1):
 
-            if not self.budget_manager.time_budget_available():
-                print("Time budget run out, exiting evolve")
+            if not self.budget_manager.is_budget_available():
+                print("Budget ran out, exiting evolve")
                 break
 
             logger.log_progress("\n---> Starting generation " + str(gen) + " at " +
@@ -53,7 +53,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
             invalid_ind = [ind for ind in mutants if not ind.fitness.valid]
             success = self.parallel_evaluator.evaluate(invalid_ind)
             if not success:
-                print("Time budget run out during parallel evaluation, exiting evolve")
+                print("Budget ran out during parallel evaluation, exiting evolve")
                 break
 
             # select best mutant and apply crossover with parent
@@ -62,7 +62,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
             invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
             success = self.parallel_evaluator.evaluate(invalid_ind)
             if not success:
-                print("Time budget run out during parallel evaluation, exiting evolve")
+                print("Budget ran out during parallel evaluation, exiting evolve")
                 break
 
             # select best offspring and set as new parent

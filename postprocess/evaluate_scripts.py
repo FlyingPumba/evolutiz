@@ -23,7 +23,7 @@ class EvaluateScripts(Strategy):
         success = self.parallel_evaluator.evaluate(individuals_to_evaluate)
 
         if not success:
-            logger.log_progress("\nTime budget run out during parallel evaluation")
+            logger.log_progress("\nBudget ran out during parallel evaluation")
             return False
 
         # update logbook for each generation

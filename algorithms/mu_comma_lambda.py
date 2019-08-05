@@ -24,8 +24,8 @@ class MuCommaLambda(MuPlusLambda):
 
         for gen in range(1, self.max_generations + 1):
 
-            if not self.budget_manager.time_budget_available():
-                print("Time budget run out, exiting evolve")
+            if not self.budget_manager.is_budget_available():
+                print("Budget ran out, exiting evolve")
                 break
 
             logger.log_progress("\n---> Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
@@ -37,7 +37,7 @@ class MuCommaLambda(MuPlusLambda):
             success = self.parallel_evaluator.evaluate(invalid_ind)
 
             if not success:
-                print("Time budget run out during parallel evaluation, exiting evolve")
+                print("Budget ran out during parallel evaluation, exiting evolve")
                 break
 
             self.population[:] = self.toolbox.select(offspring, self.population_size)

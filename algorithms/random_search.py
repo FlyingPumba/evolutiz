@@ -26,7 +26,7 @@ class RandomSearch(Strategy):
 
     def run(self):
         gen = 0
-        while self.budget_manager.time_budget_available():
+        while self.budget_manager.is_budget_available():
             logger.log_progress(
                 "\n---> Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
 

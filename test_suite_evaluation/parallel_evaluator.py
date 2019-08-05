@@ -7,7 +7,6 @@ class ParallelEvaluator(object):
 
     def __init__(self):
         self.device_manager = RequiredFeature('device_manager').request()
-        self.budget_manager = RequiredFeature('budget_manager').request()
         self.test_suite_evaluator = RequiredFeature('test_suite_evaluator').request()
         self.toolbox = RequiredFeature('toolbox').request()
 

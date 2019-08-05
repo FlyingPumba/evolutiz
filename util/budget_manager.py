@@ -1,5 +1,6 @@
 import time
 
+from threading import Lock
 from datetime import datetime
 
 
@@ -23,11 +24,21 @@ class BudgetManager(object):
 
         self.evaluations = 0
         self.evaluations_limit = evaluations_budget
+        self.evaluations_lock = Lock()
 
-    def start_time_budget(self):
+    def start_budget(self):
         print("Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M"))
         self.start_time = time.time()
         self.time_limit_increase = 0
+        self.evaluations = 0
+
+    def is_budget_available(self):
+        return self.time_budget_available() and self.evaluations_budget_available()
+
+    def decrease_evaluations_budget(self):
+        self.evaluations_lock.acquire()
+        self.evaluations -= 1
+        self.evaluations_lock.release()
 
     def increase_time_budget(self, seconds):
         self.time_limit_increase += seconds
@@ -44,17 +55,20 @@ class BudgetManager(object):
         else:
             return True
 
-    def reset_evaluations_budget(self):
-        self.evaluations = 0
-
     def get_evaluations_budget_used(self):
         if self.evaluations_limit is not None:
-            return self.evaluations
+            self.evaluations_lock.acquire()
+            aux = self.evaluations
+            self.evaluations_lock.release()
+            return aux
         else:
             return None
 
     def evaluations_budget_available(self):
         if self.evaluations_limit is not None:
-            return self.evaluations < self.evaluations_limit
+            self.evaluations_lock.acquire()
+            aux = self.evaluations < self.evaluations_limit
+            self.evaluations_lock.release()
+            return aux
         else:
             return True

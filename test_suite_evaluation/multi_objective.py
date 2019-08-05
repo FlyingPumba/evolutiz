@@ -70,6 +70,9 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         hall_of_fame = RequiredFeature('hall_of_fame').request()
         hall_of_fame.update([individual])
 
+        budget_manager = RequiredFeature('budget_manager').request()
+        budget_manager.decrease_evaluations_budget()
+
         device.mark_work_stop()
 
         return individual
