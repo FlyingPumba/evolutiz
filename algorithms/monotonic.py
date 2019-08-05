@@ -12,11 +12,6 @@ class Monotonic(Standard):
     population (whereas the Standard GA includes both offspring in the next population regardless of their fitness
     value).
 
-    This implementation generalizes the typical implementation of Monotonic EA that uses only 2 parents to generate 2
-    offspring per cycle. In this implementation we use _n_ parents to generate _n_ offspring, where _n_ is the number of
-    devices available. This allows us to retain the "monotonic" nature of this EA while also leveraging the parallelism
-    available.
-
     .. [CamposGFEA17] J. Campos, Y. Ge, G. Fraser, M. Eler, and A. Arcuri,
         “An Empirical Evaluation of Evolutionary Algorithms for Test Suite Generation”,
         in Search Based Software Engineering, 2017, pp. 33–48.
@@ -28,7 +23,7 @@ class Monotonic(Standard):
     def evolve(self):
         verbose_level = RequiredFeature('verbose_level').request()
 
-        for gen in range(1, self.max_generations + 1):
+        for gen in range(1, self.max_generations):
 
             if not self.budget_manager.is_budget_available():
                 print("Budget ran out, exiting evolve")
@@ -37,29 +32,24 @@ class Monotonic(Standard):
             logger.log_progress("\n---> Starting generation " + str(gen) + " at " +
                                 str(self.budget_manager.get_time_budget_used()))
 
-            # create new population
-            new_population = []
+            # create new population, starting with elitism
+            new_population = self.toolbox.selBest(self.population, self.elitism_size)
             while len(new_population) < self.population_size:
-                # calculate number of offspring to generate
-                needed_offspring = self.population_size - len(new_population)
-                offspring_number = self.offspring_size
-                if offspring_number > needed_offspring:
-                    offspring_number = needed_offspring
+                # select parents
+                parents = self.toolbox.select(self.population, 2)
 
                 # generate offspring
-                parents = self.toolbox.select(self.population, self.parents_size)
-                offspring = self.generate_offspring(parents, gen, offspring_number,
-                                                    base_index_in_generation=len(new_population))
+                needed_offspring = max(self.population_size - len(new_population), 2)
+                offspring = self.crossover(parents, gen, needed_offspring, base_index_in_generation=len(new_population))
+                self.mutation(offspring)
 
-                # Evaluate the individuals in offspring with an invalid fitness
-                invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
-                success = self.parallel_evaluator.evaluate(invalid_ind)
+                success = self.parallel_evaluator.evaluate(offspring)
                 if not success:
                     print("Budget ran out during parallel evaluation, exiting evolve")
                     return self.population
 
                 # extend new population with offspring or parents, depending which ones have the best individual
-                best_ind, = self.toolbox.select(offspring + parents, 1)
+                best_ind, = self.toolbox.selBest(offspring + parents, 1)
                 if best_ind in offspring:
                     new_population.extend(offspring)
                 else:
@@ -67,7 +57,6 @@ class Monotonic(Standard):
 
             self.population = new_population.copy()
 
-            self.device_manager.log_devices_battery(gen, self.result_dir)
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
             if verbose_level > 0:

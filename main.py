@@ -113,10 +113,6 @@ def get_emulators_running(result_dir):
 
     device_manager.boot_emulators(wait_to_be_ready=True)
 
-    device_manager.wait_for_battery_threshold()
-    device_manager.log_devices_battery("init", result_dir)
-
-
 def prepare_result_dir(app_name, repetition, strategy_with_runner_name):
     repetition_folder = str(repetition)
     algorithm_folder = strategy_with_runner_name

@@ -22,7 +22,7 @@ class MuCommaLambda(MuPlusLambda):
     def evolve(self):
         verbose_level = RequiredFeature('verbose_level').request()
 
-        for gen in range(1, self.max_generations + 1):
+        for gen in range(1, self.max_generations):
 
             if not self.budget_manager.is_budget_available():
                 print("Budget ran out, exiting evolve")
@@ -31,18 +31,14 @@ class MuCommaLambda(MuPlusLambda):
             logger.log_progress("\n---> Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
 
             offspring = self.generate_offspring(self.population, gen)
-
-            # Evaluate the individuals with an invalid fitness
-            invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
-            success = self.parallel_evaluator.evaluate(invalid_ind)
+            success = self.parallel_evaluator.evaluate(offspring)
 
             if not success:
                 print("Budget ran out during parallel evaluation, exiting evolve")
                 break
 
-            self.population[:] = self.toolbox.select(offspring, self.population_size)
+            self.population[:] = self.toolbox.selBest(offspring, self.population_size)
 
-            self.device_manager.log_devices_battery(gen, self.result_dir)
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
             if verbose_level > 0:

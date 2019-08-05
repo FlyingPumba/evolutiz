@@ -1,8 +1,10 @@
+import sys
+
 # if False, "0" will be used
 ENABLE_STRING_SEEDING = True
 ANDROID_TARGET = "android-10"  # TODO: this should depend on a configuration file in the subject itself
 
-TEST_CASE_EVAL_TIMEOUT = 500
+TEST_CASE_EVAL_TIMEOUT = 600
 ADB_REGULAR_COMMAND_TIMEOUT = 30
 
 # === Emulator ===
@@ -22,7 +24,8 @@ SEQUENCE_LENGTH_MAX = 500
 SUITE_SIZE = 5  # 5
 POPULATION_SIZE = 50  # 50
 OFFSPRING_SIZE = 50  # 50
-GENERATION = 100  # 100
+ELITISM_SIZE = 1 # By default 1, the same that uses Evosuite
+GENERATION = sys.maxsize
 # Crossover probability
 CXPB = 0.7
 # Mutation probability

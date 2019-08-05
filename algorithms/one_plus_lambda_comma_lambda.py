@@ -39,7 +39,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
         verbose_level = RequiredFeature('verbose_level').request()
         self.parent = self.population[0]
 
-        for gen in range(1, self.max_generations + 1):
+        for gen in range(1, self.max_generations):
 
             if not self.budget_manager.is_budget_available():
                 print("Budget ran out, exiting evolve")
@@ -50,29 +50,26 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
 
             # Create and evaluate mutants
             mutants = self.generate_mutants(gen)
-            invalid_ind = [ind for ind in mutants if not ind.fitness.valid]
-            success = self.parallel_evaluator.evaluate(invalid_ind)
+            success = self.parallel_evaluator.evaluate(mutants)
             if not success:
                 print("Budget ran out during parallel evaluation, exiting evolve")
                 break
 
-            # select best mutant and apply crossover with parent
-            best_mutant, = self.toolbox.select(mutants, 1)
+            # select best mutant and generate offspring by applying crossover with parent
+            best_mutant, = self.toolbox.selBest(mutants, 1)
             offspring = self.generate_offspring(gen, best_mutant)
-            invalid_ind = [ind for ind in offspring if not ind.fitness.valid]
-            success = self.parallel_evaluator.evaluate(invalid_ind)
+            success = self.parallel_evaluator.evaluate(offspring)
             if not success:
                 print("Budget ran out during parallel evaluation, exiting evolve")
                 break
 
             # select best offspring and set as new parent
-            # the parent is included in the selection to avoid degrading the solution
+            # the parent is included in the selection to avoid degrading the current solution
             offspring.append(self.parent)
-            best_offspring, = self.toolbox.select(offspring, 1)
+            best_offspring, = self.toolbox.selBest(offspring, 1)
             self.parent = best_offspring
             self.population = [self.parent]
 
-            self.device_manager.log_devices_battery(gen, self.result_dir)
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
             if verbose_level > 0:
@@ -113,14 +110,14 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
 
             offspring.append(ind1)
 
-            if len(offspring) < self.offspring_size:
-                del ind2.fitness.values
-                ind2.index_in_generation = index_in_generation + 1
-                ind2.generation = gen
-                ind2.creation_finish_timestamp = time.time()
-                ind2.creation_elapsed_time = 0
+            del ind2.fitness.values
 
-                offspring.append(ind2)
+            ind2.index_in_generation = index_in_generation + 1
+            ind2.generation = gen
+            ind2.creation_finish_timestamp = time.time()
+            ind2.creation_elapsed_time = 0
+
+            offspring.append(ind2)
 
         return offspring
 

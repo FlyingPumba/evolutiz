@@ -11,10 +11,11 @@ class ParallelEvaluator(object):
         self.toolbox = RequiredFeature('toolbox').request()
 
     def evaluate(self, individuals):
-        logger.log_progress("\nEvaluating " + str(len(individuals)) + " individuals in parallel ")
+        invalid_ind = [ind for ind in individuals if not ind.fitness.valid]
+        logger.log_progress("\nEvaluating " + str(len(invalid_ind)) + " individuals in parallel ")
 
         mapper = MapperOnDevices(self.test_suite_evaluator.evaluate,
-                                 items_to_map=individuals,
+                                 items_to_map=invalid_ind,
                                  fail_times_limit=3,
                                  idle_devices_only=True)
         try:
