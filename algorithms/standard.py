@@ -48,7 +48,7 @@ class Standard(GeneticAlgorithm):
                 parents = self.toolbox.select(self.population, 2)
 
                 # generate offspring
-                needed_offspring = max(self.population_size - len(new_population), 2)
+                needed_offspring = min(self.population_size - len(new_population), 2)
                 offspring = self.crossover(parents, gen, needed_offspring, base_index_in_generation=len(new_population))
                 self.mutation(offspring)
 
