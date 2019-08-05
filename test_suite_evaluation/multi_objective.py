@@ -71,7 +71,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         hall_of_fame.update([individual])
 
         budget_manager = RequiredFeature('budget_manager').request()
-        budget_manager.decrease_evaluations_budget()
+        budget_manager.increase_evaluations_used()
 
         device.mark_work_stop()
 

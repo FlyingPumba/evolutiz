@@ -35,9 +35,9 @@ class BudgetManager(object):
     def is_budget_available(self):
         return self.time_budget_available() and self.evaluations_budget_available()
 
-    def decrease_evaluations_budget(self):
+    def increase_evaluations_used(self):
         self.evaluations_lock.acquire()
-        self.evaluations -= 1
+        self.evaluations += 1
         self.evaluations_lock.release()
 
     def increase_time_budget(self, seconds):
