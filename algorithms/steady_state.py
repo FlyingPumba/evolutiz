@@ -44,7 +44,7 @@ class SteadyState(Standard):
                 print("Budget ran out during parallel evaluation, exiting evolve")
                 break
 
-            best_ind, = self.toolbox.selBest(offspring + parents, 1)
+            best_ind, = self.toolbox.selectBest(offspring + parents, 1)
 
             if best_ind in offspring:
                 # only update population if the best individual is one of the offspring

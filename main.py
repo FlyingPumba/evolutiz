@@ -478,7 +478,9 @@ def provide_features():
     features.provide('compress', args.compress)
 
     # singletons
-    features.provide('toolbox', Toolbox())
+    toolbox = Toolbox()
+    toolbox.register("selectBest", tools.selBest)
+    features.provide('toolbox', toolbox)
     features.provide('device_manager', DeviceManager())
 
     stats = tools.Statistics(get_fitness_values_of_individual)

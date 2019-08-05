@@ -56,7 +56,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
                 break
 
             # select best mutant and generate offspring by applying crossover with parent
-            best_mutant, = self.toolbox.selBest(mutants, 1)
+            best_mutant, = self.toolbox.selectBest(mutants, 1)
             offspring = self.generate_offspring(gen, best_mutant)
             success = self.parallel_evaluator.evaluate(offspring)
             if not success:
@@ -66,7 +66,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
             # select best offspring and set as new parent
             # the parent is included in the selection to avoid degrading the current solution
             offspring.append(self.parent)
-            best_offspring, = self.toolbox.selBest(offspring, 1)
+            best_offspring, = self.toolbox.selectBest(offspring, 1)
             self.parent = best_offspring
             self.population = [self.parent]
 

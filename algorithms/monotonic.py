@@ -33,7 +33,7 @@ class Monotonic(Standard):
                                 str(self.budget_manager.get_time_budget_used()))
 
             # create new population, starting with elitism
-            new_population = self.toolbox.selBest(self.population, self.elitism_size)
+            new_population = self.toolbox.selectBest(self.population, self.elitism_size)
             while len(new_population) < self.population_size:
                 # select parents
                 parents = self.toolbox.select(self.population, 2)
@@ -49,7 +49,7 @@ class Monotonic(Standard):
                     return self.population
 
                 # extend new population with offspring or parents, depending which ones have the best individual
-                best_ind, = self.toolbox.selBest(offspring + parents, 1)
+                best_ind, = self.toolbox.selectBest(offspring + parents, 1)
                 if best_ind in offspring:
                     new_population.extend(offspring)
                 else:

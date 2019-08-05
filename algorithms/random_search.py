@@ -47,7 +47,7 @@ class RandomSearch(Strategy):
             history.update(self.population)
 
             # select best individuals between current population and new one
-            self.population[:] = self.toolbox.selBest(self.population + new_individuals, self.population_size)
+            self.population[:] = self.toolbox.selectBest(self.population + new_individuals, self.population_size)
             gen += 1
 
         return self.population

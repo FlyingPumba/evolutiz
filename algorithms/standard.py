@@ -42,7 +42,7 @@ class Standard(GeneticAlgorithm):
                                 str(self.budget_manager.get_time_budget_used()))
 
             # create new population, starting with elitism
-            new_population = self.toolbox.selBest(self.population, self.elitism_size)
+            new_population = self.toolbox.selectBest(self.population, self.elitism_size)
             while len(new_population) < self.population_size:
                 # select parents
                 parents = self.toolbox.select(self.population, 2)

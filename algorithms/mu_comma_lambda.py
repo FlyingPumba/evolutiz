@@ -37,7 +37,7 @@ class MuCommaLambda(MuPlusLambda):
                 print("Budget ran out during parallel evaluation, exiting evolve")
                 break
 
-            self.population[:] = self.toolbox.selBest(offspring, self.population_size)
+            self.population[:] = self.toolbox.selectBest(offspring, self.population_size)
 
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 

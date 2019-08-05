@@ -47,7 +47,7 @@ class MuPlusLambda(GeneticAlgorithm):
                 print("Budget ran out during parallel evaluation, exiting evolve")
                 break
 
-            self.population[:] = self.toolbox.selBest(self.population + offspring, self.population_size)
+            self.population[:] = self.toolbox.selectBest(self.population + offspring, self.population_size)
 
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
