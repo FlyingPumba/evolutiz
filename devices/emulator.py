@@ -7,6 +7,7 @@ from devices import adb
 from devices.device import Device
 from devices.device_state import State
 from util.command import run_cmd
+from util import logger
 
 
 class Emulator(Device):
@@ -59,6 +60,10 @@ class Emulator(Device):
             flags = flags + " -verbose -debug all"
 
         cmd = emulator_cmd + ' -avd ' + self.avd_name + flags + logs
+
+        if verbose_level > 1:
+            logger.log_progress("\nFiring up emulator with command: " + cmd)
+
         sub.Popen(cmd, shell=True)
 
     def shutdown(self):
