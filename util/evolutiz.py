@@ -36,6 +36,10 @@ class Evolutiz(object):
     def run(self):
         self.apk_preparer.prepare()
 
+        emulators_number = RequiredFeature('emulators_number').request()
+        if (emulators_number < 1):
+            return
+
         logger.log_progress("\nSetting up devices.")
 
         minimum_api = RequiredFeature('minimum_api').request()
