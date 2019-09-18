@@ -21,7 +21,6 @@
 		android:focusableInTouchMode="true"
 	    android:gravity="top"
 	    android:maxLength="16843104"
-	    android:imeOptions="flagNoFullscreen"
 	    
 	/>
 	</ScrollView>
