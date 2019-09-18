@@ -88,9 +88,9 @@ def run_one_app(strategy_with_runner_name):
     except Exception as e:
         logger.log_progress("\nThere was an error running evolutiz on app: " + app_name)
         if verbose_level > 0:
-            logger.log_progress("\n" + traceback.format_exc())
-        if verbose_level > 1:
             logger.log_progress("\n" + str(e))
+        if verbose_level > 1:
+            logger.log_progress("\n" + traceback.format_exc())
         traceback.print_exc()
         return False
 
