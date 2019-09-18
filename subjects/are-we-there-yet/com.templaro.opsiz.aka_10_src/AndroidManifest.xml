@@ -1,37 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="10" android:versionName="1.0" package="com.templaro.opsiz.aka">
-    <uses-sdk android:minSdkVersion="7"/>
-	<uses-permission android:name="android.permission.INTERNET"/>
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/> 
-	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+<?xml version="1.0" encoding="utf-8"?>
 
-    <application android:debuggable="true" android:icon="@drawable/bootian" android:label="@string/app_name">
-        <activity android:configChanges="orientation" android:label="@string/app_name" android:name="AndroidomaticKeyerActivity" android:screenOrientation="portrait">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.templaro.opsiz.aka"
+      android:versionCode="10"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="7" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> 
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application android:icon="@drawable/bootian" android:label="@string/app_name" android:debuggable="true">
+        <activity android:name="AndroidomaticKeyerActivity"
+                  android:label="@string/app_name"
+				  android:configChanges="orientation"
+    			  android:screenOrientation="portrait" >
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         
-        <activity android:configChanges="orientation" android:label="@string/help_title" android:name=".Help" android:screenOrientation="portrait" android:theme="@android:style/Theme.Dialog">
+        <activity android:name=".Help"
+        	android:label="@string/help_title"
+        	android:theme="@android:style/Theme.Dialog"
+			android:configChanges="orientation"
+		    android:screenOrientation="portrait" >
         </activity> 
         
-        <activity android:configChanges="orientation" android:name=".Settings" android:screenOrientation="portrait"/>
+        <activity android:name=".Settings" 
+            android:configChanges="orientation"
+		    android:screenOrientation="portrait" />
         
-       	<activity android:configChanges="orientation" android:name=".StraightKeyActivity" android:screenOrientation="portrait"/>
+       	<activity android:name=".StraightKeyActivity"
+       	    android:configChanges="orientation"
+       	    android:screenOrientation="portrait" />
         
-		<receiver android:name=".BeaconSqualk" android:process=":remote"/> 
+		<receiver android:name=".BeaconSqualk" android:process=":remote" /> 
             
-    <receiver android:name="com.templaro.opsiz.aka.EmmaInstrument.SMSInstrumentedReceiver">
-<intent-filter>
-<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
-</intent-filter>
-</receiver>
-<activity android:label="EmmaInstrumentationActivity" android:name="com.templaro.opsiz.aka.EmmaInstrument.InstrumentedActivity"/>
-</application>
+    </application>
     
-<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.templaro.opsiz.aka.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.templaro.opsiz.aka"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest>

@@ -1,53 +1,46 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="8" android:versionName="1.7" package="com.angrydoughnuts.android.alarmclock">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.angrydoughnuts.android.alarmclock"
+      xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.7" android:versionCode="8">
 
   <!-- android:debugable for debug release only! -->
   <!-- <application android:icon="@drawable/alarmclock" android:label="@string/app_name" android:debuggable="true"> -->
   <application android:icon="@drawable/alarmclock" android:label="@string/app_name">
-    <activity android:launchMode="singleTask" android:name=".ActivityAlarmClock">
+    <activity android:name=".ActivityAlarmClock" android:launchMode="singleTask">
       <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.LAUNCHER"/>
+        <action android:name="android.intent.action.MAIN"></action>
+        <category android:name="android.intent.category.LAUNCHER"></category>
       </intent-filter>
     </activity>
-    <activity android:launchMode="singleInstance" android:name="ActivityAlarmNotification" android:screenOrientation="portrait"/>
-    <activity android:finishOnTaskLaunch="true" android:name="ActivityAlarmSettings"/>
-    <activity android:finishOnTaskLaunch="true" android:name="ActivityAppSettings"/>
-    <activity android:finishOnTaskLaunch="true" android:name="ActivityPendingAlarms"/>
-    <service android:name="AlarmClockService"/>
-    <service android:name="NotificationService"/>
-    <receiver android:name="ReceiverAlarm"/>
-    <receiver android:name="ReceiverNotificationRefresh"/>
+    <activity android:name="ActivityAlarmNotification" android:launchMode="singleInstance" android:screenOrientation="portrait"></activity>
+    <activity android:name="ActivityAlarmSettings" android:finishOnTaskLaunch="true"></activity>
+    <activity android:name="ActivityAppSettings" android:finishOnTaskLaunch="true"></activity>
+    <activity android:name="ActivityPendingAlarms" android:finishOnTaskLaunch="true"></activity>
+    <service android:name="AlarmClockService"></service>
+    <service android:name="NotificationService"></service>
+    <receiver android:name="ReceiverAlarm"></receiver>
+    <receiver android:name="ReceiverNotificationRefresh"></receiver>
     <receiver android:name="ReceiverDeviceBoot">
       <intent-filter>
-        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        <action android:name="android.intent.action.BOOT_COMPLETED"></action>
       </intent-filter>
       <intent-filter>
-        <action android:name="android.intent.action.PACKAGE_REPLACED"/>
-        <data android:scheme="package"/>
+        <action android:name="android.intent.action.PACKAGE_REPLACED" />
+        <data android:scheme="package" />
       </intent-filter>
     </receiver>
     <receiver android:name="RecevierTimeZoneChange">
       <intent-filter>
-        <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+        <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
       </intent-filter>
     </receiver>
-  <receiver android:name="com.angrydoughnuts.android.alarmclock.EmmaInstrument.SMSInstrumentedReceiver">
-<intent-filter>
-<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
-</intent-filter>
-</receiver>
-<activity android:label="EmmaInstrumentationActivity" android:name="com.angrydoughnuts.android.alarmclock.EmmaInstrument.InstrumentedActivity"/>
-</application>
+  </application>
 
   <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="10"/>
-  <uses-permission android:name="android.permission.WAKE_LOCK"/>
-  <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
-  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-  <uses-permission android:name="android.permission.VIBRATE"/>
-  <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+  <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+  <uses-permission android:name="android.permission.DISABLE_KEYGUARD"></uses-permission>
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
+  <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+  <uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission>
   <!-- This is for debug releases only! -->
   <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission> -->
-<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.angrydoughnuts.android.alarmclock.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.angrydoughnuts.android.alarmclock"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-</manifest>
+</manifest> 

@@ -1,37 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="3" android:versionName="0.2.1" package="com.gluegadget.hndroid">
-	<application android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@android:style/Theme.Light.NoTitleBar">
-		<activity android:configChanges="orientation" android:label="@string/app_name" android:name=".Main">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.gluegadget.hndroid" android:versionName="0.2.1" android:versionCode="3">
+	<application android:icon="@drawable/icon" android:label="@string/app_name"
+		android:theme="@android:style/Theme.Light.NoTitleBar">
+		<activity android:name=".Main" android:label="@string/app_name"
+			android:configChanges="orientation">
 			<intent-filter>
-				<action android:name="android.intent.action.MAIN"/>
-				<category android:name="android.intent.category.LAUNCHER"/>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:configChanges="orientation" android:label="@string/menu_comments" android:name=".Comments">
+		<activity android:name=".Comments" android:label="@string/menu_comments"
+			android:configChanges="orientation">
 		</activity>
-		<activity android:label="@string/menu_submissions" android:name=".Submissions"/>
+		<activity android:name=".Submissions" android:label="@string/menu_submissions"></activity>
 		<activity android:name=".KarmaWidgetConfigurationActivity">
 			<intent-filter>
 				<action android:name="android.apwidget.action.APPWIDGET_CONFIGURE"/>
 			</intent-filter>
 		</activity>
-		<activity android:label="HN Preferences" android:name=".Preferences"/>
-		<receiver android:label="HN Karma" android:name=".KarmaWidget">
+		<activity android:name=".Preferences" android:label="HN Preferences" />
+		<receiver android:name=".KarmaWidget" android:label="HN Karma">
 			<intent-filter>
-				<action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 			</intent-filter>
-			<meta-data android:name="android.appwidget.provider" android:resource="@xml/karma_widget"/>
+			<meta-data
+				android:name="android.appwidget.provider"
+				android:resource="@xml/karma_widget"
+			/>
 		</receiver>
-		<service android:name=".KarmaWidget$UpdateService"/>
-	<receiver android:name="com.gluegadget.hndroid.EmmaInstrument.SMSInstrumentedReceiver">
-<intent-filter>
-<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
-</intent-filter>
-</receiver>
-<activity android:label="EmmaInstrumentationActivity" android:name="com.gluegadget.hndroid.EmmaInstrument.InstrumentedActivity"/>
-</application>
-	<uses-permission android:name="android.permission.INTERNET"/>
-	<uses-sdk android:minSdkVersion="4"/>
-<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="com.gluegadget.hndroid.EmmaInstrument.EmmaInstrumentation" android:targetPackage="com.gluegadget.hndroid"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-</manifest>
+		<service android:name=".KarmaWidget$UpdateService" />
+	</application>
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-sdk android:minSdkVersion="4"></uses-sdk>
+</manifest> 

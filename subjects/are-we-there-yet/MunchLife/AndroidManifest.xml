@@ -1,32 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="7" android:versionName="1.4.2" package="info.bpace.munchlife">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+ package="info.bpace.munchlife"
+ android:versionCode="7"
+ android:versionName="1.4.2">
 
-	<uses-permission android:name="android.permission.WAKE_LOCK"/>
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
 
 	<uses-sdk android:minSdkVersion="3" android:targetSdkVersion="4"/>
 	
-	<supports-screens android:anyDensity="true" android:largeScreens="false" android:normalScreens="true"/>
+	<supports-screens android:normalScreens="true"
+	 android:largeScreens="false"
+	 android:anyDensity="true" />
 
-	<application android:icon="@drawable/icon" android:label="@string/app_name">
+	<application android:label="@string/app_name"
+	 android:icon="@drawable/icon">
 	
-		<activity android:label="@string/app_name" android:name="MunchLifeActivity">
+		<activity android:name="MunchLifeActivity"
+		 android:label="@string/app_name">
 		
 			<intent-filter>
-				<action android:name="android.intent.action.MAIN"/>
-				<category android:name="android.intent.category.LAUNCHER"/>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 			
 		</activity>
 		
-		<activity android:label="@string/app_name" android:name="SettingsActivity"/>
+		<activity android:name="SettingsActivity"
+		 android:label="@string/app_name"/>
 		 
-	<receiver android:name="info.bpace.munchlife.EmmaInstrument.SMSInstrumentedReceiver">
-<intent-filter>
-<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
-</intent-filter>
-</receiver>
-<activity android:label="EmmaInstrumentationActivity" android:name="info.bpace.munchlife.EmmaInstrument.InstrumentedActivity"/>
-</application>
-<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="info.bpace.munchlife.EmmaInstrument.EmmaInstrumentation" android:targetPackage="info.bpace.munchlife"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-</manifest>
+	</application>
+</manifest> 

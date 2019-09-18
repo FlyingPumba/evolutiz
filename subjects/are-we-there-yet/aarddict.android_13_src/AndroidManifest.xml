@@ -1,54 +1,64 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionCode="13" android:versionName="1.4.1" package="aarddict.android">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="aarddict.android"
+      android:versionCode="13"
+      android:versionName="1.4.1"
+      android:installLocation="auto">
     <uses-sdk android:minSdkVersion="3"/>
-    <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
-    <application android:icon="@drawable/aarddict" android:label="@string/appName">    			 
-    	<activity android:label="@string/appName" android:name=".DictionariesActivity">
+    <supports-screens
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:anyDensity="true" />
+    <application android:icon="@drawable/aarddict" 
+    			 android:label="@string/appName">    			 
+    	<activity android:name=".DictionariesActivity" 
+    			  android:label="@string/appName">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>                
-                <data android:pathPattern=".*\\.aar" android:scheme="file"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />                
+                <data android:scheme="file" android:pathPattern=".*\\.aar"/>
             </intent-filter>            
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>                
-                <data android:mimeType="application/aar" android:scheme="file"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />                
+                <data android:scheme="file" android:mimeType="application/aar"/>
             </intent-filter>                			  	
     	</activity>
     			 
-        <activity android:configChanges="orientation" android:name=".LookupActivity">
+        <activity android:name=".LookupActivity" 
+            android:configChanges="orientation">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         
-        <activity android:configChanges="orientation" android:name=".ArticleViewActivity">
+        <activity android:name=".ArticleViewActivity" 
+            android:configChanges="orientation">
         </activity>
 
 
-        <activity android:configChanges="orientation" android:excludeFromRecents="true" android:name=".Lookup" android:taskAffinity="aarddict.external">
+        <activity android:name=".Lookup" 
+            android:configChanges="orientation" 
+            android:excludeFromRecents="true"
+            android:taskAffinity="aarddict.external">
             <intent-filter>
-                <action android:name="android.intent.action.SEARCH"/>
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>                                                                        
         </activity>
         
-        <activity android:configChanges="orientation" android:excludeFromRecents="true" android:name=".Article" android:taskAffinity="aarddict.external">            
+        <activity android:name=".Article" 
+            android:configChanges="orientation"
+            android:excludeFromRecents="true"
+            android:taskAffinity="aarddict.external">            
             <intent-filter>
-                <action android:name="android.intent.action.SEARCH"/>
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>                                                            
         </activity>
                          
         <activity android:name=".DictionaryInfoActivity"/>                      
         <service android:name=".DictionaryService">        
         </service>
-    <receiver android:name="aarddict.android.EmmaInstrument.SMSInstrumentedReceiver">
-<intent-filter>
-<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
-</intent-filter>
-</receiver>
-<activity android:label="EmmaInstrumentationActivity" android:name="aarddict.android.EmmaInstrument.InstrumentedActivity"/>
-</application>
-<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="aarddict.android.EmmaInstrument.EmmaInstrumentation" android:targetPackage="aarddict.android"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-</manifest>
+    </application>
+</manifest> 

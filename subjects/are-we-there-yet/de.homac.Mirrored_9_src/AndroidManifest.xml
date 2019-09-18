@@ -1,32 +1,36 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="9" android:versionName="0.2.3" package="de.homac.Mirrored">
-  <uses-sdk android:minSdkVersion="3" android:targetSdkVersion="4"/>
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	  package="de.homac.Mirrored"
+	  android:versionCode="9"
+	  android:versionName="0.2.3">
+  <uses-sdk android:minSdkVersion="3"
+	    android:targetSdkVersion="4" />
   <uses-permission android:name="android.permission.INTERNET"/>
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-  <supports-screens android:anyDensity="false" android:largeScreens="true" android:normalScreens="true" android:smallScreens="true"/>
+  <supports-screens
+     android:largeScreens="true"
+     android:normalScreens="true"
+     android:smallScreens="true"
+     android:anyDensity="false" />
 
-  <application android:icon="@drawable/mirrored" android:label="@string/app_name" android:name="Mirrored" android:theme="@android:style/Theme.Light">
-    <activity android:configChanges="orientation|keyboardHidden" android:label="@string/app_name" android:name=".ArticlesList">
+  <application android:name="Mirrored" android:label="@string/app_name"
+	       android:icon="@drawable/mirrored"
+	       android:theme="@android:style/Theme.Light">
+    <activity android:name=".ArticlesList"
+	      android:configChanges="orientation|keyboardHidden"
+              android:label="@string/app_name">
       <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.LAUNCHER"/>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
 
-    <activity android:name=".CategoriesList"/>
+    <activity android:name=".CategoriesList"></activity>
     <activity android:name=".ArticleViewer">
       android:configChanges="orientation|keyboardHidden"
     </activity>
-    <activity android:name=".Preferences"/>
-  <receiver android:name="de.homac.Mirrored.EmmaInstrument.SMSInstrumentedReceiver">
-<intent-filter>
-<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
-</intent-filter>
-</receiver>
-<activity android:label="EmmaInstrumentationActivity" android:name="de.homac.Mirrored.EmmaInstrument.InstrumentedActivity"/>
-</application>
-<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="de.homac.Mirrored.EmmaInstrument.EmmaInstrumentation" android:targetPackage="de.homac.Mirrored"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <activity android:name=".Preferences"></activity>
+  </application>
 </manifest>

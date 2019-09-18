@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 Copyright 2009 David Revell
 
@@ -17,37 +17,39 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with SwiFTP.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="21" android:versionName="2.2" package="be.ppareit.swiftp_free">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="be.ppareit.swiftp_free"
+    android:versionCode="21"
+    android:versionName="2.2" >
 
-    <uses-sdk android:minSdkVersion="7" android:targetSdkVersion="12"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
-    <application android:icon="@drawable/icon" android:label="@string/swiftp_name">
-        <activity android:name="be.ppareit.swiftp_free.gui.ServerPreferenceActivity">
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="12" />
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="@string/swiftp_name" >
+        <activity android:name="be.ppareit.swiftp_free.gui.ServerPreferenceActivity" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ConfigureActivity" class=".ConfigureActivity"/>
+        <activity
+            android:name="ConfigureActivity"
+            class=".ConfigureActivity" />
 
-        <service android:name=".FTPServerService"/>
+        <service android:name=".FTPServerService" />
 
-    <receiver android:name="be.ppareit.swiftp_free.EmmaInstrument.SMSInstrumentedReceiver">
-<intent-filter>
-<action android:name="edu.gatech.m3.emma.COLLECT_COVERAGE"/>
-</intent-filter>
-</receiver>
-<activity android:label="EmmaInstrumentationActivity" android:name="be.ppareit.swiftp_free.EmmaInstrument.InstrumentedActivity"/>
-</application>
+    </application>
 
-<instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="be.ppareit.swiftp_free.EmmaInstrument.EmmaInstrumentation" android:targetPackage="be.ppareit.swiftp_free"/>
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest>
