@@ -45,6 +45,7 @@ def run_one_app(strategy_with_runner_name):
     repetitions_offset = RequiredFeature('repetitions_offset').request()
     budget_manager = RequiredFeature('budget_manager').request()
     test_suite_evaluator = RequiredFeature('test_suite_evaluator').request()
+    verbose_level = RequiredFeature('verbose_level').request()
 
     app_name = os.path.basename(app_path)
 
@@ -86,6 +87,10 @@ def run_one_app(strategy_with_runner_name):
         return True
     except Exception as e:
         logger.log_progress("\nThere was an error running evolutiz on app: " + app_name)
+        if verbose_level > 0:
+            logger.log_progress("\n" + traceback.format_exc())
+        if verbose_level > 1:
+            logger.log_progress("\n" + str(e))
         traceback.print_exc()
         return False
 
