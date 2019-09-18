@@ -1,4 +1,4 @@
-package hiof.enigma.android.gestures;
+package demo.killerud.gestures;
 
 import java.util.ArrayList;
 
