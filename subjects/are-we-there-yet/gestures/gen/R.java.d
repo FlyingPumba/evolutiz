@@ -1,11 +1,8 @@
-/vagrant/subjects/tool_subjects/dynodroid/gestures/gen/demo/killerud/gestures/R.java \
- : /vagrant/subjects/tool_subjects/dynodroid/gestures/res/raw/gestures \
-/vagrant/subjects/tool_subjects/dynodroid/gestures/res/layout/main.xml \
-/vagrant/subjects/tool_subjects/dynodroid/gestures/res/drawable-hdpi/ic_launcher.png \
-/vagrant/subjects/tool_subjects/dynodroid/gestures/res/drawable-mdpi/ic_launcher.png \
-/vagrant/subjects/tool_subjects/dynodroid/gestures/res/drawable-ldpi/ic_launcher.png \
-/vagrant/subjects/tool_subjects/dynodroid/gestures/res/values/strings.xml \
-/vagrant/subjects/tool_subjects/dynodroid/gestures/bin/res/drawable-hdpi/ic_launcher.png \
-/vagrant/subjects/tool_subjects/dynodroid/gestures/bin/res/drawable-mdpi/ic_launcher.png \
-/vagrant/subjects/tool_subjects/dynodroid/gestures/bin/res/drawable-ldpi/ic_launcher.png \
-/vagrant/subjects/tool_subjects/dynodroid/gestures/bin/AndroidManifest.xml \
+/home/ivan/src/evolutiz/subjects/are-we-there-yet/gestures/gen/demo/killerud/gestures/R.java \
+ : /home/ivan/src/evolutiz/subjects/are-we-there-yet/gestures/res/values/strings.xml \
+/home/ivan/src/evolutiz/subjects/are-we-there-yet/gestures/res/drawable-ldpi/ic_launcher.png \
+/home/ivan/src/evolutiz/subjects/are-we-there-yet/gestures/res/drawable-hdpi/ic_launcher.png \
+/home/ivan/src/evolutiz/subjects/are-we-there-yet/gestures/res/raw/gestures \
+/home/ivan/src/evolutiz/subjects/are-we-there-yet/gestures/res/layout/main.xml \
+/home/ivan/src/evolutiz/subjects/are-we-there-yet/gestures/res/drawable-mdpi/ic_launcher.png \
+/home/ivan/src/evolutiz/subjects/are-we-there-yet/gestures/bin/AndroidManifest.xml \
