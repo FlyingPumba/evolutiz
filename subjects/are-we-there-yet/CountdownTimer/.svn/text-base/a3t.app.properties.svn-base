@@ -1,9 +1,0 @@
-a3t.monkey=test.txt
-a3t.pkg=net.everythingandroid.timer
-a3t.mainact=.TimerActivity
-a3t.out.dir=a3t_out
-a3t.userwait=8
-a3t.K=3
-a3t.max.iters=100000
-a3t.indep=true
-a3t.readonly=true

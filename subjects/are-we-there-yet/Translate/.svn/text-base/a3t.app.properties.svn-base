@@ -1,6 +1,0 @@
-a3t.monkey=test.txt
-a3t.pkg=com.beust.android.translate
-a3t.mainact=.TranslateActivity
-a3t.out.dir=a3t_out
-a3t.userwait=4
-a3t.rw.kind=id_field_write
