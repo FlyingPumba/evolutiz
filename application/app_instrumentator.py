@@ -69,6 +69,8 @@ class AppInstrumentator(object):
         main_activity = self.get_main_activity(instrumented_source_path + "/")
         if main_activity.startswith("."):
             main_activity = package_name + main_activity
+        elif not main_activity.startswith(package_name):
+            main_activity = package_name + "." + main_activity
 
         # update main activity in InstrumentedActivity.java
         self.alter_InstrumentedActivity(emma_instrument_dest_path + "/InstrumentedActivity.java", main_activity)
