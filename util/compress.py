@@ -3,7 +3,8 @@ import os
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
-from util.command import run_cmd
+from util.command import run_cmd, is_command_available
+
 
 def compress_results(strategy_with_runner_name):
     app_path = RequiredFeature('app_path').request()
@@ -22,4 +23,7 @@ def compress_results(strategy_with_runner_name):
     pool.join()
 
 def compress_repetition(path):
-    run_cmd("tar --use-compress-program=pigz -cf " + path + ".tar.gz " + path)
+    if is_command_available("pigz"):
+        run_cmd("tar --use-compress-program=pigz -cf " + path + ".tar.gz " + path)
+    else:
+        run_cmd("tar -cf " + path + ".tar.gz " + path)
