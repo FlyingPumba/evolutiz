@@ -64,8 +64,7 @@
         <item name="android:textStyle">normal</item>
     </style>
 
-    <style name="NoActionBar" parent="@android:style/Theme.Holo.Light">
-        <item name="android:windowActionBar">false</item>
+    <style name="NoActionBar">
         <item name="android:windowNoTitle">true</item>
     </style>
 
