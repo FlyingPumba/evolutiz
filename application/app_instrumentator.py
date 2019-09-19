@@ -8,6 +8,7 @@ import settings
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
+from util.command import run_cmd
 
 
 class AppInstrumentator(object):
@@ -15,9 +16,18 @@ class AppInstrumentator(object):
     def instrument(self):
         self.app_path = RequiredFeature('app_path').request()
         self.result_dir = RequiredFeature('result_dir').request()
-        self.subjects_path = RequiredFeature('subjects_path').request()
         self.instrumented_subjects_path = RequiredFeature('instrumented_subjects_path').request()
         self.emma_instrument_path = RequiredFeature('emma_instrument_path').request()
+
+        # first, check if we should assume apps are already instrumented
+        assume_subjects_instrumented = RequiredFeature('assume_subjects_instrumented').request()
+        if assume_subjects_instrumented:
+            features.provide('instrumented_app_path', self.app_path)
+
+            output, errors, result_code = run_cmd("aapt dump badging " + self.app_path + " | grep package:\ name")
+            package_name = output.split("package: name=\'")[1].split("\'")[0]
+            features.provide('package_name', package_name)
+            return
 
         logger.log_progress("\nInstrumenting app: " + os.path.basename(self.app_path))
 

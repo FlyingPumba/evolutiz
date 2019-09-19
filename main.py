@@ -167,6 +167,8 @@ def run(strategy_name, app_paths):
             compress_results(strategy_name)
 
 def get_subject_paths(arguments):
+    features.provide('assume_subjects_instrumented', arguments.assume_subjects_instrumented)
+
     subject_path = arguments.subject_path
     if subject_path is not None:
         features.provide('subjects_path', [subject_path])
@@ -175,11 +177,17 @@ def get_subject_paths(arguments):
         subjects_path = arguments.subjects_path.rstrip('/') + '/'
         features.provide('subjects_path', subjects_path)
 
-        output, errors, result_code = run_cmd("ls -d " + subjects_path + "*/")
         app_paths = []
-        for line in output.strip().split('\n'):
-            if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
+
+        if arguments.assume_subjects_instrumented:
+            output, errors, result_code = run_cmd("find " + subjects_path + " -name *.apk")
+            for line in output.strip().split('\n'):
                 app_paths.append(line.rstrip('/'))  # remove trailing forward slash
+        else:
+            output, errors, result_code = run_cmd("ls -d " + subjects_path + "*/")
+            for line in output.strip().split('\n'):
+                if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
+                    app_paths.append(line.rstrip('/'))  # remove trailing forward slash
 
         if arguments.randomize_subjects:
             random.shuffle(app_paths)
@@ -281,6 +289,9 @@ def add_arguments_to_parser(parser):
                         action='store_true', help='Randomize subjects to be processed.')
     parser.add_argument('--limit-subjects-number', type=int, dest='limit_subjects_number',
                         help='Limit the number of subjects to be processed (-1 to disable limit).')
+    parser.add_argument('--assume-subjects-instrumented', dest='assume_subjects_instrumented',
+                        action='store_true', help='Search for APKs in the provided subjects path. '
+                                                  'These files are assumed to be already instrumented.')
 
     # budget related arguments
     parser.add_argument('-r', '--repetitions', type=int, dest='repetitions',
@@ -378,6 +389,7 @@ def init_arguments_defaults():
         "instrumented_subjects_path": "instrumented-subjects/",
         "emma_instrument_path": "subjects/EmmaInstrument/",
         "randomize_subjects": False,
+        "assume_subjects_instrumented": False,
         "limit_subjects_number": 1,
         "repetitions": 1,
         "repetitions_offset": 0,
