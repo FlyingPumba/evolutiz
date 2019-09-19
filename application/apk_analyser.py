@@ -15,9 +15,6 @@ class ApkAnalyser(object):
         self.instrumented_app_path = RequiredFeature('instrumented_app_path').request()
 
         self.get_apk_path()
-        if self.instrumented_app_path.endswith(".apk"):
-            self.instrumented_app_path += "_output"
-            os.system("mkdir -p " + self.instrumented_app_path)
 
         print("### Working on apk:", self.package_name)
         # static analysis
