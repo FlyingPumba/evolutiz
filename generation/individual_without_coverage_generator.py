@@ -5,7 +5,7 @@ from deap import creator
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
-from test_suite_generation.individual_generator import IndividualGenerator
+from generation.individual_generator import IndividualGenerator
 
 
 class IndividualWithoutCoverageGenerator(IndividualGenerator):

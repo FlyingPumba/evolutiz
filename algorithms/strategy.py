@@ -1,5 +1,5 @@
 from dependency_injection.required_feature import RequiredFeature
-from test_suite_evaluation.parallel_evaluator import ParallelEvaluator
+from evaluation.parallel_evaluator import ParallelEvaluator
 
 
 class Strategy(object):

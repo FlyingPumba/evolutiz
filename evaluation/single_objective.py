@@ -1,33 +1,31 @@
-import sys
 import time
 
 import numpy
-from deap import creator, base, tools
+from deap import base, creator, tools
 
 from dependency_injection.required_feature import RequiredFeature
 from plot import two_d_line
-from test_suite_evaluation.test_suite_evaluator import TestSuiteEvaluator
+from evaluation.test_suite_evaluator import TestSuiteEvaluator
 from util import logger
 
 
-class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
+class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
     def __init__(self):
-        super(MultiObjectiveTestSuiteEvaluator, self).__init__()
+        super(SingleObjectiveTestSuiteEvaluator, self).__init__()
 
-        # deap framework setup for multi objective
-        creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
-        creator.create("Individual", list, fitness=creator.FitnessCovLen)
+        # deap framework setup for single objective
+        creator.create("FitnessMax", base.Fitness, weights=(1.0,))
+        creator.create("Individual", list, fitness=creator.FitnessMax)
 
     def register_selection_operator(self, toolbox):
-        # self.toolbox.register("select", tools.selTournament, tournsize=5)
-        toolbox.register("select", tools.selNSGA2)
+        toolbox.register("select", tools.selRoulette)
 
     def new_hall_of_fame(self):
-        return tools.ParetoFront()
+        return tools.HallOfFame(maxsize=50)
 
     def set_empty_fitness(self, individual):
-        individual.fitness.values = (0, sys.maxsize, 0)
+        individual.fitness.values = (0, )
 
         individual.evaluation_finish_timestamp = time.time()
         individual.evaluation_elapsed_time = 0
@@ -44,24 +42,11 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         start_time = time.time()
         device.mark_work_start()
         script_path, suite_lengths = self.dump_individual_to_files(individual)
-
         coverage, unique_crashes, scripts_crash_status = coverage_fetcher.get_suite_coverage(script_path, device,
                                                                                                individual.generation,
                                                                                                individual.index_in_generation)
-        # remove from suite lengths the scripts that did NOT cause a crash
-        for script, had_crash in scripts_crash_status.items():
-            if not had_crash:
-                suite_lengths.pop(script, None)
-
-        # 1st obj: coverage, 2nd: average seq length of the suite, 3rd: #crashes
-        if suite_lengths:
-            length = numpy.mean(list(suite_lengths.values()))
-        else:
-            length = sys.maxsize
-
-        crashes = len(unique_crashes)
-
-        individual.fitness.values = (coverage, length, crashes)
+        # TODO: look into fusing coverage and number of crashes found into the fitness value
+        individual.fitness.values = (coverage, )
 
         finish_time = time.time()
         individual.evaluation_finish_timestamp = finish_time
@@ -91,8 +76,6 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
                 'generation': individual.generation,
                 'index_in_generation': individual.index_in_generation,
                 'coverage': individual.fitness.values[0],
-                'length': individual.fitness.values[1],
-                'crashes': individual.fitness.values[2],
             })
             evaluation.append({
                 'generation': individual.generation,
@@ -116,28 +99,17 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
     def show_best_historic_fitness(self):
         self.logbook = RequiredFeature('logbook').request()
-        min_fitness_values_per_generation = numpy.array(self.logbook.select("min"))
         max_fitness_values_per_generation = numpy.array(self.logbook.select("max"))
 
         max_fitness_values_all_generations = max_fitness_values_per_generation.max(axis=0)
-        min_fitness_values_all_generations = min_fitness_values_per_generation.min(axis=0)
 
         max_coverage = max_fitness_values_all_generations[0]
-        min_length = min_fitness_values_all_generations[1]
-        max_crashes = max_fitness_values_all_generations[2]
 
         # CAUTION: these min and max are from different individuals
         logger.log_progress("\n- Best historic coverage: " + str(max_coverage))
-        logger.log_progress("\n- Best historic crashes: " + str(max_crashes))
-        if max_crashes > 0:
-            logger.log_progress("\n- Best historic length: " + str(min_length))
-        else:
-            logger.log_progress("\n- Best historic length: --")
 
     def dump_logbook_to_file(self):
-        super(MultiObjectiveTestSuiteEvaluator, self).dump_logbook_to_file()
+        super(SingleObjectiveTestSuiteEvaluator, self).dump_logbook_to_file()
 
         # draw graph
         two_d_line.plot(self.logbook, 0, self.result_dir)
-        two_d_line.plot(self.logbook, 1, self.result_dir)
-        two_d_line.plot(self.logbook, 2, self.result_dir)

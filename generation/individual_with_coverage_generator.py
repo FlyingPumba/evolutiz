@@ -8,7 +8,7 @@ import settings
 from coverage.emma_coverage import EmmaCoverage
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
-from test_suite_generation.individual_generator import IndividualGenerator
+from generation.individual_generator import IndividualGenerator
 
 
 class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
