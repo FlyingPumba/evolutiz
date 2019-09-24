@@ -1,11 +1,13 @@
 from threading import Lock
 
+from typing import List, Optional, Any
+
 
 class Queue(object):
     """Queue with simple mutex implementation that allows multi-threading operations.
     """
 
-    def __init__(self, elements=None):
+    def __init__(self, elements: Optional[List[Any]] = None) -> None:
         self._lock_elements = Lock()
         if elements is not None:
             self._elements = elements.copy()
@@ -33,7 +35,7 @@ class Queue(object):
 
         return element
 
-    def pop_all(self):
+    def pop_all(self) -> List[None]:
         self._lock_elements.acquire()
         all = self._elements.copy()
         self._elements.clear()

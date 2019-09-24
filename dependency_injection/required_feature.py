@@ -2,8 +2,9 @@ from dependency_injection.di_assertions import NoAssertion
 from dependency_injection.feature_broker import features
 
 
+from typing import Any, Callable
 class RequiredFeature(object):
-    def __init__(self, feature, assertion=NoAssertion):
+    def __init__(self, feature: str, assertion: Callable = NoAssertion) -> None:
         self.feature = feature
         self.assertion = assertion
 
@@ -15,7 +16,7 @@ class RequiredFeature(object):
         self.result = self.Request()
         return self.result
 
-    def request(self, none_if_missing=False):
+    def request(self, none_if_missing: bool = False) -> Any:
         if none_if_missing:
             obj = features.get(self.feature)
         else:

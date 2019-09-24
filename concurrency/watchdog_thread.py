@@ -8,9 +8,10 @@ from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThre
 from concurrency.thread_hung_exception import ThreadHungException
 
 
+from concurrency.queue import Queue
 class WatchDogThread(threading.Thread):
 
-    def __init__(self, output_queue, expected_output_count):
+    def __init__(self, output_queue: Queue, expected_output_count: int) -> None:
         super().__init__(name="WatchDogThread")
 
         self.output_queue = output_queue
@@ -23,10 +24,10 @@ class WatchDogThread(threading.Thread):
     def stop(self):
         self.stop_event.set()
 
-    def finished(self):
+    def finished(self) -> bool:
         return not self.is_alive()
 
-    def finished_successfully(self):
+    def finished_successfully(self) -> bool:
         return self.successful_finish
 
     def run(self):

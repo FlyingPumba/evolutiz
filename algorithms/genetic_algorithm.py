@@ -1,3 +1,5 @@
+from typing import List, Any
+
 import settings
 from algorithms.strategy import Strategy
 from dependency_injection.required_feature import RequiredFeature
@@ -6,7 +8,7 @@ from util import logger
 
 class GeneticAlgorithm(Strategy):
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(GeneticAlgorithm, self).__init__()
         self.crossover_probability = settings.CXPB
         self.mutation_probability = settings.MUTPB
@@ -15,7 +17,7 @@ class GeneticAlgorithm(Strategy):
         self.offspring_size = settings.OFFSPRING_SIZE
         self.elitism_size = settings.ELITISM_SIZE
 
-        self.population = None
+        self.population: List[Any] = []
         self.package_name = None
 
         assert (self.crossover_probability + self.mutation_probability) <= 1.0, (
@@ -32,7 +34,7 @@ class GeneticAlgorithm(Strategy):
 
         return self.evolve()
 
-    def initPopulation(self):
+    def initPopulation(self) -> bool:
         verbose_level = RequiredFeature('verbose_level').request()
 
         if verbose_level > 0:

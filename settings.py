@@ -21,9 +21,9 @@ WORKING_DIR = '/home/ivan/src/evolutiz/'
 # === GA parameters ===
 SEQUENCE_LENGTH_MIN = 20
 SEQUENCE_LENGTH_MAX = 500
-SUITE_SIZE = 5  # 5
-POPULATION_SIZE = 50  # 50
-OFFSPRING_SIZE = 50  # 50
+SUITE_SIZE = 2  # 5
+POPULATION_SIZE = 5  # 50
+OFFSPRING_SIZE = 5  # 50
 ELITISM_SIZE = 1 # By default 1, the same that uses Evosuite
 GENERATION = sys.maxsize
 # Crossover probability

@@ -2,9 +2,11 @@ import time
 
 from subprocess import TimeoutExpired
 from threading import Lock
+from typing import Optional
 
 import settings
 from devices import adb
+from devices.device_manager import DeviceManager
 from devices.device_setup import DeviceSetupThread
 from devices.device_state import State
 
@@ -20,16 +22,16 @@ class Device(object):
     """
 
     def __init__(self, device_manager, device_name="", state=State.unknown):
-        self.device_manager = device_manager
-        self.name = device_name
-        self.state = state
-        self.boot_time = None
-        self.adb_port = None
-        self.needs_setup = False
+        self.device_manager: DeviceManager = device_manager
+        self.name: str = device_name
+        self.state: State = state
+        self.boot_time: float = 0
+        self.adb_port: Optional[int] = None
+        self.needs_setup: bool = False
 
         self.lock_failures = Lock()
-        self.failures = 0
-        self.fail_limit = 5
+        self.failures: int = 0
+        self.fail_limit: int = 5
 
     def __str__(self):
         return self.name
@@ -132,5 +134,5 @@ class Device(object):
         except TimeoutExpired as e:
             return
 
-    def get_adb_server_port_prefix(self):
+    def get_adb_server_port_prefix(self) -> str:
         return "ANDROID_ADB_SERVER_PORT=" + str(self.adb_port)

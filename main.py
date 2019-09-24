@@ -3,6 +3,8 @@
 import time
 
 import argparse
+from typing import Any, List
+
 import numpy
 import random
 import re
@@ -96,6 +98,7 @@ def run_one_app(strategy_with_runner_name):
         traceback.print_exc()
         return False
 
+
 def wait_for_working_threas_to_finish():
     threads_working = [thread for thread in threading.enumerate()
                        if type(thread) is MultipleQueueConsumerThread and thread.isAlive()]
@@ -110,6 +113,7 @@ def wait_for_working_threas_to_finish():
 
         time.sleep(3)
 
+
 def get_emulators_running(result_dir):
     """Reboot all devices and kill adb server before starting a repetition."""
     device_manager = RequiredFeature('device_manager').request()
@@ -119,6 +123,7 @@ def get_emulators_running(result_dir):
         device_manager.shutdown_emulators(remove=True)
 
     device_manager.boot_emulators(wait_to_be_ready=True)
+
 
 def prepare_result_dir(app_name, repetition, strategy_with_runner_name):
     repetition_folder = str(repetition)
@@ -168,7 +173,8 @@ def run(strategy_name, app_paths):
         if compress:
             compress_results(strategy_name)
 
-def get_subject_paths(arguments):
+
+def get_subject_paths(arguments) -> List[str]:
     features.provide('assume_subjects_instrumented', arguments.assume_subjects_instrumented)
 
     subject_path = arguments.subject_path
@@ -198,6 +204,7 @@ def get_subject_paths(arguments):
             app_paths = app_paths[0:arguments.limit_subjects_number]
 
         return app_paths
+
 
 def check_virtualbox_is_not_running():
     if is_command_available("vboxmanage"):
@@ -439,7 +446,6 @@ def config_items_type_convert(items):
             raise ValueError('Unable to convert value for "%s" to declared type "%s".' % (name, type_tag))
     return result
 
-
 def parse_config_file():
     global conf_parser, args, remaining_argv
     # Parse any conf_file specification
@@ -518,6 +524,10 @@ def provide_features():
     features.provide('evaluate_scripts_repetition_number', args.evaluate_scripts_repetition_number)
     features.provide('evaluate_scripts_algorithm_name', args.evaluate_scripts_algorithm_name)
 
+
+conf_parser: argparse.ArgumentParser
+defaults: Dict[str, Any]
+remaining_argv: List[str]
 
 if __name__ == "__main__":
     parse_config_file()

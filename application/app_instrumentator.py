@@ -13,7 +13,7 @@ from util.command import run_cmd
 
 class AppInstrumentator(object):
 
-    def instrument(self):
+    def instrument(self) -> None:
         self.app_path = RequiredFeature('app_path').request()
         self.result_dir = RequiredFeature('result_dir').request()
         self.instrumented_subjects_path = RequiredFeature('instrumented_subjects_path').request()

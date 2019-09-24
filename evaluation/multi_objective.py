@@ -5,28 +5,30 @@ import numpy
 from deap import creator, base, tools
 
 from dependency_injection.required_feature import RequiredFeature
-from plot import two_d_line
+from devices.device import Device
 from evaluation.test_suite_evaluator import TestSuiteEvaluator
 from util import logger
 
 
+from deap.base import Toolbox
+from deap.tools.support import ParetoFront
 class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(MultiObjectiveTestSuiteEvaluator, self).__init__()
 
         # deap framework setup for multi objective
         creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
         creator.create("Individual", list, fitness=creator.FitnessCovLen)
 
-    def register_selection_operator(self, toolbox):
+    def register_selection_operator(self, toolbox: Toolbox) -> None:
         # self.toolbox.register("select", tools.selTournament, tournsize=5)
         toolbox.register("select", tools.selNSGA2)
 
-    def new_hall_of_fame(self):
+    def new_hall_of_fame(self) -> ParetoFront:
         return tools.ParetoFront()
 
-    def set_empty_fitness(self, individual):
+    def set_empty_fitness(self, individual) -> None:
         individual.fitness.values = (0, sys.maxsize, 0)
 
         individual.evaluation_finish_timestamp = time.time()
@@ -35,7 +37,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         hall_of_fame = RequiredFeature('hall_of_fame').request()
         hall_of_fame.update([individual])
 
-    def evaluate(self, device, individual):
+    def evaluate(self, device: Device, individual):
         assert not individual.fitness.valid
 
         coverage_fetcher = RequiredFeature('coverage_fetcher').request()
@@ -77,7 +79,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         return individual
 
-    def update_logbook(self, gen, population):
+    def update_logbook(self, gen, population) -> None:
         self.result_dir = RequiredFeature('result_dir').request()
         self.logbook = RequiredFeature('logbook').request()
         self.stats = RequiredFeature('stats').request()
@@ -114,7 +116,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         self.show_best_historic_fitness()
 
-    def show_best_historic_fitness(self):
+    def show_best_historic_fitness(self) -> None:
         self.logbook = RequiredFeature('logbook').request()
         min_fitness_values_per_generation = numpy.array(self.logbook.select("min"))
         max_fitness_values_per_generation = numpy.array(self.logbook.select("max"))
@@ -134,10 +136,5 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         else:
             logger.log_progress("\n- Best historic length: --")
 
-    def dump_logbook_to_file(self):
+    def dump_logbook_to_file(self) -> None:
         super(MultiObjectiveTestSuiteEvaluator, self).dump_logbook_to_file()
-
-        # draw graph
-        two_d_line.plot(self.logbook, 0, self.result_dir)
-        two_d_line.plot(self.logbook, 1, self.result_dir)
-        two_d_line.plot(self.logbook, 2, self.result_dir)

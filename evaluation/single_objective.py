@@ -4,7 +4,6 @@ import numpy
 from deap import base, creator, tools
 
 from dependency_injection.required_feature import RequiredFeature
-from plot import two_d_line
 from evaluation.test_suite_evaluator import TestSuiteEvaluator
 from util import logger
 
@@ -110,6 +109,3 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
     def dump_logbook_to_file(self):
         super(SingleObjectiveTestSuiteEvaluator, self).dump_logbook_to_file()
-
-        # draw graph
-        two_d_line.plot(self.logbook, 0, self.result_dir)

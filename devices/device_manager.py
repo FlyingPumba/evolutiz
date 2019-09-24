@@ -13,6 +13,7 @@ from devices.emulator import Emulator
 from util import logger
 
 
+from typing import List, Tuple
 class WaitDevicesTimeout(Exception):
     pass
 
@@ -26,20 +27,20 @@ class DeviceManager(object):
     - Boot and shutdown emulators.
      """
 
-    def __init__(self):
-        self.emulators_number = RequiredFeature('emulators_number').request()
-        self.real_devices_number = RequiredFeature('real_devices_number').request()
+    def __init__(self) -> None:
+        self.emulators_number: int = RequiredFeature('emulators_number').request()
+        self.real_devices_number: int = RequiredFeature('real_devices_number').request()
 
-        self.next_available_emulator_port = 5554
-        self.next_available_adb_server_port = 5038
+        self.next_available_emulator_port: int = 5554
+        self.next_available_adb_server_port: int = 5038
 
         # all devices that can be used
-        self.devices = []
+        self.devices: List[Device] = []
 
         # init available devices
         self.refresh_reachable_devices()
 
-    def refresh_reachable_devices(self):
+    def refresh_reachable_devices(self) -> List[Device]:
         emulators_found, real_devices_found = self.parse_adb_devices(5037, 0, 0)
 
         for adb_port in range(5038, 5038 + self.get_total_number_of_devices_expected()*2, 2):
@@ -47,7 +48,7 @@ class DeviceManager(object):
 
         return self.devices
 
-    def parse_adb_devices(self, adb_port, emulators_found, real_devices_found):
+    def parse_adb_devices(self, adb_port: int, emulators_found: int, real_devices_found: int) -> Tuple[int, int]:
         devices_cmd = adb.adb_cmd_prefix + ' devices'
 
         try:
@@ -99,8 +100,8 @@ class DeviceManager(object):
 
         return emulators_found, real_devices_found
 
-    def get_devices(self, refresh=False):
-        current_time = time.time()
+    def get_devices(self, refresh: bool = False) -> List[Device]:
+        current_time: float = time.time()
         booting_devices_to_check = [device for device in self.devices if
                                     device.state is State.booting and
                                     current_time - device.boot_time >= settings.AVD_BOOT_DELAY]
@@ -119,7 +120,7 @@ class DeviceManager(object):
 
         return self.devices
 
-    def get_booted_devices(self, refresh=False):
+    def get_booted_devices(self, refresh=False) -> List[Device]:
         if refresh is True:
             # check if boot animation is over for each device
             devices = self.get_devices(refresh=True)
@@ -128,7 +129,7 @@ class DeviceManager(object):
 
         return [device for device in self.devices if device.state is State.booted]
 
-    def get_ready_to_install_devices(self, refresh=False):
+    def get_ready_to_install_devices(self, refresh: bool = False) -> List[Device]:
         if refresh is True:
             # check if package manager is ready for each device
             devices = self.get_devices(refresh=True)
@@ -137,10 +138,10 @@ class DeviceManager(object):
 
         return [device for device in self.devices if device.state is State.ready_idle]
 
-    def get_idle_devices(self):
+    def get_idle_devices(self) -> List[Device]:
         return self.get_ready_to_install_devices(refresh=True)
 
-    def boot_emulators(self, wait_to_be_ready=False):
+    def boot_emulators(self, wait_to_be_ready: bool = False) -> None:
         while True:
             self.next_available_emulator_port = 5554
             self.next_available_adb_server_port = 5038
@@ -165,7 +166,7 @@ class DeviceManager(object):
 
             break
 
-    def shutdown_emulators(self, remove=False):
+    def shutdown_emulators(self, remove=False) -> None:
         emulators = [device for device in self.get_devices() if type(device) is Emulator]
         for device in emulators:
             device.shutdown()
@@ -174,7 +175,7 @@ class DeviceManager(object):
             self.next_available_emulator_port = 5554
             self.devices = [device for device in self.get_devices() if type(device) is RealDevice]
 
-    def reboot_devices(self, wait_to_be_ready=False):
+    def reboot_devices(self, wait_to_be_ready=False) -> None:
         logger.log_progress("\nRebooting devices.")
         
         for device in self.get_devices():
@@ -183,7 +184,7 @@ class DeviceManager(object):
         if wait_to_be_ready:
             self.wait_devices_to_be_ready()
 
-    def wait_devices_to_be_ready(self):
+    def wait_devices_to_be_ready(self) -> None:
         devices_to_wait = self.get_total_number_of_devices_expected()
         logger.log_progress("\nWaiting for devices to be ready: " +
                             str(0) + "/" + str(devices_to_wait))
@@ -205,7 +206,7 @@ class DeviceManager(object):
         logger.log_progress("\nWaiting for devices to be ready: " +
                             str(len(ready_devices)) + "/" + str(devices_to_wait))
 
-    def wait_for_battery_threshold(self, battery_threshold=20):
+    def wait_for_battery_threshold(self, battery_threshold=20) -> None:
         while True:
             all_devices_above_threshold = all([level is None or level >= battery_threshold
                                                for level in (device.battery_level() for device in self.get_devices())])
@@ -215,7 +216,7 @@ class DeviceManager(object):
                 logger.log_progress("\nWaiting for some devices to reach " + str(battery_threshold) + "% battery level")
                 time.sleep(60)  # sleep 1 minute
 
-    def log_devices_battery(self, gen, result_dir):
+    def log_devices_battery(self, gen, result_dir) -> None:
         log_file = result_dir + "/battery.log"
         os.system("echo 'Battery levels at gen: " + str(gen) + "' >> " + log_file)
 
@@ -228,15 +229,15 @@ class DeviceManager(object):
 
             os.system("echo '" + name + " -> " + str(level) + "' >> " + log_file)
 
-    def get_next_available_emulator_port(self):
+    def get_next_available_emulator_port(self) -> int:
         port = self.next_available_emulator_port
         self.next_available_emulator_port += 2
         return port
 
-    def get_next_available_adb_server_port(self):
+    def get_next_available_adb_server_port(self) -> int:
         port = self.next_available_adb_server_port
         self.next_available_adb_server_port += 2
         return port
 
-    def get_total_number_of_devices_expected(self):
+    def get_total_number_of_devices_expected(self) -> int:
         return self.real_devices_number + self.emulators_number

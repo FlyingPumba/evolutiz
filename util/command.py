@@ -5,13 +5,19 @@ import settings
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
 
-def is_command_available(command):
+from typing import Dict, Optional, Tuple
+def is_command_available(command: str) -> bool:
     cmd_check = "command -v " + command + " >/dev/null 2>&1"
     result_code = os.system(cmd_check)
     return result_code == 0
 
 
-def run_cmd(command, timeout=None, discard_output=False, cwd=None, env=None):
+def run_cmd(command: str,
+            timeout: Optional[int] = None,
+            discard_output: bool = False,
+            cwd: Optional[str] = None,
+            env: Optional[Dict[str, str]] = None) -> Tuple[str, str, int]:
+
     if timeout is None:
         timeout = settings.ADB_REGULAR_COMMAND_TIMEOUT
 

@@ -1,5 +1,5 @@
 class Integer(object):
-    def __init__(self, val=0):
+    def __init__(self, val: int = 0) -> None:
         self._val = int(val)
 
     def __add__(self, val):

@@ -11,7 +11,7 @@ from dependency_injection.required_feature import RequiredFeature
 
 class TestSuiteEvaluator(object):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.test_runner = RequiredFeature('test_runner').request()
         self.result_dir = None
 

@@ -8,6 +8,8 @@ from util import logger
 from concurrency.killable_thread import KillableThread
 
 
+from concurrency.queue import Queue
+from typing import Any, Callable, Dict, Optional, Tuple
 class MultipleQueueConsumerThread(KillableThread):
     """Provides a thread where a function can be called.
     The arguments of this function are fetched from different queues.
@@ -34,11 +36,18 @@ class MultipleQueueConsumerThread(KillableThread):
         name                        Name of the thread.
     """
 
-    def __init__(self, func,
-                 items_queue=None, devices_queue=None,
-                 items_are_consumable=True, devices_are_consumable=False,
-                 extra_args=(), extra_kwargs=None, output_queue=None,
-                 fail_times_limit=1, default_output=None, name=None):
+    def __init__(self, func: Callable,
+                 items_queue: Optional[Queue] = None,
+                 devices_queue: Optional[Queue] = None,
+                 items_are_consumable: bool = True,
+                 devices_are_consumable: bool = False,
+                 extra_args: Tuple = (),
+                 extra_kwargs: Optional[Dict[str, Any]] = None,
+                 output_queue: Optional[Queue] = None,
+                 fail_times_limit: int = 1,
+                 default_output: Optional[Any] = None,
+                 name: Optional[str] = None
+                 ) -> None:
         super().__init__(name=name)
 
         if items_queue is None and devices_queue is None:
@@ -53,7 +62,7 @@ class MultipleQueueConsumerThread(KillableThread):
         self.func = func
         self.extra_args = extra_args
         if extra_kwargs is None:
-            self.extra_kwargs = {}
+            self.extra_kwargs: Dict[str, Any] = {}
         else:
             self.extra_kwargs = extra_kwargs
 

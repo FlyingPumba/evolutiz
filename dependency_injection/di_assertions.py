@@ -1,4 +1,5 @@
-def NoAssertion(obj): return True
+from typing import Any, Callable
+def NoAssertion(obj: Any) -> bool: return True
 
 
 def IsInstanceOf(*classes):
@@ -16,7 +17,7 @@ def HasAttributes(*attributes):
     return test
 
 
-def HasMethods(*methods):
+def HasMethods(*methods) -> Callable:
     def test(obj):
         for each in methods:
             try:

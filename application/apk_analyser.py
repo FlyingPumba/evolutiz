@@ -7,9 +7,10 @@ from devices import adb
 from util import logger
 
 
+from devices.emulator import Emulator
 class ApkAnalyser(object):
 
-    def analyse(self):
+    def analyse(self) -> None:
         self.result_dir = RequiredFeature('result_dir').request()
         self.package_name = RequiredFeature('package_name').request()
         self.instrumented_app_path = RequiredFeature('instrumented_app_path').request()
@@ -23,7 +24,7 @@ class ApkAnalyser(object):
             logger.log_progress("\nRunning static analysis on apk")
             self.decode_apk()
 
-    def get_apk_path(self):
+    def get_apk_path(self) -> None:
         self.apk_path = None
         if self.instrumented_app_path.endswith(".apk"):
             self.apk_path = self.instrumented_app_path
@@ -36,11 +37,11 @@ class ApkAnalyser(object):
         features.provide('apk_path', self.apk_path)
         assert self.apk_path is not None
 
-    def decode_apk(self):
+    def decode_apk(self) -> None:
         os.system("java -jar " + settings.WORKING_DIR + "lib/apktool.jar d -f -o " +
                   self.decoded_dir + " " + self.apk_path + logger.redirect_string())
 
-    def upload_string_xml(self, device):
+    def upload_string_xml(self, device: Emulator) -> None:
         string_xml_path = self.decoded_dir + "/res/values/strings.xml"
         if settings.ENABLE_STRING_SEEDING is False or os.path.exists(string_xml_path) is False:
             # if not exist, upload dummy strings.xml

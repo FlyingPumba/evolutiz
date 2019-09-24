@@ -6,16 +6,17 @@ from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 
 
+from devices.emulator import Emulator
 class ApkPreparer(object):
-    def __init__(self):
+    def __init__(self) -> None:
         self.app_instrumentator = AppInstrumentator()
         self.apk_analyser = ApkAnalyser()
 
-    def prepare(self):
+    def prepare(self) -> None:
         self.app_instrumentator.instrument()
         self.apk_analyser.analyse()
 
-    def install_on_device(self, device):
+    def install_on_device(self, device: Emulator) -> None:
         package_name = RequiredFeature('package_name').request()
         apk_path = RequiredFeature('apk_path').request()
 

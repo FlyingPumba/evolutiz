@@ -4,7 +4,7 @@ from evaluation.parallel_evaluator import ParallelEvaluator
 
 class Strategy(object):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.device_manager = RequiredFeature('device_manager').request()
         self.budget_manager = RequiredFeature('budget_manager').request()
 

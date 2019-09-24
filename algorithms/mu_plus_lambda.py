@@ -23,7 +23,7 @@ class MuPlusLambda(GeneticAlgorithm):
         in Search Based Software Engineering, 2017, pp. 33–48.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(MuPlusLambda, self).__init__()
 
         # offpsring_size (Lambda) must be multiple of population_size (Mu)

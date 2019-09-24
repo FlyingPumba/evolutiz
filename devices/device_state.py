@@ -21,14 +21,14 @@ class State(Enum):
     setting_up = 5
     ready_working = 6
 
-    def __lt__(self, other):
-        return self.value < other.value
+    def __lt__(self, other: 'State') -> bool:
+        return int(self.value) < int(other.value)
 
-    def __le__(self, other):
-        return self.value <= other.value
+    def __le__(self, other: 'State') -> bool:
+        return int(self.value) <= int(other.value)
 
-    def __gt__(self, other):
-        return self.value > other.value
+    def __gt__(self, other: 'State') -> bool:
+        return int(self.value) > int(other.value)
 
-    def __ge__(self, other):
-        return self.value >= other.value
+    def __ge__(self, other: 'State') -> bool:
+        return int(self.value) >= int(other.value)

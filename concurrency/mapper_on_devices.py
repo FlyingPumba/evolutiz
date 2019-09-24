@@ -5,6 +5,9 @@ from dependency_injection.required_feature import RequiredFeature
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
 from concurrency.watchdog_thread import WatchDogThread
 
+from devices.device_manager import DeviceManager
+from typing import Callable, List, Optional, Tuple, Any, Dict
+from util.integer import Integer
 class MapperOnDevices(object):
     """Manages parallel execution of a function in the available devices.
 
@@ -25,16 +28,23 @@ class MapperOnDevices(object):
         idle_devices_only   Use only idle devices.
     """
 
-    def __init__(self, func, items_to_map=None, fail_times_limit=3, default_output=None,
-                 extra_args=(), extra_kwargs=None, minimum_api=None,
-                 idle_devices_only=False):
+    def __init__(self,
+                 func: Callable,
+                 items_to_map: Optional[List[Integer]] = None,
+                 fail_times_limit: int = 3,
+                 default_output: None = None,
+                 extra_args: Tuple = (),
+                 extra_kwargs: Optional[Dict[str, Any]] = None,
+                 minimum_api: Optional[int] = None,
+                 idle_devices_only: bool = False
+                 ) -> None:
 
         self.func = func
         self.items_to_map = items_to_map
         self.extra_args = extra_args
 
         if extra_kwargs is None:
-            self.extra_kwargs = {}
+            self.extra_kwargs: Dict[str, Any] = {}
         else:
             self.extra_kwargs = extra_kwargs
 
@@ -44,7 +54,7 @@ class MapperOnDevices(object):
         self.default_output = default_output
         self.fail_times_limit = fail_times_limit
 
-    def run(self):
+    def run(self) -> List[None]:
         device_manager = RequiredFeature('device_manager').request()
 
         if self.idle_devices_only:
@@ -107,7 +117,7 @@ class MapperOnDevices(object):
         results = output_queue.pop_all()
         return results
 
-    def wait_for_watchdog_to_finish(self, device_manager, watchdog_thread):
+    def wait_for_watchdog_to_finish(self, device_manager: DeviceManager, watchdog_thread: WatchDogThread) -> None:
         watchdog_thread.start()
         time.sleep(1)
 
