@@ -1,13 +1,15 @@
 import threading
+from typing import TYPE_CHECKING
 
 from dependency_injection.required_feature import RequiredFeature
 from devices.device_state import State
-from devices.emulator import Emulator
 
+if TYPE_CHECKING:
+    from devices.device import Device
 
 class DeviceSetupThread(threading.Thread):
 
-    def __init__(self, device: Emulator) -> None:
+    def __init__(self, device: 'Device') -> None:
         super().__init__(name="SetupThread-"+device.name)
 
         self.device = device
@@ -16,7 +18,7 @@ class DeviceSetupThread(threading.Thread):
         DeviceSetupThread.setup(self.device)
 
     @staticmethod
-    def setup(device: Emulator) -> None:
+    def setup(device: 'Device') -> None:
         device.state = State.setting_up
 
         # give test runner opportunity to install on devices
