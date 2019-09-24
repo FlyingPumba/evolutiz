@@ -37,7 +37,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
         self.population_size = 1
         self.parent = None
 
-    def evolve(self) -> None:
+    def evolve(self) -> List[Any]:
         verbose_level: bool = RequiredFeature('verbose_level').request()
         self.parent = self.population[0]
 

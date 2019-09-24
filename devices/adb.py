@@ -30,7 +30,7 @@ def get_adb_cmd_prefix_for_device(device: Device) -> str:
 def adb_command(
         device: Device,
         command: str,
-        timeout: None = None,
+        timeout: Optional[int] = None,
         retry: int = 1,
         discard_output: bool = False
 ) -> RunCmdResult:
@@ -66,25 +66,25 @@ def get_root_permissions(device: Device) -> None:
 
     devices_with_root_permissions.append(device.name)
 
-def shell_command(device: Device, command: str, timeout: None = None, retry: int = 1, discard_output: bool = False) -> RunCmdResult:
+def shell_command(device: Device, command: str, timeout: Optional[int] = None, retry: int = 1, discard_output: bool = False) -> RunCmdResult:
     return adb_command(device, "shell " + command, timeout=timeout, retry=retry, discard_output=discard_output)
 
-def sudo_shell_command(device, command, timeout=None, retry=1, discard_output=False):
+def sudo_shell_command(device, command, timeout: Optional[int] = None, retry=1, discard_output=False) -> RunCmdResult:
     get_root_permissions(device)
     return shell_command(device, command, timeout=timeout, retry=retry, discard_output=discard_output)
 
-def push(device: Device, src: str, dest: str, timeout: None = None) -> RunCmdResult:
+def push(device: Device, src: str, dest: str, timeout: Optional[int] = None) -> RunCmdResult:
     return adb_command(device, "push " + src + " " + dest, timeout=timeout)
 
-def push_all(device, src_list, dest, timeout=None) -> RunCmdResult:
+def push_all(device, src_list, dest, timeout: Optional[int] = None) -> RunCmdResult:
     src_str = " ".join(src_list)
     return adb_command(device, "push " + src_str + " " + dest, timeout=timeout)
 
-def sudo_push(device, src, dest, timeout=None) -> RunCmdResult:
+def sudo_push(device, src, dest, timeout: Optional[int] = None) -> RunCmdResult:
     get_root_permissions(device)
     return push(device, src, dest, timeout=timeout)
 
-def pull(device, src, dest, timeout=None) -> RunCmdResult:
+def pull(device, src, dest, timeout: Optional[int] = None) -> RunCmdResult:
     return adb_command(device, "pull " + src + " " + dest, timeout=timeout)
 
 def uninstall(device: Device, package_name: str) -> RunCmdResult:
@@ -121,7 +121,7 @@ def pkill(device, string) -> int:
     except TimeoutExpired as e:
         return 124
 
-def set_bluetooth_state(device, enabled, timeout=None) -> RunCmdResult:
+def set_bluetooth_state(device, enabled, timeout: Optional[int] = None) -> RunCmdResult:
     if enabled:
         # sometimes might not work
         return sudo_shell_command(device, "service call bluetooth_manager 6", timeout=timeout)
@@ -129,26 +129,26 @@ def set_bluetooth_state(device, enabled, timeout=None) -> RunCmdResult:
         # the following command is not working. Also tried with number 9.
         return sudo_shell_command(device, "service call bluetooth_manager 8", timeout=timeout)
 
-def set_wifi_state(device, enabled, timeout=None) -> RunCmdResult:
+def set_wifi_state(device, enabled, timeout: Optional[int] = None) -> RunCmdResult:
     if enabled:
         return sudo_shell_command(device, "svc wifi enable", timeout=timeout)
     else:
         # the following command is not working.
         return sudo_shell_command(device, "svc wifi disable", timeout=timeout)
 
-def set_stay_awake_state(device, enabled, timeout=None) -> RunCmdResult:
+def set_stay_awake_state(device, enabled, timeout: Optional[int] = None) -> RunCmdResult:
     if enabled:
         return sudo_shell_command(device, "svc power stayon true", timeout=timeout)
     else:
         return sudo_shell_command(device, "svc power stayon false", timeout=timeout)
 
-def set_location_state(device, enabled, timeout=None) -> RunCmdResult:
+def set_location_state(device, enabled, timeout: Optional[int] = None) -> RunCmdResult:
     if enabled:
         return shell_command(device, "settings put secure location_providers_allowed gps,wifi,network", timeout=timeout)
     else:
         return shell_command(device, "settings put secure location_providers_allowed ' '", timeout=timeout)
 
-def set_brightness(device, value, timeout=None) -> RunCmdResult:
+def set_brightness(device, value, timeout: Optional[int] = None) -> RunCmdResult:
     # value should be between 0 and 250
     return shell_command(device, "settings put system screen_brightness " + value, timeout=timeout)
 
@@ -162,6 +162,7 @@ def get_battery_level(device) -> Optional[int]:
             if 'level' in line:
                 level_str = line.split(':')
                 return int(level_str[1].strip())
+    return None
 
 def get_imei(device) -> Optional[str]:
     if device.name not in devices_imei:

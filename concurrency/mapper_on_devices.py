@@ -32,7 +32,7 @@ class MapperOnDevices(object):
                  func: Callable,
                  items_to_map: Optional[List[Integer]] = None,
                  fail_times_limit: int = 3,
-                 default_output: None = None,
+                 default_output: Any = None,
                  extra_args: Tuple = (),
                  extra_kwargs: Optional[Dict[str, Any]] = None,
                  minimum_api: Optional[int] = None,

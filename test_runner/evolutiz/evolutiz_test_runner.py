@@ -3,6 +3,7 @@ import datetime
 import os
 import random
 import time
+from typing import List
 
 from deap import tools
 
@@ -157,7 +158,7 @@ class EvolutizTestRunner(TestRunner):
         if verbose_level > 0:
             logger.log_progress('\nEvolutiz test run took: %.2f seconds' % (time.time() - start_time))
 
-    def generate(self, device, package_name, destination_file_name) -> str:
+    def generate(self, device, package_name, destination_file_name) -> List[str]:
         assert device.api_level() >= self.minimum_api
 
         verbose_level = RequiredFeature('verbose_level').request()
@@ -190,7 +191,7 @@ class EvolutizTestRunner(TestRunner):
 
         return test_content
 
-    def retrieve_generated_test(self, device, destination_file_name):
+    def retrieve_generated_test(self, device, destination_file_name) -> List[str]:
         output, errors, result_code = adb.pull(device, self.evolutiz_script_path_in_devices, destination_file_name,
                                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:

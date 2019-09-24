@@ -61,7 +61,7 @@ class MuPlusLambda(GeneticAlgorithm):
         offspring = []
         index_in_generation = 0
         for p in population:
-            for i in range(self.offspring_size / self.population_size):
+            for i in range(int(self.offspring_size / self.population_size)):
                 ind = self.toolbox.clone(p)
 
                 op_choice = random.random()

@@ -20,15 +20,20 @@ class EmmaCoverage(object):
     def __init__(self) -> None:
         self.coverage_ec_device_backup_path = "/mnt/sdcard/coverage.ec"
 
-    def get_suite_coverage(self, scripts: List[str], device: Device, generation: int, individual_index: int)\
-            -> Tuple(int, Set[str], Dict[str, bool]):
+    def get_suite_coverage(
+            self,
+            scripts: List[str],
+            device: Device,
+            generation: int,
+            individual_index: int
+    ) -> Tuple[int, Set[str], Dict[str, bool]]:
 
         self.verbose_level = RequiredFeature('verbose_level').request()
-        self.package_name = RequiredFeature('package_name').request()
-        self.result_dir = RequiredFeature('result_dir').request()
+        self.package_name: str = RequiredFeature('package_name').request()
+        self.result_dir: str = RequiredFeature('result_dir').request()
 
-        unique_crashes = set()
-        scripts_crash_status = {}
+        unique_crashes: Set[str] = set()
+        scripts_crash_status: Dict[str, bool] = {}
         self.output = ""
         self.errors = ""
 
@@ -40,8 +45,13 @@ class EmmaCoverage(object):
 
         # run scripts
         for test_case_index, script_path in enumerate(scripts):
-            self.generate_test_coverage(device, script_path, generation, individual_index,
-                                        test_case_index, unique_crashes, scripts_crash_status)
+            self.generate_test_coverage(device,
+                                        script_path,
+                                        generation,
+                                        individual_index,
+                                        test_case_index,
+                                        unique_crashes,
+                                        scripts_crash_status)
 
         # collect coverage data
         coverage = 0
