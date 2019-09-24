@@ -73,7 +73,7 @@ class MultipleQueueConsumerThread(KillableThread):
         self.stop_event = Event()
         self.item_processing_start_time = None
 
-    def stop(self):
+    def stop(self) -> None:
         self.stop_event.set()
 
     def get_item_processing_start_time(self):

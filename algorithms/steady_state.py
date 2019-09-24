@@ -17,7 +17,7 @@ class SteadyState(Standard):
         in Search Based Software Engineering, 2017, pp. 33–48.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(SteadyState, self).__init__()
 
     def evolve(self):

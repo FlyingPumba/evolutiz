@@ -10,7 +10,7 @@ from generation.individual_generator import IndividualGenerator
 
 class IndividualWithoutCoverageGenerator(IndividualGenerator):
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(IndividualWithoutCoverageGenerator, self).__init__()
 
     def gen_individual(self, device, individual_index, generation):

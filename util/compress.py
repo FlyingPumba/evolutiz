@@ -6,7 +6,7 @@ from dependency_injection.required_feature import RequiredFeature
 from util.command import run_cmd, is_command_available
 
 
-def compress_results(strategy_with_runner_name):
+def compress_results(strategy_with_runner_name: str) -> None:
     app_path = RequiredFeature('app_path').request()
     app_name = os.path.basename(app_path)
 

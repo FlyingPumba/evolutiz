@@ -1,6 +1,7 @@
 import time
 
 import subprocess as sub
+from typing import Optional, TYPE_CHECKING
 
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
@@ -9,13 +10,18 @@ from devices.device_state import State
 from util.command import run_cmd
 from util import logger
 
+if TYPE_CHECKING:
+    from devices.device_manager import DeviceManager
 
 class Emulator(Device):
 
-    def __init__(self, device_manager, device_name="", state=State.unknown):
+    def __init__(self, device_manager: 'DeviceManager', device_name: str = "", state: State = State.unknown) -> None:
         Device.__init__(self, device_manager, device_name, state)
 
         self.avd_manager = RequiredFeature('avd_manager').request()
+
+        self.port: Optional[int]
+        self.adb_port: Optional[int]
 
         if device_name != "":
             # we assume device_name has form "emulator-xxxx"
@@ -25,9 +31,9 @@ class Emulator(Device):
             self.port = None
             self.adb_port = None
 
-        self.avd_name = None
+        self.avd_name: str = ""
 
-    def boot(self, port=None, adb_port=None):
+    def boot(self, port: Optional[int] = None, adb_port: Optional[int] = None) -> None:
         verbose_level = RequiredFeature('verbose_level').request()
 
         Device.boot(self)
@@ -66,7 +72,7 @@ class Emulator(Device):
 
         sub.Popen(cmd, shell=True)
 
-    def shutdown(self):
+    def shutdown(self) -> None:
         Device.shutdown(self)
 
         adb.adb_command(self, "emu kill")
@@ -78,6 +84,6 @@ class Emulator(Device):
         self.shutdown()
         self.boot(port=self.port, adb_port=self.adb_port)
 
-    def get_adb_server_port_for_emulator_port(self, port):
+    def get_adb_server_port_for_emulator_port(self, port: int) -> int:
         return port - 516
 
