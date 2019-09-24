@@ -6,7 +6,6 @@ from typing import Optional
 
 import settings
 from devices import adb
-from devices.device_manager import DeviceManager
 from devices.device_setup import DeviceSetupThread
 from devices.device_state import State
 
@@ -22,7 +21,7 @@ class Device(object):
     """
 
     def __init__(self, device_manager, device_name="", state=State.unknown):
-        self.device_manager: DeviceManager = device_manager
+        self.device_manager = device_manager
         self.name: str = device_name
         self.state: State = state
         self.boot_time: float = 0
