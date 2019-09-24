@@ -42,6 +42,9 @@ from util.budget_manager import BudgetManager
 from util.command import *
 from util.compress import compress_results
 
+conf_parser: argparse.ArgumentParser
+defaults: Dict[str, Any]
+remaining_argv: List[str]
 
 def run_one_app(strategy_with_runner_name):
     app_path = RequiredFeature('app_path').request()
@@ -524,10 +527,6 @@ def provide_features():
     features.provide('evaluate_scripts_repetition_number', args.evaluate_scripts_repetition_number)
     features.provide('evaluate_scripts_algorithm_name', args.evaluate_scripts_algorithm_name)
 
-
-conf_parser: argparse.ArgumentParser
-defaults: Dict[str, Any]
-remaining_argv: List[str]
 
 if __name__ == "__main__":
     parse_config_file()
