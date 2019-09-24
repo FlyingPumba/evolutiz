@@ -1,3 +1,5 @@
+from typing import List, Any
+
 from algorithms.strategy import Strategy
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
@@ -15,7 +17,7 @@ class RandomSearch(Strategy):
             in Search Based Software Engineering, 2017, pp. 33–48.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(RandomSearch, self).__init__()
 
         # use expected number of devices as sampling size to leverage parallelism when using more than one emulator.
@@ -23,7 +25,7 @@ class RandomSearch(Strategy):
         self.sampling_size = self.device_manager.get_total_number_of_devices_expected()
 
         self.population_size = 1
-        self.population = []
+        self.population: List[Any] = []
 
     def run(self):
         gen = 0

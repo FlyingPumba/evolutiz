@@ -17,7 +17,7 @@ from util import logger
 
 class EvolutizTestRunner(TestRunner):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.evolutiz_script_path_in_devices = "/mnt/sdcard/evolutiz.script"
         self.test_runner_installer = TestRunnerInstaller("evolutiz",
                                                          settings.WORKING_DIR + "test_runner/evolutiz/evolutiz",

@@ -11,7 +11,7 @@ from util import logger
 
 class Evolutiz(object):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.device_manager = RequiredFeature('device_manager').request()
         self.strategy = RequiredFeature('strategy').request()
         self.test_suite_evaluator = RequiredFeature('test_suite_evaluator').request()
@@ -33,7 +33,7 @@ class Evolutiz(object):
         self.toolbox.decorate("mate", self.history.decorator)
         self.toolbox.decorate("mutate", self.history.decorator)
 
-    def run(self):
+    def run(self) -> None:
         self.apk_preparer.prepare()
 
         emulators_number = RequiredFeature('emulators_number').request()
@@ -57,7 +57,7 @@ class Evolutiz(object):
 
         self.write_summary_files()
 
-    def write_summary_files(self):
+    def write_summary_files(self) -> None:
         if RequiredFeature('write_hall_of_fame').request():
             self.test_suite_evaluator.dump_hall_of_fame_to_file()
 

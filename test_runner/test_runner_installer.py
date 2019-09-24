@@ -1,15 +1,15 @@
 import traceback
 
-import settings
+from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
-from concurrency.mapper_on_devices import MapperOnDevices
+from devices.device import Device
 from util import logger
 
 
 class TestRunnerInstaller(object):
 
-    def __init__(self, test_runner_name, test_runner_executable_path, test_runner_jar_path):
+    def __init__(self, test_runner_name: str, test_runner_executable_path: str, test_runner_jar_path: str) -> None:
         self.test_runner_name = test_runner_name
         self.test_runner_executable_path = test_runner_executable_path
         self.test_runner_jar_path = test_runner_jar_path
@@ -33,7 +33,7 @@ class TestRunnerInstaller(object):
             str = traceback.format_exc()
             print(str)
 
-    def install(self, device):
+    def install(self, device: Device) -> bool:
         adb.get_root_permissions(device)
 
         # remount partitions

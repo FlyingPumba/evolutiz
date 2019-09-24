@@ -9,11 +9,11 @@ from util.integer import Integer
 
 class PopulationGenerator(object):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.device_manager = RequiredFeature('device_manager').request()
         self.individual_generator = RequiredFeature('individual_generator', HasMethods('gen_individual')).request()
 
-    def generate(self, n, gen=0):
+    def generate(self, n: int, gen: int = 0):
         budget_manager = RequiredFeature('budget_manager').request()
         individuals_index_to_generate = [Integer(i) for i in range(0, n)]
 

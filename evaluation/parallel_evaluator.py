@@ -5,7 +5,7 @@ from util import logger
 
 class ParallelEvaluator(object):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.device_manager = RequiredFeature('device_manager').request()
         self.test_suite_evaluator = RequiredFeature('test_suite_evaluator').request()
         self.toolbox = RequiredFeature('toolbox').request()

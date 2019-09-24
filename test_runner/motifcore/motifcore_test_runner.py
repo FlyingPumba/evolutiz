@@ -13,25 +13,26 @@ from test_runner.test_runner_installer import TestRunnerInstaller
 from util import logger
 
 
+from deap.base import Toolbox
 class MotifcoreTestRunner(TestRunner):
 
-    def __init__(self, use_motifgene=True):
+    def __init__(self, use_motifgene: bool = True) -> None:
         self.use_motifgene = use_motifgene
         self.motifcore_script_path_in_devices = "/mnt/sdcard/motifcore.script"
         self.test_runner_installer = TestRunnerInstaller("motifcore",
                                                          settings.WORKING_DIR + "test_runner/motifcore/motifcore",
                                                          settings.WORKING_DIR + "test_runner/motifcore/motifcore.jar")
 
-    def register_minimum_api(self):
+    def register_minimum_api(self) -> None:
         self.minimum_api = 19
         features.provide('minimum_api', self.minimum_api)
 
-    def register_crossover_operator(self, toolbox):
+    def register_crossover_operator(self, toolbox: Toolbox) -> None:
         # the crossover between individuals is a uniform crossover
         # that means each test case has 50-50 probability of ending up in each of the new individuals
         toolbox.register("mate", tools.cxUniform, indpb=0.5)
 
-    def register_mutation_operator(self, toolbox):
+    def register_mutation_operator(self, toolbox: Toolbox) -> None:
         toolbox.register("mutate", self.sapienz_mut_suite, indpb=0.5)
 
     def install_on_devices(self):
