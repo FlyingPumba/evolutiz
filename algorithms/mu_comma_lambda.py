@@ -1,4 +1,5 @@
 # coding=utf-8
+from typing import List, Any
 
 from algorithms.mu_plus_lambda import MuPlusLambda
 from dependency_injection.required_feature import RequiredFeature
@@ -16,11 +17,11 @@ class MuCommaLambda(MuPlusLambda):
         in Information and Software Technology journal, 2018, pp. 207–235.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(MuCommaLambda, self).__init__()
 
-    def evolve(self):
-        verbose_level = RequiredFeature('verbose_level').request()
+    def evolve(self) -> List[Any]:
+        verbose_level: bool = RequiredFeature('verbose_level').request()
 
         for gen in range(1, self.max_generations):
 

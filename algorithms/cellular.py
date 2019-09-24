@@ -27,5 +27,5 @@ class Cellular(GeneticAlgorithm):
         in Information and Software Technology journal, 2018, pp. 207–235.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(Cellular, self).__init__()

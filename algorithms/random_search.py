@@ -27,7 +27,7 @@ class RandomSearch(Strategy):
         self.population_size = 1
         self.population: List[Any] = []
 
-    def run(self):
+    def run(self) -> List[Any]:
         gen = 0
         while self.budget_manager.is_budget_available():
             logger.log_progress(

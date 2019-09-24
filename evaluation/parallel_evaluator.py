@@ -1,3 +1,5 @@
+from typing import List, Any
+
 from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
@@ -10,7 +12,7 @@ class ParallelEvaluator(object):
         self.test_suite_evaluator = RequiredFeature('test_suite_evaluator').request()
         self.toolbox = RequiredFeature('toolbox').request()
 
-    def evaluate(self, individuals):
+    def evaluate(self, individuals: List[Any]) -> bool:
         invalid_ind = [ind for ind in individuals if not ind.fitness.valid]
         logger.log_progress("\nEvaluating " + str(len(invalid_ind)) + " (out of " + str(len(individuals)) + ") individuals in parallel")
 

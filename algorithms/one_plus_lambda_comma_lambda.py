@@ -2,6 +2,8 @@
 import time
 
 import random
+from typing import Any, List
+
 from deap import tools
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
@@ -28,15 +30,15 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
         in Search Based Software Engineering, 2017, pp. 33–48.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(OnePlusLambdaCommaLambda, self).__init__()
 
         self.history = RequiredFeature('history').request()
         self.population_size = 1
         self.parent = None
 
-    def evolve(self):
-        verbose_level = RequiredFeature('verbose_level').request()
+    def evolve(self) -> None:
+        verbose_level: bool = RequiredFeature('verbose_level').request()
         self.parent = self.population[0]
 
         for gen in range(1, self.max_generations):
@@ -78,7 +80,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
 
         return self.population
 
-    def generate_mutants(self, gen):
+    def generate_mutants(self, gen) -> List[Any]:
         mutants = []
         for index_in_generation in range(self.offspring_size):
             ind = self.toolbox.clone(self.parent)
@@ -95,7 +97,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
 
         return mutants
 
-    def generate_offspring(self, gen, mutant):
+    def generate_offspring(self, gen, mutant) -> List[Any]:
         offspring = []
         for index_in_generation in range(0, self.offspring_size, 2):
             ind1, ind2 = map(self.toolbox.clone, [self.parent, mutant])

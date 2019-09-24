@@ -17,5 +17,5 @@ class Breeder(GeneticAlgorithm):
         in Information and Software Technology journal, 2018, pp. 207–235.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(Breeder, self).__init__()

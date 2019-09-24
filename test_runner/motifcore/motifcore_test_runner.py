@@ -67,7 +67,7 @@ class MotifcoreTestRunner(TestRunner):
         if verbose_level > 0:
             logger.log_progress('\nMotifcore test run took: %.2f seconds' % (time.time() - start_time))
 
-    def generate(self, device, package_name, destination_file_name):
+    def generate(self, device, package_name, destination_file_name) -> str:
         verbose_level = RequiredFeature('verbose_level').request()
         start_time = time.time()
 

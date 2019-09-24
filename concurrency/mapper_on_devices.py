@@ -54,7 +54,7 @@ class MapperOnDevices(object):
         self.default_output = default_output
         self.fail_times_limit = fail_times_limit
 
-    def run(self) -> List[None]:
+    def run(self) -> List[Any]:
         device_manager = RequiredFeature('device_manager').request()
 
         if self.idle_devices_only:

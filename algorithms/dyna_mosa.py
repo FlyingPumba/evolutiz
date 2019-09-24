@@ -11,7 +11,7 @@ class DynaMosa(object):
             in Search Based Software Engineering, 2017, pp. 33–48.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
     def setup(self, toolbox, test_runner, stats=None, verbose=False):

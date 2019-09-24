@@ -1,4 +1,5 @@
 import time
+from typing import Any, List
 
 from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.di_assertions import HasMethods
@@ -13,7 +14,7 @@ class PopulationGenerator(object):
         self.device_manager = RequiredFeature('device_manager').request()
         self.individual_generator = RequiredFeature('individual_generator', HasMethods('gen_individual')).request()
 
-    def generate(self, n: int, gen: int = 0):
+    def generate(self, n: int, gen: int = 0) -> List[Any]:
         budget_manager = RequiredFeature('budget_manager').request()
         individuals_index_to_generate = [Integer(i) for i in range(0, n)]
 
@@ -27,7 +28,7 @@ class PopulationGenerator(object):
         try:
             start_time = time.time()
 
-            individuals_generated = mapper.run()
+            individuals_generated: List[Any] = mapper.run()
 
             finish_time = time.time()
             elapsed_time = finish_time - start_time

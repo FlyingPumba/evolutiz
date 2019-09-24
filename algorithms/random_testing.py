@@ -1,3 +1,5 @@
+from typing import Any, List
+
 from algorithms.strategy import Strategy
 
 
@@ -13,8 +15,8 @@ class RandomTesting(Strategy):
             in Search Based Software Engineering, 2017, pp. 33–48.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(RandomTesting, self).__init__()
 
-    def run(self):
+    def run(self) -> List[Any]:
         pass

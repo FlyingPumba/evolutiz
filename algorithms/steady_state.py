@@ -1,4 +1,5 @@
 # coding=utf-8
+from typing import Any, List
 
 from algorithms.standard import Standard
 from dependency_injection.required_feature import RequiredFeature
@@ -20,8 +21,8 @@ class SteadyState(Standard):
     def __init__(self) -> None:
         super(SteadyState, self).__init__()
 
-    def evolve(self):
-        verbose_level = RequiredFeature('verbose_level').request()
+    def evolve(self) -> List[Any]:
+        verbose_level: bool = RequiredFeature('verbose_level').request()
 
         for gen in range(1, self.max_generations):
 
@@ -33,7 +34,7 @@ class SteadyState(Standard):
                                 str(self.budget_manager.get_time_budget_used()))
 
             # select parents
-            parents = self.toolbox.select(self.population, 2)
+            parents: List[Any] = self.toolbox.select(self.population, 2)
 
             # generate offspring
             offspring = self.crossover(parents, gen, 2)

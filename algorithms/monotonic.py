@@ -1,4 +1,5 @@
 # coding=utf-8
+from typing import Any, List
 
 from algorithms.standard import Standard
 from dependency_injection.required_feature import RequiredFeature
@@ -20,8 +21,8 @@ class Monotonic(Standard):
     def __init__(self) -> None:
         super(Monotonic, self).__init__()
 
-    def evolve(self):
-        verbose_level = RequiredFeature('verbose_level').request()
+    def evolve(self) -> List[Any]:
+        verbose_level: bool = RequiredFeature('verbose_level').request()
 
         for gen in range(1, self.max_generations):
 
@@ -33,14 +34,14 @@ class Monotonic(Standard):
                                 str(self.budget_manager.get_time_budget_used()))
 
             # create new population, starting with elitism
-            new_population = self.toolbox.selectBest(self.population, self.elitism_size)
+            new_population: List[Any] = self.toolbox.selectBest(self.population, self.elitism_size)
             while len(new_population) < self.population_size:
                 # select parents
-                parents = self.toolbox.select(self.population, 2)
+                parents: List[Any] = self.toolbox.select(self.population, 2)
 
                 # generate offspring
                 needed_offspring = min(self.population_size - len(new_population), 2)
-                offspring = self.crossover(parents, gen, needed_offspring, base_index_in_generation=len(new_population))
+                offspring: List[Any] = self.crossover(parents, gen, needed_offspring, base_index_in_generation=len(new_population))
                 self.mutation(offspring)
 
                 success = self.parallel_evaluator.evaluate(offspring)
