@@ -1,8 +1,10 @@
 import os
 import shutil
 import xml.etree.cElementTree as ET
+from typing import Tuple
 
 from lxml import etree
+from lxml.etree import _ElementUnicodeResult
 
 import settings
 from dependency_injection.feature_broker import features
@@ -49,7 +51,7 @@ class AppInstrumentator(object):
         features.provide('package_name', package_name)
         features.provide('instrumented_app_path', instrumented_app_path)
 
-    def prepare_app_for_instrumentation(self):
+    def prepare_app_for_instrumentation(self) -> Tuple[str, str]:
         # copy sources to instrumented subjects folder
         app_name = os.path.basename(self.app_path)
         instrumented_source_path = self.instrumented_subjects_path + app_name
@@ -96,7 +98,7 @@ class AppInstrumentator(object):
 
         return instrumented_source_path, package_name
 
-    def get_main_activity(self, root_path):
+    def get_main_activity(self, root_path: str) -> _ElementUnicodeResult:
         manifest = root_path + "AndroidManifest.xml"
 
         tree = etree.parse(manifest)
@@ -105,14 +107,14 @@ class AppInstrumentator(object):
         return root.xpath(".//intent-filter/action[@android:name='android.intent.action.MAIN']/../../@android:name",
                           namespaces=namespace)[0]
 
-    def get_package_name(self, root_path):
+    def get_package_name(self, root_path: str) -> str:
         manifest = root_path + "/AndroidManifest.xml"
 
         tree = ET.ElementTree(file=manifest)
 
         return tree.getroot().attrib["package"]
 
-    def alter_AndroidManifest(self, path, package_name):
+    def alter_AndroidManifest(self, path: str, package_name: str) -> None:
         is_mod = False
 
         content = ""
@@ -152,7 +154,7 @@ class AppInstrumentator(object):
         if not is_mod:
             print("[Error] Failed when update AndroidManifest.xml")
 
-    def alter_InstrumentedActivity(self, path, main_activity):
+    def alter_InstrumentedActivity(self, path: str, main_activity: _ElementUnicodeResult) -> None:
         content = ""
 
         in_stream = open(path)
@@ -169,7 +171,7 @@ class AppInstrumentator(object):
         new_file.write(content)
         new_file.close()
 
-    def alter_emma_file(self, path, package):
+    def alter_emma_file(self, path: str, package: str) -> None:
         with open(path) as reading_file:
             # read first line of file to advance position.
             line_to_discard = reading_file.readline()

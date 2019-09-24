@@ -2,20 +2,21 @@ import threading
 
 from dependency_injection.required_feature import RequiredFeature
 from devices.device_state import State
+from devices.emulator import Emulator
 
 
 class DeviceSetupThread(threading.Thread):
 
-    def __init__(self, device):
+    def __init__(self, device: Emulator) -> None:
         super().__init__(name="SetupThread-"+device.name)
 
         self.device = device
 
-    def run(self):
+    def run(self) -> None:
         DeviceSetupThread.setup(self.device)
 
     @staticmethod
-    def setup(device):
+    def setup(device: Emulator) -> None:
         device.state = State.setting_up
 
         # give test runner opportunity to install on devices

@@ -166,7 +166,7 @@ class DeviceManager(object):
 
             break
 
-    def shutdown_emulators(self, remove=False) -> None:
+    def shutdown_emulators(self, remove: bool = False) -> None:
         emulators = [device for device in self.get_devices() if type(device) is Emulator]
         for device in emulators:
             device.shutdown()
