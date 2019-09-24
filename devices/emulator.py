@@ -62,7 +62,7 @@ class Emulator(Device):
         logs = " >/dev/null 2>/dev/null"
 
         if verbose_level > 0:
-            logs = " > " + self.avd_name + ".log 2>" + self.avd_name + ".err"
+            logs = " >logs/" + self.avd_name + ".log 2>logs/" + self.avd_name + ".err"
             flags = flags + " -verbose -debug all"
 
         cmd = emulator_cmd + ' -avd ' + self.avd_name + flags + logs

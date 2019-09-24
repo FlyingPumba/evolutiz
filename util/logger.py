@@ -16,10 +16,13 @@ error_filename = None
 def prepare() -> None:
     # redirect stdout and stderr
     starting_datetime = datetime.today().strftime("%Y-%m-%d_%H-%M")
+
+    os.system("mkdir -p " + settings.WORKING_DIR + "logs")
+
     global output_filename
-    output_filename = settings.WORKING_DIR + "output." + starting_datetime + ".log"
+    output_filename = settings.WORKING_DIR + "logs/output." + starting_datetime + ".log"
     global error_filename
-    error_filename = settings.WORKING_DIR + "output." + starting_datetime + ".log.err"
+    error_filename = settings.WORKING_DIR + "logs/output." + starting_datetime + ".log.err"
 
     global output_file
     output_file = open(output_filename, 'w')
