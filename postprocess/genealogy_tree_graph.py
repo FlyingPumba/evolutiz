@@ -4,7 +4,6 @@ import pickle
 
 import matplotlib.pyplot as plt
 import networkx
-
 from deap import creator, base
 
 creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))

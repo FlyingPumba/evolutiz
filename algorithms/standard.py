@@ -1,14 +1,11 @@
 # coding=utf-8
-import time
-
 import random
+import time
 from typing import Any, List
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
-from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
-from util.integer import Integer
 
 
 class Standard(GeneticAlgorithm):

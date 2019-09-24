@@ -1,6 +1,6 @@
-import sys
-import pickle
 import argparse
+import pickle
+import sys
 
 from deap import creator, base
 

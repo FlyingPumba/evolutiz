@@ -3,6 +3,8 @@ import time
 
 import numpy
 from deap import creator, base, tools
+from deap.base import Toolbox
+from deap.tools.support import ParetoFront
 
 from dependency_injection.required_feature import RequiredFeature
 from devices.device import Device
@@ -10,8 +12,6 @@ from evaluation.test_suite_evaluator import TestSuiteEvaluator
 from util import logger
 
 
-from deap.base import Toolbox
-from deap.tools.support import ParetoFront
 class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
     def __init__(self) -> None:

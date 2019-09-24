@@ -1,5 +1,4 @@
 import time
-
 from subprocess import TimeoutExpired
 from threading import Lock
 from typing import Optional, TYPE_CHECKING
@@ -8,7 +7,6 @@ import settings
 from devices import adb
 from devices.device_setup import DeviceSetupThread
 from devices.device_state import State
-
 
 if TYPE_CHECKING:
     from devices.device_manager import DeviceManager

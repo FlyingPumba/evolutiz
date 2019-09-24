@@ -1,19 +1,19 @@
 import os
 import time
 from subprocess import TimeoutExpired
+from typing import List, Tuple
 
-from devices.device_state import State
-from devices.real_device import RealDevice
-from util.command import run_cmd
-from . import adb
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices.device import Device
+from devices.device_state import State
 from devices.emulator import Emulator
+from devices.real_device import RealDevice
 from util import logger
+from util.command import run_cmd
+from . import adb
 
 
-from typing import List, Tuple
 class WaitDevicesTimeout(Exception):
     pass
 

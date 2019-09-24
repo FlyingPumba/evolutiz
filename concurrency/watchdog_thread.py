@@ -1,14 +1,14 @@
-import time
 import threading
+import time
 
 import settings
+from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
+from concurrency.queue import Queue
+from concurrency.thread_hung_exception import ThreadHungException
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
-from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
-from concurrency.thread_hung_exception import ThreadHungException
 
 
-from concurrency.queue import Queue
 class WatchDogThread(threading.Thread):
 
     def __init__(self, output_queue: Queue, expected_output_count: int) -> None:

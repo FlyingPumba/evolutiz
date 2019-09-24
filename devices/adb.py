@@ -1,11 +1,10 @@
 import os
 from subprocess import TimeoutExpired
+from typing import Optional, List, Dict, TYPE_CHECKING
 
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
 from util.command import run_cmd, RunCmdResult
-
-from typing import Optional, List, Dict, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from devices.device import Device

@@ -1,4 +1,5 @@
 import os
+
 from deap import creator
 
 from algorithms.strategy import Strategy

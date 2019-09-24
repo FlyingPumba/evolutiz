@@ -3,7 +3,6 @@ import os
 from typing import Dict, Set, Tuple, List
 
 from bs4 import UnicodeDammit
-
 from lxml import html
 
 import settings

@@ -1,10 +1,10 @@
-import sys
 import argparse
-import numpy
 import os
 import pickle
+import sys
 
 import matplotlib.pyplot as plt
+import numpy
 
 
 # This script needs to be run like:

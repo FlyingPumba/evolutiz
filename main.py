@@ -1,16 +1,15 @@
 #!.env/bin/python
 
-import time
-
 import argparse
-from typing import Any, List, Type, Iterable
-
-import numpy
 import random
 import re
 import threading
+import time
 import traceback
 from configparser import ConfigParser, DEFAULTSECT
+from typing import Any, List, Type, Iterable
+
+import numpy
 from deap import tools
 from deap.base import Toolbox
 
@@ -30,21 +29,21 @@ from dependency_injection.feature_broker import features
 from devices import adb
 from devices.avd_manager import AvdManager
 from devices.device_manager import DeviceManager
-from evaluation.test_suite_evaluator import TestSuiteEvaluator
-from generation.individual_generator import IndividualGenerator
-from test_runner.test_runner import TestRunner
-from util.evolutiz import Evolutiz
-from postprocess.evaluate_scripts import EvaluateScripts
-from test_runner.evolutiz.evolutiz_test_runner import EvolutizTestRunner
-from test_runner.motifcore.motifcore_test_runner import MotifcoreTestRunner
 from evaluation.multi_objective import MultiObjectiveTestSuiteEvaluator
 from evaluation.single_objective import SingleObjectiveTestSuiteEvaluator
+from evaluation.test_suite_evaluator import TestSuiteEvaluator
+from generation.individual_generator import IndividualGenerator
 from generation.individual_with_coverage_generator import IndividualWithCoverageGenerator
 from generation.individual_without_coverage_generator import IndividualWithoutCoverageGenerator
 from generation.population_generator import PopulationGenerator
+from postprocess.evaluate_scripts import EvaluateScripts
+from test_runner.evolutiz.evolutiz_test_runner import EvolutizTestRunner
+from test_runner.motifcore.motifcore_test_runner import MotifcoreTestRunner
+from test_runner.test_runner import TestRunner
 from util.budget_manager import BudgetManager
 from util.command import *
 from util.compress import compress_results
+from util.evolutiz import Evolutiz
 
 conf_parser: argparse.ArgumentParser
 defaults: Dict[str, Any]

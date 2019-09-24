@@ -1,7 +1,6 @@
 # coding=utf-8
-import time
-
 import random
+import time
 from typing import Any, List
 
 from algorithms.genetic_algorithm import GeneticAlgorithm

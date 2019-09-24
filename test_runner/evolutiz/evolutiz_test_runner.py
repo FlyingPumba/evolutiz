@@ -1,6 +1,5 @@
 # coding=utf-8
 import datetime
-import os
 import random
 import time
 from typing import List

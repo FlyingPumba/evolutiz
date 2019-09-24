@@ -2,11 +2,7 @@ import os
 import pickle
 from typing import Dict, List, Tuple
 
-import numpy
-from deap import tools
-
 import settings
-from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 
 

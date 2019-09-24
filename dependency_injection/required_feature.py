@@ -1,8 +1,9 @@
+from typing import Any, Callable
+
 from dependency_injection.di_assertions import NoAssertion
 from dependency_injection.feature_broker import features
 
 
-from typing import Any, Callable
 class RequiredFeature(object):
     def __init__(self, feature: str, assertion: Callable = NoAssertion) -> None:
         self.feature = feature

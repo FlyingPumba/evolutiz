@@ -1,7 +1,6 @@
 import time
-
-from threading import Lock
 from datetime import datetime
+from threading import Lock
 from typing import Optional, Union
 
 

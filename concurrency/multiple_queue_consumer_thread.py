@@ -1,15 +1,15 @@
 import time
 import traceback
 from threading import Event
+from typing import Any, Callable, Dict, Optional, Tuple
 
+from concurrency.killable_thread import KillableThread
+from concurrency.queue import Queue
 from dependency_injection.required_feature import RequiredFeature
 from devices.device_state import State
 from util import logger
-from concurrency.killable_thread import KillableThread
 
 
-from concurrency.queue import Queue
-from typing import Any, Callable, Dict, Optional, Tuple
 class MultipleQueueConsumerThread(KillableThread):
     """Provides a thread where a function can be called.
     The arguments of this function are fetched from different queues.

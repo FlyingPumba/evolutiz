@@ -1,11 +1,10 @@
 import os
 import subprocess
+from typing import Dict, Optional, Tuple
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
-
-from typing import Dict, Optional, Tuple
 
 RunCmdResult = Tuple[str, str, int]
 

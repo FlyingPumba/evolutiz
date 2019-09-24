@@ -1,14 +1,14 @@
-import time
-from datetime import datetime
-
 import multiprocessing.pool
-import numpy
 import os
 import subprocess as sub
+import time
 import traceback
+from datetime import datetime
+
+import numpy
+from coverages import emma_coverage
 
 import settings
-from coverages import emma_coverage
 from devices import adb
 # global results for mp callback
 from devices.device_manager import DeviceManager

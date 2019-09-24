@@ -4,6 +4,7 @@ import time
 from typing import List
 
 from deap import tools
+from deap.base import Toolbox
 
 import settings
 from dependency_injection.feature_broker import features
@@ -14,7 +15,6 @@ from test_runner.test_runner_installer import TestRunnerInstaller
 from util import logger
 
 
-from deap.base import Toolbox
 class MotifcoreTestRunner(TestRunner):
 
     def __init__(self, use_motifgene: bool = True) -> None:

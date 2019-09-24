@@ -1,10 +1,6 @@
 # coding=utf-8
 import time
-
-import random
 from typing import Any, List
-
-from deap import tools
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from dependency_injection.required_feature import RequiredFeature

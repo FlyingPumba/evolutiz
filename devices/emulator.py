@@ -1,14 +1,13 @@
-import time
-
 import subprocess as sub
+import time
 from typing import Optional, TYPE_CHECKING
 
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
 from devices.device_state import State
-from util.command import run_cmd
 from util import logger
+from util.command import run_cmd
 
 if TYPE_CHECKING:
     from devices.device_manager import DeviceManager

@@ -1,13 +1,14 @@
 import time
-
-from concurrency.queue import Queue
-from dependency_injection.required_feature import RequiredFeature
-from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
-from concurrency.watchdog_thread import WatchDogThread
-
-from devices.device_manager import DeviceManager
 from typing import Callable, List, Optional, Tuple, Any, Dict
+
+from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
+from concurrency.queue import Queue
+from concurrency.watchdog_thread import WatchDogThread
+from dependency_injection.required_feature import RequiredFeature
+from devices.device_manager import DeviceManager
 from util.integer import Integer
+
+
 class MapperOnDevices(object):
     """Manages parallel execution of a function in the available devices.
 
