@@ -50,11 +50,11 @@ class Device(object):
         self.reboot()
         self.needs_setup = True
 
-    def boot(self):
+    def boot(self) -> None:
         self.state = State.booting
         self.boot_time = time.time()
 
-    def shutdown(self):
+    def shutdown(self) -> None:
         self.state = State.unknown
 
     def reboot(self):
@@ -75,7 +75,7 @@ class Device(object):
     def imei(self):
         return adb.get_imei(self)
 
-    def api_level(self):
+    def api_level(self) -> int:
         for i in range(5):
             try:
                 level = adb.get_api_level(self)
@@ -105,7 +105,7 @@ class Device(object):
         adb.shell_command(self, "mount -o rw,remount /", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         adb.shell_command(self, "rm -rf /mnt/sdcard/*", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
-    def check_ready(self):
+    def check_ready(self) -> None:
         if self.state >= State.ready_idle:
             # don't change the state of devices when it is higher or equal than ready_idle
             return

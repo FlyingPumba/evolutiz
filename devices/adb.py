@@ -5,8 +5,10 @@ from dependency_injection.required_feature import RequiredFeature
 from util import logger
 from util.command import run_cmd, RunCmdResult
 
-from devices.device import Device
-from typing import Tuple, Optional, List, Dict
+from typing import Optional, List, Dict, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from devices.device import Device
 
 adb_logs_dir = ""
 adb_cmd_prefix: str = "$ANDROID_HOME/platform-tools/adb"
@@ -24,11 +26,11 @@ devices_imei: Dict[str, str] = {
 
 devices_with_root_permissions: List[str] = []
 
-def get_adb_cmd_prefix_for_device(device: Device) -> str:
+def get_adb_cmd_prefix_for_device(device: 'Device') -> str:
     return "env " + device.get_adb_server_port_prefix() + " " + adb_cmd_prefix + " -s " + device.name
 
 def adb_command(
-        device: Device,
+        device: 'Device',
         command: str,
         timeout: Optional[int] = None,
         retry: int = 1,
@@ -54,7 +56,7 @@ def adb_command(
             if tries >= retry:
                 return e.stdout, e.stderr, 124
 
-def get_root_permissions(device: Device) -> None:
+def get_root_permissions(device: 'Device') -> None:
     if device.name in devices_with_root_permissions:
         return
 
@@ -66,14 +68,14 @@ def get_root_permissions(device: Device) -> None:
 
     devices_with_root_permissions.append(device.name)
 
-def shell_command(device: Device, command: str, timeout: Optional[int] = None, retry: int = 1, discard_output: bool = False) -> RunCmdResult:
+def shell_command(device: 'Device', command: str, timeout: Optional[int] = None, retry: int = 1, discard_output: bool = False) -> RunCmdResult:
     return adb_command(device, "shell " + command, timeout=timeout, retry=retry, discard_output=discard_output)
 
 def sudo_shell_command(device, command, timeout: Optional[int] = None, retry=1, discard_output=False) -> RunCmdResult:
     get_root_permissions(device)
     return shell_command(device, command, timeout=timeout, retry=retry, discard_output=discard_output)
 
-def push(device: Device, src: str, dest: str, timeout: Optional[int] = None) -> RunCmdResult:
+def push(device: 'Device', src: str, dest: str, timeout: Optional[int] = None) -> RunCmdResult:
     return adb_command(device, "push " + src + " " + dest, timeout=timeout)
 
 def push_all(device, src_list, dest, timeout: Optional[int] = None) -> RunCmdResult:
@@ -87,10 +89,10 @@ def sudo_push(device, src, dest, timeout: Optional[int] = None) -> RunCmdResult:
 def pull(device, src, dest, timeout: Optional[int] = None) -> RunCmdResult:
     return adb_command(device, "pull " + src + " " + dest, timeout=timeout)
 
-def uninstall(device: Device, package_name: str) -> RunCmdResult:
+def uninstall(device: 'Device', package_name: str) -> RunCmdResult:
     return adb_command(device, "uninstall " + package_name)
 
-def install(device: Device, package_name: str, apk_path: str) -> None:
+def install(device: 'Device', package_name: str, apk_path: str) -> None:
     verbose_level = RequiredFeature('verbose_level').request()
 
     output, errors, result_code = adb_command(device, "install " + apk_path)
@@ -197,7 +199,7 @@ def restart_server() -> None:
     kill_server()
     start_server()
 
-def log_adb_command(device: Device, cmd: str) -> None:
+def log_adb_command(device: 'Device', cmd: str) -> None:
     verbose_level = RequiredFeature('verbose_level').request()
     if verbose_level > 0:
         device_adb_log_file = adb_logs_dir + "/" + device.name + "-adb.log"
@@ -223,7 +225,7 @@ def log_evaluation_result(device, result_dir, script, success) -> None:
         device_adb_log_file = result_dir + "/" + device.name + "-evaluations.log"
         os.system("echo \"" + str(success) + " -> " + script + "\" >> " + device_adb_log_file)
 
-def get_api_level(device: Device) -> Optional[int]:
+def get_api_level(device: 'Device') -> Optional[int]:
     try:
         output, errors, result_code = shell_command(device, "getprop ro.build.version.sdk")
         res = output.strip()

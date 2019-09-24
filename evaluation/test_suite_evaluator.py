@@ -13,7 +13,7 @@ class TestSuiteEvaluator(object):
 
     def __init__(self) -> None:
         self.test_runner = RequiredFeature('test_runner').request()
-        self.result_dir = None
+        self.result_dir: str = ""
 
     def dump_individual_to_files(self, individual):
         self.result_dir = RequiredFeature('result_dir').request()
@@ -38,14 +38,15 @@ class TestSuiteEvaluator(object):
 
         return script_path, suite_lengths
 
-    def dump_hall_of_fame_to_file(self):
+    def dump_hall_of_fame_to_file(self) -> None:
         self.result_dir = RequiredFeature('result_dir').request()
-        if hasattr(self, 'hall_of_fame'):
-            hof_file = open(self.result_dir + "/hall_of_fame.pickle", 'wb')
-            pickle.dump(self.hall_of_fame, hof_file)
-            hof_file.close()
+        hall_of_fame = RequiredFeature('hall_of_fame').request()
 
-    def dump_logbook_to_file(self):
+        hof_file = open(self.result_dir + "/hall_of_fame.pickle", 'wb')
+        pickle.dump(hall_of_fame, hof_file)
+        hof_file.close()
+
+    def dump_logbook_to_file(self) -> None:
         self.logbook = RequiredFeature('logbook').request()
         self.result_dir = RequiredFeature('result_dir').request()
 
