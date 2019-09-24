@@ -225,7 +225,9 @@ class DeviceManager(object):
             name = device.name
             
             if type(device) is RealDevice:
-                name = device.imei()
+                imei = device.imei()
+                if imei is not None:
+                    name = imei
 
             os.system("echo '" + name + " -> " + str(level) + "' >> " + log_file)
 

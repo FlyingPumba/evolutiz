@@ -1,5 +1,8 @@
 # coding=utf-8
-class DynaMosa(object):
+from algorithms.strategy import Strategy
+
+
+class DynaMosa(Strategy):
     """Implements the DynaMOSA Evolutionary Algorithm as described in [CamposGFEA17]_.
 
     In order to cope with the large numbers of goals resulting from the combination of multiple coverage criteria in the
@@ -10,18 +13,3 @@ class DynaMosa(object):
             “An Empirical Evaluation of Evolutionary Algorithms for Test Suite Generation”,
             in Search Based Software Engineering, 2017, pp. 33–48.
     """
-
-    def __init__(self) -> None:
-        pass
-
-    def setup(self, toolbox, test_runner, stats=None, verbose=False):
-        pass
-
-    def run(self):
-        pass
-
-    def initPopulation(self):
-        pass
-
-    def evolve(self):
-        pass

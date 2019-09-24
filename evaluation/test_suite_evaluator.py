@@ -1,5 +1,6 @@
 import os
 import pickle
+from typing import Dict, List, Tuple
 
 import numpy
 from deap import tools
@@ -15,11 +16,11 @@ class TestSuiteEvaluator(object):
         self.test_runner = RequiredFeature('test_runner').request()
         self.result_dir: str = ""
 
-    def dump_individual_to_files(self, individual):
+    def dump_individual_to_files(self, individual) -> Tuple[List[str], Dict[str, int]]:
         self.result_dir = RequiredFeature('result_dir').request()
 
-        script_path = []
-        suite_lengths = {}
+        script_path: List[str] = []
+        suite_lengths: Dict[str, int] = {}
 
         for test_case_index, test_case in enumerate(individual):
             length = len(test_case)
@@ -27,10 +28,10 @@ class TestSuiteEvaluator(object):
             filename = self.result_dir + "/intermediate/script." + str(individual.generation) + "." + \
                        str(individual.index_in_generation) + "." + str(test_case_index)
 
-            with open(filename, "w") as script:
-                script.write(settings.SCRIPT_HEADER)
-                script.write("\n".join(test_case))
-                script.write("\n")
+            with open(filename, "w") as script_file:
+                script_file.write(settings.SCRIPT_HEADER)
+                script_file.write("\n".join(test_case))
+                script_file.write("\n")
 
             script = os.path.abspath(filename)
             suite_lengths[script] = length

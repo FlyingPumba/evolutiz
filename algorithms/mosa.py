@@ -1,5 +1,8 @@
 # coding=utf-8
-class Mosa(object):
+from algorithms.strategy import Strategy
+
+
+class Mosa(Strategy):
     """Implements the MOSA Evolutionary Algorithm as described in [CamposGFEA17]_.
 
     Unlike the single-objective optimisation on the test suite level described above, the Many-Objective Sorting
@@ -20,18 +23,3 @@ class Mosa(object):
             “An Empirical Evaluation of Evolutionary Algorithms for Test Suite Generation”,
             in Search Based Software Engineering, 2017, pp. 33–48.
     """
-
-    def __init__(self) -> None:
-        pass
-
-    def setup(self, toolbox, test_runner, stats=None, verbose=False):
-        pass
-
-    def run(self):
-        pass
-
-    def initPopulation(self):
-        pass
-
-    def evolve(self):
-        pass

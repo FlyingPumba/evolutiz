@@ -57,22 +57,22 @@ class Device(object):
     def shutdown(self) -> None:
         self.state = State.unknown
 
-    def reboot(self):
+    def reboot(self) -> None:
         self.state = State.booting
         self.boot_time = time.time()
 
-    def mark_work_start(self):
+    def mark_work_start(self) -> None:
         assert self.state == State.ready_idle
         assert not self.needs_setup
         self.state = State.ready_working
 
-    def mark_work_stop(self):
+    def mark_work_stop(self) -> None:
         self.state = State.ready_idle
 
-    def battery_level(self):
+    def battery_level(self) -> Optional[int]:
         return adb.get_battery_level(self)
 
-    def imei(self):
+    def imei(self) -> Optional[str]:
         return adb.get_imei(self)
 
     def api_level(self) -> int:
@@ -86,19 +86,19 @@ class Device(object):
 
         raise Exception("Unable to get API level for device " + self.name)
 
-    def android_version(self):
+    def android_version(self) -> Optional[int]:
         return adb.get_android_version(self)
 
-    def set_bluetooth_state(self, enabled):
+    def set_bluetooth_state(self, enabled) -> None:
         adb.set_bluetooth_state(self, enabled, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
-    def set_wifi_state(self, enabled):
+    def set_wifi_state(self, enabled) -> None:
         adb.set_wifi_state(self, enabled, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
-    def set_location_state(self, enabled):
+    def set_location_state(self, enabled) -> None:
         adb.set_location_state(self, enabled, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
-    def clean_sdcard(self):
+    def clean_sdcard(self) -> None:
         adb.get_root_permissions(self)
 
         adb.adb_command(self, "remount", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
@@ -124,7 +124,7 @@ class Device(object):
         except TimeoutExpired as e:
             return
 
-    def check_booted(self):
+    def check_booted(self) -> None:
         if self.state >= State.booted:
             # don't change the state of devices when it is higher or equal than booted
             return

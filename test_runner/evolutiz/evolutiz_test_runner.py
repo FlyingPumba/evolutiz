@@ -23,7 +23,7 @@ class EvolutizTestRunner(TestRunner):
         self.test_runner_installer = TestRunnerInstaller("evolutiz",
                                                          settings.WORKING_DIR + "test_runner/evolutiz/evolutiz",
                                                          settings.WORKING_DIR + "test_runner/evolutiz/evolutiz.jar")
-    def register_minimum_api(self):
+    def register_minimum_api(self) -> None:
         self.minimum_api = 28
         features.provide('minimum_api', self.minimum_api)
 

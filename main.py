@@ -3,14 +3,14 @@
 import time
 
 import argparse
-from typing import Any, List
+from typing import Any, List, Type, Iterable
 
 import numpy
 import random
 import re
 import threading
 import traceback
-from configparser import ConfigParser
+from configparser import ConfigParser, DEFAULTSECT
 from deap import tools
 from deap.base import Toolbox
 
@@ -23,12 +23,16 @@ from algorithms.one_plus_lambda_comma_lambda import OnePlusLambdaCommaLambda
 from algorithms.random_search import RandomSearch
 from algorithms.standard import Standard
 from algorithms.steady_state import SteadyState
+from algorithms.strategy import Strategy
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
 from coverage.emma_coverage import EmmaCoverage
 from dependency_injection.feature_broker import features
 from devices import adb
 from devices.avd_manager import AvdManager
 from devices.device_manager import DeviceManager
+from evaluation.test_suite_evaluator import TestSuiteEvaluator
+from generation.individual_generator import IndividualGenerator
+from test_runner.test_runner import TestRunner
 from util.evolutiz import Evolutiz
 from postprocess.evaluate_scripts import EvaluateScripts
 from test_runner.evolutiz.evolutiz_test_runner import EvolutizTestRunner
@@ -46,7 +50,12 @@ conf_parser: argparse.ArgumentParser
 defaults: Dict[str, Any]
 remaining_argv: List[str]
 
-def run_one_app(strategy_with_runner_name):
+possible_strategies: Dict[str, Type[Strategy]]
+possible_test_suite_evaluators: Dict[str, Type[TestSuiteEvaluator]]
+possible_individual_generators: Dict[str, Type[IndividualGenerator]]
+possible_test_runners: Dict[str, TestRunner]
+
+def run_one_app(strategy_with_runner_name) -> bool:
     app_path = RequiredFeature('app_path').request()
     repetitions = RequiredFeature('repetitions').request()
     repetitions_offset = RequiredFeature('repetitions_offset').request()
@@ -102,22 +111,22 @@ def run_one_app(strategy_with_runner_name):
         return False
 
 
-def wait_for_working_threas_to_finish():
+def wait_for_working_threas_to_finish() -> None:
     threads_working = [thread for thread in threading.enumerate()
-                       if type(thread) is MultipleQueueConsumerThread and thread.isAlive()]
+                       if isinstance(thread, MultipleQueueConsumerThread) and thread.isAlive()]
     for thread in threads_working:
         thread.stop()
 
     while True:
         threads_working = [thread for thread in threading.enumerate()
-                           if type(thread) is MultipleQueueConsumerThread and thread.isAlive()]
+                           if isinstance(thread, MultipleQueueConsumerThread) and thread.isAlive()]
         if len(threads_working) == 0:
             return
 
         time.sleep(3)
 
 
-def get_emulators_running(result_dir):
+def get_emulators_running(result_dir) -> None:
     """Reboot all devices and kill adb server before starting a repetition."""
     device_manager = RequiredFeature('device_manager').request()
     adb.kill_server()
@@ -128,7 +137,7 @@ def get_emulators_running(result_dir):
     device_manager.boot_emulators(wait_to_be_ready=True)
 
 
-def prepare_result_dir(app_name, repetition, strategy_with_runner_name):
+def prepare_result_dir(app_name: str, repetition: int, strategy_with_runner_name: str) -> str:
     repetition_folder = str(repetition)
     algorithm_folder = strategy_with_runner_name
 
@@ -160,7 +169,7 @@ def prepare_result_dir(app_name, repetition, strategy_with_runner_name):
     return result_dir
 
 
-def run(strategy_name, app_paths):
+def run(strategy_name, app_paths) -> None:
     compress = RequiredFeature('compress').request()
 
     for i in range(0, len(app_paths)):
@@ -209,7 +218,7 @@ def get_subject_paths(arguments) -> List[str]:
         return app_paths
 
 
-def check_virtualbox_is_not_running():
+def check_virtualbox_is_not_running() -> None:
     if is_command_available("vboxmanage"):
         output, errors, result_code = run_cmd("vboxmanage list runningvms")
         if output.strip() != "":
@@ -219,7 +228,7 @@ def check_virtualbox_is_not_running():
             raise Exception(cause)
 
 
-def check_needed_commands_available():
+def check_needed_commands_available() -> None:
     if not os.path.exists(settings.ANDROID_HOME):
         cause = "Declared ANDROID_HOME points to a missing directory: " + settings.ANDROID_HOME
         logger.log_progress(cause)
@@ -285,7 +294,7 @@ def check_needed_commands_available():
     #     raise Exception(cause)
 
 
-def add_arguments_to_parser(parser):
+def add_arguments_to_parser(parser) -> None:
     global possible_strategies, possible_test_suite_evaluators, possible_individual_generators, possible_test_runners
 
     # subjects related arguments
@@ -394,7 +403,7 @@ def add_arguments_to_parser(parser):
                              'from a previous run.')
 
 
-def init_arguments_defaults():
+def init_arguments_defaults() -> None:
     global defaults
     defaults = {
         "subjects_path": "subjects/are-we-there-yet/",
@@ -426,13 +435,22 @@ def init_arguments_defaults():
     }
 
 
-def config_items_type_convert(items):
-    result = []
+def config_items_type_convert(items: Iterable[Tuple[str, Any]]) -> List[Tuple[str, Any]]:
+    result:  List[Tuple[str, Any]] = []
+    key: str
+    value: Any
+
     for (key, value) in items:
         try:
             # remove duplicated whitespaces
             key = re.sub(' +', ' ', key)
-            type_tag, name = key.split(' ')
+            key_split = key.split(' ')
+            if len(key_split) != 2:
+                raise ValueError('Invalid type key "%s" found in config file file.' % key)
+
+            type_tag = key_split[0]
+            name = key_split[1]
+
             # convert value to declared type
             if value == "None":
                 result.append((name, None))
@@ -449,7 +467,7 @@ def config_items_type_convert(items):
             raise ValueError('Unable to convert value for "%s" to declared type "%s".' % (name, type_tag))
     return result
 
-def parse_config_file():
+def parse_config_file() -> None:
     global conf_parser, args, remaining_argv
     # Parse any conf_file specification
     # We make this parser with add_help=False so that
@@ -469,14 +487,14 @@ def parse_config_file():
     if args.conf_file:
         config = ConfigParser()
         config.read([args.conf_file])
-        defaults.update(dict(config_items_type_convert(config.items(ConfigParser.DEFAULTSECT))))
+        defaults.update(dict(config_items_type_convert(config.items(DEFAULTSECT))))
 
 
-def get_fitness_values_of_individual(individual):
+def get_fitness_values_of_individual(individual) -> Any:
     return individual.fitness.values
 
 
-def provide_features():
+def provide_features() -> None:
     # define subjects
     features.provide('instrumented_subjects_path', args.instrumented_subjects_path)
     features.provide('emma_instrument_path', args.emma_instrument_path)

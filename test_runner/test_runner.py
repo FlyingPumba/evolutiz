@@ -14,6 +14,9 @@ class TestRunner(object):
         # device.set_location_state(True)
         pass
 
+    def register_minimum_api(self) -> None:
+        raise NotImplementedError
+
     def write_test_case_to_file(self, content, filename) -> None:
         with open(filename, "w") as script:
             script.write(settings.SCRIPT_HEADER)
