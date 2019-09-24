@@ -4,9 +4,9 @@ from application.apk_analyser import ApkAnalyser
 from application.app_instrumentator import AppInstrumentator
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
+from devices.device import Device
 
 
-from devices.emulator import Emulator
 class ApkPreparer(object):
     def __init__(self) -> None:
         self.app_instrumentator = AppInstrumentator()
@@ -16,7 +16,7 @@ class ApkPreparer(object):
         self.app_instrumentator.instrument()
         self.apk_analyser.analyse()
 
-    def install_on_device(self, device: Emulator) -> None:
+    def install_on_device(self, device: Device) -> None:
         package_name = RequiredFeature('package_name').request()
         apk_path = RequiredFeature('apk_path').request()
 

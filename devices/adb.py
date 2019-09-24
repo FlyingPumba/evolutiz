@@ -3,7 +3,7 @@ from subprocess import TimeoutExpired
 
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
-from util.command import run_cmd
+from util.command import run_cmd, RunCmdResult
 
 from devices.device import Device
 from typing import Tuple, Optional, List, Dict
@@ -27,7 +27,14 @@ devices_with_root_permissions: List[str] = []
 def get_adb_cmd_prefix_for_device(device: Device) -> str:
     return "env " + device.get_adb_server_port_prefix() + " " + adb_cmd_prefix + " -s " + device.name
 
-def adb_command(device: Device, command: str, timeout: None = None, retry: int = 1, discard_output: bool = False) -> Tuple[str, str, int]:
+def adb_command(
+        device: Device,
+        command: str,
+        timeout: None = None,
+        retry: int = 1,
+        discard_output: bool = False
+) -> RunCmdResult:
+
     cmd = adb_cmd_prefix + " -s " + device.name + " " + command
 
     tries = 0
@@ -59,28 +66,28 @@ def get_root_permissions(device: Device) -> None:
 
     devices_with_root_permissions.append(device.name)
 
-def shell_command(device: Device, command: str, timeout: None = None, retry: int = 1, discard_output: bool = False) -> Tuple[str, str, int]:
+def shell_command(device: Device, command: str, timeout: None = None, retry: int = 1, discard_output: bool = False) -> RunCmdResult:
     return adb_command(device, "shell " + command, timeout=timeout, retry=retry, discard_output=discard_output)
 
 def sudo_shell_command(device, command, timeout=None, retry=1, discard_output=False):
     get_root_permissions(device)
     return shell_command(device, command, timeout=timeout, retry=retry, discard_output=discard_output)
 
-def push(device: Device, src: str, dest: str, timeout: None = None) -> Tuple[str, str, int]:
+def push(device: Device, src: str, dest: str, timeout: None = None) -> RunCmdResult:
     return adb_command(device, "push " + src + " " + dest, timeout=timeout)
 
-def push_all(device, src_list, dest, timeout=None):
+def push_all(device, src_list, dest, timeout=None) -> RunCmdResult:
     src_str = " ".join(src_list)
     return adb_command(device, "push " + src_str + " " + dest, timeout=timeout)
 
-def sudo_push(device, src, dest, timeout=None):
+def sudo_push(device, src, dest, timeout=None) -> RunCmdResult:
     get_root_permissions(device)
     return push(device, src, dest, timeout=timeout)
 
-def pull(device, src, dest, timeout=None):
+def pull(device, src, dest, timeout=None) -> RunCmdResult:
     return adb_command(device, "pull " + src + " " + dest, timeout=timeout)
 
-def uninstall(device: Device, package_name: str) -> Tuple[str, str, int]:
+def uninstall(device: Device, package_name: str) -> RunCmdResult:
     return adb_command(device, "uninstall " + package_name)
 
 def install(device: Device, package_name: str, apk_path: str) -> None:
@@ -103,7 +110,7 @@ def install(device: Device, package_name: str, apk_path: str) -> None:
     if package_name not in res:
         raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
 
-def pkill(device, string):
+def pkill(device, string) -> int:
     adb_cmd = get_adb_cmd_prefix_for_device(device) + " shell "
     pkill_cmd = adb_cmd + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd + "kill pid "
 
@@ -114,7 +121,7 @@ def pkill(device, string):
     except TimeoutExpired as e:
         return 124
 
-def set_bluetooth_state(device, enabled, timeout=None):
+def set_bluetooth_state(device, enabled, timeout=None) -> RunCmdResult:
     if enabled:
         # sometimes might not work
         return sudo_shell_command(device, "service call bluetooth_manager 6", timeout=timeout)
@@ -122,31 +129,30 @@ def set_bluetooth_state(device, enabled, timeout=None):
         # the following command is not working. Also tried with number 9.
         return sudo_shell_command(device, "service call bluetooth_manager 8", timeout=timeout)
 
-def set_wifi_state(device, enabled, timeout=None):
+def set_wifi_state(device, enabled, timeout=None) -> RunCmdResult:
     if enabled:
         return sudo_shell_command(device, "svc wifi enable", timeout=timeout)
     else:
         # the following command is not working.
         return sudo_shell_command(device, "svc wifi disable", timeout=timeout)
 
-def set_stay_awake_state(device, enabled, timeout=None):
+def set_stay_awake_state(device, enabled, timeout=None) -> RunCmdResult:
     if enabled:
         return sudo_shell_command(device, "svc power stayon true", timeout=timeout)
     else:
         return sudo_shell_command(device, "svc power stayon false", timeout=timeout)
 
-
-def set_location_state(device, enabled, timeout=None):
+def set_location_state(device, enabled, timeout=None) -> RunCmdResult:
     if enabled:
         return shell_command(device, "settings put secure location_providers_allowed gps,wifi,network", timeout=timeout)
     else:
         return shell_command(device, "settings put secure location_providers_allowed ' '", timeout=timeout)
 
-def set_brightness(device, value, timeout=None):
+def set_brightness(device, value, timeout=None) -> RunCmdResult:
     # value should be between 0 and 250
     return shell_command(device, "settings put system screen_brightness " + value, timeout=timeout)
 
-def get_battery_level(device):
+def get_battery_level(device) -> Optional[int]:
     output, errors, result_code = shell_command(device, "dumpsys battery", retry=3)
 
     if result_code != 0:
@@ -157,7 +163,7 @@ def get_battery_level(device):
                 level_str = line.split(':')
                 return int(level_str[1].strip())
 
-def get_imei(device):
+def get_imei(device) -> Optional[str]:
     if device.name not in devices_imei:
         adb_cmd = get_adb_cmd_prefix_for_device(device) + " shell "
         imei_cmd = adb_cmd + "dumpsys iphonesubinfo | grep 'Device ID' | cut -d ' ' -f 6 "
@@ -174,7 +180,7 @@ def get_imei(device):
 
     return devices_imei[device.name]
 
-def start_server():
+def start_server() -> None:
     try:
         run_cmd(adb_cmd_prefix + " start-server" + logger.redirect_string())
     except TimeoutExpired as e:

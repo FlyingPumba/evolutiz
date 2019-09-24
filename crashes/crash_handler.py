@@ -4,7 +4,7 @@ from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 
 
-def handle(device, script_path, generation, individual_index, test_case_index, unique_crashes):
+def handle(device, script_path, generation, individual_index, test_case_index, unique_crashes) -> bool:
     result_dir = RequiredFeature('result_dir').request()
 
     device_bugreport_path = "/mnt/sdcard/bugreport.crash"

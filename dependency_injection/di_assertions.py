@@ -1,14 +1,14 @@
 from typing import Any, Callable
+
 def NoAssertion(obj: Any) -> bool: return True
 
-
-def IsInstanceOf(*classes):
+def IsInstanceOf(*classes) -> Callable[[Any], bool]:
     def test(obj): return isinstance(obj, classes)
 
     return test
 
 
-def HasAttributes(*attributes):
+def HasAttributes(*attributes) -> Callable[[Any], bool]:
     def test(obj):
         for each in attributes:
             if not hasattr(obj, each): return False
@@ -17,7 +17,7 @@ def HasAttributes(*attributes):
     return test
 
 
-def HasMethods(*methods) -> Callable:
+def HasMethods(*methods) -> Callable[[Any], bool]:
     def test(obj):
         for each in methods:
             try:

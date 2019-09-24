@@ -2,13 +2,16 @@ import time
 
 from subprocess import TimeoutExpired
 from threading import Lock
-from typing import Optional
+from typing import Optional, TYPE_CHECKING
 
 import settings
 from devices import adb
 from devices.device_setup import DeviceSetupThread
 from devices.device_state import State
 
+
+if TYPE_CHECKING:
+    from devices.device_manager import DeviceManager
 
 class Device(object):
     """Represents the device entity (whether it is an emulator or a real device)
@@ -20,7 +23,7 @@ class Device(object):
         boot_time    Last known time the device started to boot.
     """
 
-    def __init__(self, device_manager, device_name="", state=State.unknown):
+    def __init__(self, device_manager: 'DeviceManager', device_name: str = "", state: State = State.unknown) -> None:
         self.device_manager = device_manager
         self.name: str = device_name
         self.state: State = state
@@ -32,10 +35,10 @@ class Device(object):
         self.failures: int = 0
         self.fail_limit: int = 5
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
-    def register_failure(self):
+    def register_failure(self) -> None:
         self.lock_failures.acquire()
         self.failures += 1
         if self.failures >= self.fail_limit:
@@ -43,7 +46,7 @@ class Device(object):
             self.flag_as_malfunctioning()
         self.lock_failures.release()
 
-    def flag_as_malfunctioning(self):
+    def flag_as_malfunctioning(self) -> None:
         self.reboot()
         self.needs_setup = True
 

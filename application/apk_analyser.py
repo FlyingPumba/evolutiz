@@ -4,10 +4,10 @@ import settings
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
+from devices.device import Device
 from util import logger
 
 
-from devices.emulator import Emulator
 class ApkAnalyser(object):
 
     def analyse(self) -> None:
@@ -41,7 +41,7 @@ class ApkAnalyser(object):
         os.system("java -jar " + settings.WORKING_DIR + "lib/apktool.jar d -f -o " +
                   self.decoded_dir + " " + self.apk_path + logger.redirect_string())
 
-    def upload_string_xml(self, device: Emulator) -> None:
+    def upload_string_xml(self, device: Device) -> None:
         string_xml_path = self.decoded_dir + "/res/values/strings.xml"
         if settings.ENABLE_STRING_SEEDING is False or os.path.exists(string_xml_path) is False:
             # if not exist, upload dummy strings.xml

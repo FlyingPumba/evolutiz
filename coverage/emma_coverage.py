@@ -1,5 +1,7 @@
 import datetime
 import os
+from typing import Dict, Set, Tuple, List
+
 from bs4 import UnicodeDammit
 
 from lxml import html
@@ -8,16 +10,19 @@ import settings
 from crashes import crash_handler
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
+from devices.device import Device
 from util import logger
 from util.command import run_cmd
 
 
 class EmmaCoverage(object):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.coverage_ec_device_backup_path = "/mnt/sdcard/coverage.ec"
 
-    def get_suite_coverage(self, scripts, device, generation, individual_index):
+    def get_suite_coverage(self, scripts: List[str], device: Device, generation: int, individual_index: int)\
+            -> Tuple(int, Set[str], Dict[str, bool]):
+
         self.verbose_level = RequiredFeature('verbose_level').request()
         self.package_name = RequiredFeature('package_name').request()
         self.result_dir = RequiredFeature('result_dir').request()
@@ -45,8 +50,14 @@ class EmmaCoverage(object):
 
         return coverage, unique_crashes, scripts_crash_status
 
-    def generate_test_coverage(self, device, script_path, generation, individual_index, test_case_index, unique_crashes,
-                               scripts_crash_status):
+    def generate_test_coverage(self,
+                               device,
+                               script_path,
+                               generation,
+                               individual_index,
+                               test_case_index,
+                               unique_crashes,
+                               scripts_crash_status) -> None:
         # clear app's data and state
         output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
         self.output += output
@@ -74,8 +85,14 @@ class EmmaCoverage(object):
         self.dump_script_coverage(device, script_path, generation, individual_index, test_case_index, unique_crashes,
                                   scripts_crash_status)
 
-    def dump_script_coverage(self, device, script_path, generation, individual_index, test_case_index, unique_crashes,
-                             scripts_crash_status):
+    def dump_script_coverage(self,
+                             device,
+                             script_path,
+                             generation,
+                             individual_index,
+                             test_case_index,
+                             unique_crashes,
+                             scripts_crash_status) -> None:
         if crash_handler.handle(device, script_path, generation, individual_index, test_case_index, unique_crashes):
             scripts_crash_status[script_path] = True
         else:
@@ -123,7 +140,7 @@ class EmmaCoverage(object):
                 raise Exception(
                     "Unable to retrieve coverage.ec file after coverage broadcast for script_path " + script_path + " in  device: " + device.name)
 
-    def set_coverage_paths(self, device, generation, individual_index):
+    def set_coverage_paths(self, device, generation, individual_index) -> None:
         application_files = "/data/data/" + self.package_name + "/files"
 
         self.coverage_ec_device_path = application_files + "/coverage.ec"
@@ -135,11 +152,11 @@ class EmmaCoverage(object):
 
         os.system("cp " + self.result_dir + "/coverage.em " + coverage_em_local_path + logger.redirect_string())
 
-    def clean_coverage_files_in_device(self, device):
+    def clean_coverage_files_in_device(self, device) -> None:
         adb.shell_command(device, "rm -f " + self.coverage_ec_device_path)
         adb.shell_command(device, "rm -f " + self.coverage_ec_device_backup_path)
 
-    def prepare_coverage_folder(self, generation, individual_index):
+    def prepare_coverage_folder(self, generation, individual_index) -> str:
         ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
 
         coverage_folder_name = str(generation) + "." + str(individual_index) + "." + ts
@@ -148,7 +165,7 @@ class EmmaCoverage(object):
         os.system("mkdir -p " + coverage_folder_path)
         return coverage_folder_path
 
-    def get_coverage(self, device):
+    def get_coverage(self, device) -> int:
         # pull coverage.ec file from device
         output, errors, result_code = adb.pull(device, self.coverage_ec_device_backup_path, self.coverage_ec_local_path)
         self.output += output
