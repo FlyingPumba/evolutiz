@@ -48,10 +48,10 @@ class WatchDogThread(threading.Thread):
                                 type(thread) is MultipleQueueConsumerThread]
 
             if verbose_level > 1:
-                logger.log_progress("\nWatchDog thread is about to check %d MultipleQueueConsumer threads" %
-                                    len(threads_to_check))
-                logger.log_progress("\nCurrent output count is %d of %d" % (self.output_queue.size(),
-                                                                            self.expected_output_count))
+                logger.log_progress(f"\nWatchDog thread is about to check {len(threads_to_check):d}"
+                                    f" MultipleQueueConsumer threads")
+                logger.log_progress(f"\nCurrent output count is {self.output_queue.size():d} "
+                                    f"of {self.expected_output_count:d}")
 
             if len(threads_to_check) == 0:
                 break
@@ -66,7 +66,7 @@ class WatchDogThread(threading.Thread):
 
                 if not budget_available:
                     # ask nicely
-                    logger.log_progress("\nBudget ran out, finishing thread: " + thread.name)
+                    logger.log_progress(f"\nBudget ran out, finishing thread: {thread.name}")
                     thread.stop()
                     stopped_threads = True
 
@@ -75,8 +75,8 @@ class WatchDogThread(threading.Thread):
                 if elapsed_time > self.watchdog_timeout:
                     # this thread is presumably hung: no more mr. nice guy
                     # raising the exception only once will cause the current item to stop being processed
-                    logger.log_progress("\nThread %s has been processing the same item for more than %d seconds, "
-                                        "finishing item processing." % (thread.name, self.watchdog_timeout))
+                    logger.log_progress(f"\nThread {thread.name} has been processing the same item for more than"
+                                        f" {self.watchdog_timeout:d} seconds, finishing item processing.")
                     thread.raiseExc(ThreadHungException)
                     # give time to the thread to process the exception
                     time.sleep(1)

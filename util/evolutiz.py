@@ -48,8 +48,7 @@ class Evolutiz(object):
         try:
             mapper.run()
         except Exception as e:
-            str = traceback.format_exc()
-            logger.log_progress("An error happened setting up devices: " + str)
+            logger.log_progress(f"An error happened setting up devices: {str(traceback.format_exc())}")
             return
 
         # run the strategy
@@ -62,7 +61,7 @@ class Evolutiz(object):
             self.test_suite_evaluator.dump_hall_of_fame_to_file()
 
         if RequiredFeature('write_history').request():
-            history_file = open(self.result_dir + "/history.pickle", 'wb')
+            history_file = open(f"{self.result_dir}/history.pickle", 'wb')
             pickle.dump(self.history, history_file)
             history_file.close()
 

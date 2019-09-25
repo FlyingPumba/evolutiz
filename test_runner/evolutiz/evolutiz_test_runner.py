@@ -10,6 +10,7 @@ import settings
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
+from devices.device import Device
 from test_runner.test_runner import TestRunner
 from test_runner.test_runner_installer import TestRunnerInstaller
 from util import logger
@@ -20,8 +21,8 @@ class EvolutizTestRunner(TestRunner):
     def __init__(self) -> None:
         self.evolutiz_script_path_in_devices = "/mnt/sdcard/evolutiz.script"
         self.test_runner_installer = TestRunnerInstaller("evolutiz",
-                                                         settings.WORKING_DIR + "test_runner/evolutiz/evolutiz",
-                                                         settings.WORKING_DIR + "test_runner/evolutiz/evolutiz.jar")
+                                                         f"{settings.WORKING_DIR}test_runner/evolutiz/evolutiz",
+                                                         f"{settings.WORKING_DIR}test_runner/evolutiz/evolutiz.jar")
     def register_minimum_api(self) -> None:
         self.minimum_api = 28
         features.provide('minimum_api', self.minimum_api)
@@ -66,7 +67,7 @@ class EvolutizTestRunner(TestRunner):
         :param individual: the test suite.
         :return: mutated test suite.
         """
-        result_dir = RequiredFeature('result_dir').request()
+        result_dir: str = RequiredFeature('result_dir').request()
 
         # mutate test cases
         test_suite_size = settings.SUITE_SIZE
@@ -88,7 +89,7 @@ class EvolutizTestRunner(TestRunner):
         while pb < test_case_mutation_pb and len(individual) < test_suite_size:
 
             ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-            local_dst_filename = result_dir + "/intermediate/offspring." + ts
+            local_dst_filename = f"{result_dir}/intermediate/offspring.{ts}"
             test_content = self.generate(device, package_name, local_dst_filename)
             individual.append(test_content)
 
@@ -97,32 +98,30 @@ class EvolutizTestRunner(TestRunner):
 
         return individual,
 
-    def mutate_test_case(self, device, package_name, test_case):
+    def mutate_test_case(self, device, package_name: str, test_case):
         assert device.api_level() >= self.minimum_api
-        result_dir = RequiredFeature('result_dir').request()
+        result_dir: str = RequiredFeature('result_dir').request()
 
         # write individual to local file
         ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-        local_src_filename = result_dir + "/intermediate/offspring." + ts
+        local_src_filename: str = f"{result_dir}/intermediate/offspring.{ts}"
         self.write_test_case_to_file(test_case, local_src_filename)
 
         # push individual to device
-        remote_src_filename = "/mnt/sdcard/offspring." + ts
+        remote_src_filename: str = f"/mnt/sdcard/offspring.{ts}"
         output, errors, result_code = adb.push(device, local_src_filename, remote_src_filename,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
         # call evolutiz test runner
-        remote_dst_filename = "/mnt/sdcard/offspring.out." + ts
-        evolutiz_cmd = "evolutiz -p " + package_name \
-                       + " -v -v -v --throttle 200 --dry --mutate " \
-                       + " -f " + remote_src_filename \
-                       + " -o " + remote_dst_filename + " 1"
+        remote_dst_filename = f"/mnt/sdcard/offspring.out.{ts}"
+        evolutiz_cmd = f"evolutiz -p {package_name} -v -v -v --throttle 200 --dry --mutate" \
+                       f" -f {remote_src_filename} -o {remote_dst_filename} 1"
 
         adb.sudo_shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
         adb.pkill(device, "evolutiz")
 
         # fetch mutated individual
-        local_dst_filename = result_dir + "/intermediate/offspring.out." + ts
+        local_dst_filename = f"{result_dir}/intermediate/offspring.out.{ts}"
         output, errors, result_code = adb.pull(device, remote_dst_filename, local_dst_filename,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
@@ -131,7 +130,7 @@ class EvolutizTestRunner(TestRunner):
 
         return mutated_test_case
 
-    def run(self, device, package_name, script_name):
+    def run(self, device, package_name: str, script_name: str):
         assert device.api_level() >= self.minimum_api
 
         verbose_level = RequiredFeature('verbose_level').request()
@@ -139,22 +138,22 @@ class EvolutizTestRunner(TestRunner):
 
         self.prepare_device_for_run(device)
 
-        evolutiz_cmd = "evolutiz -p {0} -v -v -v --throttle 200 --ignore-crashes --ignore-security-exceptions " \
-                       "--ignore-timeouts --bugreport -f /mnt/sdcard/{1} 1".format(package_name, script_name)
+        evolutiz_cmd = f"evolutiz -p {package_name} -v -v -v --throttle 200 --ignore-crashes " \
+                       f"--ignore-security-exceptions --ignore-timeouts --bugreport -f /mnt/sdcard/{script_name} 1"
 
         output, errors, result_code = adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
         if verbose_level > 1:
-            print("Test case running finished with output:\n" + output)
+            print(f"Test case running finished with output:\n{output}")
 
         if "Exception" in errors:
             device_stacktrace = errors.split("** Error: ")[1]
-            raise Exception("An error occurred when running test case: " + device_stacktrace)
+            raise Exception(f"An error occurred when running test case: {device_stacktrace}")
 
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")
 
         if verbose_level > 0:
-            logger.log_progress('\nEvolutiz test run took: %.2f seconds' % (time.time() - start_time))
+            logger.log_progress(f'\nEvolutiz test run took: {time.time() - start_time:.2f} seconds')
 
     def generate(self, device, package_name, destination_file_name) -> List[str]:
         assert device.api_level() >= self.minimum_api
@@ -166,17 +165,17 @@ class EvolutizTestRunner(TestRunner):
 
         evolutiz_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
 
-        evolutiz_cmd = "evolutiz -p {0} -v -v -v --throttle 200 --ignore-crashes --ignore-security-exceptions " \
-                       "--ignore-timeouts --bugreport -o {1} -v {2}"\
-            .format(package_name, self.evolutiz_script_path_in_devices, evolutiz_events)
+        evolutiz_cmd = f"evolutiz -p {package_name} -v -v -v --throttle 200 --ignore-crashes " \
+                       f"--ignore-security-exceptions --ignore-timeouts " \
+                       f"--bugreport -o {self.evolutiz_script_path_in_devices} -v {evolutiz_events}"
 
         output, errors, result_code = adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
         if verbose_level > 1:
-            print("Test case generation finished with output:\n" + output)
+            print(f"Test case generation finished with output:\n{output}")
 
         if "Exception" in errors:
             device_stacktrace = errors.split("** Error: ")[1]
-            raise Exception("An error occurred when generating test case: " + device_stacktrace)
+            raise Exception(f"An error occurred when generating test case: {device_stacktrace}")
 
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")
@@ -184,15 +183,15 @@ class EvolutizTestRunner(TestRunner):
         test_content = self.retrieve_generated_test(device, destination_file_name)
 
         if verbose_level > 0:
-            logger.log_progress('\nEvolutiz test generation took: %.2f seconds for %d events' %
-                                (time.time() - start_time, evolutiz_events))
+            logger.log_progress(f'\nEvolutiz test generation took: {time.time() - start_time:.2f} '
+                                f'seconds for {evolutiz_events:d} events')
 
         return test_content
 
-    def retrieve_generated_test(self, device, destination_file_name) -> List[str]:
+    def retrieve_generated_test(self, device: Device, destination_file_name) -> List[str]:
         output, errors, result_code = adb.pull(device, self.evolutiz_script_path_in_devices, destination_file_name,
                                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            raise Exception("Failed to retrieve evolutiz script from device: " + device.name)
+            raise Exception(f"Failed to retrieve evolutiz script from device: {device.name}")
 
         return self.get_test_case_content_from_file(destination_file_name)

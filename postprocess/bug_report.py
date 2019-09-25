@@ -19,7 +19,7 @@ def get_unique_bug_reports(path):
     count = 0
     unique_bug_reports = []
 
-    unique_bug_reports_path = path + "/unique"
+    unique_bug_reports_path = f"{path}/unique"
     try:
         os.system("rm -rf " + unique_bug_reports_path)
         os.system("mkdir " + unique_bug_reports_path)
@@ -35,17 +35,17 @@ def get_unique_bug_reports(path):
                     is_unique = False
                     # rm from the folder
                     prefix = file_name.split(".bugreport")[0]
-                    os.system("rm " + path + "/" + prefix + "*")
+                    os.system(f"rm {path}/{prefix}*")
                     break
             if is_unique:
                 unique_bug_reports.append(file_path)
                 count += 1
                 # cp report and test suite
                 prefix = file_name.split(".bugreport")[0]
-                os.system("cp " + path + "/" + prefix + "*" + " " + unique_bug_reports_path)
+                os.system(f"cp {path}/{prefix}* {unique_bug_reports_path}")
 
-    print count
-    print unique_bug_reports
+    print(count)
+    print(unique_bug_reports)
 
     return count, unique_bug_reports
 
@@ -63,10 +63,10 @@ def get_all_unique_bug_reports(path):
     count = 0
 
     for folder_name in os.listdir(path):
-        apk_folder_path = path + "/" + folder_name
+        apk_folder_path = f"{path}/{folder_name}"
         if not os.path.isdir(apk_folder_path):
             continue
-        crashes_folder_path = apk_folder_path + "/crashes"
+        crashes_folder_path = f"{apk_folder_path}/crashes"
         if not os.path.isdir(crashes_folder_path):
             continue
 

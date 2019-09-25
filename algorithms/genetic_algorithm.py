@@ -38,8 +38,8 @@ class GeneticAlgorithm(Strategy):
         verbose_level: bool = RequiredFeature('verbose_level').request()
 
         if verbose_level > 0:
-            logger.log_progress(
-                "\n---> Starting to generate initial population at " + str(self.budget_manager.get_time_budget_used()))
+            logger.log_progress(f"\n---> Starting to generate initial population "
+                                f"at {str(self.budget_manager.get_time_budget_used())}")
 
         self.population = self.population_generator.generate(self.population_size, gen=0)
         if len(self.population) < self.population_size:
@@ -47,8 +47,8 @@ class GeneticAlgorithm(Strategy):
             return False
 
         if verbose_level > 0:
-            logger.log_progress(
-                "\n---> Starting to evaluate initial population at " + str(self.budget_manager.get_time_budget_used()))
+            logger.log_progress(f"\n---> Starting to evaluate initial population "
+                                f"at {str(self.budget_manager.get_time_budget_used())}")
 
         success = self.parallel_evaluator.evaluate(self.population)
 
@@ -62,8 +62,8 @@ class GeneticAlgorithm(Strategy):
         history.update(self.population)
 
         if verbose_level > 0:
-            logger.log_progress(
-                "\n---> Finished creating initial population at " + str(self.budget_manager.get_time_budget_used()))
+            logger.log_progress(f"\n---> Finished creating initial population "
+                                f"at {str(self.budget_manager.get_time_budget_used())}")
 
         return True
 

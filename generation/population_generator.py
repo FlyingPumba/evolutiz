@@ -18,7 +18,7 @@ class PopulationGenerator(object):
         budget_manager = RequiredFeature('budget_manager').request()
         individuals_index_to_generate = [Integer(i) for i in range(0, n)]
 
-        logger.log_progress("\nInit population of " + str(n) + " individuals in parallel")
+        logger.log_progress(f"\nInit population of {str(n)} individuals in parallel")
 
         mapper = MapperOnDevices(self.individual_generator.gen_individual,
                                  items_to_map=individuals_index_to_generate,

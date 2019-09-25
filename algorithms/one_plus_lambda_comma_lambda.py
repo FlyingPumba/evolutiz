@@ -43,8 +43,8 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
                 print("Budget ran out, exiting evolve")
                 break
 
-            logger.log_progress("\n---> Starting generation " + str(gen) + " at " +
-                                str(self.budget_manager.get_time_budget_used()))
+            logger.log_progress(f"\n---> Starting generation {str(gen)}"
+                                f"at {str(self.budget_manager.get_time_budget_used())}")
 
             # Create and evaluate mutants
             mutants = self.generate_mutants(gen)
@@ -71,8 +71,8 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
             if verbose_level > 0:
-                logger.log_progress("\nFinished generation " + str(gen) + " at " +
-                                    str(self.budget_manager.get_time_budget_used()))
+                logger.log_progress(f"\nFinished generation {str(gen)} "
+                                    f"at {str(self.budget_manager.get_time_budget_used())}")
 
         return self.population
 

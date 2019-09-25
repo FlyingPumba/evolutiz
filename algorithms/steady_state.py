@@ -30,8 +30,8 @@ class SteadyState(Standard):
                 print("Budget ran out, exiting evolve")
                 break
 
-            logger.log_progress("\n---> Starting generation " + str(gen) + " at " +
-                                str(self.budget_manager.get_time_budget_used()))
+            logger.log_progress(f"\n---> Starting generation {str(gen)} "
+                                f"at {str(self.budget_manager.get_time_budget_used())}")
 
             # select parents
             parents: List[Any] = self.toolbox.select(self.population, 2)
@@ -54,7 +54,7 @@ class SteadyState(Standard):
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, self.population)
 
             if verbose_level > 0:
-                logger.log_progress("\nFinished generation " + str(gen) + " at " +
-                                    str(self.budget_manager.get_time_budget_used()))
+                logger.log_progress(f"\nFinished generation {str(gen)} "
+                                    f"at {str(self.budget_manager.get_time_budget_used())}")
 
         return self.population

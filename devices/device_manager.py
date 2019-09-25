@@ -65,7 +65,7 @@ class DeviceManager(object):
                 continue
 
             if line.strip() != "":
-                raise Exception("There was an error running 'adb devices' command: " + errors)
+                raise Exception(f"There was an error running \'adb devices\' command: {errors}")
 
         lines = output.split("\n")
         for line in lines:
@@ -146,10 +146,10 @@ class DeviceManager(object):
             self.next_available_emulator_port = 5554
             self.next_available_adb_server_port = 5038
             self.devices = []
-            logger.log_progress("\nBooting devices: " + str(0) + "/" + str(self.emulators_number))
+            logger.log_progress(f"\nBooting devices: {str(0)}/{str(self.emulators_number)}")
 
             for i in range(0, self.emulators_number):
-                logger.log_progress("\nBooting devices: " + str(i + 1) + "/" + str(self.emulators_number))
+                logger.log_progress(f"\nBooting devices: {str(i + 1)}/{str(self.emulators_number)}")
                 emulator = Emulator(self)
                 emulator.boot()
                 self.devices.append(emulator)
@@ -158,7 +158,7 @@ class DeviceManager(object):
                 try:
                     self.wait_devices_to_be_ready()
                 except WaitDevicesTimeout as e:
-                    logger.log_progress("\n" + str(e))
+                    logger.log_progress(f"\n{str(e)}")
                     logger.log_progress("\nForce kill on all current emulator processes")
                     run_cmd("pgrep emu | xargs kill -9", discard_output=True)
                     time.sleep(5)
@@ -186,25 +186,24 @@ class DeviceManager(object):
 
     def wait_devices_to_be_ready(self) -> None:
         devices_to_wait = self.get_total_number_of_devices_expected()
-        logger.log_progress("\nWaiting for devices to be ready: " +
-                            str(0) + "/" + str(devices_to_wait))
+        logger.log_progress(f"\nWaiting for devices to be ready: {str(0)}/{str(devices_to_wait)}")
 
         ready_devices = self.get_ready_to_install_devices(refresh=True)
         time_limit = devices_to_wait * 90  # 1.5 minutes per device
         start_time = time.time()
         while len(ready_devices) < devices_to_wait:
-            logger.log_progress("\nWaiting for devices to be ready: " +
-                                str(len(ready_devices)) + "/" + str(devices_to_wait))
+            logger.log_progress(
+                f"\nWaiting for devices to be ready: {str(len(ready_devices))}/{str(devices_to_wait)}")
             time.sleep(3)
 
             elapsed_time = time.time() - start_time
             if elapsed_time > time_limit:
-                raise WaitDevicesTimeout("Devices still not ready after " + str(time_limit) + " seconds.")
+                raise WaitDevicesTimeout(f"Devices still not ready after {str(time_limit)} seconds.")
 
             ready_devices = self.get_ready_to_install_devices(refresh=True)
 
-        logger.log_progress("\nWaiting for devices to be ready: " +
-                            str(len(ready_devices)) + "/" + str(devices_to_wait))
+        logger.log_progress(
+            f"\nWaiting for devices to be ready: {str(len(ready_devices))}/{str(devices_to_wait)}")
 
     def wait_for_battery_threshold(self, battery_threshold=20) -> None:
         while True:
@@ -213,12 +212,12 @@ class DeviceManager(object):
             if all_devices_above_threshold:
                 break
             else:
-                logger.log_progress("\nWaiting for some devices to reach " + str(battery_threshold) + "% battery level")
+                logger.log_progress(f"\nWaiting for some devices to reach {str(battery_threshold)}% battery level")
                 time.sleep(60)  # sleep 1 minute
 
     def log_devices_battery(self, gen, result_dir) -> None:
-        log_file = result_dir + "/battery.log"
-        os.system("echo 'Battery levels at gen: " + str(gen) + "' >> " + log_file)
+        log_file = f"{result_dir}/battery.log"
+        os.system(f"echo 'Battery levels at gen: {str(gen)}' >> {log_file}")
 
         for device in self.get_devices():
             level = device.battery_level()
@@ -229,7 +228,7 @@ class DeviceManager(object):
                 if imei is not None:
                     name = imei
 
-            os.system("echo '" + name + " -> " + str(level) + "' >> " + log_file)
+            os.system(f"echo \'{name} -> {str(level)}\' >> {log_file}")
 
     def get_next_available_emulator_port(self) -> int:
         port = self.next_available_emulator_port

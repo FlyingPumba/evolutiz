@@ -9,7 +9,7 @@ class FeatureBroker:
 
     def provide(self, feature: str, provider: Any, *args, **kwargs) -> None:
         if not self.allowReplace:
-            assert feature not in self.providers, "Duplicate feature: %r" % feature
+            assert feature not in self.providers, f"Duplicate feature: {feature:r}"
         if callable(provider):
             def call():
                 return provider(*args, **kwargs)
@@ -29,7 +29,7 @@ class FeatureBroker:
         try:
             provider = self.providers[feature]
         except KeyError:
-            raise KeyError("Unknown feature named %r" % feature)
+            raise KeyError(f"Unknown feature named {feature!r}")
         return provider()
 
 

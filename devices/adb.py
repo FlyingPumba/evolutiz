@@ -25,8 +25,10 @@ devices_imei: Dict[str, str] = {
 
 devices_with_root_permissions: List[str] = []
 
+
 def get_adb_cmd_prefix_for_device(device: 'Device') -> str:
-    return "env " + device.get_adb_server_port_prefix() + " " + adb_cmd_prefix + " -s " + device.name
+    return f"env {device.get_adb_server_port_prefix()} {adb_cmd_prefix} -s {device.name}"
+
 
 def adb_command(
         device: 'Device',
@@ -36,7 +38,7 @@ def adb_command(
         discard_output: bool = False
 ) -> RunCmdResult:
 
-    cmd = adb_cmd_prefix + " -s " + device.name + " " + command
+    cmd = f"{adb_cmd_prefix} -s {device.name} {command}"
 
     tries = 0
     while True:
@@ -55,6 +57,7 @@ def adb_command(
             if tries >= retry:
                 return e.stdout, e.stderr, 124
 
+
 def get_root_permissions(device: 'Device') -> None:
     if device.name in devices_with_root_permissions:
         return
@@ -63,9 +66,10 @@ def get_root_permissions(device: 'Device') -> None:
     print(output)
     print(errors)
     if result_code != 0:
-        raise Exception("Unable to gain root permissions on device: " + device.name)
+        raise Exception(f"Unable to gain root permissions on device: {device.name}")
 
     devices_with_root_permissions.append(device.name)
+
 
 def shell_command(
         device: 'Device',
@@ -74,35 +78,42 @@ def shell_command(
         retry: int = 1,
         discard_output: bool = False
 ) -> RunCmdResult:
-    return adb_command(device, "shell " + command, timeout=timeout, retry=retry, discard_output=discard_output)
+    return adb_command(device, f"shell {command}", timeout=timeout, retry=retry, discard_output=discard_output)
+
 
 def sudo_shell_command(device, command, timeout: Optional[int] = None, retry=1, discard_output=False) -> RunCmdResult:
     get_root_permissions(device)
     return shell_command(device, command, timeout=timeout, retry=retry, discard_output=discard_output)
 
+
 def push(device: 'Device', src: str, dest: str, timeout: Optional[int] = None) -> RunCmdResult:
-    return adb_command(device, "push " + src + " " + dest, timeout=timeout)
+    return adb_command(device, f"push {src} {dest}", timeout=timeout)
+
 
 def push_all(device, src_list, dest, timeout: Optional[int] = None) -> RunCmdResult:
     src_str = " ".join(src_list)
-    return adb_command(device, "push " + src_str + " " + dest, timeout=timeout)
+    return adb_command(device, f"push {src_str} {dest}", timeout=timeout)
+
 
 def sudo_push(device, src, dest, timeout: Optional[int] = None) -> RunCmdResult:
     get_root_permissions(device)
     return push(device, src, dest, timeout=timeout)
 
+
 def pull(device, src, dest, timeout: Optional[int] = None) -> RunCmdResult:
-    return adb_command(device, "pull " + src + " " + dest, timeout=timeout)
+    return adb_command(device, f"pull {src} {dest}", timeout=timeout)
+
 
 def uninstall(device: 'Device', package_name: str) -> RunCmdResult:
-    return adb_command(device, "uninstall " + package_name)
+    return adb_command(device, f"uninstall {package_name}")
+
 
 def install(device: 'Device', package_name: str, apk_path: str) -> None:
     verbose_level = RequiredFeature('verbose_level').request()
 
-    output, errors, result_code = adb_command(device, "install " + apk_path)
+    output, errors, result_code = adb_command(device, f"install {apk_path}")
     if result_code != 0:
-        error_msg = "Unable to install apk: " + apk_path + " on device: " + device.name
+        error_msg = f"Unable to install apk: {apk_path} on device: {device.name}"
         if verbose_level > 0:
             print(error_msg)
             print(output)
@@ -110,15 +121,16 @@ def install(device: 'Device', package_name: str, apk_path: str) -> None:
 
         raise Exception(error_msg)
 
-    cmd = get_adb_cmd_prefix_for_device(device) + " shell pm list packages | grep " + package_name
+    cmd = f"{get_adb_cmd_prefix_for_device(device)} shell pm list packages | grep {package_name}"
     log_adb_command(device, cmd)
 
     res = run_cmd(cmd)[0].strip()
     if package_name not in res:
-        raise Exception("Unable to install apk: " + apk_path + " on device: " + device.name)
+        raise Exception(f"Unable to install apk: {apk_path} on device: {device.name}")
+
 
 def pkill(device, string) -> int:
-    adb_cmd = get_adb_cmd_prefix_for_device(device) + " shell "
+    adb_cmd = f"{get_adb_cmd_prefix_for_device(device)} shell "
     pkill_cmd = adb_cmd + "ps | grep " + string + " | awk '{print $2}' | xargs -I pid " + adb_cmd + "kill pid "
 
     log_adb_command(device, pkill_cmd)
@@ -128,6 +140,7 @@ def pkill(device, string) -> int:
     except TimeoutExpired as e:
         return 124
 
+
 def set_bluetooth_state(device, enabled, timeout: Optional[int] = None) -> RunCmdResult:
     if enabled:
         # sometimes might not work
@@ -136,6 +149,7 @@ def set_bluetooth_state(device, enabled, timeout: Optional[int] = None) -> RunCm
         # the following command is not working. Also tried with number 9.
         return sudo_shell_command(device, "service call bluetooth_manager 8", timeout=timeout)
 
+
 def set_wifi_state(device, enabled, timeout: Optional[int] = None) -> RunCmdResult:
     if enabled:
         return sudo_shell_command(device, "svc wifi enable", timeout=timeout)
@@ -143,11 +157,13 @@ def set_wifi_state(device, enabled, timeout: Optional[int] = None) -> RunCmdResu
         # the following command is not working.
         return sudo_shell_command(device, "svc wifi disable", timeout=timeout)
 
+
 def set_stay_awake_state(device, enabled, timeout: Optional[int] = None) -> RunCmdResult:
     if enabled:
         return sudo_shell_command(device, "svc power stayon true", timeout=timeout)
     else:
         return sudo_shell_command(device, "svc power stayon false", timeout=timeout)
+
 
 def set_location_state(device, enabled, timeout: Optional[int] = None) -> RunCmdResult:
     if enabled:
@@ -155,9 +171,11 @@ def set_location_state(device, enabled, timeout: Optional[int] = None) -> RunCmd
     else:
         return shell_command(device, "settings put secure location_providers_allowed ' '", timeout=timeout)
 
+
 def set_brightness(device, value, timeout: Optional[int] = None) -> RunCmdResult:
     # value should be between 0 and 250
-    return shell_command(device, "settings put system screen_brightness " + value, timeout=timeout)
+    return shell_command(device, f"settings put system screen_brightness {value}", timeout=timeout)
+
 
 def get_battery_level(device) -> Optional[int]:
     output, errors, result_code = shell_command(device, "dumpsys battery", retry=3)
@@ -171,10 +189,11 @@ def get_battery_level(device) -> Optional[int]:
                 return int(level_str[1].strip())
     return None
 
+
 def get_imei(device) -> Optional[str]:
     if device.name not in devices_imei:
-        adb_cmd = get_adb_cmd_prefix_for_device(device) + " shell "
-        imei_cmd = adb_cmd + "dumpsys iphonesubinfo | grep 'Device ID' | cut -d ' ' -f 6 "
+        adb_cmd = f"{get_adb_cmd_prefix_for_device(device)} shell "
+        imei_cmd = f"{adb_cmd}dumpsys iphonesubinfo | grep 'Device ID' | cut -d ' ' -f 6 "
 
         # leave commented to avoid infinite recursion
         # log_adb_command(device, cmd)
@@ -188,31 +207,36 @@ def get_imei(device) -> Optional[str]:
 
     return devices_imei[device.name]
 
+
 def start_server() -> None:
     try:
-        run_cmd(adb_cmd_prefix + " start-server" + logger.redirect_string())
+        run_cmd(f"{adb_cmd_prefix} start-server{logger.redirect_string()}")
     except TimeoutExpired as e:
         pass
 
+
 def kill_server() -> None:
     try:
-        run_cmd(adb_cmd_prefix + " kill-server" + logger.redirect_string())
+        run_cmd(f"{adb_cmd_prefix} kill-server{logger.redirect_string()}")
     except TimeoutExpired as e:
         pass
+
 
 def restart_server() -> None:
     kill_server()
     start_server()
 
+
 def log_adb_command(device: 'Device', cmd: str) -> None:
     verbose_level = RequiredFeature('verbose_level').request()
     if verbose_level > 0:
-        device_adb_log_file = adb_logs_dir + "/" + device.name + "-adb.log"
-        os.system("echo \"" + cmd + "\" >> " + device_adb_log_file)
+        device_adb_log_file = f"{adb_logs_dir}/{device.name}-adb.log"
+        os.system(f"echo \"{cmd}\" >> {device_adb_log_file}")
+
 
 def exists_file(device, file_path) -> bool:
     try:
-        output, errors, result_code = shell_command(device, "ls " + file_path)
+        output, errors, result_code = shell_command(device, f"ls {file_path}")
     except TimeoutExpired:
         return False
 
@@ -224,11 +248,13 @@ def exists_file(device, file_path) -> bool:
         # file exist
         return True
 
-def log_evaluation_result(device, result_dir, script, success) -> None:
+
+def log_evaluation_result(device: 'Device', result_dir: str, script, success) -> None:
     verbose_level = RequiredFeature('verbose_level').request()
     if verbose_level > 0:
-        device_adb_log_file = result_dir + "/" + device.name + "-evaluations.log"
-        os.system("echo \"" + str(success) + " -> " + script + "\" >> " + device_adb_log_file)
+        device_adb_log_file = f"{result_dir}/{device.name}-evaluations.log"
+        os.system(f"echo \"{str(success)} -> {script}\" >> {device_adb_log_file}")
+
 
 def get_api_level(device: 'Device') -> Optional[int]:
     try:
@@ -237,6 +263,7 @@ def get_api_level(device: 'Device') -> Optional[int]:
         return int(res)
     except TimeoutExpired:
         return None
+
 
 def get_android_version(device) -> Optional[int]:
     try:

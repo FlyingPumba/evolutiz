@@ -26,6 +26,6 @@ class RealDevice(Device):
 
         output, errors, result_code = adb.adb_command(self, "reboot", timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            logger.log_progress("\nUnable to reboot device: " + self.name)
+            logger.log_progress(f"\nUnable to reboot device: {self.name}")
             logger.log_progress("\nPlease, turn it off and on manually.")
-            raise Exception("Unable to reboot device: " + self.name)
+            raise Exception(f"Unable to reboot device: {self.name}")

@@ -15,18 +15,18 @@ class AvdManager(object):
 
     def get_avd_name_for_emulator_port(self, port: int) -> str:
         avd_index = int((port - 5554) / 2)
-        return self.avd_series + "_" + str(avd_index)
+        return f"{self.avd_series}_{str(avd_index)}"
 
     def refresh_avd_names(self) -> None:
-        list_avd_cmd = self.avd_manager_path + " list avd"
+        list_avd_cmd = f"{self.avd_manager_path} list avd"
         try:
             output, errors, result_code = run_cmd(list_avd_cmd)
         except TimeoutExpired as e:
             stack_trace = traceback.format_exc()
-            raise Exception("There was an error running avdmanager command: " + stack_trace)
+            raise Exception(f"There was an error running avdmanager command: {str(stack_trace)}")
 
         if errors.strip() != '':
-            raise Exception("There was an error running avdmanager command: " + errors)
+            raise Exception(f"There was an error running avdmanager command: {errors}")
 
         lines = output.split("\n")
         for line in lines:

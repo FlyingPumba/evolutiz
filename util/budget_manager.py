@@ -25,7 +25,7 @@ class BudgetManager(object):
                     self.time_limit = int(time_budget)
             else:
                 # unknown format
-                raise ValueError('Invalid time budget "%s".' % time_budget)
+                raise ValueError(f'Invalid time budget "{time_budget}".')
 
         self.start_time: float = 0
         self.time_limit_increase: float = 0
@@ -35,7 +35,7 @@ class BudgetManager(object):
         self.evaluations_lock = Lock()
 
     def start_budget(self) -> None:
-        print("Start time is " + datetime.today().strftime("%Y-%m-%d_%H-%M"))
+        print(f"Start time is {datetime.today().strftime('%Y-%m-%d_%H-%M')}")
         self.start_time = time.time()
         self.time_limit_increase = 0
         self.evaluations = 0

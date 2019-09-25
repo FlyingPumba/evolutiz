@@ -8,6 +8,7 @@ import settings
 from coverage.emma_coverage import EmmaCoverage
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
+from devices.device import Device
 from generation.individual_generator import IndividualGenerator
 
 
@@ -40,8 +41,8 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
         return individual
 
     def get_suite_with_fitness(self, device, generation, individual_index):
-        self.package_name = RequiredFeature('package_name').request()
-        self.result_dir = RequiredFeature('result_dir').request()
+        self.package_name: str = RequiredFeature('package_name').request()
+        self.result_dir: str = RequiredFeature('result_dir').request()
 
         test_suite = []
         lengths = []
@@ -50,7 +51,7 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
 
         self.there_is_coverage = False
         self.set_coverage_paths(device, generation, individual_index)
-        adb.shell_command(device, "am force-stop " + self.package_name)
+        adb.shell_command(device, f"am force-stop {self.package_name}")
 
         # run scripts
         for test_case_index in range(0, settings.SUITE_SIZE):
@@ -75,15 +76,20 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
 
         return test_suite, (coverage, length, crashes)
 
-    def generate_test_and_coverage(self, device, script_path, generation, individual_index, test_case_index,
-                                   unique_crashes, scripts_crash_status):
+    def generate_test_and_coverage(self,
+                                   device: Device,
+                                   script_path: str,
+                                   generation,
+                                   individual_index,
+                                   test_case_index,
+                                   unique_crashes,
+                                   scripts_crash_status):
 
         # clear app's data and state
-        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
+        output, errors, result_code = adb.shell_command(device, f"pm clear {self.package_name}")
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, script_path, False)
-            raise Exception(
-                "Unable to clear package for script_path " + script_path + " in device: " + device.name)
+            raise Exception(f"Unable to clear package for script_path {script_path} in device: {device.name}")
 
         # generate test case
         test_runner = RequiredFeature('test_runner').request()

@@ -23,7 +23,5 @@ class RequiredFeature(object):
         else:
             obj = features[self.feature]
 
-        assert self.assertion(obj), \
-            "The value %r of %r does not match the specified criteria" \
-            % (obj, self.feature)
+        assert self.assertion(obj), f"The value {obj:r} of {self.feature:r} does not match the specified criteria"
         return obj

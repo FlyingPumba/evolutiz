@@ -10,9 +10,9 @@ def compress_results(strategy_with_runner_name: str) -> None:
     app_path = RequiredFeature('app_path').request()
     app_name = os.path.basename(app_path)
 
-    repetitions_dir = settings.WORKING_DIR + "results/" + strategy_with_runner_name + "/" + app_name + "/"
+    repetitions_dir = f"{settings.WORKING_DIR}results/{strategy_with_runner_name}/{app_name}/"
 
-    output, errors, return_code = run_cmd("find " + repetitions_dir + " -maxdepth 1 -mindepth 1 -type d")
+    output, errors, return_code = run_cmd(f"find {repetitions_dir} -maxdepth 1 -mindepth 1 -type d")
     repetition_dir_paths = output.split('\n')
 
     pool = mp.Pool(processes=len(repetition_dir_paths))
@@ -24,6 +24,6 @@ def compress_results(strategy_with_runner_name: str) -> None:
 
 def compress_repetition(path):
     if is_command_available("pigz"):
-        run_cmd("tar --use-compress-program=pigz -cf " + path + ".tar.gz " + path)
+        run_cmd(f"tar --use-compress-program=pigz -cf {path}.tar.gz {path}")
     else:
-        run_cmd("tar -cf " + path + ".tar.gz " + path)
+        run_cmd(f"tar -cf {path}.tar.gz {path}")

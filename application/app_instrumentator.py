@@ -16,33 +16,33 @@ from util.command import run_cmd
 class AppInstrumentator(object):
 
     def instrument(self) -> None:
-        self.app_path = RequiredFeature('app_path').request()
-        self.result_dir = RequiredFeature('result_dir').request()
-        self.instrumented_subjects_path = RequiredFeature('instrumented_subjects_path').request()
-        self.emma_instrument_path = RequiredFeature('emma_instrument_path').request()
+        self.app_path: str = RequiredFeature('app_path').request()
+        self.result_dir: str = RequiredFeature('result_dir').request()
+        self.instrumented_subjects_path: str = RequiredFeature('instrumented_subjects_path').request()
+        self.emma_instrument_path: str = RequiredFeature('emma_instrument_path').request()
 
         # first, check if we should assume apps are already instrumented
         assume_subjects_instrumented = RequiredFeature('assume_subjects_instrumented').request()
         if assume_subjects_instrumented:
             features.provide('instrumented_app_path', self.app_path)
 
-            output, errors, result_code = run_cmd("aapt dump badging " + self.app_path + " | grep package:\ name")
+            output, errors, result_code = run_cmd(f"aapt dump badging {self.app_path} | grep package:\\ name")
             package_name = output.split("package: name=\'")[1].split("\'")[0]
             features.provide('package_name', package_name)
             return
 
-        logger.log_progress("\nInstrumenting app: " + os.path.basename(self.app_path))
+        logger.log_progress(f"\nInstrumenting app: {os.path.basename(self.app_path)}")
 
         # copy sources and instrument application
         instrumented_app_path, package_name = self.prepare_app_for_instrumentation()
 
         # compile with emma data
-        result_code = os.system("ant clean emma debug 2>&1 >" + self.result_dir + "/build.log")
+        result_code = os.system(f"ant clean emma debug 2>&1 >{self.result_dir}/build.log")
         if result_code != 0:
             raise Exception("Unable run ant clean emma debug")
 
         # copy emma generated file
-        result_code = os.system("cp bin/coverage.em " + self.result_dir + "/" + logger.redirect_string())
+        result_code = os.system(f"cp bin/coverage.em {self.result_dir}/{logger.redirect_string()}")
         if result_code != 0:
             raise Exception("Unable to copy coverage.em file")
 
@@ -55,37 +55,37 @@ class AppInstrumentator(object):
         # copy sources to instrumented subjects folder
         app_name = os.path.basename(self.app_path)
         instrumented_source_path = self.instrumented_subjects_path + app_name
-        os.system("rm -rf " + instrumented_source_path)
-        os.system("mkdir -p " + self.instrumented_subjects_path)
-        os.system("cp -r " + self.app_path + " " + instrumented_source_path)
+        os.system(f"rm -rf {instrumented_source_path}")
+        os.system(f"mkdir -p {self.instrumented_subjects_path}")
+        os.system(f"cp -r {self.app_path} {instrumented_source_path}")
 
         # get package name
         package_name = self.get_package_name(instrumented_source_path)
 
         # copy emma source
-        source_root = instrumented_source_path + "/src/" + "/".join(package_name.split(".")) + "/"
+        source_root: str = f"{instrumented_source_path}/src/{'/'.join(package_name.split('.'))}/"
         if not os.path.exists(source_root):
             #  TODO: maybe we can do a better search ?
-            raise Exception("Unable to find src folder of app " + self.app_path +
-                            " when trying to pre-instrument. This folder should be in path: " + source_root)
+            raise Exception(f"Unable to find src folder of app {self.app_path} when trying to pre-instrument. "
+                            f"This folder should be in path: {source_root}")
 
-        os.system("cp -r " + self.emma_instrument_path + " " + source_root)
+        os.system(f"cp -r {self.emma_instrument_path} {source_root}")
 
         # modify emma source
-        emma_instrument_dest_path = source_root + "EmmaInstrument"
+        emma_instrument_dest_path: str = f"{source_root}EmmaInstrument"
         for target in os.listdir(emma_instrument_dest_path):
             if target.endswith(".java"):
-                self.alter_emma_file(emma_instrument_dest_path + "/" + target, package_name)
+                self.alter_emma_file(f"{emma_instrument_dest_path}/{target}", package_name)
 
         # get & alter based on main activity based on "android.intent.action.MAIN"
-        main_activity = self.get_main_activity(instrumented_source_path + "/")
+        main_activity = self.get_main_activity(f"{instrumented_source_path}/")
         if main_activity.startswith("."):
             main_activity = package_name + main_activity
         elif not main_activity.startswith(package_name):
             main_activity = package_name + "." + main_activity
 
         # update main activity in InstrumentedActivity.java
-        self.alter_InstrumentedActivity(emma_instrument_dest_path + "/InstrumentedActivity.java", main_activity)
+        self.alter_InstrumentedActivity(f"{emma_instrument_dest_path}/InstrumentedActivity.java", main_activity)
 
         # update AndroidManifest.xml
         self.alter_AndroidManifest(instrumented_source_path + "/AndroidManifest.xml", package_name)
@@ -93,13 +93,13 @@ class AppInstrumentator(object):
         # update project
         os.chdir(instrumented_source_path)
         # TODO: replace for a command that doesn't depend on old android-sdk-linux
-        os.system(settings.WORKING_DIR + "monkey/android-sdk-linux/tools/android update project --path . --target " +
-                  settings.ANDROID_TARGET + " --subprojects" + logger.redirect_string())
+        os.system(f"{settings.WORKING_DIR}monkey/android-sdk-linux/tools/android update project --path . "
+                  f"--target {settings.ANDROID_TARGET} --subprojects{logger.redirect_string()}")
 
         return instrumented_source_path, package_name
 
     def get_main_activity(self, root_path: str) -> _ElementUnicodeResult:
-        manifest = root_path + "AndroidManifest.xml"
+        manifest = f'{root_path}AndroidManifest.xml'
 
         tree = etree.parse(manifest)
         root = tree.getroot()
@@ -123,30 +123,30 @@ class AppInstrumentator(object):
             if line.find("</application>") != -1:
 
                 content += \
-                    '''
+                    f'''
     
                      <!-- emma updated -->
                     <activity 
                         android:label="EmmaInstrumentationActivity" 
-                        android:name="{0}.EmmaInstrument.InstrumentedActivity"/>
-                    <receiver android:name="{0}.EmmaInstrument.CollectCoverageReceiver">
+                        android:name="{package_name}.EmmaInstrument.InstrumentedActivity"/>
+                    <receiver android:name="{package_name}.EmmaInstrument.CollectCoverageReceiver">
                     <intent-filter>
                         <action android:name="evolutiz.emma.COLLECT_COVERAGE" />
                     </intent-filter>
                 </receiver>
                  <!-- emma updated -->
-                {1}
+                {line}
                 
                  <!-- emma updated -->
                  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>  
                  <instrumentation 
                     android:handleProfiling="true" 
                     android:label="EmmaInstrumentation" 
-                    android:name="{0}.EmmaInstrument.EmmaInstrumentation" 
-                    android:targetPackage="{0}"/>
+                    android:name="{package_name}.EmmaInstrument.EmmaInstrumentation" 
+                    android:targetPackage="{package_name}"/>
                  <!-- emma updated -->
     
-                '''.format(package_name, line)
+                '''
                 is_mod = True
             else:
                 content += line
@@ -184,5 +184,5 @@ class AppInstrumentator(object):
 
             with open(path, 'w') as writing_file:
                 # write new package name
-                writing_file.write("package " + package + ".EmmaInstrument;\n")
+                writing_file.write(f"package {package}.EmmaInstrument;\n")
                 shutil.copyfileobj(reading_file, writing_file)

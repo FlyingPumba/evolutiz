@@ -30,8 +30,8 @@ class RandomSearch(Strategy):
     def run(self) -> List[Any]:
         gen = 0
         while self.budget_manager.is_budget_available():
-            logger.log_progress(
-                "\n---> Starting generation " + str(gen) + " at " + str(self.budget_manager.get_time_budget_used()))
+            logger.log_progress(f"\n---> Starting generation {str(gen)} "
+                                f"at {str(self.budget_manager.get_time_budget_used())}")
 
             new_individuals = self.population_generator.generate(self.sampling_size, gen=gen)
             if new_individuals is None:

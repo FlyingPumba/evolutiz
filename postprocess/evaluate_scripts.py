@@ -1,4 +1,5 @@
 import os
+from typing import Optional, Dict
 
 from deap import creator
 
@@ -6,6 +7,9 @@ from algorithms.strategy import Strategy
 from dependency_injection.required_feature import RequiredFeature
 from util import logger
 
+ScriptsByTestCaseIndex = Dict[int, str]
+ScriptsByIndividualIndex = Dict[int, ScriptsByTestCaseIndex]
+ScriptsByGeneration = Dict[int, ScriptsByIndividualIndex]
 
 class EvaluateScripts(Strategy):
     def run(self):
@@ -33,20 +37,20 @@ class EvaluateScripts(Strategy):
 
         return True
 
-    def fetch_script_paths(self):
+    def fetch_script_paths(self) -> ScriptsByGeneration:
         """
         Analyzes "evaluate_scripts_folder_path" and clusters scripts paths by generation and individual index.
         :return:
         """
-        evaluate_scripts_folder_path = RequiredFeature('evaluate_scripts_folder_path').request()
+        evaluate_scripts_folder_path: Optional[str] = RequiredFeature('evaluate_scripts_folder_path').request()
         if evaluate_scripts_folder_path is None or evaluate_scripts_folder_path.strip() == "":
             raise Exception("EvaluateScripts strategy selected but 'evaluate-scripts-folder-path'"
                             " argument not provided.")
 
         evaluate_scripts_folder_path = evaluate_scripts_folder_path.rstrip('/')
-        logger.log_progress("\nEvaluating scripts in folder: " + evaluate_scripts_folder_path)
+        logger.log_progress(f"\nEvaluating scripts in folder: {evaluate_scripts_folder_path}")
 
-        script_paths = {}
+        script_paths: ScriptsByGeneration = {}
 
         for file_name in os.listdir(evaluate_scripts_folder_path):
             if not file_name.startswith("script"):
@@ -60,7 +64,7 @@ class EvaluateScripts(Strategy):
                 # T is the number of test sequence for that individual.
                 continue
 
-            script_path = evaluate_scripts_folder_path + "/" + file_name
+            script_path = f"{evaluate_scripts_folder_path}/{file_name}"
 
             generation = int(aux[1])
             individual_index = int(aux[2])
@@ -77,7 +81,7 @@ class EvaluateScripts(Strategy):
 
         return script_paths
 
-    def script_paths_to_individuals(self, generation, script_paths):
+    def script_paths_to_individuals(self, generation: int, script_paths: Dict[int, Dict[int, str]]):
         test_runner = RequiredFeature('test_runner').request()
         individuals = []
 
@@ -85,7 +89,7 @@ class EvaluateScripts(Strategy):
             test_suite = []
 
             for test_case_index, script_path in sorted(test_suite_script_paths.items()):
-                logger.log_progress("\n- " + script_path)
+                logger.log_progress(f"\n- {script_path}")
                 test_case_content = test_runner.get_test_case_content_from_file(script_path)
                 test_suite.append(test_case_content)
 

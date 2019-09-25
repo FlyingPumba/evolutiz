@@ -68,8 +68,8 @@ class MapperOnDevices(object):
 
         total_devices = len(devices)
         if total_devices == 0:
-            raise Exception("No devices found with api level greater or equal than " + str(self.minimum_api) +
-                            " to apply function mapper.")
+            raise Exception(f"No devices found with api level greater or equal than "
+                            f"{str(self.minimum_api)} to apply function mapper.")
 
         # prepare devices queue
         devices_to_use = Queue(elements=devices)
@@ -88,7 +88,7 @@ class MapperOnDevices(object):
                                                      output_queue=output_queue,
                                                      fail_times_limit=self.fail_times_limit,
                                                      default_output=self.default_output,
-                                                     name="MQCThread-" + str(i))
+                                                     name=f"MQCThread-{str(i)}")
                 thread.start()
 
             watchdog_thread = WatchDogThread(output_queue, total_devices)
@@ -108,7 +108,7 @@ class MapperOnDevices(object):
                                                      output_queue=output_queue,
                                                      fail_times_limit=self.fail_times_limit,
                                                      default_output=self.default_output,
-                                                     name="MQCThread-" + str(i))
+                                                     name=f"MQCThread-{str(i)}")
                 thread.start()
 
             watchdog_thread = WatchDogThread(output_queue, len(self.items_to_map))

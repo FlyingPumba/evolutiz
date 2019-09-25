@@ -38,7 +38,7 @@ class EmmaCoverage(object):
 
         self.there_is_coverage = False
         self.set_coverage_paths(device, generation, individual_index)
-        adb.shell_command(device, "am force-stop " + self.package_name)
+        adb.shell_command(device, f"am force-stop {self.package_name}")
 
         adb.push_all(device, scripts, "/mnt/sdcard")
 
@@ -68,24 +68,27 @@ class EmmaCoverage(object):
                                unique_crashes,
                                scripts_crash_status) -> None:
         # clear app's data and state
-        output, errors, result_code = adb.shell_command(device, "pm clear " + self.package_name)
+        output, errors, result_code = adb.shell_command(device, f"pm clear {self.package_name}")
         self.output += output
         self.errors += errors
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, script_path, False)
             if self.verbose_level > 0:
-                logger.log_progress("\n" + self.output + "\n" + self.errors)
-            raise Exception("Unable to clear package for script_path " + script_path + " in device: " + device.name)
+                logger.log_progress(f"\n{self.output}\n{self.errors}")
+            raise Exception(f"Unable to clear package for script_path {script_path} in device: {device.name}")
 
-        output, errors, result_code = adb.shell_command(device, "am instrument " + self.package_name + "/" +
-                                                        self.package_name + ".EmmaInstrument.EmmaInstrumentation")
+        output, errors, result_code = adb.shell_command(
+            device,
+            f"am instrument {self.package_name}/{self.package_name}.EmmaInstrument.EmmaInstrumentation"
+        )
+
         self.output += output
         self.errors += errors
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, script_path, False)
             if self.verbose_level > 0:
-                logger.log_progress("\n" + self.output + "\n" + self.errors)
-            raise Exception("Unable to instrument for script_path " + script_path + " in device: " + device.name)
+                logger.log_progress(f"\n{self.output}\n{self.errors}")
+            raise Exception(f"Unable to instrument for script_path {script_path} in device: {device.name}")
 
         script_name = script_path.split("/")[-1]
         test_runner = RequiredFeature('test_runner').request()
@@ -110,69 +113,69 @@ class EmmaCoverage(object):
 
             # don't check result_code of the following command, since it can fail if this is the first time running emma
             # for this test suite and there is no coverage.ec file in /mnt/sdcard folder.
-            adb.sudo_shell_command(device,
-                                   "cp -p " + self.coverage_ec_device_backup_path + " " + self.coverage_ec_device_path)
+            adb.sudo_shell_command(
+                device,
+                f"cp -p {self.coverage_ec_device_backup_path} {self.coverage_ec_device_path}"
+            )
 
-            broadcast = "am broadcast -a evolutiz.emma.COLLECT_COVERAGE -n " + self.package_name + "/" + \
-                        self.package_name + ".EmmaInstrument.CollectCoverageReceiver"
+            broadcast = f"am broadcast -a evolutiz.emma.COLLECT_COVERAGE " \
+                        f"-n {self.package_name}/{self.package_name}.EmmaInstrument.CollectCoverageReceiver"
             output, errors, result_code = adb.shell_command(device, broadcast, timeout=60)
             self.output += output
             self.errors += errors
             if "Exception" in errors:
                 adb.log_evaluation_result(device, self.result_dir, script_path, False)
                 if self.verbose_level > 0:
-                    logger.log_progress("\n" + self.output + "\n" + self.errors)
-                raise Exception("Unable to broadcast coverage gathering for script_path {0} in device: {1}"
-                                .format(script_path, device.name))
+                    logger.log_progress(f"\n{self.output}\n{self.errors}")
+                raise Exception(f"Unable to broadcast coverage gathering for "
+                                f"script_path {script_path} in device: {device.name}")
 
             self.there_is_coverage = True
 
             if not adb.exists_file(device, self.coverage_ec_device_path):
                 adb.log_evaluation_result(device, self.result_dir, script_path, False)
                 if self.verbose_level > 0:
-                    logger.log_progress("\n" + self.output + "\n" + self.errors)
-                raise Exception(
-                    "Coverage broadcast was sent for script_path " + script_path + " in device: " + device.name +
-                    " but there is not file: " + self.coverage_ec_device_path)
+                    logger.log_progress(f"\n{self.output}\n{self.errors}")
+                raise Exception(f"Coverage broadcast was sent for script_path {script_path} "
+                                f"in device: {device.name} but there is not file: {self.coverage_ec_device_path}")
 
             adb.log_evaluation_result(device, self.result_dir, script_path, True)
 
             # save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
-            cp_command = "cp -p " + self.coverage_ec_device_path + " " + self.coverage_ec_device_backup_path
+            cp_command = f"cp -p {self.coverage_ec_device_path} {self.coverage_ec_device_backup_path}"
             output, errors, result_code = adb.sudo_shell_command(device, cp_command)
             self.output += output
             self.errors += errors
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script_path, False)
                 if self.verbose_level > 0:
-                    logger.log_progress("\n" + self.output + "\n" + self.errors)
-                raise Exception("Unable to retrieve coverage.ec file after coverage broadcast "
-                                "for script_path {0} in  device: {1}"
-                                .format(script_path, device.name))
+                    logger.log_progress(f"\n{self.output}\n{self.errors}")
+                raise Exception(f"Unable to retrieve coverage.ec file after coverage broadcast for "
+                                f"script_path {script_path} in  device: {device.name}")
 
     def set_coverage_paths(self, device, generation, individual_index) -> None:
-        application_files = "/data/data/" + self.package_name + "/files"
+        application_files = f"/data/data/{self.package_name}/files"
 
-        self.coverage_ec_device_path = application_files + "/coverage.ec"
+        self.coverage_ec_device_path = f"{application_files}/coverage.ec"
         self.clean_coverage_files_in_device(device)
 
         self.coverage_folder_local_path = self.prepare_coverage_folder(generation, individual_index)
-        self.coverage_ec_local_path = self.coverage_folder_local_path + "/coverage.ec"
-        coverage_em_local_path = self.coverage_folder_local_path + "/coverage.em"
+        self.coverage_ec_local_path = f"{self.coverage_folder_local_path}/coverage.ec"
+        coverage_em_local_path = f"{self.coverage_folder_local_path}/coverage.em"
 
-        os.system("cp " + self.result_dir + "/coverage.em " + coverage_em_local_path + logger.redirect_string())
+        os.system(f"cp {self.result_dir}/coverage.em {coverage_em_local_path}{logger.redirect_string()}")
 
     def clean_coverage_files_in_device(self, device) -> None:
-        adb.shell_command(device, "rm -f " + self.coverage_ec_device_path)
-        adb.shell_command(device, "rm -f " + self.coverage_ec_device_backup_path)
+        adb.shell_command(device, f"rm -f {self.coverage_ec_device_path}")
+        adb.shell_command(device, f"rm -f {self.coverage_ec_device_backup_path}")
 
     def prepare_coverage_folder(self, generation, individual_index) -> str:
         ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
 
-        coverage_folder_name = str(generation) + "." + str(individual_index) + "." + ts
-        coverage_folder_path = self.result_dir + "/coverage/" + coverage_folder_name
+        coverage_folder_name = f"{str(generation)}.{str(individual_index)}.{ts}"
+        coverage_folder_path = f"{self.result_dir}/coverage/{coverage_folder_name}"
 
-        os.system("mkdir -p " + coverage_folder_path)
+        os.system(f"mkdir -p {coverage_folder_path}")
         return coverage_folder_path
 
     def get_coverage(self, device) -> int:
@@ -183,24 +186,24 @@ class EmmaCoverage(object):
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, "pull-coverage", False)
             if self.verbose_level > 0:
-                logger.log_progress("\n" + self.output + "\n" + self.errors)
-            raise Exception("Unable to pull coverage for device: " + device.name)
+                logger.log_progress(f"\n{self.output}\n{self.errors}")
+            raise Exception(f"Unable to pull coverage for device: {device.name}")
 
         # process coverage.ec file
         app_path = RequiredFeature('app_path').request()
-        emma_cmd = "java -cp {0}lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp {0}{1}/src "\
-            .format(settings.WORKING_DIR, app_path)
+        emma_cmd = f"java -cp {settings.WORKING_DIR}lib/emma.jar emma report -r html" \
+                   f" -in coverage.em,coverage.ec -sp {settings.WORKING_DIR}{app_path}/src"
         output, errors, result_code = run_cmd(emma_cmd, cwd=self.coverage_folder_local_path)
         self.output += output
         self.errors += errors
         if result_code != 0:
             adb.log_evaluation_result(device, self.result_dir, "process-coverage", False)
             if self.verbose_level > 0:
-                logger.log_progress("\n" + self.output + "\n" + self.errors)
-            raise Exception("Unable to process coverage.ec file fetched from device: " + device.name)
+                logger.log_progress(f"\n{self.output}\n{self.errors}")
+            raise Exception(f"Unable to process coverage.ec file fetched from device: {device.name}")
 
         # parse generated html to extract global line coverage
-        html_path = self.coverage_folder_local_path + "/coverage/index.html"
+        html_path = f"{self.coverage_folder_local_path}/coverage/index.html"
         coverage_str = self.extract_coverage(html_path)
 
         aux = coverage_str.split("%")

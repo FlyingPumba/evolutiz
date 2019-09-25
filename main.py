@@ -87,25 +87,24 @@ def run_one_app(strategy_with_runner_name) -> bool:
 
             budget_manager.start_budget()
 
-            logger.log_progress("\n-----> Starting repetition: " + str(repetition) +
-                                " for app: " + app_name +
-                                ", initial timestamp is: " + str(budget_manager.start_time))
+            logger.log_progress(f"\n-----> Starting repetition: {str(repetition)} for app: {app_name}, "
+                                f"initial timestamp is: {str(budget_manager.start_time)}")
             test_generator.run()
 
-            logger.log_progress("\nEvolutiz finished for app: " + app_name)
-            logger.log_progress("\nTime budget used: %.2f seconds\n" % (budget_manager.get_time_budget_used()))
-            logger.log_progress("\nEvaluations budget used: %d\n" % (budget_manager.get_evaluations_budget_used()))
+            logger.log_progress(f"\nEvolutiz finished for app: {app_name}")
+            logger.log_progress(f"\nTime budget used: {budget_manager.get_time_budget_used():.2f} seconds\n")
+            logger.log_progress(f"\nEvaluations budget used: {budget_manager.get_evaluations_budget_used():d}\n")
 
             # wait for all MultipleQueueConsumerThread to terminate
             wait_for_working_threas_to_finish()
 
         return True
     except Exception as e:
-        logger.log_progress("\nThere was an error running evolutiz on app: " + app_name)
+        logger.log_progress(f"\nThere was an error running evolutiz on app: {app_name}")
         if verbose_level > 0:
-            logger.log_progress("\n" + str(e))
+            logger.log_progress(f"\n{str(e)}")
         if verbose_level > 1:
-            logger.log_progress("\n" + traceback.format_exc())
+            logger.log_progress(f"\n{traceback.format_exc()}")
         traceback.print_exc()
         return False
 
@@ -150,17 +149,16 @@ def prepare_result_dir(app_name: str, repetition: int, strategy_with_runner_name
         algorithm_folder = str(evaluate_scripts_algorithm_name)
 
     # build result_dir path
-    result_dir = settings.WORKING_DIR + "results/" + \
-                 algorithm_folder + "/" + app_name + "/" + repetition_folder
+    result_dir = f"{settings.WORKING_DIR}results/{algorithm_folder}/{app_name}/{repetition_folder}"
 
     # clean and create result_dir
-    os.system("rm -rf " + result_dir + "/*" + logger.redirect_string())
-    result_code = os.system("mkdir -p " + result_dir)
+    os.system(f"rm -rf {result_dir}/*{logger.redirect_string()}")
+    result_code = os.system(f"mkdir -p {result_dir}")
     if result_code != 0: raise Exception("Unable to create result dir")
 
-    os.system("mkdir -p " + result_dir + "/intermediate")
-    os.system("mkdir -p " + result_dir + "/coverage")
-    os.system("mkdir -p " + result_dir + "/crashes")
+    os.system(f"mkdir -p {result_dir}/intermediate")
+    os.system(f"mkdir -p {result_dir}/coverage")
+    os.system(f"mkdir -p {result_dir}/crashes")
 
     features.provide('result_dir', result_dir)
     adb.adb_logs_dir = result_dir
@@ -199,11 +197,11 @@ def get_subject_paths(arguments) -> List[str]:
         app_paths = []
 
         if arguments.assume_subjects_instrumented:
-            output, errors, result_code = run_cmd("find " + subjects_path + " -name *.apk")
+            output, errors, result_code = run_cmd(f"find {subjects_path} -name *.apk")
             for line in output.strip().split('\n'):
                 app_paths.append(line.rstrip('/'))  # remove trailing forward slash
         else:
-            output, errors, result_code = run_cmd("ls -d " + subjects_path + "*/")
+            output, errors, result_code = run_cmd(f"ls -d {subjects_path}*/")
             for line in output.strip().split('\n'):
                 if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
                     app_paths.append(line.rstrip('/'))  # remove trailing forward slash
@@ -229,20 +227,20 @@ def check_virtualbox_is_not_running() -> None:
 
 def check_needed_commands_available() -> None:
     if not os.path.exists(settings.ANDROID_HOME):
-        cause = "Declared ANDROID_HOME points to a missing directory: " + settings.ANDROID_HOME
+        cause = f"Declared ANDROID_HOME points to a missing directory: {settings.ANDROID_HOME}"
         logger.log_progress(cause)
         raise Exception(cause)
 
     if not is_command_available(adb.adb_cmd_prefix):
-        cause = "Command 'adb' was not found in the path " + adb.adb_cmd_prefix
+        cause = f"Command \'adb\' was not found in the path {adb.adb_cmd_prefix}"
         logger.log_progress(cause)
         raise Exception(cause)
 
-    avd_manager_path = settings.ANDROID_HOME + "tools/bin/avdmanager"
+    avd_manager_path = f"{settings.ANDROID_HOME}tools/bin/avdmanager"
     if os.path.exists(avd_manager_path):
         features.provide('avd_manager_path', avd_manager_path)
     else:
-        cause = "Command 'avdmanager' was not found in the path " + avd_manager_path
+        cause = f"Command \'avdmanager\' was not found in the path {avd_manager_path}"
         logger.log_progress(cause)
         raise Exception(cause)
 
@@ -265,14 +263,14 @@ def check_needed_commands_available() -> None:
     first_line = errors.split('\n')[0].strip()
     version = first_line.split(' ')[2]
     if not version[1:-1].startswith("1.8"):
-        cause = "Found java with version " + version + ", but 1.8 is needed."
+        cause = f"Found java with version {version}, but 1.8 is needed."
         logger.log_progress(cause)
         raise Exception(cause)
 
     output, errors, result_code = run_cmd("javac -version")
     version = errors.split(' ')[1].strip()
     if not version.startswith("1.8"):
-        cause = "Found javac with version " + version + ", but 1.8 is needed."
+        cause = f"Found javac with version {version}, but 1.8 is needed."
         logger.log_progress(cause)
         raise Exception(cause)
 
@@ -445,7 +443,7 @@ def config_items_type_convert(items: Iterable[Tuple[str, Any]]) -> List[Tuple[st
             key = re.sub(' +', ' ', key)
             key_split = key.split(' ')
             if len(key_split) != 2:
-                raise ValueError('Invalid type key "%s" found in config file file.' % key)
+                raise ValueError(f'Invalid type key "{key}" found in config file file.')
 
             type_tag = key_split[0]
             name = key_split[1]
@@ -460,10 +458,10 @@ def config_items_type_convert(items: Iterable[Tuple[str, Any]]) -> List[Tuple[st
             elif type_tag == "bool":
                 result.append((name, bool(value)))
             else:
-                raise ValueError('Invalid type tag "%s" found in config file file.' % type_tag)
+                raise ValueError(f'Invalid type tag "{type_tag}" found in config file file.')
                 # alternatively: "everything else defaults to string"
         except Exception as e:
-            raise ValueError('Unable to convert value for "%s" to declared type "%s".' % (name, type_tag))
+            raise ValueError(f'Unable to convert value for "{name}" to declared type "{type_tag}".')
     return result
 
 def parse_config_file() -> None:
@@ -571,25 +569,25 @@ if __name__ == "__main__":
     check_needed_commands_available()
 
     app_paths = get_subject_paths(args)
-    strategy_with_runner_name = args.strategy + "-" + args.test_runner + "-" + args.evaluator
+    strategy_with_runner_name = f"{args.strategy}-{args.test_runner}-{args.evaluator}"
 
     random.seed(args.seed)
 
     provide_features()
 
     # run Evolutiz
-    logger.log_progress("\nEvolutiz (" +
-                        args.strategy + ", " +
-                        args.evaluator + ", " +
-                        args.test_runner + ", " +
-                        "emulators: " + str(args.emulators_number) + ", " +
-                        "real devices: " + str(args.real_devices_number) + ")")
+    logger.log_progress(f"\nEvolutiz ("
+                        f"{args.strategy}, "
+                        f"{args.evaluator}, "
+                        f"{args.test_runner}, "
+                        f"emulators: {str(args.emulators_number)}, "
+                        f"real devices: {str(args.real_devices_number)})")
 
     output, errors, result_code = run_cmd("git rev-parse HEAD")
-    logger.log_progress("\nLast Git commit hash: " + output.split('\n')[0])
+    logger.log_progress("\nLast Git commit hash: {0}".format(output.split('\n')[0]))
 
-    logger.log_progress("\nVerbose level: " + str(args.verbose))
-    logger.log_progress("\nSubjects to be processed: " + ''.join(map(lambda p: "\n -" + p, app_paths)))
+    logger.log_progress(f"\nVerbose level: {str(args.verbose)}")
+    logger.log_progress("\nSubjects to be processed: {0}".format(''.join(map(lambda p: "\n -" + p, app_paths))))
 
     run(strategy_with_runner_name, app_paths)
 

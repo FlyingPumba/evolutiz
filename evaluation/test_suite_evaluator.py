@@ -21,8 +21,8 @@ class TestSuiteEvaluator(object):
         for test_case_index, test_case in enumerate(individual):
             length = len(test_case)
             # generate script file list
-            filename = self.result_dir + "/intermediate/script." + str(individual.generation) + "." + \
-                       str(individual.index_in_generation) + "." + str(test_case_index)
+            filename = f"{self.result_dir}/intermediate/script." \
+                       f"{str(individual.generation)}.{str(individual.index_in_generation)}.{str(test_case_index)}"
 
             with open(filename, "w") as script_file:
                 script_file.write(settings.SCRIPT_HEADER)
@@ -39,7 +39,7 @@ class TestSuiteEvaluator(object):
         self.result_dir = RequiredFeature('result_dir').request()
         hall_of_fame = RequiredFeature('hall_of_fame').request()
 
-        hof_file = open(self.result_dir + "/hall_of_fame.pickle", 'wb')
+        hof_file = open(f"{self.result_dir}/hall_of_fame.pickle", 'wb')
         pickle.dump(hall_of_fame, hof_file)
         hof_file.close()
 
@@ -47,6 +47,6 @@ class TestSuiteEvaluator(object):
         self.logbook = RequiredFeature('logbook').request()
         self.result_dir = RequiredFeature('result_dir').request()
 
-        logbook_file = open(self.result_dir + "/logbook.pickle", 'wb')
+        logbook_file = open(f"{self.result_dir}/logbook.pickle", 'wb')
         pickle.dump(self.logbook, logbook_file)
         logbook_file.close()

@@ -9,7 +9,7 @@ from util import logger
 RunCmdResult = Tuple[str, str, int]
 
 def is_command_available(command: str) -> bool:
-    cmd_check = "command -v " + command + " >/dev/null 2>&1"
+    cmd_check = f"command -v {command} >/dev/null 2>&1"
     result_code = os.system(cmd_check)
     return result_code == 0
 
@@ -26,12 +26,12 @@ def run_cmd(command: str,
     if env is not None and len(env) > 0:
         env_str = "env "
         for key, value in env.items():
-            env_str += key + "=" + value + " "
+            env_str += f"{key}={value} "
 
     verbose_level = RequiredFeature('verbose_level').request(none_if_missing=True)
     if verbose_level is not None and verbose_level > 1:
         aux = env_str + command
-        logger.log_progress("\nRunning command: %s" % aux)
+        logger.log_progress(f"\nRunning command: {aux}")
 
     # use exec in order for process kill to also eliminate childs
     # from SO: https://stackoverflow.com/a/13143013/2271834
@@ -44,7 +44,7 @@ def run_cmd(command: str,
     else:
         output_file = subprocess.PIPE
 
-    process = subprocess.run("exec " + env_str + command, stdout=output_file, stderr=output_file, shell=True,
+    process = subprocess.run(f"exec {env_str}{command}", stdout=output_file, stderr=output_file, shell=True,
                              timeout=timeout, encoding="utf-8", cwd=cwd)
 
     return process.stdout, process.stderr, process.returncode

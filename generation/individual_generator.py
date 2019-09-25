@@ -9,7 +9,4 @@ class IndividualGenerator:
         result_dir = RequiredFeature('result_dir').request()
         ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S.%f")[:-3]
 
-        return result_dir + "/intermediate/script.{0}.{1}.{2}.{3}".format(generation,
-                                                                          individual_index,
-                                                                          test_case_index,
-                                                                          ts)
+        return f"{result_dir}/intermediate/script.{generation}.{individual_index}.{test_case_index}.{ts}"

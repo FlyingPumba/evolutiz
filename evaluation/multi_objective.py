@@ -133,10 +133,10 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         max_crashes = max_fitness_values_all_generations[2]
 
         # CAUTION: these min and max are from different individuals
-        logger.log_progress("\n- Best historic coverage: " + str(max_coverage))
-        logger.log_progress("\n- Best historic crashes: " + str(max_crashes))
+        logger.log_progress(f"\n- Best historic coverage: {str(max_coverage)}")
+        logger.log_progress(f"\n- Best historic crashes: {str(max_crashes)}")
         if max_crashes > 0:
-            logger.log_progress("\n- Best historic length: " + str(min_length))
+            logger.log_progress(f"\n- Best historic length: {str(min_length)}")
         else:
             logger.log_progress("\n- Best historic length: --")
 

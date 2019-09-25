@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 class DeviceSetupThread(threading.Thread):
 
     def __init__(self, device: 'Device') -> None:
-        super().__init__(name="SetupThread-"+device.name)
+        super().__init__(name=f"SetupThread-{device.name}")
 
         self.device = device
 

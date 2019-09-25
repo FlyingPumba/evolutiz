@@ -15,12 +15,12 @@ def prepare() -> None:
     # redirect stdout and stderr
     starting_datetime = datetime.today().strftime("%Y-%m-%d_%H-%M")
 
-    os.system("mkdir -p " + settings.WORKING_DIR + "logs")
+    os.system(f"mkdir -p {settings.WORKING_DIR}logs")
 
     global output_filename
-    output_filename = settings.WORKING_DIR + "logs/output." + starting_datetime + ".log"
+    output_filename = f"{settings.WORKING_DIR}logs/output.{starting_datetime}.log"
     global error_filename
-    error_filename = settings.WORKING_DIR + "logs/output." + starting_datetime + ".log.err"
+    error_filename = f"{settings.WORKING_DIR}logs/output.{starting_datetime}.log.err"
 
     global output_file
     output_file = open(output_filename, 'w')
@@ -54,7 +54,7 @@ def clear_progress() -> None:
 
 def redirect_string(log_output: bool = True) -> str:
     if log_output:
-        return " 1>>" + str(output_filename) + " 2>>" + str(error_filename)
+        return f" 1>>{str(output_filename)} 2>>{str(error_filename)}"
     else:
-        return " 1>>/dev/null 2>>" + str(error_filename)
+        return f" 1>>/dev/null 2>>{str(error_filename)}"
 

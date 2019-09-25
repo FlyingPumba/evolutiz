@@ -109,7 +109,7 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         max_coverage = max_fitness_values_all_generations[0]
 
         # CAUTION: these min and max are from different individuals
-        logger.log_progress("\n- Best historic coverage: " + str(max_coverage))
+        logger.log_progress(f"\n- Best historic coverage: {str(max_coverage)}")
 
     def dump_logbook_to_file(self):
         super(SingleObjectiveTestSuiteEvaluator, self).dump_logbook_to_file()

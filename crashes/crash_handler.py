@@ -9,8 +9,8 @@ def handle(device, script_path, generation, individual_index, test_case_index, u
 
     device_bugreport_path = "/mnt/sdcard/bugreport.crash"
 
-    individual_suffix = str(generation) + "." + str(individual_index) + "." + str(test_case_index)
-    local_bugreport_path = result_dir + "/crashes/bugreport." + individual_suffix
+    individual_suffix = f"{str(generation)}.{str(individual_index)}.{str(test_case_index)}"
+    local_bugreport_path = f"{result_dir}/crashes/bugreport.{individual_suffix}"
 
     # save the crash report
     output, errors, result_code = adb.pull(device, device_bugreport_path, local_bugreport_path)
@@ -22,11 +22,11 @@ def handle(device, script_path, generation, individual_index, test_case_index, u
         content = bug_report_file.read().split('\n')
 
     # delete remote file
-    adb.shell_command(device, "rm " + device_bugreport_path)
+    adb.shell_command(device, f"rm {device_bugreport_path}")
 
     # should not caused by android itself
     if content[0].startswith("// CRASH: com.android."):
-        os.system("rm " + local_bugreport_path)
+        os.system(f"rm {local_bugreport_path}")
 
         # caught a crash, but it was Android related
         return True
@@ -37,7 +37,7 @@ def handle(device, script_path, generation, individual_index, test_case_index, u
     # filter duplicate crashes
     content_str = "".join(content)
     if content_str in unique_crashes:
-        os.system("rm " + local_bugreport_path)
+        os.system(f"rm {local_bugreport_path}")
 
         # caught a crash, but it wasn't a new one
         return True
@@ -45,5 +45,5 @@ def handle(device, script_path, generation, individual_index, test_case_index, u
     unique_crashes.add(content_str)
 
     # save the script, indicate its ith gen
-    os.system("cp " + script_path + " " + result_dir + "/crashes/script." + individual_suffix)
+    os.system(f"cp {script_path} {result_dir}/crashes/script.{individual_suffix}")
     return True

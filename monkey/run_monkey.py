@@ -213,7 +213,7 @@ def process_results(app_paths):
             events_count = 0
             current_test_content = ""
 
-            with open("monkey.log." + str(repetition), "r") as monkey_log_file:
+            with open(f"monkey.log.{str(repetition)}", "r") as monkey_log_file:
                 for line_no, line in enumerate(monkey_log_file):
                     if line.startswith(":Sending"):
                         events_count += 1
@@ -227,8 +227,8 @@ def process_results(app_paths):
 
             coverage_filename = "coverage.ec." + str(repetition)
 
-            os.system(
-                "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in coverage.em," + coverage_filename + " -sp " + app_path + "/src " + logger.redirect_string())
+            os.system(f"java -cp {settings.WORKING_DIR}lib/emma.jar emma report -r html"
+                      f" -in coverage.em,{coverage_filename} -sp {app_path}/src {logger.redirect_string()}")
 
             html_file = settings.WORKING_DIR + current_relative_dir + "/coverage/index.html"
 

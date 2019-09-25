@@ -41,14 +41,14 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
         return test_suite
 
     def get_sequence(self, device, generation, individual_index, test_case_index):
-        package_name = RequiredFeature('package_name').request()
+        package_name: str = RequiredFeature('package_name').request()
         test_runner = RequiredFeature('test_runner').request()
 
         # clear data before generating new test case
-        output, errors, result_code = adb.shell_command(device, "pm clear " + package_name,
+        output, errors, result_code = adb.shell_command(device, f"pm clear {package_name}",
                                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, retry=2)
         if result_code != 0:
-            raise Exception("Failed to clear package " + package_name + " in device: " + device.name)
+            raise Exception(f"Failed to clear package {package_name} in device: {device.name}")
 
         script_path = self.get_path_for_test_case(generation, individual_index, test_case_index)
         test_case_content = test_runner.generate(device, package_name, script_path)

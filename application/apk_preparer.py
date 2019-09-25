@@ -17,8 +17,8 @@ class ApkPreparer(object):
         self.apk_analyser.analyse()
 
     def install_on_device(self, device: Device) -> None:
-        package_name = RequiredFeature('package_name').request()
-        apk_path = RequiredFeature('apk_path').request()
+        package_name: str = RequiredFeature('package_name').request()
+        apk_path: str = RequiredFeature('apk_path').request()
 
         successful = False
         for i in range(3):
@@ -29,10 +29,10 @@ class ApkPreparer(object):
                 adb.uninstall(device, package_name)
                 adb.install(device, package_name, apk_path)
 
-                instrumentation_cmd = "am instrument {0}/{0}.EmmaInstrument.EmmaInstrumentation".format(package_name)
+                instrumentation_cmd = f"am instrument {package_name}/{package_name}.EmmaInstrument.EmmaInstrumentation"
                 output, errors, result_code = adb.shell_command(device, instrumentation_cmd)
                 if result_code != 0:
-                    raise Exception("Unable to instrument " + package_name)
+                    raise Exception(f"Unable to instrument {package_name}")
 
                 successful = True
                 break
@@ -41,4 +41,4 @@ class ApkPreparer(object):
                 time.sleep(5)
 
         if not successful:
-            raise Exception("Unable to setup device: " + device.name)
+            raise Exception(f"Unable to setup device: {device.name}")

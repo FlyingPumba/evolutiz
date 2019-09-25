@@ -166,22 +166,19 @@ class MultipleQueueConsumerThread(KillableThread):
 
         if device is None:
             if verbose_level > 0:
-                template = template_base + ": \n%s"
-                formatted_string = template % stack_trace
+                formatted_string = f"{template_base}: \n{stack_trace}"
                 logger.log_progress(formatted_string)
 
             else:
-                logger.log_progress(template_base + ".\n")
+                logger.log_progress(f"{template_base}.\n")
 
         else:
             if verbose_level > 0:
-                template = template_base + " on device %s: \n%s"
-                formatted_string = template % (device, traceback.format_exc())
+                formatted_string = f"{template_base} on device {device}: \n{traceback.format_exc()}"
                 logger.log_progress(formatted_string)
 
             else:
-                template = template_base + " on device %s.\n"
-                formatted_string = template % device
+                formatted_string = f"{template_base} on device {device}.\n"
                 logger.log_progress(formatted_string)
 
     def fetch_item(self):

@@ -82,7 +82,7 @@ class Device(object):
             except Exception as e:
                 time.sleep(20)
 
-        raise Exception("Unable to get API level for device " + self.name)
+        raise Exception(f"Unable to get API level for device {self.name}")
 
     def android_version(self) -> Optional[int]:
         return adb.get_android_version(self)
@@ -135,4 +135,4 @@ class Device(object):
             return
 
     def get_adb_server_port_prefix(self) -> str:
-        return "ANDROID_ADB_SERVER_PORT=" + str(self.adb_port)
+        return f"ANDROID_ADB_SERVER_PORT={str(self.adb_port)}"

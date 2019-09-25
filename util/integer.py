@@ -15,4 +15,4 @@ class Integer(object):
         return str(self._val)
 
     def __repr__(self):
-        return 'Integer(%s)' % self._val
+        return f'Integer({self._val})'

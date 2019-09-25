@@ -21,8 +21,8 @@ class MotifcoreTestRunner(TestRunner):
         self.use_motifgene = use_motifgene
         self.motifcore_script_path_in_devices = "/mnt/sdcard/motifcore.script"
         self.test_runner_installer = TestRunnerInstaller("motifcore",
-                                                         settings.WORKING_DIR + "test_runner/motifcore/motifcore",
-                                                         settings.WORKING_DIR + "test_runner/motifcore/motifcore.jar")
+                                                         f"{settings.WORKING_DIR}test_runner/motifcore/motifcore",
+                                                         f"{settings.WORKING_DIR}test_runner/motifcore/motifcore.jar")
 
     def register_minimum_api(self) -> None:
         self.minimum_api = 19
@@ -48,25 +48,24 @@ class MotifcoreTestRunner(TestRunner):
         string_seeding_flag = ""
 
         if self.use_motifgene:
-            string_seeding_flag = "--string-seeding /mnt/sdcard/" + package_name + "_strings.xml"
+            string_seeding_flag = f"--string-seeding /mnt/sdcard/{package_name}_strings.xml"
 
-        motifcore_cmd = "motifcore -p " + package_name \
-                        + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
-                        + string_seeding_flag + " -f /mnt/sdcard/" + script_name + " 1"
+        motifcore_cmd = f"motifcore -p {package_name} --ignore-crashes --ignore-security-exceptions --ignore-timeouts" \
+                        f" --bugreport {string_seeding_flag} -f /mnt/sdcard/{script_name} 1"
 
         output, errors, result_code = adb.shell_command(device, motifcore_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
         if verbose_level > 1:
-            print("Test case running finished with output:\n" + output)
+            print(f"Test case running finished with output:\n{output}")
 
         if "Exception" in errors:
             device_stacktrace = errors.split("** Error: ")[1]
-            raise Exception("An error occurred when running test case: " + device_stacktrace)
+            raise Exception(f"An error occurred when running test case: {device_stacktrace}")
 
         # need to manually kill motifcore when timeout
         adb.pkill(device, "motifcore")
 
         if verbose_level > 0:
-            logger.log_progress('\nMotifcore test run took: %.2f seconds' % (time.time() - start_time))
+            logger.log_progress(f'\nMotifcore test run took: {time.time() - start_time:.2f} seconds')
 
     def generate(self, device, package_name, destination_file_name) -> List[str]:
         verbose_level = RequiredFeature('verbose_level').request()
@@ -79,19 +78,18 @@ class MotifcoreTestRunner(TestRunner):
         string_seeding_flag = ""
 
         if self.use_motifgene:
-            string_seeding_flag = "--string-seeding /mnt/sdcard/" + package_name + "_strings.xml"
+            string_seeding_flag = f"--string-seeding /mnt/sdcard/{package_name}_strings.xml"
 
-        motifcore_cmd = "motifcore -p " + package_name \
-                        + " --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
-                        + string_seeding_flag + " -v " + str(motifcore_events)
+        motifcore_cmd = f"motifcore -p {package_name} --ignore-crashes --ignore-security-exceptions --ignore-timeouts" \
+                        f" --bugreport {string_seeding_flag} -v {str(motifcore_events)}"
 
         output, errors, result_code = adb.shell_command(device, motifcore_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
         if verbose_level > 1:
-            print("Test case generation finished with output:\n" + output)
+            print(f"Test case generation finished with output:\n{output}")
 
         if "Exception" in errors:
             device_stacktrace = errors.split("** Error: ")[1]
-            raise Exception("An error occurred when generating test case: " + device_stacktrace)
+            raise Exception(f"An error occurred when generating test case: {device_stacktrace}")
 
         # need to manually kill motifcore when timeout
         adb.pkill(device, "motifcore")
@@ -99,8 +97,8 @@ class MotifcoreTestRunner(TestRunner):
         test_content = self.retrieve_generated_test(device, destination_file_name)
 
         if verbose_level > 0:
-            logger.log_progress('\nMotifcore test generation took: %.2f seconds for %d events' %
-                                (time.time() - start_time, motifcore_events))
+            logger.log_progress(f'\nMotifcore test generation took: {time.time() - start_time:.2f} seconds '
+                                f'for {motifcore_events:d} events')
 
         return test_content
 
@@ -108,11 +106,11 @@ class MotifcoreTestRunner(TestRunner):
         output, errors, result_code = adb.pull(device, self.motifcore_script_path_in_devices, destination_file_name,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
-            raise Exception("Failed to retrieve motifcore script from device: " + device.name)
+            raise Exception(f"Failed to retrieve motifcore script from device: {device.name}")
 
         # remove motifgenes from test case if they are disabled
         if not self.use_motifgene:
-            os.system("sed -i '/GUIGen/d' " + destination_file_name)
+            os.system(f"sed -i \'/GUIGen/d\' {destination_file_name}")
 
         return self.get_test_case_content_from_file(destination_file_name)
 
