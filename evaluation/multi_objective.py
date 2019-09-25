@@ -47,9 +47,13 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         device.mark_work_start()
         script_path, suite_lengths = self.dump_individual_to_files(individual)
 
-        coverage, unique_crashes, scripts_crash_status = coverage_fetcher.get_suite_coverage(script_path, device,
-                                                                                               individual.generation,
-                                                                                               individual.index_in_generation)
+        coverage, unique_crashes, scripts_crash_status = coverage_fetcher.get_suite_coverage(
+            script_path,
+            device,
+            individual.generation,
+            individual.index_in_generation
+        )
+
         # remove from suite lengths the scripts that did NOT cause a crash
         for script, had_crash in scripts_crash_status.items():
             if not had_crash:

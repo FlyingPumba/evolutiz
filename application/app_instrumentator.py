@@ -126,21 +126,27 @@ class AppInstrumentator(object):
                     '''
     
                      <!-- emma updated -->
-                    <activity android:label="EmmaInstrumentationActivity" android:name="''' + package_name + '''.EmmaInstrument.InstrumentedActivity"/>
-                <receiver android:name="''' + package_name + '''.EmmaInstrument.CollectCoverageReceiver">
+                    <activity 
+                        android:label="EmmaInstrumentationActivity" 
+                        android:name="{0}.EmmaInstrument.InstrumentedActivity"/>
+                    <receiver android:name="{0}.EmmaInstrument.CollectCoverageReceiver">
                     <intent-filter>
-                    <action android:name="evolutiz.emma.COLLECT_COVERAGE" />
+                        <action android:name="evolutiz.emma.COLLECT_COVERAGE" />
                     </intent-filter>
                 </receiver>
                  <!-- emma updated -->
-    
-                ''' + line + '''
+                {1}
+                
                  <!-- emma updated -->
                  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>  
-                 <instrumentation android:handleProfiling="true" android:label="EmmaInstrumentation" android:name="''' + package_name + '''.EmmaInstrument.EmmaInstrumentation" android:targetPackage="''' + package_name + '''"/>
+                 <instrumentation 
+                    android:handleProfiling="true" 
+                    android:label="EmmaInstrumentation" 
+                    android:name="{0}.EmmaInstrument.EmmaInstrumentation" 
+                    android:targetPackage="{0}"/>
                  <!-- emma updated -->
     
-                '''
+                '''.format(package_name, line)
                 is_mod = True
             else:
                 content += line

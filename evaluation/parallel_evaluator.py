@@ -14,7 +14,8 @@ class ParallelEvaluator(object):
 
     def evaluate(self, individuals: List[Any]) -> bool:
         invalid_ind = [ind for ind in individuals if not ind.fitness.valid]
-        logger.log_progress("\nEvaluating " + str(len(invalid_ind)) + " (out of " + str(len(individuals)) + ") individuals in parallel")
+        logger.log_progress("\nEvaluating {0} (out of {1}) individuals in parallel"
+                            .format(len(invalid_ind), len(individuals)))
 
         mapper = MapperOnDevices(self.test_suite_evaluator.evaluate,
                                  items_to_map=invalid_ind,

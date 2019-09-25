@@ -122,8 +122,8 @@ class EmmaCoverage(object):
                 adb.log_evaluation_result(device, self.result_dir, script_path, False)
                 if self.verbose_level > 0:
                     logger.log_progress("\n" + self.output + "\n" + self.errors)
-                raise Exception(
-                    "Unable to broadcast coverage gathering for script_path " + script_path + " in device: " + device.name)
+                raise Exception("Unable to broadcast coverage gathering for script_path {0} in device: {1}"
+                                .format(script_path, device.name))
 
             self.there_is_coverage = True
 
@@ -138,16 +138,17 @@ class EmmaCoverage(object):
             adb.log_evaluation_result(device, self.result_dir, script_path, True)
 
             # save coverage.ec file to /mnt/sdcard before clearing app (files are deleted)
-            output, errors, result_code = adb.sudo_shell_command(device,
-                                                                 "cp -p " + self.coverage_ec_device_path + " " + self.coverage_ec_device_backup_path)
+            cp_command = "cp -p " + self.coverage_ec_device_path + " " + self.coverage_ec_device_backup_path
+            output, errors, result_code = adb.sudo_shell_command(device, cp_command)
             self.output += output
             self.errors += errors
             if result_code != 0:
                 adb.log_evaluation_result(device, self.result_dir, script_path, False)
                 if self.verbose_level > 0:
                     logger.log_progress("\n" + self.output + "\n" + self.errors)
-                raise Exception(
-                    "Unable to retrieve coverage.ec file after coverage broadcast for script_path " + script_path + " in  device: " + device.name)
+                raise Exception("Unable to retrieve coverage.ec file after coverage broadcast "
+                                "for script_path {0} in  device: {1}"
+                                .format(script_path, device.name))
 
     def set_coverage_paths(self, device, generation, individual_index) -> None:
         application_files = "/data/data/" + self.package_name + "/files"
@@ -187,8 +188,8 @@ class EmmaCoverage(object):
 
         # process coverage.ec file
         app_path = RequiredFeature('app_path').request()
-        emma_cmd = "java -cp " + settings.WORKING_DIR + "lib/emma.jar emma report -r html -in " \
-                                                        "coverage.em,coverage.ec -sp " + settings.WORKING_DIR + app_path + "/src "
+        emma_cmd = "java -cp {0}lib/emma.jar emma report -r html -in coverage.em,coverage.ec -sp {0}{1}/src "\
+            .format(settings.WORKING_DIR, app_path)
         output, errors, result_code = run_cmd(emma_cmd, cwd=self.coverage_folder_local_path)
         self.output += output
         self.errors += errors

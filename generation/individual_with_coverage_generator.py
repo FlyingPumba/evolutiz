@@ -31,7 +31,8 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
         individual.creation_elapsed_time = elapsed_time
 
         individual.evaluation_finish_timestamp = finish_time
-        individual.evaluation_elapsed_time = 0 # this will indicate that generation and evaluation occurred at the same time
+        # the following will indicate that generation and evaluation occurred at the same time
+        individual.evaluation_elapsed_time = 0
 
         individual.index_in_generation = individual_index
         individual.generation = generation

@@ -41,7 +41,8 @@ class Monotonic(Standard):
 
                 # generate offspring
                 needed_offspring = min(self.population_size - len(new_population), 2)
-                offspring: List[Any] = self.crossover(parents, gen, needed_offspring, base_index_in_generation=len(new_population))
+                offspring: List[Any] = self.crossover(parents, gen, needed_offspring,
+                                                      base_index_in_generation=len(new_population))
                 self.mutation(offspring)
 
                 success = self.parallel_evaluator.evaluate(offspring)

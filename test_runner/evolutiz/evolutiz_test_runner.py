@@ -139,9 +139,8 @@ class EvolutizTestRunner(TestRunner):
 
         self.prepare_device_for_run(device)
 
-        evolutiz_cmd = "evolutiz -p " + package_name \
-                       + " -v -v -v --throttle 200 --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
-                       + " -f /mnt/sdcard/" + script_name + " 1"
+        evolutiz_cmd = "evolutiz -p {0} -v -v -v --throttle 200 --ignore-crashes --ignore-security-exceptions " \
+                       "--ignore-timeouts --bugreport -f /mnt/sdcard/{1} 1".format(package_name, script_name)
 
         output, errors, result_code = adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
         if verbose_level > 1:
@@ -167,10 +166,9 @@ class EvolutizTestRunner(TestRunner):
 
         evolutiz_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
 
-        evolutiz_cmd = "evolutiz -p " + package_name \
-                       + " -v -v -v --throttle 200 --ignore-crashes --ignore-security-exceptions --ignore-timeouts --bugreport " \
-                       + " -o " + self.evolutiz_script_path_in_devices \
-                       + " -v " + str(evolutiz_events)
+        evolutiz_cmd = "evolutiz -p {0} -v -v -v --throttle 200 --ignore-crashes --ignore-security-exceptions " \
+                       "--ignore-timeouts --bugreport -o {1} -v {2}"\
+            .format(package_name, self.evolutiz_script_path_in_devices, evolutiz_events)
 
         output, errors, result_code = adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
         if verbose_level > 1:
@@ -186,7 +184,8 @@ class EvolutizTestRunner(TestRunner):
         test_content = self.retrieve_generated_test(device, destination_file_name)
 
         if verbose_level > 0:
-            logger.log_progress('\nEvolutiz test generation took: %.2f seconds for %d events' % (time.time() - start_time, evolutiz_events))
+            logger.log_progress('\nEvolutiz test generation took: %.2f seconds for %d events' %
+                                (time.time() - start_time, evolutiz_events))
 
         return test_content
 

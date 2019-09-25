@@ -70,7 +70,14 @@ class Standard(GeneticAlgorithm):
 
         return self.population
 
-    def crossover(self, parents: List[Any], gen: int, offspring_number: int, base_index_in_generation: int = 0) -> List[Any]:
+    def crossover(
+            self,
+            parents: List[Any],
+            gen: int,
+            offspring_number: int,
+            base_index_in_generation: int = 0
+    ) -> List[Any]:
+
         offspring = []
         for index_in_generation in range(0, offspring_number, 2):
             ind1, ind2 = map(self.toolbox.clone, random.sample(parents, 2))

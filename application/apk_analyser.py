@@ -9,6 +9,9 @@ from util import logger
 
 
 class ApkAnalyser(object):
+    """This class provides functionality to discover the location of the APK.
+    Once found, it also decodes de APK to extract string resources, and pushes them to the device.
+    """
 
     def analyse(self) -> None:
         self.result_dir = RequiredFeature('result_dir').request()

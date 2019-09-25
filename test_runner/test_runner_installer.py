@@ -48,7 +48,8 @@ class TestRunnerInstaller(object):
 
         # push
         adb.push(device, self.test_runner_jar_path, "/system/framework/" + self.test_runner_name + ".jar")
-        output, errors, result_code = adb.shell_command(device, "chmod 777 /system/framework/" + self.test_runner_name + ".jar")
+        output, errors, result_code = adb.shell_command(device, "chmod 777 /system/framework/{0}.jar"
+                                                        .format(self.test_runner_name))
         if result_code != 0:
             raise Exception("Unable to install test runner on device: " + device.name)
 

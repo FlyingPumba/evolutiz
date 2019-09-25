@@ -48,7 +48,8 @@ class WatchDogThread(threading.Thread):
                                 type(thread) is MultipleQueueConsumerThread]
 
             if verbose_level > 1:
-                logger.log_progress("\nWatchDog thread is about to check %d MultipleQueueConsumer threads" % len(threads_to_check))
+                logger.log_progress("\nWatchDog thread is about to check %d MultipleQueueConsumer threads" %
+                                    len(threads_to_check))
                 logger.log_progress("\nCurrent output count is %d of %d" % (self.output_queue.size(),
                                                                             self.expected_output_count))
 

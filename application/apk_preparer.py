@@ -29,7 +29,7 @@ class ApkPreparer(object):
                 adb.uninstall(device, package_name)
                 adb.install(device, package_name, apk_path)
 
-                instrumentation_cmd = "am instrument " + package_name + "/" + package_name + ".EmmaInstrument.EmmaInstrumentation"
+                instrumentation_cmd = "am instrument {0}/{0}.EmmaInstrument.EmmaInstrumentation".format(package_name)
                 output, errors, result_code = adb.shell_command(device, instrumentation_cmd)
                 if result_code != 0:
                     raise Exception("Unable to instrument " + package_name)

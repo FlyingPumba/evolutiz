@@ -67,7 +67,13 @@ def get_root_permissions(device: 'Device') -> None:
 
     devices_with_root_permissions.append(device.name)
 
-def shell_command(device: 'Device', command: str, timeout: Optional[int] = None, retry: int = 1, discard_output: bool = False) -> RunCmdResult:
+def shell_command(
+        device: 'Device',
+        command: str,
+        timeout: Optional[int] = None,
+        retry: int = 1,
+        discard_output: bool = False
+) -> RunCmdResult:
     return adb_command(device, "shell " + command, timeout=timeout, retry=retry, discard_output=discard_output)
 
 def sudo_shell_command(device, command, timeout: Optional[int] = None, retry=1, discard_output=False) -> RunCmdResult:
