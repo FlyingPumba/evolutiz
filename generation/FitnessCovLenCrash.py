@@ -5,4 +5,4 @@ class FitnessCovLenCrash(Fitness):
 
     @staticmethod
     def get_name():
-        return __name__
+        return FitnessCovLenCrash.__name__
