@@ -68,7 +68,7 @@ class MuPlusLambda(GeneticAlgorithm):
 
                 op_choice = random.random()
                 if op_choice < self.mutation_probability:
-                    ind, = self.toolbox.mutate([ind])
+                    ind, = self.toolbox.mutate(ind)
                     del ind.fitness.values
 
                 ind.index_in_generation = index_in_generation
