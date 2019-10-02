@@ -10,7 +10,7 @@ import settings
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
-from test_runner.test_runner import TestRunner
+from test_runner.test_runner import TestRunner, TestSequence
 from test_runner.test_runner_installer import TestRunnerInstaller
 from util import logger
 
@@ -67,7 +67,7 @@ class MotifcoreTestRunner(TestRunner):
         if verbose_level > 0:
             logger.log_progress(f'\nMotifcore test run took: {time.time() - start_time:.2f} seconds')
 
-    def generate(self, device, package_name, destination_file_name) -> List[str]:
+    def generate(self, device, package_name, destination_file_name) -> TestSequence:
         verbose_level = RequiredFeature('verbose_level').request()
         start_time = time.time()
 

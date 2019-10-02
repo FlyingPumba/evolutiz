@@ -6,8 +6,11 @@ import matplotlib.pyplot as plt
 import networkx
 from deap import creator, base
 
-creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
-creator.create("Individual", list, fitness=creator.FitnessCovLen)
+from generation.FitnessCovLenCrash import FitnessCovLenCrash
+from generation.IndividualMultiObjective import IndividualMultiObjective
+
+creator.create(FitnessCovLenCrash.get_name(), base.Fitness, weights=(10.0, -0.5, 1000.0))
+creator.create(IndividualMultiObjective.get_name(), list, fitness=getattr(creator, FitnessCovLenCrash.get_name()))
 
 def draw_genealogy(history_file_path):
     coverages = []

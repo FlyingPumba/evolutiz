@@ -31,7 +31,7 @@ class MapperOnDevices(object):
 
     def __init__(self,
                  func: Callable,
-                 items_to_map: Optional[List[Integer]] = None,
+                 items_to_map: Optional[List[Any]] = None,
                  fail_times_limit: int = 3,
                  default_output: Any = None,
                  extra_args: Tuple = (),

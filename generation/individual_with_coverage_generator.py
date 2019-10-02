@@ -1,5 +1,6 @@
 import sys
 import time
+from typing import Tuple, Set, Dict, Any
 
 import numpy
 from deap import creator
@@ -9,7 +10,9 @@ from coverage.emma_coverage import EmmaCoverage
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
-from generation.individual_generator import IndividualGenerator
+from generation.Individual import Individual
+from generation.individual_generator import IndividualGenerator, TestSuite
+from test_runner.test_runner import TestSequence, TestRunner
 
 
 class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
@@ -17,13 +20,13 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
     def __init__(self):
         super(IndividualWithCoverageGenerator, self).__init__()
 
-    def gen_individual(self, device, individual_index, generation):
+    def gen_individual(self, device, individual_index, generation) -> Any:
         start_time = time.time()
         device.mark_work_start()
         suite, fitness = self.get_suite_with_fitness(device, generation, individual_index)
         device.mark_work_stop()
 
-        individual = creator.Individual(suite)
+        individual: Individual = getattr(creator, Individual.get_name())(suite)
         individual.fitness.values = fitness
 
         finish_time = time.time()
@@ -40,14 +43,14 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
 
         return individual
 
-    def get_suite_with_fitness(self, device, generation, individual_index):
+    def get_suite_with_fitness(self, device, generation, individual_index) -> Tuple[TestSuite, Tuple[float, float, int]]:
         self.package_name: str = RequiredFeature('package_name').request()
         self.result_dir: str = RequiredFeature('result_dir').request()
 
         test_suite = []
         lengths = []
-        unique_crashes = set()
-        scripts_crash_status = {}
+        unique_crashes: Set[str] = set()
+        scripts_crash_status: Dict[str, bool] = {}
 
         self.there_is_coverage = False
         self.set_coverage_paths(device, generation, individual_index)
@@ -79,11 +82,12 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
     def generate_test_and_coverage(self,
                                    device: Device,
                                    script_path: str,
-                                   generation,
-                                   individual_index,
-                                   test_case_index,
-                                   unique_crashes,
-                                   scripts_crash_status):
+                                   generation: int,
+                                   individual_index: int,
+                                   test_case_index: int,
+                                   unique_crashes: Set[str],
+                                   scripts_crash_status: Dict[str, bool]
+                                   ) -> TestSequence:
 
         # clear app's data and state
         output, errors, result_code = adb.shell_command(device, f"pm clear {self.package_name}")
@@ -92,7 +96,7 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
             raise Exception(f"Unable to clear package for script_path {script_path} in device: {device.name}")
 
         # generate test case
-        test_runner = RequiredFeature('test_runner').request()
+        test_runner: TestRunner = RequiredFeature('test_runner').request()
         test_content = test_runner.generate(device, self.package_name, script_path)
 
         self.dump_script_coverage(device, script_path, generation, individual_index, test_case_index, unique_crashes,

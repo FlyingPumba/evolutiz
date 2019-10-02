@@ -5,6 +5,8 @@ from deap import base, creator, tools
 
 from dependency_injection.required_feature import RequiredFeature
 from evaluation.test_suite_evaluator import TestSuiteEvaluator
+from generation.FitnessCov import FitnessCov
+from generation.IndividualSingleObjective import IndividualSingleObjective
 from util import logger
 
 
@@ -14,8 +16,8 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         super(SingleObjectiveTestSuiteEvaluator, self).__init__()
 
         # deap framework setup for single objective
-        creator.create("FitnessMax", base.Fitness, weights=(1.0,))
-        creator.create("Individual", list, fitness=creator.FitnessMax)
+        creator.create(FitnessCov.get_name(), base.Fitness, weights=(1.0,))
+        creator.create(IndividualSingleObjective.get_name(), list, fitness=getattr(creator, FitnessCov.get_name()))
 
     def register_selection_operator(self, toolbox):
         toolbox.register("select", tools.selRoulette)

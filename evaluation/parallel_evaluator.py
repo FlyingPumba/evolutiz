@@ -1,7 +1,8 @@
-from typing import List, Any
+from typing import List
 
 from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.required_feature import RequiredFeature
+from generation.Individual import Individual
 from util import logger
 
 
@@ -14,7 +15,7 @@ class ParallelEvaluator(object):
         self.test_suite_evaluator = RequiredFeature('test_suite_evaluator').request()
         self.toolbox = RequiredFeature('toolbox').request()
 
-    def evaluate(self, individuals: List[Any]) -> bool:
+    def evaluate(self, individuals: List[Individual]) -> bool:
         """Evaluate the inviduals with invalid fitness.
         Each individual is evaluated at most 3 times (in case of failure).
 

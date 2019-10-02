@@ -4,20 +4,26 @@ import sys
 
 from deap import creator, base
 
+from generation.FitnessCov import FitnessCov
+from generation.FitnessCovLenCrash import FitnessCovLenCrash
+from generation.IndividualMultiObjective import IndividualMultiObjective
+from generation.IndividualSingleObjective import IndividualSingleObjective
+
 
 def load_hof(hof_file):
     try:
         # Try multi-objective setup first:
-        creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
-        creator.create("Individual", list, fitness=creator.FitnessCovLen)
+        creator.create(FitnessCovLenCrash.get_name(), base.Fitness, weights=(10.0, -0.5, 1000.0))
+        creator.create(IndividualMultiObjective.get_name(), list, fitness=getattr(creator, FitnessCovLenCrash.get_name()))
         hof = pickle.load(hof_file)
         return hof
     except Exception as e1:
         try:
             # An error occurred, perhaps this is a single-objective HoF:
-            del creator.Individual
-            creator.create("FitnessMax", base.Fitness, weights=(1.0,))
-            creator.create("Individual", list, fitness=creator.FitnessMax)
+            delattr(creator, IndividualMultiObjective.get_name())
+
+            creator.create(FitnessCov.get_name(), base.Fitness, weights=(1.0,))
+            creator.create(IndividualSingleObjective.get_name(), list, fitness=getattr(creator, FitnessCov.get_name()))
             hof = pickle.load(hof_file)
             return hof
         except Exception as e2:

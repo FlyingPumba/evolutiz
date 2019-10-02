@@ -2,6 +2,7 @@ from typing import List
 
 import settings
 
+TestSequence = List[str]
 
 class TestRunner(object):
     def __init__(self):
@@ -23,7 +24,7 @@ class TestRunner(object):
             script.write("\n".join(content))
             script.write("\n")
 
-    def get_test_case_content_from_file(self, filename) -> List[str]:
+    def get_test_case_content_from_file(self, filename) -> TestSequence:
         test_content = []
 
         with open(filename) as script:
@@ -45,3 +46,6 @@ class TestRunner(object):
 
         script.close()
         return test_content
+
+    def generate(self, device, package_name, script_path) -> TestSequence:
+        raise NotImplementedError

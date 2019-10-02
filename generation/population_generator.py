@@ -1,9 +1,13 @@
 import time
-from typing import Any, List, Optional
+from typing import List, Optional
+
+from deap import creator
 
 from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.di_assertions import HasMethods
 from dependency_injection.required_feature import RequiredFeature
+from generation.Individual import Individual
+from generation.individual_generator import IndividualGenerator
 from util import logger
 from util.integer import Integer
 
@@ -12,9 +16,10 @@ class PopulationGenerator(object):
 
     def __init__(self) -> None:
         self.device_manager = RequiredFeature('device_manager').request()
-        self.individual_generator = RequiredFeature('individual_generator', HasMethods('gen_individual')).request()
+        self.individual_generator: IndividualGenerator = RequiredFeature('individual_generator',
+                                                                         HasMethods('gen_individual')).request()
 
-    def generate(self, n: int, gen: int = 0) -> Optional[List[Any]]:
+    def generate(self, n: int, gen: int = 0) -> Optional[List[Individual]]:
         budget_manager = RequiredFeature('budget_manager').request()
         individuals_index_to_generate = [Integer(i) for i in range(0, n)]
 
@@ -28,7 +33,7 @@ class PopulationGenerator(object):
         try:
             start_time = time.time()
 
-            individuals_generated: List[Any] = mapper.run()
+            individuals_generated: List[Individual] = mapper.run()
 
             finish_time = time.time()
             elapsed_time = finish_time - start_time

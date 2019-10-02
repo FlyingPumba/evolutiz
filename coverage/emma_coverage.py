@@ -13,6 +13,7 @@ from devices.device import Device
 from util import logger
 from util.command import run_cmd
 
+EmmaCoverageResult = Tuple[int, Set[str], Dict[str, bool]]
 
 class EmmaCoverage(object):
 
@@ -25,7 +26,7 @@ class EmmaCoverage(object):
             device: Device,
             generation: int,
             individual_index: int
-    ) -> Tuple[int, Set[str], Dict[str, bool]]:
+    ) -> EmmaCoverageResult:
 
         self.verbose_level = RequiredFeature('verbose_level').request()
         self.package_name: str = RequiredFeature('package_name').request()
@@ -98,13 +99,15 @@ class EmmaCoverage(object):
                                   scripts_crash_status)
 
     def dump_script_coverage(self,
-                             device,
-                             script_path,
-                             generation,
-                             individual_index,
-                             test_case_index,
-                             unique_crashes,
-                             scripts_crash_status) -> None:
+                             device: Device,
+                             script_path: str,
+                             generation: int,
+                             individual_index: int,
+                             test_case_index: int,
+                             unique_crashes: Set[str],
+                             scripts_crash_status: Dict[str, bool]
+                             ) -> None:
+
         if crash_handler.handle(device, script_path, generation, individual_index, test_case_index, unique_crashes):
             scripts_crash_status[script_path] = True
         else:

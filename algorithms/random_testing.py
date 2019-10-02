@@ -18,5 +18,5 @@ class RandomTesting(Strategy):
     def __init__(self) -> None:
         super(RandomTesting, self).__init__()
 
-    def run(self) -> List[Any]:
+    def run(self) -> List[Individual]:
         pass

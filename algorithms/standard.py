@@ -1,10 +1,11 @@
 # coding=utf-8
 import random
 import time
-from typing import Any, List
+from typing import List
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from dependency_injection.required_feature import RequiredFeature
+from generation.Individual import Individual
 from util import logger
 
 
@@ -27,7 +28,7 @@ class Standard(GeneticAlgorithm):
     def __init__(self) -> None:
         super(Standard, self).__init__()
 
-    def evolve(self) -> List[Any]:
+    def evolve(self) -> List[Individual]:
         verbose_level: bool = RequiredFeature('verbose_level').request()
 
         for gen in range(1, self.max_generations):
@@ -40,10 +41,10 @@ class Standard(GeneticAlgorithm):
                                 f"at {str(self.budget_manager.get_time_budget_used())}")
 
             # create new population, starting with elitism
-            new_population: List[Any] = self.toolbox.selectBest(self.population, self.elitism_size)
+            new_population: List[Individual] = self.toolbox.selectBest(self.population, self.elitism_size)
             while len(new_population) < self.population_size:
                 # select parents
-                parents: List[Any] = self.toolbox.select(self.population, 2)
+                parents: List[Individual] = self.toolbox.select(self.population, 2)
 
                 # generate offspring
                 needed_offspring = min(self.population_size - len(new_population), 2)
@@ -72,11 +73,11 @@ class Standard(GeneticAlgorithm):
 
     def crossover(
             self,
-            parents: List[Any],
+            parents: List[Individual],
             gen: int,
             offspring_number: int,
             base_index_in_generation: int = 0
-    ) -> List[Any]:
+    ) -> List[Individual]:
 
         offspring = []
         for index_in_generation in range(0, offspring_number, 2):

@@ -5,6 +5,7 @@ from deap import creator
 
 from algorithms.strategy import Strategy
 from dependency_injection.required_feature import RequiredFeature
+from generation.Individual import Individual
 from util import logger
 
 ScriptsByTestCaseIndex = Dict[int, str]
@@ -93,7 +94,7 @@ class EvaluateScripts(Strategy):
                 test_case_content = test_runner.get_test_case_content_from_file(script_path)
                 test_suite.append(test_case_content)
 
-            individual = creator.Individual(test_suite)
+            individual: Individual = getattr(creator, Individual.get_name())(test_suite)
             individual.creation_finish_timestamp = 0
             individual.creation_elapsed_time = 0
             individual.index_in_generation = individual_index

@@ -1,10 +1,11 @@
 # coding=utf-8
 import random
 import time
-from typing import Any, List
+from typing import List
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from dependency_injection.required_feature import RequiredFeature
+from generation.Individual import Individual
 from util import logger
 
 
@@ -58,7 +59,7 @@ class MuPlusLambda(GeneticAlgorithm):
 
         return self.population
 
-    def generate_offspring(self, population, gen) -> List[Any]:
+    def generate_offspring(self, population, gen) -> List[Individual]:
         offspring = []
         index_in_generation = 0
         for p in population:

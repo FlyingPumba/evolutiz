@@ -9,17 +9,21 @@ from deap.tools.support import ParetoFront
 from dependency_injection.required_feature import RequiredFeature
 from devices.device import Device
 from evaluation.test_suite_evaluator import TestSuiteEvaluator
+from generation.FitnessCovLenCrash import FitnessCovLenCrash
+from generation.Individual import Individual
+from generation.IndividualMultiObjective import IndividualMultiObjective
 from util import logger
 
 
 class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
-    def __init__(self) -> None:
+    def __init__(self):
         super(MultiObjectiveTestSuiteEvaluator, self).__init__()
 
         # deap framework setup for multi objective
-        creator.create("FitnessCovLen", base.Fitness, weights=(10.0, -0.5, 1000.0))
-        creator.create("Individual", list, fitness=creator.FitnessCovLen)
+        creator.create(FitnessCovLenCrash.get_name(), base.Fitness, weights=(10.0, -0.5, 1000.0))
+        creator.create(IndividualMultiObjective.get_name(), list,
+                       fitness=getattr(creator, FitnessCovLenCrash.get_name()))
 
     def register_selection_operator(self, toolbox: Toolbox) -> None:
         # self.toolbox.register("select", tools.selTournament, tournsize=5)

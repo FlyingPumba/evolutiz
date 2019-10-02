@@ -1,8 +1,9 @@
 # coding=utf-8
-from typing import List, Any
+from typing import List
 
 from algorithms.mu_plus_lambda import MuPlusLambda
 from dependency_injection.required_feature import RequiredFeature
+from generation.Individual import Individual
 from util import logger
 
 
@@ -20,7 +21,7 @@ class MuCommaLambda(MuPlusLambda):
     def __init__(self) -> None:
         super(MuCommaLambda, self).__init__()
 
-    def evolve(self) -> List[Any]:
+    def evolve(self) -> List[Individual]:
         verbose_level: bool = RequiredFeature('verbose_level').request()
 
         for gen in range(1, self.max_generations):

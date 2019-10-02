@@ -1,8 +1,11 @@
-from typing import List, Any
+from typing import List
+
+from deap import creator
 
 import settings
 from algorithms.strategy import Strategy
 from dependency_injection.required_feature import RequiredFeature
+from generation.Individual import Individual
 from util import logger
 
 
@@ -17,7 +20,7 @@ class GeneticAlgorithm(Strategy):
         self.offspring_size: int = settings.OFFSPRING_SIZE
         self.elitism_size: int = settings.ELITISM_SIZE
 
-        self.population: List[Any] = []
+        self.population: List[Individual] = []
         self.package_name: str = ""
 
         assert (self.crossover_probability + self.mutation_probability) <= 1.0, (
@@ -67,7 +70,7 @@ class GeneticAlgorithm(Strategy):
 
         return True
 
-    def evolve(self) -> List[Any]:
+    def evolve(self) -> List[Individual]:
         raise NotImplementedError
 
 

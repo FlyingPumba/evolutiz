@@ -1,7 +1,8 @@
-from typing import List, Any
+from typing import List
 
 from algorithms.strategy import Strategy
 from dependency_injection.required_feature import RequiredFeature
+from generation.Individual import Individual
 from util import logger
 
 
@@ -25,9 +26,9 @@ class RandomSearch(Strategy):
         self.sampling_size = self.device_manager.get_total_number_of_devices_expected()
 
         self.population_size = 1
-        self.population: List[Any] = []
+        self.population: List[Individual] = []
 
-    def run(self) -> List[Any]:
+    def run(self) -> List[Individual]:
         gen = 0
         while self.budget_manager.is_budget_available():
             logger.log_progress(f"\n---> Starting generation {str(gen)} "

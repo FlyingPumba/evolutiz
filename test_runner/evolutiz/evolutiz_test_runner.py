@@ -11,7 +11,7 @@ from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
-from test_runner.test_runner import TestRunner
+from test_runner.test_runner import TestRunner, TestSequence
 from test_runner.test_runner_installer import TestRunnerInstaller
 from util import logger
 
@@ -155,7 +155,7 @@ class EvolutizTestRunner(TestRunner):
         if verbose_level > 0:
             logger.log_progress(f'\nEvolutiz test run took: {time.time() - start_time:.2f} seconds')
 
-    def generate(self, device, package_name, destination_file_name) -> List[str]:
+    def generate(self, device, package_name, destination_file_name) -> TestSequence:
         assert device.api_level() >= self.minimum_api
 
         verbose_level = RequiredFeature('verbose_level').request()
