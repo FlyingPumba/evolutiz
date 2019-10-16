@@ -1,6 +1,7 @@
 # coding=utf-8
 import datetime
 import random
+import socket
 import time
 from typing import List
 
@@ -23,6 +24,10 @@ class EvolutizTestRunner(TestRunner):
         self.test_runner_installer = TestRunnerInstaller("evolutiz",
                                                          f"{settings.WORKING_DIR}test_runner/evolutiz/evolutiz",
                                                          f"{settings.WORKING_DIR}test_runner/evolutiz/evolutiz.jar")
+
+        self.host = '127.0.0.1'
+        self.port = 31337
+
     def register_minimum_api(self) -> None:
         self.minimum_api = 28
         features.provide('minimum_api', self.minimum_api)
@@ -155,7 +160,7 @@ class EvolutizTestRunner(TestRunner):
         if verbose_level > 0:
             logger.log_progress(f'\nEvolutiz test run took: {time.time() - start_time:.2f} seconds')
 
-    def generate(self, device, package_name, destination_file_name) -> TestSequence:
+    def generate(self, device: 'Device', package_name: str, destination_file_name: str) -> TestSequence:
         assert device.api_level() >= self.minimum_api
 
         verbose_level = RequiredFeature('verbose_level').request()
@@ -163,24 +168,22 @@ class EvolutizTestRunner(TestRunner):
 
         self.prepare_device_for_run(device)
 
-        evolutiz_events = random.randint(settings.SEQUENCE_LENGTH_MIN, settings.SEQUENCE_LENGTH_MAX)
+        evolutiz_events = settings.SEQUENCE_LENGTH_MAX
+        test_content = []
 
-        evolutiz_cmd = f"evolutiz -p {package_name} -v -v -v --throttle 200 --ignore-crashes " \
-                       f"--ignore-security-exceptions --ignore-timeouts " \
-                       f"--bugreport -o {self.evolutiz_script_path_in_devices} -v {evolutiz_events}"
+        for i in range(0, evolutiz_events):
+            current_activity = adb.get_current_activity(device)
 
-        output, errors, result_code = adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
-        if verbose_level > 1:
-            print(f"Test case generation finished with output:\n{output}")
+            # indicate Evolutiz test runner to perform any executable action randomly
+            # the runner should return the action performed
+            action_performed = self.send_command(device, package_name, f"performview random-action {current_activity}")
 
-        if "Exception" in errors:
-            device_stacktrace = errors.split("** Error: ")[1]
-            raise Exception(f"An error occurred when generating test case: {device_stacktrace}")
+            if not action_performed.startswith("OK"):
+                raise Exception(f"An error occurred when performing random action onto activity {current_activity}")
 
-        # need to manually kill evolutiz when timeout
-        adb.pkill(device, "evolutiz")
-
-        test_content = self.retrieve_generated_test(device, destination_file_name)
+            # store the action into the test case
+            widget_action = action_performed.split("OK:")[1]
+            test_content.append(widget_action)
 
         if verbose_level > 0:
             logger.log_progress(f'\nEvolutiz test generation took: {time.time() - start_time:.2f} '
@@ -188,10 +191,31 @@ class EvolutizTestRunner(TestRunner):
 
         return test_content
 
-    def retrieve_generated_test(self, device: Device, destination_file_name) -> List[str]:
-        output, errors, result_code = adb.pull(device, self.evolutiz_script_path_in_devices, destination_file_name,
-                                               timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
-        if result_code != 0:
-            raise Exception(f"Failed to retrieve evolutiz script from device: {device.name}")
+    def send_command(self, device: 'Device', package_name: str, command: str) -> str:
+        """
+        :param command: to send through the socket and be run by the runner.
+        :return: the response of the runner as a string.
+        """
 
-        return self.get_test_case_content_from_file(destination_file_name)
+        # ensure there is only one return character at the end of the command
+        command = command.rstrip("\n") + "\n"
+
+        # set up evolutiz runner in emulator
+        adb.adb_command(device, f"forward tcp:{self.port} tcp:{self.port}")
+        adb.shell_command(device, f"evolutiz -p {package_name} -c android.intent.category.LAUNCHER --port {self.port} &", discard_output=True)
+        time.sleep(2)
+
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.connect((self.host, self.port))
+
+            s.sendall(command.encode('utf-8'))
+            # TODO: check if this receive limit is right (not to little not to much)
+            # if not, check other python recipes here: https://pymotw.com/2/socket/uds.html
+            data = s.recv(4096)
+
+            s.close()
+
+        # need to manually kill evolutiz after working
+        adb.pkill(device, "evolutiz")
+
+        return repr(data)

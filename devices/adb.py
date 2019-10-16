@@ -265,10 +265,18 @@ def get_api_level(device: 'Device') -> Optional[int]:
         return None
 
 
-def get_android_version(device) -> Optional[int]:
+def get_android_version(device: 'Device') -> Optional[int]:
     try:
         output, errors, result_code = shell_command(device, "getprop ro.build.version.release")
         res = output.strip()
         return int(res)
     except TimeoutExpired:
         return None
+
+
+def get_current_activity(device: 'Device'):
+    cmd = f"{get_adb_cmd_prefix_for_device(device)} shell dumpsys activity activities | grep Activities | head -n 1"
+    log_adb_command(device, cmd)
+
+    res = run_cmd(cmd)[0].split("ActivityRecord")[1].split(" ")[2].split("/")[1]
+    return res
