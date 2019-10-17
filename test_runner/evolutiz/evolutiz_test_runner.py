@@ -171,6 +171,8 @@ class EvolutizTestRunner(TestRunner):
         evolutiz_events = settings.SEQUENCE_LENGTH_MAX
         test_content = []
 
+        self.send_command(device, package_name, f"performview launch-app")
+
         for i in range(0, evolutiz_events):
             current_activity = adb.get_current_activity(device)
 
@@ -178,12 +180,29 @@ class EvolutizTestRunner(TestRunner):
             # the runner should return the action performed
             action_performed = self.send_command(device, package_name, f"performview random-action {current_activity}")
 
-            if not action_performed.startswith("OK"):
+            if action_performed.startswith("FAILURE"):
                 raise Exception(f"An error occurred when performing random action onto activity {current_activity}")
 
-            # store the action into the test case
-            widget_action = action_performed.split("OK:")[1]
-            test_content.append(widget_action)
+            elif action_performed.startswith("SUCCESS_APP_CRASH"):
+                widget_action = action_performed.split("SUCCESS_APP_CRASH:")[1]
+                test_content.append(widget_action)
+                break
+
+            elif action_performed.startswith("SUCCESS_OUTBOUND"):
+                widget_action = action_performed.split("SUCCESS_OUTBOUND:")[1]
+                test_content.append(widget_action)
+                break
+
+            elif action_performed.startswith("SUCCESS_NEW_STATE"):
+                widget_action = action_performed.split("SUCCESS_NEW_STATE:")[1]
+                test_content.append(widget_action)
+
+            elif action_performed.startswith("SUCCESS"):
+                widget_action = action_performed.split("SUCCESS:")[1]
+                test_content.append(widget_action)
+
+            else:
+                raise Exception(f"An error occurred when performing random action onto activity {current_activity}")
 
         if verbose_level > 0:
             logger.log_progress(f'\nEvolutiz test generation took: {time.time() - start_time:.2f} '
@@ -211,11 +230,11 @@ class EvolutizTestRunner(TestRunner):
             s.sendall(command.encode('utf-8'))
             # TODO: check if this receive limit is right (not to little not to much)
             # if not, check other python recipes here: https://pymotw.com/2/socket/uds.html
-            data = s.recv(4096)
+            data = s.recv(1024*100)
 
             s.close()
 
         # need to manually kill evolutiz after working
         adb.pkill(device, "evolutiz")
 
-        return repr(data)
+        return data.decode('utf-8').rstrip("\n")
