@@ -172,6 +172,7 @@ class EvolutizTestRunner(TestRunner):
         test_content = []
 
         self.send_command(device, package_name, f"performview launch-app")
+        time.sleep(1)
 
         for i in range(0, evolutiz_events):
             current_activity = adb.get_current_activity(device)
