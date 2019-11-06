@@ -64,3 +64,5 @@ results/
 
 .mypy_cache/
 monkeytype.sqlite3
+logs
+instrumented-apks*

@@ -171,11 +171,14 @@ class EvolutizTestRunner(TestRunner):
         evolutiz_events = settings.SEQUENCE_LENGTH_MAX
         test_content = []
 
-        self.send_command(device, package_name, f"performview launch-app")
+        launch_result = self.send_command(device, package_name, f"performview launch-app")
         time.sleep(1)
 
         for i in range(0, evolutiz_events):
             current_activity = adb.get_current_activity(device)
+            if 'com.google.android' in current_activity:
+                # we are still in the HOME, and launch-app command failed
+                raise Exception(f"An error ocurred launching app {package_name}")
 
             # indicate Evolutiz test runner to perform any executable action randomly
             # the runner should return the action performed
@@ -207,7 +210,7 @@ class EvolutizTestRunner(TestRunner):
 
         if verbose_level > 0:
             logger.log_progress(f'\nEvolutiz test generation took: {time.time() - start_time:.2f} '
-                                f'seconds for {evolutiz_events:d} events')
+                                f'seconds for {len(test_content):d} events')
 
         return test_content
 
