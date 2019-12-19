@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import networkx
 from deap import creator, base
 
-from generation.FitnessCovLenCrash import FitnessCovLenCrash
-from generation.IndividualMultiObjective import IndividualMultiObjective
+from generation.fitness_cov_len_crash import FitnessCovLenCrash
+from generation.individual_multi_objective import IndividualMultiObjective
 
 creator.create(FitnessCovLenCrash.get_name(), base.Fitness, weights=(10.0, -0.5, 1000.0))
 creator.create(IndividualMultiObjective.get_name(), list, fitness=getattr(creator, FitnessCovLenCrash.get_name()))

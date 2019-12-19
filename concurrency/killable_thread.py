@@ -3,7 +3,7 @@ import inspect
 import threading
 
 
-def _async_raise(tid, exctype):
+def _async_raise(tid, exctype) -> None:
     """Raises an exception in the threads with id tid"""
     if not inspect.isclass(exctype):
         raise TypeError("Only types can be raised (not instances)")
@@ -22,7 +22,7 @@ class KillableThread(threading.Thread):
        another thread.
     """
 
-    def _get_my_tid(self):
+    def _get_my_tid(self) -> int:
         """determines this (self's) thread id
 
         CAREFUL : this function is executed in the context of the caller
@@ -34,17 +34,17 @@ class KillableThread(threading.Thread):
 
         # do we have it cached?
         if hasattr(self, "_thread_id"):
-            return self._thread_id
+            return self._thread_id  # type: ignore
 
         # no, look for it in the _active dict
-        for tid, tobj in threading._active.items():
+        for tid, tobj in threading._active.items():  # type: ignore
             if tobj is self:
-                self._thread_id = tid
-                return tid
+                self._thread_id = tid  # type: ignore
+                return tid  # type: ignore
 
         raise AssertionError("could not determine the thread's id")
 
-    def raiseExc(self, exctype):
+    def raiseExc(self, exctype) -> None:
         """Raises the given exception type in the context of this thread.
 
         If the thread is busy in a system call (time.sleep(),

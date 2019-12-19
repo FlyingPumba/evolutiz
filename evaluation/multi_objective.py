@@ -9,9 +9,9 @@ from deap.tools.support import ParetoFront
 from dependency_injection.required_feature import RequiredFeature
 from devices.device import Device
 from evaluation.test_suite_evaluator import TestSuiteEvaluator
-from generation.FitnessCovLenCrash import FitnessCovLenCrash
-from generation.Individual import Individual
-from generation.IndividualMultiObjective import IndividualMultiObjective
+from generation.fitness_cov_len_crash import FitnessCovLenCrash
+from generation.individual import Individual
+from generation.individual_multi_objective import IndividualMultiObjective
 from util import logger
 
 

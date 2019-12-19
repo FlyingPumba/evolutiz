@@ -1,11 +1,11 @@
 import os
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 
 from deap import creator
 
 from algorithms.strategy import Strategy
 from dependency_injection.required_feature import RequiredFeature
-from generation.Individual import Individual
+from generation.individual import Individual
 from util import logger
 
 ScriptsByTestCaseIndex = Dict[int, str]
@@ -18,7 +18,7 @@ class EvaluateScripts(Strategy):
 
         # transform all script_paths to individuals
         individuals_by_generation = {}
-        individuals_to_evaluate = []
+        individuals_to_evaluate: List[Individual] = []
         for generation, individuals_script_paths in sorted(script_paths.items()):
             individuals = self.script_paths_to_individuals(generation, individuals_script_paths)
             

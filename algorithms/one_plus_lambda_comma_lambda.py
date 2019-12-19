@@ -4,7 +4,7 @@ from typing import List
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from dependency_injection.required_feature import RequiredFeature
-from generation.Individual import Individual
+from generation.individual import Individual
 from util import logger
 
 

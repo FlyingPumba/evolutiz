@@ -5,8 +5,8 @@ from deap import base, creator, tools
 
 from dependency_injection.required_feature import RequiredFeature
 from evaluation.test_suite_evaluator import TestSuiteEvaluator
-from generation.FitnessCov import FitnessCov
-from generation.IndividualSingleObjective import IndividualSingleObjective
+from generation.fitness_cov import FitnessCov
+from generation.individual_single_objective import IndividualSingleObjective
 from util import logger
 
 

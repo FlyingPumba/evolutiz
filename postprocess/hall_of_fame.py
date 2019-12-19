@@ -4,10 +4,10 @@ import sys
 
 from deap import creator, base
 
-from generation.FitnessCov import FitnessCov
-from generation.FitnessCovLenCrash import FitnessCovLenCrash
-from generation.IndividualMultiObjective import IndividualMultiObjective
-from generation.IndividualSingleObjective import IndividualSingleObjective
+from generation.fitness_cov import FitnessCov
+from generation.fitness_cov_len_crash import FitnessCovLenCrash
+from generation.individual_multi_objective import IndividualMultiObjective
+from generation.individual_single_objective import IndividualSingleObjective
 
 
 def load_hof(hof_file):

@@ -1,3 +1,4 @@
+# coding=utf-8
 import os
 import random
 import time
@@ -10,7 +11,8 @@ import settings
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
-from test_runner.test_runner import TestRunner, TestSequence
+from test_runner.motifcore.motifcore_action import MotifcoreAction
+from test_runner.test_runner import TestRunner, TestCase
 from test_runner.test_runner_installer import TestRunnerInstaller
 from util import logger
 
@@ -18,6 +20,7 @@ from util import logger
 class MotifcoreTestRunner(TestRunner):
 
     def __init__(self, use_motifgene: bool = True) -> None:
+        super().__init__()
         self.use_motifgene = use_motifgene
         self.motifcore_script_path_in_devices = "/mnt/sdcard/motifcore.script"
         self.test_runner_installer = TestRunnerInstaller("motifcore",
@@ -67,7 +70,7 @@ class MotifcoreTestRunner(TestRunner):
         if verbose_level > 0:
             logger.log_progress(f'\nMotifcore test run took: {time.time() - start_time:.2f} seconds')
 
-    def generate(self, device, package_name, destination_file_name) -> TestSequence:
+    def generate(self, device, package_name, destination_file_name) -> TestCase:
         verbose_level = RequiredFeature('verbose_level').request()
         start_time = time.time()
 
@@ -102,7 +105,7 @@ class MotifcoreTestRunner(TestRunner):
 
         return test_content
 
-    def retrieve_generated_test(self, device, destination_file_name) -> List[str]:
+    def retrieve_generated_test(self, device, destination_file_name) -> List[MotifcoreAction]:
         output, errors, result_code = adb.pull(device, self.motifcore_script_path_in_devices, destination_file_name,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
@@ -112,7 +115,7 @@ class MotifcoreTestRunner(TestRunner):
         if not self.use_motifgene:
             os.system(f"sed -i \'/GUIGen/d\' {destination_file_name}")
 
-        return self.get_test_case_content_from_file(destination_file_name)
+        return self.get_test_case_from_file(destination_file_name)
 
     def sapienz_mut_suite(self, individual, indpb):
         # shuffle seq
@@ -137,3 +140,32 @@ class MotifcoreTestRunner(TestRunner):
                 individual[i], = tools.mutShuffleIndexes(individual[i], indpb)
 
         return individual,
+
+    def write_test_case_to_file(self, content, filename) -> None:
+        with open(filename, "w") as script:
+            script.write(settings.SCRIPT_HEADER)
+            script.write("\n".join(content))
+            script.write("\n")
+
+    def get_test_case_from_file(self, filename) -> List[MotifcoreAction]:
+        test_case = []
+
+        with open(filename) as script:
+            lines = script.read().split('\n')
+
+        is_content = False
+        is_skipped_first = False
+        for line in lines:
+            line = line.strip()
+            if line.find("start data >>") != -1:
+                is_content = True
+                continue
+            if is_content and line != "":
+                if not is_skipped_first:
+                    is_skipped_first = True
+                    continue
+                if is_skipped_first:
+                    test_case.append(MotifcoreAction(line))
+
+        script.close()
+        return test_case

@@ -76,7 +76,7 @@ class MultipleQueueConsumerThread(KillableThread):
     def stop(self) -> None:
         self.stop_event.set()
 
-    def get_item_processing_start_time(self):
+    def get_item_processing_start_time(self) -> Optional[float]:
         return self.item_processing_start_time
 
     def run(self):
@@ -154,8 +154,8 @@ class MultipleQueueConsumerThread(KillableThread):
                 args.append(device)
 
         args.extend(self.extra_args)
-        args = tuple(args)
-        return args, device, item, queue_run_out
+        args_as_tuple = tuple(args)
+        return args_as_tuple, device, item, queue_run_out
 
     def log_exception(self, e, stack_trace, device=None):
         verbose_level = RequiredFeature('verbose_level').request()

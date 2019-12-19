@@ -6,9 +6,9 @@ from deap import creator
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
-from generation.Individual import Individual
+from generation.individual import Individual
 from generation.individual_generator import IndividualGenerator, TestSuite
-from test_runner.test_runner import TestSequence, TestRunner
+from test_runner.test_runner import TestCase, TestRunner
 
 
 class IndividualWithoutCoverageGenerator(IndividualGenerator):
@@ -43,7 +43,7 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
 
         return test_suite
 
-    def get_sequence(self, device, generation, individual_index, test_case_index) -> TestSequence:
+    def get_sequence(self, device, generation, individual_index, test_case_index) -> TestCase:
         package_name: str = RequiredFeature('package_name').request()
         test_runner: TestRunner = RequiredFeature('test_runner').request()
 

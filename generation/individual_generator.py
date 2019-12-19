@@ -2,10 +2,10 @@ import datetime
 from typing import List
 
 from dependency_injection.required_feature import RequiredFeature
-from generation.Individual import Individual
-from test_runner.test_runner import TestSequence
+from generation.individual import Individual
+from test_runner.test_runner import TestCase
 
-TestSuite = List[TestSequence]
+TestSuite = List[TestCase]
 
 class IndividualGenerator:
 

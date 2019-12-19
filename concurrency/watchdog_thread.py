@@ -45,7 +45,7 @@ class WatchDogThread(threading.Thread):
 
             # check that every MultipleQueueConsumerThread is not hung
             threads_to_check = [thread for thread in threading.enumerate() if
-                                type(thread) is MultipleQueueConsumerThread]
+                                isinstance(thread, MultipleQueueConsumerThread)]
 
             if verbose_level > 1:
                 logger.log_progress(f"\nWatchDog thread is about to check {len(threads_to_check):d}"

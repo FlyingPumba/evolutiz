@@ -1,5 +1,5 @@
-from generation.FitnessCovLenCrash import FitnessCovLenCrash
-from generation.Individual import Individual
+from generation.fitness_cov_len_crash import FitnessCovLenCrash
+from generation.individual import Individual
 
 
 class IndividualMultiObjective(Individual):

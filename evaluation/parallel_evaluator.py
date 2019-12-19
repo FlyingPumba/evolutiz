@@ -2,7 +2,7 @@ from typing import List
 
 from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.required_feature import RequiredFeature
-from generation.Individual import Individual
+from generation.individual import Individual
 from util import logger
 
 

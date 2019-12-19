@@ -1,11 +1,9 @@
-from typing import List
+# coding=utf-8
+from test_runner.test_event import TestCase
 
-import settings
-
-TestSequence = List[str]
 
 class TestRunner(object):
-    def __init__(self):
+    def __init__(self) -> None:
         pass
 
     def prepare_device_for_run(self, device) -> None:
@@ -19,33 +17,10 @@ class TestRunner(object):
         raise NotImplementedError
 
     def write_test_case_to_file(self, content, filename) -> None:
-        with open(filename, "w") as script:
-            script.write(settings.SCRIPT_HEADER)
-            script.write("\n".join(content))
-            script.write("\n")
+        raise NotImplementedError
 
-    def get_test_case_content_from_file(self, filename) -> TestSequence:
-        test_content = []
+    def get_test_case_from_file(self, filename) -> TestCase:
+        raise NotImplementedError
 
-        with open(filename) as script:
-            lines = script.read().split('\n')
-            
-        is_content = False
-        is_skipped_first = False
-        for line in lines:
-            line = line.strip()
-            if line.find("start data >>") != -1:
-                is_content = True
-                continue
-            if is_content and line != "":
-                if not is_skipped_first:
-                    is_skipped_first = True
-                    continue
-                if is_skipped_first:
-                    test_content.append(line)
-
-        script.close()
-        return test_content
-
-    def generate(self, device, package_name, script_path) -> TestSequence:
+    def generate(self, device, package_name, script_path) -> TestCase:
         raise NotImplementedError

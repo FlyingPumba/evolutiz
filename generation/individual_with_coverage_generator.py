@@ -10,9 +10,9 @@ from coverage.emma_coverage import EmmaCoverage
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
-from generation.Individual import Individual
+from generation.individual import Individual
 from generation.individual_generator import IndividualGenerator, TestSuite
-from test_runner.test_runner import TestSequence, TestRunner
+from test_runner.test_runner import TestCase, TestRunner
 
 
 class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
@@ -87,7 +87,7 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
                                    test_case_index: int,
                                    unique_crashes: Set[str],
                                    scripts_crash_status: Dict[str, bool]
-                                   ) -> TestSequence:
+                                   ) -> TestCase:
 
         # clear app's data and state
         output, errors, result_code = adb.shell_command(device, f"pm clear {self.package_name}")

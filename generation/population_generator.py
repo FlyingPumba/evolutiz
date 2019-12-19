@@ -6,7 +6,7 @@ from deap import creator
 from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.di_assertions import HasMethods
 from dependency_injection.required_feature import RequiredFeature
-from generation.Individual import Individual
+from generation.individual import Individual
 from generation.individual_generator import IndividualGenerator
 from util import logger
 from util.integer import Integer
