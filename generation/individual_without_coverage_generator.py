@@ -6,9 +6,11 @@ from deap import creator
 import settings
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
+from devices.device import Device
 from generation.individual import Individual
-from generation.individual_generator import IndividualGenerator, TestSuite
-from test_runner.test_runner import TestCase, TestRunner
+from generation.individual_generator import IndividualGenerator
+from test_runner.test_event import TestCase, TestSuite
+from test_runner.test_runner import TestRunner
 
 
 class IndividualWithoutCoverageGenerator(IndividualGenerator):
@@ -16,7 +18,7 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
     def __init__(self) -> None:
         super(IndividualWithoutCoverageGenerator, self).__init__()
 
-    def gen_individual(self, device, individual_index, generation) -> Individual:
+    def gen_individual(self, device: Device, individual_index: int, generation: int) -> Individual:
         start_time = time.time()
         device.mark_work_start()
         suite = self.get_suite(device, generation, individual_index)
@@ -34,7 +36,7 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
 
         return individual
 
-    def get_suite(self, device, generation, individual_index) -> TestSuite:
+    def get_suite(self, device: Device, generation: int, individual_index: int) -> TestSuite:
         test_suite = []
 
         for test_case_index in range(0, settings.SUITE_SIZE):
@@ -43,7 +45,7 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
 
         return test_suite
 
-    def get_sequence(self, device, generation, individual_index, test_case_index) -> TestCase:
+    def get_sequence(self, device: Device, generation: int, individual_index: int, test_case_index: int) -> TestCase:
         package_name: str = RequiredFeature('package_name').request()
         test_runner: TestRunner = RequiredFeature('test_runner').request()
 

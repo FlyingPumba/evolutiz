@@ -87,13 +87,13 @@ class Device(object):
     def android_version(self) -> Optional[int]:
         return adb.get_android_version(self)
 
-    def set_bluetooth_state(self, enabled) -> None:
+    def set_bluetooth_state(self, enabled: bool) -> None:
         adb.set_bluetooth_state(self, enabled, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
-    def set_wifi_state(self, enabled) -> None:
+    def set_wifi_state(self, enabled: bool) -> None:
         adb.set_wifi_state(self, enabled, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
-    def set_location_state(self, enabled) -> None:
+    def set_location_state(self, enabled: bool) -> None:
         adb.set_location_state(self, enabled, timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
 
     def clean_sdcard(self) -> None:

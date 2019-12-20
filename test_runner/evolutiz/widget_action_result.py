@@ -8,7 +8,7 @@ from test_runner.test_event import TestEvent
 
 class WidgetActionResult(TestEvent):
 
-    def __init__(self, string) -> None:
+    def __init__(self, string: str) -> None:
         self.string = string
 
         _json = json.loads(string)
@@ -17,7 +17,7 @@ class WidgetActionResult(TestEvent):
         self.widget_action = WidgetAction.from_json(_json['widgetAction'])
         self.result_type: str = _json['resultType']
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.string
 
     def is_outbound(self) -> bool:
@@ -29,4 +29,5 @@ class WidgetActionResult(TestEvent):
 
 
 EvolutizTestCase = List[WidgetActionResult]
+EvolutizTestSuite = List[EvolutizTestCase]
 

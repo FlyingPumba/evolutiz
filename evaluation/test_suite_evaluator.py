@@ -4,6 +4,7 @@ from typing import Dict, List, Tuple
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
+from generation.individual import Individual
 
 
 class TestSuiteEvaluator(object):
@@ -12,7 +13,7 @@ class TestSuiteEvaluator(object):
         self.test_runner = RequiredFeature('test_runner').request()
         self.result_dir: str = ""
 
-    def dump_individual_to_files(self, individual) -> Tuple[List[str], Dict[str, int]]:
+    def dump_individual_to_files(self, individual: Individual) -> Tuple[List[str], Dict[str, int]]:
         self.result_dir = RequiredFeature('result_dir').request()
 
         script_path: List[str] = []

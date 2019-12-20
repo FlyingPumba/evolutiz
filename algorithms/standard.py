@@ -103,7 +103,7 @@ class Standard(GeneticAlgorithm):
 
         return offspring
 
-    def mutation(self, offspring) -> None:
+    def mutation(self, offspring: List[Individual]) -> None:
         for index_in_generation in range(len(offspring)):
             ind = offspring[index_in_generation]
             self.toolbox.mutate(ind)

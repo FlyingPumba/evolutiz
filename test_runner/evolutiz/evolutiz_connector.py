@@ -16,7 +16,7 @@ class EvolutizConnector(object):
         self.host = '127.0.0.1'
         self.port = 31337
 
-    def send_command(self, device: 'Device', package_name: str, command: str) -> str:
+    def send_command(self, device: Device, package_name: str, command: str) -> str:
         """
         :param command: to send through the socket and be run by the runner.
         :return: the response of the runner as a string.
@@ -47,12 +47,12 @@ class EvolutizConnector(object):
         else:
             return data.rstrip("\n")
 
-    def receive_data(self, socket) -> Optional[str]:
+    def receive_data(self, socket: socket.socket) -> Optional[str]:
         buffer = io.BytesIO()
         decoded = None
 
         # Make the socket non-blocking (see http://docs.python.org/library/socket.html#socket.socket.setblocking)
-        socket.setblocking(0)
+        socket.setblocking(False)
 
         run_main_loop = True
         while run_main_loop:

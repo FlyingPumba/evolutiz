@@ -30,7 +30,7 @@ class MuPlusLambda(GeneticAlgorithm):
         # offpsring_size (Lambda) must be multiple of population_size (Mu)
         assert self.offspring_size % self.population_size == 0
 
-    def evolve(self):
+    def evolve(self) -> List[Individual]:
         verbose_level = RequiredFeature('verbose_level').request()
 
         for gen in range(1, self.max_generations):
@@ -59,7 +59,7 @@ class MuPlusLambda(GeneticAlgorithm):
 
         return self.population
 
-    def generate_offspring(self, population, gen) -> List[Individual]:
+    def generate_offspring(self, population: List[Individual], gen: int) -> List[Individual]:
         offspring = []
         index_in_generation = 0
         for p in population:

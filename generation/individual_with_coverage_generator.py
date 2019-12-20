@@ -11,16 +11,17 @@ from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
 from generation.individual import Individual
-from generation.individual_generator import IndividualGenerator, TestSuite
-from test_runner.test_runner import TestCase, TestRunner
+from generation.individual_generator import IndividualGenerator
+from test_runner.test_event import TestCase, TestSuite
+from test_runner.test_runner import TestRunner
 
 
 class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(IndividualWithCoverageGenerator, self).__init__()
 
-    def gen_individual(self, device, individual_index, generation) -> Any:
+    def gen_individual(self, device: Device, individual_index: int, generation: int) -> Any:
         start_time = time.time()
         device.mark_work_start()
         suite, fitness = self.get_suite_with_fitness(device, generation, individual_index)
@@ -43,7 +44,7 @@ class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
 
         return individual
 
-    def get_suite_with_fitness(self, device, generation, individual_index) -> Tuple[TestSuite, Tuple[float, float, int]]:
+    def get_suite_with_fitness(self, device: Device, generation: int, individual_index: int) -> Tuple[TestSuite, Tuple[float, float, int]]:
         self.package_name: str = RequiredFeature('package_name').request()
         self.result_dir: str = RequiredFeature('result_dir').request()
 

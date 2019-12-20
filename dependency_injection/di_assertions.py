@@ -1,15 +1,16 @@
-from typing import Any, Callable
+from typing import Any, Callable, Type
+
 
 def NoAssertion(obj: Any) -> bool: return True
 
-def IsInstanceOf(*classes) -> Callable[[Any], bool]:
-    def test(obj): return isinstance(obj, classes)
+def IsInstanceOf(*classes: Type[Any]) -> Callable[[Any], bool]:
+    def test(obj: Any) -> bool: return isinstance(obj, classes)
 
     return test
 
 
-def HasAttributes(*attributes) -> Callable[[Any], bool]:
-    def test(obj):
+def HasAttributes(*attributes: str) -> Callable[[Any], bool]:
+    def test(obj: Any) -> bool:
         for each in attributes:
             if not hasattr(obj, each): return False
         return True
@@ -17,8 +18,8 @@ def HasAttributes(*attributes) -> Callable[[Any], bool]:
     return test
 
 
-def HasMethods(*methods) -> Callable[[Any], bool]:
-    def test(obj):
+def HasMethods(*methods: str) -> Callable[[Any], bool]:
+    def test(obj: Any) -> bool:
         for each in methods:
             try:
                 attr = getattr(obj, each)

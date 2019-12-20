@@ -1,5 +1,6 @@
 import sys
 import time
+from typing import List
 
 import numpy
 from deap import creator, base, tools
@@ -17,7 +18,7 @@ from util import logger
 
 class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(MultiObjectiveTestSuiteEvaluator, self).__init__()
 
         # deap framework setup for multi objective
@@ -32,7 +33,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
     def new_hall_of_fame(self) -> ParetoFront:
         return tools.ParetoFront()
 
-    def set_empty_fitness(self, individual) -> None:
+    def set_empty_fitness(self, individual: IndividualMultiObjective) -> None:
         individual.fitness.values = (0, sys.maxsize, 0)
 
         individual.evaluation_finish_timestamp = time.time()
@@ -41,7 +42,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         hall_of_fame = RequiredFeature('hall_of_fame').request()
         hall_of_fame.update([individual])
 
-    def evaluate(self, device: Device, individual):
+    def evaluate(self, device: Device, individual: IndividualMultiObjective) -> IndividualMultiObjective:
         assert not individual.fitness.valid
 
         coverage_fetcher = RequiredFeature('coverage_fetcher').request()
@@ -87,7 +88,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         return individual
 
-    def update_logbook(self, gen, population) -> None:
+    def update_logbook(self, gen: int, population: List[IndividualMultiObjective]) -> None:
         self.result_dir = RequiredFeature('result_dir').request()
         self.logbook = RequiredFeature('logbook').request()
         self.stats = RequiredFeature('stats').request()

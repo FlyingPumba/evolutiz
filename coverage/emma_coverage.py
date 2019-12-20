@@ -61,13 +61,14 @@ class EmmaCoverage(object):
         return coverage, unique_crashes, scripts_crash_status
 
     def generate_test_coverage(self,
-                               device,
-                               script_path,
-                               generation,
-                               individual_index,
-                               test_case_index,
-                               unique_crashes,
-                               scripts_crash_status) -> None:
+                               device: Device,
+                               script_path: str,
+                               generation: int,
+                               individual_index: int,
+                               test_case_index: int,
+                               unique_crashes: Set[str],
+                               scripts_crash_status: Dict[str, bool]
+                               ) -> None:
         # clear app's data and state
         output, errors, result_code = adb.shell_command(device, f"pm clear {self.package_name}")
         self.output += output
@@ -156,7 +157,7 @@ class EmmaCoverage(object):
                 raise Exception(f"Unable to retrieve coverage.ec file after coverage broadcast for "
                                 f"script_path {script_path} in  device: {device.name}")
 
-    def set_coverage_paths(self, device, generation, individual_index) -> None:
+    def set_coverage_paths(self, device: Device, generation: int, individual_index: int) -> None:
         application_files = f"/data/data/{self.package_name}/files"
 
         self.coverage_ec_device_path = f"{application_files}/coverage.ec"
@@ -168,11 +169,11 @@ class EmmaCoverage(object):
 
         os.system(f"cp {self.result_dir}/coverage.em {coverage_em_local_path}{logger.redirect_string()}")
 
-    def clean_coverage_files_in_device(self, device) -> None:
+    def clean_coverage_files_in_device(self, device: Device) -> None:
         adb.shell_command(device, f"rm -f {self.coverage_ec_device_path}")
         adb.shell_command(device, f"rm -f {self.coverage_ec_device_backup_path}")
 
-    def prepare_coverage_folder(self, generation, individual_index) -> str:
+    def prepare_coverage_folder(self, generation: int, individual_index: int) -> str:
         ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
 
         coverage_folder_name = f"{str(generation)}.{str(individual_index)}.{ts}"
@@ -181,7 +182,7 @@ class EmmaCoverage(object):
         os.system(f"mkdir -p {coverage_folder_path}")
         return coverage_folder_path
 
-    def get_coverage(self, device) -> int:
+    def get_coverage(self, device: Device) -> int:
         # pull coverage.ec file from device
         output, errors, result_code = adb.pull(device, self.coverage_ec_device_backup_path, self.coverage_ec_local_path)
         self.output += output
@@ -214,7 +215,7 @@ class EmmaCoverage(object):
 
         return coverage
 
-    def extract_coverage(self, html_path) -> str:
+    def extract_coverage(self, html_path: str) -> str:
         with open(html_path, 'rb') as file:
             content = file.read()
             doc = UnicodeDammit(content, is_html=True)

@@ -1,26 +1,26 @@
 # coding=utf-8
 import json
-from typing import TYPE_CHECKING
+from typing import Dict, Any
 
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
+from devices.device import Device
+from test_runner.evolutiz.evolutiz_connector import EvolutizConnector
 from test_runner.evolutiz.widget_action_result import WidgetActionResult
 
-if TYPE_CHECKING:
-    from devices.device import Device
 
 class WidgetAction(object):
 
-    def __init__(self, properties):
+    def __init__(self, properties: Dict[str, Any]) -> None:
         self.properties = properties
 
-    def execute(self, device: 'Device', evolutiz_connector) -> None:
+    def execute(self, device: Device, evolutiz_connector: EvolutizConnector) -> None:
         package_name = RequiredFeature('package_name').request()
         evolutiz_connector.send_command(device, package_name,
                                         f"performview XXXX")
 
     @classmethod
-    def random(cls, device: 'Device', evolutiz_connector) -> WidgetActionResult:
+    def random(cls, device: Device, evolutiz_connector: EvolutizConnector) -> WidgetActionResult:
         package_name = RequiredFeature('package_name').request()
 
         current_activity = adb.get_current_activity(device)
@@ -56,10 +56,10 @@ class WidgetAction(object):
             raise Exception(f"An error occurred when performing random action onto activity {current_activity}")
 
     @classmethod
-    def from_json(cls, json) -> 'WidgetAction':
+    def from_json(cls, json: Dict[str, Any]) -> 'WidgetAction':
         return cls(json)
 
     @classmethod
-    def from_string(cls, string) -> 'WidgetAction':
+    def from_string(cls, string: str) -> 'WidgetAction':
         _json = json.loads(string)
         return cls(_json)

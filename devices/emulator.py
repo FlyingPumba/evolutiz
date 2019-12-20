@@ -79,7 +79,7 @@ class Emulator(Device):
         adb.adb_command(self, "emu kill")
         time.sleep(3)
 
-    def reboot(self):
+    def reboot(self) -> None:
         Device.reboot(self)
 
         self.shutdown()

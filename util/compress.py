@@ -22,7 +22,7 @@ def compress_results(strategy_with_runner_name: str) -> None:
     pool.close()
     pool.join()
 
-def compress_repetition(path):
+def compress_repetition(path: str) -> None:
     if is_command_available("pigz"):
         run_cmd(f"tar --use-compress-program=pigz -cf {path}.tar.gz {path}")
     else:

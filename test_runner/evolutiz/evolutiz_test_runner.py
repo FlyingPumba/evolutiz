@@ -1,6 +1,8 @@
 # coding=utf-8
 import time
 
+from deap.base import Toolbox
+
 import settings
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
@@ -10,8 +12,8 @@ from test_runner.evolutiz.crossover import EvolutizCrossover
 from test_runner.evolutiz.evolutiz_connector import EvolutizConnector
 from test_runner.evolutiz.mutation import EvolutizMutation
 from test_runner.evolutiz.widget_action import WidgetAction
-from test_runner.evolutiz.widget_action_result import WidgetActionResult
-from test_runner.test_runner import TestRunner, TestCase
+from test_runner.test_event import TestCase, TestEvent
+from test_runner.test_runner import TestRunner
 from test_runner.test_runner_installer import TestRunnerInstaller
 from util import logger
 
@@ -30,18 +32,18 @@ class EvolutizTestRunner(TestRunner):
         self.minimum_api = 28
         features.provide('minimum_api', self.minimum_api)
 
-    def register_crossover_operator(self, toolbox):
+    def register_crossover_operator(self, toolbox: Toolbox) -> None:
         evlutiz_crossover = EvolutizCrossover(self.evolutiz_connector)
         toolbox.register("mate", evlutiz_crossover.crossover)
 
-    def register_mutation_operator(self, toolbox):
+    def register_mutation_operator(self, toolbox: Toolbox) -> None:
         evlutiz_mutation = EvolutizMutation(self.evolutiz_connector)
         toolbox.register("mutate", evlutiz_mutation.mutation)
 
-    def install_on_devices(self):
+    def install_on_devices(self) -> None:
         self.test_runner_installer.install_in_all_devices(minimum_api=self.minimum_api)
 
-    def run(self, device, package_name: str, script_name: str):
+    def run(self, device: Device, package_name: str, script_name: str) -> None:
         assert device.api_level() >= self.minimum_api
 
         verbose_level = RequiredFeature('verbose_level').request()
@@ -66,7 +68,7 @@ class EvolutizTestRunner(TestRunner):
         if verbose_level > 0:
             logger.log_progress(f'\nEvolutiz test run took: {time.time() - start_time:.2f} seconds')
 
-    def generate(self, device: 'Device', package_name: str, destination_file_name: str) -> TestCase:
+    def generate(self, device: Device, package_name: str, destination_file_name: str) -> TestCase:
         assert device.api_level() >= self.minimum_api
 
         verbose_level = RequiredFeature('verbose_level').request()
@@ -82,7 +84,9 @@ class EvolutizTestRunner(TestRunner):
 
         for i in range(0, evolutiz_events):
             widget_action_result = WidgetAction.random(device, self.evolutiz_connector)
-            test_case.append(widget_action_result)
+
+            test_event: TestEvent = widget_action_result
+            test_case.append(test_event)
 
             if widget_action_result.is_outbound():
                 break

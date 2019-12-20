@@ -3,16 +3,18 @@ import random
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
+from devices.device import Device
+from test_runner.evolutiz.evolutiz_connector import EvolutizConnector
 from test_runner.evolutiz.widget_action import WidgetAction
-from test_runner.evolutiz.widget_action_result import EvolutizTestCase
+from test_runner.evolutiz.widget_action_result import EvolutizTestCase, EvolutizTestSuite
 
 
 class EvolutizMutation(object):
 
-    def __init__(self, evolutiz_connector) -> None:
+    def __init__(self, evolutiz_connector: EvolutizConnector) -> None:
         self.evolutiz_connector = evolutiz_connector
 
-    def mutation(self, individual):
+    def mutation(self, individual: EvolutizTestSuite) -> EvolutizTestSuite:
         """Implements a mutation function for test suites.
         It consists of randomly choosing a test case of the test suite and mutating it.
         """
@@ -29,7 +31,7 @@ class EvolutizMutation(object):
 
         return individual
 
-    def mutate_test_case(self, device, test_case: EvolutizTestCase):
+    def mutate_test_case(self, device: Device, test_case: EvolutizTestCase) -> EvolutizTestCase:
         """Implements a cut point mutation function for test cases.
         """
         # Copy actions from original test case up until a cut point

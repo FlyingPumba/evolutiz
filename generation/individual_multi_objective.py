@@ -3,7 +3,7 @@ from generation.individual import Individual
 
 
 class IndividualMultiObjective(Individual):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__()
 
         self.fitness: FitnessCovLenCrash

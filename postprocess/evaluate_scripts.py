@@ -13,7 +13,8 @@ ScriptsByIndividualIndex = Dict[int, ScriptsByTestCaseIndex]
 ScriptsByGeneration = Dict[int, ScriptsByIndividualIndex]
 
 class EvaluateScripts(Strategy):
-    def run(self):
+
+    def run(self) -> bool:
         script_paths = self.fetch_script_paths()
 
         # transform all script_paths to individuals
@@ -82,7 +83,7 @@ class EvaluateScripts(Strategy):
 
         return script_paths
 
-    def script_paths_to_individuals(self, generation: int, script_paths: Dict[int, Dict[int, str]]):
+    def script_paths_to_individuals(self, generation: int, script_paths: Dict[int, Dict[int, str]]) -> List[Individual]:
         test_runner = RequiredFeature('test_runner').request()
         individuals = []
 

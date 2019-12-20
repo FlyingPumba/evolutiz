@@ -4,17 +4,17 @@ from typing import Any, Optional, Dict, Callable
 
 class FeatureBroker:
     def __init__(self, allowReplace: bool = False) -> None:
-        self.providers: Dict[str, Callable] = {}
+        self.providers: Dict[str, Callable[[], Any]] = {}
         self.allowReplace = allowReplace
 
-    def provide(self, feature: str, provider: Any, *args, **kwargs) -> None:
+    def provide(self, feature: str, provider: Any, *args: Any, **kwargs: Any) -> None:
         if not self.allowReplace:
             assert feature not in self.providers, f"Duplicate feature: {feature:r}"
         if callable(provider):
-            def call():
+            def call() -> Any:
                 return provider(*args, **kwargs)
         else:
-            def call():
+            def call() -> Any:
                 return provider
         self.providers[feature] = call
 

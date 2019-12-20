@@ -6,12 +6,13 @@ from test_runner.test_event import TestEvent
 
 class MotifcoreAction(TestEvent):
 
-    def __init__(self, string) -> None:
+    def __init__(self, string: str) -> None:
         self.string = string
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.string
 
 
 MotifcoreTestCase = List[MotifcoreAction]
+MotifcoreTestSuite = List[MotifcoreTestCase]
 

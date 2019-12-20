@@ -1,9 +1,13 @@
 import time
+from typing import List
 
 import numpy
 from deap import base, creator, tools
+from deap.base import Toolbox
+from deap.tools import HallOfFame
 
 from dependency_injection.required_feature import RequiredFeature
+from devices.device import Device
 from evaluation.test_suite_evaluator import TestSuiteEvaluator
 from generation.fitness_cov import FitnessCov
 from generation.individual_single_objective import IndividualSingleObjective
@@ -12,20 +16,20 @@ from util import logger
 
 class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
-    def __init__(self):
+    def __init__(self) -> None:
         super(SingleObjectiveTestSuiteEvaluator, self).__init__()
 
         # deap framework setup for single objective
         creator.create(FitnessCov.get_name(), base.Fitness, weights=(1.0,))
         creator.create(IndividualSingleObjective.get_name(), list, fitness=getattr(creator, FitnessCov.get_name()))
 
-    def register_selection_operator(self, toolbox):
+    def register_selection_operator(self, toolbox: Toolbox) -> None:
         toolbox.register("select", tools.selRoulette)
 
-    def new_hall_of_fame(self):
-        return tools.HallOfFame(maxsize=50)
+    def new_hall_of_fame(self) -> HallOfFame:
+        return HallOfFame(maxsize=50)
 
-    def set_empty_fitness(self, individual):
+    def set_empty_fitness(self, individual: IndividualSingleObjective) -> None:
         individual.fitness.values = (0, )
 
         individual.evaluation_finish_timestamp = time.time()
@@ -34,7 +38,7 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         hall_of_fame = RequiredFeature('hall_of_fame').request()
         hall_of_fame.update([individual])
 
-    def evaluate(self, device, individual):
+    def evaluate(self, device: Device, individual: IndividualSingleObjective) -> IndividualSingleObjective:
         assert not individual.fitness.valid
 
         coverage_fetcher = RequiredFeature('coverage_fetcher').request()
@@ -67,7 +71,7 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         return individual
 
-    def update_logbook(self, gen, population):
+    def update_logbook(self, gen: int, population: List[IndividualSingleObjective]) -> None:
         self.result_dir = RequiredFeature('result_dir').request()
         self.logbook = RequiredFeature('logbook').request()
         self.stats = RequiredFeature('stats').request()
@@ -102,7 +106,7 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         self.show_best_historic_fitness()
 
-    def show_best_historic_fitness(self):
+    def show_best_historic_fitness(self) -> None:
         self.logbook = RequiredFeature('logbook').request()
         max_fitness_values_per_generation = numpy.array(self.logbook.select("max"))
 
@@ -113,5 +117,5 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         # CAUTION: these min and max are from different individuals
         logger.log_progress(f"\n- Best historic coverage: {str(max_coverage)}")
 
-    def dump_logbook_to_file(self):
+    def dump_logbook_to_file(self) -> None:
         super(SingleObjectiveTestSuiteEvaluator, self).dump_logbook_to_file()

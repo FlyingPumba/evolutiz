@@ -1,13 +1,15 @@
 import time
-from typing import Callable, List, Optional, Tuple, Any, Dict
+from typing import Callable, List, Optional, Tuple, Any, Dict, TypeVar
 
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
 from concurrency.queue import Queue
 from concurrency.watchdog_thread import WatchDogThread
 from dependency_injection.required_feature import RequiredFeature
+from devices.device import Device
 from devices.device_manager import DeviceManager
-from util.integer import Integer
 
+Item = TypeVar('Item')
+Output = TypeVar('Output')
 
 class MapperOnDevices(object):
     """Manages parallel execution of a function in the available devices.
@@ -30,11 +32,11 @@ class MapperOnDevices(object):
     """
 
     def __init__(self,
-                 func: Callable,
-                 items_to_map: Optional[List[Any]] = None,
+                 func: Callable[..., Output],
+                 items_to_map: Optional[List[Item]] = None,
                  fail_times_limit: int = 3,
-                 default_output: Any = None,
-                 extra_args: Tuple = (),
+                 default_output: Optional[Output] = None,
+                 extra_args: Tuple[Any, ...] = (),
                  extra_kwargs: Optional[Dict[str, Any]] = None,
                  minimum_api: Optional[int] = None,
                  idle_devices_only: bool = False
@@ -72,10 +74,10 @@ class MapperOnDevices(object):
                             f"{str(self.minimum_api)} to apply function mapper.")
 
         # prepare devices queue
-        devices_to_use = Queue(elements=devices)
+        devices_to_use: Queue[Device] = Queue(elements=devices)
 
         # prepare output queue
-        output_queue = Queue()
+        output_queue: Queue[Output] = Queue()  # type: ignore
 
         # prepare items to map queue
         if self.items_to_map is None:

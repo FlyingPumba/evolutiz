@@ -120,7 +120,7 @@ class DeviceManager(object):
 
         return self.devices
 
-    def get_booted_devices(self, refresh=False) -> List[Device]:
+    def get_booted_devices(self, refresh: bool = False) -> List[Device]:
         if refresh is True:
             # check if boot animation is over for each device
             devices = self.get_devices(refresh=True)
@@ -175,7 +175,7 @@ class DeviceManager(object):
             self.next_available_emulator_port = 5554
             self.devices = [device for device in self.get_devices() if type(device) is RealDevice]
 
-    def reboot_devices(self, wait_to_be_ready=False) -> None:
+    def reboot_devices(self, wait_to_be_ready: bool = False) -> None:
         logger.log_progress("\nRebooting devices.")
         
         for device in self.get_devices():
@@ -205,7 +205,7 @@ class DeviceManager(object):
         logger.log_progress(
             f"\nWaiting for devices to be ready: {str(len(ready_devices))}/{str(devices_to_wait)}")
 
-    def wait_for_battery_threshold(self, battery_threshold=20) -> None:
+    def wait_for_battery_threshold(self, battery_threshold: int = 20) -> None:
         while True:
             all_devices_above_threshold = all([level is None or level >= battery_threshold
                                                for level in (device.battery_level() for device in self.get_devices())])
@@ -215,7 +215,7 @@ class DeviceManager(object):
                 logger.log_progress(f"\nWaiting for some devices to reach {str(battery_threshold)}% battery level")
                 time.sleep(60)  # sleep 1 minute
 
-    def log_devices_battery(self, gen, result_dir) -> None:
+    def log_devices_battery(self, gen: int, result_dir: str) -> None:
         log_file = f"{result_dir}/battery.log"
         os.system(f"echo 'Battery levels at gen: {str(gen)}' >> {log_file}")
 

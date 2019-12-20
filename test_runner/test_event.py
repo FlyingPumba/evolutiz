@@ -1,11 +1,13 @@
 # coding=utf-8
-from typing import Sequence
+from typing import Iterable, List
 
 
 class TestEvent(object):
 
     @classmethod
-    def from_string(cls, string) -> 'TestEvent':
+    def from_string(cls, string: str) -> 'TestEvent':
         raise NotImplementedError
 
-TestCase = Sequence[TestEvent]
+
+TestCase = List[TestEvent]
+TestSuite = List[TestCase]

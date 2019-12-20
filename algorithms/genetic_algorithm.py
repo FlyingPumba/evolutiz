@@ -27,7 +27,7 @@ class GeneticAlgorithm(Strategy):
             "The sum of the crossover and mutation "
             "probabilities must be smaller or equal to 1.0.")
 
-    def run(self):
+    def run(self) -> List[Individual]:
         self.package_name = RequiredFeature('package_name').request()
 
         success = self.initPopulation()

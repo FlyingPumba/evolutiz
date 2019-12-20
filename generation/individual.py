@@ -1,7 +1,9 @@
 from deap.base import Fitness
 
+from test_runner.test_event import TestSuite
 
-class Individual(list):
+
+class Individual(TestSuite):
 
     def __init__(self) -> None:
         super().__init__()

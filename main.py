@@ -1,4 +1,5 @@
 #!.env/bin/python
+# coding=utf-8
 
 import argparse
 import random
@@ -7,7 +8,7 @@ import threading
 import time
 import traceback
 from configparser import ConfigParser, DEFAULTSECT
-from typing import Any, List, Type, Iterable
+from typing import Any, List, Type, Iterable, TYPE_CHECKING
 
 import numpy
 from deap import tools
@@ -32,6 +33,7 @@ from devices.device_manager import DeviceManager
 from evaluation.multi_objective import MultiObjectiveTestSuiteEvaluator
 from evaluation.single_objective import SingleObjectiveTestSuiteEvaluator
 from evaluation.test_suite_evaluator import TestSuiteEvaluator
+from generation.individual import Individual
 from generation.individual_generator import IndividualGenerator
 from generation.individual_with_coverage_generator import IndividualWithCoverageGenerator
 from generation.individual_without_coverage_generator import IndividualWithoutCoverageGenerator
@@ -45,16 +47,23 @@ from util.command import *
 from util.compress import compress_results
 from util.evolutiz import Evolutiz
 
-conf_parser: argparse.ArgumentParser
-defaults: Dict[str, Any]
-remaining_argv: List[str]
+if TYPE_CHECKING:
+    import os
+    from typing import Dict, Tuple
+    import settings
+    from dependency_injection.required_feature import RequiredFeature
+    from util import logger
+
+    conf_parser: argparse.ArgumentParser
+    defaults: Dict[str, Any]
+    remaining_argv: List[str]
 
 possible_strategies: Dict[str, Type[Strategy]]
 possible_test_suite_evaluators: Dict[str, Type[TestSuiteEvaluator]]
 possible_individual_generators: Dict[str, Type[IndividualGenerator]]
 possible_test_runners: Dict[str, TestRunner]
 
-def run_one_app(strategy_with_runner_name) -> bool:
+def run_one_app(strategy_with_runner_name: str) -> bool:
     app_path = RequiredFeature('app_path').request()
     repetitions = RequiredFeature('repetitions').request()
     repetitions_offset = RequiredFeature('repetitions_offset').request()
@@ -124,7 +133,7 @@ def wait_for_working_threas_to_finish() -> None:
         time.sleep(3)
 
 
-def get_emulators_running(result_dir) -> None:
+def get_emulators_running(result_dir: str) -> None:
     """Reboot all devices and kill adb server before starting a repetition."""
     device_manager = RequiredFeature('device_manager').request()
     adb.kill_server()
@@ -166,7 +175,7 @@ def prepare_result_dir(app_name: str, repetition: int, strategy_with_runner_name
     return result_dir
 
 
-def run(strategy_name, app_paths) -> None:
+def run(strategy_name: str, app_paths: List[str]) -> None:
     compress = RequiredFeature('compress').request()
 
     for i in range(0, len(app_paths)):
@@ -183,7 +192,7 @@ def run(strategy_name, app_paths) -> None:
             compress_results(strategy_name)
 
 
-def get_subject_paths(arguments) -> List[str]:
+def get_subject_paths(arguments: argparse.Namespace) -> List[str]:
     features.provide('assume_subjects_instrumented', arguments.assume_subjects_instrumented)
 
     subject_path = arguments.subject_path
@@ -291,7 +300,7 @@ def check_needed_commands_available() -> None:
     #     raise Exception(cause)
 
 
-def add_arguments_to_parser(parser) -> None:
+def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
     global possible_strategies, possible_test_suite_evaluators, possible_individual_generators, possible_test_runners
 
     # subjects related arguments
@@ -487,7 +496,7 @@ def parse_config_file() -> None:
         defaults.update(dict(config_items_type_convert(config.items(DEFAULTSECT))))
 
 
-def get_fitness_values_of_individual(individual) -> Any:
+def get_fitness_values_of_individual(individual: Individual) -> Any:
     return individual.fitness.values
 
 

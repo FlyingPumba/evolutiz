@@ -1,13 +1,17 @@
 import time
 import traceback
 from threading import Event
-from typing import Any, Callable, Dict, Optional, Tuple
+from typing import Any, Callable, Dict, Optional, Tuple, TypeVar, List
 
 from concurrency.killable_thread import KillableThread
 from concurrency.queue import Queue
 from dependency_injection.required_feature import RequiredFeature
+from devices.device import Device
 from devices.device_state import State
 from util import logger
+
+Item = TypeVar('Item')
+Output = TypeVar('Output')
 
 
 class MultipleQueueConsumerThread(KillableThread):
@@ -36,16 +40,16 @@ class MultipleQueueConsumerThread(KillableThread):
         name                        Name of the thread.
     """
 
-    def __init__(self, func: Callable,
-                 items_queue: Optional[Queue] = None,
-                 devices_queue: Optional[Queue] = None,
+    def __init__(self, func: Callable[..., Output],
+                 items_queue: Optional[Queue[Item]] = None,
+                 devices_queue: Optional[Queue[Device]] = None,
                  items_are_consumable: bool = True,
                  devices_are_consumable: bool = False,
-                 extra_args: Tuple = (),
+                 extra_args: Tuple[Any, ...] = (),
                  extra_kwargs: Optional[Dict[str, Any]] = None,
-                 output_queue: Optional[Queue] = None,
+                 output_queue: Optional[Queue[Output]] = None,
                  fail_times_limit: int = 1,
-                 default_output: Optional[Any] = None,
+                 default_output: Optional[Output] = None,
                  name: Optional[str] = None
                  ) -> None:
         super().__init__(name=name)
@@ -53,8 +57,8 @@ class MultipleQueueConsumerThread(KillableThread):
         if items_queue is None and devices_queue is None:
             raise ValueError("items_queue and devices_queue can not be both None")
 
-        self.items_queue = items_queue
-        self.devices_queue = devices_queue
+        self.items_queue: Optional[Queue[Item]] = items_queue
+        self.devices_queue: Optional[Queue[Device]] = devices_queue
 
         self.items_are_consumable = items_are_consumable
         self.devices_are_consumable = devices_are_consumable
@@ -71,7 +75,7 @@ class MultipleQueueConsumerThread(KillableThread):
         self.fail_times_limit = fail_times_limit
 
         self.stop_event = Event()
-        self.item_processing_start_time = None
+        self.item_processing_start_time: Optional[float] = None
 
     def stop(self) -> None:
         self.stop_event.set()
@@ -79,7 +83,7 @@ class MultipleQueueConsumerThread(KillableThread):
     def get_item_processing_start_time(self) -> Optional[float]:
         return self.item_processing_start_time
 
-    def run(self):
+    def run(self) -> None:
         try:
             while not self.stop_event.is_set():
                 # prepare args for calling func
@@ -88,6 +92,8 @@ class MultipleQueueConsumerThread(KillableThread):
                 if queue_run_out:
                     # no more work to do
                     return
+
+                assert device is not None
 
                 try:
                     self.item_processing_start_time = time.time()
@@ -117,7 +123,7 @@ class MultipleQueueConsumerThread(KillableThread):
             print(traceback.format_exc())
             return
 
-    def build_arguments(self):
+    def build_arguments(self) -> Tuple[Tuple[Device, ...], Optional[Device], Any, bool]:
         queue_run_out = False
         item = None
         device = None
@@ -157,7 +163,7 @@ class MultipleQueueConsumerThread(KillableThread):
         args_as_tuple = tuple(args)
         return args_as_tuple, device, item, queue_run_out
 
-    def log_exception(self, e, stack_trace, device=None):
+    def log_exception(self, e: Exception, stack_trace: str, device: Optional[Device] = None) -> None:
         verbose_level = RequiredFeature('verbose_level').request()
         if verbose_level == 0:
             return
@@ -181,18 +187,22 @@ class MultipleQueueConsumerThread(KillableThread):
                 formatted_string = f"{template_base} on device {device}.\n"
                 logger.log_progress(formatted_string)
 
-    def fetch_item(self):
+    def fetch_item(self) -> Any:
+        assert self.items_queue is not None
+
         item = self.items_queue.pop()
 
         # init failures for this item
         if item is not None and not hasattr(item, 'devices_used'):
-            item.devices_used = []
+            setattr(item, 'devices_used', [])
 
         return item
 
-    def fetch_device_for_item(self, item):
-        devices_blacklisted = item.devices_used
-        device = self.devices_queue.pop_with_blacklist(devices_blacklisted)
+    def fetch_device_for_item(self, item: Item) -> Optional[Device]:
+        assert self.devices_queue is not None
+
+        devices_blacklisted = getattr(item, 'devices_used', [])
+        device: Optional[Device] = self.devices_queue.pop_with_blacklist(devices_blacklisted)
 
         if device is None:
             # If this device is None, it means that all devices currently in the queue are blacklisted.
@@ -208,31 +218,41 @@ class MultipleQueueConsumerThread(KillableThread):
 
         return device
 
-    def fetch_device(self):
+    def fetch_device(self) -> Optional[Device]:
+        assert self.devices_queue is not None
+
         device = self.devices_queue.pop()
         return device
 
-    def put_back_recyclables(self, device, item):
+    def put_back_recyclables(self, device: Device, item: Item) -> None:
         if not self.items_are_consumable:
-            self.items_queue.put(item)
+            assert self.items_queue is not None
+            # the following is well type, but mypy is messing up its inference algorithm
+            self.items_queue.put(item)  # type: ignore
+
         if not self.devices_are_consumable:
+            assert self.devices_queue is not None
             self.devices_queue.put(device)
 
-    def register_device_failure(self, device):
+    def register_device_failure(self, device: Device) -> None:
         # set state ready_idle in device that might be still in state ready_working
         device.mark_work_stop()
         device.register_failure()
 
-    def register_item_failure_in_device(self, item, device):
-        item.devices_used.append(str(device))
+    def register_item_failure_in_device(self, item: Item, device: Device) -> None:
+        devices_used = getattr(item, 'devices_used', [])
+        devices_used.append(str(device))
 
-        if len(item.devices_used) < self.fail_times_limit:
+        if len(devices_used) < self.fail_times_limit:
             # Put the consumable items back in their respective queue
             if self.items_are_consumable:
-                self.items_queue.put(item)
+                assert self.items_queue is not None
+                # the following is well type, but mypy is messing up its inference algorithm
+                self.items_queue.put(item)  # type: ignore
 
             if self.devices_are_consumable:
+                assert self.devices_queue is not None
                 self.devices_queue.put(device)
         else:
-            if self.output_queue is not None:
+            if self.output_queue is not None and self.default_output is not None:
                 self.output_queue.put(self.default_output)

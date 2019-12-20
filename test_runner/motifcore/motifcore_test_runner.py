@@ -2,7 +2,7 @@
 import os
 import random
 import time
-from typing import List
+from typing import List, Tuple
 
 from deap import tools
 from deap.base import Toolbox
@@ -11,8 +11,11 @@ import settings
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
+from devices.device import Device
+from generation.individual import Individual
 from test_runner.motifcore.motifcore_action import MotifcoreAction
-from test_runner.test_runner import TestRunner, TestCase
+from test_runner.test_event import TestCase, TestEvent
+from test_runner.test_runner import TestRunner
 from test_runner.test_runner_installer import TestRunnerInstaller
 from util import logger
 
@@ -39,10 +42,10 @@ class MotifcoreTestRunner(TestRunner):
     def register_mutation_operator(self, toolbox: Toolbox) -> None:
         toolbox.register("mutate", self.sapienz_mut_suite, indpb=0.5)
 
-    def install_on_devices(self):
+    def install_on_devices(self) -> None:
         self.test_runner_installer.install_in_all_devices()
 
-    def run(self, device, package_name, script_name):
+    def run(self, device: Device, package_name: str, script_name: str) -> None:
         verbose_level = RequiredFeature('verbose_level').request()
         start_time = time.time()
 
@@ -70,7 +73,7 @@ class MotifcoreTestRunner(TestRunner):
         if verbose_level > 0:
             logger.log_progress(f'\nMotifcore test run took: {time.time() - start_time:.2f} seconds')
 
-    def generate(self, device, package_name, destination_file_name) -> TestCase:
+    def generate(self, device: Device, package_name: str, destination_file_name: str) -> TestCase:
         verbose_level = RequiredFeature('verbose_level').request()
         start_time = time.time()
 
@@ -97,15 +100,15 @@ class MotifcoreTestRunner(TestRunner):
         # need to manually kill motifcore when timeout
         adb.pkill(device, "motifcore")
 
-        test_content = self.retrieve_generated_test(device, destination_file_name)
+        test_case: TestCase = self.retrieve_generated_test(device, destination_file_name)
 
         if verbose_level > 0:
             logger.log_progress(f'\nMotifcore test generation took: {time.time() - start_time:.2f} seconds '
                                 f'for {motifcore_events:d} events')
 
-        return test_content
+        return test_case
 
-    def retrieve_generated_test(self, device, destination_file_name) -> List[MotifcoreAction]:
+    def retrieve_generated_test(self, device: Device, destination_file_name: str) -> TestCase:
         output, errors, result_code = adb.pull(device, self.motifcore_script_path_in_devices, destination_file_name,
                                timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT)
         if result_code != 0:
@@ -117,7 +120,7 @@ class MotifcoreTestRunner(TestRunner):
 
         return self.get_test_case_from_file(destination_file_name)
 
-    def sapienz_mut_suite(self, individual, indpb):
+    def sapienz_mut_suite(self, individual: Individual, indpb: float) -> Tuple[Individual]:
         # shuffle seq
         individual, = tools.mutShuffleIndexes(individual, indpb)
 
@@ -141,13 +144,13 @@ class MotifcoreTestRunner(TestRunner):
 
         return individual,
 
-    def write_test_case_to_file(self, content, filename) -> None:
+    def write_test_case_to_file(self, test_case: TestCase, filename: str) -> None:
         with open(filename, "w") as script:
             script.write(settings.SCRIPT_HEADER)
-            script.write("\n".join(content))
+            script.write("\n".join(map(lambda t: str(t), test_case)))
             script.write("\n")
 
-    def get_test_case_from_file(self, filename) -> List[MotifcoreAction]:
+    def get_test_case_from_file(self, filename: str) -> TestCase:
         test_case = []
 
         with open(filename) as script:
@@ -165,7 +168,8 @@ class MotifcoreTestRunner(TestRunner):
                     is_skipped_first = True
                     continue
                 if is_skipped_first:
-                    test_case.append(MotifcoreAction(line))
+                    event: TestEvent = MotifcoreAction(line)
+                    test_case.append(event)
 
         script.close()
         return test_case

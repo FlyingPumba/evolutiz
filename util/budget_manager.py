@@ -12,7 +12,7 @@ class BudgetManager(object):
             evaluations_budget: Optional[int] = None
     ) -> None:
 
-        self.time_limit: int
+        self.time_limit = None
         if time_budget is not None:
             if isinstance(time_budget, int):
                 self.time_limit = time_budget
@@ -43,7 +43,7 @@ class BudgetManager(object):
     def is_budget_available(self) -> bool:
         return self.time_budget_available() and self.evaluations_budget_available()
 
-    def increase_evaluations_used(self):
+    def increase_evaluations_used(self) -> None:
         self.evaluations_lock.acquire()
         self.evaluations += 1
         self.evaluations_lock.release()

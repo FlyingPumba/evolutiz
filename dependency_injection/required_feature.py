@@ -5,14 +5,14 @@ from dependency_injection.feature_broker import features
 
 
 class RequiredFeature(object):
-    def __init__(self, feature: str, assertion: Callable = NoAssertion) -> None:
+    def __init__(self, feature: str, assertion: Callable[[Any], bool] = NoAssertion) -> None:
         self.feature = feature
         self.assertion = assertion
 
-    def __get__(self, obj, T):
+    def __get__(self, obj: Any) -> Any:
         return self.result  # <-- will request the feature upon first call
 
-    def __getattr__(self, name):
+    def __getattr__(self, name: str) -> Any:
         assert name == 'result', "Unexpected attribute request other then 'result'"
         self.result = self.Request()
         return self.result

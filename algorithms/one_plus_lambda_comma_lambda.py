@@ -1,6 +1,6 @@
 # coding=utf-8
 import time
-from typing import List
+from typing import List, Optional
 
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from dependency_injection.required_feature import RequiredFeature
@@ -32,7 +32,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
 
         self.history = RequiredFeature('history').request()
         self.population_size = 1
-        self.parent
+        self.parent: Individual
 
     def evolve(self) -> List[Individual]:
         verbose_level: bool = RequiredFeature('verbose_level').request()
@@ -77,7 +77,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
 
         return self.population
 
-    def generate_mutants(self, gen) -> List[Individual]:
+    def generate_mutants(self, gen: int) -> List[Individual]:
         mutants = []
         for index_in_generation in range(self.offspring_size):
             ind = self.toolbox.clone(self.parent)
@@ -94,7 +94,7 @@ class OnePlusLambdaCommaLambda(GeneticAlgorithm):
 
         return mutants
 
-    def generate_offspring(self, gen, mutant) -> List[Individual]:
+    def generate_offspring(self, gen: int, mutant: Individual) -> List[Individual]:
         offspring = []
         for index_in_generation in range(0, self.offspring_size, 2):
             ind1, ind2 = map(self.toolbox.clone, [self.parent, mutant])

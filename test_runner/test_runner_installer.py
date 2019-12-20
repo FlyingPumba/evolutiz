@@ -1,4 +1,5 @@
 import traceback
+from typing import Optional
 
 from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.required_feature import RequiredFeature
@@ -14,15 +15,15 @@ class TestRunnerInstaller(object):
         self.test_runner_executable_path = test_runner_executable_path
         self.test_runner_jar_path = test_runner_jar_path
 
-    def kill_test_runner_in_device(self, device):
+    def kill_test_runner_in_device(self, device: Device) -> None:
         adb.pkill(device, self.test_runner_name)
 
-    def kill_test_runner_in_all_devices(self):
+    def kill_test_runner_in_all_devices(self) -> None:
         device_manager = RequiredFeature('device_manager').request()
         for device in device_manager.get_devices():
             self.kill_test_runner_in_device(device)
 
-    def install_in_all_devices(self, minimum_api=None):
+    def install_in_all_devices(self, minimum_api: Optional[int] = None) -> None:
         logger.log_progress(f"\nPreparing {self.test_runner_name} test runner in devices.")
 
         mapper = MapperOnDevices(self.install, minimum_api=minimum_api)
