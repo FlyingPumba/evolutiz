@@ -101,8 +101,14 @@ def run_one_app(strategy_with_runner_name: str) -> bool:
             test_generator.run()
 
             logger.log_progress(f"\nEvolutiz finished for app: {app_name}")
-            logger.log_progress(f"\nTime budget used: {budget_manager.get_time_budget_used():.2f} seconds\n")
-            logger.log_progress(f"\nEvaluations budget used: {budget_manager.get_evaluations_budget_used():d}\n")
+
+            time_budget_used = budget_manager.get_time_budget_used()
+            if time_budget_used is not None:
+            logger.log_progress(f"\nTime budget used: {time_budget_used:.2f} seconds\n")
+
+            evaluations_budget_used = budget_manager.get_evaluations_budget_used()
+            if evaluations_budget_used is not None:
+                logger.log_progress(f"\nEvaluations budget used: {evaluations_budget_used:d}\n")
 
             # wait for all MultipleQueueConsumerThread to terminate
             wait_for_working_threas_to_finish()

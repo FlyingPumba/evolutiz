@@ -1,8 +1,11 @@
 # coding=utf-8
 import random
+import time
+from typing import Tuple
 
 import settings
 from dependency_injection.required_feature import RequiredFeature
+from devices import adb
 from devices.device import Device
 from test_runner.evolutiz.evolutiz_connector import EvolutizConnector
 from test_runner.evolutiz.widget_action import WidgetAction
@@ -14,7 +17,7 @@ class EvolutizMutation(object):
     def __init__(self, evolutiz_connector: EvolutizConnector) -> None:
         self.evolutiz_connector = evolutiz_connector
 
-    def mutation(self, individual: EvolutizTestSuite) -> EvolutizTestSuite:
+    def mutation(self, individual: EvolutizTestSuite) -> Tuple[EvolutizTestSuite]:
         """Implements a mutation function for test suites.
         It consists of randomly choosing a test case of the test suite and mutating it.
         """
@@ -29,14 +32,20 @@ class EvolutizMutation(object):
 
         device.mark_work_stop()
 
-        return individual
+        return individual,
 
     def mutate_test_case(self, device: Device, test_case: EvolutizTestCase) -> EvolutizTestCase:
         """Implements a cut point mutation function for test cases.
         """
         # Copy actions from original test case up until a cut point
+        package_name = RequiredFeature('package_name').request()
+
         cut_point = random.randint(1, len(test_case)) # TODO: or is it random.randint(1, len(test_case)-1)
         mutated_test_case = test_case[:cut_point-1]
+
+        adb.shell_command(device, f"pm clear {package_name}")
+        self.evolutiz_connector.send_command(device, package_name, f"performview launch-app")
+        time.sleep(1)
 
         # re-execute said actions
         for widget_action_result in mutated_test_case:

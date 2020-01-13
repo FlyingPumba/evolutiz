@@ -14,10 +14,16 @@ class WidgetAction(object):
     def __init__(self, properties: Dict[str, Any]) -> None:
         self.properties = properties
 
-    def execute(self, device: Device, evolutiz_connector: EvolutizConnector) -> None:
+    def execute(self, device: Device, evolutiz_connector: EvolutizConnector) -> bool:
         package_name = RequiredFeature('package_name').request()
-        evolutiz_connector.send_command(device, package_name,
-                                        f"performview XXXX")
+        result = evolutiz_connector.send_command(device, package_name, f"performview id {self.id()} {self.action_type()}")
+        return result.startswith('OK')
+
+    def id(self):
+        return self.properties['widget']['id']
+
+    def action_type(self):
+        return self.properties['actionType']
 
     @classmethod
     def random(cls, device: Device, evolutiz_connector: EvolutizConnector) -> WidgetActionResult:
