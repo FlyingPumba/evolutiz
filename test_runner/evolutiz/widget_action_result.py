@@ -2,7 +2,7 @@
 import json
 from typing import Dict, Any, List
 
-from test_runner.evolutiz.widget_action import WidgetAction
+from test_runner import test_runner
 from test_runner.test_event import TestEvent
 
 
@@ -14,7 +14,7 @@ class WidgetActionResult(TestEvent):
         _json = json.loads(string)
         self.previous_state: Dict[str, Any] = _json['previousState']
         self.next_state: Dict[str, Any] = _json['nextState']
-        self.widget_action = WidgetAction.from_json(_json['widgetAction'])
+        self.widget_action = test_runner.evolutiz.widget_action.WidgetAction.from_json(_json['widgetAction'])
         self.result_type: str = _json['resultType']
 
     def __str__(self) -> str:
