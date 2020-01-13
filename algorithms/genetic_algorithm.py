@@ -45,7 +45,7 @@ class GeneticAlgorithm(Strategy):
                                 f"at {str(self.budget_manager.get_time_budget_used())}")
 
         self.population = self.population_generator.generate(self.population_size, gen=0)
-        if len(self.population) < self.population_size:
+        if self.population is None or len(self.population) < self.population_size:
             logger.log_progress("\nFailed to initialise population with proper size, exiting setup")
             return False
 
