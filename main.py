@@ -104,7 +104,7 @@ def run_one_app(strategy_with_runner_name: str) -> bool:
 
             time_budget_used = budget_manager.get_time_budget_used()
             if time_budget_used is not None:
-            logger.log_progress(f"\nTime budget used: {time_budget_used:.2f} seconds\n")
+                logger.log_progress(f"\nTime budget used: {time_budget_used:.2f} seconds\n")
 
             evaluations_budget_used = budget_manager.get_evaluations_budget_used()
             if evaluations_budget_used is not None:
