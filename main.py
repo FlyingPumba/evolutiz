@@ -25,7 +25,7 @@ from algorithms.standard import Standard
 from algorithms.steady_state import SteadyState
 from algorithms.strategy import Strategy
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
-from coverage.emma_coverage import EmmaCoverage
+from coverage.emma.emma_coverage import EmmaCoverage
 from dependency_injection.feature_broker import features
 from devices import adb
 from devices.avd_manager import AvdManager

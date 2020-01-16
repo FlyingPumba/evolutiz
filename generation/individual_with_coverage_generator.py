@@ -6,7 +6,7 @@ import numpy
 from deap import creator
 
 import settings
-from coverage.emma_coverage import EmmaCoverage
+from coverage.emma.emma_coverage import EmmaCoverage
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
