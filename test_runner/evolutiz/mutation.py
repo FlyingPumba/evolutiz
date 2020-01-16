@@ -49,7 +49,9 @@ class EvolutizMutation(object):
 
         # re-execute said actions
         for widget_action_result in mutated_test_case:
-            widget_action_result.widget_action.execute(device, self.evolutiz_connector)
+            success = widget_action_result.widget_action.execute(device, self.evolutiz_connector)
+            if not success:
+                raise Exception("Unable to re-execute test case in mutation operator")
 
         # from there onwards, execute random actions until we've reached max number of events or we have left the app
         while len(mutated_test_case) < settings.SEQUENCE_LENGTH_MAX:
