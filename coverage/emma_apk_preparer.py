@@ -1,15 +1,15 @@
 import time
 
 from application.apk_analyser import ApkAnalyser
-from coverage.app_instrumentator import AppInstrumentator
+from coverage.emma_app_instrumentator import EmmaAppInstrumentator
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
 
 
-class ApkPreparer(object):
+class EmmaApkPreparer(object):
     def __init__(self) -> None:
-        self.app_instrumentator = AppInstrumentator()
+        self.app_instrumentator = EmmaAppInstrumentator()
         self.apk_analyser = ApkAnalyser()
 
     def prepare(self) -> None:

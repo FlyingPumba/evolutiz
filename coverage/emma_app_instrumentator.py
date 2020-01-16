@@ -13,7 +13,7 @@ from util import logger
 from util.command import run_cmd
 
 
-class AppInstrumentator(object):
+class EmmaAppInstrumentator(object):
 
     def instrument(self) -> None:
         self.app_path: str = RequiredFeature('app_path').request()
