@@ -6,7 +6,7 @@ import numpy
 from deap import creator
 
 import settings
-from coverage.emma.emma_coverage import EmmaCoverage
+from coverage.emma.emma_coverage_fetcher import EmmaCoverageFetcher
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
@@ -16,10 +16,10 @@ from test_runner.test_event import TestCase, TestSuite
 from test_runner.test_runner import TestRunner
 
 
-class IndividualWithCoverageGenerator(IndividualGenerator, EmmaCoverage):
+class IndividualWithCoverageFetcherGenerator(IndividualGenerator, EmmaCoverageFetcher):
 
     def __init__(self) -> None:
-        super(IndividualWithCoverageGenerator, self).__init__()
+        super(IndividualWithCoverageFetcherGenerator, self).__init__()
 
     def gen_individual(self, device: Device, individual_index: int, generation: int) -> Any:
         start_time = time.time()

@@ -7,13 +7,22 @@ from lxml import etree
 from lxml.etree import _ElementUnicodeResult
 
 import settings
+from coverage.app_instrumentator import AppInstrumentator
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
+from devices import adb
+from devices.device import Device
 from util import logger
 from util.command import run_cmd
 
 
-class EmmaAppInstrumentator(object):
+class EmmaAppInstrumentator(AppInstrumentator):
+
+    def instrument_device(self, device: Device):
+        instrumentation_cmd = f"am instrument {package_name}/{package_name}.EmmaInstrument.EmmaInstrumentation"
+        output, errors, result_code = adb.shell_command(device, instrumentation_cmd)
+        if result_code != 0:
+            raise Exception(f"Unable to instrument {package_name}")
 
     def instrument(self) -> None:
         self.app_path: str = RequiredFeature('app_path').request()

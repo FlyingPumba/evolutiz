@@ -1,8 +1,8 @@
 import pickle
 import traceback
 
-from coverage.emma_apk_preparer import EmmaApkPreparer
 from concurrency.mapper_on_devices import MapperOnDevices
+from coverage.apk_preparer import ApkPreparer
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices.device_setup import DeviceSetupThread
@@ -26,7 +26,7 @@ class Evolutiz(object):
         self.test_runner.register_mutation_operator(self.toolbox)
         self.test_suite_evaluator.register_selection_operator(self.toolbox)
 
-        self.apk_preparer = EmmaApkPreparer()
+        self.apk_preparer = ApkPreparer()
         features.provide('apk_preparer', self.apk_preparer)
 
         self.history = RequiredFeature('history').request()

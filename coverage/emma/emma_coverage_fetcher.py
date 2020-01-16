@@ -6,19 +6,24 @@ from bs4 import UnicodeDammit
 from lxml import html
 
 import settings
+from coverage.coverage_fetcher import CoverageFetcher, CoverageResult
+from coverage.emma.emma_app_instrumentator import EmmaAppInstrumentator
 from crashes import crash_handler
+from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
 from util import logger
 from util.command import run_cmd
 
-EmmaCoverageResult = Tuple[int, Set[str], Dict[str, bool]]
-
-class EmmaCoverage(object):
+class EmmaCoverageFetcher(CoverageFetcher):
 
     def __init__(self) -> None:
+        super().__init__()
         self.coverage_ec_device_backup_path = "/mnt/sdcard/coverage.ec"
+
+    def register_app_instrumentator(self):
+        features.provide('app_instrumentator', EmmaAppInstrumentator)
 
     def get_suite_coverage(
             self,
@@ -26,7 +31,7 @@ class EmmaCoverage(object):
             device: Device,
             generation: int,
             individual_index: int
-    ) -> EmmaCoverageResult:
+    ) -> CoverageResult:
 
         self.verbose_level = RequiredFeature('verbose_level').request()
         self.package_name: str = RequiredFeature('package_name').request()

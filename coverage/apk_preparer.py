@@ -1,15 +1,15 @@
 import time
 
 from application.apk_analyser import ApkAnalyser
-from coverage.emma_app_instrumentator import EmmaAppInstrumentator
+from coverage.emma.emma_app_instrumentator import EmmaAppInstrumentator
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
 
 
-class EmmaApkPreparer(object):
+class ApkPreparer(object):
     def __init__(self) -> None:
-        self.app_instrumentator = EmmaAppInstrumentator()
+        self.app_instrumentator = RequiredFeature('app_instrumentator').request()
         self.apk_analyser = ApkAnalyser()
 
     def prepare(self) -> None:
@@ -29,13 +29,9 @@ class EmmaApkPreparer(object):
                 adb.uninstall(device, package_name)
                 adb.install(device, package_name, apk_path)
 
-                instrumentation_cmd = f"am instrument {package_name}/{package_name}.EmmaInstrument.EmmaInstrumentation"
-                output, errors, result_code = adb.shell_command(device, instrumentation_cmd)
-                if result_code != 0:
-                    raise Exception(f"Unable to instrument {package_name}")
-
-                successful = True
-                break
+                successful = self.app_instrumentator.instrument_device(device)
+                if successful:
+                    break
             except Exception as e:
                 print(e)
                 time.sleep(5)

@@ -25,7 +25,9 @@ from algorithms.standard import Standard
 from algorithms.steady_state import SteadyState
 from algorithms.strategy import Strategy
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
-from coverage.emma.emma_coverage import EmmaCoverage
+from coverage.coverage_fetcher import CoverageFetcher
+from coverage.emma.emma_coverage_fetcher import EmmaCoverageFetcher
+from coverage.jacoco.jacoco_coverage_fetcher import JacocoCoverageFetcher
 from dependency_injection.feature_broker import features
 from devices import adb
 from devices.avd_manager import AvdManager
@@ -35,7 +37,7 @@ from evaluation.single_objective import SingleObjectiveTestSuiteEvaluator
 from evaluation.test_suite_evaluator import TestSuiteEvaluator
 from generation.individual import Individual
 from generation.individual_generator import IndividualGenerator
-from generation.individual_with_coverage_generator import IndividualWithCoverageGenerator
+from generation.individual_with_coverage_generator import IndividualWithCoverageFetcherGenerator
 from generation.individual_without_coverage_generator import IndividualWithoutCoverageGenerator
 from generation.population_generator import PopulationGenerator
 from postprocess.evaluate_scripts import EvaluateScripts
@@ -62,6 +64,7 @@ possible_strategies: Dict[str, Type[Strategy]]
 possible_test_suite_evaluators: Dict[str, Type[TestSuiteEvaluator]]
 possible_individual_generators: Dict[str, Type[IndividualGenerator]]
 possible_test_runners: Dict[str, TestRunner]
+possible_coverage_fetchers: Dict[str, CoverageFetcher]
 
 def run_one_app(strategy_with_runner_name: str) -> bool:
     app_path = RequiredFeature('app_path').request()
@@ -188,7 +191,7 @@ def run(strategy_name: str, app_paths: List[str]) -> None:
         features.provide('app_path', app_paths[i])
 
         # TODO: the coverage_fetcher should depend on whether we are processing a closed source or open source app
-        features.provide('coverage_fetcher', EmmaCoverage)
+        features.provide('coverage_fetcher', EmmaCoverageFetcher)
 
         success = run_one_app(strategy_name)
         if not success:
@@ -384,7 +387,7 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
     # individual generator related arguments
     possible_individual_generators = {
         "default": IndividualWithoutCoverageGenerator,
-        "with-coverage": IndividualWithCoverageGenerator
+        "with-coverage": IndividualWithCoverageFetcherGenerator
     }
     parser.add_argument('-ig', '--individual-generator', dest='individual_generator',
                         choices=possible_individual_generators.keys(), help='Individual generator to be used')
@@ -397,6 +400,14 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
     }
     parser.add_argument('-t', '--test-runner', dest='test_runner',
                         choices=possible_test_runners.keys(), help='Test runner to be used')
+
+    # coverage fetchers related arguments
+    possible_coverage_fetchers = {
+        "emma": EmmaCoverageFetcher,
+        "jacoco": JacocoCoverageFetcher,
+    }
+    parser.add_argument('-c', '--coverage', dest='coverage',
+                        choices=possible_coverage_fetchers.keys(), help='Coverage fetcher to be used')
 
     parser.add_argument('--seed', type=int, dest='seed',
                         help='Choose the random seed to be used in the Evolutiz runner. This seed doesn\'t affect the '
@@ -440,6 +451,7 @@ def init_arguments_defaults() -> None:
         "evaluator": "multi-objective",
         "individual_generator": "default",
         "test_runner": "motifcore",
+        "coverage": "emma",
         "seed": None,
         'evaluate_scripts_folder_path': None,
         'evaluate_scripts_repetition_number': None,
@@ -523,12 +535,21 @@ def provide_features() -> None:
     features.provide('strategy', possible_strategies[args.strategy])
     features.provide('test_suite_evaluator', possible_test_suite_evaluators[args.evaluator])
 
+    # define test runner
     test_runner = possible_test_runners[args.test_runner]
     features.provide('test_runner', test_runner)
     test_runner.register_minimum_api()
 
+    # define coverage fetcher app instrumentator
+    coverage_fetcher = possible_coverage_fetchers[args.coverage]
+    features.provide('coverage_fetcher', coverage_fetcher)
+    coverage_fetcher.register_app_instrumentator()
+
+    # define individual and population generators
     features.provide('individual_generator', possible_individual_generators[args.individual_generator])
     features.provide('population_generator', PopulationGenerator)
+
+    # define extras
     features.provide('verbose_level', args.verbose)
     features.provide('write_logbook', args.write_logbook)
     features.provide('write_history', args.write_history)
