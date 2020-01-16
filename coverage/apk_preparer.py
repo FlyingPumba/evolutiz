@@ -1,7 +1,7 @@
 import time
 
 from application.apk_analyser import ApkAnalyser
-from application.app_instrumentator import AppInstrumentator
+from coverage.app_instrumentator import AppInstrumentator
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device

@@ -1,7 +1,7 @@
 import pickle
 import traceback
 
-from application.apk_preparer import ApkPreparer
+from coverage.apk_preparer import ApkPreparer
 from concurrency.mapper_on_devices import MapperOnDevices
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
