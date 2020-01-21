@@ -122,7 +122,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         return tree.getroot().attrib["package"]
 
     def get_manifest_path(self, root_path: str) -> str:
-        output, errors, result_code = run_cmd(f"find {self.app_path} -type f -name AndroidManifest.xml | grep -v build")
+        output, errors, result_code = run_cmd(f"find {root_path} -type f -name AndroidManifest.xml | grep -v build")
         files = list(filter(lambda p: p != "", output.split("\n")))
         if len(files) != 1:
             raise Exception("Unable to find AndroidManifest.xml file for instrumentation")
