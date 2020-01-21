@@ -77,12 +77,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         package_name = self.get_package_name(manifest_path)
 
         # copy emma source
-        source_root: str = f"{instrumented_source_path}/src/{'/'.join(package_name.split('.'))}/"
-        if not os.path.exists(source_root):
-            #  TODO: maybe we can do a better search ?
-            raise Exception(f"Unable to find src folder of app {self.app_path} when trying to pre-instrument. "
-                            f"This folder should be in path: {source_root}")
-
+        source_root = self.get_source_root(manifest_path, package_name)
         os.system(f"cp -r {self.emma_instrument_path} {source_root}")
 
         # modify emma source
@@ -111,6 +106,50 @@ class EmmaAppInstrumentator(AppInstrumentator):
                   f"--target {settings.ANDROID_TARGET} --subprojects{logger.redirect_string()}")
 
         return instrumented_source_path, package_name
+
+    def get_source_root(self, manfiest_path, package_name) -> str:
+        """
+        Finds the root of the source code. In other words, if package name is a.b.c, returns the path to "c" folder,
+        which contains the first source files.
+
+        There are two possibilities here.
+        - Old layout: there's a "src" folder alongside the AndroidManifest.xml file
+        - New layout: there's a "java" folder alongside the AndroidManifest.xml file
+        In the new layout, this folder might be missing (i.e., in case where the application uses only kotlin).
+        In that case, it's okey to create such folder with the appropiate structure.
+
+        :param manfiest_path:
+        :param instrumented_source_path:
+        :param package_name:
+        :return:
+        """
+        manifest_folder = os.path.dirname(manfiest_path)
+        source_root = ""
+
+        if os.path.exists(f"{manifest_folder}/src"):
+            # old layout case
+            source_root = f"{manifest_folder}/src/{'/'.join(package_name.split('.'))}/"
+            if not os.path.exists(source_root):
+                raise Exception(f"Unable to find source folder of app {package_name} in manifest folder {manifest_folder}"
+                                f" when trying to pre-instrument. "
+                                f"This folder should be in path: {source_root}")
+        elif os.path.exists(f"{manifest_folder}/java"):
+            # new layout case
+            source_root = f"{manifest_folder}/java/{'/'.join(package_name.split('.'))}/"
+            if not os.path.exists(source_root):
+                raise Exception(f"Unable to find source folder of app {package_name} in manifest folder {manifest_folder}"
+                                f" when trying to pre-instrument. "
+                                f"This folder should be in path: {source_root}")
+        elif os.path.exists(f"{manifest_folder}/kotlin"):
+            # new layout case, but app uses only kotlin
+            # create java structure
+            source_root = f"{manifest_folder}/java/{'/'.join(package_name.split('.'))}/"
+            os.system(f"mkdir -p {source_root}")
+        else:
+            raise Exception(f"Unable to find source folder of app {package_name} in manifest folder {manifest_folder}"
+                            f" when trying to pre-instrument. ")
+
+        return source_root
 
     def get_main_activity(self, manifest_path: str) -> _ElementUnicodeResult:
         tree = etree.parse(manifest_path)
