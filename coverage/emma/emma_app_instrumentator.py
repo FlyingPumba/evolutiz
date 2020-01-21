@@ -123,6 +123,9 @@ class EmmaAppInstrumentator(AppInstrumentator):
         In the new layout, this folder might be missing (i.e., in case where the application uses only kotlin).
         In that case, it's okey to create such folder with the appropiate structure.
 
+        To make things even more fun, the folder estructure of package a.b.c can either be: 3 nested folders "a/b/c" or
+        a single folder named "a.b.c".
+
         :param manifest_path:
         :param instrumented_source_path:
         :param package_name:
@@ -134,17 +137,25 @@ class EmmaAppInstrumentator(AppInstrumentator):
         if os.path.exists(f"{manifest_folder}/src"):
             # old layout case
             source_root = f"{manifest_folder}/src/{'/'.join(package_name.split('.'))}/"
+            source_root_variant = f"{manifest_folder}/src/{package_name}/"
             if not os.path.exists(source_root):
-                raise Exception(f"Unable to find source folder of app {package_name} in manifest folder {manifest_folder}"
-                                f" when trying to pre-instrument. "
-                                f"This folder should be in path: {source_root}")
+                if os.path.exists(source_root_variant):
+                    source_root = source_root_variant
+                else:
+                    raise Exception(f"Unable to find source folder of app {package_name} in manifest folder {manifest_folder}"
+                                    f" when trying to pre-instrument. "
+                                    f"This folder should be in path: {source_root} or {source_root_variant}")
         elif os.path.exists(f"{manifest_folder}/java"):
             # new layout case
             source_root = f"{manifest_folder}/java/{'/'.join(package_name.split('.'))}/"
+            source_root_variant = f"{manifest_folder}/java/{package_name}/"
             if not os.path.exists(source_root):
-                raise Exception(f"Unable to find source folder of app {package_name} in manifest folder {manifest_folder}"
-                                f" when trying to pre-instrument. "
-                                f"This folder should be in path: {source_root}")
+                if os.path.exists(source_root_variant):
+                    source_root = source_root_variant
+                else:
+                    raise Exception(f"Unable to find source folder of app {package_name} in manifest folder {manifest_folder}"
+                                    f" when trying to pre-instrument. "
+                                    f"This folder should be in path: {source_root} or {source_root_variant}")
         elif os.path.exists(f"{manifest_folder}/kotlin"):
             # new layout case, but app uses only kotlin
             # create java structure
