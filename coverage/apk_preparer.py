@@ -5,6 +5,7 @@ from coverage.emma.emma_app_instrumentator import EmmaAppInstrumentator
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
+from util import logger
 
 
 class ApkPreparer(object):
@@ -33,7 +34,7 @@ class ApkPreparer(object):
                 if successful:
                     break
             except Exception as e:
-                print(e)
+                logger.log_progress(f"\nThere was an error installing apk on device: {str(e)}")
                 time.sleep(5)
 
         if not successful:

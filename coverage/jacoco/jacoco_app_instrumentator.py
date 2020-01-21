@@ -4,11 +4,16 @@ import settings
 from coverage.emma.emma_app_instrumentator import EmmaAppInstrumentator
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
+from devices.device import Device
 from util import logger
 from util.command import run_cmd
 
 
 class JacocoAppInstrumentator(EmmaAppInstrumentator):
+
+    def instrument_device(self, device: Device) -> bool:
+        # do nothing
+        return True
 
     def instrument(self) -> None:
         self.app_path: str = RequiredFeature('app_path').request()
@@ -105,7 +110,7 @@ jacoco {
             print(f"[Error] Failed to update build.gradle file {build_gradle_path}")
 
     def find_build_gradle_path(self, instrumented_app_path):
-        find_gradle_path_cmd = f"grep -l -R \"'com.android.application'\" {settings.WORKING_DIR}/{instrumented_app_path} "
+        find_gradle_path_cmd = f"grep -l -R \"'com.android.application'\" {settings.WORKING_DIR}{instrumented_app_path} "
         find_gradle_path_cmd += "| xargs -I {} grep -L \"com.google.android.support:wearable\" {}"
         find_gradle_path_cmd += "| xargs -I {} grep -L \"com.google.android.wearable:wearable\" {}"
         find_gradle_path_cmd += "| grep \"build.gradle$\""

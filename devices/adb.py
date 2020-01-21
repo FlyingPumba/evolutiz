@@ -112,12 +112,12 @@ def install(device: 'Device', package_name: str, apk_path: str) -> None:
     verbose_level = RequiredFeature('verbose_level').request()
 
     output, errors, result_code = adb_command(device, f"install {apk_path}")
-    if result_code != 0:
+    if result_code != 0 or 'INSTALL_FAILED' in output:
         error_msg = f"Unable to install apk: {apk_path} on device: {device.name}"
         if verbose_level > 0:
-            print(error_msg)
-            print(output)
-            print(errors)
+            logger.log_progress("\n" + error_msg)
+            logger.log_progress("\n" + output)
+            logger.log_progress("\n" + errors)
 
         raise Exception(error_msg)
 
