@@ -168,12 +168,13 @@ class EmmaAppInstrumentator(AppInstrumentator):
         return tree.getroot().attrib["package"]
 
     def get_manifest_path(self, root_path: str) -> str:
-        output, errors, result_code = run_cmd(f"find {root_path} -type f -name AndroidManifest.xml | grep -v build | grep -v androidTest")
-        files = list(filter(lambda p: p != "", output.split("\n")))
+        find_manifest_cmd = f"find {root_path} -type f -name AndroidManifest.xml | "  # find all manifests
+        find_manifest_cmd += "xargs -I {} grep -l \"android.intent.action.MAIN\" {} | "  # which contain a Main Activity
+        find_manifest_cmd += "xargs -I {} grep -L wearable {} | "  # and are not a wearable app
+        find_manifest_cmd += "grep -v build | grep -v androidTest"  # also, discard build and test related manifests
 
-        if len(files) > 1:
-            # heuristic to try to narrow down search in application with a several product flavors
-            files = list(filter(lambda p: 'main' in p, files))
+        output, errors, result_code = run_cmd(find_manifest_cmd)
+        files = list(filter(lambda p: p != "", output.split("\n")))
 
         if len(files) != 1:
             raise Exception("Unable to find AndroidManifest.xml file for instrumentation")
