@@ -29,7 +29,7 @@ class JacocoAppInstrumentator(EmmaAppInstrumentator):
         logger.log_progress(f"\nInstrumenting app: {os.path.basename(self.app_path)}")
 
         # copy sources and instrument application
-        instrumented_app_path, package_name = self.prepare_app_for_instrumentation
+        instrumented_app_path, package_name = self.prepare_app_for_instrumentation()
 
         self.instrument_gradle_file(instrumented_app_path)
 
