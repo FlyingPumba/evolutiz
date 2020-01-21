@@ -310,7 +310,8 @@ def check_needed_commands_available() -> None:
 
 
 def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
-    global possible_strategies, possible_test_suite_evaluators, possible_individual_generators, possible_test_runners
+    global possible_strategies, possible_test_suite_evaluators, possible_individual_generators, possible_test_runners, \
+        possible_coverage_fetchers
 
     # subjects related arguments
     parser.add_argument('--subject-path', dest='subject_path',
@@ -403,10 +404,10 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
 
     # coverage fetchers related arguments
     possible_coverage_fetchers = {
-        "emma": EmmaCoverageFetcher,
-        "jacoco": JacocoCoverageFetcher,
+        "emma": EmmaCoverageFetcher(),
+        "jacoco": JacocoCoverageFetcher(),
     }
-    parser.add_argument('-c', '--coverage', dest='coverage',
+    parser.add_argument('--coverage', dest='coverage',
                         choices=possible_coverage_fetchers.keys(), help='Coverage fetcher to be used')
 
     parser.add_argument('--seed', type=int, dest='seed',
@@ -432,6 +433,7 @@ def init_arguments_defaults() -> None:
         "subjects_path": "subjects/are-we-there-yet/",
         "instrumented_subjects_path": "instrumented-subjects/",
         "emma_instrument_path": "subjects/EmmaInstrument/",
+        "jacoco_instrument_path": "subjects/JacocoInstrument/",
         "randomize_subjects": False,
         "assume_subjects_instrumented": False,
         "limit_subjects_number": 1,
@@ -521,7 +523,7 @@ def get_fitness_values_of_individual(individual: Individual) -> Any:
 def provide_features() -> None:
     # define subjects
     features.provide('instrumented_subjects_path', args.instrumented_subjects_path)
-    features.provide('emma_instrument_path', args.emma_instrument_path)
+
     # define budget and repetitions
     features.provide('repetitions', args.repetitions)
     features.provide('repetitions_offset', args.repetitions_offset)
@@ -544,6 +546,9 @@ def provide_features() -> None:
     coverage_fetcher = possible_coverage_fetchers[args.coverage]
     features.provide('coverage_fetcher', coverage_fetcher)
     coverage_fetcher.register_app_instrumentator()
+
+    features.provide('emma_instrument_path', args.emma_instrument_path)
+    features.provide('jacoco_instrument_path', args.jacoco_instrument_path)
 
     # define individual and population generators
     features.provide('individual_generator', possible_individual_generators[args.individual_generator])
@@ -616,6 +621,7 @@ if __name__ == "__main__":
                         f"{args.strategy}, "
                         f"{args.evaluator}, "
                         f"{args.test_runner}, "
+                        f"{args.coverage}, "
                         f"emulators: {str(args.emulators_number)}, "
                         f"real devices: {str(args.real_devices_number)})")
 

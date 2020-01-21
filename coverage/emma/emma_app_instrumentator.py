@@ -68,8 +68,11 @@ class EmmaAppInstrumentator(AppInstrumentator):
         os.system(f"mkdir -p {self.instrumented_subjects_path}")
         os.system(f"cp -r {self.app_path} {instrumented_source_path}")
 
+        # get AndroidManifest path
+        manifest_path = self.get_manifest_path(instrumented_source_path)
+
         # get package name
-        package_name = self.get_package_name(instrumented_source_path)
+        package_name = self.get_package_name(manifest_path)
 
         # copy emma source
         source_root: str = f"{instrumented_source_path}/src/{'/'.join(package_name.split('.'))}/"
@@ -97,7 +100,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         self.alter_InstrumentedActivity(f"{emma_instrument_dest_path}/InstrumentedActivity.java", main_activity)
 
         # update AndroidManifest.xml
-        self.alter_AndroidManifest(instrumented_source_path + "/AndroidManifest.xml", package_name)
+        self.alter_AndroidManifest(manifest_path, package_name)
 
         # update project
         os.chdir(instrumented_source_path)
@@ -107,21 +110,23 @@ class EmmaAppInstrumentator(AppInstrumentator):
 
         return instrumented_source_path, package_name
 
-    def get_main_activity(self, root_path: str) -> _ElementUnicodeResult:
-        manifest = f'{root_path}AndroidManifest.xml'
-
-        tree = etree.parse(manifest)
+    def get_main_activity(self, manifest_path: str) -> _ElementUnicodeResult:
+        tree = etree.parse(manifest_path)
         root = tree.getroot()
         namespace = dict(android='http://schemas.android.com/apk/res/android')
         return root.xpath(".//intent-filter/action[@android:name='android.intent.action.MAIN']/../../@android:name",
                           namespaces=namespace)[0]
 
-    def get_package_name(self, root_path: str) -> str:
-        manifest = root_path + "/AndroidManifest.xml"
-
-        tree = ET.ElementTree(file=manifest)
-
+    def get_package_name(self, manifest_path: str) -> str:
+        tree = ET.ElementTree(file=manifest_path)
         return tree.getroot().attrib["package"]
+
+    def get_manifest_path(self, root_path: str) -> str:
+        output, errors, result_code = run_cmd(f"find {self.app_path} -type f -name AndroidManifest.xml | grep -v build")
+        files = list(filter(lambda p: p != "", output.split("\n")))
+        if len(files) != 1:
+            raise Exception("Unable to find AndroidManifest.xml file for instrumentation")
+        return files[0]
 
     def alter_AndroidManifest(self, path: str, package_name: str) -> None:
         is_mod = False

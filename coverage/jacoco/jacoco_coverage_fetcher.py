@@ -1,18 +1,18 @@
 from typing import Dict, Set, Tuple, List
 
 from coverage.coverage_fetcher import CoverageResult, CoverageFetcher
+from coverage.jacoco.jacoco_app_instrumentator import JacocoAppInstrumentator
+from dependency_injection.feature_broker import features
 from devices.device import Device
 
 class JacocoCoverageFetcher(CoverageFetcher):
 
     def __init__(self) -> None:
+        super().__init__()
         self.coverage_ec_device_backup_path = "/mnt/sdcard/coverage.ec"
 
     def register_app_instrumentator(self):
-        raise NotImplementedError
-
-    def register_apk_preparer(self):
-        raise NotImplementedError
+        features.provide('app_instrumentator', JacocoAppInstrumentator)
 
     def get_suite_coverage(
             self,
