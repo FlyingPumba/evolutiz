@@ -90,7 +90,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
                 self.alter_emma_file(f"{emma_instrument_dest_path}/{target}", package_name)
 
         # get & alter based on main activity based on "android.intent.action.MAIN"
-        main_activity = self.get_main_activity(f"{instrumented_source_path}/")
+        main_activity = self.get_main_activity(manifest_path)
         if main_activity.startswith("."):
             main_activity = package_name + main_activity
         elif not main_activity.startswith(package_name):
