@@ -18,12 +18,13 @@ from util.command import run_cmd
 
 class EmmaAppInstrumentator(AppInstrumentator):
 
-    def instrument_device(self, device: Device):
+    def instrument_device(self, device: Device) -> bool:
         package_name = RequiredFeature('package_name').request()
         instrumentation_cmd = f"am instrument {package_name}/{package_name}.EmmaInstrument.EmmaInstrumentation"
         output, errors, result_code = adb.shell_command(device, instrumentation_cmd)
         if result_code != 0:
             raise Exception(f"Unable to instrument {package_name}")
+        return True
 
     def instrument(self) -> None:
         self.app_path: str = RequiredFeature('app_path').request()

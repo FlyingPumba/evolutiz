@@ -3,7 +3,7 @@ from devices.device import Device
 
 class AppInstrumentator(object):
 
-    def instrument_device(self, device: Device):
+    def instrument_device(self, device: Device) -> bool:
         """
         Prepares the instrumentation on device.
 
