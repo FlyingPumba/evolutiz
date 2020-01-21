@@ -1,7 +1,6 @@
 import time
 
 from application.apk_analyser import ApkAnalyser
-from coverage.emma.emma_app_instrumentator import EmmaAppInstrumentator
 from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
@@ -18,7 +17,7 @@ class ApkPreparer(object):
         self.apk_analyser.analyse()
 
     def install_on_device(self, device: Device) -> None:
-        package_name: str = RequiredFeature('package_name').request()
+        package_name: str = RequiredFeature('compiled_package_name').request()
         apk_path: str = RequiredFeature('apk_path').request()
 
         successful = False

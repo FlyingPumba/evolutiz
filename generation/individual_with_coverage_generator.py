@@ -45,7 +45,7 @@ class IndividualWithCoverageFetcherGenerator(IndividualGenerator, EmmaCoverageFe
         return individual
 
     def get_suite_with_fitness(self, device: Device, generation: int, individual_index: int) -> Tuple[TestSuite, Tuple[float, float, int]]:
-        self.package_name: str = RequiredFeature('package_name').request()
+        self.package_name: str = RequiredFeature('compiled_package_name').request()
         self.result_dir: str = RequiredFeature('result_dir').request()
 
         test_suite = []

@@ -1,11 +1,15 @@
-from typing import Dict, Set, Tuple, List
+from typing import Dict, Set
 
-from coverage.coverage_fetcher import CoverageResult, CoverageFetcher
+from coverage.emma.emma_coverage_fetcher import EmmaCoverageFetcher
 from coverage.jacoco.jacoco_app_instrumentator import JacocoAppInstrumentator
 from dependency_injection.feature_broker import features
+from dependency_injection.required_feature import RequiredFeature
+from devices import adb
 from devices.device import Device
+from util import logger
 
-class JacocoCoverageFetcher(CoverageFetcher):
+
+class JacocoCoverageFetcher(EmmaCoverageFetcher):
 
     def __init__(self) -> None:
         super().__init__()
@@ -13,24 +17,6 @@ class JacocoCoverageFetcher(CoverageFetcher):
 
     def register_app_instrumentator(self):
         features.provide('app_instrumentator', JacocoAppInstrumentator)
-
-    def get_suite_coverage(
-            self,
-            scripts: List[str],
-            device: Device,
-            generation: int,
-            individual_index: int
-    ) -> CoverageResult:
-        """
-        Runs a test suite and returns its coverage.
-
-        :param scripts:
-        :param device:
-        :param generation:
-        :param individual_index:
-        :return:
-        """
-        raise NotImplementedError
 
     def generate_test_coverage(self,
                                device: Device,
@@ -53,7 +39,23 @@ class JacocoCoverageFetcher(CoverageFetcher):
         :param scripts_crash_status:
         :return:
         """
-        raise NotImplementedError
+
+        # clear app's data and state
+        output, errors, result_code = adb.shell_command(device, f"pm clear {self.package_name}")
+        self.output += output
+        self.errors += errors
+        if result_code != 0:
+            adb.log_evaluation_result(device, self.result_dir, script_path, False)
+            if self.verbose_level > 0:
+                logger.log_progress(f"\n{self.output}\n{self.errors}")
+            raise Exception(f"Unable to clear package for script_path {script_path} in device: {device.name}")
+
+        script_name = script_path.split("/")[-1]
+        test_runner = RequiredFeature('test_runner').request()
+        test_runner.run(device, self.package_name, script_name)
+
+        self.dump_script_coverage(device, script_path, generation, individual_index, test_case_index, unique_crashes,
+                                  scripts_crash_status)
 
     def dump_script_coverage(self,
                              device: Device,

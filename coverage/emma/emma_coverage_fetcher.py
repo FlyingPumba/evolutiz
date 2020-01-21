@@ -34,7 +34,7 @@ class EmmaCoverageFetcher(CoverageFetcher):
     ) -> CoverageResult:
 
         self.verbose_level = RequiredFeature('verbose_level').request()
-        self.package_name: str = RequiredFeature('package_name').request()
+        self.package_name: str = RequiredFeature('compiled_package_name').request()
         self.result_dir: str = RequiredFeature('result_dir').request()
 
         unique_crashes: Set[str] = set()

@@ -46,7 +46,7 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
         return test_suite
 
     def get_sequence(self, device: Device, generation: int, individual_index: int, test_case_index: int) -> TestCase:
-        package_name: str = RequiredFeature('package_name').request()
+        package_name: str = RequiredFeature('compiled_package_name').request()
         test_runner: TestRunner = RequiredFeature('test_runner').request()
 
         # clear data before generating new test case

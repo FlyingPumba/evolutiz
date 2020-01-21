@@ -36,7 +36,10 @@ class JacocoAppInstrumentator(EmmaAppInstrumentator):
         # copy sources and instrument application
         instrumented_app_path, package_name = self.prepare_app_for_instrumentation()
 
-        self.instrument_gradle_file(instrumented_app_path)
+        features.provide('package_name', package_name)
+        features.provide('instrumented_app_path', instrumented_app_path)
+
+        self.instrument_gradle_file(instrumented_app_path, package_name)
 
         result_code = os.system(f"./gradlew assembleDebug 2>&1 >{self.result_dir}/build.log")
         if result_code != 0:
@@ -44,10 +47,7 @@ class JacocoAppInstrumentator(EmmaAppInstrumentator):
 
         os.chdir(settings.WORKING_DIR)
 
-        features.provide('package_name', package_name)
-        features.provide('instrumented_app_path', instrumented_app_path)
-
-    def instrument_gradle_file(self, instrumented_app_path):
+    def instrument_gradle_file(self, instrumented_app_path, package_name):
         build_gradle_path = self.find_build_gradle_path(instrumented_app_path)
 
         # check which changes need to be made to the build.gradle file
@@ -61,14 +61,21 @@ class JacocoAppInstrumentator(EmmaAppInstrumentator):
         if output.strip() == "":
             enable_test_coverage = True
 
-        self.modify_gradle_file_if_needed(build_gradle_path, add_jacoco_plugin, enable_test_coverage)
+        self.modify_gradle_file_if_needed(build_gradle_path, package_name, add_jacoco_plugin, enable_test_coverage)
 
-    def modify_gradle_file_if_needed(self, build_gradle_path, add_jacoco_plugin, enable_test_coverage) -> None:
-        if not add_jacoco_plugin and not enable_test_coverage:
-            # nothing to do here
-            return
+    def modify_gradle_file_if_needed(self, build_gradle_path, package_name, add_jacoco_plugin, enable_test_coverage) -> None:
+        """
+        This method takes care of adding jacoco plugin and enabling test coverage to the build.gradle file if required.
+        It also parses the "debug" build type config, in search of applicationIdSuffix properties that might change the
+        package name once installed in the emulator.
 
+        :param build_gradle_path:
+        :param add_jacoco_plugin:
+        :param enable_test_coverage:
+        :return:
+        """
         is_mod = False
+        suffix_found = False
 
         content = ""
         in_stream = open(build_gradle_path)
@@ -100,13 +107,23 @@ jacoco {
             else:
                 content += line
 
+                if line.find("applicationIdSuffix = \"") != -1:
+                    suffix: str = line.split("applicationIdSuffix = \"")[1]
+                    suffix = suffix.strip("\"\n")
+                    suffix_found = True
+                    features.provide('compiled_package_name', f"{package_name}{suffix}")
+
         in_stream.close()
         os.remove(build_gradle_path)
         new_file = open(build_gradle_path, "w")
         new_file.write(content)
         new_file.close()
 
-        if not is_mod:
+        if not suffix_found:
+            # assume same compiled package name as the one declard in AndroidManifest.xml file
+            features.provide('compiled_package_name', package_name)
+
+        if not is_mod and (add_jacoco_plugin or enable_test_coverage):
             print(f"[Error] Failed to update build.gradle file {build_gradle_path}")
 
     def find_build_gradle_path(self, instrumented_app_path):

@@ -15,7 +15,7 @@ class WidgetAction(object):
         self.properties = properties
 
     def execute(self, device: Device, evolutiz_connector: EvolutizConnector) -> bool:
-        package_name = RequiredFeature('package_name').request()
+        package_name = RequiredFeature('compiled_package_name').request()
         result = evolutiz_connector.send_command(device, package_name, f"performview id {self.id()} {self.action_type()}")
         return result.startswith('OK')
 
@@ -27,7 +27,7 @@ class WidgetAction(object):
 
     @classmethod
     def random(cls, device: Device, evolutiz_connector: EvolutizConnector) -> WidgetActionResult:
-        package_name = RequiredFeature('package_name').request()
+        package_name = RequiredFeature('compiled_package_name').request()
 
         current_activity = adb.get_current_activity(device)
         if 'com.google.android' in current_activity:

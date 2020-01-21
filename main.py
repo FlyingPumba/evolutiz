@@ -190,9 +190,6 @@ def run(strategy_name: str, app_paths: List[str]) -> None:
     for i in range(0, len(app_paths)):
         features.provide('app_path', app_paths[i])
 
-        # TODO: the coverage_fetcher should depend on whether we are processing a closed source or open source app
-        features.provide('coverage_fetcher', EmmaCoverageFetcher)
-
         success = run_one_app(strategy_name)
         if not success:
             break

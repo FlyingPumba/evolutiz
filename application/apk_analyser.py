@@ -16,7 +16,7 @@ class ApkAnalyser(object):
 
     def analyse(self) -> None:
         self.result_dir: str = RequiredFeature('result_dir').request()
-        self.package_name: str = RequiredFeature('package_name').request()
+        self.package_name: str = RequiredFeature('compiled_package_name').request()
         self.instrumented_app_path: str = RequiredFeature('instrumented_app_path').request()
 
         self.get_apk_path()

@@ -38,7 +38,7 @@ class EvolutizMutation(object):
         """Implements a cut point mutation function for test cases.
         """
         # Copy actions from original test case up until a cut point
-        package_name = RequiredFeature('package_name').request()
+        package_name = RequiredFeature('compiled_package_name').request()
 
         cut_point = random.randint(1, len(test_case)) # TODO: or is it random.randint(1, len(test_case)-1)
         mutated_test_case = test_case[:cut_point-1]

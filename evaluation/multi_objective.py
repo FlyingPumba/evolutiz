@@ -46,7 +46,6 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         assert not individual.fitness.valid
 
         coverage_fetcher = RequiredFeature('coverage_fetcher').request()
-        self.package_name = RequiredFeature('package_name').request()
 
         start_time = time.time()
         device.mark_work_start()

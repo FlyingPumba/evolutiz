@@ -19,7 +19,7 @@ from util.command import run_cmd
 class EmmaAppInstrumentator(AppInstrumentator):
 
     def instrument_device(self, device: Device) -> bool:
-        package_name = RequiredFeature('package_name').request()
+        package_name = RequiredFeature('compiled_package_name').request()
         instrumentation_cmd = f"am instrument {package_name}/{package_name}.EmmaInstrument.EmmaInstrumentation"
         output, errors, result_code = adb.shell_command(device, instrumentation_cmd)
         if result_code != 0:
@@ -61,6 +61,9 @@ class EmmaAppInstrumentator(AppInstrumentator):
 
         features.provide('package_name', package_name)
         features.provide('instrumented_app_path', instrumented_app_path)
+
+        # assume same compiled package name as the one declard in AndroidManifest.xml file
+        features.provide('compiled_package_name', package_name)
 
     def prepare_app_for_instrumentation(self) -> Tuple[str, str]:
         # copy sources to instrumented subjects folder
