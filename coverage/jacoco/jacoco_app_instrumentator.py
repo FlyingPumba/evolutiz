@@ -1,5 +1,6 @@
 import os
 
+import settings
 from coverage.emma.emma_app_instrumentator import EmmaAppInstrumentator
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
@@ -28,9 +29,15 @@ class JacocoAppInstrumentator(EmmaAppInstrumentator):
         logger.log_progress(f"\nInstrumenting app: {os.path.basename(self.app_path)}")
 
         # copy sources and instrument application
-        instrumented_app_path, package_name = self.prepare_app_for_instrumentation()
+        instrumented_app_path, package_name = self.prepare_app_for_instrumentation
 
         self.instrument_gradle_file(instrumented_app_path)
+
+        result_code = os.system(f"./gradlew assembleDebug 2>&1 >{self.result_dir}/build.log")
+        if result_code != 0:
+            raise Exception("Unable run assembleDebug")
+
+        os.chdir(settings.WORKING_DIR)
 
         features.provide('package_name', package_name)
         features.provide('instrumented_app_path', instrumented_app_path)
@@ -41,7 +48,7 @@ class JacocoAppInstrumentator(EmmaAppInstrumentator):
         # check which changes need to be made to the build.gradle file
         add_jacoco_plugin = False
         enable_test_coverage = False
-        output, errors, result_code = run_cmd(f"cat {build_gradle_path} | grep jacoco")
+        output, errors, result_code = run_cmd(f"cat {build_gradle_path} | grep \"apply plugin: 'jacoco'\"")
         if output.strip() == "":
             add_jacoco_plugin = True
 
@@ -98,13 +105,13 @@ jacoco {
             print(f"[Error] Failed to update build.gradle file {build_gradle_path}")
 
     def find_build_gradle_path(self, instrumented_app_path):
-        find_gradle_path_cmd = f"grep -l -R \"'com.android.application'\" {instrumented_app_path} "
+        find_gradle_path_cmd = f"grep -l -R \"'com.android.application'\" {settings.WORKING_DIR}/{instrumented_app_path} "
         find_gradle_path_cmd += "| xargs -I {} grep -L \"com.google.android.support:wearable\" {}"
         find_gradle_path_cmd += "| xargs -I {} grep -L \"com.google.android.wearable:wearable\" {}"
         find_gradle_path_cmd += "| grep \"build.gradle$\""
 
         output, errors, result_code = run_cmd(find_gradle_path_cmd)
-        grep_result = output.split("\n")
+        grep_result = list(filter(lambda p: p != "", output.split("\n")))
         if len(grep_result) != 1:
             raise Exception("Unable to find build.gradle file in instrumented app path")
 

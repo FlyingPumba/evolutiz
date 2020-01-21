@@ -45,7 +45,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         logger.log_progress(f"\nInstrumenting app: {os.path.basename(self.app_path)}")
 
         # copy sources and instrument application
-        instrumented_app_path, package_name = self.prepare_app_for_instrumentation()
+        instrumented_app_path, package_name = self.prepare_app_for_instrumentation
 
         # compile with emma data
         result_code = os.system(f"ant clean emma debug 2>&1 >{self.result_dir}/build.log")
@@ -99,6 +99,8 @@ class EmmaAppInstrumentator(AppInstrumentator):
         # update AndroidManifest.xml
         self.alter_AndroidManifest(manifest_path, package_name)
 
+        self.alter_MainActivity(manifest_path, main_activity)
+
         # update project
         os.chdir(instrumented_source_path)
         # TODO: replace for a command that doesn't depend on old android-sdk-linux
@@ -107,7 +109,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
 
         return instrumented_source_path, package_name
 
-    def get_source_root(self, manfiest_path, package_name) -> str:
+    def get_source_root(self, manifest_path, package_name) -> str:
         """
         Finds the root of the source code. In other words, if package name is a.b.c, returns the path to "c" folder,
         which contains the first source files.
@@ -118,12 +120,12 @@ class EmmaAppInstrumentator(AppInstrumentator):
         In the new layout, this folder might be missing (i.e., in case where the application uses only kotlin).
         In that case, it's okey to create such folder with the appropiate structure.
 
-        :param manfiest_path:
+        :param manifest_path:
         :param instrumented_source_path:
         :param package_name:
         :return:
         """
-        manifest_folder = os.path.dirname(manfiest_path)
+        manifest_folder = os.path.dirname(manifest_path)
         source_root = ""
 
         if os.path.exists(f"{manifest_folder}/src"):
@@ -241,3 +243,37 @@ class EmmaAppInstrumentator(AppInstrumentator):
                 # write new package name
                 writing_file.write(f"package {package}.EmmaInstrument;\n")
                 shutil.copyfileobj(reading_file, writing_file)
+
+    def alter_MainActivity(self, manifest_path, main_activity) -> None:
+        """
+        Take care of changing MainActivity if it is written in Kotlin and is not marked as open.
+
+        :param source_root:
+        :param main_activity:
+        :return:
+        """
+        manifest_folder = os.path.dirname(manifest_path)
+        main_acivity_name = main_activity.split(".")[-1]
+        output, errors, result_code = run_cmd(f"find {manifest_folder} -name {main_acivity_name}.*")
+
+        main_activity_path = output.strip("\n")
+        if ".kt" not in main_activity_path:
+            # nothing to do here
+            return
+
+        content = ""
+
+        in_stream = open(main_activity_path)
+
+        for index, line in enumerate(in_stream):
+            if line.find(f"class {main_acivity_name}") != -1:
+                # append "open" modifier at begging of line
+                content += f"open {line}"
+            else:
+                content += line
+
+        in_stream.close()
+        os.remove(main_activity_path)
+        new_file = open(main_activity_path, "w")
+        new_file.write(content)
+        new_file.close()

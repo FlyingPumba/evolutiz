@@ -6,6 +6,7 @@ from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
 from util import logger
+from util.command import run_cmd
 
 
 class ApkAnalyser(object):
@@ -33,9 +34,10 @@ class ApkAnalyser(object):
             self.apk_path = self.instrumented_app_path
         else:
             # now find its name
-            for file_name in os.listdir(f"{self.instrumented_app_path}/bin"):
-                if file_name.endswith("-debug.apk"):
-                    self.apk_path = f"{self.instrumented_app_path}/bin/{file_name}"
+            output, errors, result_code = run_cmd(f"find {self.instrumented_app_path} -name *-debug.apk")
+            for file_path in output.split("\n"):
+                if file_path != "":
+                    self.apk_path = file_path
 
         features.provide('apk_path', self.apk_path)
         assert self.apk_path is not None
