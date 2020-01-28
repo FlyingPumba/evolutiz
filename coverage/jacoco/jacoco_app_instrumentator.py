@@ -76,11 +76,32 @@ class JacocoAppInstrumentator(EmmaAppInstrumentator):
         """
         is_mod = False
         suffix_found = False
+        jacoco_one_line_config_added = False
 
         content = ""
         in_stream = open(build_gradle_path)
         for index, line in enumerate(in_stream):
-            if line.find("com.android.application") != -1 and add_jacoco_plugin:
+
+            if jacoco_one_line_config_added:
+                content += line
+
+                if line.find("}") != -1 and jacoco_one_line_config_added:
+                    # "plugins {" section is being closed, add missing jacoco configuration
+                    content += \
+                        """
+/* ADDED for instrumentation begin */
+
+jacoco {
+toolVersion = "0.8.2"
+}
+
+/* ADDED for instrumentation end */
+    """
+                    jacoco_one_line_config_added = False
+                continue
+
+
+            if line.find("apply plugin") != -1 and line.find("com.android.application") != -1 and add_jacoco_plugin:
                 content += line
                 content += \
                             """
@@ -94,6 +115,15 @@ jacoco {
 
 /* ADDED for instrumentation end */
         """
+                is_mod = True
+            elif line.find("id") != -1 and line.find("com.android.application") != -1 and add_jacoco_plugin:
+                content += line
+                content += """
+/* ADDED for instrumentation begin */
+id: 'jacoco' version = '0.8.2'
+/* ADDED for instrumentation end */
+        """
+                jacoco_one_line_config_added = True
                 is_mod = True
             elif line.find("debug {") != -1 and enable_test_coverage:
                 content += line
