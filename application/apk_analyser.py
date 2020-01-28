@@ -47,8 +47,14 @@ class ApkAnalyser(object):
                 if os.path.isfile(etg_config_path):
                     etg_config = ETGConfig(etg_config_path)
                     product_flavors = etg_config.product_flavors()
-                    for flavor in product_flavors:
-                        apk_paths = list(filter(lambda path: f"/{flavor}/" in path, apk_paths))
+                    product_flavors_combined = ''
+                    for index, flavor in enumerate(product_flavors):
+                        if index == 0:
+                            product_flavors_combined += flavor.lower()
+                        else:
+                            product_flavors_combined += flavor.capitalize()
+
+                    apk_paths = list(filter(lambda path: f"/{product_flavors_combined}/" in path, apk_paths))
                 else:
                     # TODO: provide more info about ETG config files
                     raise Exception(f"There are several APKs found inside folder {self.instrumented_app_path} after "

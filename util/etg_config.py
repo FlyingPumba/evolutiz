@@ -1,4 +1,5 @@
 from configparser import ConfigParser, DEFAULTSECT
+from typing import List
 
 
 class ETGConfig(object):
@@ -40,7 +41,7 @@ class ETGConfig(object):
         else:
             return 'debug'
 
-    def product_flavors(self):
+    def product_flavors(self) -> List[str]:
         if 'productflavors' in self.etg_config:
             return self.etg_config['productflavors'].split(',')
         else:
