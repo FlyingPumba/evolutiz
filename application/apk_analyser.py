@@ -7,6 +7,7 @@ from devices import adb
 from devices.device import Device
 from util import logger
 from util.command import run_cmd
+from util.etg_config import ETGConfig
 
 
 class ApkAnalyser(object):
@@ -34,10 +35,27 @@ class ApkAnalyser(object):
             self.apk_path = self.instrumented_app_path
         else:
             # now find its name
-            output, errors, result_code = run_cmd(f"find {self.instrumented_app_path} -name *-debug.apk")
+            output, errors, result_code = run_cmd(f"find {self.instrumented_app_path} -name *.apk | grep -v androidTest")
+            apk_paths = []
             for file_path in output.split("\n"):
                 if file_path != "":
-                    self.apk_path = file_path
+                    apk_paths.append(file_path)
+
+            if len(apk_paths) > 1:
+                # try to filter APKs based on ETG.config file (might not be present)
+                etg_config_path = f"{self.instrumented_app_path}/etg.config"
+                if os.path.isfile(etg_config_path):
+                    etg_config = ETGConfig(etg_config_path)
+                    product_flavors = etg_config.product_flavors()
+                    for flavor in product_flavors:
+                        apk_paths = list(filter(lambda path: f"/{flavor}/" in path, apk_paths))
+                else:
+                    # TODO: provide more info about ETG config files
+                    raise Exception(f"There are several APKs found inside folder {self.instrumented_app_path} after "
+                                    f"build. Evolutiz was unable to determine which one should it use. "
+                                    f"You can help it by providing an ETG config file at the root of the app's folder.")
+
+            self.apk_path = apk_paths[0]
 
         features.provide('apk_path', self.apk_path)
         assert self.apk_path is not None
