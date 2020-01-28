@@ -41,20 +41,36 @@ class ApkAnalyser(object):
                 if file_path != "":
                     apk_paths.append(file_path)
 
+            if len(apk_paths) == 0:
+                raise Exception(f"No APKs found inside folder {self.instrumented_app_path} after build.")
+
             if len(apk_paths) > 1:
                 # try to filter APKs based on ETG.config file (might not be present)
                 etg_config_path = f"{self.instrumented_app_path}/etg.config"
                 if os.path.isfile(etg_config_path):
                     etg_config = ETGConfig(etg_config_path)
-                    product_flavors = etg_config.product_flavors()
-                    product_flavors_combined = ''
-                    for index, flavor in enumerate(product_flavors):
-                        if index == 0:
-                            product_flavors_combined += flavor.lower()
-                        else:
-                            product_flavors_combined += flavor.capitalize()
 
-                    apk_paths = list(filter(lambda path: f"/{product_flavors_combined}/" in path, apk_paths))
+                    # try to filter by build type
+                    build_type = etg_config.build_type()
+                    apk_paths = list(filter(lambda path: f"/{build_type}/" in path, apk_paths))
+
+                    # try to filter by product flavors
+                    product_flavors = etg_config.product_flavors()
+                    if len(product_flavors) > 0:
+                        product_flavors_combined = ''
+                        for index, flavor in enumerate(product_flavors):
+                            if index == 0:
+                                product_flavors_combined += flavor.lower()
+                            else:
+                                product_flavors_combined += flavor.capitalize()
+
+                        apk_paths = list(filter(lambda path: f"/{product_flavors_combined}/" in path, apk_paths))
+
+                        if len(apk_paths) == 0:
+                            raise Exception(f"Evolutiz was unable to determine which APK inside folder "
+                                            f"{self.instrumented_app_path} should it use, since neither of them satisfy the "
+                                            f"combined product flavor provided: {product_flavors_combined} in the ETG config "
+                                            f"file")
                 else:
                     # TODO: provide more info about ETG config files
                     raise Exception(f"There are several APKs found inside folder {self.instrumented_app_path} after "
