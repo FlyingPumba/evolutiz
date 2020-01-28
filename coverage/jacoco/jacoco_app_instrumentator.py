@@ -120,7 +120,7 @@ jacoco {
                 content += line
                 content += """
 /* ADDED for instrumentation begin */
-id: 'jacoco' version = '0.8.2'
+id 'jacoco' version = '0.8.2'
 /* ADDED for instrumentation end */
         """
                 jacoco_one_line_config_added = True
