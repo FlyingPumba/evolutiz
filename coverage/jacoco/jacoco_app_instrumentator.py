@@ -95,7 +95,7 @@ jacoco {
 /* ADDED for instrumentation end */
         """
                 is_mod = True
-            elif line.find("debug") != -1 and enable_test_coverage:
+            elif line.find("debug {") != -1 and enable_test_coverage:
                 content += line
                 content += \
                     """
