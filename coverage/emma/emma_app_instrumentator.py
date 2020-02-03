@@ -45,7 +45,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         logger.log_progress(f"\nInstrumenting app: {os.path.basename(self.app_path)}")
 
         # copy sources and instrument application
-        instrumented_app_path, package_name = self.prepare_app_for_instrumentation
+        instrumented_app_path, package_name = self.prepare_app_for_instrumentation()
 
         # compile with emma data
         result_code = os.system(f"ant clean emma debug 2>&1 >{self.result_dir}/build.log")
