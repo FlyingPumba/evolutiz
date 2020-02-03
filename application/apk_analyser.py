@@ -35,7 +35,7 @@ class ApkAnalyser(object):
             self.apk_path = self.instrumented_app_path
         else:
             # now find its name
-            output, errors, result_code = run_cmd(f"find {self.instrumented_app_path} -name *.apk | grep -v androidTest")
+            output, errors, result_code = run_cmd(f"find {self.instrumented_app_path} -name *.apk | grep -v androidTest | grep -v unaligned")
             apk_paths = []
             for file_path in output.split("\n"):
                 if file_path != "":
