@@ -152,13 +152,34 @@ id 'jacoco'
         if output.strip() == "":
             add_debug_section = True
 
+        add_build_type_section = False
+        output, errors, result_code = run_cmd(f"cat {build_gradle_path} | grep \"buildTypes {{\"")
+        if output.strip() == "":
+            add_build_type_section = True
+
         is_mod = False
 
         content = ""
         in_stream = open(build_gradle_path)
         for index, line in enumerate(in_stream):
-            if add_debug_section:
+            if add_build_type_section:
                 if line.find("android {") != -1:
+                    content += line
+                    content += \
+                        """
+/* ADDED test coverage enabled for instrumentation begin */
+buildTypes {
+    debug {
+                testCoverageEnabled = true
+    }
+}
+/* ADDED test coverage enabled for instrumentation end */
+"""
+                    is_mod = True
+                else:
+                    content += line
+            elif add_debug_section:
+                if line.find("buildTypes {") != -1:
                     content += line
                     content += \
                         """
