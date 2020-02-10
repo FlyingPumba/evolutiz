@@ -7,6 +7,7 @@ from devices import adb
 from devices.device import Device
 from test_runner.evolutiz.evolutiz_connector import EvolutizConnector
 from test_runner.evolutiz.widget_action_result import WidgetActionResult
+from util import logger
 
 
 class WidgetAction(object):
@@ -35,10 +36,19 @@ class WidgetAction(object):
             # we are still in the HOME, and launch-app command failed
             raise Exception(f"An error ocurred launching app {package_name}")
 
-        # indicate Evolutiz test runner to perform any executable action randomly
-        # the runner should return the action performed
-        action_performed = evolutiz_connector.send_command(device, package_name,
-                                                                f"performview random-action {current_activity}")
+        action_performed = None
+        for i in range(3):
+            # indicate Evolutiz test runner to perform any executable action randomly.
+            # the runner should return the action performed
+            action_performed = evolutiz_connector.send_command(device, package_name,
+                                                                    f"performview random-action {current_activity}")
+
+            if action_performed.startswith("FAILURE"):
+                logger.log_progress(f"An error occurred when performing random action onto activity {current_activity}."
+                                    f"Retrying.")
+            else:
+                break
+
 
         if action_performed.startswith("FAILURE"):
             raise Exception(f"An error occurred when performing random action onto activity {current_activity}")
