@@ -28,8 +28,14 @@ class EvolutizConnector(object):
         # set up evolutiz runner in emulator
         adb.adb_command(device, f"forward tcp:{self.port} tcp:{self.port}")
         adb.shell_command(device, f"evolutiz -p {package_name} -c android.intent.category.LAUNCHER --port {self.port} &", discard_output=True)
-        time.sleep(1)
 
+        # wait for evolutiz runner to be ready
+        output = ""
+        while "Using EvolutizSourceNetwork" not in output:
+            output, errors, result_code = adb.adb_command(device, f"logcat -s Evolutiz -d | tail -n 1")
+            time.sleep(0.5)
+
+        # send command and collect result
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((self.host, self.port))
 
