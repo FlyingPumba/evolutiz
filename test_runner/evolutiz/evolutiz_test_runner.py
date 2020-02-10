@@ -80,7 +80,6 @@ class EvolutizTestRunner(TestRunner):
         test_case = []
 
         launch_result = self.evolutiz_connector.send_command(device, package_name, f"performview launch-app")
-        time.sleep(1)
 
         for i in range(0, evolutiz_events):
             widget_action_result = WidgetAction.random(device, self.evolutiz_connector)

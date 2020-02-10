@@ -45,7 +45,6 @@ class EvolutizMutation(object):
 
         adb.shell_command(device, f"pm clear {package_name}")
         self.evolutiz_connector.send_command(device, package_name, f"performview launch-app")
-        time.sleep(1)
 
         # re-execute said actions
         for widget_action_result in mutated_test_case:
