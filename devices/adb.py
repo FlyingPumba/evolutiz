@@ -282,13 +282,8 @@ def get_current_activity(device: 'Device') -> str:
     return res
 
 def get_current_package_name(device: 'Device') -> str:
-    if device.api_level() < 29:
-        cmd = f"{get_adb_cmd_prefix_for_device(device)} shell dumpsys window windows | grep -E 'mCurrentFocus' | cut -d '/' -f1 | sed 's/.* //g'"
-        log_adb_command(device, cmd)
-    else:
-        # Android Q needs a different command
-        cmd = f"{get_adb_cmd_prefix_for_device(device)} shell dumpsys activity recents | grep 'Recent #0' | cut -d= -f2 | sed 's| .*||' | cut -d '/' -f1"
-        log_adb_command(device, cmd)
+    cmd = f"{get_adb_cmd_prefix_for_device(device)} shell dumpsys activity recents | grep 'Recent #0' | cut -d= -f2 | sed 's| .*||' | cut -d '/' -f1"
+    log_adb_command(device, cmd)
 
     res = run_cmd(cmd)[0].strip("\n")
     return res
