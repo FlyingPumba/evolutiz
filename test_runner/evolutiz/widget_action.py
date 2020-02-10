@@ -29,8 +29,9 @@ class WidgetAction(object):
     def random(cls, device: Device, evolutiz_connector: EvolutizConnector) -> WidgetActionResult:
         package_name = RequiredFeature('compiled_package_name').request()
 
+        current_package_name = adb.get_current_package_name(device)
         current_activity = adb.get_current_activity(device)
-        if 'com.google.android' in current_activity:
+        if 'com.google.android' in current_activity or 'com.google.android' in current_package_name:
             # we are still in the HOME, and launch-app command failed
             raise Exception(f"An error ocurred launching app {package_name}")
 
