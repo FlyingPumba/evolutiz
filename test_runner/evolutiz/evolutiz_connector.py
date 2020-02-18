@@ -31,7 +31,12 @@ class EvolutizConnector(object):
 
         # wait for evolutiz runner to be ready
         output = ""
+        tries = 0
         while "Using EvolutizSourceNetwork" not in output:
+            if tries >= 6:
+                raise Exception(f"Unable to connect to Evolutiz test runner for command: {command}.")
+
+            tries += 1
             output, errors, result_code = adb.adb_command(device, f"logcat -s Evolutiz -d | tail -n 1")
             time.sleep(0.5)
 
