@@ -37,7 +37,7 @@ class WidgetAction(object):
             raise Exception(f"An error ocurred launching app {package_name}")
 
         action_performed = None
-        for i in range(3):
+        for i in range(0, 3):
             # indicate Evolutiz test runner to perform any executable action randomly.
             # the runner should return the action performed
             action_performed = evolutiz_connector.send_command(device, package_name,
