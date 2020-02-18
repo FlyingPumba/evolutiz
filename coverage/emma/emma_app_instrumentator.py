@@ -40,6 +40,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
             output, errors, result_code = run_cmd(f"aapt dump badging {self.app_path} | grep package:\\ name")
             package_name = output.split("package: name=\'")[1].split("\'")[0]
             features.provide('package_name', package_name)
+            features.provide('compiled_package_name', package_name)
             return
 
         logger.log_progress(f"\nInstrumenting app: {os.path.basename(self.app_path)}")

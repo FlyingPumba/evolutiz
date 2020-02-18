@@ -15,6 +15,7 @@ class AvdManager(object):
 
     def get_avd_name_for_emulator_port(self, port: int) -> str:
         avd_index = int((port - 5554) / 2)
+        # FIX: this is not always the case
         return f"{self.avd_series}_{str(avd_index)}"
 
     def refresh_avd_names(self) -> None:
