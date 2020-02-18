@@ -430,7 +430,6 @@ def init_arguments_defaults() -> None:
         "subjects_path": "subjects/are-we-there-yet/",
         "instrumented_subjects_path": "instrumented-subjects/",
         "emma_instrument_path": "subjects/EmmaInstrument/",
-        "jacoco_instrument_path": "subjects/JacocoInstrument/",
         "randomize_subjects": False,
         "assume_subjects_instrumented": False,
         "limit_subjects_number": 1,
@@ -545,7 +544,6 @@ def provide_features() -> None:
     coverage_fetcher.register_app_instrumentator()
 
     features.provide('emma_instrument_path', args.emma_instrument_path)
-    features.provide('jacoco_instrument_path', args.jacoco_instrument_path)
 
     # define individual and population generators
     features.provide('individual_generator', possible_individual_generators[args.individual_generator])
