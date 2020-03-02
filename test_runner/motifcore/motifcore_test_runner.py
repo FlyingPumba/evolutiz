@@ -94,8 +94,11 @@ class MotifcoreTestRunner(TestRunner):
             print(f"Test case generation finished with output:\n{output}")
 
         if "Exception" in errors:
-            device_stacktrace = errors.split("** Error: ")[1]
-            raise Exception(f"An error occurred when generating test case: {device_stacktrace}")
+            if "** Error: " in errors:
+                device_stacktrace = errors.split("** Error: ")[1]
+                raise Exception(f"An error occurred when generating test case: {device_stacktrace}")
+            else:
+                raise Exception(f"An error occurred when generating test case: {errors}")
 
         # need to manually kill motifcore when timeout
         adb.pkill(device, "motifcore")
