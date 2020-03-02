@@ -53,7 +53,7 @@ class IndividualWithoutCoverageGenerator(IndividualGenerator):
         output, errors, result_code = adb.shell_command(device, f"pm clear {package_name}",
                                                         timeout=settings.ADB_REGULAR_COMMAND_TIMEOUT, retry=2)
         if result_code != 0:
-            raise Exception(f"Failed to clear package {package_name} in device: {device.name}")
+            raise Exception(f"Failed to clear package {package_name} in device: {device.name}.\n{output}\n{errors}")
 
         script_path = self.get_path_for_test_case(generation, individual_index, test_case_index)
         test_case_content = test_runner.generate(device, package_name, script_path)
