@@ -186,10 +186,11 @@ class EmmaAppInstrumentator(AppInstrumentator):
         find_manifest_cmd += "grep -v build | grep -v androidTest"  # also, discard build and test related manifests
 
         output, errors, result_code = run_cmd(find_manifest_cmd)
-        files = list(filter(lambda p: p != "", output.split("\n")))
+        files = list(filter(lambda p: p != "" and not ("classes" in os.listdir(os.path.dirname(p)) and "/bin/" in p), output.split("\n")))
 
         if len(files) != 1:
-            raise Exception("Unable to find AndroidManifest.xml file for instrumentation")
+            raise Exception(f"Unable to find AndroidManifest.xml file for instrumentation. " +
+                            f"There seems to be several matches: {', '.join(files)}")
         return files[0]
 
     def alter_AndroidManifest(self, path: str, package_name: str) -> None:
