@@ -37,6 +37,11 @@ class EmmaAppInstrumentator(AppInstrumentator):
         if assume_subjects_instrumented:
             features.provide('instrumented_app_path', self.app_path)
 
+            # copy emma generated file
+            result_code = os.system(f"cp bin/coverage.em {self.result_dir}/{logger.redirect_string()}")
+            if result_code != 0:
+                raise Exception("Unable to copy coverage.em file")
+
             output, errors, result_code = run_cmd(f"aapt dump badging {self.app_path} | grep package:\\ name")
             package_name = output.split("package: name=\'")[1].split("\'")[0]
             features.provide('package_name', package_name)
