@@ -292,7 +292,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         in_stream = open(main_activity_path)
 
         for index, line in enumerate(in_stream):
-            if line.find(f"class {main_acivity_name}") != -1:
+            if line.find(f"class {main_acivity_name}") != -1 and line.find(f"open ") == -1:
                 # append "open" modifier at begging of line
                 content += f"open {line}"
             else:
