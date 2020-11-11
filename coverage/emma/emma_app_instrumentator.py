@@ -185,7 +185,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         return tree.getroot().attrib["package"]
 
     def get_manifest_path(self, root_path: str) -> str:
-        find_manifest_cmd = f"find {root_path} -type f -name AndroidManifest.xml | "  # find all manifests
+        find_manifest_cmd = f"find -L {root_path} -type f -name AndroidManifest.xml | "  # find all manifests
         find_manifest_cmd += "xargs -I {} grep -l \"android.intent.action.MAIN\" {} | "  # which contain a Main Activity
         find_manifest_cmd += "xargs -I {} grep -L wearable {} | "  # and are not a wearable app
         find_manifest_cmd += "grep -v build | grep -v androidTest"  # also, discard build and test related manifests
@@ -280,7 +280,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         """
         manifest_folder = os.path.dirname(manifest_path)
         main_acivity_name = main_activity.split(".")[-1]
-        output, errors, result_code = run_cmd(f"find {manifest_folder} -name {main_acivity_name}.*")
+        output, errors, result_code = run_cmd(f"find -L {manifest_folder} -name {main_acivity_name}.*")
 
         main_activity_path = output.strip("\n")
         if ".kt" not in main_activity_path:

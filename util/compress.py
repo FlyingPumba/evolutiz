@@ -12,7 +12,7 @@ def compress_results(strategy_with_runner_name: str) -> None:
 
     repetitions_dir = f"{settings.WORKING_DIR}results/{strategy_with_runner_name}/{app_name}/"
 
-    output, errors, return_code = run_cmd(f"find {repetitions_dir} -maxdepth 1 -mindepth 1 -type d")
+    output, errors, return_code = run_cmd(f"find -L {repetitions_dir} -maxdepth 1 -mindepth 1 -type d")
     repetition_dir_paths = output.split('\n')
 
     pool = mp.Pool(processes=len(repetition_dir_paths))
