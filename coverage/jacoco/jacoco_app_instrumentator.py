@@ -7,6 +7,7 @@ from dependency_injection.required_feature import RequiredFeature
 from devices.device import Device
 from util import logger
 from util.command import run_cmd
+from util.etg_config import ETGConfig
 
 
 class JacocoAppInstrumentator(EmmaAppInstrumentator):
@@ -219,10 +220,18 @@ debug {
         This method takes care of parsing the "debug" build type config, in search of applicationIdSuffix properties
         that might change the package name once installed in the emulator.
 
+        If the application has an ETG config file, it will use that instead.
+
         :param build_gradle_path:
         :param package_name:
         :return:
         """
+        etg_config_path = "etg.config"
+        if os.path.isfile(etg_config_path):
+            etg_config = ETGConfig(etg_config_path)
+            features.provide('compiled_package_name', etg_config.compiled_package_name())
+            return
+
         suffix_found = False
 
         in_stream = open(build_gradle_path)
