@@ -198,6 +198,11 @@ class EmmaAppInstrumentator(AppInstrumentator):
         return files[0]
 
     def alter_AndroidManifest(self, path: str, package_name: str) -> None:
+        output, errors, result_code = run_cmd(f"cat {path} | grep \"emma updated\"")
+        if output.strip() != "":
+            # we will assume Android Manifest was already modified
+            return
+
         is_mod = False
 
         content = ""
