@@ -77,7 +77,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         instrumented_source_path = self.instrumented_subjects_path + app_name
         os.system(f"rm -rf {instrumented_source_path}")
         os.system(f"mkdir -p {self.instrumented_subjects_path}")
-        os.system(f"cp -r {self.app_path} {instrumented_source_path}")
+        os.system(f"cp -Lr {self.app_path} {instrumented_source_path}")
 
         # get AndroidManifest path
         manifest_path = self.get_manifest_path(instrumented_source_path)
