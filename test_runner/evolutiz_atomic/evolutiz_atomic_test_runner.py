@@ -26,6 +26,7 @@ class EvolutizAtomicTestRunner(TestRunner):
         super().__init__()
         self.use_motifgene = use_motifgene
         self.evolutiz_script_path_in_devices = "/mnt/sdcard/evolutiz.script"
+        self.throttle = 500
         self.test_runner_installer = TestRunnerInstaller("evolutiz",
                                                          f"{settings.WORKING_DIR}test_runner/evolutiz/evolutiz",
                                                          f"{settings.WORKING_DIR}test_runner/evolutiz/evolutiz.jar")
@@ -53,10 +54,11 @@ class EvolutizAtomicTestRunner(TestRunner):
 
         string_seeding_flag = ""
 
-        if self.use_motifgene:
-            string_seeding_flag = f"--string-seeding /mnt/sdcard/{package_name}_strings.xml"
+        # if self.use_motifgene:
+        #     string_seeding_flag = f"--string-seeding /mnt/sdcard/{package_name}_strings.xml"
 
         evolutiz_cmd = f"evolutiz -p {package_name} --ignore-crashes --ignore-security-exceptions --ignore-timeouts" \
+                        f" --throttle {self.throttle}" \
                         f" --bugreport {string_seeding_flag} -f /mnt/sdcard/{script_name} 1"
 
         output, errors, result_code = adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
@@ -88,7 +90,8 @@ class EvolutizAtomicTestRunner(TestRunner):
         #     string_seeding_flag = f"--string-seeding /mnt/sdcard/{package_name}_strings.xml"
 
         evolutiz_cmd = f"evolutiz -p {package_name} --ignore-crashes --ignore-security-exceptions --ignore-timeouts" \
-                        f" --bugreport {string_seeding_flag} --throttle 500 -v {str(evolutiz_events)}"
+                       f" --bugreport {string_seeding_flag} -o {self.evolutiz_script_path_in_devices}" \
+                       f" --throttle {self.throttle} -v {str(evolutiz_events)}"
 
         output, errors, result_code = adb.shell_command(device, evolutiz_cmd, timeout=settings.TEST_CASE_EVAL_TIMEOUT)
         if verbose_level > 1:
@@ -103,6 +106,8 @@ class EvolutizAtomicTestRunner(TestRunner):
 
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")
+
+        time.sleep(5)
 
         test_case: TestCase = self.retrieve_generated_test(device, destination_file_name)
 
