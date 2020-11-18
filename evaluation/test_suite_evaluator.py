@@ -15,6 +15,8 @@ class TestSuiteEvaluator(object):
 
     def dump_individual_to_files(self, individual: Individual) -> Tuple[List[str], Dict[str, int]]:
         self.result_dir = RequiredFeature('result_dir').request()
+        main_activity = RequiredFeature('main_activity').request()
+        package_name = RequiredFeature('compiled_package_name').request()
 
         script_path: List[str] = []
         suite_lengths: Dict[str, int] = {}
@@ -27,6 +29,7 @@ class TestSuiteEvaluator(object):
 
             with open(filename, "w") as script_file:
                 script_file.write(settings.SCRIPT_HEADER)
+                script_file.write(f"LaunchActivity({package_name},{main_activity})\n")
                 script_file.write("\n".join(map(lambda t: str(t), test_case)))
                 script_file.write("\n")
 
