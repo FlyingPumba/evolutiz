@@ -1,5 +1,7 @@
+import os
 from typing import Dict, Set
 
+import settings
 from coverage.emma.emma_coverage_fetcher import EmmaCoverageFetcher
 from coverage.jacoco.jacoco_app_instrumentator import JacocoAppInstrumentator
 from dependency_injection.feature_broker import features
@@ -7,6 +9,7 @@ from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
 from util import logger
+from util.command import run_cmd
 
 
 class JacocoCoverageFetcher(EmmaCoverageFetcher):
@@ -57,29 +60,6 @@ class JacocoCoverageFetcher(EmmaCoverageFetcher):
         self.dump_script_coverage(device, script_path, generation, individual_index, test_case_index, unique_crashes,
                                   scripts_crash_status)
 
-    def dump_script_coverage(self,
-                             device: Device,
-                             script_path: str,
-                             generation: int,
-                             individual_index: int,
-                             test_case_index: int,
-                             unique_crashes: Set[str],
-                             scripts_crash_status: Dict[str, bool]
-                             ) -> None:
-        """
-        Dumps the accumulated coverage in the device to an internal file (i.e., in the sdcard).
-
-        :param device:
-        :param script_path:
-        :param generation:
-        :param individual_index:
-        :param test_case_index:
-        :param unique_crashes:
-        :param scripts_crash_status:
-        :return:
-        """
-        raise NotImplementedError
-
     def set_coverage_paths(self, device: Device, generation: int, individual_index: int) -> None:
         """
         Sets the appropiate value of the following variables for the generation and individual_index provided:
@@ -93,7 +73,13 @@ class JacocoCoverageFetcher(EmmaCoverageFetcher):
         :param individual_index:
         :return:
         """
-        raise NotImplementedError
+        application_files = f"/data/data/{self.package_name}/files"
+
+        self.coverage_ec_device_path = f"{application_files}/coverage.ec"
+        self.clean_coverage_files_in_device(device)
+
+        self.coverage_folder_local_path = self.prepare_coverage_folder(generation, individual_index)
+        self.coverage_ec_local_path = f"{self.coverage_folder_local_path}/coverage.ec"
 
     def get_coverage(self, device: Device) -> int:
         """
@@ -103,4 +89,43 @@ class JacocoCoverageFetcher(EmmaCoverageFetcher):
         :param device:
         :return:
         """
-        raise NotImplementedError
+        # pull coverage.ec file from device
+        output, errors, result_code = adb.pull(device,
+                                               self.coverage_ec_device_backup_path,
+                                               self.coverage_ec_local_path)
+        self.output += output
+        self.errors += errors
+        if result_code != 0:
+            adb.log_evaluation_result(device, self.result_dir, "pull-coverage", False)
+            if self.verbose_level > 0:
+                logger.log_progress(f"\n{self.output}\n{self.errors}")
+            raise Exception(f"Unable to pull coverage for device: {device.name}")
+
+        # process coverage.ec file
+        app_path = RequiredFeature('app_path').request()
+        emma_cmd = f"java -jar {settings.WORKING_DIR}lib/jacococli.jar " \
+                    f"report coverage.ec " \
+                    f"--sourcefiles {settings.WORKING_DIR}{app_path}/src " \
+                    f"--xml jacoco_report.xml " \
+                    f"--html jacoco_html_report"
+        # f"--classfiles %s/classes " \
+
+        # emma_cmd = f"java -cp {settings.WORKING_DIR}lib/jacococli.jar emma report -r html" \
+        #           f" -in coverage.em,coverage.ec -sp {settings.WORKING_DIR}{app_path}/src"
+        output, errors, result_code = run_cmd(emma_cmd, cwd=self.coverage_folder_local_path)
+        self.output += output
+        self.errors += errors
+        if result_code != 0:
+            adb.log_evaluation_result(device, self.result_dir, "process-coverage", False)
+            if self.verbose_level > 0:
+                logger.log_progress(f"\n{self.output}\n{self.errors}")
+            raise Exception(f"Unable to process coverage.ec file fetched from device: {device.name}")
+
+        # parse generated html to extract global line coverage
+        html_path = f"{self.coverage_folder_local_path}/coverage/index.html"
+        coverage_str = self.extract_coverage(html_path)
+
+        aux = coverage_str.split("%")
+        coverage = int(aux[0])
+
+        return coverage

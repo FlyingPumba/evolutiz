@@ -1,4 +1,5 @@
 import os
+import time
 from subprocess import TimeoutExpired
 from typing import Optional, List, Dict, TYPE_CHECKING
 
@@ -52,10 +53,14 @@ def adb_command(
             if tries >= retry or result_code == 0:
                 return output, errors, result_code
 
+            time.sleep(2)
+
         except TimeoutExpired as e:
 
             if tries >= retry:
                 return e.stdout, e.stderr, 124
+
+            time.sleep(2)
 
 
 def get_root_permissions(device: 'Device') -> None:
