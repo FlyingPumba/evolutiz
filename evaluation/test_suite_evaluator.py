@@ -27,7 +27,7 @@ class TestSuiteEvaluator(object):
 
             with open(filename, "w") as script_file:
                 script_file.write(settings.SCRIPT_HEADER)
-                script_file.write("\n".join(str(test_case)))
+                script_file.write("\n".join(map(lambda t: str(t), test_case)))
                 script_file.write("\n")
 
             script = os.path.abspath(filename)
