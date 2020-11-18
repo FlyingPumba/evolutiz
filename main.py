@@ -42,6 +42,7 @@ from generation.individual_without_coverage_generator import IndividualWithoutCo
 from generation.population_generator import PopulationGenerator
 from postprocess.evaluate_scripts import EvaluateScripts
 from test_runner.evolutiz.evolutiz_test_runner import EvolutizTestRunner
+from test_runner.evolutiz_atomic.evolutiz_atomic_test_runner import EvolutizAtomicTestRunner
 from test_runner.motifcore.motifcore_test_runner import MotifcoreTestRunner
 from test_runner.test_runner import TestRunner
 from util.budget_manager import BudgetManager
@@ -394,7 +395,9 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
     possible_test_runners = {
         "motifcore": MotifcoreTestRunner(),
         "motifcore-no-motifgenes": MotifcoreTestRunner(use_motifgene=False),
-        "evolutiz": EvolutizTestRunner()
+        "evolutiz": EvolutizTestRunner(),
+        "evolutiz-atomic": EvolutizAtomicTestRunner(),
+        "evolutiz-atomic-no-motifgenes": EvolutizAtomicTestRunner(use_motifgene=False),
     }
     parser.add_argument('-t', '--test-runner', dest='test_runner',
                         choices=possible_test_runners.keys(), help='Test runner to be used')
