@@ -220,11 +220,11 @@ class EmmaAppInstrumentator(AppInstrumentator):
                         android:label="EmmaInstrumentationActivity" 
                         android:name="{package_name}.EmmaInstrument.InstrumentedActivity"/>
                     <receiver android:name="{package_name}.EmmaInstrument.CollectCoverageReceiver">
-                    <intent-filter>
-                        <action android:name="evolutiz.emma.COLLECT_COVERAGE" />
-                    </intent-filter>
-                </receiver>
-                 <!-- emma updated -->
+                        <intent-filter>
+                            <action android:name="evolutiz.emma.COLLECT_COVERAGE" />
+                        </intent-filter>
+                    </receiver>
+                    <!-- emma updated -->
                 {line}
                 
                  <!-- emma updated -->
