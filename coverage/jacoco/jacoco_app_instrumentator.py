@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 import settings
 from coverage.emma.emma_app_instrumentator import EmmaAppInstrumentator
@@ -30,6 +31,8 @@ class JacocoAppInstrumentator(EmmaAppInstrumentator):
             output, errors, result_code = run_cmd(f"aapt dump badging {self.app_path} | grep package:\\ name")
             package_name = output.split("package: name=\'")[1].split("\'")[0]
             features.provide('package_name', package_name)
+
+            self.prepare_files_for_coverage()
             return
 
         logger.log_progress(f"\nInstrumenting app: {os.path.basename(self.app_path)}")
@@ -47,6 +50,8 @@ class JacocoAppInstrumentator(EmmaAppInstrumentator):
             raise Exception("Unable run assembleDebug")
 
         os.chdir(settings.WORKING_DIR)
+
+        self.prepare_files_for_coverage()
 
     def instrument_gradle_file(self, instrumented_app_path, package_name):
         build_gradle_path = self.find_build_gradle_path(instrumented_app_path)
@@ -263,3 +268,145 @@ debug {
             raise Exception("Unable to find build.gradle file in instrumented app path")
 
         return grep_result[0]
+
+
+    def prepare_files_for_coverage(self):
+        instrumented_app_path = RequiredFeature('instrumented_app_path').request()
+        self.jacoco_coverage_class_files_path = f"{settings.WORKING_DIR}{instrumented_app_path}/classes"
+        features.provide('jacoco_coverage_class_files_path', self.jacoco_coverage_class_files_path)
+
+        etg_config_path = f"{instrumented_app_path}/etg.config"
+        if not os.path.isfile(etg_config_path):
+            raise Exception("Unable to find ETG config for JaCoCo coverage fetcher")
+
+        etg_config = ETGConfig(etg_config_path)
+
+        package_name_path = '/'.join(etg_config.package_name().split('.'))
+
+        app_folder_path = etg_config.get_application_folder_path()
+
+        # do we have a .jar
+        output, errors, result_code = run_cmd(f"find {app_folder_path} -name \"*.jar\" -type f | grep app_classes")
+        app_classes_jar_path = output.strip("\n")
+        if app_classes_jar_path != "":
+            # unzip this jar so it is taken into account in next find command
+            unzip_folder = f"{os.path.dirname(app_classes_jar_path)}/unzipped"
+            run_cmd(f"rm -r {unzip_folder}")
+            run_cmd(f"unzip {app_classes_jar_path} -d {unzip_folder}")
+
+        # find out all .class files
+        output, errors, result_code = run_cmd(f"find {app_folder_path} -name \"*.class\" -type f")
+        class_files = output.split("\n")
+
+        # figure out build variant
+        build_variant = "debug"
+        build_variant_path = build_variant
+        product_flavors = etg_config.product_flavors()
+        if len(product_flavors) > 0:
+            product_flavors_combined = ""
+            product_flavors_combined_path = ""
+            for i, flavor in enumerate(product_flavors):
+                if i == 0:
+                    product_flavors_combined += flavor.lower()
+                else:
+                    product_flavors_combined += flavor.capitalize()
+
+                product_flavors_combined_path += "/"
+                product_flavors_combined_path += flavor.lower()
+
+            build_variant = product_flavors_combined + etg_config.build_type().capitalize()
+            build_variant_path = product_flavors_combined_path + "/" + etg_config.build_type() + "/"
+
+            if package_name_path.endswith(product_flavors_combined):
+                package_name_path = package_name_path.split("/" + product_flavors_combined)[0]
+
+        filtered_class_files = []
+        for class_file in class_files:
+            if (build_variant in class_file or build_variant_path in class_file) \
+                    and not "AndroidTest" in class_file \
+                    and not "androidTest" in class_file \
+                    and not "UnitTest" in class_file \
+                    and not "R$" in class_file \
+                    and not "R.class" in class_file \
+                    and not "BuildConfig.class" in class_file \
+                    and not "/EmmaInstrument/" in class_file \
+                    and not "/jacoco_instrumented_classes/" in class_file \
+                    and not "/jacoco/" in class_file \
+                    and not "/transforms/" in class_file \
+                    and not "/kapt3/" in class_file:
+                filtered_class_files.append(class_file)
+
+        run_cmd(f"mkdir -p {self.jacoco_coverage_class_files_path}")
+
+        # Proceed to find the root folder where package name start for each class file. For example:
+        # 'subjects/com.a42crash.iarcuschin.a42crash/app/build/tmp/kotlin-classes/debug/com/a42crash/iarcuschin/a42crash/MainActivity.class'
+        # -> We should copy from the /debug/ folder onwards
+        # 'subjects/com.a42crash.iarcuschin.a42crash/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/a42crash/iarcuschin/a42crash/MainActivity_ViewBinding.class'
+        # -> We should copy from the /classes/ folder onwards
+
+        class_folders = []
+        for class_file in filtered_class_files:
+            should_inspect = True
+            for folder in class_folders:
+                if class_file.startswith(folder):
+                    should_inspect = False
+                    break
+            if not should_inspect:
+                # we already have the folder for this class file
+                continue
+
+            aux = Path(class_file).parent
+            class_file_folder = str(aux.absolute())
+            while not class_file_folder.endswith("subjects"):
+                if class_file_folder.endswith(package_name_path):
+                    class_folder = class_file_folder.split(package_name_path)[0]
+
+                    if not class_folder in class_folders:
+                        class_folders.append(class_folder)
+
+                    break
+                else:
+                    aux = aux.parent
+                    class_file_folder = str(aux.absolute())
+
+                    if "/" == class_file_folder:
+                        break
+
+        # copy class folders with their directory structure
+        run_cmd(f"mkdir -p {self.jacoco_coverage_class_files_path}/{package_name_path}")
+        for class_folder in class_folders:
+            run_cmd("rsync -a --prune-empty-dirs --exclude=\"*EmmaInstrument*/\" " +
+                    "--exclude=\"*AndroidTest*/\" --exclude=\"*UnitTest*/\" --exclude=\"*kapt3*/\" " +
+                    "--exclude=\"*jacoco_instrumented_classes*/\" --exclude=\"R\\$*.class\" " +
+                    "--exclude=\"*jacoco*/\" --exclude=\"*androidTest*/\" --exclude=\"*transforms*/\" " +
+                    "--exclude=\"BuildConfig.class\" --exclude=\"R.class\" --include=\"*.class\" " +
+                    "--include=\"*/\" --exclude=\"*\" " +
+                    f"{class_folder}/{package_name_path}/ {self.jacoco_coverage_class_files_path}/{package_name_path}")
+
+        # # Find and copy source root folder
+        # app_folder = Path(class_folders[0]).parent
+        # while True:
+        #     # File[] files = app_folder.listFiles();
+        #     files = app_folder.glob('**/*')
+        #
+        #     found = False
+        #     if files != None:
+        #         for file in files:
+        #             if "src" == file.name:
+        #                 app_folder = file
+        #                 found = True
+        #                 break
+        #
+        #     if found:
+        #         break
+        #
+        #     app_folder = app_folder.parent
+        #     if app_folder.absolute().endswith(etg_config.package_name()):
+        #         raise Exception(f"Unable to find source root folder for package name " + etg_config.package_name())
+        #
+        # run_cmd(f"cp -r  {app_folder.absolute()}/main/java {self.jacoco_coverage_class_files_path}")
+        #
+        # main_folder = Path(app_folder.absolute() + "/main")
+        # main_files = main_folder.glob('**/*')
+        # if main_files != None and "kotlin" in main_files:
+        #     run_cmd("cp -r  {source_root}/main/kotlin {mate_server_src_folder_path}")

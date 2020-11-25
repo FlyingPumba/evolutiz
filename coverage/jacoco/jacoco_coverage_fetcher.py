@@ -1,4 +1,3 @@
-import os
 from typing import Dict, Set
 
 import settings
@@ -44,7 +43,7 @@ class JacocoCoverageFetcher(EmmaCoverageFetcher):
         """
 
         # clear app's data and state
-        output, errors, result_code = adb.shell_command(device, f"pm clear {self.package_name}")
+        output, errors, result_code = adb.shell_command(device, f"pm clear {self.compiled_package_name}")
         self.output += output
         self.errors += errors
         if result_code != 0:
@@ -55,7 +54,7 @@ class JacocoCoverageFetcher(EmmaCoverageFetcher):
 
         script_name = script_path.split("/")[-1]
         test_runner = RequiredFeature('test_runner').request()
-        test_runner.run(device, self.package_name, script_name)
+        test_runner.run(device, self.compiled_package_name, script_name)
 
         self.dump_script_coverage(device, script_path, generation, individual_index, test_case_index, unique_crashes,
                                   scripts_crash_status)
@@ -73,7 +72,7 @@ class JacocoCoverageFetcher(EmmaCoverageFetcher):
         :param individual_index:
         :return:
         """
-        application_files = f"/data/data/{self.package_name}/files"
+        application_files = f"/data/data/{self.compiled_package_name}/files"
 
         self.coverage_ec_device_path = f"{application_files}/coverage.ec"
         self.clean_coverage_files_in_device(device)
@@ -90,6 +89,7 @@ class JacocoCoverageFetcher(EmmaCoverageFetcher):
         :return:
         """
         # pull coverage.ec file from device
+        jacoco_coverage_class_files_path = RequiredFeature('jacoco_coverage_class_files_path').request()
         output, errors, result_code = adb.pull(device,
                                                self.coverage_ec_device_backup_path,
                                                self.coverage_ec_local_path)
@@ -103,16 +103,14 @@ class JacocoCoverageFetcher(EmmaCoverageFetcher):
 
         # process coverage.ec file
         app_path = RequiredFeature('app_path').request()
-        emma_cmd = f"java -jar {settings.WORKING_DIR}lib/jacococli.jar " \
-                    f"report coverage.ec " \
-                    f"--sourcefiles {settings.WORKING_DIR}{app_path}/src " \
-                    f"--xml jacoco_report.xml " \
-                    f"--html jacoco_html_report"
-        # f"--classfiles %s/classes " \
+        jacoco_cmd = f"java -jar {settings.WORKING_DIR}lib/jacococli.jar " \
+                   f"report coverage.ec " \
+                   f"--classfiles {jacoco_coverage_class_files_path} " \
+                   f"--sourcefiles {settings.WORKING_DIR}{app_path}/src " \
+                   f"--xml jacoco_report.xml " \
+                   f"--html jacoco_html_report"
 
-        # emma_cmd = f"java -cp {settings.WORKING_DIR}lib/jacococli.jar emma report -r html" \
-        #           f" -in coverage.em,coverage.ec -sp {settings.WORKING_DIR}{app_path}/src"
-        output, errors, result_code = run_cmd(emma_cmd, cwd=self.coverage_folder_local_path)
+        output, errors, result_code = run_cmd(jacoco_cmd, cwd=self.coverage_folder_local_path)
         self.output += output
         self.errors += errors
         if result_code != 0:
@@ -122,10 +120,23 @@ class JacocoCoverageFetcher(EmmaCoverageFetcher):
             raise Exception(f"Unable to process coverage.ec file fetched from device: {device.name}")
 
         # parse generated html to extract global line coverage
-        html_path = f"{self.coverage_folder_local_path}/coverage/index.html"
-        coverage_str = self.extract_coverage(html_path)
+        html_path = f"{self.coverage_folder_local_path}/jacoco_html_report/index.html"
+        return self.extract_coverage(html_path)
 
-        aux = coverage_str.split("%")
-        coverage = int(aux[0])
+    def extract_coverage(self, html_path: str) -> int:
+        xpath_missed_lines = "html/body/table/tfoot/tr/td[8]/text()"
+        xpath_missed_lines_cmd = f"xmllint --html -xpath \"{xpath_missed_lines}\" {html_path}"
+        output, errors, result_code = run_cmd(xpath_missed_lines_cmd)
+        missed_lines_str = output.strip("\n")
 
+        xpath_total_lines = "html/body/table/tfoot/tr/td[9]/text()"
+        xpath_total_lines_cmd = f"xmllint --html -xpath \"{xpath_total_lines}\" {html_path}"
+        output, errors, result_code = run_cmd(xpath_total_lines_cmd)
+        total_lines_str = output.strip("\n")
+
+        missed_lines = float(missed_lines_str.replace(",", ""))
+        total_lines = float(total_lines_str.replace(",", ""))
+        covered_lines = total_lines - missed_lines
+
+        coverage = int(covered_lines / total_lines * 100)
         return coverage
