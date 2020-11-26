@@ -190,7 +190,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         find_manifest_cmd = f"find -L {root_path} -type f -name AndroidManifest.xml | "  # find all manifests
         find_manifest_cmd += "xargs -I {} grep -l \"android.intent.action.MAIN\" {} | "  # which contain a Main Activity
         find_manifest_cmd += "xargs -I {} grep -L wearable {} | "  # and are not a wearable app
-        find_manifest_cmd += "grep -v build | grep -v androidTest"  # also, discard build and test related manifests
+        find_manifest_cmd += "grep -v build | grep -v androidTest | grep -v bin"  # also, discard build and test related manifests
 
         output, errors, result_code = run_cmd(find_manifest_cmd)
         files = list(filter(lambda p: p != "", output.split("\n")))
