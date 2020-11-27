@@ -34,7 +34,8 @@ class EmmaCoverageFetcher(CoverageFetcher):
     ) -> CoverageResult:
 
         self.verbose_level = RequiredFeature('verbose_level').request()
-        self.package_name: str = RequiredFeature('compiled_package_name').request()
+        self.compiled_package_name: str = RequiredFeature('compiled_package_name').request()
+        self.package_name: str = RequiredFeature('package_name').request()
         self.result_dir: str = RequiredFeature('result_dir').request()
 
         unique_crashes: Set[str] = set()
@@ -44,7 +45,7 @@ class EmmaCoverageFetcher(CoverageFetcher):
 
         self.there_is_coverage = False
         self.set_coverage_paths(device, generation, individual_index)
-        adb.shell_command(device, f"am force-stop {self.package_name}")
+        adb.shell_command(device, f"am force-stop {self.compiled_package_name}")
 
         adb.push_all(device, scripts, "/mnt/sdcard")
 
@@ -75,7 +76,7 @@ class EmmaCoverageFetcher(CoverageFetcher):
                                scripts_crash_status: Dict[str, bool]
                                ) -> None:
         # clear app's data and state
-        output, errors, result_code = adb.shell_command(device, f"pm clear {self.package_name}")
+        output, errors, result_code = adb.shell_command(device, f"pm clear {self.compiled_package_name}")
         self.output += output
         self.errors += errors
         if result_code != 0:
@@ -86,7 +87,7 @@ class EmmaCoverageFetcher(CoverageFetcher):
 
         output, errors, result_code = adb.shell_command(
             device,
-            f"am instrument {self.package_name}/{self.package_name}.EmmaInstrument.EmmaInstrumentation"
+            f"am instrument {self.compiled_package_name}/{self.compiled_package_name}.EmmaInstrument.EmmaInstrumentation"
         )
 
         self.output += output
@@ -99,7 +100,7 @@ class EmmaCoverageFetcher(CoverageFetcher):
 
         script_name = script_path.split("/")[-1]
         test_runner = RequiredFeature('test_runner').request()
-        test_runner.run(device, self.package_name, script_name)
+        test_runner.run(device, self.compiled_package_name, script_name)
 
         self.dump_script_coverage(device, script_path, generation, individual_index, test_case_index, unique_crashes,
                                   scripts_crash_status)
@@ -128,7 +129,7 @@ class EmmaCoverageFetcher(CoverageFetcher):
             )
 
             broadcast = f"am broadcast -a evolutiz.emma.COLLECT_COVERAGE " \
-                        f"-n {self.package_name}/{self.package_name}.EmmaInstrument.CollectCoverageReceiver"
+                        f"-n {self.compiled_package_name}/{self.package_name}.EmmaInstrument.CollectCoverageReceiver"
             output, errors, result_code = adb.shell_command(device, broadcast, timeout=60)
             self.output += output
             self.errors += errors
@@ -163,7 +164,7 @@ class EmmaCoverageFetcher(CoverageFetcher):
                                 f"script_path {script_path} in  device: {device.name}")
 
     def set_coverage_paths(self, device: Device, generation: int, individual_index: int) -> None:
-        application_files = f"/data/data/{self.package_name}/files"
+        application_files = f"/data/data/{self.compiled_package_name}/files"
 
         self.coverage_ec_device_path = f"{application_files}/coverage.ec"
         self.clean_coverage_files_in_device(device)

@@ -205,6 +205,9 @@ class DeviceManager(object):
         logger.log_progress(
             f"\nWaiting for devices to be ready: {str(len(ready_devices))}/{str(devices_to_wait)}")
 
+        # Add extra sleep after devices are "ready" to let them stabilize
+        time.sleep(60)
+
     def wait_for_battery_threshold(self, battery_threshold: int = 20) -> None:
         while True:
             all_devices_above_threshold = all([level is None or level >= battery_threshold

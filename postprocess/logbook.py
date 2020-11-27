@@ -108,13 +108,13 @@ def print_avg_fitness(logbook_file_path):
 
     for gen, avg_fitness in enumerate(logbook.select("avg")):
         avg_coverage = str(avg_fitness[0])
-        avg_crashes = ""
         avg_length = ""
+        avg_crashes = ""
 
         if len(avg_fitness) > 1:
             # multi-objective logbook
-            avg_crashes = str(avg_fitness[1])
-            avg_length = str(avg_fitness[2])
+            avg_length = str(avg_fitness[1])
+            avg_crashes = str(avg_fitness[2])
 
         print("{0},{1},{2},{3}".format(gen, avg_coverage, avg_crashes, avg_length))
 

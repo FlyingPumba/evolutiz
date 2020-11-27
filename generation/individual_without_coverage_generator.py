@@ -1,5 +1,4 @@
 import time
-from typing import List, Any
 
 from deap import creator
 

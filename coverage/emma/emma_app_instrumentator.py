@@ -37,6 +37,11 @@ class EmmaAppInstrumentator(AppInstrumentator):
         if assume_subjects_instrumented:
             features.provide('instrumented_app_path', self.app_path)
 
+            # copy emma generated file
+            result_code = os.system(f"cp bin/coverage.em {self.result_dir}/{logger.redirect_string()}")
+            if result_code != 0:
+                raise Exception("Unable to copy coverage.em file")
+
             output, errors, result_code = run_cmd(f"aapt dump badging {self.app_path} | grep package:\\ name")
             package_name = output.split("package: name=\'")[1].split("\'")[0]
             features.provide('package_name', package_name)
@@ -72,7 +77,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         instrumented_source_path = self.instrumented_subjects_path + app_name
         os.system(f"rm -rf {instrumented_source_path}")
         os.system(f"mkdir -p {self.instrumented_subjects_path}")
-        os.system(f"cp -r {self.app_path} {instrumented_source_path}")
+        os.system(f"cp -Lr {self.app_path} {instrumented_source_path}")
 
         # get AndroidManifest path
         manifest_path = self.get_manifest_path(instrumented_source_path)
@@ -96,6 +101,8 @@ class EmmaAppInstrumentator(AppInstrumentator):
             main_activity = package_name + main_activity
         elif not main_activity.startswith(package_name):
             main_activity = package_name + "." + main_activity
+
+        features.provide('main_activity', main_activity)
 
         # update main activity in InstrumentedActivity.java
         self.alter_InstrumentedActivity(f"{emma_instrument_dest_path}/InstrumentedActivity.java", main_activity)
@@ -180,10 +187,10 @@ class EmmaAppInstrumentator(AppInstrumentator):
         return tree.getroot().attrib["package"]
 
     def get_manifest_path(self, root_path: str) -> str:
-        find_manifest_cmd = f"find {root_path} -type f -name AndroidManifest.xml | "  # find all manifests
+        find_manifest_cmd = f"find -L {root_path} -type f -name AndroidManifest.xml | "  # find all manifests
         find_manifest_cmd += "xargs -I {} grep -l \"android.intent.action.MAIN\" {} | "  # which contain a Main Activity
         find_manifest_cmd += "xargs -I {} grep -L wearable {} | "  # and are not a wearable app
-        find_manifest_cmd += "grep -v build | grep -v androidTest"  # also, discard build and test related manifests
+        find_manifest_cmd += "grep -v build | grep -v androidTest | grep -v bin"  # also, discard build and test related manifests
 
         output, errors, result_code = run_cmd(find_manifest_cmd)
         files = list(filter(lambda p: p != "" and not ("classes" in os.listdir(os.path.dirname(p)) and "/bin/" in p), output.split("\n")))
@@ -194,6 +201,11 @@ class EmmaAppInstrumentator(AppInstrumentator):
         return files[0]
 
     def alter_AndroidManifest(self, path: str, package_name: str) -> None:
+        output, errors, result_code = run_cmd(f"cat {path} | grep \"emma updated\"")
+        if output.strip() != "":
+            # we will assume Android Manifest was already modified
+            return
+
         is_mod = False
 
         content = ""
@@ -209,11 +221,11 @@ class EmmaAppInstrumentator(AppInstrumentator):
                         android:label="EmmaInstrumentationActivity" 
                         android:name="{package_name}.EmmaInstrument.InstrumentedActivity"/>
                     <receiver android:name="{package_name}.EmmaInstrument.CollectCoverageReceiver">
-                    <intent-filter>
-                        <action android:name="evolutiz.emma.COLLECT_COVERAGE" />
-                    </intent-filter>
-                </receiver>
-                 <!-- emma updated -->
+                        <intent-filter>
+                            <action android:name="evolutiz.emma.COLLECT_COVERAGE" />
+                        </intent-filter>
+                    </receiver>
+                    <!-- emma updated -->
                 {line}
                 
                  <!-- emma updated -->
@@ -276,7 +288,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         """
         manifest_folder = os.path.dirname(manifest_path)
         main_acivity_name = main_activity.split(".")[-1]
-        output, errors, result_code = run_cmd(f"find {manifest_folder} -name {main_acivity_name}.*")
+        output, errors, result_code = run_cmd(f"find -L {manifest_folder} -name {main_acivity_name}.*")
 
         main_activity_path = output.strip("\n")
         if ".kt" not in main_activity_path:
@@ -288,7 +300,7 @@ class EmmaAppInstrumentator(AppInstrumentator):
         in_stream = open(main_activity_path)
 
         for index, line in enumerate(in_stream):
-            if line.find(f"class {main_acivity_name}") != -1:
+            if line.find(f"class {main_acivity_name}") != -1 and line.find(f"open ") == -1:
                 # append "open" modifier at begging of line
                 content += f"open {line}"
             else:
