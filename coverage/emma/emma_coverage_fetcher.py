@@ -112,10 +112,19 @@ class EmmaCoverageFetcher(CoverageFetcher):
                              individual_index: int,
                              test_case_index: int,
                              unique_crashes: Set[str],
-                             scripts_crash_status: Dict[str, bool]
+                             scripts_crash_status: Dict[str, bool],
+                             logcat_previous_to_run: str = "",
                              ) -> None:
 
-        if crash_handler.handle(device, script_path, generation, individual_index, test_case_index, unique_crashes):
+        if crash_handler.handle(
+                device,
+                script_path,
+                generation,
+                individual_index,
+                test_case_index,
+                unique_crashes,
+                logcat_previous_to_run,
+        ):
             scripts_crash_status[script_path] = True
         else:
             # no crash, can broadcast

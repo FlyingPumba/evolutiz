@@ -53,11 +53,22 @@ class JacocoCoverageFetcher(EmmaCoverageFetcher):
             raise Exception(f"Unable to clear package for script_path {script_path} in device: {device.name}")
 
         script_name = script_path.split("/")[-1]
+
+        logcat_previous_to_run, errors, result_code = adb.adb_command(device, f"logcat -d | grep \"CovidApplication:\"")
+
         test_runner = RequiredFeature('test_runner').request()
         test_runner.run(device, self.compiled_package_name, script_name)
 
-        self.dump_script_coverage(device, script_path, generation, individual_index, test_case_index, unique_crashes,
-                                  scripts_crash_status)
+        self.dump_script_coverage(
+            device,
+            script_path,
+            generation,
+            individual_index,
+            test_case_index,
+            unique_crashes,
+            scripts_crash_status,
+            logcat_previous_to_run,
+        )
 
     def set_coverage_paths(self, device: Device, generation: int, individual_index: int) -> None:
         """
