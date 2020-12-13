@@ -40,7 +40,7 @@ class TestRunnerInstaller(object):
         # remount partitions
         output, errors, result_code = adb.adb_command(device, "remount", retry=5)
         if result_code != 0:
-            raise Exception(f"Unable to remount partitions on device: {device.name}")
+            raise Exception(f"Unable to remount partitions on device: {device.name} - {errors}")
 
         # make /mnt/sdcard writable
         output, errors, result_code = adb.shell_command(device, "mount -o rw,remount /")

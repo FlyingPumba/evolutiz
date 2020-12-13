@@ -116,6 +116,7 @@ class Device(object):
                 if not self.needs_setup:
                     self.state = State.ready_idle
                 else:
+                    time.sleep(15)
                     device_setup_thread = DeviceSetupThread(self)
                     device_setup_thread.run()
 
