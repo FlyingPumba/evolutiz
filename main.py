@@ -144,9 +144,8 @@ def wait_for_working_threas_to_finish() -> None:
 
 
 def get_emulators_running(result_dir: str) -> None:
-    """Reboot all devices and kill adb server before starting a repetition."""
+    """Reboot all devices before starting a repetition."""
     device_manager = RequiredFeature('device_manager').request()
-    adb.kill_server()
 
     if len(device_manager.get_devices(refresh=True)) > 0:
         device_manager.shutdown_emulators(remove=True)
