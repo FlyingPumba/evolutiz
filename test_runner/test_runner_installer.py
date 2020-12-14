@@ -35,6 +35,7 @@ class TestRunnerInstaller(object):
             print(str)
 
     def install(self, device: Device) -> bool:
+        adb.restart_server(device.adb_port)
         adb.get_root_permissions(device)
 
         # remount partitions

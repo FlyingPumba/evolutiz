@@ -213,23 +213,23 @@ def get_imei(device: 'Device') -> Optional[str]:
     return devices_imei[device.name]
 
 
-def start_server() -> None:
+def start_server(port: int) -> None:
     try:
-        run_cmd(f"{adb_cmd_prefix} start-server{logger.redirect_string()}")
+        run_cmd(f"{adb_cmd_prefix} start-server{logger.redirect_string()}", env={"ANDROID_ADB_SERVER_PORT": str(port)})
     except TimeoutExpired as e:
         pass
 
 
-def kill_server() -> None:
+def kill_server(port: int) -> None:
     try:
-        run_cmd(f"{adb_cmd_prefix} kill-server{logger.redirect_string()}")
+        run_cmd(f"{adb_cmd_prefix} kill-server{logger.redirect_string()}", env={"ANDROID_ADB_SERVER_PORT": str(port)})
     except TimeoutExpired as e:
         pass
 
 
-def restart_server() -> None:
-    kill_server()
-    start_server()
+def restart_server(port: int) -> None:
+    kill_server(port)
+    start_server(port)
 
 
 def log_adb_command(device: 'Device', cmd: str) -> None:
