@@ -60,7 +60,8 @@ def adb_command(
             if tries >= retry:
                 return e.stdout, e.stderr, 124
 
-            time.sleep(2)
+            restart_server(device.adb_port)
+            time.sleep(5)
 
 
 def get_root_permissions(device: 'Device') -> None:
