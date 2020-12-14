@@ -46,7 +46,7 @@ class Emulator(Device):
 
         # start custom abd server for this emulator
         self.adb_port = adb_port if adb_port is not None else self.device_manager.get_next_available_adb_server_port()
-        adb.start_server(self.adb_port)
+        adb.restart_server(self.adb_port)
 
         # start emulator
         self.name = f"emulator-{str(self.port)}"
