@@ -14,7 +14,7 @@ jedi==0.12.1
 kiwisolver==1.0.1
 lazy-object-proxy==1.4.2
 logger==1.4
-lxml==4.2.4
+lxml==4.6.2
 matplotlib==3.1.1
 mccabe==0.6.1
 MonkeyType==19.5.0
