@@ -92,5 +92,5 @@ class ApkAnalyser(object):
             # if not exist, upload dummy strings.xml
             string_xml_path = f"{settings.WORKING_DIR}resources/dummy_strings.xml"
 
-        adb.shell_command(device, f" shell rm /mnt/sdcard/{self.package_name}_strings.xml")
+        adb.shell_command(device, f" rm /mnt/sdcard/{self.package_name}_strings.xml")
         adb.push(device, string_xml_path, f"/mnt/sdcard/{self.package_name}_strings.xml")

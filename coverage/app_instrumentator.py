@@ -3,6 +3,12 @@ from devices.device import Device
 
 class AppInstrumentator(object):
 
+    def setup_for_test_run(self, device: Device) -> None:
+        pass
+
+    def teardown_after_test_run(self, device: Device) -> None:
+        pass
+
     def instrument_device(self, device: Device) -> bool:
         """
         Prepares the instrumentation on device.

@@ -26,6 +26,7 @@ from algorithms.steady_state import SteadyState
 from algorithms.strategy import Strategy
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
 from coverage.coverage_fetcher import CoverageFetcher
+from coverage.ella.ella_coverage_fetcher import EllaCoverageFetcher
 from coverage.emma.emma_coverage_fetcher import EmmaCoverageFetcher
 from coverage.jacoco.jacoco_coverage_fetcher import JacocoCoverageFetcher
 from dependency_injection.feature_broker import features
@@ -405,6 +406,7 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
     possible_coverage_fetchers = {
         "emma": EmmaCoverageFetcher(),
         "jacoco": JacocoCoverageFetcher(),
+        "ella": EllaCoverageFetcher(),
     }
     parser.add_argument('--coverage', dest='coverage',
                         choices=possible_coverage_fetchers.keys(), help='Coverage fetcher to be used')

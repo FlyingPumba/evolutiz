@@ -72,6 +72,8 @@ class EvolutizAtomicTestRunner(TestRunner):
         # need to manually kill evolutiz when timeout
         adb.pkill(device, "evolutiz")
 
+        self.clean_device_after_run(device)
+
         if verbose_level > 0:
             logger.log_progress(f'\nEvolutiz test run took: {time.time() - start_time:.2f} seconds')
 
@@ -110,6 +112,8 @@ class EvolutizAtomicTestRunner(TestRunner):
         time.sleep(5)
 
         test_case: TestCase = self.retrieve_generated_test(device, destination_file_name)
+
+        self.clean_device_after_run(device)
 
         if verbose_level > 0:
             logger.log_progress(f'\nEvolutiz test generation took: {time.time() - start_time:.2f} seconds '

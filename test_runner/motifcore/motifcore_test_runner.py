@@ -70,6 +70,8 @@ class MotifcoreTestRunner(TestRunner):
         # need to manually kill motifcore when timeout
         adb.pkill(device, "motifcore")
 
+        self.clean_device_after_run(device)
+
         if verbose_level > 0:
             logger.log_progress(f'\nMotifcore test run took: {time.time() - start_time:.2f} seconds')
 
@@ -104,6 +106,8 @@ class MotifcoreTestRunner(TestRunner):
         adb.pkill(device, "motifcore")
 
         test_case: TestCase = self.retrieve_generated_test(device, destination_file_name)
+
+        self.clean_device_after_run(device)
 
         if verbose_level > 0:
             logger.log_progress(f'\nMotifcore test generation took: {time.time() - start_time:.2f} seconds '
