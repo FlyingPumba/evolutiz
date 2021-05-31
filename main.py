@@ -213,7 +213,7 @@ def get_subject_paths(arguments: argparse.Namespace) -> List[str]:
         app_paths = []
 
         if arguments.assume_subjects_instrumented:
-            output, errors, result_code = run_cmd(f"find -L {subjects_path} -name *.apk")
+            output, errors, result_code = run_cmd(f"find -L {subjects_path} -name \"*.apk\"")
             for line in output.strip().split('\n'):
                 app_paths.append(line.rstrip('/'))  # remove trailing forward slash
         else:
