@@ -1,3 +1,5 @@
+import sys
+
 from deap.base import Fitness
 
 from test_runner.test_event import TestSuite
@@ -18,6 +20,9 @@ class Individual(TestSuite):
         self.history_index: int = 0
 
         self.fitness: Fitness = None
+
+        self.length: int = sys.maxsize
+        self.crashes: int = 0
 
     @staticmethod
     def get_name() -> str:

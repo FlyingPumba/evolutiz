@@ -77,6 +77,9 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         individual.evaluation_finish_timestamp = finish_time
         individual.evaluation_elapsed_time = finish_time - start_time
 
+        individual.length = length
+        individual.crashes = crashes
+
         hall_of_fame = RequiredFeature('hall_of_fame').request()
         hall_of_fame.update([individual])
 

@@ -1,3 +1,4 @@
+import sys
 import time
 from typing import List
 
@@ -30,7 +31,7 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         return HallOfFame(maxsize=50)
 
     def set_empty_fitness(self, individual: IndividualSingleObjective) -> None:
-        individual.fitness.values = (0, )
+        individual.fitness.values = (0, sys.maxsize, 0)
 
         individual.evaluation_finish_timestamp = time.time()
         individual.evaluation_elapsed_time = 0
@@ -53,12 +54,25 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
             individual.index_in_generation
         )
 
-        # TODO: look into fusing coverage and number of crashes found into the fitness value
-        individual.fitness.values = (coverage, )
+        # remove from suite lengths the scripts that did NOT cause a crash
+        for script, had_crash in scripts_crash_status.items():
+            if not had_crash:
+                suite_lengths.pop(script, None)
+
+        individual.fitness.values = (coverage,)
 
         finish_time = time.time()
         individual.evaluation_finish_timestamp = finish_time
         individual.evaluation_elapsed_time = finish_time - start_time
+
+        # Save crashes and length info outside fitness, to avoid messing up with the "wvalues" and "dominates" function
+        # inside Deap's Fitness base class.
+        if suite_lengths:
+            individual.length = numpy.mean(list(suite_lengths.values()))
+        else:
+            individual.length = sys.maxsize
+
+        individual.crashes = len(unique_crashes)
 
         hall_of_fame = RequiredFeature('hall_of_fame').request()
         hall_of_fame.update([individual])
@@ -84,6 +98,8 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
                 'generation': individual.generation,
                 'index_in_generation': individual.index_in_generation,
                 'coverage': individual.fitness.values[0],
+                'length': individual.length,
+                'crashes': individual.crashes,
             })
             evaluation.append({
                 'generation': individual.generation,
@@ -107,14 +123,35 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
     def show_best_historic_fitness(self) -> None:
         self.logbook = RequiredFeature('logbook').request()
-        max_fitness_values_per_generation = numpy.array(self.logbook.select("max"))
 
-        max_fitness_values_all_generations = max_fitness_values_per_generation.max(axis=0)
+        # find out max crashes and min length by hand, since they are not included in the "max" and "min" elements of
+        # the logbook. Since this is a single-objective algorithm, the max crashes and min length obtained are the one
+        # of the individual that has the max coverage achieved.
+        fitness_by_gen = self.logbook.select("fitness")
 
-        max_coverage = max_fitness_values_all_generations[0]
+        max_coverage = 0
+        min_length = sys.maxsize
+        max_crashes = 0
+
+        for gen, population in enumerate(fitness_by_gen):
+            for fitness in population:
+
+                at_least_as_good = fitness['coverage'] >= max_coverage
+                partially_better = fitness['coverage'] > max_coverage
+
+                if at_least_as_good and partially_better:
+                    max_coverage = fitness['coverage']
+                    min_length = fitness['length']
+                    max_crashes = fitness['crashes']
 
         # CAUTION: these min and max are from different individuals
         logger.log_progress(f"\n- Best historic coverage: {str(max_coverage)}")
+
+        logger.log_progress(f"\n- Best historic crashes: {str(max_crashes)}")
+        if max_crashes > 0:
+            logger.log_progress(f"\n- Best historic length: {str(min_length)}")
+        else:
+            logger.log_progress("\n- Best historic length: --")
 
     def dump_logbook_to_file(self) -> None:
         super(SingleObjectiveTestSuiteEvaluator, self).dump_logbook_to_file()
