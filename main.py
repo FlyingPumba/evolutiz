@@ -14,6 +14,7 @@ import numpy
 from deap import tools
 from deap.base import Toolbox
 
+from algorithms.check_instrumentation import CheckInstrumentation
 from algorithms.dyna_mosa import DynaMosa
 from algorithms.monotonic import Monotonic
 from algorithms.mosa import Mosa
@@ -187,12 +188,13 @@ def prepare_result_dir(app_name: str, repetition: int, strategy_with_runner_name
 
 def run(strategy_name: str, app_paths: List[str]) -> None:
     compress = RequiredFeature('compress').request()
+    continue_on_subject_failure = RequiredFeature('continue_on_subject_failure').request()
 
     for i in range(0, len(app_paths)):
         features.provide('app_path', app_paths[i])
 
         success = run_one_app(strategy_name)
-        if not success:
+        if not success and not continue_on_subject_failure:
             break
 
         if compress:
@@ -217,10 +219,21 @@ def get_subject_paths(arguments: argparse.Namespace) -> List[str]:
             for line in output.strip().split('\n'):
                 app_paths.append(line.rstrip('/'))  # remove trailing forward slash
         else:
-            output, errors, result_code = run_cmd(f"ls -d {subjects_path}*/")
+            output, errors, result_code = run_cmd(f"ls -1 -d \"{subjects_path}\"*")
             for line in output.strip().split('\n'):
-                if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
-                    app_paths.append(line.rstrip('/'))  # remove trailing forward slash
+                path = line.rstrip('/')
+                if os.path.isdir(path):
+                    app_paths.append(path)
+                elif os.path.isfile(path):
+                    if path.endswith(".apk"):
+                        if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
+                            app_paths.append(path)  # remove trailing forward slash
+                    else:
+                        logger.log_progress(f"Ignoring non-APK file {path} in subjects path")
+                else:
+                    # special file (e.g., socket)
+                    logger.log_progress(f"Ignoring special file {path} in subjects path")
+                    continue
 
         if arguments.randomize_subjects:
             random.shuffle(app_paths)
@@ -228,6 +241,7 @@ def get_subject_paths(arguments: argparse.Namespace) -> List[str]:
         if arguments.limit_subjects_number != -1:
             app_paths = app_paths[0:arguments.limit_subjects_number]
 
+        # return list(filter(lambda p: 'com.zhiliaoapp.musically' in p, app_paths))
         return app_paths
 
 
@@ -314,6 +328,8 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
     # subjects related arguments
     parser.add_argument('--subject-path', dest='subject_path',
                         help='Directory where the subject to be processed is located')
+    parser.add_argument('--continue-on-subject-failure', dest='continue_on_subject_failure',
+                        action='store_true', help='Continue processing other subjects if one fails')
     parser.add_argument('--subjects-path', dest='subjects_path',
                         help='Directory where subjects are located')
     parser.add_argument('--instrumented-subjects-path', dest='instrumented_subjects_path',
@@ -371,6 +387,7 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
         "dynaMosa": DynaMosa,
         "randomSearch": RandomSearch,
         "evaluateScripts": EvaluateScripts,
+        "checkInstrumentation": CheckInstrumentation,
     }
     parser.add_argument('-s', '--strategy', dest='strategy',
                         choices=possible_strategies.keys(), help='Strategy to be used')
@@ -436,6 +453,7 @@ def init_arguments_defaults() -> None:
         "emma_instrument_path": "subjects/EmmaInstrument/",
         "randomize_subjects": False,
         "assume_subjects_instrumented": False,
+        "continue_on_subject_failure": True,
         "limit_subjects_number": 1,
         "repetitions": 1,
         "repetitions_offset": 0,
@@ -523,12 +541,14 @@ def get_fitness_values_of_individual(individual: Individual) -> Any:
 def provide_features() -> None:
     # define subjects
     features.provide('instrumented_subjects_path', args.instrumented_subjects_path)
+    features.provide('continue_on_subject_failure', args.continue_on_subject_failure)
 
     # define budget and repetitions
     features.provide('repetitions', args.repetitions)
     features.provide('repetitions_offset', args.repetitions_offset)
     features.provide('budget_manager',
                      BudgetManager(time_budget=args.time_budget, evaluations_budget=args.evaluations_budget))
+
     # define devices configuration
     features.provide('emulators_number', args.emulators_number)
     features.provide('real_devices_number', args.real_devices_number)

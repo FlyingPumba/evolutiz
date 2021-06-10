@@ -5,6 +5,7 @@ from dependency_injection.required_feature import RequiredFeature
 from devices import adb
 from devices.device import Device
 from util.command import run_cmd
+from hashlib import sha256
 
 
 class Ella(object):
@@ -21,15 +22,22 @@ class Ella(object):
         self.ella_port = 23745
         self.tcp_relay_port = 23746
 
-    def get_current_apk_output_folder(self) -> None:
+    def get_current_apk_output_folder(self) -> str:
         self.app_path: str = RequiredFeature('app_path').request()
 
-        # find folder in ELLa's output folder that has the APK's path in its name
+        # find folder in ELLa's output folder that has the APK's path (or its hash if it is too long) in its name
         aux = self.app_path.replace("/", "_")
+        if len(aux) > 100:
+            aux = sha256(aux.encode()).hexdigest()
 
         output, errors, result_code = run_cmd(
             f"find -L {self.ella_output_folder_path} -type d -name \"*{aux}*\"")
-        return output.rstrip('\n')
+        folder = output.rstrip('\n')
+
+        if folder == '':
+            raise Exception(f"Unable to find ELLA output folder fora pp {self.app_path}")
+
+        return folder
 
     def get_coverage_dat_path(self) -> str:
         output, errors, result_code = run_cmd(f"find {self.get_current_apk_output_folder()} -type f -name \"coverage.dat.*\"")

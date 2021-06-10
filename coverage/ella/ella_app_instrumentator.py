@@ -43,7 +43,9 @@ class EllaAppInstrumentator(AppInstrumentator, Ella):
         logger.log_progress(f"\nInstrumenting app: {apk_filename}")
 
         # prepare the ella-customized jars
-        output, errors, result_code = run_cmd(f"python gen-ella-wrappers.py", cwd=self.ella_folder_path)
+        output, errors, result_code = run_cmd(f"python gen-ella-wrappers.py",
+                                              cwd=self.ella_folder_path,
+                                              timeout=120)
         if result_code != 0:
             raise Exception("Unable generate ELLA wrappers")
 
@@ -52,7 +54,9 @@ class EllaAppInstrumentator(AppInstrumentator, Ella):
             raise Exception("Unable compile ELLA JARs")
 
         # perform the instrumentation of the APK
-        output, errors, result_code = run_cmd(f"./ella.sh i {self.app_path}", cwd=self.ella_folder_path)
+        output, errors, result_code = run_cmd(f"./ella.sh i {self.app_path}",
+                                              cwd=self.ella_folder_path,
+                                              timeout=120)
         if result_code != 0:
             # TODO: maybe try with --aapt2?
             raise Exception(f"Unable instrument {self.app_path} APK using ELLA")

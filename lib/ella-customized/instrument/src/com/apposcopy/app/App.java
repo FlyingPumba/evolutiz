@@ -120,7 +120,11 @@ public class App
 		String[] args = {"java", "-Xmx1g", "-ea",
 						 "-classpath", apktoolJar,
 						 "brut.apktool.Main",
-						 "d", "-r", "-f", "--frame-path", scratchDir,
+						 "d",
+						 "-r",
+						 "-f",
+						 "--use-aapt2",
+				 		 "--frame-path", scratchDir,
 						 "-o", apktoolOutDir,
 						 "-s", inputFile};
 		String[] args_apkanalyzer = {
