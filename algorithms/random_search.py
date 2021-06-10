@@ -44,7 +44,7 @@ class RandomSearch(Strategy):
                 # Timeout occurred
                 break
 
-            # save stats
+            # update logbook
             self.parallel_evaluator.test_suite_evaluator.update_logbook(gen, new_individuals)
             history = RequiredFeature('history').request()
             history.update(self.population)

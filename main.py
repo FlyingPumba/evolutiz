@@ -83,9 +83,8 @@ def run_one_app(strategy_with_runner_name: str) -> bool:
         for repetition in range(repetitions_offset, repetitions):
             os.chdir(settings.WORKING_DIR)
 
-            stats = RequiredFeature('stats').request()
             logbook = tools.Logbook()
-            logbook.header = ['gen'] + stats.fields
+            logbook.header = ['gen']
             features.provide('logbook', logbook)
 
             history = tools.History()
@@ -533,11 +532,6 @@ def parse_config_file() -> None:
         config.read([args.conf_file])
         defaults.update(dict(config_items_type_convert(config.items(DEFAULTSECT))))
 
-
-def get_fitness_values_of_individual(individual: Individual) -> Any:
-    return individual.fitness.values
-
-
 def provide_features() -> None:
     # define subjects
     features.provide('instrumented_subjects_path', args.instrumented_subjects_path)
@@ -585,18 +579,6 @@ def provide_features() -> None:
     toolbox.register("selectBest", tools.selBest)
     features.provide('toolbox', toolbox)
     features.provide('device_manager', DeviceManager())
-
-    stats = tools.Statistics(get_fitness_values_of_individual)
-    # Use axis = 0 to get the desired statistic computed across all fitness values
-    # Example:
-    # >>> a = np.array([[1, 2], [3, 4]])
-    # >>> np.mean(a, axis=0)
-    # array([ 2.,  3.])
-    stats.register("avg", numpy.mean, axis=0)
-    stats.register("std", numpy.std, axis=0)
-    stats.register("min", numpy.min, axis=0)
-    stats.register("max", numpy.max, axis=0)
-    features.provide('stats', stats)
 
     features.provide('evaluate_scripts_folder_path', args.evaluate_scripts_folder_path)
     features.provide('evaluate_scripts_repetition_number', args.evaluate_scripts_repetition_number)

@@ -87,17 +87,19 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
     def update_logbook(self, gen: int, population: List[IndividualSingleObjective]) -> None:
         self.result_dir = RequiredFeature('result_dir').request()
         self.logbook = RequiredFeature('logbook').request()
-        self.stats = RequiredFeature('stats').request()
 
-        record = self.stats.compile(population) if self.stats is not None else {}
+        record = {}
         fitness = []
         evaluation = []
         creation = []
         for individual in population:
             fitness.append({
+                'evaluation': 'single-objective',
                 'generation': individual.generation,
                 'index_in_generation': individual.index_in_generation,
                 'coverage': individual.fitness.values[0],
+                # The following objective values are taken directly from the Individual Python's object, since for a
+                # single-objective algorithm the fitness values only contain the coverage data.
                 'length': individual.length,
                 'crashes': individual.crashes,
             })
@@ -123,15 +125,57 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
     def show_best_historic_fitness(self) -> None:
         self.logbook = RequiredFeature('logbook').request()
-
-        # find out max crashes and min length by hand, since they are not included in the "max" and "min" elements of
-        # the logbook. Since this is a single-objective algorithm, the max crashes and min length obtained are the one
-        # of the individual that has the max coverage achieved.
         fitness_by_gen = self.logbook.select("fitness")
 
+        # best independent (i.e., from different individuals) historic values for each objective
         max_coverage = 0
         min_length = sys.maxsize
         max_crashes = 0
+
+        # the fitness of the best single-objective individual
+        best_individual_fitness = (max_coverage, min_length, max_crashes)
+
+        for gen, population in enumerate(fitness_by_gen):
+            for fitness in population:
+
+                individual_coverage = fitness['coverage']
+                individual_length = fitness['length']
+                individual_crashes = fitness['crashes']
+
+                # is this a better individual than the one found so far?
+                at_least_as_good = individual_coverage >= max_coverage
+
+                partially_better = individual_coverage > max_coverage
+
+                if at_least_as_good and partially_better:
+                    best_individual_fitness = (individual_coverage, individual_length, individual_crashes)
+
+                if individual_coverage > max_coverage:
+                    max_coverage = individual_coverage
+
+                if individual_length < min_length:
+                    min_length = individual_length
+
+                if individual_crashes > max_crashes:
+                    max_crashes = individual_crashes
+
+        logger.log_progress(f"\n- Best single-objective individual: {best_individual_fitness}")
+
+        # CAUTION: the following min and max are from different individuals
+        logger.log_progress(f"\n- Best historic coverage: {str(max_coverage)}")
+        logger.log_progress(f"\n- Best historic crashes: {str(max_crashes)}")
+        if max_crashes > 0:
+            logger.log_progress(f"\n- Best historic length: {str(min_length)}")
+        else:
+            logger.log_progress("\n- Best historic length: --")
+
+        # best independent (i.e., from different individuals) historic values for each objective
+        max_coverage = 0
+        min_length = sys.maxsize
+        max_crashes = 0
+
+        # the fitness of the best single-objective individual
+        best_individual_fitness = None
 
         for gen, population in enumerate(fitness_by_gen):
             for fitness in population:
@@ -146,7 +190,6 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         # CAUTION: these min and max are from different individuals
         logger.log_progress(f"\n- Best historic coverage: {str(max_coverage)}")
-
         logger.log_progress(f"\n- Best historic crashes: {str(max_crashes)}")
         if max_crashes > 0:
             logger.log_progress(f"\n- Best historic length: {str(min_length)}")
