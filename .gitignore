@@ -66,3 +66,7 @@ results/
 monkeytype.sqlite3
 logs
 instrumented-apks*
+
+lib/ella-customized/bin/ella.instrument.jar
+lib/ella-customized/bin/ella.runtime.jar
+lib/ella-customized/bin/ella.server.jar
