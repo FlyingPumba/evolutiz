@@ -170,6 +170,12 @@ def prepare_result_dir(app_name: str, repetition: int, strategy_with_runner_name
     # build result_dir path
     result_dir = f"{settings.WORKING_DIR}results/{algorithm_folder}/{app_name}/{repetition_folder}"
 
+    skip_subject_if_logbook_in_results = RequiredFeature('skip_subject_if_logbook_in_results').request()
+    if skip_subject_if_logbook_in_results:
+        if os.path.exists(f"{result_dir}/logbook.pickle"):
+            raise Exception(f"Skipping run for {algorithm_folder}/{app_name}/{repetition_folder} since there is "
+                            f"already a results folder with a valid logbook file inside it.")
+
     # clean and create result_dir
     os.system(f"rm -rf {result_dir}/*{logger.redirect_string()}")
     result_code = os.system(f"mkdir -p {result_dir}")
@@ -443,6 +449,10 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
                         help='This argument is useful for changing the result directory path when evaluating scripts '
                              'from a previous run.')
 
+    parser.add_argument('--skip-subject-if-logbook-in-results', dest='skip_subject_if_logbook_in_results',
+                        action='store_true', help='Skip a subject\'s repetition if there is already a result folder '
+                                                  'with a non-empty logbook inside it.')
+
 
 def init_arguments_defaults() -> None:
     global defaults
@@ -475,6 +485,7 @@ def init_arguments_defaults() -> None:
         'evaluate_scripts_folder_path': None,
         'evaluate_scripts_repetition_number': None,
         'evaluate_scripts_algorithm_name': None,
+        'skip_subject_if_logbook_in_results': False,
     }
 
 
@@ -584,6 +595,7 @@ def provide_features() -> None:
     features.provide('evaluate_scripts_repetition_number', args.evaluate_scripts_repetition_number)
     features.provide('evaluate_scripts_algorithm_name', args.evaluate_scripts_algorithm_name)
 
+    features.provide('skip_subject_if_logbook_in_results', args.skip_subject_if_logbook_in_results)
 
 if __name__ == "__main__":
     parse_config_file()
