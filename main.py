@@ -14,6 +14,7 @@ import numpy
 from deap import tools
 from deap.base import Toolbox
 
+from algorithms.check_instrumentation import CheckInstrumentation
 from algorithms.dyna_mosa import DynaMosa
 from algorithms.monotonic import Monotonic
 from algorithms.mosa import Mosa
@@ -26,6 +27,7 @@ from algorithms.steady_state import SteadyState
 from algorithms.strategy import Strategy
 from concurrency.multiple_queue_consumer_thread import MultipleQueueConsumerThread
 from coverage.coverage_fetcher import CoverageFetcher
+from coverage.ella.ella_coverage_fetcher import EllaCoverageFetcher
 from coverage.emma.emma_coverage_fetcher import EmmaCoverageFetcher
 from coverage.jacoco.jacoco_coverage_fetcher import JacocoCoverageFetcher
 from dependency_injection.feature_broker import features
@@ -67,6 +69,7 @@ possible_individual_generators: Dict[str, Type[IndividualGenerator]]
 possible_test_runners: Dict[str, TestRunner]
 possible_coverage_fetchers: Dict[str, CoverageFetcher]
 
+
 def run_one_app(strategy_with_runner_name: str) -> bool:
     app_path = RequiredFeature('app_path').request()
     repetitions = RequiredFeature('repetitions').request()
@@ -75,49 +78,58 @@ def run_one_app(strategy_with_runner_name: str) -> bool:
     test_suite_evaluator = RequiredFeature('test_suite_evaluator').request()
     verbose_level = RequiredFeature('verbose_level').request()
 
+    continue_on_repetition_failure = RequiredFeature('continue_on_repetition_failure').request()
+
     app_name = os.path.basename(app_path)
 
     try:
+        there_was_a_failed_repetition = False
         for repetition in range(repetitions_offset, repetitions):
-            os.chdir(settings.WORKING_DIR)
+            try:
+                os.chdir(settings.WORKING_DIR)
 
-            stats = RequiredFeature('stats').request()
-            logbook = tools.Logbook()
-            logbook.header = ['gen'] + stats.fields
-            features.provide('logbook', logbook)
+                logbook = tools.Logbook()
+                logbook.header = ['gen']
+                features.provide('logbook', logbook)
 
-            history = tools.History()
-            features.provide('history', history)
+                history = tools.History()
+                features.provide('history', history)
 
-            hall_of_fame = test_suite_evaluator.new_hall_of_fame()
-            features.provide('hall_of_fame', hall_of_fame)
+                hall_of_fame = test_suite_evaluator.new_hall_of_fame()
+                features.provide('hall_of_fame', hall_of_fame)
 
-            result_dir = prepare_result_dir(app_name, repetition, strategy_with_runner_name)
+                result_dir = prepare_result_dir(app_name, repetition, strategy_with_runner_name)
 
-            get_emulators_running(result_dir)
+                get_emulators_running(result_dir)
 
-            test_generator = Evolutiz()
+                test_generator = Evolutiz()
 
-            budget_manager.start_budget()
+                budget_manager.start_budget()
 
-            logger.log_progress(f"\n-----> Starting repetition: {str(repetition)} for app: {app_name}, "
-                                f"initial timestamp is: {str(budget_manager.start_time)}")
-            test_generator.run()
+                logger.log_progress(f"\n-----> Starting repetition: {str(repetition)} for app: {app_name}, "
+                                    f"initial timestamp is: {str(budget_manager.start_time)}")
+                test_generator.run()
 
-            logger.log_progress(f"\nEvolutiz finished for app: {app_name}")
+                logger.log_progress(f"\nEvolutiz finished for app: {app_name}")
 
-            time_budget_used = budget_manager.get_time_budget_used()
-            if time_budget_used is not None:
-                logger.log_progress(f"\nTime budget used: {time_budget_used:.2f} seconds\n")
+                time_budget_used = budget_manager.get_time_budget_used()
+                if time_budget_used is not None:
+                    logger.log_progress(f"\nTime budget used: {time_budget_used:.2f} seconds\n")
 
-            evaluations_budget_used = budget_manager.get_evaluations_budget_used()
-            if evaluations_budget_used is not None:
-                logger.log_progress(f"\nEvaluations budget used: {evaluations_budget_used:d}\n")
+                evaluations_budget_used = budget_manager.get_evaluations_budget_used()
+                if evaluations_budget_used is not None:
+                    logger.log_progress(f"\nEvaluations budget used: {evaluations_budget_used:d}\n")
 
-            # wait for all MultipleQueueConsumerThread to terminate
-            wait_for_working_threas_to_finish()
+                # wait for all MultipleQueueConsumerThread to terminate
+                wait_for_working_threas_to_finish()
+            except Exception as e:
+                there_was_a_failed_repetition = True
+                if not continue_on_repetition_failure:
+                    # there was a problem during current repetition, halt further executions of this subject
+                    raise e
+                # otherwise, keep running the remaining repetitions
 
-        return True
+        return not there_was_a_failed_repetition
     except Exception as e:
         logger.log_progress(f"\nThere was an error running evolutiz on app: {app_name}")
         if verbose_level > 0:
@@ -169,6 +181,12 @@ def prepare_result_dir(app_name: str, repetition: int, strategy_with_runner_name
     # build result_dir path
     result_dir = f"{settings.WORKING_DIR}results/{algorithm_folder}/{app_name}/{repetition_folder}"
 
+    skip_subject_if_logbook_in_results = RequiredFeature('skip_subject_if_logbook_in_results').request()
+    if skip_subject_if_logbook_in_results:
+        if os.path.exists(f"{result_dir}/logbook.pickle"):
+            raise Exception(f"Skipping run for {algorithm_folder}/{app_name}/{repetition_folder} since there is "
+                            f"already a results folder with a valid logbook file inside it.")
+
     # clean and create result_dir
     os.system(f"rm -rf {result_dir}/*{logger.redirect_string()}")
     result_code = os.system(f"mkdir -p {result_dir}")
@@ -186,12 +204,13 @@ def prepare_result_dir(app_name: str, repetition: int, strategy_with_runner_name
 
 def run(strategy_name: str, app_paths: List[str]) -> None:
     compress = RequiredFeature('compress').request()
+    continue_on_subject_failure = RequiredFeature('continue_on_subject_failure').request()
 
     for i in range(0, len(app_paths)):
         features.provide('app_path', app_paths[i])
 
         success = run_one_app(strategy_name)
-        if not success:
+        if not success and not continue_on_subject_failure:
             break
 
         if compress:
@@ -212,14 +231,25 @@ def get_subject_paths(arguments: argparse.Namespace) -> List[str]:
         app_paths = []
 
         if arguments.assume_subjects_instrumented:
-            output, errors, result_code = run_cmd(f"find -L {subjects_path} -name *.apk")
+            output, errors, result_code = run_cmd(f"find -L {subjects_path} -name \"*.apk\"")
             for line in output.strip().split('\n'):
                 app_paths.append(line.rstrip('/'))  # remove trailing forward slash
         else:
-            output, errors, result_code = run_cmd(f"ls -d {subjects_path}*/")
+            output, errors, result_code = run_cmd(f"ls -1 -d \"{subjects_path}\"*")
             for line in output.strip().split('\n'):
-                if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
-                    app_paths.append(line.rstrip('/'))  # remove trailing forward slash
+                path = line.rstrip('/')
+                if os.path.isdir(path):
+                    app_paths.append(path)
+                elif os.path.isfile(path):
+                    if path.endswith(".apk"):
+                        if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
+                            app_paths.append(path)  # remove trailing forward slash
+                    else:
+                        logger.log_progress(f"Ignoring non-APK file {path} in subjects path")
+                else:
+                    # special file (e.g., socket)
+                    logger.log_progress(f"Ignoring special file {path} in subjects path")
+                    continue
 
         if arguments.randomize_subjects:
             random.shuffle(app_paths)
@@ -227,6 +257,7 @@ def get_subject_paths(arguments: argparse.Namespace) -> List[str]:
         if arguments.limit_subjects_number != -1:
             app_paths = app_paths[0:arguments.limit_subjects_number]
 
+        # return list(filter(lambda p: 'com.zhiliaoapp.musically' in p, app_paths))
         return app_paths
 
 
@@ -313,6 +344,10 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
     # subjects related arguments
     parser.add_argument('--subject-path', dest='subject_path',
                         help='Directory where the subject to be processed is located')
+    parser.add_argument('--continue-on-subject-failure', dest='continue_on_subject_failure',
+                        action='store_true', help='Continue processing other subjects if one fails')
+    parser.add_argument('--continue-on-repetition-failure', dest='continue_on_repetition_failure',
+                        action='store_true', help='Continue processing other repetitions if one fails')
     parser.add_argument('--subjects-path', dest='subjects_path',
                         help='Directory where subjects are located')
     parser.add_argument('--instrumented-subjects-path', dest='instrumented_subjects_path',
@@ -370,6 +405,7 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
         "dynaMosa": DynaMosa,
         "randomSearch": RandomSearch,
         "evaluateScripts": EvaluateScripts,
+        "checkInstrumentation": CheckInstrumentation,
     }
     parser.add_argument('-s', '--strategy', dest='strategy',
                         choices=possible_strategies.keys(), help='Strategy to be used')
@@ -405,6 +441,7 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
     possible_coverage_fetchers = {
         "emma": EmmaCoverageFetcher(),
         "jacoco": JacocoCoverageFetcher(),
+        "ella": EllaCoverageFetcher(),
     }
     parser.add_argument('--coverage', dest='coverage',
                         choices=possible_coverage_fetchers.keys(), help='Coverage fetcher to be used')
@@ -425,6 +462,10 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
                         help='This argument is useful for changing the result directory path when evaluating scripts '
                              'from a previous run.')
 
+    parser.add_argument('--skip-subject-if-logbook-in-results', dest='skip_subject_if_logbook_in_results',
+                        action='store_true', help='Skip a subject\'s repetition if there is already a result folder '
+                                                  'with a non-empty logbook inside it.')
+
 
 def init_arguments_defaults() -> None:
     global defaults
@@ -434,6 +475,8 @@ def init_arguments_defaults() -> None:
         "emma_instrument_path": "subjects/EmmaInstrument/",
         "randomize_subjects": False,
         "assume_subjects_instrumented": False,
+        "continue_on_subject_failure": True,
+        "continue_on_repetition_failure": True,
         "limit_subjects_number": 1,
         "repetitions": 1,
         "repetitions_offset": 0,
@@ -456,11 +499,12 @@ def init_arguments_defaults() -> None:
         'evaluate_scripts_folder_path': None,
         'evaluate_scripts_repetition_number': None,
         'evaluate_scripts_algorithm_name': None,
+        'skip_subject_if_logbook_in_results': False,
     }
 
 
 def config_items_type_convert(items: Iterable[Tuple[str, Any]]) -> List[Tuple[str, Any]]:
-    result:  List[Tuple[str, Any]] = []
+    result: List[Tuple[str, Any]] = []
     key: str
     value: Any
 
@@ -491,6 +535,7 @@ def config_items_type_convert(items: Iterable[Tuple[str, Any]]) -> List[Tuple[st
             raise ValueError(f'Unable to convert value for "{name}" to declared type "{type_tag}".')
     return result
 
+
 def parse_config_file() -> None:
     global conf_parser, args, remaining_argv
     # Parse any conf_file specification
@@ -514,19 +559,18 @@ def parse_config_file() -> None:
         defaults.update(dict(config_items_type_convert(config.items(DEFAULTSECT))))
 
 
-def get_fitness_values_of_individual(individual: Individual) -> Any:
-    return individual.fitness.values
-
-
 def provide_features() -> None:
     # define subjects
     features.provide('instrumented_subjects_path', args.instrumented_subjects_path)
+    features.provide('continue_on_subject_failure', args.continue_on_subject_failure)
+    features.provide('continue_on_repetition_failure', args.continue_on_repetition_failure)
 
     # define budget and repetitions
     features.provide('repetitions', args.repetitions)
     features.provide('repetitions_offset', args.repetitions_offset)
     features.provide('budget_manager',
                      BudgetManager(time_budget=args.time_budget, evaluations_budget=args.evaluations_budget))
+
     # define devices configuration
     features.provide('emulators_number', args.emulators_number)
     features.provide('real_devices_number', args.real_devices_number)
@@ -564,21 +608,11 @@ def provide_features() -> None:
     features.provide('toolbox', toolbox)
     features.provide('device_manager', DeviceManager())
 
-    stats = tools.Statistics(get_fitness_values_of_individual)
-    # Use axis = 0 to get the desired statistic computed across all fitness values
-    # Example:
-    # >>> a = np.array([[1, 2], [3, 4]])
-    # >>> np.mean(a, axis=0)
-    # array([ 2.,  3.])
-    stats.register("avg", numpy.mean, axis=0)
-    stats.register("std", numpy.std, axis=0)
-    stats.register("min", numpy.min, axis=0)
-    stats.register("max", numpy.max, axis=0)
-    features.provide('stats', stats)
-
     features.provide('evaluate_scripts_folder_path', args.evaluate_scripts_folder_path)
     features.provide('evaluate_scripts_repetition_number', args.evaluate_scripts_repetition_number)
     features.provide('evaluate_scripts_algorithm_name', args.evaluate_scripts_algorithm_name)
+
+    features.provide('skip_subject_if_logbook_in_results', args.skip_subject_if_logbook_in_results)
 
 
 if __name__ == "__main__":

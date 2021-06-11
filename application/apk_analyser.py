@@ -35,7 +35,7 @@ class ApkAnalyser(object):
             self.apk_path = self.instrumented_app_path
         else:
             # now find its name
-            output, errors, result_code = run_cmd(f"find -L {self.instrumented_app_path} -name *.apk | grep -v androidTest | grep -v unaligned")
+            output, errors, result_code = run_cmd(f"find -L {self.instrumented_app_path} -name \"*.apk\" | grep -v androidTest | grep -v unaligned")
             apk_paths = []
             for file_path in output.split("\n"):
                 if file_path != "":
@@ -92,5 +92,5 @@ class ApkAnalyser(object):
             # if not exist, upload dummy strings.xml
             string_xml_path = f"{settings.WORKING_DIR}resources/dummy_strings.xml"
 
-        adb.shell_command(device, f" shell rm /mnt/sdcard/{self.package_name}_strings.xml")
+        adb.shell_command(device, f" rm /mnt/sdcard/{self.package_name}_strings.xml")
         adb.push(device, string_xml_path, f"/mnt/sdcard/{self.package_name}_strings.xml")

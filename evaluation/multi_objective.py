@@ -77,6 +77,9 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         individual.evaluation_finish_timestamp = finish_time
         individual.evaluation_elapsed_time = finish_time - start_time
 
+        individual.length = length
+        individual.crashes = crashes
+
         hall_of_fame = RequiredFeature('hall_of_fame').request()
         hall_of_fame.update([individual])
 
@@ -90,14 +93,14 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
     def update_logbook(self, gen: int, population: List[IndividualMultiObjective]) -> None:
         self.result_dir = RequiredFeature('result_dir').request()
         self.logbook = RequiredFeature('logbook').request()
-        self.stats = RequiredFeature('stats').request()
 
-        record = self.stats.compile(population) if self.stats is not None else {}
+        record = {}
         fitness = []
         evaluation = []
         creation = []
         for individual in population:
             fitness.append({
+                'evaluation': 'multi-objective',
                 'generation': individual.generation,
                 'index_in_generation': individual.index_in_generation,
                 'coverage': individual.fitness.values[0],
@@ -126,17 +129,47 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
     def show_best_historic_fitness(self) -> None:
         self.logbook = RequiredFeature('logbook').request()
-        min_fitness_values_per_generation = numpy.array(self.logbook.select("min"))
-        max_fitness_values_per_generation = numpy.array(self.logbook.select("max"))
+        fitness_by_gen = self.logbook.select("fitness")
 
-        max_fitness_values_all_generations = max_fitness_values_per_generation.max(axis=0)
-        min_fitness_values_all_generations = min_fitness_values_per_generation.min(axis=0)
+        # best independent (i.e., from different individuals) historic values for each objective
+        max_coverage = 0
+        min_length = sys.maxsize
+        max_crashes = 0
 
-        max_coverage = max_fitness_values_all_generations[0]
-        min_length = min_fitness_values_all_generations[1]
-        max_crashes = max_fitness_values_all_generations[2]
+        # the fitness of the best multi-objective individual
+        best_individual_fitness = (max_coverage, min_length, max_crashes)
 
-        # CAUTION: these min and max are from different individuals
+        for gen, population in enumerate(fitness_by_gen):
+            for fitness in population:
+
+                individual_coverage = fitness['coverage']
+                individual_length = fitness['length']
+                individual_crashes = fitness['crashes']
+
+                # is this a better individual than the one found so far?
+                at_least_as_good = individual_coverage >= max_coverage \
+                                   and individual_length <= min_length \
+                                   and individual_crashes >= max_crashes
+
+                partially_better = individual_coverage > max_coverage \
+                                   or individual_length < min_length \
+                                   or individual_crashes > max_crashes
+
+                if at_least_as_good and partially_better:
+                    best_individual_fitness = (individual_coverage, individual_length, individual_crashes)
+
+                if individual_coverage > max_coverage:
+                    max_coverage = individual_coverage
+
+                if individual_length < min_length:
+                    min_length = individual_length
+
+                if individual_crashes > max_crashes:
+                    max_crashes = individual_crashes
+
+        logger.log_progress(f"\n- Best multi-objective individual: {best_individual_fitness}")
+
+        # CAUTION: the following min and max are from different individuals
         logger.log_progress(f"\n- Best historic coverage: {str(max_coverage)}")
         logger.log_progress(f"\n- Best historic crashes: {str(max_crashes)}")
         if max_crashes > 0:

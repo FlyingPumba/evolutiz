@@ -10,6 +10,118 @@ import numpy
 # This script needs to be run like:
 # python -m postprocess.logbook logbook.pickle
 
+def _print_best_metric(logbook_file_path, metric_name, default_metric_value, aggregation_func):
+    """
+    Calculate the "best" historic value for a metric (e.g., 'coverage') in the fitness values of the provided logbook.
+    "Best" is determined by the aggregation function (e.g., max).
+    A default value for the metric is needed in case the metric is not found in the fitness values.
+    :param logbook_file_path:
+    :param metric_name:
+    :param default_metric_value:
+    :param aggregation_func:
+    :return:
+    """
+    logbook_file = open(logbook_file_path, 'rb')
+    logbook = pickle.load(logbook_file)
+    fitness_by_gen = logbook.select("fitness")
+
+    # collect all values for this metric
+    metric_values = [default_metric_value]
+    for gen, population in enumerate(fitness_by_gen):
+        for fitness in population:
+            metric_value = fitness[metric_name]
+            metric_values.append(metric_value)
+
+    best_metric_value = aggregation_func(metric_values)
+    print("{0}".format(best_metric_value))
+
+def _find_best_individual(fitness_by_gen, at_least_as_good_func, partially_better_func):
+    """
+    Find the best individual across generations.
+    To determine if an individual dominates the current best one, it has to be at least as good and partially better.
+    Functions to calculate those facts are provided by arguments (since they are evaluation-dependent).
+    :param fitness_by_gen:
+    :param at_least_as_good_func:
+    :param partially_better_func:
+    :return:
+    """
+    best_fitness = None
+    for gen, population in enumerate(fitness_by_gen):
+        for fitness in population:
+            if best_fitness is None:
+                best_fitness = fitness
+            elif at_least_as_good_func(fitness, best_fitness) and \
+                    partially_better_func(fitness, best_fitness):
+                best_fitness = fitness
+
+    return best_fitness
+
+def _is_single_objective_logbook(logbook_file_path):
+    """
+    Determine if this logbook was generated using a single-objective evaluation or not.
+    Since the logbooks we are using have changed in the past, this process is not so straightforward.
+
+    To begin, we assume that the logbook comes from a multi-objective evaluation.
+    If the fitness values do not have information regarding crashes or length at all (i.e., not part of the records),
+    then we can confirm that it IS a single-objective logbook.
+    If the fitness values have the "evaluation" property, we use it to determine the output.
+    :param logbook_file_path:
+    :return:
+    """
+    logbook_file = open(logbook_file_path, 'rb')
+    logbook = pickle.load(logbook_file)
+    fitness_by_gen = logbook.select("fitness")
+
+    for gen, population in enumerate(fitness_by_gen):
+        for fitness in population:
+            if 'crashes' not in fitness:
+                # definitely single-objective
+                return True
+
+            if 'evaluation' in fitness:
+                # the fitness values is declaring which evaluation was used on it.
+                return fitness['evaluation'] == 'single-objective'
+
+    # we did not find evidence of single-objective logbook, assume multi-objective
+    return False
+
+def _at_least_as_good_multi_objective(current_fitness, best_fitness_so_far):
+    return current_fitness['coverage'] >= best_fitness_so_far['coverage'] \
+           and current_fitness['length'] <= best_fitness_so_far['length'] \
+           and current_fitness['crashes'] >= best_fitness_so_far['crashes']
+
+def _partially_better_multi_objective(current_fitness, best_fitness_so_far):
+    return current_fitness['coverage'] > best_fitness_so_far['coverage'] \
+           or current_fitness['length'] < best_fitness_so_far['length'] \
+           or current_fitness['crashes'] > best_fitness_so_far['crashes']
+
+def _at_least_as_good_single_objective(current_fitness, best_fitness_so_far):
+    return current_fitness['coverage'] >= best_fitness_so_far['coverage']
+
+def _partially_better_single_objective(current_fitness, best_fitness_so_far):
+    return current_fitness['coverage'] > best_fitness_so_far['coverage']
+
+def _print_individual(fitness):
+    """
+    Prints whatever is possible to find on the fitness values of an individual.
+    :param fitness:
+    :return:
+    """
+    coverage = ""
+    length = ""
+    crashes = ""
+
+    if fitness is not None:
+        if 'coverage' in fitness:
+            coverage = fitness['coverage']
+        if 'length' in fitness:
+            length = fitness['length']
+        if 'crashes' in fitness:
+            crashes = fitness['crashes']
+
+    print("coverage,crashes,length")
+    print("{0},{1},{2}".format(coverage, crashes, length))
+
 def print_number_of_generations(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
@@ -18,106 +130,51 @@ def print_number_of_generations(logbook_file_path):
     print("generations")
     print("{0}".format(len(fitness_by_gen)))
 
-def print_best_overall_fitness_single_objective(logbook_file_path):
+def print_best_historic_coverage(logbook_file_path):
+    _print_best_metric(logbook_file_path, 'coverage', 0, max)
+
+def print_best_historic_length(logbook_file_path):
+    _print_best_metric(logbook_file_path, 'length', sys.maxsize, min)
+
+def print_best_historic_crashes(logbook_file_path):
+    _print_best_metric(logbook_file_path, 'crashes', 0, max)
+
+def print_best_individual_all_generations(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
-
-    min_fitness_values_per_generation = numpy.array(logbook.select("min"))
-    max_fitness_values_per_generation = numpy.array(logbook.select("max"))
-
-    # CAUTION: these min and max are from different individuals
-    max_fitness_values_all_generations = max_fitness_values_per_generation.max(axis=0)
-    min_fitness_values_all_generations = min_fitness_values_per_generation.min(axis=0)
-
-    max_coverage = str(max_fitness_values_all_generations[0])
-    min_length = ""
-    max_crashes = ""
-
-    if len(max_fitness_values_all_generations) > 1:
-        # multi-objective logbook
-        min_length = str(min_fitness_values_all_generations[1])
-        max_crashes = str(max_fitness_values_all_generations[2])
-
-    print("coverage,crashes,length")
-    print("{0},{1},{2}".format(max_coverage, max_crashes, min_length))
-
-def print_best_overall_fitness_multi_objective(logbook_file_path):
-    logbook_file = open(logbook_file_path, 'rb')
-    logbook = pickle.load(logbook_file)
-
     fitness_by_gen = logbook.select("fitness")
 
-    max_coverage = 0
-    min_length = sys.maxsize
-    max_crashes = 0
+    if _is_single_objective_logbook(logbook_file_path):
+        individual = _find_best_individual(
+            fitness_by_gen,
+            _at_least_as_good_single_objective,
+            _partially_better_single_objective)
+        _print_individual(individual)
+    else:
+        individual = _find_best_individual(
+            fitness_by_gen,
+            _at_least_as_good_multi_objective,
+            _partially_better_multi_objective)
+        _print_individual(individual)
 
-    for gen, population in enumerate(fitness_by_gen):
-        for fitness in population:
-
-            at_least_as_good = fitness['coverage'] >= max_coverage \
-                               and fitness['length'] <= min_length \
-                               and fitness['crashes'] >= max_crashes
-
-            partially_better = fitness['coverage'] > max_coverage \
-                               or fitness['length'] < min_length \
-                               or fitness['crashes'] > max_crashes
-
-            if at_least_as_good and partially_better:
-                max_coverage = fitness['coverage']
-                min_length = fitness['length']
-                max_crashes = fitness['crashes']
-
-    print("coverage,crashes,length")
-    print("{0},{1},{2}".format(max_coverage, max_crashes, min_length))
-
-def print_best_last_gen_fitness(logbook_file_path):
+def print_best_individual_last_generation(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
     logbook = pickle.load(logbook_file)
-
     fitness_by_gen = logbook.select("fitness")
-    last_population = fitness_by_gen[-1]
+    fitness_last_gen = fitness_by_gen[-1]
 
-    multi_objective = False
-
-    max_coverage = 0
-    min_length = sys.maxsize
-    max_crashes = 0
-
-    for fitness in last_population:
-
-        max_coverage = max(fitness['coverage'], max_coverage)
-
-        if 'crashes' in fitness:
-            # multi-objective logbook
-            multi_objective = True
-            min_length = min(fitness['length'], min_length)
-            max_crashes = max(fitness['crashes'], max_crashes)
-
-    if not multi_objective:
-        max_crashes = ""
-        min_length = ""
-
-    print("coverage,crashes,length")
-    print("{0},{1},{2}".format(max_coverage, max_crashes, min_length))
-
-def print_avg_fitness(logbook_file_path):
-    logbook_file = open(logbook_file_path, 'rb')
-    logbook = pickle.load(logbook_file)
-
-    print("gen,avg_coverage,avg_crashes,avg_length")
-
-    for gen, avg_fitness in enumerate(logbook.select("avg")):
-        avg_coverage = str(avg_fitness[0])
-        avg_length = ""
-        avg_crashes = ""
-
-        if len(avg_fitness) > 1:
-            # multi-objective logbook
-            avg_length = str(avg_fitness[1])
-            avg_crashes = str(avg_fitness[2])
-
-        print("{0},{1},{2},{3}".format(gen, avg_coverage, avg_crashes, avg_length))
-
+    if _is_single_objective_logbook(logbook_file_path):
+        individual = _find_best_individual(
+            [fitness_last_gen],
+            _at_least_as_good_single_objective,
+            _partially_better_single_objective)
+        _print_individual(individual)
+    else:
+        individual = _find_best_individual(
+            [fitness_last_gen],
+            _at_least_as_good_multi_objective,
+            _partially_better_multi_objective)
+        _print_individual(individual)
 
 def print_all(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
@@ -130,14 +187,12 @@ def print_all(logbook_file_path):
     for gen, population in enumerate(fitness_by_gen):
         for fitness in population:
             if 'crashes' in fitness:
-                # multi-objective logbook
                 print("%d\t%s\t%d\t%d\t%d" % (gen,
                                               str(fitness['generation']) + "." + str(fitness['index_in_generation']),
                                               fitness['coverage'],
                                               fitness['crashes'],
                                               fitness['length']))
             else:
-                # single-objective logbook
                 print("%d\t%s\t%d" % (gen,
                                       str(fitness['generation']) + "." + str(fitness['index_in_generation']),
                                       fitness['coverage']))
@@ -270,21 +325,23 @@ if __name__ == "__main__":
     parser.add_argument('processing', default='print-all', nargs='?', help='Processing to do')
     args = parser.parse_args()
 
-    if args.processing == 'print-all':
+    if args.processing == 'all':
         print_all(args.logbook_file_path)
     elif args.processing == 'draw-fitness':
         draw_pop_fitness(args.logbook_file_path)
-    elif args.processing == 'print-avg':
-        print_avg_fitness(args.logbook_file_path)
-    elif args.processing == 'print-best-overall-single-objective':
-        print_best_overall_fitness_single_objective(args.logbook_file_path)
-    elif args.processing == 'print-best-overall-multi-objective':
-        print_best_overall_fitness_multi_objective(args.logbook_file_path)
-    elif args.processing == 'print-best-last-gen':
-        print_best_last_gen_fitness(args.logbook_file_path)
     elif args.processing == 'fitness-by-time':
         print_fitness_by_time(args.logbook_file_path)
     elif args.processing == 'generations':
         print_number_of_generations(args.logbook_file_path)
+    elif args.processing == 'best-historic-coverage':
+        print_best_historic_coverage(args.logbook_file_path)
+    elif args.processing == 'best-historic-length':
+        print_best_historic_length(args.logbook_file_path)
+    elif args.processing == 'best-historic-crashes':
+        print_best_historic_crashes(args.logbook_file_path)
+    elif args.processing == 'best-individual-all-generations':
+        print_best_individual_all_generations(args.logbook_file_path)
+    elif args.processing == 'best-individual-last-generation':
+        print_best_individual_last_generation(args.logbook_file_path)
     else:
         print(args.processing)
