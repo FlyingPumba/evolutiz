@@ -69,6 +69,7 @@ possible_individual_generators: Dict[str, Type[IndividualGenerator]]
 possible_test_runners: Dict[str, TestRunner]
 possible_coverage_fetchers: Dict[str, CoverageFetcher]
 
+
 def run_one_app(strategy_with_runner_name: str) -> bool:
     app_path = RequiredFeature('app_path').request()
     repetitions = RequiredFeature('repetitions').request()
@@ -77,48 +78,58 @@ def run_one_app(strategy_with_runner_name: str) -> bool:
     test_suite_evaluator = RequiredFeature('test_suite_evaluator').request()
     verbose_level = RequiredFeature('verbose_level').request()
 
+    continue_on_repetition_failure = RequiredFeature('continue_on_repetition_failure').request()
+
     app_name = os.path.basename(app_path)
 
     try:
+        there_was_a_failed_repetition = False
         for repetition in range(repetitions_offset, repetitions):
-            os.chdir(settings.WORKING_DIR)
+            try:
+                os.chdir(settings.WORKING_DIR)
 
-            logbook = tools.Logbook()
-            logbook.header = ['gen']
-            features.provide('logbook', logbook)
+                logbook = tools.Logbook()
+                logbook.header = ['gen']
+                features.provide('logbook', logbook)
 
-            history = tools.History()
-            features.provide('history', history)
+                history = tools.History()
+                features.provide('history', history)
 
-            hall_of_fame = test_suite_evaluator.new_hall_of_fame()
-            features.provide('hall_of_fame', hall_of_fame)
+                hall_of_fame = test_suite_evaluator.new_hall_of_fame()
+                features.provide('hall_of_fame', hall_of_fame)
 
-            result_dir = prepare_result_dir(app_name, repetition, strategy_with_runner_name)
+                result_dir = prepare_result_dir(app_name, repetition, strategy_with_runner_name)
 
-            get_emulators_running(result_dir)
+                get_emulators_running(result_dir)
 
-            test_generator = Evolutiz()
+                test_generator = Evolutiz()
 
-            budget_manager.start_budget()
+                budget_manager.start_budget()
 
-            logger.log_progress(f"\n-----> Starting repetition: {str(repetition)} for app: {app_name}, "
-                                f"initial timestamp is: {str(budget_manager.start_time)}")
-            test_generator.run()
+                logger.log_progress(f"\n-----> Starting repetition: {str(repetition)} for app: {app_name}, "
+                                    f"initial timestamp is: {str(budget_manager.start_time)}")
+                test_generator.run()
 
-            logger.log_progress(f"\nEvolutiz finished for app: {app_name}")
+                logger.log_progress(f"\nEvolutiz finished for app: {app_name}")
 
-            time_budget_used = budget_manager.get_time_budget_used()
-            if time_budget_used is not None:
-                logger.log_progress(f"\nTime budget used: {time_budget_used:.2f} seconds\n")
+                time_budget_used = budget_manager.get_time_budget_used()
+                if time_budget_used is not None:
+                    logger.log_progress(f"\nTime budget used: {time_budget_used:.2f} seconds\n")
 
-            evaluations_budget_used = budget_manager.get_evaluations_budget_used()
-            if evaluations_budget_used is not None:
-                logger.log_progress(f"\nEvaluations budget used: {evaluations_budget_used:d}\n")
+                evaluations_budget_used = budget_manager.get_evaluations_budget_used()
+                if evaluations_budget_used is not None:
+                    logger.log_progress(f"\nEvaluations budget used: {evaluations_budget_used:d}\n")
 
-            # wait for all MultipleQueueConsumerThread to terminate
-            wait_for_working_threas_to_finish()
+                # wait for all MultipleQueueConsumerThread to terminate
+                wait_for_working_threas_to_finish()
+            except Exception as e:
+                there_was_a_failed_repetition = True
+                if not continue_on_repetition_failure:
+                    # there was a problem during current repetition, halt further executions of this subject
+                    raise e
+                # otherwise, keep running the remaining repetitions
 
-        return True
+        return not there_was_a_failed_repetition
     except Exception as e:
         logger.log_progress(f"\nThere was an error running evolutiz on app: {app_name}")
         if verbose_level > 0:
@@ -335,6 +346,8 @@ def add_arguments_to_parser(parser: argparse.ArgumentParser) -> None:
                         help='Directory where the subject to be processed is located')
     parser.add_argument('--continue-on-subject-failure', dest='continue_on_subject_failure',
                         action='store_true', help='Continue processing other subjects if one fails')
+    parser.add_argument('--continue-on-repetition-failure', dest='continue_on_repetition_failure',
+                        action='store_true', help='Continue processing other repetitions if one fails')
     parser.add_argument('--subjects-path', dest='subjects_path',
                         help='Directory where subjects are located')
     parser.add_argument('--instrumented-subjects-path', dest='instrumented_subjects_path',
@@ -463,6 +476,7 @@ def init_arguments_defaults() -> None:
         "randomize_subjects": False,
         "assume_subjects_instrumented": False,
         "continue_on_subject_failure": True,
+        "continue_on_repetition_failure": True,
         "limit_subjects_number": 1,
         "repetitions": 1,
         "repetitions_offset": 0,
@@ -490,7 +504,7 @@ def init_arguments_defaults() -> None:
 
 
 def config_items_type_convert(items: Iterable[Tuple[str, Any]]) -> List[Tuple[str, Any]]:
-    result:  List[Tuple[str, Any]] = []
+    result: List[Tuple[str, Any]] = []
     key: str
     value: Any
 
@@ -521,6 +535,7 @@ def config_items_type_convert(items: Iterable[Tuple[str, Any]]) -> List[Tuple[st
             raise ValueError(f'Unable to convert value for "{name}" to declared type "{type_tag}".')
     return result
 
+
 def parse_config_file() -> None:
     global conf_parser, args, remaining_argv
     # Parse any conf_file specification
@@ -543,10 +558,12 @@ def parse_config_file() -> None:
         config.read([args.conf_file])
         defaults.update(dict(config_items_type_convert(config.items(DEFAULTSECT))))
 
+
 def provide_features() -> None:
     # define subjects
     features.provide('instrumented_subjects_path', args.instrumented_subjects_path)
     features.provide('continue_on_subject_failure', args.continue_on_subject_failure)
+    features.provide('continue_on_repetition_failure', args.continue_on_repetition_failure)
 
     # define budget and repetitions
     features.provide('repetitions', args.repetitions)
@@ -596,6 +613,7 @@ def provide_features() -> None:
     features.provide('evaluate_scripts_algorithm_name', args.evaluate_scripts_algorithm_name)
 
     features.provide('skip_subject_if_logbook_in_results', args.skip_subject_if_logbook_in_results)
+
 
 if __name__ == "__main__":
     parse_config_file()
