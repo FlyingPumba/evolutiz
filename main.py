@@ -229,8 +229,10 @@ def get_subject_paths(arguments: argparse.Namespace) -> List[str]:
 
     subject_path = arguments.subject_path
     if subject_path is not None:
-        features.provide('subjects_path', [subject_path])
-        return [subject_path.rstrip('/')]
+        absolute_path = os.path.abspath(subject_path)
+        absolute_path = absolute_path.rstrip('/')
+        features.provide('subjects_path', [absolute_path])
+        return [absolute_path]
     else:
         subjects_path = arguments.subjects_path.rstrip('/') + '/'
         features.provide('subjects_path', subjects_path)
