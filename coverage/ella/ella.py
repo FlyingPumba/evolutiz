@@ -67,7 +67,7 @@ class Ella(object):
         output, errors, result_code = adb.adb_command(device,
                                                       f"forward tcp:{self.tcp_relay_port} tcp:{self.tcp_relay_port}")
         if result_code != 0:
-            raise Exception("Unable to forward TCP relay port from emulator to local PC")
+            raise Exception(f"Unable to forward TCP relay port from emulator to local PC: {output} {errors}")
 
         # forward, locally, the TCP relay port to the ELLA server port
         run_cmd(f"socat TCP:localhost:{self.ella_port} TCP:localhost:{self.tcp_relay_port} &", discard_output=True)
