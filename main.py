@@ -242,20 +242,23 @@ def get_subject_paths(arguments: argparse.Namespace) -> List[str]:
             for line in output.strip().split('\n'):
                 app_paths.append(line.rstrip('/'))  # remove trailing forward slash
         else:
-            output, errors, result_code = run_cmd(f"ls -1 -d \"{subjects_path}\"*")
-            for line in output.strip().split('\n'):
-                path = line.rstrip('/')
-                if os.path.isdir(path):
-                    app_paths.append(path)
-                elif os.path.isfile(path):
-                    if path.endswith(".apk"):
-                        if "hydrate" not in line:  # hydrate app doesn't compile yet, so don't bother
-                            app_paths.append(path)  # remove trailing forward slash
+            output, errors, result_code = run_cmd(f"ls -1 \"{subjects_path}\"*")
+            for relative_path in output.strip().split('\n'):
+                # convert relative path to absolute path
+                absolute_path = os.path.abspath(relative_path)
+                absolute_path = absolute_path.rstrip('/')
+
+                if os.path.isdir(absolute_path):
+                    app_paths.append(absolute_path)
+                elif os.path.isfile(absolute_path):
+                    if absolute_path.endswith(".apk"):
+                        if "hydrate" not in relative_path:  # hydrate app doesn't compile yet, so don't bother
+                            app_paths.append(absolute_path)  # remove trailing forward slash
                     else:
-                        logger.log_progress(f"Ignoring non-APK file {path} in subjects path")
+                        logger.log_progress(f"Ignoring non-APK file {absolute_path} in subjects path")
                 else:
                     # special file (e.g., socket)
-                    logger.log_progress(f"Ignoring special file {path} in subjects path")
+                    logger.log_progress(f"Ignoring special file {absolute_path} in subjects path")
                     continue
 
         if arguments.randomize_subjects:
