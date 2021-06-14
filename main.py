@@ -123,6 +123,13 @@ def run_one_app(strategy_with_runner_name: str) -> bool:
                 # wait for all MultipleQueueConsumerThread to terminate
                 wait_for_working_threas_to_finish()
             except Exception as e:
+                logger.log_progress(f"\nThere was an error running repetition {repetition} on app: {app_name}")
+                if verbose_level > 0:
+                    logger.log_progress(f"\n{str(e)}")
+                if verbose_level > 1:
+                    logger.log_progress(f"\n{traceback.format_exc()}")
+                traceback.print_exc()
+
                 there_was_a_failed_repetition = True
                 if not continue_on_repetition_failure:
                     # there was a problem during current repetition, halt further executions of this subject
