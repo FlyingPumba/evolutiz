@@ -1,7 +1,7 @@
 import time
 from subprocess import TimeoutExpired
 from threading import Lock
-from typing import Optional, TYPE_CHECKING
+from typing import Optional, TYPE_CHECKING, Set
 
 import settings
 from devices import adb
@@ -33,6 +33,8 @@ class Device(object):
         self.failures: int = 0
         self.fail_limit: int = 5
 
+        self.forwarded_ports: Set[int] = set()
+
     def __str__(self) -> str:
         return self.name
 
@@ -50,13 +52,16 @@ class Device(object):
 
     def boot(self) -> None:
         self.state = State.booting
+        self.forwarded_ports = set()
         self.boot_time = time.time()
 
     def shutdown(self) -> None:
         self.state = State.unknown
+        self.forwarded_ports = set()
 
     def reboot(self) -> None:
         self.state = State.booting
+        self.forwarded_ports = set()
         self.boot_time = time.time()
 
     def mark_work_start(self) -> None:
@@ -137,3 +142,14 @@ class Device(object):
 
     def get_adb_server_port_prefix(self) -> str:
         return f"ANDROID_ADB_SERVER_PORT={str(self.adb_port)}"
+
+    def forward_port(self, host_port: int, emulator_port: int) -> None:
+        if host_port in self.forwarded_ports:
+            # This port was already forwarded for this device
+            return
+
+        output, errors, result_code = adb.adb_command(self, f"forward tcp:{host_port} tcp:{emulator_port}")
+        if result_code != 0:
+            raise Exception(f"Unable to forward TCP relay port from emulator to local PC: {output} {errors}")
+
+        self.forwarded_ports.add(host_port)
