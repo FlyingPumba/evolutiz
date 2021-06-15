@@ -58,7 +58,6 @@ class EllaAppInstrumentator(AppInstrumentator, Ella):
                                               cwd=self.ella_original_folder_path,
                                               timeout=120)
         if result_code != 0:
-            # TODO: maybe try with --aapt2?
             raise Exception(f"Unable instrument {self.app_path} APK using ELLA")
 
         os.chdir(settings.WORKING_DIR)
