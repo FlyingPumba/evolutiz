@@ -118,13 +118,13 @@ class EllaCoverageFetcher(CoverageFetcher, Ella):
             adb.log_evaluation_result(device, self.result_dir, script_path, True)
 
             # save the coverage.dat file of this test script
-            output, errors, result_code = run_cmd(f"mv {self.get_coverage_dat_path()} {self.coverage_folder_local_path}/")
+            output, errors, result_code = run_cmd(f"mv {self.get_coverage_dat_path(device)} {self.coverage_folder_local_path}/")
             if result_code != 0:
-                raise Exception(f"Unable to move the coverage dat file for test script, path is: {self.get_coverage_dat_path()}")
+                raise Exception(f"Unable to move the coverage dat file for test script, path is: {self.get_coverage_dat_path(device)}")
 
     def set_coverage_paths(self, device: Device, generation: int, individual_index: int) -> None:
         self.coverage_folder_local_path = self.prepare_coverage_folder(generation, individual_index)
-        self.ella_coverage_ids_file_path = f"{self.get_current_apk_output_folder()}/covids"
+        self.ella_coverage_ids_file_path = f"{self.get_current_apk_output_folder(device)}/covids"
 
     def prepare_coverage_folder(self, generation: int, individual_index: int) -> str:
         ts = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")

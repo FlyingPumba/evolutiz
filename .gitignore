@@ -70,3 +70,5 @@ instrumented-apks*
 lib/ella-customized/bin/ella.instrument.jar
 lib/ella-customized/bin/ella.runtime.jar
 lib/ella-customized/bin/ella.server.jar
+
+lib/ella-customized-emulator*
