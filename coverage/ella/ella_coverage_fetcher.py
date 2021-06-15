@@ -21,7 +21,7 @@ class EllaCoverageFetcher(CoverageFetcher, Ella):
         super(Ella, self).__init__()
 
     def register_app_instrumentator(self):
-        features.provide('app_instrumentator', EllaAppInstrumentator)
+        features.provide('app_instrumentator', EllaAppInstrumentator())
 
     def get_suite_coverage(
             self,

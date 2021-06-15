@@ -116,8 +116,8 @@ class Ella(object):
         # we will use the first as a base and the second one as an additive to provide
         # a different ELLA port for each device
 
-        port_base = self.ella_original_port + 1 - 5554
-        device_ella_port = port_base + device.port
+        port_base = self.ella_original_port - 5554
+        device_ella_port = port_base + device.port + 1
         return device_ella_port
 
     def get_device_tcp_relay_port(self, device: Device):
@@ -125,6 +125,6 @@ class Ella(object):
         # we will use the first as a base and the second one as an additive to provide
         # a different TCP relay port for each device
 
-        port_base = self.ella_original_port + 2 - 5554
-        device_tcp_relay_port = port_base + device.port
+        port_base = self.ella_original_port - 5554
+        device_tcp_relay_port = port_base + device.port + 2
         return device_tcp_relay_port
