@@ -27,6 +27,7 @@ class Device(object):
         self.state: State = state
         self.boot_time: float = 0
         self.adb_port: Optional[int] = None
+        self.port: Optional[int] = None
         self.needs_setup: bool = False
 
         self.lock_failures = Lock()
