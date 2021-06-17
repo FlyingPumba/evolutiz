@@ -30,19 +30,26 @@ class CoverageFetcher(object):
         """
         raise NotImplementedError
 
-    def generate_test_coverage(self,
-                               device: Device,
-                               script_path: str,
-                               generation: int,
-                               individual_index: int,
-                               test_case_index: int,
-                               unique_crashes: Set[str],
-                               scripts_crash_status: Dict[str, bool]
-                               ) -> None:
+    def generate_test_coverage(
+            self,
+            device: Device,
+            coverage_folder_local_path: str,
+            accumulated_output: str,
+            accumulated_errors: str,
+            script_path: str,
+            generation: int,
+            individual_index: int,
+            test_case_index: int,
+            unique_crashes: Set[str],
+            scripts_crash_status: Dict[str, bool]
+    ) -> bool:
         """
-        Runs a test case and returns its coverage.
+        Runs a test case and returns whether the coverage was generated successfully.
 
         :param device:
+        :param coverage_folder_local_path:
+        :param accumulated_output:
+        :param accumulated_errors:
         :param script_path:
         :param generation:
         :param individual_index:
@@ -53,19 +60,27 @@ class CoverageFetcher(object):
         """
         raise NotImplementedError
 
-    def dump_script_coverage(self,
-                             device: Device,
-                             script_path: str,
-                             generation: int,
-                             individual_index: int,
-                             test_case_index: int,
-                             unique_crashes: Set[str],
-                             scripts_crash_status: Dict[str, bool]
-                             ) -> None:
+    def dump_script_coverage(
+            self,
+            device: Device,
+            coverage_folder_local_path: str,
+            accumulated_output: str,
+            accumulated_errors: str,
+            script_path: str,
+            generation: int,
+            individual_index: int,
+            test_case_index: int,
+            unique_crashes: Set[str],
+            scripts_crash_status: Dict[str, bool]
+    ) -> bool:
         """
         Dumps the accumulated coverage in the device to an internal file (i.e., in the sdcard).
+        Returns whether the coverage was dumped successfully.
 
         :param device:
+        :param coverage_folder_local_path:
+        :param accumulated_output:
+        :param accumulated_errors:
         :param script_path:
         :param generation:
         :param individual_index:
@@ -76,14 +91,9 @@ class CoverageFetcher(object):
         """
         raise NotImplementedError
 
-    def set_coverage_paths(self, device: Device, generation: int, individual_index: int) -> None:
+    def prepare_coverage_folder(self, generation: int, individual_index: int) -> str:
         """
-        Sets the appropiate value of the following variables for the generation and individual_index provided:
-
-        - self.coverage_ec_device_path = path in the device for the coverage.ec file after dumping it.
-        - self.coverage_folder_local_path = path in local computer to store the coverage files.
-        - self.coverage_ec_local_path = path in local computer where the coverage.ec file is going to be stored.
-
+        Prepare the coverage folder in which to save the coverage results for an individual in a generation.
         :param device:
         :param generation:
         :param individual_index:
@@ -91,12 +101,21 @@ class CoverageFetcher(object):
         """
         raise NotImplementedError
 
-    def get_coverage(self, device: Device) -> int:
+    def get_coverage(
+            self,
+            device: Device,
+            coverage_folder_local_path: str,
+            accumulated_output: str,
+            accumulated_errors: str,
+    ) -> int:
         """
         Pulls accumulated coverage from device and saves it locally.
         It also parses the result and returns the line coverage found.
 
         :param device:
+        :param coverage_folder_local_path:
+        :param accumulated_output:
+        :param accumulated_errors:
         :return:
         """
         raise NotImplementedError
