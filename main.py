@@ -37,7 +37,6 @@ from devices.device_manager import DeviceManager
 from evaluation.multi_objective import MultiObjectiveTestSuiteEvaluator
 from evaluation.single_objective import SingleObjectiveTestSuiteEvaluator
 from evaluation.test_suite_evaluator import TestSuiteEvaluator
-from generation.individual import Individual
 from generation.individual_generator import IndividualGenerator
 from generation.individual_with_coverage_generator import IndividualWithCoverageFetcherGenerator
 from generation.individual_without_coverage_generator import IndividualWithoutCoverageGenerator

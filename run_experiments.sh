@@ -16,33 +16,33 @@ for subject in $SUBJECTS_FOLDER*.apk; do
   filename=$(basename $subject)
 
   notify -hn -m "JSEP $filename (sapienz)" \
-    "$EVOLUTIZ_CMD --subject-path $subject -s muPlusLambda -t motifcore -e multi-objective > sapienz-$filename-jsep-$(ls -1 sapienz-$filename-jsep* 2>/dev/null | wc -l).out"
+    "$EVOLUTIZ_CMD --subject-path $subject -s muPlusLambda -t motifcore -e multi-objective 2>&1 >sapienz-$filename-jsep-$(ls -1 sapienz-$filename-jsep* 2>/dev/null | wc -l).out"
 
   notify -hn -m "JSEP $filename (sapienz-no-motifgenes)" \
-    "$EVOLUTIZ_CMD --subject-path $subject -s muPlusLambda -t motifcore-no-motifgenes -e multi-objective > sapienz-no-motifgenes-$filename-jsep-$(ls -1 sapienz-no-motifgenes-$filename-jsep* 2>/dev/null | wc -l).out"
+    "$EVOLUTIZ_CMD --subject-path $subject -s muPlusLambda -t motifcore-no-motifgenes -e multi-objective 2>&1 >sapienz-no-motifgenes-$filename-jsep-$(ls -1 sapienz-no-motifgenes-$filename-jsep* 2>/dev/null | wc -l).out"
 
   notify -hn -m "JSEP $filename (random-search)" \
-    "$EVOLUTIZ_CMD --subject-path $subject -s randomSearch -t motifcore -e multi-objective > random-search-$filename-jsep-$(ls -1 random-search-$filename-jsep* 2>/dev/null | wc -l).out"
+    "$EVOLUTIZ_CMD --subject-path $subject -s randomSearch -t motifcore -e multi-objective 2>&1 >random-search-$filename-jsep-$(ls -1 random-search-$filename-jsep* 2>/dev/null | wc -l).out"
 
   notify -hn -m "JSEP $filename (random-search-no-motifgenes)" \
-    "$EVOLUTIZ_CMD --subject-path $subject -s randomSearch -t motifcore-no-motifgenes -e multi-objective > random-search-no-motifgenes-$filename-jsep-$(ls -1 random-search-no-motifgenes-$filename-jsep* 2>/dev/null | wc -l).out"
+    "$EVOLUTIZ_CMD --subject-path $subject -s randomSearch -t motifcore-no-motifgenes -e multi-objective 2>&1 >random-search-no-motifgenes-$filename-jsep-$(ls -1 random-search-no-motifgenes-$filename-jsep* 2>/dev/null | wc -l).out"
 
   notify -hn -m "JSEP $filename (standard)" \
-    "$EVOLUTIZ_CMD --subject-path $subject -s standard -t motifcore-no-motifgenes -e single-objective > standard-$filename-jsep-$(ls -1 standard-$filename-jsep* 2>/dev/null | wc -l).out"
+    "$EVOLUTIZ_CMD --subject-path $subject -s standard -t motifcore-no-motifgenes -e single-objective 2>&1 >standard-$filename-jsep-$(ls -1 standard-$filename-jsep* 2>/dev/null | wc -l).out"
 
   notify -hn -m "JSEP $filename (monotonic)" \
-    "$EVOLUTIZ_CMD --subject-path $subject -s monotonic -t motifcore-no-motifgenes -e single-objective > monotonic-$filename-jsep-$(ls -1 monotonic-$filename-jsep* 2>/dev/null | wc -l).out"
+    "$EVOLUTIZ_CMD --subject-path $subject -s monotonic -t motifcore-no-motifgenes -e single-objective 2>&1 >monotonic-$filename-jsep-$(ls -1 monotonic-$filename-jsep* 2>/dev/null | wc -l).out"
 
   notify -hn -m "JSEP $filename (steady)" \
-    "$EVOLUTIZ_CMD --subject-path $subject -s steady -t motifcore-no-motifgenes -e single-objective > steady-$filename-jsep-$(ls -1 steady-$filename-jsep* 2>/dev/null | wc -l).out"
+    "$EVOLUTIZ_CMD --subject-path $subject -s steady -t motifcore-no-motifgenes -e single-objective 2>&1 >steady-$filename-jsep-$(ls -1 steady-$filename-jsep* 2>/dev/null | wc -l).out"
 
 #  notify -hn -m "JSEP $filename (one-plus)" \
-#    "$EVOLUTIZ_CMD --subject-path $subject  -s onePlusLambdaCommaLambda -t motifcore-no-motifgenes -e single-objective  > one-plus-$filename-jsep-$(ls -1 one-plus-$filename-jsep* 2>/dev/null | wc -l).out"
+#    "$EVOLUTIZ_CMD --subject-path $subject  -s onePlusLambdaCommaLambda -t motifcore-no-motifgenes -e single-objective  2>&1 >one-plus-$filename-jsep-$(ls -1 one-plus-$filename-jsep* 2>/dev/null | wc -l).out"
 
   notify -hn -m "JSEP $filename (sapienz-single-objective-no-motifgene)" \
-    "$EVOLUTIZ_CMD --subject-path $subject -s muPlusLambda -t motifcore-no-motifgenes -e single-objective > sapienz-single-objective-no-motifgene-$filename-jsep-$(ls -1 sapienz-single-objective-no-motifgene-$filename-jsep* 2>/dev/null | wc -l).out"
+    "$EVOLUTIZ_CMD --subject-path $subject -s muPlusLambda -t motifcore-no-motifgenes -e single-objective 2>&1 >sapienz-single-objective-no-motifgene-$filename-jsep-$(ls -1 sapienz-single-objective-no-motifgene-$filename-jsep* 2>/dev/null | wc -l).out"
 
   notify -hn -m "JSEP $filename (mu-comma-lambda)" \
-    "$EVOLUTIZ_CMD --subject-path $subject -s muCommaLambda -t motifcore-no-motifgenes -e single-objective > mu-comma-lambda-$filename-jsep-$(ls -1 mu-comma-lambda-$filename-jsep* 2>/dev/null | wc -l).out"
+    "$EVOLUTIZ_CMD --subject-path $subject -s muCommaLambda -t motifcore-no-motifgenes -e single-objective 2>&1 >mu-comma-lambda-$filename-jsep-$(ls -1 mu-comma-lambda-$filename-jsep* 2>/dev/null | wc -l).out"
 done
 
