@@ -128,9 +128,9 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         fitness_by_gen = self.logbook.select("fitness")
 
         # best independent (i.e., from different individuals) historic values for each objective
-        max_coverage = 0
-        min_length = sys.maxsize
-        max_crashes = 0
+        max_coverage = 0.0
+        min_length = float(sys.maxsize)
+        max_crashes = 0.0
 
         # the fitness of the best single-objective individual
         best_individual_fitness = (max_coverage, min_length, max_crashes)
@@ -161,34 +161,7 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         logger.log_progress(f"\n- Best single-objective individual: {best_individual_fitness}")
 
-        # CAUTION: the following min and max are from different individuals
-        logger.log_progress(f"\n- Best historic coverage: {str(max_coverage)}")
-        logger.log_progress(f"\n- Best historic crashes: {str(max_crashes)}")
-        if max_crashes > 0:
-            logger.log_progress(f"\n- Best historic length: {str(min_length)}")
-        else:
-            logger.log_progress("\n- Best historic length: --")
-
-        # best independent (i.e., from different individuals) historic values for each objective
-        max_coverage = 0
-        min_length = sys.maxsize
-        max_crashes = 0
-
-        # the fitness of the best single-objective individual
-        best_individual_fitness = None
-
-        for gen, population in enumerate(fitness_by_gen):
-            for fitness in population:
-
-                at_least_as_good = fitness['coverage'] >= max_coverage
-                partially_better = fitness['coverage'] > max_coverage
-
-                if at_least_as_good and partially_better:
-                    max_coverage = fitness['coverage']
-                    min_length = fitness['length']
-                    max_crashes = fitness['crashes']
-
-        # CAUTION: these min and max are from different individuals
+        # CAUTION: the following best values are from different individuals
         logger.log_progress(f"\n- Best historic coverage: {str(max_coverage)}")
         logger.log_progress(f"\n- Best historic crashes: {str(max_crashes)}")
         if max_crashes > 0:

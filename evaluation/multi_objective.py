@@ -132,9 +132,9 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         fitness_by_gen = self.logbook.select("fitness")
 
         # best independent (i.e., from different individuals) historic values for each objective
-        max_coverage = 0
-        min_length = sys.maxsize
-        max_crashes = 0
+        max_coverage = 0.0
+        min_length = float(sys.maxsize)
+        max_crashes = 0.0
 
         # the fitness of the best multi-objective individual
         best_individual_fitness = (max_coverage, min_length, max_crashes)
@@ -169,7 +169,7 @@ class MultiObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
 
         logger.log_progress(f"\n- Best multi-objective individual: {best_individual_fitness}")
 
-        # CAUTION: the following min and max are from different individuals
+        # CAUTION: the following best values are from different individuals
         logger.log_progress(f"\n- Best historic coverage: {str(max_coverage)}")
         logger.log_progress(f"\n- Best historic crashes: {str(max_crashes)}")
         if max_crashes > 0:

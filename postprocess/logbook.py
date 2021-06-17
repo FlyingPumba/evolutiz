@@ -4,7 +4,6 @@ import pickle
 import sys
 
 import matplotlib.pyplot as plt
-import numpy
 
 
 # This script needs to be run like:
@@ -32,7 +31,7 @@ def _print_best_metric(logbook_file_path, metric_name, default_metric_value, agg
             metric_value = fitness[metric_name]
             metric_values.append(metric_value)
 
-    best_metric_value = aggregation_func(metric_values)
+    best_metric_value = int(aggregation_func(metric_values))
     print("{0}".format(best_metric_value))
 
 def _find_best_individual(fitness_by_gen, at_least_as_good_func, partially_better_func):
@@ -113,11 +112,11 @@ def _print_individual(fitness):
 
     if fitness is not None:
         if 'coverage' in fitness:
-            coverage = fitness['coverage']
+            coverage = int(fitness['coverage'])
         if 'length' in fitness:
-            length = fitness['length']
+            length = int(fitness['length'])
         if 'crashes' in fitness:
-            crashes = fitness['crashes']
+            crashes = int(fitness['crashes'])
 
     print("coverage,crashes,length")
     print("{0},{1},{2}".format(coverage, crashes, length))
@@ -131,13 +130,13 @@ def print_number_of_generations(logbook_file_path):
     print("{0}".format(len(fitness_by_gen)))
 
 def print_best_historic_coverage(logbook_file_path):
-    _print_best_metric(logbook_file_path, 'coverage', 0, max)
+    _print_best_metric(logbook_file_path, 'coverage', 0.0, max)
 
 def print_best_historic_length(logbook_file_path):
-    _print_best_metric(logbook_file_path, 'length', sys.maxsize, min)
+    _print_best_metric(logbook_file_path, 'length', float(sys.maxsize), min)
 
 def print_best_historic_crashes(logbook_file_path):
-    _print_best_metric(logbook_file_path, 'crashes', 0, max)
+    _print_best_metric(logbook_file_path, 'crashes', 0.0, max)
 
 def print_best_individual_all_generations(logbook_file_path):
     logbook_file = open(logbook_file_path, 'rb')
