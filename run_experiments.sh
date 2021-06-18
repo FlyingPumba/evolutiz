@@ -6,6 +6,7 @@ TIME="120m"
 
 EVOLUTIZ_CMD_PREFIX=".env/bin/python main.py -vv \
 --no-compress \
+--skip-subject-if-logbook-in-results \
 --continue-on-subject-failure \
 --continue-on-repetition-failure \
 --coverage ella"
