@@ -316,6 +316,11 @@ def check_needed_commands_available() -> None:
         logger.log_progress(cause)
         raise Exception(cause)
 
+    if args.coverage == "ella" and not is_command_available("socat"):
+        cause = "Command 'socat' needed for ELLA coverage but not found."
+        logger.log_progress(cause)
+        raise Exception(cause)
+
     output, errors, result_code = run_cmd("java -version")
     first_line = errors.split('\n')[0].strip()
     version = first_line.split(' ')[2]
