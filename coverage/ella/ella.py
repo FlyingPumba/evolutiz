@@ -99,7 +99,7 @@ class Ella(object):
 
         # copy folder and change port in ELLA settings
         run_cmd(f"rm -rf {device_ella_folder_path}")
-        run_cmd(f"cp -r {self.ella_original_folder_path} {device_ella_folder_path}")
+        run_cmd(f"cp -r {self.ella_original_folder_path} {device_ella_folder_path}", timeout=300)
         run_cmd(f"sed -i \'s/ella.server.port=23745/ella.server.port={device_ella_port}/g\' {device_ella_settings_path}")
 
         self.devices_with_ella_folder.add(device.name)
