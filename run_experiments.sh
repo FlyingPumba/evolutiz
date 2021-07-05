@@ -4,6 +4,11 @@ EMULATORS=8
 REPETITIONS=1
 TIME="120m"
 
+if [ -z "$SUBJECTS_FOLDER" ]; then
+    echo "A subjects folder is required as first parameter. E.g., ./run_experiments subjects/jsep/"
+    exit 1
+fi
+
 EVOLUTIZ_CMD_PREFIX=".env/bin/python main.py -vv \
 --no-compress \
 --skip-subject-if-logbook-in-results \
