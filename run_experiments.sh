@@ -13,6 +13,9 @@ EVOLUTIZ_CMD_PREFIX=".env/bin/python main.py -vv \
 
 EVOLUTIZ_CMD="$EVOLUTIZ_CMD_PREFIX --emulators-number $EMULATORS --repetitions $REPETITIONS --time-budget $TIME"
 
+# Delete empty logs in top folder
+find . -maxdepth 1 -type f -name "*.out" -size 0 -delete
+
 for subject in $SUBJECTS_FOLDER*.apk; do
   filename=$(basename $subject)
 
