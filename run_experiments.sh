@@ -18,6 +18,9 @@ EVOLUTIZ_CMD_PREFIX=".env/bin/python main.py -vv \
 
 EVOLUTIZ_CMD="$EVOLUTIZ_CMD_PREFIX --emulators-number $EMULATORS --repetitions $REPETITIONS --time-budget $TIME"
 
+# Delete logs for skipped runs in top folder
+find . -maxdepth 1 -name "*.out" -exec bash -c "grep -q 'Exception: Skipping run' {} && echo {} && rm {}" \;
+
 # Delete empty logs in top folder
 find . -maxdepth 1 -type f -name "*.out" -size 0 -delete
 
@@ -47,5 +50,8 @@ done
 
 # Delete logs for skipped runs in top folder
 find . -maxdepth 1 -name "*.out" -exec bash -c "grep -q 'Exception: Skipping run' {} && echo {} && rm {}" \;
+
+# Delete empty logs in top folder
+find . -maxdepth 1 -type f -name "*.out" -size 0 -delete
 
 notify -hn -m "run_experiments.sh" :
