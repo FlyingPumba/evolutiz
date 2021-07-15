@@ -54,6 +54,8 @@ def handle(
 
     unique_crashes.add(content_str)
 
-    # save the script, indicate its ith gen
-    os.system(f"cp {script_path} {result_dir}/crashes/script.{individual_suffix}")
+    # save the script, indicating its ith gen
+    if script_path != "":
+        os.system(f"cp {script_path} {result_dir}/crashes/script.{individual_suffix}")
+
     return True
