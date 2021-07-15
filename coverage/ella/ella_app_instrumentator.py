@@ -41,6 +41,8 @@ class EllaAppInstrumentator(AppInstrumentator, Ella):
 
         apk_filename = os.path.basename(self.app_path)
         logger.log_progress(f"\nInstrumenting app: {apk_filename}")
+        # delete any previous content in ELLA's output folder
+        run_cmd(f"rm -rf {self.ella_original_output_folder_path}/*")
 
         # prepare the ella-customized jars
         output, errors, result_code = run_cmd(f"python gen-ella-wrappers.py",
