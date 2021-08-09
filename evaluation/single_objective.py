@@ -31,7 +31,10 @@ class SingleObjectiveTestSuiteEvaluator(TestSuiteEvaluator):
         return HallOfFame(maxsize=50)
 
     def set_empty_fitness(self, individual: IndividualSingleObjective) -> None:
-        individual.fitness.values = (0, sys.maxsize, 0)
+        individual.fitness.values = (0,)
+
+        individual.crashes = 0
+        individual.length = sys.maxsize
 
         individual.evaluation_finish_timestamp = time.time()
         individual.evaluation_elapsed_time = 0
