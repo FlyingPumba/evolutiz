@@ -65,7 +65,7 @@ class EllaAppInstrumentator(AppInstrumentator, Ella):
         os.chdir(settings.WORKING_DIR)
 
         # find instrumented APK in ELLA's output folder
-        output, errors, result_code = run_cmd(f"find {self.get_current_apk_output_folder()} -type f -name \"*.apk\"")
+        output, errors, result_code = run_cmd(f"find {self.get_current_apk_output_folder()} -type f -name \"instrumented.apk\"")
         instrumented_app_path = output.rstrip('\n')
         features.provide('instrumented_app_path', instrumented_app_path)
 
