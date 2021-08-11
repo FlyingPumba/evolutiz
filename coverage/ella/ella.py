@@ -51,7 +51,7 @@ class Ella(object):
 
     def stop_ella(self, device: Device) -> None:
         # stop ELLA server
-        output, errors, result_code = run_cmd(f"./ella.sh k", cwd=self.get_device_ella_folder_path(device))
+        output, errors, result_code = run_cmd(f"./ella.sh k", cwd=self.get_device_ella_folder_path(device), timeout=300)
         if result_code != 0:
             raise Exception("Unable to stop ELLA server")
 
