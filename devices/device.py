@@ -71,7 +71,10 @@ class Device(object):
         self.state = State.ready_working
 
     def mark_work_stop(self) -> None:
-        self.state = State.ready_idle
+        # only change the state to "idle" if the device was working.
+        # otherwise, leave it as it was (e.g., it might be in state "setting_up")
+        if self.state == State.ready_working:
+            self.state = State.ready_idle
 
     def battery_level(self) -> Optional[int]:
         return adb.get_battery_level(self)
