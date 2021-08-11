@@ -6,6 +6,7 @@ from coverage.apk_preparer import ApkPreparer
 from dependency_injection.feature_broker import features
 from dependency_injection.required_feature import RequiredFeature
 from devices.device_setup import DeviceSetupThread
+from devices.device_state import State
 from util import logger
 
 
@@ -50,6 +51,11 @@ class Evolutiz(object):
         except Exception as e:
             logger.log_progress(f"An error happened setting up devices: {str(traceback.format_exc())}")
             return
+
+        devices = self.device_manager.get_devices()
+        for device in devices:
+            if device.state == State.setting_up:
+                raise Exception(f"An error occurred setting up devices before starting Evolutiz run")
 
         # run the strategy
         population = self.strategy.run()
