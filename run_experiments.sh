@@ -46,6 +46,8 @@ for subject in $SUBJECTS_FOLDER*.apk; do
   $EVOLUTIZ_CMD --subject-path $subject -s muPlusLambda -t motifcore-no-motifgenes -e single-objective > "sapienz-single-objective-no-motifgene-$filename-jsep-$(ls -1 sapienz-single-objective-no-motifgene-$filename-jsep* 2>/dev/null | wc -l).out" 2>&1
 
   $EVOLUTIZ_CMD --subject-path $subject -s muCommaLambda -t motifcore-no-motifgenes -e single-objective > "mu-comma-lambda-$filename-jsep-$(ls -1 mu-comma-lambda-$filename-jsep* 2>/dev/null | wc -l).out" 2>&1
+
+  notify -hn -m "Subject $filename ended" :
 done
 
 # Delete logs for skipped runs in top folder
